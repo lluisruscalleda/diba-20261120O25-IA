@@ -351,6 +351,54 @@
       "module": 4,
       "conceptId": "m04-07-documents-administratius",
       "definition": "Marc normatiu espanyol que fixa metadades mínimes (DIR3, tipologies TDxx), format PDF/A i índex electrònic signat amb petjada hash (art. 70 LPACAP), exigint immutabilitat dels documents originals."
+    },
+    {
+      "id": "pre-filtering-acl",
+      "term": "Pre-filtratge ACL en RAG (Security Trimming)",
+      "english": "ACL Pre-Filtering / Security Trimming",
+      "module": 5,
+      "conceptId": "m05-02-assistents-corporatius",
+      "definition": "Aplicació obligatòria dels filtres d'autorització (tenant, departament, rol) dins la consulta a la base de dades vectorial abans del rànquing top-K per impedir fuites de documents restringits."
+    },
+    {
+      "id": "slot-filling-fallback",
+      "term": "Slot Filling i Fallback esglaonat",
+      "english": "Slot Filling & Tiered Fallback",
+      "module": 5,
+      "conceptId": "m05-03-fluxos-conversacionals",
+      "definition": "Recollida estructurada i validada de paràmetres obligatoris d'un tràmit acompanyada d'una recuperació progressiva d'errors (Nivell 1 aclariment, Nivell 2 opcions guiades, Nivell 3 escalada humana)."
+    },
+    {
+      "id": "ssot-knowledge-base",
+      "term": "Font Única de Veritat (SSOT) i vigència documental",
+      "english": "Single Source of Truth (SSOT)",
+      "module": 5,
+      "conceptId": "m05-04-integracio-bases-coneixement",
+      "definition": "Principi de governança de bases de coneixement on els documents del chatbot es sincronitzen incrementalment des dels repositoris oficials vigents amb expiració automàtica de versions derogades."
+    },
+    {
+      "id": "pii-scrubbing-hash-chain",
+      "term": "PII Scrubbing i cadena de hashes (Audit Trail)",
+      "english": "PII Scrubbing & Tamper-Evident Hash Chain",
+      "module": 5,
+      "conceptId": "m05-06-tracabilitat-conversacional",
+      "definition": "Anonimització de dades personals prèvia a l'emmagatzematge del registre conversacional combinada amb encadenament criptogràfic SHA-256 per detectar manipulacions del log d'auditoria."
+    },
+    {
+      "id": "kill-switch-degradacio",
+      "term": "Kill Switch i Degradació Segura",
+      "english": "Kill Switch & Graceful Degradation",
+      "module": 5,
+      "conceptId": "m05-07-supervisio-conversacional",
+      "definition": "Mecanisme d'aturada d'emergència (manual o automàtic) que desactiva la generació lliure de l'LLM davant anomalies greus i commuta el servei a FAQs deterministes verificades i escalada directa al 010/OAC."
+    },
+    {
+      "id": "warm-handoff",
+      "term": "Traspàs càlid a agent humà (Warm Handoff)",
+      "english": "Warm Handoff (Human Escalation)",
+      "module": 5,
+      "conceptId": "m05-08-escalada-humana",
+      "definition": "Transferència d'una conversa a la cua especialitzada OAC/010 adjuntant un paquet estructurat breu (resum, slots, cites RAG ja mostrades i motiu d'escalada) perquè el ciutadà no hagi de repetir-ho tot."
     }
   ]
 }

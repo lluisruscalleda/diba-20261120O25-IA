@@ -1,0 +1,236 @@
+{
+  "conceptId": "m05-05-canals-digitals",
+  "module": 5,
+  "questions": [
+    {
+      "id": "m05-05-q01",
+      "module": 5,
+      "conceptId": "m05-05-canals-digitals",
+      "lessonRef": "content/module-05/m05-05-canals-digitals.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina diferència hi ha entre **multicanalitat** i **omnicanalitat** en assistents virtuals públics?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "En multicanalitat cada canal (web, WhatsApp, 010) opera com un silo aïllat amb coneixement duplicat; en **omnicanalitat** un **únic nucli conversacional SSOT** alimenta tots els canals via adaptadors i conserva la coherència i el context d'escalada." },
+        { "key": "B", "text": "Omnicanalitat significa tenir només un canal web." },
+        { "key": "C", "text": "Multicanalitat significa utilitzar només veu." },
+        { "key": "D", "text": "Són sinònims exactes sense diferència arquitectònica." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "L'arquitectura omnicanal (*Core + Channel Adapters*) elimina contradiccions entre canals, redueix costos de manteniment i permet transferir context en escalar.",
+      "explanationsIncorrect": {
+        "B": "Omnicanalitat cobreix múltiples canals de manera integrada i unificada.",
+        "C": "Multicanalitat implica diversos canals però sense integració central.",
+        "D": "Tenen diferències profundes en governança de dades i experiència d'usuari."
+      }
+    },
+    {
+      "id": "m05-05-q02",
+      "module": 5,
+      "conceptId": "m05-05-canals-digitals",
+      "lessonRef": "content/module-05/m05-05-canals-digitals.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "En un canal de veu telefònic (010), què significa la funcionalitat de ***barge-in***?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Penjar la trucada automàticament al cap de 10 segons." },
+        { "key": "B", "text": "Permetre que el ciutadà **interrompi el bot mentre està parlant**, aturant immediatament la locució TTS per escoltar el que diu l'usuari." },
+        { "key": "C", "text": "Pujar el volum de la veu al màxim." },
+        { "key": "D", "text": "Gravar la trucada sense avisar l'usuari." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Sense barge-in, un ciutadà que ja sap què vol ha d'esperar impotent que acabi una locució llarga, generant molta frustració al telèfon.",
+      "explanationsIncorrect": {
+        "A": "No penja la trucada.",
+        "C": "No regula el volum.",
+        "D": "Tota gravació telefònica exigeix avís explícit RGPD."
+      }
+    },
+    {
+      "id": "m05-05-q03",
+      "module": 5,
+      "conceptId": "m05-05-canals-digitals",
+      "lessonRef": "content/module-05/m05-05-canals-digitals.md",
+      "difficulty": "basic",
+      "questionType": "normative",
+      "prompt": "Quin ús és adequat i segur per a un canal de **WhatsApp Business** en un ajuntament?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Rebre fotografies de DNI i informes mèdics de serveis socials." },
+        { "key": "B", "text": "Enviar dades detallades d'expedients sancionadors sense autenticació." },
+        { "key": "C", "text": "**Informació pública general** (horaris, requisits generals, avisos municipals, calendari fiscal) i **redirecció amb enllaç cap a la Seu Electrònica autenticada** per a qualsevol gestió personal." },
+        { "key": "D", "text": "Substituir la Seu Electrònica per a tots els registres oficials." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Limitar WhatsApp a informació pública general i derivar tràmits personals a la Seu Electrònica protegeix la privacitat (RGPD/ENS) i la seguretat jurídica d'identificació.",
+      "explanationsIncorrect": {
+        "A": "Risc gravíssim RGPD/ENS en una plataforma de tercers fora del control directe.",
+        "B": "Un número de telèfon no acredita identitat oficial i exposaria dades reservades.",
+        "D": "WhatsApp no compleix els requisits legals de registre electrònic ni seu electrònica."
+      }
+    },
+    {
+      "id": "m05-05-q04",
+      "module": 5,
+      "conceptId": "m05-05-canals-digitals",
+      "lessonRef": "content/module-05/m05-05-canals-digitals.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Per què **NO** s'ha de connectar directament un motor **TTS (*Text-to-Speech*)** a la resposta Markdown generada per al chatbot web en un canal telefònic 010?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè les taules Markdown, les llistes llargues i les URLs (`https://...`) resulten incomprensibles dictades en veu alta; l'adaptador de veu ha de sintetitzar frases curtes (<2–3 oracions) i oferir enviar enllaços per SMS." },
+        { "key": "B", "text": "Perquè el TTS no pot pronunciar paraules en català." },
+        { "key": "C", "text": "Perquè els telèfons no transmeten àudio." },
+        { "key": "D", "text": "Perquè l'HTML funciona millor per telèfon que el Markdown." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "La interacció auditiva té una memòria de treball humana molt curta: requereix concisió extrema, absència de símbols/URLs i alternativa SMS per a informació escrita.",
+      "explanationsIncorrect": {
+        "B": "Existeixen motors TTS neuronals d'alta qualitat en català.",
+        "C": "Precisament el canal telefònic és exclusivament àudio.",
+        "D": "Tampoc no s'han de dictar etiquetes HTML per veu."
+      }
+    },
+    {
+      "id": "m05-05-q05",
+      "module": 5,
+      "conceptId": "m05-05-canals-digitals",
+      "lessonRef": "content/module-05/m05-05-canals-digitals.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Quin pressupost de **latència extrem a extrem** (des que el ciutadà acaba de parlar fins que comença a sentir la resposta) és crític per a una experiència natural en un canal de veu 010?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Entre 15 i 20 segons." },
+        { "key": "B", "text": "**Inferior a 1–1,5 segons** (aconseguit mitjançant *streaming* ASR → LLM/Nucli → TTS frase a frase), ja que pauses de 4–5 segons al telèfon fan pensar que la trucada s'ha tallat." },
+        { "key": "C", "text": "Exactament 1 minut." },
+        { "key": "D", "text": "La latència no importa gens en canals de veu." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "El silenci al telèfon és molt més incòmode que en un xat escrit (on es veu 'escrivint...'); el streaming de baix retard és essencial en voicebots.",
+      "explanationsIncorrect": {
+        "A": "15 segons de silenci al telèfon provoquen que gairebé tothom pengi!",
+        "C": "Totalment inviable.",
+        "D": "És un dels paràmetres més crítics de la IA conversacional per veu."
+      }
+    },
+    {
+      "id": "m05-05-q06",
+      "module": 5,
+      "conceptId": "m05-05-canals-digitals",
+      "lessonRef": "content/module-05/m05-05-canals-digitals.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "En licitar un canal de veu (010) per a un municipi de la província de Barcelona, quina prova tècnica d'acceptació és indispensable abans d'adjudicar el motor **ASR (*Automatic Speech Recognition*)**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Provar-lo només amb enregistraments d'estudi en anglès nord-americà." },
+        { "key": "B", "text": "Comprovar només la velocitat de descàrrega de la pàgina web." },
+        { "key": "C", "text": "Avaluar el **WER en català i castellà** sobre **àudio telefònic real (8 kHz, soroll ambiental, accents diversos, noms de carrers/municipis locals i canvi de codi català-castellà)**." },
+        { "key": "D", "text": "No cal avaluar l'ASR perquè tots reconeixen perfectament qualsevol idioma." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Molts motors ASR comercials que obtenen 3% WER en anglès d'estudi cauen dramàticament en català telefònic a 8 kHz amb toponímia local (`L'Hospitalet`, `Sant Cugat`, `Viladecans`)!",
+      "explanationsIncorrect": {
+        "A": "No reflecteix en absolut la realitat lingüística ni acústica del 010.",
+        "B": "No avalua reconeixement de veu.",
+        "D": "Hi ha diferències enormes de qualitat entre motors ASR en català telefònic."
+      }
+    },
+    {
+      "id": "m05-05-q07",
+      "module": 5,
+      "conceptId": "m05-05-canals-digitals",
+      "lessonRef": "content/module-05/m05-05-canals-digitals.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Quin canal digital públic és l'únic adequat per oferir consultes personalitzades d'expedients o tràmits amb signatura electrònica del ciutadà amb plenes garanties **RGPD, ENS i LPACAP**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Un xat públic en una xarxa social." },
+        { "key": "B", "text": "Un grup obert de Telegram." },
+        { "key": "C", "text": "WhatsApp sense autenticació oficial." },
+        { "key": "D", "text": "La **Seu Electrònica / Carpeta Ciutadana** (o app oficial corporativa) amb identificació forta (**idCAT Mòbil, Cl@ve, certificat digital**), compliment **WCAG 2.1 AA** i perímetre certificat **ENS**." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Només els canals sota control directe ENS amb sistemes oficials d'identificació electrònica ofereixen validesa jurídica i protecció adequada de dades personals.",
+      "explanationsIncorrect": {
+        "A": "Les xarxes socials no tenen control ENS ni identificació jurídica.",
+        "B": "Un grup obert exposaria dades a tercers.",
+        "C": "WhatsApp no integra identificació electrònica oficial ni control ENS ple."
+      }
+    },
+    {
+      "id": "m05-05-q08",
+      "module": 5,
+      "conceptId": "m05-05-canals-digitals",
+      "lessonRef": "content/module-05/m05-05-canals-digitals.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En la funció `adaptar_resposta` de l'exemple 5.5, què aconsegueix la comprovació `if resp.conte_dades_personals:` dins la branca `canal == 'whatsapp'`?",
+      "codeSnippet": "if canal == \"whatsapp\":\n    if resp.conte_dades_personals:\n        return \"Per protegir les teves dades personals (RGPD)...\"",
+      "options": [
+        { "key": "A", "text": "Implementa un **tallafocs determinista específic del canal** que impedeix que cap resposta amb PII o estat d'expedient privat surti mai per WhatsApp, redirigint automàticament el ciutadà a la Seu Electrònica segura sense duplicar la lògica del nucli." },
+        { "key": "B", "text": "Envia la dada personal igualment però en majúscules." },
+        { "key": "C", "text": "Bloqueja també el canal web autenticat." },
+        { "key": "D", "text": "Esborra l'expedient de la base de dades." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Aplicar la política de privacitat de canal dins l'adaptador garanteix defensa en profunditat: encara que una branca interna generés contingut privat, mai sortirà pel canal no autoritzat.",
+      "explanationsIncorrect": {
+        "B": "Bloqueja totalment la dada personal i només mostra l'enllaç a la Seu.",
+        "C": "La branca `web` autenticada continua operant normalment.",
+        "D": "Només controla la renderització de sortida."
+      }
+    },
+    {
+      "id": "m05-05-q09",
+      "module": 5,
+      "conceptId": "m05-05-canals-digitals",
+      "lessonRef": "content/module-05/m05-05-canals-digitals.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Què és l'intercanvi **CTI (*Computer Telephony Integration*) / *Screen Pop*** quan un canal de veu 010 escala una trucada a un agent humà?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Tallar la trucada perquè el ciutadà torni a trucar." },
+        { "key": "B", "text": "Transferir automàticament al terminal de l'agent humà el **resum de la conversa prèvia amb el bot, la intenció detectada i les dades recollides** en el mateix instant que agafa la trucada, evitant que el ciutadà hagi de repetir-ho tot." },
+        { "key": "C", "text": "Reproduir música d'espera durant 30 minuts." },
+        { "key": "D", "text": "Enviar un correu massiu a tots els veïns." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "El traspàs càlid (*warm handoff*) amb resum en pantalla redueix el temps mitjà de trucada (AHT) i elimina la principal font de frustració ciutadana en els voicebots.",
+      "explanationsIncorrect": {
+        "A": "Seria la pitjor experiència possible.",
+        "C": "No té relació amb música d'espera.",
+        "D": "Només mostra el context a l'agent humà assignat."
+      }
+    },
+    {
+      "id": "m05-05-q10",
+      "module": 5,
+      "conceptId": "m05-05-canals-digitals",
+      "lessonRef": "content/module-05/m05-05-canals-digitals.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "Un municipi ha posat en marxa un canal de WhatsApp informatiu. Un ciutadà, sense que ningú li ho demani, hi envia igualment una **fotografia del seu DNI** i el seu telèfon particular. Quina mesura tècnica ha d'aplicar l'adaptador de WhatsApp?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Desar la foto del DNI permanentment a l'índex vectorial RAG." },
+        { "key": "B", "text": "Reenviar la foto a tots els departaments per correu." },
+        { "key": "C", "text": "**Descartar/no emmagatzemar l'adjunt** al sistema intern (evitant persistir PII no sol·licitada, principi de minimització RGPD), no enviar-lo a cap LLM/OCR i respondre immediatament indicant que **no s'han d'enviar documents personals per WhatsApp**, facilitant l'enllaç a la Seu Electrònica." },
+        { "key": "D", "text": "Ignorar el missatge sense dir res." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Els ciutadans sovint envien adjunts sensibles espontàniament; configurar l'adaptador de WhatsApp per rebutjar adjunts/PII sense emmagatzemar-los protegeix tant el ciutadà com l'ajuntament!",
+      "explanationsIncorrect": {
+        "A": "Causaria una bretxa RGPD gravíssima.",
+        "B": "Multiplicaria l'exposició no autoritzada del DNI.",
+        "D": "Cal informar clarament el ciutadà d'on ha d'aportar el document amb seguretat."
+      }
+    }
+  ]
+}

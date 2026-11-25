@@ -1,0 +1,46 @@
+{
+  "conceptId": "m05-07-supervisio-conversacional",
+  "module": 5,
+  "cards": [
+    {
+      "id": "m05-07-fc01",
+      "module": 5,
+      "conceptId": "m05-07-supervisio-conversacional",
+      "front": "Quines són les 3 capes de supervisió d'un assistent virtual públic?",
+      "back": "1) Guardrails síncrons (<50 ms: emergències, injecció, cites, zero promeses vinculants); 2) Supervisió asíncrona (KPIs, LLM-as-a-Judge calibrat amb Kappa, mostreig estratificat humà); 3) Kill Switch / Degradació segura.",
+      "tags": ["supervisió", "guardrails", "Kill Switch"]
+    },
+    {
+      "id": "m05-07-fc02",
+      "module": 5,
+      "conceptId": "m05-07-supervisio-conversacional",
+      "front": "Per què el mostreig humà ha d'incloure una mostra aleatòria a més del 100% de `👎`?",
+      "back": "Per detectar «errors silenciosos»: al·lucinacions molt ben redactades que el ciutadà no detecta o fins i tot vota positivament perquè desconeix la norma oficial.",
+      "tags": ["mostreig", "errors silenciosos"]
+    },
+    {
+      "id": "m05-07-fc03",
+      "module": 5,
+      "conceptId": "m05-07-supervisio-conversacional",
+      "front": "Com s'han d'interceptar situacions d'emergència vital o violència masclista en un chatbot?",
+      "back": "Mitjançant un input guardrail determinista de màxima prioritat ABANS de l'LLM que mostra immediatament telèfons oficials (`112`, `900 900 120`, `024`).",
+      "tags": ["emergències", "guardrails"]
+    },
+    {
+      "id": "m05-07-fc04",
+      "module": 5,
+      "conceptId": "m05-07-supervisio-conversacional",
+      "front": "Què indica un pic sobtat d'abstenció RAG (6% → 34%) amb error de cites molt baix (0,4%)?",
+      "back": "Un *Knowledge Gap* urgent (ex. nova campanya/convocatòria no indexada): el RAG funciona bé i s'absté honestament; cal carregar la documentació SSOT vigent, NO canviar l'LLM!",
+      "tags": ["KPIs", "Knowledge Gap"]
+    },
+    {
+      "id": "m05-07-fc05",
+      "module": 5,
+      "conceptId": "m05-07-supervisio-conversacional",
+      "front": "Com ha de funcionar el mode `DEGRADAT_SEGUR` del Kill Switch?",
+      "back": "Desactiva la generació lliure LLM en segons davant anomalies greus i manté el servei operatiu amb FAQs deterministes verificades, enllaços oficials i derivació directa a OAC/010.",
+      "tags": ["Kill Switch", "degradació segura"]
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "conceptId": "m05-08-escalada-humana",
+  "module": 5,
+  "cards": [
+    {
+      "id": "m05-08-fc01",
+      "module": 5,
+      "conceptId": "m05-08-escalada-humana",
+      "front": "Quins són els 6 disparadors obligatoris d'escalada humana en un assistent públic?",
+      "back": "1) Petició explícita del ciutadà (prioritat màxima!); 2) Fallback 3 / baixa confiança; 3) Complexitat jurídica; 4) Vulnerabilitat/tema sensible; 5) Frustració elevada; 6) Accions amb efectes jurídics/econòmics.",
+      "tags": ["escalada", "triggers"]
+    },
+    {
+      "id": "m05-08-fc02",
+      "module": 5,
+      "conceptId": "m05-08-escalada-humana",
+      "front": "Què ha d'incloure el paquet de context d'un *Warm Handoff* (*Screen Pop*)?",
+      "back": "Resum executiu de 2–3 línies (llegible en <10 s!), motiu exacte d'escalada, *slots* recollits, cites RAG ja mostrades i canal/nivell d'autenticació (amb historial detallat desplegable).",
+      "tags": ["Warm Handoff", "Screen Pop"]
+    },
+    {
+      "id": "m05-08-fc03",
+      "module": 5,
+      "conceptId": "m05-08-escalada-humana",
+      "front": "Com s'ha de gestionar l'escalada fora d'horari laboral o quan la cua supera 5 minuts?",
+      "back": "MAI carreró sense sortida: activar escalada asíncrona adjuntant el paquet de context (tiquet amb núm. seguiment + SLA <24h, programació de *callback* o reserva de cita prèvia).",
+      "tags": ["escalada asíncrona", "SLA", "callback"]
+    },
+    {
+      "id": "m05-08-fc04",
+      "module": 5,
+      "conceptId": "m05-08-escalada-humana",
+      "front": "Per què enrutar escalades a cues especialitzades (`OAC`, `ORGT Tributs`, `Serveis Socials`)?",
+      "back": "Elimina rebots entre departaments, augmenta la resolució en primer contacte i garanteix l'aïllament ACL de dades sensibles (Serveis Socials / secret tributari art. 95 LGT).",
+      "tags": ["cues", "ACL", "OAC"]
+    },
+    {
+      "id": "m05-08-fc05",
+      "module": 5,
+      "conceptId": "m05-08-escalada-humana",
+      "front": "Com distingeix el *Closed Loop* d'agents OAC les escalades evitables de les legítimes?",
+      "back": "Amb un etiquetatge d'1 clic en tancar el cas (`Falta info KB` / `Error NLU` = evitable → tasca de millora; `Cas jurídic/social complex` = escalada legítima i bon triatge!).",
+      "tags": ["Closed Loop", "millora contínua"]
+    }
+  ]
+}

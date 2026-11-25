@@ -1,0 +1,236 @@
+{
+  "conceptId": "m05-02-assistents-corporatius",
+  "module": 5,
+  "questions": [
+    {
+      "id": "m05-02-q01",
+      "module": 5,
+      "conceptId": "m05-02-assistents-corporatius",
+      "lessonRef": "content/module-05/m05-02-assistents-corporatius.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quin és el principi suprem de control d'accés d'un **assistent corporatiu intern** en una administració pública?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "L'assistent **mai no pot veure, recuperar ni revelar** a un empleat cap dada a la qual aquest empleat no tingui accés directe al sistema font (propagació OBO / mínim privilegi)." },
+        { "key": "B", "text": "Tots els empleats han de poder consultar els expedients de tots els departaments per agilitzar la feina." },
+        { "key": "C", "text": "L'assistent ha de fer servir sempre un usuari administrador únic compartit." },
+        { "key": "D", "text": "Les contrasenyes s'han de guardar en text pla dins del *system prompt*." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Respectar estrictament els permisos reals de cada empleat (OBO) evita escalades de privilegis i fuites creuades entre departaments o municipis.",
+      "explanationsIncorrect": {
+        "B": "Vulneraria el RGPD (minimització/confidencialitat) i l'ENS.",
+        "C": "És un antipatró greu vulnerable a exfiltració per *prompt injection*.",
+        "D": "Error catastròfic de ciberseguretat."
+      }
+    },
+    {
+      "id": "m05-02-q02",
+      "module": 5,
+      "conceptId": "m05-02-assistents-corporatius",
+      "lessonRef": "content/module-05/m05-02-assistents-corporatius.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Què és el fenomen conegut com a ***Shadow AI*** (IA a l'ombra) en una organització pública?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Un mode fosc de la interfície web." },
+        { "key": "B", "text": "L'ús no governat ni autoritzat de plataformes externes d'IA (sovint gratuïtes i fora de l'EEE) per part d'empleats que hi enganxen dades personals o documents interns confidencials." },
+        { "key": "C", "text": "Executar un model open-weights en un servidor local certificat ENS." },
+        { "key": "D", "text": "Utilitzar un índex BM25 en segon pla." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "La Shadow AI exposa expedients i dades personals fora del perímetre legal (RGPD, art. 95 LGT, ENS); cal combatre-la oferint un assistent corporatiu segur + formació + DLP.",
+      "explanationsIncorrect": {
+        "A": "No té relació amb temes visuals.",
+        "C": "Un desplegament *on-premise* governat és precisament la solució a la Shadow AI.",
+        "D": "No té relació amb BM25."
+      }
+    },
+    {
+      "id": "m05-02-q03",
+      "module": 5,
+      "conceptId": "m05-02-assistents-corporatius",
+      "lessonRef": "content/module-05/m05-02-assistents-corporatius.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina diferència hi ha entre **RBAC** i **ABAC** en l'autorització d'un assistent corporatiu?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "RBAC només funciona en Linux i ABAC en Windows." },
+        { "key": "B", "text": "Són dos algoritmes de tokenització." },
+        { "key": "C", "text": "**RBAC** controla l'accés segons el **rol** de l'usuari (`interventor`, `tecnic_oac`), mentre **ABAC** avalua regles fines combinant **atributs** de l'usuari i del recurs (`municipi_id`, `departament`, `classificacio`, `estat_vigencia`)." },
+        { "key": "D", "text": "ABAC no permet restringir per municipi." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "En una diputació amb 311 municipis i múltiples nivells de classificació, combinar RBAC amb ABAC permet un aïllament precís sense multiplicar rols explosivament.",
+      "explanationsIncorrect": {
+        "A": "Són models d'autorització independents del sistema operatiu.",
+        "B": "Són models de control d'accés, no de tokenització.",
+        "D": "Precisament restringir per atribut `municipi_id` és el cas estrella d'ABAC!"
+      }
+    },
+    {
+      "id": "m05-02-q04",
+      "module": 5,
+      "conceptId": "m05-02-assistents-corporatius",
+      "lessonRef": "content/module-05/m05-02-assistents-corporatius.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Per què connectar un assistent RAG intern a SharePoint amb un **compte de servei administrador (`svc_admin`)** i demanar al *system prompt* «No mostris documents de RRHH a altres departaments» és una vulnerabilitat crítica?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè els fragments confidencials de RRHH arriben a entrar al context de l'LLM i qualsevol *prompt injection* o pregunta indirecta pot induir l'LLM a revelar-los; el filtratge d'ACL ha de ser **determinista (OBO) abans de la recuperació**." },
+        { "key": "B", "text": "Perquè els prompts no admeten la paraula «RRHH»." },
+        { "key": "C", "text": "Perquè SharePoint només admet fitxers MP3." },
+        { "key": "D", "text": "Només és un problema de latència, no de seguretat." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "El control d'accés mai no es pot delegar a instruccions probabilístiques dins el prompt: cap document no autoritzat ha d'entrar mai a la finestra de context de l'LLM.",
+      "explanationsIncorrect": {
+        "B": "El problema no és la paraula, sinó la natura probabilística i injectable del prompt.",
+        "C": "SharePoint gestiona documents corporatius (PDF, DOCX, etc.).",
+        "D": "És una vulnerabilitat gravíssima de confidencialitat i incompliment ENS/RGPD."
+      }
+    },
+    {
+      "id": "m05-02-q05",
+      "module": 5,
+      "conceptId": "m05-02-assistents-corporatius",
+      "lessonRef": "content/module-05/m05-02-assistents-corporatius.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Quina estratègia de **3 pilars** és la més efectiva per reduir realment la ***Shadow AI*** a la Diputació de Barcelona?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Prohibir per correu electrònic tota la IA sense oferir cap eina interna ni formació." },
+        { "key": "B", "text": "(1) Oferir un **assistent corporatiu segur *on-premise*/ENS** fàcil i útil, (2) **política d'ús acceptable + formació d'alfabetització en IA (art. 4 AI Act)**, i (3) **controls tècnics DLP / proxy**." },
+        { "key": "C", "text": "Pagar comptes gratuïts personals en plataformes fora de la UE." },
+        { "key": "D", "text": "Desconnectar Internet a tots els empleats públics." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Quan l'organització combina una alternativa segura i còmoda amb formació (art. 4 AI Act) i controls DLP, s'elimina l'incentiu i el risc de la Shadow AI.",
+      "explanationsIncorrect": {
+        "A": "Prohibir sense alternativa empeny el personal a fer servir dispositius personals/mòbils fora del control corporatiu.",
+        "C": "Legalitzaria la fuga de dades fora de l'EEE vulnerant RGPD i ENS.",
+        "D": "Inviable per a l'operativa diària de l'Administració."
+      }
+    },
+    {
+      "id": "m05-02-q06",
+      "module": 5,
+      "conceptId": "m05-02-assistents-corporatius",
+      "lessonRef": "content/module-05/m05-02-assistents-corporatius.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Un funcionari de Serveis Socials és traslladat avui al departament d'Esports. Quina mesura tècnica garanteix que demà **ja no pugui consultar expedients de Serveis Socials** a través de l'assistent corporatiu?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Guardar els permisos de l'usuari en una memòria cau estàtica de 6 mesos." },
+        { "key": "B", "text": "Demanar-li educadament que no pregunti sobre Serveis Socials." },
+        { "key": "C", "text": "Utilitzar **SSO (OIDC/SAML) amb tokens JWT de curta durada** sincronitzats en temps real (o quasi real) amb el directori corporatiu, actualitzant immediatament el pre-filtre OBO en revocar el grup anterior." },
+        { "key": "D", "text": "Reentrenar tot l'LLM cada vegada que canvia un empleat de lloc." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Com que els permisos es resolen dinàmicament via OIDC/ACL en temps de consulta (i no estan gravats dins els pesos de l'LLM!), la revocació és immediata en caducar el token curt.",
+      "explanationsIncorrect": {
+        "A": "Una cache de 6 mesos deixaria una finestra enorme d'accés indegut.",
+        "B": "La seguretat ENS exigeix controls tècnics obligatoris, no promeses verbals.",
+        "D": "En RAG + OBO no cal reentrenar mai l'LLM quan canvien permisos!"
+      }
+    },
+    {
+      "id": "m05-02-q07",
+      "module": 5,
+      "conceptId": "m05-02-assistents-corporatius",
+      "lessonRef": "content/module-05/m05-02-assistents-corporatius.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Com s'han de gestionar els **historials de conversa** dels empleats amb l'assistent corporatiu per complir el RGPD i l'ENS?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Compartir-los públicament entre tots els companys perquè tothom aprengui." },
+        { "key": "B", "text": "Enviar-los automàticament al proveïdor del model perquè reentreni la propera versió." },
+        { "key": "C", "text": "Conservar-los indefinidament per sempre sense política de retenció." },
+        { "key": "D", "text": "Mantenir-los **estrictament aïllats per usuari** (mai memòria compartida ni reentrenament automàtic), amb **termini de retenció acotat** (p. ex., 30–90 dies) separat dels logs mínims d'auditoria de seguretat ENS." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "L'aïllament per usuari evita contaminació creuada de dades i la retenció limitada compleix el principi de limitació del termini de conservació (art. 5.1.e RGPD).",
+      "explanationsIncorrect": {
+        "A": "Crearia fuites immediates entre departaments i expedients.",
+        "B": "Prohibit en entorns públics sense base legal ni sobirania.",
+        "C": "Vulnera el principi de limitació del termini de conservació del RGPD."
+      }
+    },
+    {
+      "id": "m05-02-q08",
+      "module": 5,
+      "conceptId": "m05-02-assistents-corporatius",
+      "lessonRef": "content/module-05/m05-02-assistents-corporatius.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En la funció `autoritzar_document` de l'exemple 5.2, per què el document `D4` (`departament='URBANISME'`, `municipi_id='08187'`, `classificacio='INTERN'`) és **bloquejat** per a `tecnic_urb_mataro` (`departament='URBANISME'`, `municipi_id='08121'`, `nivell='INTERN'`)?",
+      "codeSnippet": "if doc.municipi_id != \"GLOBAL_DIBA\" and doc.municipi_id != usuari.municipi_id:\n    return False, ...",
+      "options": [
+        { "key": "A", "text": "Perquè malgrat coincidir el departament (`URBANISME`) i el nivell (`INTERN`), la regla **ABAC d'aïllament *multi-tenant*** exigeix que el `municipi_id` coincideixi (o sigui `GLOBAL_DIBA`), impedint que un municipi vegi expedients d'un altre dels 311 municipis." },
+        { "key": "B", "text": "Perquè `INTERN` té un nivell superior a `INTERN`." },
+        { "key": "C", "text": "Perquè la funció rebutja tots els documents d'Urbanisme." },
+        { "key": "D", "text": "Per un error de tipus entre cadenes i enters." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "L'ABAC comprova conjuntament tots els eixos (municipi AND departament AND nivell de classificació); fallar un sol eix denega l'accés i registra el motiu a l'auditoria.",
+      "explanationsIncorrect": {
+        "B": "El nivell és igual (`1 <= 1`), per tant el bloqueig és per `municipi_id`.",
+        "C": "`D2` (Urbanisme Mataró) sí que queda autoritzat.",
+        "D": "Tots dos codis INE són cadenes (`'08121'` vs `'08187'`)."
+      }
+    },
+    {
+      "id": "m05-02-q09",
+      "module": 5,
+      "conceptId": "m05-02-assistents-corporatius",
+      "lessonRef": "content/module-05/m05-02-assistents-corporatius.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Quin problema d'arquitectura apareix si un assistent corporatiu aplica el control de permisos **només a les metadades de la taula d'expedients**, però ha indexat els PDFs adjunts dins una base vectorial **sense propagar les ACL actualitzades**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Cap, perquè la base vectorial llegeix automàticament les taules SQL sense configuració." },
+        { "key": "B", "text": "Apareix una **desincronització d'ACL (*Permission Drift*)**: un usuari sense permís a l'expedient pot obtenir igualment fragments dels seus PDFs via cerca semàntica; cal sincronitzar contínuament les ACL cap a l'índex o usar una arquitectura unificada (`pgvector` / verificació ACL en temps real)." },
+        { "key": "C", "text": "Només fa que els embeddings tinguin menys dimensions." },
+        { "key": "D", "text": "Augmenta la velocitat de la GPU." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "La desincronització d'ACL entre el gestor documental i l'índex vectorial és una de les bretxes més freqüents en RAG corporatiu; cal sincronització orientada a esdeveniments o comprovació d'ACL contra el sistema font.",
+      "explanationsIncorrect": {
+        "A": "Una base vectorial separada no coneix canvis de permisos SQL si no es propaguen explícitament.",
+        "C": "No afecta la dimensionalitat dels embeddings.",
+        "D": "No té efecte sobre velocitat de GPU."
+      }
+    },
+    {
+      "id": "m05-02-q10",
+      "module": 5,
+      "conceptId": "m05-02-assistents-corporatius",
+      "lessonRef": "content/module-05/m05-02-assistents-corporatius.md",
+      "difficulty": "advanced",
+      "questionType": "normative",
+      "prompt": "Quina obligació transversal de l'**AI Act (Reglament UE 2024/1689, art. 4)** aplica directament a la Diputació quan desplega un assistent corporatiu intern per als seus empleats públics?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Cap obligació, perquè l'AI Act només aplica a empreses privades." },
+        { "key": "B", "text": "Registrar cada empleat en un registre biomètric europeu." },
+        { "key": "C", "text": "L'obligació d'**alfabetització en IA (*AI Literacy*)**: adoptar mesures per garantir que el personal que opera i utilitza el sistema tingui un nivell suficient de formació sobre el seu funcionament, límits, riscos (al·lucinacions, biaixos, privacitat) i supervisió crítica." },
+        { "key": "D", "text": "Substituir el 50% dels funcionaris per assistents virtuals." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "L'article 4 de l'AI Act (aplicable des del 2 de febrer de 2025!) obliga tots els proveïdors i responsables del desplegament (incloses les administracions públiques) a garantir l'alfabetització en IA del seu personal.",
+      "explanationsIncorrect": {
+        "A": "L'AI Act aplica plenament a les administracions públiques com a responsables del desplegament (*deployers*).",
+        "B": "No existeix cap registre biomètric d'empleats.",
+        "D": "L'AI Act promou una IA centrada en l'ésser humà, no la substitució de funcionaris."
+      }
+    }
+  ]
+}

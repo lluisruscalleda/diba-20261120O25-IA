@@ -1,0 +1,236 @@
+{
+  "conceptId": "m05-08-escalada-humana",
+  "module": 5,
+  "questions": [
+    {
+      "id": "m05-08-q01",
+      "module": 5,
+      "conceptId": "m05-08-escalada-humana",
+      "lessonRef": "content/module-05/m05-08-escalada-humana.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina diferència fonamental hi ha entre un ***cold handoff*** i un ***warm handoff*** en escalar d'un chatbot a un agent humà de l'OAC?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "En *warm handoff*, la transferència inclou un **paquet estructurat de context** (resum breu, *slots*, cites RAG ja vistes i motiu d'escalada) a la pantalla de l'agent perquè el ciutadà **no hagi de repetir-ho tot**; en *cold handoff* comença des de zero." },
+        { "key": "B", "text": "*Cold handoff* s'utilitza a l'hivern i *warm handoff* a l'estiu." },
+        { "key": "C", "text": "*Warm handoff* significa no passar mai la conversa a un humà." },
+        { "key": "D", "text": "No hi ha cap diferència operativa." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "El traspàs càlid (*warm handoff*) elimina la frustració de repetir la història i redueix el temps mitjà d'atenció de l'agent OAC/010.",
+      "explanationsIncorrect": {
+        "B": "Són termes estàndard d'enginyeria de centres d'atenció, no climàtics.",
+        "C": "Precisament defineix com es fa el traspàs a un agent humà.",
+        "D": "L'impacte en CSAT i temps de resolució és enorme."
+      }
+    },
+    {
+      "id": "m05-08-q02",
+      "module": 5,
+      "conceptId": "m05-08-escalada-humana",
+      "lessonRef": "content/module-05/m05-08-escalada-humana.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quin disparador d'escalada humana ha de tenir sempre **prioritat 1 absoluta** en un assistent virtual públic?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Esperar sempre que l'usuari falli almenys 10 vegades." },
+        { "key": "B", "text": "La **petició explícita del ciutadà** (*«vull parlar amb una persona»*, botó visible d'atenció humana), respectant-la immediatament sense obstacles ni menús obligatoris." },
+        { "key": "C", "text": "Només quan el ciutadà escriu en anglès." },
+        { "key": "D", "text": "Només els dilluns al matí." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "L'atenció humana és un dret i una garantia inclusiva; retenir artificialment algú que demana parlar amb una persona genera exclusió i descrèdit institucional.",
+      "explanationsIncorrect": {
+        "A": "10 fallades causarien un abandonament massiu; el màxim són 2–3 fallbacks consecutius.",
+        "C": "No depèn de l'idioma.",
+        "D": "Ha d'estar disponible 24/7 (síncrona en horari laboral, asíncrona fora d'horari)."
+      }
+    },
+    {
+      "id": "m05-08-q03",
+      "module": 5,
+      "conceptId": "m05-08-escalada-humana",
+      "lessonRef": "content/module-05/m05-08-escalada-humana.md",
+      "difficulty": "basic",
+      "questionType": "case-study",
+      "prompt": "Com ha d'actuar el sistema d'escalada a les **22:00 h** (quan l'OAC està tancada) si un ciutadà demana atenció humana?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Tancar la finestra del xat sense guardar res." },
+        { "key": "B", "text": "Mostrar únicament «Tancat, torna demà» sense cap alternativa." },
+        { "key": "C", "text": "Oferir **escalada asíncrona** adjuntant el paquet de context: obrir un **tiquet amb número de seguiment i SLA**, programar una **trucada (*callback*)** l'endemà o reservar **cita prèvia presencial**." },
+        { "key": "D", "text": "Deixar el ciutadà en espera en una cua buida durant 10 hores." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "L'escalada asíncrona evita els carrerons sense sortida fora d'horari i dona tranquil·litat al ciutadà amb un compromís clar de resposta.",
+      "explanationsIncorrect": {
+        "A": "Faria perdre tota la feina del ciutadà.",
+        "B": "És un punt mort que genera mala experiència ciutadana.",
+        "D": "Deixar algú esperant sense agents disponibles és inacceptable."
+      }
+    },
+    {
+      "id": "m05-08-q04",
+      "module": 5,
+      "conceptId": "m05-08-escalada-humana",
+      "lessonRef": "content/module-05/m05-08-escalada-humana.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Per què convé incloure el camp **`cites_ja_mostrades`** dins del paquet de context (*Warm Handoff*) que rep l'agent humà?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè l'agent humà vegi en 2 segons quina informació oficial ja ha rebut el ciutadà i pugui resoldre directament el dubte o excepció pendent sense tornar-li a llegir el mateix article." },
+        { "key": "B", "text": "Per ocupar més memòria RAM a la consola de l'agent." },
+        { "key": "C", "text": "Per prohibir a l'agent consultar les ordenances." },
+        { "key": "D", "text": "Per enviar-les automàticament per WhatsApp a altres veïns." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Saber què ja ha provat i llegit el ciutadà fa que l'agent pugui anar directament al gra i, alhora, comprovar ràpidament si el bot li havia mostrat la norma correcta.",
+      "explanationsIncorrect": {
+        "B": "Són pocs identificadors de gran utilitat pràctica.",
+        "C": "Al contrari, dona a l'agent l'enllaç ràpid a l'article exacte.",
+        "D": "Mai es difonen converses a tercers."
+      }
+    },
+    {
+      "id": "m05-08-q05",
+      "module": 5,
+      "conceptId": "m05-08-escalada-humana",
+      "lessonRef": "content/module-05/m05-08-escalada-humana.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Quin problema operatiu resol l'**enrutament per cues especialitzades** (`CUA_OAC_GENERAL`, `CUA_ORGT_TRIBUTS`, `CUA_SERVEIS_SOCIALS`) respecte d'enviar totes les escalades a una cua única?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Elimina la necessitat de tenir agents humans." },
+        { "key": "B", "text": "Evita **transferències en cadena (rebots)** entre departaments, redueix el temps de resolució en el primer contacte i garanteix l'**aïllament de privacitat** perquè casos sensibles socials només arribin a personal especialitzat autoritzat." },
+        { "key": "C", "text": "Fa que totes les consultes es responguin sense resum." },
+        { "key": "D", "text": "Impedeix l'escalada fora d'horari." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Portar el cas directament a la cua competent protegeix dades sensibles (Serveis Socials / Tributs art. 95 LGT) i millora la resolució en primer contacte (FCR).",
+      "explanationsIncorrect": {
+        "A": "Al contrari, assigna el cas a l'agent humà especialista més adequat.",
+        "C": "Totes les cues reben el paquet de resum de *warm handoff*.",
+        "D": "Cada cua pot gestionar també els seus tiquets asíncrons fora d'horari."
+      }
+    },
+    {
+      "id": "m05-08-q06",
+      "module": 5,
+      "conceptId": "m05-08-escalada-humana",
+      "lessonRef": "content/module-05/m05-08-escalada-humana.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Per què un **resum executiu de 2–3 línies** és molt millor al *Screen Pop* de l'agent telefònic 010 que bolcar-hi únicament els 35 missatges crus de la conversa?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè els ordinadors de l'OAC no poden mostrar més de 50 caràcters." },
+        { "key": "B", "text": "Perquè l'historial complet no s'ha de conservar mai en una escalada activa." },
+        { "key": "C", "text": "Perquè un agent al telèfon o xat en viu disposa de **menys de 10 segons** per situar-se i saludar el ciutadà; un resum breu + *slots* (amb botó desplegable per veure l'historial detallat si cal) evita silencis incòmodes i accelera la resolució." },
+        { "key": "D", "text": "Per amagar a l'agent què ha preguntat realment el ciutadà." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Dissenyar el Screen Pop per a lectura ultraràpida (<10 s) amb detall sota demanda és clau per a l'adopció real per part dels agents humans.",
+      "explanationsIncorrect": {
+        "A": "És un criteri d'ergonomia cognitiva i temps de resposta, no de memòria de pantalla.",
+        "B": "L'historial complet queda accessible en un desplegable per si l'agent vol verificar una frase literal.",
+        "D": "Al contrari, sintetitza immediatament el nucli del problema."
+      }
+    },
+    {
+      "id": "m05-08-q07",
+      "module": 5,
+      "conceptId": "m05-08-escalada-humana",
+      "lessonRef": "content/module-05/m05-08-escalada-humana.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "En el moment exacte en què una conversa de xat passa de l'assistent virtual a una persona real de l'OAC, quin principi de transparència s'ha de complir?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "No avisar el ciutadà perquè no noti el canvi." },
+        { "key": "B", "text": "Fer que l'agent humà fingeixi ser un robot." },
+        { "key": "C", "text": "Esborrar tots els missatges anteriors de la pantalla del ciutadà." },
+        { "key": "D", "text": "**Informar clarament i visiblement de la transició** (*«Ara t'atén un/a agent de l'OAC, que ja disposa del resum de la teva consulta»*), mantenint coherència amb la transparència de l'AI Act i generant confiança." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "El ciutadà ha de saber en tot moment si parla amb una IA o amb un funcionari humà real.",
+      "explanationsIncorrect": {
+        "A": "Amagar el canvi genera confusió i va contra la transparència pública.",
+        "B": "Absurd i contrari a la qualitat d'atenció ciutadana.",
+        "C": "Mantenir visible el fil ajuda el ciutadà a seguir la conversa."
+      }
+    },
+    {
+      "id": "m05-08-q08",
+      "module": 5,
+      "conceptId": "m05-08-escalada-humana",
+      "lessonRef": "content/module-05/m05-08-escalada-humana.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En la funció `avaluar_escalada` de l'exemple 5.8, què passa si són les **11:00 h** (dins horari laboral) però el temps estimat de cua és de **12 minuts (`> 5`)**?",
+      "codeSnippet": "modalitat = (\n    f\"TRANSFERENCIA_SINCRONA (espera estimada: {temps_espera_cua_min} min)\"\n    if (dins_horari and temps_espera_cua_min <= 5)\n    else \"TIQUET_ASINCRON_O_CALLBACK (SLA < 24h hàbils)\"\n)",
+      "options": [
+        { "key": "A", "text": "En lloc de retenir el ciutadà en una espera llarga de 12 minuts, el motor activa proactivament l'opció **`TIQUET_ASINCRON_O_CALLBACK (SLA < 24h hàbils)`**, protegint l'experiència ciutadana durant pics de saturació." },
+        { "key": "B", "text": "Cancell·la l'escalada i retorna `escalar: False`." },
+        { "key": "C", "text": "Envia la consulta a una cua aleatòria." },
+        { "key": "D", "text": "Esborra `paquet_warm_handoff`." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Gestionar tant l'horari com la saturació real de la cua (oferint *callback* o tiquet quan l'espera supera el llindar) evita abandonaments i col·lapses en campanyes punta!",
+      "explanationsIncorrect": {
+        "B": "`escalar` continua sent `True`; només canvia la modalitat a asíncrona/*callback*.",
+        "C": "Manté exactament la cua especialitzada assignada per `assignar_cua`.",
+        "D": "Conserva intacte tot el paquet de context per a l'agent."
+      }
+    },
+    {
+      "id": "m05-08-q09",
+      "module": 5,
+      "conceptId": "m05-08-escalada-humana",
+      "lessonRef": "content/module-05/m05-08-escalada-humana.md",
+      "difficulty": "advanced",
+      "questionType": "metrics",
+      "prompt": "Com aprofita el **bucle de retroalimentació (*Closed Loop*) dels agents OAC** en tancar una escalada per millorar l'assistent sense confondre mètriques?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Penalitzant el bot per qualsevol escalada, fins i tot en casos de desnonament o recursos jurídics." },
+        { "key": "B", "text": "Fent que l'agent etiqueti en 1 clic la causa (`Falta info KB`, `Error NLU/bot`, `Cas jurídic/social inherentment humà`), distingint **escalades evitables** (que generen tasques per als *content owners*/equip IA) d'**escalades legítimes** (que són èxits de triatge!)." },
+        { "key": "C", "text": "Obligant l'agent a escriure un informe de 5 pàgines després de cada xat." },
+        { "key": "D", "text": "Desactivant el botó d'escalada per reduir el percentatge." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Una escalada ràpida i ben enrutada d'un cas de pobresa energètica cap a Serveis Socials NO és una fallada del bot: és un triatge perfecte! Separar escalades evitables de legítimes dirigeix l'esforç on realment cal.",
+      "explanationsIncorrect": {
+        "A": "Castigar escalades legítimes incentivaria amagar l'atenció humana en casos vulnerables.",
+        "C": "Un informe llarg seria inviable; ha de ser un etiquetatge ràpid d'1 clic.",
+        "D": "Amagar l'escalada perjudica greument el servei públic."
+      }
+    },
+    {
+      "id": "m05-08-q10",
+      "module": 5,
+      "conceptId": "m05-08-escalada-humana",
+      "lessonRef": "content/module-05/m05-08-escalada-humana.md",
+      "difficulty": "advanced",
+      "questionType": "normative",
+      "prompt": "En un *Warm Handoff* on el ciutadà s'havia autenticat prèviament amb **idCAT Mòbil** a la Seu Electrònica per consultar una situació de vulnerabilitat social, quina mesura de privacitat (RGPD/ENS) ha de protegir el paquet de context?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Enviar el paquet per correu electrònic sense xifrar a una llista de distribució de tot l'ajuntament." },
+        { "key": "B", "text": "Guardar-lo en una carpeta pública compartida." },
+        { "key": "C", "text": "Transmetre'l **xifrat (TLS)** exclusivament a la **cua autoritzada amb permisos ACL (`CUA_SERVEIS_SOCIALS`)**, limitant les dades al mínim necessari per a l'atenció (principi de minimització) i registrant l'accés de l'agent receptor al log d'auditoria ENS." },
+        { "key": "D", "text": "Ometre qualsevol control d'accés perquè l'agent ja treballa a l'ajuntament." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "El traspàs d'un paquet amb dades sensibles de Serveis Socials exigeix xifratge, mínim privilegi (només cua autoritzada), minimització i traça d'auditoria d'accés (RGPD + ENS).",
+      "explanationsIncorrect": {
+        "A": "Bretxa gravíssima de dades sensibles.",
+        "B": "Incompliment flagrant de RGPD i ENS.",
+        "D": "Treballar a l'ajuntament no autoritza un empleat d'un altre servei a veure expedients de Serveis Socials."
+      }
+    }
+  ]
+}

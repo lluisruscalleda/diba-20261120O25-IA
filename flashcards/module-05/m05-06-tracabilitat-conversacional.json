@@ -1,0 +1,46 @@
+{
+  "conceptId": "m05-06-tracabilitat-conversacional",
+  "module": 5,
+  "cards": [
+    {
+      "id": "m05-06-fc01",
+      "module": 5,
+      "conceptId": "m05-06-tracabilitat-conversacional",
+      "front": "Quins camps mínims ha de contenir una traça conversacional d'un assistent RAG?",
+      "back": "`trace_id`, `session_hash`, `timestamp_utc` (NTP), `canal`, `model_id`, `prompt_version`, `intent/route`, `chunks_ids` (+ versió + score), `tool_calls`, resultat `guardrails`/cites i `latencies/tokens`.",
+      "tags": ["traçabilitat", "OpenTelemetry"]
+    },
+    {
+      "id": "m05-06-fc02",
+      "module": 5,
+      "conceptId": "m05-06-tracabilitat-conversacional",
+      "front": "Com es resol la tensió entre ENS (`op.exp.8` registre d'activitat) i RGPD (minimització) en els logs?",
+      "back": "PII Scrubbing previ (regex + NER local) abans d'escriure logs + doble magatzem (SIEM/WORM restringit i xifrat amb retenció ENS vs. analítica 100% anonimitzada).",
+      "tags": ["PII scrubbing", "ENS", "RGPD"]
+    },
+    {
+      "id": "m05-06-fc03",
+      "module": 5,
+      "conceptId": "m05-06-tracabilitat-conversacional",
+      "front": "Com garanteix una *Hash Chain* (SHA-256) la integritat dels logs d'auditoria?",
+      "back": "Cada entrada calcula `SHA256(prev_hash || payload)`: alterar o esborrar qualsevol registre passat trenca immediatament tota la cadena posterior (*tamper-evident*), complementat amb emmagatzematge WORM/SIEM.",
+      "tags": ["Hash Chain", "WORM", "integritat"]
+    },
+    {
+      "id": "m05-06-fc04",
+      "module": 5,
+      "conceptId": "m05-06-tracabilitat-conversacional",
+      "front": "Quin article de l'AI Act tracta del registre automàtic d'esdeveniments (*logging*)?",
+      "back": "L'article 12 de l'AI Act (Reglament UE 2024/1689), obligatori per a sistemes d'alt risc i bona pràctica essencial en assistents públics per a monitoratge i auditoria.",
+      "tags": ["AI Act", "art. 12"]
+    },
+    {
+      "id": "m05-06-fc05",
+      "module": 5,
+      "conceptId": "m05-06-tracabilitat-conversacional",
+      "front": "Per què és crítica la sincronització horària NTP als logs conversacionals?",
+      "back": "Permet correlacionar traces entre microserveis/SIEM i acreditar al segon quina versió d'una ordenança o convocatòria regia en el moment exacte de la consulta ciutadana.",
+      "tags": ["NTP", "auditoria"]
+    }
+  ]
+}

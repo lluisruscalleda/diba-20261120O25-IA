@@ -9,9 +9,9 @@ Llegenda d'estat:
 
 | Dimensió | Completats | Objectiu | Cobertura |
 |---|---:|---:|---:|
-| Lliçons (Teoria + Exemple + Exercici + Desenvolupament + Resum) | 38 | 70 | 54,3% |
-| Tests individuals (mín. 10 preguntes / concepte) | 38 (380 preg.) | 70 (≥700 preg.) | 54,3% |
-| Flashcards per concepte (mín. 5 / concepte) | 38 (200 fitxes) | 70 (≥350 fitxes) | 54,3% |
+| Lliçons (Teoria + Exemple + Exercici + Desenvolupament + Resum) | 46 | 70 | 65,7% |
+| Tests individuals (mín. 10 preguntes / concepte) | 46 (460 preg.) | 70 (≥700 preg.) | 65,7% |
+| Flashcards per concepte (mín. 5 / concepte) | 46 (240 fitxes) | 70 (≥350 fitxes) | 65,7% |
 | Laboratoris pràctics | 0 | 8 | 0% |
 | Exàmens de mòdul (40 preg.) | 0 | 8 | 0% |
 | Simulacres globals (50 preg.) | 0 | 10 | 0% |
@@ -83,14 +83,14 @@ Llegenda d'estat:
 
 | ID | Concepte oficial | Teoria (A-E) | Exemple (F) | Exercici (G) | Test ≥10 (H) | Desenv. ≥3 (I) | Resum+FC (J) | Estat |
 |---|---|---|---|---|---|---|---|---|
-| `m05-01-chatbots` | Chatbots (regles vs LLM, detecció d'intencions) | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m05-02-assistents-corporatius` | Assistents corporatius (autenticació, permisos) | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m05-03-fluxos-conversacionals` | Fluxos conversacionals (context, memòria, fallback) | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m05-04-integracio-bases-coneixement` | Integració amb bases de coneixement | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m05-05-canals-digitals` | Canals digitals | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m05-06-tracabilitat-conversacional` | Traçabilitat | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m05-07-supervisio-conversacional` | Supervisió | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m05-08-escalada-humana` | Escalada a intervenció humana | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
+| `m05-01-chatbots` | Chatbots (regles vs LLM, detecció d'intencions) | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m05-02-assistents-corporatius` | Assistents corporatius (autenticació, permisos) | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m05-03-fluxos-conversacionals` | Fluxos conversacionals (context, memòria, fallback) | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m05-04-integracio-bases-coneixement` | Integració amb bases de coneixement | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m05-05-canals-digitals` | Canals digitals | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m05-06-tracabilitat-conversacional` | Traçabilitat | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m05-07-supervisio-conversacional` | Supervisió | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m05-08-escalada-humana` | Escalada a intervenció humana | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
 
 ## Mòdul 6. Automatització intel·ligent
 

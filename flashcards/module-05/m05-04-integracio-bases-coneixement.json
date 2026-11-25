@@ -1,0 +1,46 @@
+{
+  "conceptId": "m05-04-integracio-bases-coneixement",
+  "module": 5,
+  "cards": [
+    {
+      "id": "m05-04-fc01",
+      "module": 5,
+      "conceptId": "m05-04-integracio-bases-coneixement",
+      "front": "Quines dades van a la base de coneixement RAG i quines a APIs en temps real?",
+      "back": "RAG: coneixement documental estable/semi-estable (ordenances, bases, guies de tràmits, FAQs). APIs en temps real: dades volàtils/transaccionals (cites disponibles ara, estat d'expedient, saldo rebut).",
+      "tags": ["RAG", "APIs", "arquitectura"]
+    },
+    {
+      "id": "m05-04-fc02",
+      "module": 5,
+      "conceptId": "m05-04-integracio-bases-coneixement",
+      "front": "Com funciona la sincronització incremental per SHA-256 i webhooks i què evita?",
+      "back": "Només re-trosseja i re-vectoritza documents nous o amb hash modificat, salta els inalterats, i marca `DEROGAT`/`CADUCAT` els eliminats o amb `valid_until < avui`, evitant «documents zombi» i tarifes obsoletes.",
+      "tags": ["sincronització", "SHA-256", "vigència"]
+    },
+    {
+      "id": "m05-04-fc03",
+      "module": 5,
+      "conceptId": "m05-04-integracio-bases-coneixement",
+      "front": "Per què el *web scraping* indiscriminat d'un portal municipal degrada el RAG?",
+      "back": "Perquè ingereix notes de premsa i PDFs antics amb tarifes o requisits derogats que tenen alta similitud semàntica i competeixen amb les ordenances vigents. Cal connectar-se només a fonts SSOT.",
+      "tags": ["SSOT", "web scraping"]
+    },
+    {
+      "id": "m05-04-fc04",
+      "module": 5,
+      "conceptId": "m05-04-integracio-bases-coneixement",
+      "front": "Com es resol un conflicte entre una FAQ divulgativa i una ordenança fiscal vigent?",
+      "back": "Aplicant jerarquia d'autoritat de fonts (`Prioritat 1: Ordenança/BOPB > Catàleg tràmits > FAQ`), responent segons l'ordenança citada i enviant alerta editorial al *content owner* de la FAQ.",
+      "tags": ["jerarquia", "conflictes", "governança"]
+    },
+    {
+      "id": "m05-04-fc05",
+      "module": 5,
+      "conceptId": "m05-04-integracio-bases-coneixement",
+      "front": "Què són els *Knowledge Gaps* i els *Content Owners*?",
+      "back": "*Content Owners*: serveis responsables de mantenir viva cada font SSOT. *Knowledge Gaps*: consultes freqüents on el RAG s'absté per falta d'evidència, indicant quines noves guies oficials cal publicar.",
+      "tags": ["Knowledge Gaps", "Content Owners"]
+    }
+  ]
+}

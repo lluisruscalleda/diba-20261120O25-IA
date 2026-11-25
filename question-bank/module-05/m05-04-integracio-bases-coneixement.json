@@ -1,0 +1,236 @@
+{
+  "conceptId": "m05-04-integracio-bases-coneixement",
+  "module": 5,
+  "questions": [
+    {
+      "id": "m05-04-q01",
+      "module": 5,
+      "conceptId": "m05-04-integracio-bases-coneixement",
+      "lessonRef": "content/module-05/m05-04-integracio-bases-coneixement.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quin principi de governança estableix que cada tràmit o ordenança ha de tenir una **única font autoritària oficial** per alimentar el chatbot, evitant contradiccions amb còpies antigues?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "**SSOT (*Single Source of Truth*)**." },
+        { "key": "B", "text": "*Web scraping* indiscriminat." },
+        { "key": "C", "text": "*Post-filtering*." },
+        { "key": "D", "text": "*Overfitting*." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "El principi SSOT designa fonts oficials (Catàleg de Tràmits, repositori d'Ordenances Vigents) amb responsables editorials, eliminant contradiccions amb notícies o PDFs vells.",
+      "explanationsIncorrect": {
+        "B": "El scraping indiscriminat justament viola el principi SSOT introduint pàgines obsoletes.",
+        "C": "És un antipatró de bases vectorials.",
+        "D": "És sobreajustament d'un model d'ML."
+      }
+    },
+    {
+      "id": "m05-04-q02",
+      "module": 5,
+      "conceptId": "m05-04-integracio-bases-coneixement",
+      "lessonRef": "content/module-05/m05-04-integracio-bases-coneixement.md",
+      "difficulty": "basic",
+      "questionType": "architecture",
+      "prompt": "Quines dades d'un ajuntament **NO** s'han d'indexar mai a la base vectorial RAG, sinó consultar-les en temps real mitjançant **APIs/eines deterministes**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Les ordenances fiscals vigents de l'any en curs." },
+        { "key": "B", "text": "Les dades volàtils o transaccionals en temps real (franges horàries lliures de cita prèvia, estat actual d'un expedient concret, saldo d'un rebut)." },
+        { "key": "C", "text": "Les bases reguladores d'una convocatòria oberta." },
+        { "key": "D", "text": "Les guies de tràmits validades per l'OAC." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Les dades que canvien minut a minut o pertanyen a un registre personal queden immediatament obsoletes en un índex vectorial i exigeixen consulta directa a l'API corporativa.",
+      "explanationsIncorrect": {
+        "A": "Les ordenances vigents són el cas d'ús ideal del RAG.",
+        "C": "Les bases reguladores són documents textuals perfectes per a RAG (amb `valid_until`).",
+        "D": "Les guies OAC s'integren molt bé al RAG."
+      }
+    },
+    {
+      "id": "m05-04-q03",
+      "module": 5,
+      "conceptId": "m05-04-integracio-bases-coneixement",
+      "lessonRef": "content/module-05/m05-04-integracio-bases-coneixement.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Què és una **llacuna de coneixement (*Knowledge Gap*)** en l'operació d'un assistent virtual públic?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Una fallada elèctrica del servidor." },
+        { "key": "B", "text": "Un error de sintaxi en Python." },
+        { "key": "C", "text": "Una pregunta freqüent dins les competències municipals per a la qual la base documental no disposa d'evidència vigent suficient (detectada via abstencions del RAG i escalades)." },
+        { "key": "D", "text": "Un document duplicat dues vegades." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Analitzar periòdicament els *Knowledge Gaps* indica exactament als *content owners* quines noves FAQs o fitxes oficials cal redactar per resoldre dubtes reals de la ciutadania.",
+      "explanationsIncorrect": {
+        "A": "No és una avaria d'infraestructura.",
+        "B": "No és un bug de sintaxi.",
+        "D": "És manca d'informació coberta, no duplicació."
+      }
+    },
+    {
+      "id": "m05-04-q04",
+      "module": 5,
+      "conceptId": "m05-04-integracio-bases-coneixement",
+      "lessonRef": "content/module-05/m05-04-integracio-bases-coneixement.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Quin avantatge principal ofereix la **sincronització incremental per *webhooks* (CDC) o *diff* per *hash* SHA-256** respecte de reindexar des de zero tot el portal un cop al mes?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Actualitza canvis i derogacions en segons/hores en lloc de deixar 30 dies de dades obsoletes, i només recalcula embeddings dels documents nous o modificats (estalviant gran quantitat de còmput)." },
+        { "key": "B", "text": "Elimina la necessitat de calcular embeddings per als documents nous." },
+        { "key": "C", "text": "Permet ignorar totes les dates de caducitat." },
+        { "key": "D", "text": "Converteix totes les ordenances en imatges JPEG." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Comparar el `SHA-256` (o reaccionar a webhooks del CMS) combina màxima frescor de les dades amb mínim cost computacional.",
+      "explanationsIncorrect": {
+        "B": "Els documents nous o modificats sí que s'han de trossejar i vectoritzar.",
+        "C": "Les dates `valid_from/valid_until` continuen sent essencials.",
+        "D": "No converteix textos en JPEG."
+      }
+    },
+    {
+      "id": "m05-04-q05",
+      "module": 5,
+      "conceptId": "m05-04-integracio-bases-coneixement",
+      "lessonRef": "content/module-05/m05-04-integracio-bases-coneixement.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Un chatbot municipal està recomanant als ciutadans demanar una subvenció d'ajuts escolars el termini de la qual va tancar fa 15 dies. Quin mecanisme determinista prevé aquesta fallada exactament el dia del tancament?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Demanar a l'LLM que endevini quin dia som avui sense metadades." },
+        { "key": "B", "text": "Incluir les metadades `valid_from` i `valid_until` a cada convocatòria indexada i aplicar un **pre-filtre temporal determinista (`valid_from <= avui <= valid_until`)** (o marcar l'estat com `TANCADA` al context)." },
+        { "key": "C", "text": "Apujar la temperatura de l'LLM a 0,9." },
+        { "key": "D", "text": "Eliminar totes les convocatòries de la web per sempre." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "El filtratge determinista sobre metadades temporals garanteix amb exactitud de calendari que cap convocatòria vençuda s'ofereixi com a vigent.",
+      "explanationsIncorrect": {
+        "A": "Un LLM sense data del sistema ni metadades vigents no sap si la convocatòria està oberta o tancada.",
+        "C": "Més temperatura augmenta al·lucinacions.",
+        "D": "Pot ser útil conservar la fitxa marcada com `TANCADA` per informar quan va acabar, però mai com a oberta."
+      }
+    },
+    {
+      "id": "m05-04-q06",
+      "module": 5,
+      "conceptId": "m05-04-integracio-bases-coneixement",
+      "lessonRef": "content/module-05/m05-04-integracio-bases-coneixement.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Per què fer un ***web scraping* indiscriminat** de les 5.000 URLs d'una web municipal (incloent notes de premsa del 2018–2023) degrada greument la qualitat d'un chatbot RAG?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè les bases vectorials no admeten més de 100 URLs." },
+        { "key": "B", "text": "Perquè les notes de premsa no es poden tokenitzar." },
+        { "key": "C", "text": "Perquè les notes de premsa i PDFs antics contenen **tarifes, requisits i terminis derogats** que tenen altíssima similitud semàntica amb les consultes ciutadanes i competeixen o guanyen contra les ordenances vigents." },
+        { "key": "D", "text": "Perquè BM25 no funciona amb pàgines HTML." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "En RAG, més documents no implica millors respostes: introduir contingut antic sense control de vigència enverina el rànquing de recuperació!",
+      "explanationsIncorrect": {
+        "A": "Una BD vectorial escala a milions de fragments; el problema és la qualitat i vigència, no el volum.",
+        "B": "Es tokenitzen perfectament, i precisament per això s'indexen i confonen el sistema.",
+        "D": "Un cop extret el text de l'HTML, BM25 l'indexa sense problema."
+      }
+    },
+    {
+      "id": "m05-04-q07",
+      "module": 5,
+      "conceptId": "m05-04-integracio-bases-coneixement",
+      "lessonRef": "content/module-05/m05-04-integracio-bases-coneixement.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Quin és el principal motiu pel qual molts assistents virtuals públics es degraden greument **al cap de 6–12 mesos** d'entrar en producció?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè els pesos de l'LLM caduquen físicament al disc dur." },
+        { "key": "B", "text": "Perquè els embeddings canvien sols cada dimarts." },
+        { "key": "C", "text": "Perquè els usuaris deixen d'escriure en català." },
+        { "key": "D", "text": "Per **manca de governança editorial (*Content Owners*) i de sincronització automatitzada** amb els canvis d'ordenances, horaris, tràmits i enllaços (`404`) de l'Administració." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "El manteniment d'una base de coneixement és un procés continu (organitzatiu + tècnic), no un projecte únic de càrrega inicial.",
+      "explanationsIncorrect": {
+        "A": "Els pesos digitals no es degraden físicament.",
+        "B": "Un model d'embeddings fix produeix sempre els mateixos vectors.",
+        "C": "El problema és la desactualització del coneixement respecte a la realitat normativa."
+      }
+    },
+    {
+      "id": "m05-04-q08",
+      "module": 5,
+      "conceptId": "m05-04-integracio-bases-coneixement",
+      "lessonRef": "content/module-05/m05-04-integracio-bases-coneixement.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En la funció `sincronitzar_base_coneixement` de l'exemple 5.4, què fa el bucle final `for doc_id, meta in list(index_actual.items()): if doc_id not in ids_font_vigents ...`?",
+      "codeSnippet": "for doc_id, meta in list(index_actual.items()):\n    if doc_id not in ids_font_vigents and meta[\"estat\"] == \"VIGENT\":\n        meta[\"estat\"] = \"DEROGAT\"",
+      "options": [
+        { "key": "A", "text": "Detecta els **documents eliminats o retirats de la font oficial** (com `OF-TERRASSES-2020`) i els marca automàticament com `DEROGAT`, impedint que sobrevisquin com a «documents zombi» a l'índex vectorial." },
+        { "key": "B", "text": "Esborra tots els documents nous que acaben d'entrar." },
+        { "key": "C", "text": "Recalcula el hash de tots els documents que no han canviat." },
+        { "key": "D", "text": "Augmenta la prioritat dels documents antics." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Un error clàssic en sincronitzadors és gestionar només `INSERT` i `UPDATE` però oblidar el `DELETE/DEPRECATE`: els documents retirats de la web queden com a zombis a la base vectorial servint informació derogada per sempre!",
+      "explanationsIncorrect": {
+        "B": "Els documents nous vigents ja estan dins `ids_font_vigents`, per tant no es marquen derogats.",
+        "C": "No recalcula hashes; només revisa l'absència respecte de la font vigent.",
+        "D": "Els exclou marcant-los com `DEROGAT`."
+      }
+    },
+    {
+      "id": "m05-04-q09",
+      "module": 5,
+      "conceptId": "m05-04-integracio-bases-coneixement",
+      "lessonRef": "content/module-05/m05-04-integracio-bases-coneixement.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Quan a la base de coneixement apareixen **dues fonts vigents contradictòries** (una FAQ redactada fa 6 mesos diu bonificació del 40% i l'Ordenança Fiscal 2026 diu 50%), com ho ha de resoldre una arquitectura ben dissenyada?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Fer la mitjana aritmètica i contestar 45%." },
+        { "key": "B", "text": "Aplicar **jerarquia d'autoritat de fonts** (`Prioritat 1: Ordenança/BOPB > Prioritat 2: Catàleg tràmits > Prioritat 3: FAQ`), respondre d'acord amb l'ordenança vigent citant-la i **disparar una alerta al *content owner* de la FAQ** per corregir la inconsistència." },
+        { "key": "C", "text": "Triar a l'atzar qualsevol de les dues." },
+        { "key": "D", "text": "Ometre les dues fonts i no contestar res." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "La jerarquia normativa resol el conflicte amb seguretat jurídica immediata mentre l'alerta editorial tanca la causa arrel a la FAQ.",
+      "explanationsIncorrect": {
+        "A": "Inventar un 45% inexistent seria una al·lucinació absurda.",
+        "C": "Trencaria la seguretat jurídica i la consistència.",
+        "D": "Tenim l'ordenança vigent oficial (Prioritat 1), que és la norma aplicable."
+      }
+    },
+    {
+      "id": "m05-04-q10",
+      "module": 5,
+      "conceptId": "m05-04-integracio-bases-coneixement",
+      "lessonRef": "content/module-05/m05-04-integracio-bases-coneixement.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Quina comprovació automatitzada complementària convé executar periòdicament sobre les metadades `url_oficial` emmagatzemades a la base de coneixement d'un chatbot de seu electrònica?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Cap, les URLs de les seus electròniques mai no canvien." },
+        { "key": "B", "text": "Substituir totes les URLs per enllaços a xarxes socials." },
+        { "key": "C", "text": "Un **verificador automàtic d'enllaços profunds (*deep link health check*)** que detecti respostes `HTTP 404/500` o redireccions trencades i alerti el *content owner*, evitant que el chatbot enviï ciutadans a pàgines inexistents." },
+        { "key": "D", "text": "Eliminar totes les URLs de les respostes del chatbot." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "En les migracions de seus electròniques les URLs canvien sovint; monitorar `HTTP 200` dels deep links manté útil l'experiència de 1 clic cap al tràmit oficial.",
+      "explanationsIncorrect": {
+        "A": "Les URLs canvien molt freqüentment en renovar portals i catàlegs de tràmits.",
+        "B": "Les fonts han de ser sempre oficials (seu electrònica/BOPB).",
+        "D": "Els enllaços oficials clicables són essencials per a verificació i inici del tràmit."
+      }
+    }
+  ]
+}

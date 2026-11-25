@@ -1,0 +1,236 @@
+{
+  "conceptId": "m05-07-supervisio-conversacional",
+  "module": 5,
+  "questions": [
+    {
+      "id": "m05-07-q01",
+      "module": 5,
+      "conceptId": "m05-07-supervisio-conversacional",
+      "lessonRef": "content/module-05/m05-07-supervisio-conversacional.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Què és un ***Kill Switch* amb degradació segura (*Graceful Degradation*)** en la supervisió d'un chatbot públic?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Un mecanisme manual o automàtic que, davant un pic d'al·lucinacions o un incident greu, desactiva en segons la generació lliure de l'LLM i commuta el servei a FAQs deterministes verificades + enllaços oficials + escalada directa al 010/OAC." },
+        { "key": "B", "text": "Formatar el disc dur del servidor cada nit." },
+        { "key": "C", "text": "Apujar la temperatura de l'LLM al màxim quan hi ha errors." },
+        { "key": "D", "text": "Desactivar tots els logs d'auditoria." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "El Kill Switch amb degradació segura talla en segons el risc reputacional o jurídic sense deixar el ciutadà davant una pàgina d'error en blanc.",
+      "explanationsIncorrect": {
+        "B": "No destrueix el servidor ni dades.",
+        "C": "Pujar temperatura empitjoraria les al·lucinacions.",
+        "D": "Els logs d'auditoria han de continuar actius sempre."
+      }
+    },
+    {
+      "id": "m05-07-q02",
+      "module": 5,
+      "conceptId": "m05-07-supervisio-conversacional",
+      "lessonRef": "content/module-05/m05-07-supervisio-conversacional.md",
+      "difficulty": "basic",
+      "questionType": "architecture",
+      "prompt": "Com ha de gestionar un assistent municipal un missatge que indica una **emergència vital o violència masclista**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Deixar que l'LLM busqui ordenances fiscals al RAG i improvisi consells." },
+        { "key": "B", "text": "Interceptar-lo deterministament en un ***input guardrail* de màxima prioritat abans de l'LLM** i mostrar immediatament una resposta fixa verificada amb els telèfons d'emergència oficials (`112`, `900 900 120`, `024`)." },
+        { "key": "C", "text": "Demanar-li que ompli un formulari de 12 passos." },
+        { "key": "D", "text": "Posposar la resposta fins a l'endemà." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Les situacions vitals o de violència mai no es deleguen a models probabilístics; un tallafocs d'entrada determinista ofereix assistència immediata i fiable en mil·lisegons.",
+      "explanationsIncorrect": {
+        "A": "Risc inacceptable d'al·lucinació o consell perillós.",
+        "C": "Inadequat i perillós davant una urgència.",
+        "D": "Una emergència exigeix orientació immediata 24/7."
+      }
+    },
+    {
+      "id": "m05-07-q03",
+      "module": 5,
+      "conceptId": "m05-07-supervisio-conversacional",
+      "lessonRef": "content/module-05/m05-07-supervisio-conversacional.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Què és el ***Red Teaming*** aplicat abans del desplegament (i periòdicament) d'un assistent virtual públic?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Pintar la interfície web de color vermell." },
+        { "key": "B", "text": "Reduir el nombre de documents de la base vectorial." },
+        { "key": "C", "text": "Executar proves adversarials controlades (*prompt injection* en català/castellà, *jailbreaks*, preguntes capcioses, intents de fugar el *system prompt* o forçar promeses vinculants) per detectar vulnerabilitats abans que ho facin usuaris maliciosos." },
+        { "key": "D", "text": "Entrenar un model de regressió lineal." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "El Red Teaming sistemàtic verifica empíricament l'eficàcia dels guardrails i del prompt abans de cada llançament o canvi de model.",
+      "explanationsIncorrect": {
+        "A": "No té relació amb disseny visual.",
+        "B": "No redueix el corpus documental.",
+        "D": "És avaluació de seguretat i robustesa, no regressió lineal."
+      }
+    },
+    {
+      "id": "m05-07-q04",
+      "module": 5,
+      "conceptId": "m05-07-supervisio-conversacional",
+      "lessonRef": "content/module-05/m05-07-supervisio-conversacional.md",
+      "difficulty": "intermediate",
+      "questionType": "metrics",
+      "prompt": "Per què en la supervisió humana contínua d'un chatbot **NO n'hi ha prou** amb revisar només les converses que tenen vot negatiu (`👎`)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè molts ciutadans no voten o fins i tot valoren positivament **al·lucinacions molt ben redactades** (p. ex., una data o requisit erroni que el ciutadà no coneix); cal **mostreig estratificat** (100% de `👎`/bloquejos + 2–5% aleatori del trànsit normal)." },
+        { "key": "B", "text": "Perquè el botó `👎` sempre registra vots positius." },
+        { "key": "C", "text": "Perquè els humans no poden llegir converses anonimitzades." },
+        { "key": "D", "text": "Perquè les converses amb `👎` són sempre perfectes." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Els errors silenciosos (al·lucinacions plausibles no detectades pel ciutadà) només surten a la llum mitjançant mostreig aleatori auditat per tècnics experts en la matèria.",
+      "explanationsIncorrect": {
+        "B": "El botó funciona normalment, el biaix prové del comportament de l'usuari que no sap contrastar la norma.",
+        "C": "Les converses amb PII scrubbing són perfectament llegibles per auditar qualitat.",
+        "D": "Les converses amb `👎` són molt valuoses, però insuficients per si soles."
+      }
+    },
+    {
+      "id": "m05-07-q05",
+      "module": 5,
+      "conceptId": "m05-07-supervisio-conversacional",
+      "lessonRef": "content/module-05/m05-07-supervisio-conversacional.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "El quadre de supervisió mostra que en 24 hores la **taxa d'abstenció RAG** ha pujat del 6% al **34%** i el CSAT ha caigut al 61%, però la **taxa d'error de cites segueix en 0,4%** i no hi ha atacs. Quin és el diagnòstic més probable?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "L'LLM s'ha tornat sobtadament inestable i al·lucina sense parar." },
+        { "key": "B", "text": "Ha arrencat una **nova campanya, convocatòria o notícia municipal que encara no està indexada** a la base de coneixement (*Knowledge Gap* massiu), i el RAG s'està abstenint honestament per falta d'evidència." },
+        { "key": "C", "text": "El servidor està patint un atac de *prompt injection*." },
+        { "key": "D", "text": "Cal pujar la temperatura a 1,2 perquè deixi d'abstenir-se." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Un pic sobtat d'abstenció amb error de cites gairebé zero és la signatura clàssica d'una llacuna de coneixement urgent (p. ex., inici de preinscripció escolar o nova beca sense carregar al SSOT).",
+      "explanationsIncorrect": {
+        "A": "Amb 0,4% d'error de cites i alta abstenció, el model precisament NO està al·lucinant.",
+        "C": "L'enunciat descarta pics d'atacs.",
+        "D": "Forçar l'LLM a respondre sense documents provocaria al·lucinacions greus!"
+      }
+    },
+    {
+      "id": "m05-07-q06",
+      "module": 5,
+      "conceptId": "m05-07-supervisio-conversacional",
+      "lessonRef": "content/module-05/m05-07-supervisio-conversacional.md",
+      "difficulty": "intermediate",
+      "questionType": "metrics",
+      "prompt": "Si utilitzes ***LLM-as-a-Judge*** de manera asíncrona per puntuar automàticament `Faithfulness` sobre milers de converses diàries, quina validació metodològica és indispensable?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Cap, perquè un LLM jutge és infal·lible al 100%." },
+        { "key": "B", "text": "Executar-lo síncronament fent esperar el ciutadà 12 segons addicionals." },
+        { "key": "C", "text": "**Calibrar-lo periòdicament contra una mostra anotada per tècnics humans** mesurant l'acord inter-anotador (**Kappa de Cohen**), ja que els LLMs jutges poden tenir biaixos (ex. preferir respostes llargues encara que jurídicament imprecises)." },
+        { "key": "D", "text": "Usar el mateix prompt sense rúbrica ni criteris explícits." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "LLM-as-a-Judge escala l'avaluació al 100% del trànsit fora del camí crític de latència, però només és fiable si es mesura i manté un acord alt (Kappa) respecte d'experts humans.",
+      "explanationsIncorrect": {
+        "A": "Els LLMs jutges tenen biaixos de verbositat, posició i auto-preferència.",
+        "B": "S'ha d'executar de manera asíncrona per no penalitzar la latència del ciutadà.",
+        "D": "Exigeix una rúbrica detallada i estructurada per criteris."
+      }
+    },
+    {
+      "id": "m05-07-q07",
+      "module": 5,
+      "conceptId": "m05-07-supervisio-conversacional",
+      "lessonRef": "content/module-05/m05-07-supervisio-conversacional.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Quin tipus d'afirmació ha de bloquejar un ***output guardrail*** en un assistent virtual d'atenció ciutadana?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Una cita a l'article 8 de l'Ordenança Fiscal vigent." },
+        { "key": "B", "text": "L'horari d'atenció de l'OAC." },
+        { "key": "C", "text": "L'enllaç oficial a la seu electrònica." },
+        { "key": "D", "text": "**Compromisos administratius vinculants falsos** (p. ex., «Et garantim que t'aprovarem la subvenció» o «Queda concedida la teva sol·licitud»), cites inventades i to inadequat o partidista." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Un assistent informatiu mai no pot comprometre jurídicament l'Administració ni dictar resolucions; el guardrail de sortida bloqueja aquests patrons abans d'arribar al ciutadà.",
+      "explanationsIncorrect": {
+        "A": "Citar articles vigents verificats és precisament el comportament desitjat.",
+        "B": "Informar d'horaris públics és correcte.",
+        "C": "Enllaçar a la seu oficial és bona pràctica."
+      }
+    },
+    {
+      "id": "m05-07-q08",
+      "module": 5,
+      "conceptId": "m05-07-supervisio-conversacional",
+      "lessonRef": "content/module-05/m05-07-supervisio-conversacional.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En la classe `SupervisorConversacional` de l'exemple 5.7, per què la **5a consulta** (`'Quin horari té l'OAC?'`) retorna `DEGRADAT_SEGUR` encara que és una pregunta completament normal i legítima?",
+      "codeSnippet": "if len(self.finestra_errors) >= 4:\n    taxa = sum(self.finestra_errors[-4:]) / 4.0\n    if taxa > self.llindar_kill:\n        self.mode = \"DEGRADAT_SEGUR\"",
+      "options": [
+        { "key": "A", "text": "Perquè les 4 respostes anteriors han presentat un **50% d'errors de guardrail** (`2/4 > 0,25`), disparant el ***Kill Switch* automàtic**: el sistema desactiva la generació LLM per a tothom i passa a FAQs deterministes verificades + 010 fins que l'equip d'operacions resolgui l'incident." },
+        { "key": "B", "text": "Perquè la paraula «horari» està bloquejada com a *prompt injection*." },
+        { "key": "C", "text": "Perquè el codi no accepta més de 4 consultes per sempre." },
+        { "key": "D", "text": "Perquè «OAC» es confon amb una emergència 112." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "El circuit breaker de qualitat protegeix tots els ciutadans automàticament quan la taxa recent de fallades de sortida indica una regressió o error sistèmic del model/RAG.",
+      "explanationsIncorrect": {
+        "B": "«horari» no és cap patró d'injecció.",
+        "C": "Si la taxa d'errors fos <= 0,25, el sistema continuaria en mode `NORMAL` indefinidament.",
+        "D": "No coincideix amb els patrons d'emergència."
+      }
+    },
+    {
+      "id": "m05-07-q09",
+      "module": 5,
+      "conceptId": "m05-07-supervisio-conversacional",
+      "lessonRef": "content/module-05/m05-07-supervisio-conversacional.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Quin compromís d'enginyeria has de vigilar en afegir massa ***guardrails* síncrons basats en altres LLMs** dins el camí crític d'un chatbot o voicebot?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "No tenen cap impacte en latència ni cost." },
+        { "key": "B", "text": "Cada crida LLM síncrona extra **multiplica la latència extrem a extrem i el cost de GPU** (inacceptable especialment en veu 010 <1,5 s!); cal reservar el camí síncron per a **regles deterministes ultraràpides i classificadors lleugers (<50 ms)** i deixar *LLM-as-a-Judge* per a supervisió **asíncrona**." },
+        { "key": "C", "text": "Els guardrails deterministes són sempre més lents que un LLM de 70B." },
+        { "key": "D", "text": "Afegir guardrails elimina la necessitat de traçabilitat." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Separar tallafocs ràpids síncrons (<50 ms: regex, validador cites, classificadors petits) de l'auditoria profunda asíncrona (*LLM-as-a-Judge*) equilibra seguretat, latència i cost.",
+      "explanationsIncorrect": {
+        "A": "Cada pas LLM síncron afegeix centenars o milers de mil·lisegons.",
+        "C": "Les comprovacions deterministes s'executen en <1 ms, ordres de magnitud més ràpid.",
+        "D": "La traçabilitat continua sent obligatòria (ENS / AI Act)."
+      }
+    },
+    {
+      "id": "m05-07-q10",
+      "module": 5,
+      "conceptId": "m05-07-supervisio-conversacional",
+      "lessonRef": "content/module-05/m05-07-supervisio-conversacional.md",
+      "difficulty": "advanced",
+      "questionType": "normative",
+      "prompt": "Com connecta la supervisió contínua d'un assistent virtual amb el principi de **supervisió humana de l'article 14 de l'AI Act** (aplicable directament a alt risc i referent de bones pràctiques públiques)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Impedint que cap operador humà pugui aturar el sistema un cop arrencat." },
+        { "key": "B", "text": "Delegant tota responsabilitat al proveïdor del programari." },
+        { "key": "C", "text": "Dotant els operadors humans de **visibilitat real del rendiment** (KPIs, mostreig, alertes d'anomalies), comprensió de limitacions (contra el **biaix d'automatització**) i **capacitat efectiva d'intervenir, anul·lar o interrompre (*Kill Switch*)** el sistema de forma segura en qualsevol moment." },
+        { "key": "D", "text": "Publicant totes les converses privades en un tauler obert a Internet." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "L'art. 14 AI Act exigeix una supervisió humana efectiva (no simbòlica!): monitoratge comprensible, consciència del biaix d'automatització i capacitat real d'intervenció i aturada segura.",
+      "explanationsIncorrect": {
+        "A": "L'art. 14 exigeix precisament la capacitat humana d'interrompre el funcionament (stop button).",
+        "B": "L'administració desplegadora manté responsabilitats clares de supervisió i governança.",
+        "D": "Vulneraria el RGPD."
+      }
+    }
+  ]
+}

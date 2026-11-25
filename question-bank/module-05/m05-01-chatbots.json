@@ -1,0 +1,236 @@
+{
+  "conceptId": "m05-01-chatbots",
+  "module": 5,
+  "questions": [
+    {
+      "id": "m05-01-q01",
+      "module": 5,
+      "conceptId": "m05-01-chatbots",
+      "lessonRef": "content/module-05/m05-01-chatbots.md",
+      "difficulty": "basic",
+      "questionType": "normative",
+      "prompt": "Quina obligació específica estableix l'**article 50.1 de l'AI Act (Reglament UE 2024/1689)** per als chatbots que interactuen directament amb ciutadans?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Informar la persona física de manera clara i transparent que està interactuant amb un sistema d'intel·ligència artificial (tret que resulti obvi)." },
+        { "key": "B", "text": "Prohibir completament l'ús de chatbots a tots els ajuntaments." },
+        { "key": "C", "text": "Fer que el chatbot simuli ser un funcionari humà real per generar confiança." },
+        { "key": "D", "text": "Publicar els pesos complets del model al BOE." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "L'art. 50.1 AI Act imposa l'obligació de transparència en sistemes d'IA destinats a interactuar directament amb persones físiques.",
+      "explanationsIncorrect": {
+        "B": "Els chatbots informatius estan permesos sempre que compleixin les obligacions de transparència i RGPD.",
+        "C": "Simular ser humà sense informar vulnera directament l'art. 50.1 AI Act!",
+        "D": "L'art. 50.1 tracta de transparència cap a l'usuari final, no de publicar pesos."
+      }
+    },
+    {
+      "id": "m05-01-q02",
+      "module": 5,
+      "conceptId": "m05-01-chatbots",
+      "lessonRef": "content/module-05/m05-01-chatbots.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "En un motor NLU de chatbot, què és el ***Slot Filling***?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Entrenar els embeddings amb Word2Vec." },
+        { "key": "B", "text": "Extreure i completar tots els paràmetres obligatoris associats a una intenció (p. ex., `oficina`, `tràmit`, `dia` i `hora` en una cita prèvia) abans d'executar l'acció o cridar l'API." },
+        { "key": "C", "text": "Assignar una GPU a cada usuari." },
+        { "key": "D", "text": "Esborrar l'historial de conversa cada segon." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "El slot filling garanteix que tenim totes les dades validades que necessita una acció determinista (demanant explícitament les que faltin).",
+      "explanationsIncorrect": {
+        "A": "No té relació amb Word2Vec.",
+        "C": "No és assignació de maquinari.",
+        "D": "Al contrari, manté els paràmetres recollits al llarg dels torns."
+      }
+    },
+    {
+      "id": "m05-01-q03",
+      "module": 5,
+      "conceptId": "m05-01-chatbots",
+      "lessonRef": "content/module-05/m05-01-chatbots.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quin tipus d'arquitectura de chatbot combina **fluxos deterministes** per a gestions estructurades (cita prèvia, consulta d'expedient) amb **RAG amb cites** per a consultes informatives obertes sobre ordenances?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Chatbot d'arbres rígids pur." },
+        { "key": "B", "text": "LLM pur sense eines ni base documental." },
+        { "key": "C", "text": "**Arquitectura híbrida** basada en enrutador d'intencions." },
+        { "key": "D", "text": "Model de clustering no supervisat." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "L'arquitectura híbrida assigna cada tipus de petició al mecanisme òptim: determinisme en transaccions i RAG en consultes documentals obertes.",
+      "explanationsIncorrect": {
+        "A": "Els arbres rígids no gestionen bé consultes obertes sobre desenes d'ordenances.",
+        "B": "Un LLM pur al·lucina normativa i és poc fiable en transaccions estrictes.",
+        "D": "El clustering no és una arquitectura conversacional."
+      }
+    },
+    {
+      "id": "m05-01-q04",
+      "module": 5,
+      "conceptId": "m05-01-chatbots",
+      "lessonRef": "content/module-05/m05-01-chatbots.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Un ciutadà pregunta al chatbot de l'Ajuntament: «Com puc renovar el passaport espanyol?». Com ha d'actuar un bon detector d'***Out-of-Scope* (OOS)**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Reconèixer que és una competència estatal fora de l'àmbit municipal, informar-ho clarament al ciutadà i redirigir-lo a l'organisme oficial competent (Policia Nacional / cita prèvia estatal) sense improvisar." },
+        { "key": "B", "text": "Reservar-li automàticament una cita a l'oficina municipal d'urbanisme." },
+        { "key": "C", "text": "Deixar que l'LLM respongui amb la seva memòria interna encara que no consti a la normativa municipal." },
+        { "key": "D", "text": "Tancar la sessió sense mostrar cap missatge." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Una bona gestió d'Out-of-Scope evita falses expectatives, cites inútils i al·lucinacions, oferint igualment un servei ciutadà útil amb la redirecció correcta.",
+      "explanationsIncorrect": {
+        "B": "Faria perdre el temps al ciutadà i a l'OAC municipal.",
+        "C": "Fomentaria informació desactualitzada fora de l'abast verificat de l'ens.",
+        "D": "Mala experiència d'usuari i manca d'orientació."
+      }
+    },
+    {
+      "id": "m05-01-q05",
+      "module": 5,
+      "conceptId": "m05-01-chatbots",
+      "lessonRef": "content/module-05/m05-01-chatbots.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Per què en la reserva de **cita prèvia municipal** (seleccionar oficina, tràmit, dia i franja horària disponible) convé usar un **flux determinista amb *slot filling* i botons ràpids** en lloc d'un LLM conversacional lliure?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè els LLMs no entenen el català." },
+        { "key": "B", "text": "Perquè garanteix **0% d'al·lucinació d'horaris**, menor latència i cost, validació estricta dels 4 paràmetres contra l'API de cites en temps real i confirmació inequívoca abans de gravar la reserva." },
+        { "key": "C", "text": "Perquè els botons ràpids no funcionen en telèfons mòbils." },
+        { "key": "D", "text": "Perquè elimina la necessitat de connectar-se a l'API de cites." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "En processos transaccionals amb opcions acotades en temps real, un flux determinista amb botons és més ràpid, econòmic, accessible i 100% fiable.",
+      "explanationsIncorrect": {
+        "A": "Els LLMs moderns entenen català, però són innecessaris i arriscats per a transaccions rígides.",
+        "C": "Al contrari, els botons ràpids milloren molt l'usabilitat en mòbils.",
+        "D": "Continua connectant-se a l'API de cites per consultar disponibilitat real."
+      }
+    },
+    {
+      "id": "m05-01-q06",
+      "module": 5,
+      "conceptId": "m05-01-chatbots",
+      "lessonRef": "content/module-05/m05-01-chatbots.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Quin requisit legal d'**accessibilitat digital** ha de complir un chatbot inserit al portal web o seu electrònica d'un ens local espanyol (RD 1112/2018)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Només ha de funcionar amb ratolí en pantalles d'escriptori." },
+        { "key": "B", "text": "Ha de substituir completament el telèfon d'atenció ciutadana i l'OAC presencial." },
+        { "key": "C", "text": "Complir **WCAG 2.1 nivell AA** (navegació íntegra per teclat, compatibilitat amb lectors de pantalla mitjançant `ARIA`, contrast adequat i text clar), sense ser mai l'única via d'accés al servei públic." },
+        { "key": "D", "text": "No existeix cap norma d'accessibilitat per a chatbots públics." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "El RD 1112/2018 (transposició de la Directiva UE 2016/2102) obliga tots els llocs web i components interactius del sector públic a complir WCAG 2.1 AA.",
+      "explanationsIncorrect": {
+        "A": "Exclourien persones amb discapacitat visual o motora que usen teclat o lector de pantalla.",
+        "B": "Mai no pot eliminar canals alternatius ni l'atenció humana.",
+        "D": "El RD 1112/2018 és d'obligat compliment per a totes les administracions."
+      }
+    },
+    {
+      "id": "m05-01-q07",
+      "module": 5,
+      "conceptId": "m05-01-chatbots",
+      "lessonRef": "content/module-05/m05-01-chatbots.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Quin valor jurídic té la resposta informativa d'un chatbot municipal sobre si un contribuent té dret o no a una bonificació fiscal?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Equival automàticament a una resolució administrativa ferma." },
+        { "key": "B", "text": "Vincula jurídicament l'Interventor municipal encara que el chatbot s'equivoqui." },
+        { "key": "C", "text": "Substitueix el procediment de consulta tributària vinculant." },
+        { "key": "D", "text": "Té **caràcter merament informatiu i orientatiu, no vinculant**; ha de citar l'ordenança oficial vigent i indicar el tràmit oficial o canal humà per a la resolució formal." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Cal deixar clar des de l'inici que un assistent conversacional ofereix orientació informativa amb cites oficials, però mai dicta actes administratius vinculants.",
+      "explanationsIncorrect": {
+        "A": "Una resposta de xat no compleix els requisits d'un acte administratiu (LPACAP).",
+        "B": "El principi de legalitat impedeix que un error de chatbot creï drets contra ordenança.",
+        "C": "Les consultes tributàries vinculants tenen procediment legal reglat."
+      }
+    },
+    {
+      "id": "m05-01-q08",
+      "module": 5,
+      "conceptId": "m05-01-chatbots",
+      "lessonRef": "content/module-05/m05-01-chatbots.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En la funció `enrutar_missatge` de la lliçó, per què la regla d'**`ESCALAR_HUMA` apareix en primera posició** dins `PATRONS_INTENT`, abans de `DEMANAR_CITA` i `INFO_NORMATIVA`?",
+      "codeSnippet": "PATRONS_INTENT = [\n    (\"ESCALAR_HUMA\", [\"parlar amb una persona\", \"agent humà\", ...], \"ESCALADA_OAC\"),\n    (\"DEMANAR_CITA\", ...), ...]",
+      "options": [
+        { "key": "A", "text": "Per garantir **prioritat màxima a la petició explícita d'atenció humana**: fins i tot si el missatge conté paraules d'altres dominis (p. ex., «Tinc un problema amb l'IBI i vull parlar amb una persona»), el sistema escala immediatament sense atrapar el ciutadà en un bucle automàtic." },
+        { "key": "B", "text": "Per ordre alfabètic estricte." },
+        { "key": "C", "text": "Perquè en Python les llistes només llegeixen el primer element." },
+        { "key": "D", "text": "Per impedir que ningú pugui consultar ordenances d'IBI." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Respectar immediatament la voluntat del ciutadà de parlar amb un humà (sense retenir-lo en menús ni respostes RAG) és un principi clau d'ètica, qualitat de servei i supervisió humana.",
+      "explanationsIncorrect": {
+        "B": "`ESCALAR_HUMA` no va abans de `DEMANAR_CITA` per ordre alfabètic.",
+        "C": "El bucle `for` recorre tots els elements fins trobar coincidència.",
+        "D": "Si el missatge no demana un humà, passa normalment a `INFO_NORMATIVA`."
+      }
+    },
+    {
+      "id": "m05-01-q09",
+      "module": 5,
+      "conceptId": "m05-01-chatbots",
+      "lessonRef": "content/module-05/m05-01-chatbots.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "En el cas 1 de l'exemple («vull saber l'estat del meu expedient SUB-2026-0148»), abans que el flux determinista consulti l'API d'expedients i retorni dades al xat, quin control de seguretat imprescindible falta afegir en producció?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Cap, amb el codi d'expedient ja es pot mostrar tota la informació a qualsevol usuari anònim." },
+        { "key": "B", "text": "**Autenticació forta del ciutadà (idCAT Mòbil / Cl@ve / certificat)** i **verificació de titularitat/representació** sobre `SUB-2026-0148`, evitant que un tercer endevini un codi d'expedient (IDOR) i accedeixi a dades personals (RGPD/ENS)." },
+        { "key": "C", "text": "Pujar la temperatura de l'LLM a 1,0." },
+        { "key": "D", "text": "Guardar el codi d'expedient en una galeta sense xifrar." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Retornar l'estat d'un expedient només pel seu codi correlatiu (`SUB-2026-0148`) seria una vulnerabilitat crítica IDOR (accés no autoritzat a dades personals); tota consulta personalitzada exigeix autenticació i control de titularitat.",
+      "explanationsIncorrect": {
+        "A": "Exposaria dades d'expedients aliens a qualsevol atacant que provi números correlatius!",
+        "C": "No resol l'autenticació ni el control d'accés.",
+        "D": "No substitueix autenticació oficial ni control d'autorització."
+      }
+    },
+    {
+      "id": "m05-01-q10",
+      "module": 5,
+      "conceptId": "m05-01-chatbots",
+      "lessonRef": "content/module-05/m05-01-chatbots.md",
+      "difficulty": "advanced",
+      "questionType": "metrics",
+      "prompt": "Quin indicador combinat demostra millor l'èxit real d'un chatbot informatiu municipal, evitant la trampa d'una «taxa de contenció» artificialment inflada?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Amagar el botó d'escalada humana perquè la taxa de contenció sigui del 100%." },
+        { "key": "B", "text": "Comptar només el nombre total de missatges intercanviats." },
+        { "key": "C", "text": "Mesurar conjuntament **taxa de resolució efectiva amb fidelitat verificada** + **satisfacció ciutadana (CSAT)** + **baixa taxa de re-contacte en 24–72 h** (al 010/OAC pel mateix motiu) + **precisió d'escalada**." },
+        { "key": "D", "text": "Mesurar només la longitud mitjana en paraules de cada resposta." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Una alta «contenció» sense CSAT ni control de re-contacte sovint només indica que el ciutadà ha abandonat frustrat el xat i ha acabat trucant al 010!",
+      "explanationsIncorrect": {
+        "A": "Amagar l'escalada destrueix la qualitat de servei públic i enganya la mètrica.",
+        "B": "Molts missatges poden indicar precisiament que el chatbot no entén l'usuari!",
+        "D": "Respostes més llargues no impliquen millor resolució."
+      }
+    }
+  ]
+}

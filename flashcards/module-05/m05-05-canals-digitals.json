@@ -1,0 +1,46 @@
+{
+  "conceptId": "m05-05-canals-digitals",
+  "module": 5,
+  "cards": [
+    {
+      "id": "m05-05-fc01",
+      "module": 5,
+      "conceptId": "m05-05-canals-digitals",
+      "front": "Quina diferència hi ha entre multicanalitat i omnicanalitat (*Core + Channel Adapters*)?",
+      "back": "Multicanalitat = bots aïllats en silos (dades duplicades i contradictòries). Omnicanalitat = 1 nucli conversacional SSOT + adaptadors lleugers que adapten format, autenticació i seguretat a cada canal.",
+      "tags": ["omnicanalitat", "Channel Adapter"]
+    },
+    {
+      "id": "m05-05-fc02",
+      "module": 5,
+      "conceptId": "m05-05-canals-digitals",
+      "front": "Quin límit RGPD/ENS s'aplica a WhatsApp Business en una administració local?",
+      "back": "NOMÉS informació pública general. MAI dades personals sensibles, expedients privats ni fotos de DNI (rebutjar adjunts sense guardar-los i redirigir a la Seu Electrònica autenticada amb idCAT Mòbil/Cl@ve).",
+      "tags": ["WhatsApp", "RGPD", "ENS"]
+    },
+    {
+      "id": "m05-05-fc03",
+      "module": 5,
+      "conceptId": "m05-05-canals-digitals",
+      "front": "Quins 5 requisits tècnics són clau en un canal de veu telefònic (010)?",
+      "back": "1) Frases molt curtes sense taules ni URLs (enllaços per SMS); 2) Latència < 1–1,5 s (streaming); 3) ASR/TTS avaluat en català/castellà telefònic 8 kHz; 4) Barge-in (interrupció); 5) Tecla 0 a operador amb Screen Pop.",
+      "tags": ["veu", "010", "ASR", "barge-in"]
+    },
+    {
+      "id": "m05-05-fc04",
+      "module": 5,
+      "conceptId": "m05-05-canals-digitals",
+      "front": "Què és el *barge-in* i el *Screen Pop (CTI)* en canals de veu?",
+      "back": "*Barge-in*: interrompre el bot mentre parla aturant el TTS immediatament. *Screen Pop*: mostrar al terminal de l'agent humà el resum de la conversa en el mateix instant de la transferència.",
+      "tags": ["barge-in", "CTI", "escalada"]
+    },
+    {
+      "id": "m05-05-fc05",
+      "module": 5,
+      "conceptId": "m05-05-canals-digitals",
+      "front": "Pot la implantació de canals digitals IA suprimir l'atenció telefònica o presencial OAC?",
+      "back": "NO: cal garantir inclusió digital, WCAG 2.1 AA al web (RD 1112/2018) i el dret de les persones físiques al canal presencial/humà (art. 14.1 LPACAP).",
+      "tags": ["inclusió", "WCAG", "LPACAP"]
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "conceptId": "m05-03-fluxos-conversacionals",
+  "module": 5,
+  "cards": [
+    {
+      "id": "m05-03-fc01",
+      "module": 5,
+      "conceptId": "m05-03-fluxos-conversacionals",
+      "front": "Quines són les 3 capes de gestió de memòria en un flux conversacional multi-torn?",
+      "back": "1) Estat estructurat (`slots` JSON determinista que mai s'oblida); 2) Finestra lliscant (4–6 torns recents + Query Rewriting); 3) Resum progressiu opcional per a converses molt llargues.",
+      "tags": ["memòria", "context", "slots"]
+    },
+    {
+      "id": "m05-03-fc02",
+      "module": 5,
+      "conceptId": "m05-03-fluxos-conversacionals",
+      "front": "Quins són els 3 nivells del *fallback* progressiu?",
+      "back": "Error 1: aclariment concret amb exemple. Error 2: opcions guiades amb botons ràpids. Error 3: aturar reintents i escalar automàticament a agent humà amb el resum del context.",
+      "tags": ["fallback", "reparació"]
+    },
+    {
+      "id": "m05-03-fc03",
+      "module": 5,
+      "conceptId": "m05-03-fluxos-conversacionals",
+      "front": "Com s'han de gestionar les *digressions* (dubte puntual a mig tràmit)?",
+      "back": "Delegar el dubte puntual al motor RAG conservant intactes els *slots* recollits a l'estat de sessió, i reprendre després el tràmit exactament on s'havia deixat.",
+      "tags": ["digressions", "diàleg"]
+    },
+    {
+      "id": "m05-03-fc04",
+      "module": 5,
+      "conceptId": "m05-03-fluxos-conversacionals",
+      "front": "Quines mesures de sessió protegeixen la privacitat en ordinadors compartits (biblioteques/OAC)?",
+      "back": "TTL curt d'inactivitat (10–15 minuts) amb neteja automàtica de pantalla, NO persistir converses sensibles a `localStorage` i oferir botó visible de 'Finalitzar i esborrar xat'.",
+      "tags": ["TTL", "RGPD", "sessions"]
+    },
+    {
+      "id": "m05-03-fc05",
+      "module": 5,
+      "conceptId": "m05-03-fluxos-conversacionals",
+      "front": "Què són les sortides d'escapament globals (*Global Escape Hatches*)?",
+      "back": "Ordres (`cancel·lar`, `menú principal`, `parlar amb una persona`) interceptades abans de qualsevol estat del flux perquè cap usuari quedi atrapat dins un formulari conversacional.",
+      "tags": ["escape hatches", "UX"]
+    }
+  ]
+}

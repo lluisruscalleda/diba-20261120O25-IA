@@ -1,0 +1,236 @@
+{
+  "conceptId": "m05-06-tracabilitat-conversacional",
+  "module": 5,
+  "questions": [
+    {
+      "id": "m05-06-q01",
+      "module": 5,
+      "conceptId": "m05-06-tracabilitat-conversacional",
+      "lessonRef": "content/module-05/m05-06-tracabilitat-conversacional.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quin camp d'una traça conversacional permet correlacionar tots els passos d'un mateix torn (enrutador, recuperació RAG, eines, LLM i verificador de cites) a través de diversos microserveis?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "**`trace_id`** (identificador únic de traça distribuïda, ex. OpenTelemetry)." },
+        { "key": "B", "text": "El color del botó del web." },
+        { "key": "C", "text": "La temperatura de l'LLM." },
+        { "key": "D", "text": "El nom del navegador." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "El `trace_id` enllaça deterministament tots els spans i logs generats durant un torn concret, permetent reconstruir tot el flux en segons.",
+      "explanationsIncorrect": {
+        "B": "No identifica la petició.",
+        "C": "És un paràmetre de generació, no un identificador de traça.",
+        "D": "És comú a milers de peticions."
+      }
+    },
+    {
+      "id": "m05-06-q02",
+      "module": 5,
+      "conceptId": "m05-06-tracabilitat-conversacional",
+      "lessonRef": "content/module-05/m05-06-tracabilitat-conversacional.md",
+      "difficulty": "basic",
+      "questionType": "normative",
+      "prompt": "Què és el ***PII Scrubbing*** aplicat a la traçabilitat d'un assistent virtual?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Esborrar tots els logs del servidor cada minut." },
+        { "key": "B", "text": "Detectar i substituir automàticament dades personals identificatives (NIF, IBAN, telèfon, email) per marcadors (`[NIF_OMES]`) **abans** d'escriure les traces als sistemes de logging i analítica." },
+        { "key": "C", "text": "Publicar totes les consultes dels ciutadans en obert." },
+        { "key": "D", "text": "Augmentar la resolució de les imatges OCR." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "El PII scrubbing resol la tensió entre observabilitat/auditoria i minimització de dades personals (RGPD), evitant acumular dades personals en cru als logs.",
+      "explanationsIncorrect": {
+        "A": "Destruiria la traçabilitat obligatòria de l'ENS.",
+        "C": "Vulneraria el RGPD.",
+        "D": "No té relació amb imatges OCR."
+      }
+    },
+    {
+      "id": "m05-06-q03",
+      "module": 5,
+      "conceptId": "m05-06-tracabilitat-conversacional",
+      "lessonRef": "content/module-05/m05-06-tracabilitat-conversacional.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Per què és imprescindible registrar `model_id`, `prompt_version` i `chunks_ids` a cada torn d'un chatbot RAG?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Només per ocupar més disc." },
+        { "key": "B", "text": "Perquè els embeddings ho exigeixen sintàcticament." },
+        { "key": "C", "text": "Per garantir **reproductibilitat i auditabilitat**: saber exactament quin model, quin prompt i quins fragments normatius vigents en aquella data van generar una resposta davant d'una reclamació o incidència." },
+        { "key": "D", "text": "Per poder modificar retroactivament les respostes donades fa dos mesos." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Sense registrar la versió exacta del model, el prompt i els fragments recuperats, és impossible investigar una al·lucinació ni acreditar l'origen d'una resposta històrica.",
+      "explanationsIncorrect": {
+        "A": "Són pocs bytes d'enorme valor operatiu i jurídic.",
+        "B": "No és un requisit dels embeddings, sinó de governança i LLMOps.",
+        "D": "Els registres d'auditoria són immutables, mai modificables."
+      }
+    },
+    {
+      "id": "m05-06-q04",
+      "module": 5,
+      "conceptId": "m05-06-tracabilitat-conversacional",
+      "lessonRef": "content/module-05/m05-06-tracabilitat-conversacional.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Un equip de desenvolupament desa tots els missatges crus dels ciutadans en una taula `chat_logs_raw` amb permisos `UPDATE` i `DELETE` per a tot l'equip i sense termini de purgat. Quines dues normes incompleix directament?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "**RGPD** (minimització, control d'accés i limitació del termini de conservació — art. 5) i **ENS** (`op.exp.8` registre d'activitat protegit contra alteració/destrucció no autoritzada i mínim privilegi)." },
+        { "key": "B", "text": "Només la llei de trànsit." },
+        { "key": "C", "text": "Cap, perquè els logs de desenvolupadors no estan regulats." },
+        { "key": "D", "text": "Només les normes tipogràfiques del català." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Els logs amb dades ciutadanes són tractaments subjectes al RGPD, i els registres d'auditoria d'un servei públic han de ser immutables i protegits segons l'ENS.",
+      "explanationsIncorrect": {
+        "B": "No té relació amb seguretat viària.",
+        "C": "Tant el RGPD com l'ENS apliquen plenament als logs de sistemes públics.",
+        "D": "És un incompliment de protecció de dades i ciberseguretat."
+      }
+    },
+    {
+      "id": "m05-06-q05",
+      "module": 5,
+      "conceptId": "m05-06-tracabilitat-conversacional",
+      "lessonRef": "content/module-05/m05-06-tracabilitat-conversacional.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Com concilia el patró de **doble magatzem** les necessitats de ciberseguretat/auditoria (ENS) i les necessitats d'analítica de qualitat del producte (IA/OAC)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Guardant dues còpies idèntiques sense xifrar i públiques." },
+        { "key": "B", "text": "Enviant els registres d'auditoria immutables (*WORM / Hash Chain*) al **SIEM corporatiu** amb accés molt restringit i retenció ENS, i separant un magatzem d'**analítica 100% anonimitzat** per mesurar latència, *Knowledge Gaps* i CSAT." },
+        { "key": "C", "text": "Desactivant el SIEM i deixant només un fitxer CSV local." },
+        { "key": "D", "text": "No registrant res al SIEM." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Separar auditoria de seguretat (restringida i immutable) d'analítica de producte (anonimitzada) satisfà simultàniament ENS, RGPD i millora contínua.",
+      "explanationsIncorrect": {
+        "A": "Multiplicaria el risc de bretxa de dades.",
+        "C": "Incompliria l'ENS i la protecció contra manipulació.",
+        "D": "El SIEM és clau per a detecció d'incidents i auditoria ENS."
+      }
+    },
+    {
+      "id": "m05-06-q06",
+      "module": 5,
+      "conceptId": "m05-06-tracabilitat-conversacional",
+      "lessonRef": "content/module-05/m05-06-tracabilitat-conversacional.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Per què la sincronització horària oficial mitjançant **NTP** dels servidors que generen `timestamp_utc` és un requisit clau de l'ENS en la traçabilitat conversacional?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Per accelerar la multiplicació de matrius a la GPU." },
+        { "key": "B", "text": "Per reduir el nombre de tokens d'entrada." },
+        { "key": "C", "text": "Per garantir una **línia temporal fefaent i correlacionable** entre microserveis, SIEM i canvis normatius (sabent amb exactitud al segon quina versió d'una ordenança regia quan el ciutadà va consultar)." },
+        { "key": "D", "text": "Per traduir automàticament els logs a l'anglès." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Sense rellotges sincronitzats (NTP/UTC), les traces entre gateway, RAG, API i SIEM queden desordenades i perden valor probatori en investigacions d'incidents.",
+      "explanationsIncorrect": {
+        "A": "NTP no afecta el rendiment de la GPU.",
+        "B": "No afecta el nombre de tokens.",
+        "D": "NTP sincronitza el temps, no tradueix textos."
+      }
+    },
+    {
+      "id": "m05-06-q07",
+      "module": 5,
+      "conceptId": "m05-06-tracabilitat-conversacional",
+      "lessonRef": "content/module-05/m05-06-tracabilitat-conversacional.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Quin article de l'**AI Act (Reglament UE 2024/1689)** regula específicament la capacitat de **registre automàtic d'esdeveniments (*record-keeping / logging*)** al llarg del cicle de vida dels sistemes d'IA d'alt risc (i inspira les bones pràctiques públiques)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Article 1." },
+        { "key": "B", "text": "Article 95." },
+        { "key": "C", "text": "Article 22." },
+        { "key": "D", "text": "**Article 12** (*Conservació de registres*), dissenyat per assegurar traçabilitat adequada del funcionament, monitoratge posterior i investigació d'incidents." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "L'article 12 de l'AI Act exigeix registre automàtic d'esdeveniments (*logs*) en sistemes d'alt risc; adoptar-ne el disseny en assistents públics és una bona pràctica clau de governança.",
+      "explanationsIncorrect": {
+        "A": "L'art. 1 defineix l'objecte del Reglament.",
+        "B": "L'art. 95 de l'AI Act tracta de codis de conducta (i l'art. 95 LGT de secret tributari).",
+        "C": "L'art. 22 RGPD tracta de decisions individuals automatitzades."
+      }
+    },
+    {
+      "id": "m05-06-q08",
+      "module": 5,
+      "conceptId": "m05-06-tracabilitat-conversacional",
+      "lessonRef": "content/module-05/m05-06-tracabilitat-conversacional.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En la classe `AuditLoggerConversacional` de l'exemple 5.6, què ocorre si algú modifica el camp `estat_cites` del registre 0 i intenta recalcular **només** `entry_hash` del registre 0 sense tocar el registre 1?",
+      "codeSnippet": "payload = {..., \"prev_hash\": self._ultim_hash}\nnou_hash = hashlib.sha256(canon.encode(\"utf-8\")).hexdigest()",
+      "options": [
+        { "key": "A", "text": "El verificador igualment detecta el frau al **registre 1** perquè el `prev_hash` emmagatzemat dins el registre 1 ja no coincidirà amb el nou `entry_hash` del registre 0 (efecte cascada de la *hash chain*!)." },
+        { "key": "B", "text": "La manipulació passa completament desapercebuda." },
+        { "key": "C", "text": "El registre 1 s'actualitza automàticament per ocultar el canvi." },
+        { "key": "D", "text": "SHA-256 retorna sempre el mateix hash per a qualsevol text." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "L'encadenament criptogràfic fa que qualsevol canvi històric propagui una discrepància a tota la cadena següent (i si l'últim hash s'ancora periòdicament al SIEM/WORM extern, reescriure tota la cadena també es detecta!).",
+      "explanationsIncorrect": {
+        "B": "El `prev_hash` del registre 1 trenca immediatament la verificació.",
+        "C": "Els registres històrics no es reescriuen.",
+        "D": "SHA-256 és resistent a col·lisions; canviar 1 bit altera completament el resum."
+      }
+    },
+    {
+      "id": "m05-06-q09",
+      "module": 5,
+      "conceptId": "m05-06-tracabilitat-conversacional",
+      "lessonRef": "content/module-05/m05-06-tracabilitat-conversacional.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "Un ciutadà afirma que el 12 de maig el chatbot li va informar erròniament sobre el termini d'una subvenció. L'administració revisa la traça `tr-88412` i troba `chunks_ids = ['SUB-2025#c3']` amb `prompt_version = 'v1.8'`. Què demostra i permet fer aquesta traça?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "No serveix per a res perquè no té el DNI del ciutadà." },
+        { "key": "B", "text": "Acredita amb exactitud la causa arrel (el 12 de maig es va recuperar un fragment de la convocatòria del **2025** que no estava marcat `CADUCAT`!), permet corregir immediatament el bug de sincronització, atendre amb transparència la queixa i auditar si altres consultes d'aquell dia van rebre el mateix fragment." },
+        { "key": "C", "text": "Demostra que el ciutadà menteix perquè el bot mai s'equivoca." },
+        { "key": "D", "text": "Obliga a esborrar tots els logs del mes de maig." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "La traçabilitat completa no només defensa l'Administració quan té raó: també permet detectar ràpidament l'abast real d'un error (quants ciutadans van veure `SUB-2025#c3`!), corregir la causa arrel i actuar amb transparència i bona administració.",
+      "explanationsIncorrect": {
+        "A": "Precisament demostra que amb PII scrubbing igualment es pot diagnosticar al 100% la causa tècnica!",
+        "C": "Al contrari, la traça revela objectivament l'error de vigència del propi sistema.",
+        "D": "Esborrar evidències d'un error vulneraria l'ENS i el principi de transparència."
+      }
+    },
+    {
+      "id": "m05-06-q10",
+      "module": 5,
+      "conceptId": "m05-06-tracabilitat-conversacional",
+      "lessonRef": "content/module-05/m05-06-tracabilitat-conversacional.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Si el *PII scrubbing* basat únicament en expressions regulars elimina NIF, IBAN i email, quin tipus de dada personal escrita lliurement pel ciutadà al xat podria escapar-se als logs si no es reforça?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Cap, les regex cobreixen el 100% de les dades personals possibles." },
+        { "key": "B", "text": "Només els números d'IBAN." },
+        { "key": "C", "text": "**Noms propis, adreces postals i relats de situacions mèdiques o familiars** escrits en llenguatge lliure (*«Em dic Maria Soler, visc al carrer Major 12 i tinc una malaltia crònica»*), motiu pel qual convé combinar regex amb **NER PII local** i restringir l'accés/retenció fins i tot als logs filtrats." },
+        { "key": "D", "text": "Els identificadors de `prompt_version`." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Les regex només capturen identificadors estructurats; combinar-les amb un detector NER PII local (p. ex., Presidio + model català/castellà) i control estricte d'accés/retenció tanca la bretxa en text lliure.",
+      "explanationsIncorrect": {
+        "A": "Les expressions regulars no poden detectar tots els noms propis ni dades de salut en text lliure.",
+        "B": "Els IBANs sí que tenen un patró regex molt precís.",
+        "D": "`prompt_version` no és cap dada personal."
+      }
+    }
+  ]
+}

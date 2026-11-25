@@ -1,0 +1,46 @@
+{
+  "conceptId": "m05-02-assistents-corporatius",
+  "module": 5,
+  "cards": [
+    {
+      "id": "m05-02-fc01",
+      "module": 5,
+      "conceptId": "m05-02-assistents-corporatius",
+      "front": "Què és el patró OBO (*On-Behalf-Of*) en un assistent corporatiu?",
+      "back": "Propagar la identitat autenticada SSO (OIDC/SAML + MFA) i els permisos RBAC/ABAC de l'empleat com a pre-filtre determinista a tots els índexs i eines, garantint que l'assistent MAI accedeix a res no autoritzat per a aquell empleat.",
+      "tags": ["OBO", "SSO", "RBAC", "ABAC"]
+    },
+    {
+      "id": "m05-02-fc02",
+      "module": 5,
+      "conceptId": "m05-02-assistents-corporatius",
+      "front": "Per què un compte de servei administrador (`svc_admin`) protegit només al *system prompt* és un antipatró crític?",
+      "back": "Perquè els documents confidencials entren igualment al context de l'LLM i qualsevol *prompt injection* o pregunta indirecta els pot exfiltrar. L'ACL s'ha d'aplicar deterministament abans de la recuperació.",
+      "tags": ["seguretat", "ACL", "prompt injection"]
+    },
+    {
+      "id": "m05-02-fc03",
+      "module": 5,
+      "conceptId": "m05-02-assistents-corporatius",
+      "front": "Quins són els 3 pilars per combatre la *Shadow AI* a l'Administració pública?",
+      "back": "1) Oferir un assistent corporatiu segur on-premise/ENS amb bona UX; 2) Política d'ús acceptable + formació d'alfabetització en IA (art. 4 AI Act); 3) Controls tècnics DLP / proxy.",
+      "tags": ["Shadow AI", "art. 4 AI Act", "DLP"]
+    },
+    {
+      "id": "m05-02-fc04",
+      "module": 5,
+      "conceptId": "m05-02-assistents-corporatius",
+      "front": "Com s'evita el *Permission Drift* quan un empleat canvia de departament o causa baixa?",
+      "back": "Tokens JWT/OIDC de curta durada + sincronització en temps real (o quasi real) dels canvis d'ACL entre el directori corporatiu, el gestor documental i la base vectorial.",
+      "tags": ["Permission Drift", "revocació", "ENS"]
+    },
+    {
+      "id": "m05-02-fc05",
+      "module": 5,
+      "conceptId": "m05-02-assistents-corporatius",
+      "front": "Com s'han de gestionar els historials de conversa d'un assistent corporatiu?",
+      "back": "Aïllament estricte per usuari (mai memòria compartida ni entrenament automàtic), retenció acotada (ex. 30–90 dies segons RGPD) i logs mínims d'auditoria enviats al SIEM (ENS).",
+      "tags": ["historials", "RGPD", "aïllament"]
+    }
+  ]
+}

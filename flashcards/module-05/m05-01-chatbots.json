@@ -1,0 +1,46 @@
+{
+  "conceptId": "m05-01-chatbots",
+  "module": 5,
+  "cards": [
+    {
+      "id": "m05-01-fc01",
+      "module": 5,
+      "conceptId": "m05-01-chatbots",
+      "front": "Quina és l'arquitectura de chatbot recomanada per a una seu electrònica municipal?",
+      "back": "Arquitectura HÍBRIDA: enrutador d'intencions → Flux determinista + Slot Filling (cita prèvia, estat expedient) + RAG amb cites (consultes normatives obertes) + OOS (competències alienes) + Escalada humana.",
+      "tags": ["chatbots", "arquitectura híbrida"]
+    },
+    {
+      "id": "m05-01-fc02",
+      "module": 5,
+      "conceptId": "m05-01-chatbots",
+      "front": "Què exigeix l'article 50.1 de l'AI Act (Reglament UE 2024/1689) als chatbots?",
+      "back": "Informar la persona física de manera clara i des del primer moment que està interactuant amb un sistema d'IA (més bona pràctica pública: avisar del caràcter informatiu no vinculant i oferir canal humà).",
+      "tags": ["AI Act", "art. 50.1", "transparència"]
+    },
+    {
+      "id": "m05-01-fc03",
+      "module": 5,
+      "conceptId": "m05-01-chatbots",
+      "front": "Diferencia *Intent*, *Slot Filling* i *Out-of-Scope* en NLU.",
+      "back": "Intent: objectiu de l'usuari (`DEMANAR_CITA`). Slot Filling: extracció/validació dels paràmetres obligatoris (`oficina, tràmit, data, hora`). Out-of-Scope: petició fora de competència (`passaport`) que requereix redirecció clara.",
+      "tags": ["NLU", "intents", "slots"]
+    },
+    {
+      "id": "m05-01-fc04",
+      "module": 5,
+      "conceptId": "m05-01-chatbots",
+      "front": "Per què la «taxa de contenció» sola és una mètrica enganyosa en chatbots públics?",
+      "back": "Perquè pot pujar artificialment si el ciutadà abandona frustrat o s'amaga l'escalada. Cal combinar resolució fidel verificada + CSAT + baixa taxa de re-contacte en 24-72 h al 010/OAC.",
+      "tags": ["mètriques", "CSAT", "contenció"]
+    },
+    {
+      "id": "m05-01-fc05",
+      "module": 5,
+      "conceptId": "m05-01-chatbots",
+      "front": "Quin control cal abans que un chatbot retorni l'estat d'un expedient donat el seu codi?",
+      "back": "Autenticació forta (idCAT Mòbil / Cl@ve / certificat) i verificació determinista de titularitat/representació per evitar vulnerabilitats IDOR i fuites RGPD/ENS.",
+      "tags": ["autenticació", "IDOR", "seguretat"]
+    }
+  ]
+}
