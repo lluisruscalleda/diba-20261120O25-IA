@@ -1,0 +1,46 @@
+{
+  "conceptId": "m07-02-etiquetatge",
+  "module": 7,
+  "cards": [
+    {
+      "id": "m07-02-fc01",
+      "module": 7,
+      "conceptId": "m07-02-etiquetatge",
+      "front": "Quina és la fórmula de la Kappa de Cohen i per què supera l'% d'acord simple?",
+      "back": "Kappa = (po - pe) / (1 - pe). Descompta l'acord per atzar (pe); en classes rares (ex. 4% frau), un 92% d'acord simple pot tenir Kappa <= 0 si no coincideixen en els casos positius!",
+      "tags": ["Kappa de Cohen", "IAA"]
+    },
+    {
+      "id": "m07-02-fc02",
+      "module": 7,
+      "conceptId": "m07-02-etiquetatge",
+      "front": "Quan s'ha d'usar l'Alfa de Krippendorff en lloc de la Kappa de Cohen?",
+      "back": "Quan hi ha 3 o més anotadors, dades faltants (no tots anoten tots els exemples) o escales ordinals (ex. puntuacions d'1 a 5).",
+      "tags": ["Krippendorff", "IAA"]
+    },
+    {
+      "id": "m07-02-fc03",
+      "module": 7,
+      "conceptId": "m07-02-etiquetatge",
+      "front": "Quina regla sagrada protegeix el *Golden Test Set* en qualsevol projecte MLOps/LLMOps?",
+      "back": "Ha de ser 100% revisat per humans (doble anotació cega + adjudicació, Kappa >= 0,80); MAI s'ha de construir amb *Weak Supervision* ni etiquetatge automàtic d'un LLM sense validació humana!",
+      "tags": ["Golden Test Set", "qualitat"]
+    },
+    {
+      "id": "m07-02-fc04",
+      "module": 7,
+      "conceptId": "m07-02-etiquetatge",
+      "front": "Com es mitiga el biaix d'ancoratge en *Pre-labeling* i el biaix de mostreig en *Active Learning*?",
+      "back": "En *Pre-labeling*: intercalar casos trampa (*honeypots*) i auditar Kappa. En *Active Learning*: barrejar ~80% casos d'incertesa (menor marge p1-p2) + ~20% mostra aleatòria/diversa.",
+      "tags": ["Active Learning", "Pre-labeling", "ancoratge"]
+    },
+    {
+      "id": "m07-02-fc05",
+      "module": 7,
+      "conceptId": "m07-02-etiquetatge",
+      "front": "Per què un *Golden Set* RAG ha d'incloure un 10–15% de preguntes sense resposta a la base?",
+      "back": "Per mesurar objectivament la capacitat d'abstenció honesta (*Refusal Accuracy*) i detectar models que al·lucinen quan falta evidència documental.",
+      "tags": ["LLMOps", "RAG", "abstenció"]
+    }
+  ]
+}

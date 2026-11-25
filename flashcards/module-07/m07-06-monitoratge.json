@@ -1,0 +1,46 @@
+{
+  "conceptId": "m07-06-monitoratge",
+  "module": 7,
+  "cards": [
+    {
+      "id": "m07-06-fc01",
+      "module": 7,
+      "conceptId": "m07-06-monitoratge",
+      "front": "Quina diferència matemàtica i pràctica hi ha entre *Data Drift*, *Prediction Drift* i *Concept Drift*?",
+      "back": "*Data Drift*: canvia P(X) (detectable sense etiquetes amb PSI/KS/embeddings). *Prediction Drift*: canvia P(Ŷ). *Concept Drift*: canvia P(Y|X) (mateixa entrada, nova resposta correcta — exigeix etiquetes reals/rebots/mostreig!).",
+      "tags": ["Data Drift", "Concept Drift", "Prediction Drift"]
+    },
+    {
+      "id": "m07-06-fc02",
+      "module": 7,
+      "conceptId": "m07-06-monitoratge",
+      "front": "Quins són els llindars estàndard d'interpretació del PSI (*Population Stability Index*)?",
+      "back": "`< 0,10` = estable; `0,10–0,25` = drift moderat (investigar); `>= 0,25` = drift greu (alerta crítica / reentrenar!).",
+      "tags": ["PSI", "Data Drift"]
+    },
+    {
+      "id": "m07-06-fc03",
+      "module": 7,
+      "conceptId": "m07-06-monitoratge",
+      "front": "Per què s'ha de monitorar P95/P99 i TTFT en lloc de només la latència mitjana?",
+      "back": "La mitjana amaga cues lentes (*tail latency*): el 5–10% d'usuaris pot esperar >10 segons amb una mitjana de 790 ms. P95/P99 + *spans* OpenTelemetry localitzen el coll d'ampolla exacte.",
+      "tags": ["P95", "P99", "TTFT", "OpenTelemetry"]
+    },
+    {
+      "id": "m07-06-fc04",
+      "module": 7,
+      "conceptId": "m07-06-monitoratge",
+      "front": "Com s'afronta el *Delayed Ground Truth* (etiquetes reals que triguen mesos)?",
+      "back": "Combinar senyals diaris sense etiquetes (PSI/KS en entrades + Prediction Drift + caiguda de confiança) amb mostreig humà continu estratificat de casos recents.",
+      "tags": ["Delayed Ground Truth", "monitoratge"]
+    },
+    {
+      "id": "m07-06-fc05",
+      "module": 7,
+      "conceptId": "m07-06-monitoratge",
+      "front": "Quines claus obligatòries ha d'incorporar una *cache* semàntica FinOps en un chatbot públic?",
+      "back": "`(kb_version, tenant_id, acl_scope)` (o invalidació automàtica en canviar la KB) per evitar servir respostes caducades i impedir fuites de dades entre departaments o municipis!",
+      "tags": ["FinOps", "cache semàntica", "ACL"]
+    }
+  ]
+}

@@ -1,0 +1,236 @@
+{
+  "conceptId": "m07-03-entrenament",
+  "module": 7,
+  "questions": [
+    {
+      "id": "m07-03-q01",
+      "module": 7,
+      "conceptId": "m07-03-entrenament",
+      "lessonRef": "content/module-07/m07-03-entrenament.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina és la funció principal d'una eina d'***Experiment Tracking*** (com **MLflow** desplegat *on-premise*)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Registrar automàticament en cada execució (*run*) els **hiperparàmetres, mètriques, artefactes i etiquetes de llinatge** (`git_commit`, `dataset_hash`, `seed`) per comparar experiments rigorosament i reproduir el model guanyador." },
+        { "key": "B", "text": "Substituir el sistema operatiu Linux." },
+        { "key": "C", "text": "Generar dades personals sintètiques automàticament." },
+        { "key": "D", "text": "Esborrar tots els experiments antics cada 24 hores." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "L'Experiment Tracking elimina la pèrdua de coneixement dels notebooks manuals i connecta cada mètrica amb el seu codi, dades i configuració exacta.",
+      "explanationsIncorrect": {
+        "B": "S'executa sobre Linux/contenidors, no el substitueix.",
+        "C": "No és un generador de dades.",
+        "D": "Conserva l'historial per comparativa i auditoria."
+      }
+    },
+    {
+      "id": "m07-03-q02",
+      "module": 7,
+      "conceptId": "m07-03-entrenament",
+      "lessonRef": "content/module-07/m07-03-entrenament.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Per què s'ha d'aplicar sempre el principi ***Baseline-first*** abans d'entrenar arquitectures complexes o costoses?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè les xarxes neuronals no funcionen si no hi ha abans una regressió logística." },
+        { "key": "B", "text": "Per establir ràpidament una **referència sòlida, ràpida i interpretable** (ex. TF-IDF + Regressió Logística o LightGBM) que permet verificar si el guany real d'un model molt més car i lent justifica realment el seu cost i latència." },
+        { "key": "C", "text": "Per gastar més pressupost de GPUs." },
+        { "key": "D", "text": "Per evitar mesurar cap mètrica de validació." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Sovint un baseline ben preparat assoleix el 90–95% del rendiment màxim amb una fracció mínima de latència, cost i consum energètic!",
+      "explanationsIncorrect": {
+        "A": "Tècnicament es poden entrenar directament, però metodològicament és un error greu no tenir referència.",
+        "C": "Precisament ajuda a estalviar GPUs i energia (*Green AI*).",
+        "D": "Al contrari, serveix per fixar el llindar mínim de validació a superar."
+      }
+    },
+    {
+      "id": "m07-03-q03",
+      "module": 7,
+      "conceptId": "m07-03-entrenament",
+      "lessonRef": "content/module-07/m07-03-entrenament.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Com evita l'***Early Stopping*** amb *checkpointing* el sobreajustament (*overfitting*) durant l'entrenament iteratiu d'una xarxa neuronal?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Aturant l'entrenament sempre a l'època 1." },
+        { "key": "B", "text": "Augmentant la taxa d'aprenentatge fins a l'infinit." },
+        { "key": "C", "text": "Monitorant la mètrica de validació a cada època, aturant el procés quan deixa de millorar durant `patience` èpoques consecutives i **restaurant el *best checkpoint*** (no l'última època)." },
+        { "key": "D", "text": "Eliminant el conjunt de validació." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Aturar aviat i conservar el *best checkpoint* evita memoritzar el conjunt d'entrenament i estalvia temps i energia de GPU.",
+      "explanationsIncorrect": {
+        "A": "Aturar a l'època 1 causaria infraajustament (*underfitting*).",
+        "B": "Faria divergir el gradient.",
+        "D": "Requereix precisament monitorar el conjunt de validació."
+      }
+    },
+    {
+      "id": "m07-03-q04",
+      "module": 7,
+      "conceptId": "m07-03-entrenament",
+      "lessonRef": "content/module-07/m07-03-entrenament.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Quins són els **5 pilars** necessaris per garantir que un entrenament oficial es podrà reproduir fidelment d'aquí a un any?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "1) **Codi versionat (Git SHA)**; 2) **Dataset versionat (hash/DVC)**; 3) **Entorn immutable (Docker + lockfile)**; 4) **Configuració d'hiperparàmetres + llavors aleatòries (*seeds*)**; 5) **Registre complet de maquinari/precisió i artefactes (*Experiment Tracking*)**." },
+        { "key": "B", "text": "Només guardar el fitxer `.pkl` en un llapis USB." },
+        { "key": "C", "text": "Només apuntar el F1 en una diapositiva PowerPoint." },
+        { "key": "D", "text": "Només el nom de l'algoritme (ex. «XGBoost»)." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Si falta qualsevol dels 5 pilars (per exemple, no hi ha lockfile ni dataset hash), la reproducció exacta es torna impossible o inauditable.",
+      "explanationsIncorrect": {
+        "B": "Un `.pkl` aïllat és irreproduïble, fràgil entre versions i insegur.",
+        "C": "Una diapositiva no té cap traçabilitat tècnica.",
+        "D": "Sense codi, dades, entorn ni hiperparàmetres, el nom de l'algoritme no reprodueix res."
+      }
+    },
+    {
+      "id": "m07-03-q05",
+      "module": 7,
+      "conceptId": "m07-03-entrenament",
+      "lessonRef": "content/module-07/m07-03-entrenament.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Per què en espais de cerca amb 6 o 8 hiperparàmetres es prefereix **Optimització Bayesiana (*Optuna*) amb *Pruning*** respecte de ***Grid Search*** exhaustiu?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè *Grid Search* no permet provar taxes d'aprenentatge." },
+        { "key": "B", "text": "Perquè *Grid Search* pateix **explosió combinatòria** malgastant còmput en zones dolentes, mentre que l'optimització Bayesiana aprofita els resultats previs per enfocar zones prometedores i el ***Pruning*** cancel·la aviat les proves clarament inferiors." },
+        { "key": "C", "text": "Perquè *Optuna* no utilitza cap conjunt de validació." },
+        { "key": "D", "text": "Perquè *Grid Search* només funciona en Java." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Optuna (TPE) + Hyperband/MedianPruner troben millors hiperparàmetres amb una fracció molt menor d'hores de GPU i consum energètic.",
+      "explanationsIncorrect": {
+        "A": "Grid Search admet qualsevol paràmetre, però a un cost combinatori insostenible.",
+        "C": "Optuna optimitza precisament una mètrica de validació (o validació creuada).",
+        "D": "Grid Search existeix a scikit-learn en Python."
+      }
+    },
+    {
+      "id": "m07-03-q06",
+      "module": 7,
+      "conceptId": "m07-03-entrenament",
+      "lessonRef": "content/module-07/m07-03-entrenament.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Per què un plec tècnic públic ha de preferir formats com **ONNX** o **SafeTensors** en lloc d'acceptar fitxers **`.pkl` (`pickle`)** no auditats d'un proveïdor?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Només perquè els fitxers `.pkl` tenen una extensió de 3 lletres." },
+        { "key": "B", "text": "Perquè Python no pot crear fitxers `.pkl`." },
+        { "key": "C", "text": "Perquè `pickle` pot **executar codi arbitrari en carregar-se (risc greu de seguretat ENS)** i es trenca fàcilment entre versions de llibreries, mentre que **SafeTensors** només desa tensors purs sense execució de codi i **ONNX** és portàtil i ràpid." },
+        { "key": "D", "text": "Perquè ONNX fa que el F1 pugi automàticament al 100%." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "La deserialització insegura de `pickle` és una vulnerabilitat clàssica de cadena de subministrament (supply-chain) en ML; SafeTensors i ONNX eliminen aquest vector d'atac i milloren la portabilitat.",
+      "explanationsIncorrect": {
+        "A": "És una qüestió crítica de ciberseguretat i mantenibilitat.",
+        "B": "`pickle` forma part de la biblioteca estàndard de Python, però és insegur per a artefactes externs.",
+        "D": "ONNX preserva la precisió del model i accelera inferència, no inventa precisió extra."
+      }
+    },
+    {
+      "id": "m07-03-q07",
+      "module": 7,
+      "conceptId": "m07-03-entrenament",
+      "lessonRef": "content/module-07/m07-03-entrenament.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Què ha de registrar un *Experiment Tracker* en un projecte **LLMOps de RAG** (on no s'entrenen pesos nous de l'LLM) per mantenir el mateix rigor que en ML clàssic?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Res, perquè en RAG no cal fer seguiment d'experiments." },
+        { "key": "B", "text": "Només el nom del desenvolupador." },
+        { "key": "C", "text": "Només la mida del fitxer CSS del xat." },
+        { "key": "D", "text": "La **versió exacta del *system prompt*, model d'embeddings, mida/overlap de *chunking*, `top_k`, *reranker*, temperatura, hash del corpus i les mètriques RAGAS/abstenció i latència/cost** sobre el *Golden Set*." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "En LLMOps, els hiperparàmetres són el prompt, el chunking, l'embedding, el reranker i el model LLM; registrar-los en cada canvi permet comparar rigorosament abans de desplegar!",
+      "explanationsIncorrect": {
+        "A": "Sense tracking en RAG és impossible saber quin canvi de prompt o chunking va provocar una regressió.",
+        "B": "Insuficient per reproduir o comparar configuracions.",
+        "C": "Irrellevant per a la qualitat del pipeline RAG."
+      }
+    },
+    {
+      "id": "m07-03-q08",
+      "module": 7,
+      "conceptId": "m07-03-entrenament",
+      "lessonRef": "content/module-07/m07-03-entrenament.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En `MiniMLflowTracker` de l'exemple 7.3, per què `millor_candidat(max_latencia_ms=50.0)` tria **`run-02` (`F1=0.91`, `28.5 ms`)** en lloc de **`run-03` (`F1=0.92`, `850 ms`)**, i per què `registrar_run` llança error si `git_dirty=True`?",
+      "codeSnippet": "if git_dirty:\n    raise ValueError(f\"Rebutjat {run.run_id}: prohibit entrenar un run oficial amb canvis sense comitejar!\")\n...\nelegibles = [r for r in self.runs if r.metrics[\"latencia_ms\"] <= max_latencia_ms]",
+      "options": [
+        { "key": "A", "text": "Perquè aplica **selecció multi-criteri sota SLA real** (descartant un model 30× més lent que només suma `+0,01` de F1) i bloqueja `git_dirty=True` perquè un entrenament amb **canvis locals sense comitejar és irreproduïble i inauditable**!" },
+        { "key": "B", "text": "Perquè `0.91` és matemàticament més gran que `0.92`." },
+        { "key": "C", "text": "Perquè `git_dirty=True` indica que el dataset té valors nuls." },
+        { "key": "D", "text": "Perquè `run-03` no tenia `dataset_hash`." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Combinar selecció multi-criteri (qualitat dins restriccions operatives d'SLA/cost) amb la prohibició d'entrenaments oficials amb estat Git brut és MLOps de nivell producció.",
+      "explanationsIncorrect": {
+        "B": "`run-03` queda filtrat abans del `max()` per superar `max_latencia_ms=50.0`.",
+        "C": "`git_dirty` indica modificacions no comitejades al repositori de codi.",
+        "D": "Tots tres runs tenen el mateix `dataset_hash` (`sha256:9f8e7d`)."
+      }
+    },
+    {
+      "id": "m07-03-q09",
+      "module": 7,
+      "conceptId": "m07-03-entrenament",
+      "lessonRef": "content/module-07/m07-03-entrenament.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "En un *fine-tuning* **LoRA/QLoRA** d'un model open-weights per a redacció administrativa en català, quin artefacte principal i quina referència obligatòria desa l'*Experiment Tracker*?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Només l'última frase generada." },
+        { "key": "B", "text": "El **hash/versió exacta del model base congelat** + els hiperparàmetres LoRA (`r`, `alpha`, `target_modules`) + l'**artefacte lleuger de l'adaptador LoRA** (en SafeTensors) + les mètriques de qualitat i de prevenció de *catastrophic forgetting*." },
+        { "key": "C", "text": "Una còpia completa de 140 GB sense indicar el model base." },
+        { "key": "D", "text": "Només el fitxer `README.md`." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Un adaptador LoRA només té sentit aplicat sobre exactament el mateix model base congelat amb què es va entrenar; registrar tots dos en SafeTensors estalvia espai i assegura reproduïbilitat total.",
+      "explanationsIncorrect": {
+        "A": "Insuficient per desplegar ni auditar.",
+        "C": "L'avantatge de LoRA és guardar l'adaptador lleuger vinculat al hash exacte del model base.",
+        "D": "Un README no conté els pesos entrenats."
+      }
+    },
+    {
+      "id": "m07-03-q10",
+      "module": 7,
+      "conceptId": "m07-03-entrenament",
+      "lessonRef": "content/module-07/m07-03-entrenament.md",
+      "difficulty": "advanced",
+      "questionType": "metrics",
+      "prompt": "Fins i tot fixant `random.seed(42)`, `np.random.seed(42)` i `torch.manual_seed(42)`, per què dues execucions d'un model profund en **GPU diferents** poden presentar lleugeres variacions numèriques?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè les GPUs ignoren sempre els hiperparàmetres." },
+        { "key": "B", "text": "Perquè `42` no és un número vàlid per a `torch`." },
+        { "key": "C", "text": "Per operacions paral·leles no deterministes en **kernels CUDA / precisió de punt flotant (`FP16/BF16`)** i ordre d'acumulació en maquinari diferent; per això cal registrar també **maquinari, versió CUDA i precisió** i activar modes deterministes quan es requereix auditoria estricta." },
+        { "key": "D", "text": "Perquè MLflow modifica aleatòriament els pesos." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "La suma en punt flotant no és estrictament associativa en paral·lelisme massiu de GPU; documentar maquinari, CUDA, precisió numèrica i tolerància de reproducció completa el 5è pilar!",
+      "explanationsIncorrect": {
+        "A": "Sí que apliquen els hiperparàmetres.",
+        "B": "`42` és una llavor vàlida estàndard.",
+        "D": "MLflow només registra metadades i artefactes, mai altera pesos."
+      }
+    }
+  ]
+}

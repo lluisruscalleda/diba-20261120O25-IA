@@ -9,9 +9,9 @@ Llegenda d'estat:
 
 | Dimensió | Completats | Objectiu | Cobertura |
 |---|---:|---:|---:|
-| Lliçons (Teoria + Exemple + Exercici + Desenvolupament + Resum) | 52 | 70 | 74,3% |
-| Tests individuals (mín. 10 preguntes / concepte) | 52 (520 preg.) | 70 (≥700 preg.) | 74,3% |
-| Flashcards per concepte (mín. 5 / concepte) | 52 (270 fitxes) | 70 (≥350 fitxes) | 74,3% |
+| Lliçons (Teoria + Exemple + Exercici + Desenvolupament + Resum) | 62 | 70 | 88,6% |
+| Tests individuals (mín. 10 preguntes / concepte) | 62 (620 preg.) | 70 (≥700 preg.) | 88,6% |
+| Flashcards per concepte (mín. 5 / concepte) | 62 (320 fitxes) | 70 (≥350 fitxes) | 88,6% |
 | Laboratoris pràctics | 0 | 8 | 0% |
 | Exàmens de mòdul (40 preg.) | 0 | 8 | 0% |
 | Simulacres globals (50 preg.) | 0 | 10 | 0% |
@@ -107,16 +107,16 @@ Llegenda d'estat:
 
 | ID | Concepte oficial | Teoria (A-E) | Exemple (F) | Exercici (G) | Test ≥10 (H) | Desenv. ≥3 (I) | Resum+FC (J) | Estat |
 |---|---|---|---|---|---|---|---|---|
-| `m07-01-preparacio-dades` | Preparació de dades (pipelines) | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m07-02-etiquetatge` | Etiquetatge | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m07-03-entrenament` | Entrenament (experiment tracking) | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m07-04-validacio-models` | Validació (avaluació de prompts) | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m07-05-desplegament` | Desplegament (API, estratègies) | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m07-06-monitoratge` | Monitoratge (observabilitat, data/concept drift, costos i latència) | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m07-07-versionat` | Versionat (registres de models, rollback) | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m07-08-avaluacio-continua` | Avaluació | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m07-09-actualitzacio-models` | Actualització de models (CI/CD/CT) | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m07-10-integracio-sistemes` | Integració amb sistemes d'informació | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
+| `m07-01-preparacio-dades` | Preparació de dades (pipelines) | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m07-02-etiquetatge` | Etiquetatge | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m07-03-entrenament` | Entrenament (experiment tracking) | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m07-04-validacio-models` | Validació (avaluació de prompts) | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m07-05-desplegament` | Desplegament (API, estratègies) | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m07-06-monitoratge` | Monitoratge (observabilitat, data/concept drift, costos i latència) | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m07-07-versionat` | Versionat (registres de models, rollback) | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m07-08-avaluacio-continua` | Avaluació | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m07-09-actualitzacio-models` | Actualització de models (CI/CD/CT) | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m07-10-integracio-sistemes` | Integració amb sistemes d'informació | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
 
 ## Mòdul 8. Ús responsable i seguretat de la IA
 

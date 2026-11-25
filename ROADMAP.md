@@ -32,7 +32,7 @@ Cada concepte es completa íntegrament (apartats A–J + mínim 10 preguntes tes
 - [x] **Mòdul 4**: Processament intel·ligent de documents (8/8 conceptes completats — 100%).
 - [x] **Mòdul 5**: Assistents virtuals i IA conversacional (8/8 conceptes completats — 100%).
 - [x] **Mòdul 6**: Automatització intel·ligent (6/6 conceptes completats — 100%).
-- [ ] **Mòdul 7**: MLOps i LLMOps (10 conceptes).
+- [x] **Mòdul 7**: MLOps i LLMOps (10/10 conceptes completats — 100%).
 - [ ] **Mòdul 8**: Ús responsable i seguretat de la IA (8 conceptes, amb verificació normativa oficial EUR-Lex/BOE/AEPD/APDCAT/CCN-CERT).
 
 ## Fase 4. Laboratoris pràctics (8 laboratoris executables)

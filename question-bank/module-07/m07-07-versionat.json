@@ -1,0 +1,236 @@
+{
+  "conceptId": "m07-07-versionat",
+  "module": 7,
+  "questions": [
+    {
+      "id": "m07-07-q01",
+      "module": 7,
+      "conceptId": "m07-07-versionat",
+      "lessonRef": "content/module-07/m07-07-versionat.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina regla fonamental regeix totes les versions emmagatzemades dins d'un ***Model Registry*** professional (com MLflow Model Registry)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "**Immutabilitat absoluta**: una versió registrada (`v3`) **mai no es sobreescriu ni s'edita**; qualsevol modificació crea una nova versió (`v4`), vinculada al seu llinatge exacte." },
+        { "key": "B", "text": "Sobreescriure sempre el mateix fitxer `model_final.onnx` per estalviar espai." },
+        { "key": "C", "text": "Esborrar automàticament `v3` en el mateix segon que es puja `v4`." },
+        { "key": "D", "text": "Guardar només el nom del model sense mètriques ni hash de dades." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "La immutabilitat garanteix *rollback* segur en segons i auditabilitat exacta de qualsevol versió que hagi operat a producció.",
+      "explanationsIncorrect": {
+        "B": "Sobreescriure impedeix el rollback i destrueix la traçabilitat.",
+        "C": "Mantenir `@previous_champion` actiu és indispensable per revertir davant incidents.",
+        "D": "El llinatge (`git_sha`, `dataset_hash`, mètriques) és essencial al Registry."
+      }
+    },
+    {
+      "id": "m07-07-q02",
+      "module": 7,
+      "conceptId": "m07-07-versionat",
+      "lessonRef": "content/module-07/m07-07-versionat.md",
+      "difficulty": "basic",
+      "questionType": "architecture",
+      "prompt": "Per què en desplegaments segurs (ENS / MLOps) es prohibeix desplegar imatges Docker amb l'etiqueta **`:latest`**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè Docker no reconeix la paraula `latest`." },
+        { "key": "B", "text": "Perquè **`:latest` és mutable**: pot canviar silenciosament entre reinicis de nodes, trencar la reproduïbilitat i el *rollback*, i obrir vectors d'atac de cadena de subministrament; cal fixar sempre el **digest criptogràfic `@sha256:...`**!" },
+        { "key": "C", "text": "Perquè `:latest` només funciona en Windows." },
+        { "key": "D", "text": "Perquè fa les imatges 10 vegades més grans." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Fixar imatges pel seu digest `@sha256` garanteix que cada contenidor arrencat executa bit-a-bit exactament la versió auditada i validada.",
+      "explanationsIncorrect": {
+        "A": "Docker sí que l'admet per defecte, però és un antipatró greu en producció.",
+        "C": "És independent del sistema operatiu.",
+        "D": "No afecta la mida de la imatge, sinó la seva immutabilitat i seguretat."
+      }
+    },
+    {
+      "id": "m07-07-q03",
+      "module": 7,
+      "conceptId": "m07-07-versionat",
+      "lessonRef": "content/module-07/m07-07-versionat.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Com facilita l'ús d'**àlies** (`@staging`, `@challenger`, `@champion`, `@previous_champion`) un ***rollback* en menys de 10 segons**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Reentrenant el model antic des de zero en 10 segons." },
+        { "key": "B", "text": "Obligant a reescriure el codi font del servidor." },
+        { "key": "C", "text": "Separant l'artefacte físic immutable (`v3`, `v4`) del punter d'entorn: davant un incident en `v4`, n'hi ha prou amb **reassignar l'àlies `@champion` cap a `v3` (`@previous_champion`)**!" },
+        { "key": "D", "text": "Desactivant totes les comprovacions de seguretat." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Mou un punter d'àlies entre versions immutables ja verificades és una operació atòmica, instantània i auditable.",
+      "explanationsIncorrect": {
+        "A": "Un rollback no reentrena mai; restaura l'artefacte immutable anterior.",
+        "B": "L'API consumeix l'àlies `@champion`, sense tocar codi font.",
+        "D": "La versió restaurada ja havia passat tots els *Quality Gates*."
+      }
+    },
+    {
+      "id": "m07-07-q04",
+      "module": 7,
+      "conceptId": "m07-07-versionat",
+      "lessonRef": "content/module-07/m07-07-versionat.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Un equip actualitza un assistent RAG a un nou model d'embeddings de **1024 dimensions** (l'antic en tenia **768**) i **esborra l'índex vectorial antic** per estalviar disc. Per què això impedeix el *rollback* ràpid si la nova versió falla?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè la versió antiga de l'assistent genera vectors de consulta de **768 dimensions**, incompatibles amb l'índex nou de 1024; sense mantenir l'**índex paral·lel `kb_v1`** durant una finestra de seguretat, caldria re-indexar tot el corpus durant hores!" },
+        { "key": "B", "text": "No hi ha cap problema: vectors de 768 i 1024 dimensions es poden multiplicar directament." },
+        { "key": "C", "text": "Perquè el `git revert` recrea instantàniament milions d'embeddings." },
+        { "key": "D", "text": "Perquè els índexs vectorials no es poden versionar." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "El canvi de model d'embeddings exigeix sempre un índex paral·lel (*Blue-Green* d'índex vectorial: `kb_v1` + `kb_v2`) retingut durant la finestra de seguretat (7–14 dies)!",
+      "explanationsIncorrect": {
+        "B": "El producte escalar/cosinus entre vectors de 768 i 1024 dimensions és matemàticament invàlid (error immediat!).",
+        "C": "Git només revertiria codi, no els embeddings calculats a la base vectorial.",
+        "D": "Les bases vectorials (Qdrant, pgvector, Milvus) suporten col·leccions/taules versionades amb àlies!"
+      }
+    },
+    {
+      "id": "m07-07-q05",
+      "module": 7,
+      "conceptId": "m07-07-versionat",
+      "lessonRef": "content/module-07/m07-07-versionat.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Quines **5 dimensions** han d'estar versionades i vinculades conjuntament en un sistema **LLMOps** en producció?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Només el fitxer `app.py`." },
+        { "key": "B", "text": "1) **Codi (Git SHA)**; 2) **Dades (DVC/SHA-256)**; 3) **Model/Pesos (*Model Registry*)**; 4) **Prompts + configuració RAG / índex vectorial**; 5) **Entorn d'execució (Docker `@sha256`)**." },
+        { "key": "C", "text": "Només el prompt del sistema i el nom del servidor." },
+        { "key": "D", "text": "Només el pressupost anual i els noms dels usuaris." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Sense vincular totes 5 dimensions, qualsevol canvi en una d'elles (prompt, índex vectorial o dependència Docker) trenca la reproduïbilitat i l'auditoria.",
+      "explanationsIncorrect": {
+        "A": "Insuficient: no captura dades, pesos, prompts ni entorn.",
+        "C": "Falten codi, dades, pesos exactes i entorn immutable.",
+        "D": "No són artefactes tècnics de reproducció."
+      }
+    },
+    {
+      "id": "m07-07-q06",
+      "module": 7,
+      "conceptId": "m07-07-versionat",
+      "lessonRef": "content/module-07/m07-07-versionat.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Quin problema pot fer fallar un ***rollback* de `v4` cap a `v3`** encara que `v3` estigui intacta al *Model Registry*, si no s'ha aplicat el patró ***Expand & Contract*** (retrocompatibilitat)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Que `v3` caduca automàticament al cap d'una hora." },
+        { "key": "B", "text": "Que Python no permet carregar versions anteriors." },
+        { "key": "C", "text": "Que **`v4` hagi introduït un canvi incompatible d'esquema JSON o de base de dades** i les aplicacions clientes ja estiguin esperant el format nou, de manera que tornar a `v3` trenqui els consumidors!" },
+        { "key": "D", "text": "Que `v3` tingui massa bona precisió." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "La compatibilitat d'esquema cap enrere (*Backward Compatibility*) durant les transicions és imprescindible perquè un rollback sigui realment segur en producció.",
+      "explanationsIncorrect": {
+        "A": "Les versions immutables no caduquen al cap d'una hora.",
+        "B": "Es poden carregar perfectament si l'entorn està contenitzat.",
+        "D": "Mai és un obstacle per a un rollback."
+      }
+    },
+    {
+      "id": "m07-07-q07",
+      "module": 7,
+      "conceptId": "m07-07-versionat",
+      "lessonRef": "content/module-07/m07-07-versionat.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Com ajuda un *Model & Prompt Registry* immutable a respondre una **auditoria o recurs administratiu sobre una decisió presa fa 18 mesos**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Permetent esborrar l'historial de fa 18 mesos." },
+        { "key": "B", "text": "Dient que el sistema ha canviat i no es pot comprovar." },
+        { "key": "C", "text": "Provant només amb la versió actual d'avui." },
+        { "key": "D", "text": "Creuant els identificadors registrats al log d'aquell dia (`model_version`, `prompt_version`, `kb_version`) amb els artefactes immutables del *Registry* per **reconstruir exactament el comportament i la base documental vigent en aquella data**." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "L'enllaç entre logs d'execució i versions immutables arxivades al Registry aporta una prova auditable sòlida per a recursos, Sindicatura de Comptes i AI Act.",
+      "explanationsIncorrect": {
+        "A": "Destruir traçabilitat incompleix ENS i obligacions d'auditoria.",
+        "B": "Inacceptable davant un requeriment judicial o administratiu.",
+        "C": "La versió actual té altres normes i pesos, no reprodueix el comportament de fa 18 mesos."
+      }
+    },
+    {
+      "id": "m07-07-q08",
+      "module": 7,
+      "conceptId": "m07-07-versionat",
+      "lessonRef": "content/module-07/m07-07-versionat.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En `RegistryImmutable` de l'exemple 7.7, quines **dues regles d'integritat** protegeix el mètode `registrar(art)` abans d'acceptar un nou `ArtefacteIA`?",
+      "codeSnippet": "if art.versio in self.versions:\n    raise ValueError(f\"Immutabilitat violada: la versió {art.versio} ja existeix!\")\nif \":latest\" in art.docker_digest:\n    raise ValueError(\"Prohibit desplegar etiquetes mutables ':latest'; cal digest @sha256!\")",
+      "options": [
+        { "key": "A", "text": "1) **Immutabilitat de versió** (impedeix sobreescriure una versió ja existent) i 2) **prohibició d'imatges Docker mutables `:latest`** (exigeix digest `@sha256`), assegurant que cada entrada del *Registry* és 100% reproduïble i revertible." },
+        { "key": "B", "text": "Bloqueja totes les versions superiors a `v1.0`." },
+        { "key": "C", "text": "Esborra `previous_champion` cada vegada que registra una versió." },
+        { "key": "D", "text": "Converteix automàticament `:latest` en `v2.0`." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Aplicar aquestes dues comprovacions per codi al Registry converteix les normes de governança en garanties tècniques automàtiques impossibles de saltar per descuit!",
+      "explanationsIncorrect": {
+        "B": "Accepta `v2.0` perfectament sempre que sigui un identificador nou i amb `@sha256`.",
+        "C": "`registrar()` no modifica `@previous_champion`; només afegeix la versió al catàleg.",
+        "D": "Llança `ValueError` per forçar un digest immutable."
+      }
+    },
+    {
+      "id": "m07-07-q09",
+      "module": 7,
+      "conceptId": "m07-07-versionat",
+      "lessonRef": "content/module-07/m07-07-versionat.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "En **Versionat Semàntic (*SemVer* `MAJOR.MINOR.PATCH`)** aplicat a una API d'inferència ML/LLM, quin tipus de canvi obliga a incrementar el número **`MAJOR`** (`1.4.2 → 2.0.0`)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Corregir un error ortogràfic en un missatge de log intern." },
+        { "key": "B", "text": "Un **canvi incompatible (*Breaking Change*) en el contracte d'entrada/sortida** (ex. reanomenar o eliminar un camp obligatori del JSON o canviar les etiquetes de sortida que esperen altres aplicacions municipals)." },
+        { "key": "C", "text": "Reentrenar el model amb més dades mantenint exactament el mateix esquema JSON i classes." },
+        { "key": "D", "text": "Millorar la latència de 40 ms a 25 ms." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "SemVer comunica el risc als integradors: `MAJOR` = canvi incompatible de contracte; `MINOR` = nova funcionalitat o millora retrocompatible; `PATCH` = correcció menor retrocompatible.",
+      "explanationsIncorrect": {
+        "A": "Això és un `PATCH`.",
+        "C": "Això és habitualment un `MINOR` (nova versió de pesos retrocompatible).",
+        "D": "Una optimització interna retrocompatible és `PATCH` o `MINOR`."
+      }
+    },
+    {
+      "id": "m07-07-q10",
+      "module": 7,
+      "conceptId": "m07-07-versionat",
+      "lessonRef": "content/module-07/m07-07-versionat.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Per què en un **Prompt Registry** no s'ha de versionar el *system prompt* aïllat del **model LLM concret** (`Qwen2.5-14B` vs `Llama-3.1-8B`)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè tots els LLMs responen de manera 100% idèntica a qualsevol prompt." },
+        { "key": "B", "text": "Perquè els prompts no afecten els models *open-weights*." },
+        { "key": "C", "text": "Perquè un prompt optimitzat per a un model concret sovint **es comporta molt diferent (format, abstenció, cites) en un altre model base**; per això el *Registry* versiona la **tupla acoblada `(prompt_version, base_model_sha, params_decoding, kb_index)`** i exigeix re-executar el *Quality Gate* en canviar qualsevol peça!" },
+        { "key": "D", "text": "Perquè no es pot guardar un fitxer YAML i un nom de model junts." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Els prompts són altament sensibles al model base i a la plantilla de xat; tractar la configuració completa com una unitat versionada evita regressions ocultes en actualitzar el model LLM.",
+      "explanationsIncorrect": {
+        "A": "Cada família de models té sensibilitats i formats d'instrucció diferents.",
+        "B": "Afecten exactament igual tant models open-weights com comercials.",
+        "D": "És trivial i recomanat emmagatzemar la tupla completa en YAML/JSON al Registry."
+      }
+    }
+  ]
+}

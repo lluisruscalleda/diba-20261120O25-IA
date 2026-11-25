@@ -1,0 +1,46 @@
+{
+  "conceptId": "m07-08-avaluacio-continua",
+  "module": 7,
+  "cards": [
+    {
+      "id": "m07-08-fc01",
+      "module": 7,
+      "conceptId": "m07-08-avaluacio-continua",
+      "front": "Quins són els 3 nivells de la jerarquia de mètriques en avaluació contínua?",
+      "back": "1) Mètrica Nord (valor públic real: temps de resolució, resolució sense re-contacte 010); 2) Mètriques tècniques (F1, rebots, Faithfulness); 3) *Guardrail Metrics* bloquejants (equitat, 0 PII, cites <1% error, P95).",
+      "tags": ["North Star", "Guardrail Metrics"]
+    },
+    {
+      "id": "m07-08-fc02",
+      "module": 7,
+      "conceptId": "m07-08-avaluacio-continua",
+      "front": "Què és el *Peeking* en A/B Testing i per què invalida l'experiment?",
+      "back": "Mirar el *p-valor* repetidament i aturar l'experiment el primer cop que baixa de 0,05. Infla els falsos positius del 5% a >25%; cal fixar prèviament la mida mostral i durar mínim 1–2 setmanes completes.",
+      "tags": ["A/B Testing", "Peeking", "estadística"]
+    },
+    {
+      "id": "m07-08-fc03",
+      "module": 7,
+      "conceptId": "m07-08-avaluacio-continua",
+      "front": "Què és el *Sticky Bucketing* i quin límit ètic té l'A/B Testing en el sector públic?",
+      "back": "*Sticky Bucketing*: assignar sempre per `hash(session_id)` o `expedient_id` (mai per missatge!). Límit ètic: MAI fer A/B que atorgui drets, barems o requisits legals diferents a ciutadans iguals!",
+      "tags": ["Sticky Bucketing", "ètica pública"]
+    },
+    {
+      "id": "m07-08-fc04",
+      "module": 7,
+      "conceptId": "m07-08-avaluacio-continua",
+      "front": "Com funciona el *Living Golden Set* (*Error-to-Eval Flywheel*)?",
+      "back": "Els errors reals anonimitzats de producció (rebots, `👎`, al·lucinacions) s'afegeixen com a nous casos permanents a una nova versió del *Golden Set*, re-avaluant sempre Champion i Challenger sobre la mateixa versió!",
+      "tags": ["Living Golden Set", "regressió"]
+    },
+    {
+      "id": "m07-08-fc05",
+      "module": 7,
+      "conceptId": "m07-08-avaluacio-continua",
+      "front": "Per què un guany del +4% *offline* pot no millorar el servei en producció (*online*)?",
+      "back": "Bretxa *offline-online*: una resposta més llarga pot puntuar més alt en mètriques automàtiques però fer perdre temps al funcionari verificant cites o editant format; només l'avaluació *online* verifica el valor públic real.",
+      "tags": ["offline vs online", "valor públic"]
+    }
+  ]
+}

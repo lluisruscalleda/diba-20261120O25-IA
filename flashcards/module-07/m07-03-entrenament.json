@@ -1,0 +1,46 @@
+{
+  "conceptId": "m07-03-entrenament",
+  "module": 7,
+  "cards": [
+    {
+      "id": "m07-03-fc01",
+      "module": 7,
+      "conceptId": "m07-03-entrenament",
+      "front": "Quins són els 5 pilars de la reproduïbilitat d'un entrenament MLOps?",
+      "back": "1) Git commit SHA (`dirty=False`); 2) Dataset hash / DVC; 3) Entorn immutable (Docker + lockfile); 4) Config declarativa + *seeds*; 5) Registre de maquinari/precisió i artefactes (MLflow).",
+      "tags": ["reproduïbilitat", "MLflow"]
+    },
+    {
+      "id": "m07-03-fc02",
+      "module": 7,
+      "conceptId": "m07-03-entrenament",
+      "front": "Què és el principi *Baseline-first* i la selecció multi-criteri?",
+      "back": "Entrenar sempre primer un model senzill/ràpid (ex. TF-IDF+LogReg o LightGBM) i escollir el guanyador ponderant qualitat (F1/ECE) + latència SLA + cost GPU/energia (*Green AI*), no només F1 aïllat!",
+      "tags": ["Baseline-first", "Green AI"]
+    },
+    {
+      "id": "m07-03-fc03",
+      "module": 7,
+      "conceptId": "m07-03-entrenament",
+      "front": "Per què es prefereixen ONNX i SafeTensors respecte dels fitxers `.pkl` (`pickle`)?",
+      "back": "`pickle` pot executar codi arbitrari en carregar-se (risc greu de seguretat ENS) i es trenca entre versions de llibreries; SafeTensors guarda només pesos purs i ONNX és portàtil i ràpid.",
+      "tags": ["ONNX", "SafeTensors", "seguretat"]
+    },
+    {
+      "id": "m07-03-fc04",
+      "module": 7,
+      "conceptId": "m07-03-entrenament",
+      "front": "Per què *Optuna* (Optimització Bayesiana) + *Pruning* supera *Grid Search*?",
+      "back": "Evita l'explosió combinatòria explorant zones prometedores a partir dels *runs* previs i cancel·lant aviat (*Pruning*) les proves clarament inferiors, estalviant temps i GPU.",
+      "tags": ["HPO", "Optuna", "Pruning"]
+    },
+    {
+      "id": "m07-03-fc05",
+      "module": 7,
+      "conceptId": "m07-03-entrenament",
+      "front": "Què registra l'*Experiment Tracker* en un pipeline LLMOps de RAG?",
+      "back": "Versió del *system prompt*, model d'embeddings, mida/overlap de *chunking*, `top_k`, *reranker*, temperatura, hash del corpus i mètriques RAGAS/abstenció, latència i cost sobre el *Golden Set*.",
+      "tags": ["LLMOps", "Experiment Tracking"]
+    }
+  ]
+}

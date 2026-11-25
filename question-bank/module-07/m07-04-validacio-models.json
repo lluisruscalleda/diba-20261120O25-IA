@@ -1,0 +1,236 @@
+{
+  "conceptId": "m07-04-validacio-models",
+  "module": 7,
+  "questions": [
+    {
+      "id": "m07-04-q01",
+      "module": 7,
+      "conceptId": "m07-04-validacio-models",
+      "lessonRef": "content/module-07/m07-04-validacio-models.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Per què el ***Vibe Checking*** (provar manualment 3 preguntes al xat després de canviar un prompt i pujar-lo a producció) és un antipatró greu en LLMOps?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè 3 proves manuals no detecten **regressions silencioses** en format JSON, abstenció fora de domini, *prompt injection* ni degradacions en altres idiomes/temes; calen ***Quality Gates* automatitzats sobre un *Golden Set***." },
+        { "key": "B", "text": "Perquè els prompts no afecten mai la qualitat de la resposta d'un LLM." },
+        { "key": "C", "text": "Perquè només funciona amb 2 preguntes i no amb 3." },
+        { "key": "D", "text": "Perquè els prompts no es poden versionar a Git." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Petits canvis de redacció en un prompt poden trencar el compliment de format estructurat o fer perdre la capacitat d'abstenció en casos no provats manualment.",
+      "explanationsIncorrect": {
+        "B": "Al contrari, els LLMs són molt sensibles a canvis en el *system prompt*.",
+        "C": "Cap nombre reduït de proves manuals informals substitueix una suite automatitzada reproduïble.",
+        "D": "Els prompts s'han de tractar com a codi i versionar a Git (*Prompt-as-Code*)."
+      }
+    },
+    {
+      "id": "m07-04-q02",
+      "module": 7,
+      "conceptId": "m07-04-validacio-models",
+      "lessonRef": "content/module-07/m07-04-validacio-models.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Què és l'**avaluació segmentada (*Sliced Evaluation*)** en la validació d'un model d'IA públic?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Tallar les dades en fitxers d'1 KB." },
+        { "key": "B", "text": "Desglossar les mètriques de rendiment per **subgrups crítics** (idioma català vs. castellà, classes minoritàries, municipis petits, col·lectius protegits) per detectar degradacions ocultes rere una mitjana global aparentment bona." },
+        { "key": "C", "text": "Avaluar el model només sobre una fila aleatòria." },
+        { "key": "D", "text": "Ignorar totes les classes amb menys de 100 exemples." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Una mitjana global pot millorar mentre un subgrup minoritari crític es degrada severament; la *Sliced Evaluation* destapa aquestes caigudes abans de producció.",
+      "explanationsIncorrect": {
+        "A": "No té res a veure amb la mida de fitxer en disc.",
+        "C": "S'avalua sistemàticament cada segment rellevant del *Golden Set*.",
+        "D": "Precisament protegeix les classes minoritàries i crítiques!"
+      }
+    },
+    {
+      "id": "m07-04-q03",
+      "module": 7,
+      "conceptId": "m07-04-validacio-models",
+      "lessonRef": "content/module-07/m07-04-validacio-models.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Què compara el patró de validació ***Champion vs. Challenger***?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Dues targetes gràfiques de fabricants diferents." },
+        { "key": "B", "text": "El nombre de línies de codi de dos repositoris." },
+        { "key": "C", "text": "El **model o prompt actual en producció (*Champion*)** contra el **nou candidat proposat (*Challenger*)** sobre exactament el mateix *Golden Set* i restriccions SLA, promovent el candidat només si supera o iguala tots els criteris sense regressions." },
+        { "key": "D", "text": "La velocitat de tecleig de dos funcionaris." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Comparar sobre el mateix *Golden Set* congelat garanteix que cada nova versió aporta una millora objectiva i verificada respecte de producció.",
+      "explanationsIncorrect": {
+        "A": "Avalua models/prompts/pipelines, no només maquinari.",
+        "B": "Mesura qualitat, equitat, seguretat i SLA, no línies de codi.",
+        "D": "No avalua velocitat de tecleig."
+      }
+    },
+    {
+      "id": "m07-04-q04",
+      "module": 7,
+      "conceptId": "m07-04-validacio-models",
+      "lessonRef": "content/module-07/m07-04-validacio-models.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "En la **piràmide d'avaluació de prompts (*PromptOps*)**, quines verificacions pertanyen al **Nivell 1 (assercions deterministes en cada Pull Request)** i NO s'han de delegar a un *LLM-as-a-Judge*?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Validesa estricta de l'**esquema JSON/Pydantic**, comprovació que les **cites `[doc#c]` existeixen** als chunks recuperats, bloqueig de paraules/promeses prohibides i compliment de latència." },
+        { "key": "B", "text": "Valorar subjectivament l'estil literari d'un poema." },
+        { "key": "C", "text": "Només la revisió manual de 50 casos per un jurista." },
+        { "key": "D", "text": "Cap verificació es pot fer de manera determinista en LLMOps." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Tot el que és determinista (sintaxi JSON, presència i existència d'IDs de cita, patrons prohibits, latència) s'ha de validar amb codi ràpid (0 €, mil·lisegons, 100% fiable) a cada PR!",
+      "explanationsIncorrect": {
+        "B": "L'estil o matisos semàntics pertanyen als Nivells 2 i 3.",
+        "C": "Això correspon al Nivell 3 (revisió humana *Side-by-Side* per a canvis majors).",
+        "D": "Hi ha moltes comprovacions estructurals i de cites 100% deterministes."
+      }
+    },
+    {
+      "id": "m07-04-q05",
+      "module": 7,
+      "conceptId": "m07-04-validacio-models",
+      "lessonRef": "content/module-07/m07-04-validacio-models.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "En la metodologia de proves comportamentals ***CheckList***, què valida específicament una prova d'**invariància (`INV`)**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Que el model canvia radicalment la decisió quan poses una paraula en majúscules." },
+        { "key": "B", "text": "Que **perturbacions irrellevants de l'entrada** (ex. canviar el nom del sol·licitant de «Jordi» a «Fàtima», variar majúscules o errors tipogràfics menors) **NO alteren la predicció del model**, ajudant a detectar biaixos i fragilitat!" },
+        { "key": "C", "text": "Que la predicció puja sempre que augmenta el risc." },
+        { "key": "D", "text": "Que el model respon en menys d'1 mil·lisegon." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Les proves INV són una eina directa i potent per verificar robustesa lingüística i no-discriminació per nom, gènere o origen!",
+      "explanationsIncorrect": {
+        "A": "Precisament comprova que NO canviï davant majúscules o canvis irrellevants.",
+        "C": "Això és una prova direccional (`DIR`), no d'invariància (`INV`).",
+        "D": "Això és una prova de rendiment/SLA, no comportamental."
+      }
+    },
+    {
+      "id": "m07-04-q06",
+      "module": 7,
+      "conceptId": "m07-04-validacio-models",
+      "lessonRef": "content/module-07/m07-04-validacio-models.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Afegir la frase *«Respon sempre de forma molt amable i completa»* al *system prompt* d'un assistent municipal fa que comenci a inventar requisits quan li pregunten per tràmits de la DGT (fora de competència). Quin test del *Quality Gate* ho detectaria immediatament?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Una prova de latència de xarxa." },
+        { "key": "B", "text": "El càlcul de BLEU sobre preguntes de salutació." },
+        { "key": "C", "text": "El subconjunt de **preguntes fora de competència / sense evidència** del *Golden Set*, exigint **`Refusal Accuracy >= 95%`** (abstenció honesta obligatòria)." },
+        { "key": "D", "text": "Comprovar només que la resposta tingui més de 500 caràcters." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Les instruccions d'«amabilitat/completitud» sovint empenyen l'LLM a intentar ajudar fins i tot quan no té evidència; el test de `Refusal Accuracy` ho bloqueja automàticament en CI!",
+      "explanationsIncorrect": {
+        "A": "La latència no detecta al·lucinacions fora de domini.",
+        "B": "Les salutacions no posen a prova l'abstenció normativa.",
+        "D": "Exigir respostes llargues fins i tot empitjoraria el problema."
+      }
+    },
+    {
+      "id": "m07-04-q07",
+      "module": 7,
+      "conceptId": "m07-04-validacio-models",
+      "lessonRef": "content/module-07/m07-04-validacio-models.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "En *CheckList*, com s'anomena la prova que comprova que afegir «cable elèctric pelat a la vorera» a la descripció d'una incidència ha de **mantenir o augmentar la puntuació de prioritat** (mai reduir-la)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Prova d'invariància (`INV`)." },
+        { "key": "B", "text": "Prova de *Cold Start*." },
+        { "key": "C", "text": "Prova de *Data Leakage*." },
+        { "key": "D", "text": "**Prova d'expectativa direccional (`DIR` — *Directional Expectation Test*)**." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Una prova DIR verifica la monotonicitat o direcció lògica de la predicció quan afegim un senyal clar de major o menor risc/gravetat.",
+      "explanationsIncorrect": {
+        "A": "INV exigeix que la sortida NO canviï davant un canvi irrellevant.",
+        "B": "Cold Start és un problema de recomanadors.",
+        "C": "Data Leakage és una fuga de dades en preparació."
+      }
+    },
+    {
+      "id": "m07-04-q08",
+      "module": 7,
+      "conceptId": "m07-04-validacio-models",
+      "lessonRef": "content/module-07/m07-04-validacio-models.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En `avaluar_quality_gate` de l'exemple 7.4, el *Challenger* té `f1_global = 0,92` (millor que el `0,90` del *Champion*) i `refusal_acc = 97%`. Per quines **dues raons exactes** el *Quality Gate* retorna `False`?",
+      "codeSnippet": "slices_chal = {\"castella\": 0.95, \"catala_normatiu\": 0.74, \"serveis_socials\": 0.89}\nsortides_prompt = [\n    '{\"resposta\": \"Bonificació del 50%.\", \"cites\": [\"OF01-2026#c1\"]}',\n    '{\"resposta\": \"Bonificació del 50%.\", \"cites\": []}',\n]",
+      "options": [
+        { "key": "A", "text": "1) El *slice* **`catala_normatiu` cau a `0,74`** (per sota del llindar mínim `0,85`), i 2) la **sortida de prompt `#1` té la llista `cites` buida (`[]`)**, violant l'asserció determinista de cita obligatòria." },
+        { "key": "B", "text": "Perquè la latència P95 supera 1500 ms." },
+        { "key": "C", "text": "Perquè el *slice* `castella` és massa alt (`0,95`)." },
+        { "key": "D", "text": "Perquè `sortides_prompt[1]` no és JSON vàlid." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "El codi captura simultàniament una regressió oculta per idioma (*Sliced Evaluation*) i una infracció estructural del contracte de cites!",
+      "explanationsIncorrect": {
+        "B": "`p95_ms = 980.0 <= 1500.0` compleix l'SLA.",
+        "C": "Un rendiment alt en un slice és bo, el problema és la caiguda a `0,74` en `catala_normatiu`.",
+        "D": "Sintàcticament sí que és JSON vàlid, però falla la comprovació `not obj.get('cites')`."
+      }
+    },
+    {
+      "id": "m07-04-q09",
+      "module": 7,
+      "conceptId": "m07-04-validacio-models",
+      "lessonRef": "content/module-07/m07-04-validacio-models.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Per què en una licitació pública d'un sistema d'IA convé que l'Administració custodiï un ***Golden Set* d'acceptació separat i NO lliurat al contractista**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Per impedir que el proveïdor optimitzi o sobreajusti deliberadament o accidentalment el model/prompt a les respostes exactes del conjunt de prova (*benchmark overfitting* / memorització), garantint una avaluació independent i honesta." },
+        { "key": "B", "text": "Per no haver d'executar mai proves d'acceptació." },
+        { "key": "C", "text": "Perquè el contractista no necessita cap conjunt de validació propi." },
+        { "key": "D", "text": "Per ocultar els requisits funcionals del plec." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Un *holdout Golden Set* custodiat per l'Administració evita el *Goodhart's Law / benchmark overfitting* i proporciona una prova objectiva i imparcial d'acceptació contractual!",
+      "explanationsIncorrect": {
+        "B": "Al contrari, serveix precisament per executar la prova formal d'acceptació.",
+        "C": "El contractista té el seu conjunt de desenvolupament/validació, i la Diputació manté el conjunt cec d'acceptació.",
+        "D": "Els requisits i mètriques del plec són 100% públics; només els casos exactes del conjunt cec es mantenen reservats."
+      }
+    },
+    {
+      "id": "m07-04-q10",
+      "module": 7,
+      "conceptId": "m07-04-validacio-models",
+      "lessonRef": "content/module-07/m07-04-validacio-models.md",
+      "difficulty": "advanced",
+      "questionType": "metrics",
+      "prompt": "Quan s'executa el **Nivell 3 (revisió humana *Side-by-Side*)** abans d'un canvi major de model base en un assistent jurídic, per què convé que la comparativa sigui **cega (anonimitzant quin text ve del *Champion* i quin del *Challenger*)**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Per estalviar tinta d'impressora." },
+        { "key": "B", "text": "Per eliminar el **biaix de confirmació o de marca** (preferir inconscientment el «model nou» o el «model conegut») i obtenir un veredicte humà imparcial sobre rigor jurídic, claredat i to institucional." },
+        { "key": "C", "text": "Perquè els juristes no poden llegir dues respostes alhora." },
+        { "key": "D", "text": "Per substituir completament els Nivells 1 i 2." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "L'avaluació cega A/B (mostrant «Resposta 1» i «Resposta 2» en ordre aleatori) elimina el biaix de novetat/confirmació i complementa les mètriques automàtiques.",
+      "explanationsIncorrect": {
+        "A": "És una mesura metodològica científica contra biaixos cognitius.",
+        "C": "Precisament comparen les dues respostes en paral·lel (*Side-by-Side*).",
+        "D": "Complementa els Nivells 1 i 2 en canvis majors, no els substitueix."
+      }
+    }
+  ]
+}

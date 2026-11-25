@@ -1,0 +1,236 @@
+{
+  "conceptId": "m07-02-etiquetatge",
+  "module": 7,
+  "questions": [
+    {
+      "id": "m07-02-q01",
+      "module": 7,
+      "conceptId": "m07-02-etiquetatge",
+      "lessonRef": "content/module-07/m07-02-etiquetatge.md",
+      "difficulty": "basic",
+      "questionType": "metrics",
+      "prompt": "Què mesura la **Kappa de Cohen** en un procés d'etiquetatge de dades?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "L'**acord inter-anotador entre dos etiquetadors humans corregit per l'acord esperat per pur atzar**, imprescindible per verificar si la guia d'anotació és clara i consistent." },
+        { "key": "B", "text": "La velocitat d'entrenament en segons per època." },
+        { "key": "C", "text": "El nombre de gigabytes del dataset." },
+        { "key": "D", "text": "La temperatura de generació d'un LLM." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Kappa descompta l'acord atzarós (`(po - pe) / (1 - pe)`), revelant si els dos anotadors apliquen realment el mateix criteri fins i tot en classes molt desequilibrades.",
+      "explanationsIncorrect": {
+        "B": "No és una mètrica de velocitat.",
+        "C": "No mesura volum de disc.",
+        "D": "No és un hiperparàmetre de descodificació."
+      }
+    },
+    {
+      "id": "m07-02-q02",
+      "module": 7,
+      "conceptId": "m07-02-etiquetatge",
+      "lessonRef": "content/module-07/m07-02-etiquetatge.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quin valor orientatiu de **Kappa de Cohen** es considera l'estàndard recomanat (acord «gairebé perfecte») abans d'escalar l'etiquetatge o congelar un ***Golden Test Set***?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Kappa >= 0,10." },
+        { "key": "B", "text": "**Kappa >= 0,80** (si està per sota de 0,60 o 0,40, cal aturar, revisar els desacords i refinar la guia d'anotació)." },
+        { "key": "C", "text": "Kappa < 0,00." },
+        { "key": "D", "text": "Qualsevol valor negatiu és òptim." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Una Kappa >= 0,80 confirma que diferents experts apliquen els mateixos criteris de manera consistent, establint una base sòlida per entrenar i avaluar.",
+      "explanationsIncorrect": {
+        "A": "0,10 indica gairebé pur atzar.",
+        "C": "Un valor negatiu indica desacord pitjor que l'atzar.",
+        "D": "Els valors negatius indiquen una guia trencada o criteris oposats."
+      }
+    },
+    {
+      "id": "m07-02-q03",
+      "module": 7,
+      "conceptId": "m07-02-etiquetatge",
+      "lessonRef": "content/module-07/m07-02-etiquetatge.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina és la idea central de l'***Active Learning*** en etiquetatge de dades?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Etiquetar sempre primer els casos més fàcils on el model ja té 99% de confiança." },
+        { "key": "B", "text": "Eliminar els anotadors humans." },
+        { "key": "C", "text": "Prioritzar per a l'etiquetatge humà els exemples sense etiquetar on el model actual presenta **màxima incertesa** (menor marge `p1 - p2` o màxima entropia), maximitzant la millora per cada hora humana invertida." },
+        { "key": "D", "text": "Entrenar sense cap etiqueta." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Etiquetar els casos propers a la frontera de decisió aporta ordres de magnitud més informació al model que etiquetar casos trivials.",
+      "explanationsIncorrect": {
+        "A": "Etiquetar casos on el model ja està 99% segur gasta pressupost sense aportar informació nova.",
+        "B": "Precisament optimitza on posen el focus els anotadors humans.",
+        "D": "L'Active Learning és un procés iteratiu d'aprenentatge supervisat amb humans."
+      }
+    },
+    {
+      "id": "m07-02-q04",
+      "module": 7,
+      "conceptId": "m07-02-etiquetatge",
+      "lessonRef": "content/module-07/m07-02-etiquetatge.md",
+      "difficulty": "intermediate",
+      "questionType": "metrics",
+      "prompt": "En un dataset de detecció d'irregularitats on només el **4%** dels casos són positius, dos anotadors coincideixen en el **92%** dels casos, però tenen **`Kappa = -0,04`**. Què explica aquesta aparent paradoxa?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "El **92%** s'explica gairebé tot per l'**acord atzarós sobre la classe majoritària (`NORMAL`, 96%)**, mentre que els dos anotadors **no coincideixen sobre quins casos són realment irregulars**; la guia d'anotació necessita refinament immediat." },
+        { "key": "B", "text": "Hi ha un error en la fórmula de Kappa perquè 92% sempre és excel·lent." },
+        { "key": "C", "text": "Significa que el 92% de les irregularitats s'han detectat perfectament." },
+        { "key": "D", "text": "Significa que no cal cap guia d'anotació." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "En classes molt desequilibrades, el percentatge d'acord simple queda dominat per la classe majoritària; Kappa desemmascara immediatament la manca d'acord sobre la classe minoritària crítica!",
+      "explanationsIncorrect": {
+        "B": "La fórmula funciona perfectament: és precisament per això que existeix Kappa!",
+        "C": "Al contrari, quasi no han coincidit en els casos positius.",
+        "D": "Indica una necessitat urgent de reescriure la guia i calibrar l'equip."
+      }
+    },
+    {
+      "id": "m07-02-q05",
+      "module": 7,
+      "conceptId": "m07-02-etiquetatge",
+      "lessonRef": "content/module-07/m07-02-etiquetatge.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Quin risc psicològic introdueix el ***Pre-labeling* assistit per IA** (on el model pre-omple l'etiqueta i l'humà la valida) i com es mitiga?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Fa que els anotadors humans rebutgin sempre totes les etiquetes correctes." },
+        { "key": "B", "text": "El **biaix d'ancoratge / fatiga**: l'anotador tendeix a clicar «Acceptar» acríticament propagant els errors del model; es mitiga intercalant **exemples *honeypot* (trampa) amb veritat coneguda**, mostrant etiquetes només en alta confiança i auditant la Kappa." },
+        { "key": "C", "text": "Elimina la possibilitat d'utilitzar *Label Studio*." },
+        { "key": "D", "text": "Duplica el temps necessari per etiquetar cada document." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "El biaix d'ancoratge converteix ràpidament el *Pre-labeling* en un cercle viciós que reforça els errors del model antic si no es controla amb *honeypots* i auditories.",
+      "explanationsIncorrect": {
+        "A": "El biaix és el contrari: acceptar passivament el suggeriment de la màquina.",
+        "C": "Label Studio i Argilla suporten pre-labeling i control de qualitat.",
+        "D": "Precisament s'usa per reduir el temps d'anotació, però requereix controls de qualitat."
+      }
+    },
+    {
+      "id": "m07-02-q06",
+      "module": 7,
+      "conceptId": "m07-02-etiquetatge",
+      "lessonRef": "content/module-07/m07-02-etiquetatge.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Per què **MAI** no s'ha de construir el ***Golden Test Set*** d'avaluació final mitjançant ***Weak Supervision*** (regles heurístiques) o etiquetatge automàtic d'un LLM sense doble validació humana?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè els LLMs no saben escriure fitxers JSON." },
+        { "key": "B", "text": "Perquè el *Golden Test Set* ha de ser molt més gran que `train`." },
+        { "key": "C", "text": "Perquè el *Golden Test Set* és la **mesura de veritat real** del projecte: si té etiquetes sorolloses o d'un altre model, les mètriques només mesuraran quant s'assembla el teu model als **errors de les regles o de l'LLM**, donant una falsa sensació de qualitat." },
+        { "key": "D", "text": "Perquè `Weak Supervision` només serveix per a imatges." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Pots usar *Weak Supervision* o *Pre-labeling* per escalar `train` amb prudència, però el *Golden Test Set* ha de ser 100% veritat experta humana (doble anotació + adjudicació)!",
+      "explanationsIncorrect": {
+        "A": "El problema no és de format, sinó de validesa científica de l'avaluació.",
+        "B": "El Golden Test Set sol ser més petit (ex. 200–1.000 casos) però de màxima qualitat.",
+        "D": "S'usa molt en NLP i dades tabulars."
+      }
+    },
+    {
+      "id": "m07-02-q07",
+      "module": 7,
+      "conceptId": "m07-02-etiquetatge",
+      "lessonRef": "content/module-07/m07-02-etiquetatge.md",
+      "difficulty": "intermediate",
+      "questionType": "metrics",
+      "prompt": "Quin coeficient d'acord inter-anotador has d'utilitzar en lloc de la Kappa de Cohen quan participen **4 anotadors diferents**, no tots etiqueten tots els ítems i l'escala és **ordinal (puntuació d'1 a 5)**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "RMSE." },
+        { "key": "B", "text": "BLEU." },
+        { "key": "C", "text": "Distància de Levenshtein." },
+        { "key": "D", "text": "**Alfa de Krippendorff (*Krippendorff's alpha*)**, que suporta qualsevol nombre d'anotadors, dades faltants i escales nominals, ordinals o d'interval." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "La Kappa de Cohen està limitada a exactament 2 anotadors sobre el mateix conjunt complet; Krippendorff's alpha és el coeficient generalitzat estàndard per a múltiples anotadors i escales ordinals.",
+      "explanationsIncorrect": {
+        "A": "RMSE és un error de regressió, no un coeficient d'acord inter-anotador.",
+        "B": "BLEU avalua traducció automàtica.",
+        "C": "Levenshtein mesura distància d'edició entre cadenes de text (CER/WER)."
+      }
+    },
+    {
+      "id": "m07-02-q08",
+      "module": 7,
+      "conceptId": "m07-02-etiquetatge",
+      "lessonRef": "content/module-07/m07-02-etiquetatge.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En `seleccionar_active_learning` de l'exemple 7.2, per què el sistema prioritza `EXP-11` i `EXP-12` abans que `EXP-10`, i quina millora convé afegir-hi en producció per evitar biaix de mostreig?",
+      "codeSnippet": "def marge(probs: dict[str, float]) -> float:\n    top2 = sorted(probs.values(), reverse=True)[:2]\n    return top2[0] - top2[1]",
+      "options": [
+        { "key": "A", "text": "Perquè `EXP-11` (`0,04`) i `EXP-12` (`0,07`) tenen els **marges Top1-Top2 més petits (màxima incertesa)**; en producció convé barrejar un **~80% d'incertesa + ~20% de mostra aleatòria/diversa** per no crear punts cecs sobre nous tipus d'expedients." },
+        { "key": "B", "text": "Perquè `EXP-10` té el marge més petit (`0,02`)." },
+        { "key": "C", "text": "Perquè `sorted(..., reverse=True)` ordena de menor a major." },
+        { "key": "D", "text": "No cal barrejar mai cap mostra aleatòria en *Active Learning*." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "El mostreig pur per incertesa pot concentrar-se en una sola zona o en soroll/outliers; combinar incertesa (80%) + exploració aleatòria/diversitat (20%) manté una bona cobertura de tota la distribució.",
+      "explanationsIncorrect": {
+        "B": "El marge de `EXP-10` és `0.94 - 0.04 = 0.90` (molt alt!).",
+        "C": "`reverse=True` ordena de major a menor per agafar les 2 probabilitats més altes.",
+        "D": "Sense exploració aleatòria el model pot ignorar àrees noves on és erròniament sobreconfiat."
+      }
+    },
+    {
+      "id": "m07-02-q09",
+      "module": 7,
+      "conceptId": "m07-02-etiquetatge",
+      "lessonRef": "content/module-07/m07-02-etiquetatge.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "En dissenyar el ***Golden Set* d'un assistent RAG municipal**, per què s'hi ha d'incloure obligatòriament un **10–15% de preguntes sense resposta a la base de coneixement**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Per fer fallar el model a propòsit i no posar-lo mai en producció." },
+        { "key": "B", "text": "Per avaluar objectivament la **capacitat d'abstenció honesta (*No-Answer / Refusal Accuracy*)** del sistema RAG, assegurant que davant consultes fora de competència o no documentades s'absté en lloc d'al·lucinar." },
+        { "key": "C", "text": "Perquè un RAG no pot respondre més del 85% de les preguntes." },
+        { "key": "D", "text": "Per reduir el nombre de chunks de la base vectorial." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Si el *Golden Set* només conté preguntes responibles, un LLM que al·lucina sempre sense abstenir-se mai podria treure bona nota; els casos d'abstenció obligatòria blinden la seguretat jurídica!",
+      "explanationsIncorrect": {
+        "A": "El sistema passa el test precisament quan s'absté correctament en aquests casos.",
+        "C": "No hi ha cap límit del 85%; es tracta de mesurar explícitament el comportament fora de domini.",
+        "D": "No modifica la base vectorial."
+      }
+    },
+    {
+      "id": "m07-02-q10",
+      "module": 7,
+      "conceptId": "m07-02-etiquetatge",
+      "lessonRef": "content/module-07/m07-02-etiquetatge.md",
+      "difficulty": "advanced",
+      "questionType": "normative",
+      "prompt": "Quin requisit de privacitat (RGPD / ENS) és imprescindible en escollir la **plataforma d'etiquetatge** per a expedients o consultes municipals?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Contractar plataformes públiques de *crowdsourcing* anònim fora de la UE." },
+        { "key": "B", "text": "Enviar tots els expedients en brut per correu personal als anotadors." },
+        { "key": "C", "text": "Utilitzar eines desplegades ***on-premise* o en entorn sobirà ENS** (ex. *Label Studio*, *Argilla*) amb autenticació SSO, control d'accés per rol i treballant sobre **dades prèviament pseudonimitzades** de la capa Silver." },
+        { "key": "D", "text": "Publicar les instàncies en un full de càlcul obert per rebre ajuda voluntària." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Mantenir l'etiquetatge dins el perímetre segur ENS amb dades pseudonimitzades compleix minimització, confidencialitat i sobirania de dades públiques.",
+      "explanationsIncorrect": {
+        "A": "Vulneraria greument el RGPD (transferències internacionals i comunicació il·lícita de dades).",
+        "B": "Incompliment greu de seguretat ENS i RGPD.",
+        "D": "Bretxa de dades massiva."
+      }
+    }
+  ]
+}

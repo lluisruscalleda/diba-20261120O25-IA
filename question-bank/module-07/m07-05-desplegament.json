@@ -1,0 +1,236 @@
+{
+  "conceptId": "m07-05-desplegament",
+  "module": 7,
+  "questions": [
+    {
+      "id": "m07-05-q01",
+      "module": 7,
+      "conceptId": "m07-05-desplegament",
+      "lessonRef": "content/module-07/m07-05-desplegament.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina estratègia de desplegament permet provar un model nou (*Challenger*) amb **trànsit real de producció i ZERO risc per als ciutadans**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "***Shadow Deployment* (desplegament a l'ombra)**: el *Champion* continua responent al 100% dels ciutadans mentre una còpia asíncrona de cada petició s'envia al *Challenger* només per registrar i comparar latència, errors i sortides." },
+        { "key": "B", "text": "Desplegament *Big Bang* al 100% un divendres a la tarda." },
+        { "key": "C", "text": "Desactivar el model antic abans de provar el nou." },
+        { "key": "D", "text": "Executar el model només sobre 1 dada sintètica." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "El desplegament Shadow valida comportament real, latència i memòria sobre dades reals de producció sense que cap ciutadà vegi mai una resposta del model nou.",
+      "explanationsIncorrect": {
+        "B": "El Big Bang té el màxim risc d'impacte massiu.",
+        "C": "Deixaria el servei aturat i sense xarxa de seguretat.",
+        "D": "1 dada sintètica no valida el comportament sota trànsit real."
+      }
+    },
+    {
+      "id": "m07-05-q02",
+      "module": 7,
+      "conceptId": "m07-05-desplegament",
+      "lessonRef": "content/module-07/m07-05-desplegament.md",
+      "difficulty": "basic",
+      "questionType": "architecture",
+      "prompt": "Un servei d'IDP/OCR processa expedients PDF d'entre 10 i 80 pàgines (triga entre 15 i 90 segons per expedient) i rep pics de 600 sol·licituds l'últim dia de termini. Quin patró d'inferència és el correcte?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Una crida HTTP síncrona bloquejant fins que acabin totes les 80 pàgines." },
+        { "key": "B", "text": "**Arquitectura asíncrona per cua de missatges**: l'API retorna immediatament `HTTP 202 Accepted + job_id`, encola la tasca (*RabbitMQ/Redis*) i un pool de *workers* processa els PDFs de forma estable amb reintents i *Dead-Letter Queue*." },
+        { "key": "C", "text": "Carregar el model OCR dins del navegador del ciutadà." },
+        { "key": "D", "text": "Processar només 1 PDF al dia manualment." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Les tasques pesades (>5–10 s) i amb pics de demanda han d'anar sempre per cua asíncrona per evitar *HTTP 504 Timeout* i saturació de connexions web.",
+      "explanationsIncorrect": {
+        "A": "Provocaria *timeouts* massius i col·lapse dels fils HTTP en pics de campanya.",
+        "C": "Els models IDP pesats requereixen servidors/GPUs internes.",
+        "D": "Inviable per a 600 sol·licituds en un dia."
+      }
+    },
+    {
+      "id": "m07-05-q03",
+      "module": 7,
+      "conceptId": "m07-05-desplegament",
+      "lessonRef": "content/module-07/m07-05-desplegament.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Com funciona un desplegament ***Canary Release***?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Canvia el 100% del trànsit de cop sense cap monitoratge." },
+        { "key": "B", "text": "Només executa el model en entorns de desenvolupament." },
+        { "key": "C", "text": "Desvia progressivament un percentatge petit i creixent del trànsit real (`5% → 25% → 50% → 100%`) cap a la nova versió, amb ***rollback* automàtic a `0%`** si pugen els errors o la latència." },
+        { "key": "D", "text": "Esborra la versió anterior abans d'arrencar la nova." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "El Canary limita el radi d'impacte d'un error imprevist a un percentatge mínim del trànsit i permet revertir automàticament en segons.",
+      "explanationsIncorrect": {
+        "A": "Això seria Big Bang.",
+        "B": "Opera directament en producció sobre una fracció acotada del trànsit.",
+        "D": "Manté sempre activa la versió antiga (*Champion*) per poder fer *rollback* immediat."
+      }
+    },
+    {
+      "id": "m07-05-q04",
+      "module": 7,
+      "conceptId": "m07-05-desplegament",
+      "lessonRef": "content/module-07/m07-05-desplegament.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Per què en una API FastAPI que serveix un model pesat (ex. 4 GB a GPU) és crític distingir l'endpoint **`/health/live`** de **`/health/ready`**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "`/health/live` comprova si el procés està viu, mentre que **`/health/ready` només retorna `200 OK` un cop el model s'ha carregat completament a RAM/VRAM**, impedint que el *Load Balancer* enviï peticions reals durant els 30–60 segons d'arrencada!" },
+        { "key": "B", "text": "Són exactament idèntics i només canvia el nom." },
+        { "key": "C", "text": "`/health/ready` serveix per reentrenar el model cada vegada que es crida." },
+        { "key": "D", "text": "`/health/live` apaga el contenidor cada 5 segons." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Separar Liveness de Readiness evita tant errors 500 durant l'arrencada lenta d'un model gran com reinicis infinits del contenidor per part de Kubernetes!",
+      "explanationsIncorrect": {
+        "B": "Tenen semàntiques molt diferents per a l'orquestrador (reiniciar vs. treure/posar al balancejador).",
+        "C": "Les sondes de salut han de ser lleugeres i de només lectura.",
+        "D": "Liveness comprova salut del procés, no l'apaga si funciona bé."
+      }
+    },
+    {
+      "id": "m07-05-q05",
+      "module": 7,
+      "conceptId": "m07-05-desplegament",
+      "lessonRef": "content/module-07/m07-05-desplegament.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Quins dos mecanismes clau d'un motor de servei LLM com **vLLM** permeten atendre desenes de consultes ciutadanes concurrents sobre la mateixa GPU sense col·lapsar?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Carregar el model des del disc dur en cada token." },
+        { "key": "B", "text": "***PagedAttention*** (gestiona la memòria *KV-Cache* en blocs paginats sense fragmentació de VRAM) i ***Continuous Batching*** (agrupa dinàmicament generacions concurrents sense esperar la resposta més llarga)." },
+        { "key": "C", "text": "Desactivar la memòria cau i obligar els usuaris a fer cua d'un en un." },
+        { "key": "D", "text": "Limitar totes les respostes a 3 caràcters." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "PagedAttention + Continuous Batching són les innovacions que multipliquen per 3–10× el *throughput* real de servei d'LLMs en producció.",
+      "explanationsIncorrect": {
+        "A": "Seria milers de vegades més lent.",
+        "C": "Atendre d'un en un és exactament el problema dels servidors naïfs que vLLM resol.",
+        "D": "No limita la resposta a 3 caràcters."
+      }
+    },
+    {
+      "id": "m07-05-q06",
+      "module": 7,
+      "conceptId": "m07-05-desplegament",
+      "lessonRef": "content/module-07/m07-05-desplegament.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Quina diferència clau hi ha entre ***Canary Release*** i ***A/B Testing***?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Cap diferència, són sinònims exactes." },
+        { "key": "B", "text": "El *Canary* no mesura mai errors ni latència." },
+        { "key": "C", "text": "***Canary*** és una estratègia d'**operacions i mitigació de risc tècnic** (pujar trànsit pas a pas verificant estabilitat/SLA per detectar fallades), mentre que ***A/B Testing*** és un **experiment estadístic** entre versions ja estables per mesurar impacte en KPIs de negoci/CSAT." },
+        { "key": "D", "text": "L'*A/B Testing* envia sempre el 0% del trànsit a la versió B." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Primer assegures estabilitat tècnica amb Shadow/Canary; després, si vols demostrar quin model/prompt millora significativament la resolució ciutadana, fas un experiment A/B!",
+      "explanationsIncorrect": {
+        "A": "Tenen objectius diferents (seguretat de desplegament vs. inferència estadística de negoci).",
+        "B": "El Canary vigila precisament errors, latència i recursos en temps real.",
+        "D": "L'A/B Testing divideix trànsit real (ex. 50/50); 0% d'exposició seria *Shadow*."
+      }
+    },
+    {
+      "id": "m07-05-q07",
+      "module": 7,
+      "conceptId": "m07-05-desplegament",
+      "lessonRef": "content/module-07/m07-05-desplegament.md",
+      "difficulty": "intermediate",
+      "questionType": "metrics",
+      "prompt": "Per què s'utilitza ***Streaming* de tokens (SSE — *Server-Sent Events*)** en desplegar un chatbot LLM ciutadà?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Per reduir el nombre total de paràmetres del model." },
+        { "key": "B", "text": "Per eliminar els *guardrails* de seguretat." },
+        { "key": "C", "text": "Per obligar l'usuari a esperar 8 segons davant una pantalla en blanc." },
+        { "key": "D", "text": "Per reduir dràsticament el ***TTFT* (*Time To First Token*, ex. `< 500 ms`)** i la latència percebuda, permetent que el ciutadà comenci a llegir la resposta de seguida mentre es generen els tokens restants." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Tot i que el temps total de generació sigui de 3–4 segons, començar a veure text en 300–500 ms millora radicalment l'experiència d'usuari.",
+      "explanationsIncorrect": {
+        "A": "No altera el nombre de paràmetres del model.",
+        "B": "Els guardrails d'entrada i sortida/stream segueixen sent necessaris.",
+        "C": "Exactament al contrari: elimina la pantalla en blanc."
+      }
+    },
+    {
+      "id": "m07-05-q08",
+      "module": 7,
+      "conceptId": "m07-05-desplegament",
+      "lessonRef": "content/module-07/m07-05-desplegament.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En la classe `CanaryRouter` de l'exemple 7.5, què dispara exactament el **`ROLLBACK_AUTOMATIC_A_V1!`** a la petició `#03` i què passa amb les peticions `#04` a `#24`?",
+      "codeSnippet": "if error or latencia_ms > self.max_lat_ms:\n    self.errors_canary += 1\nif self.peticions_canary >= 4 and (self.errors_canary / self.peticions_canary) > self.max_taxa_error:\n    self.rollback_activat = True\n    self.percentatge_canary = 0",
+      "options": [
+        { "key": "A", "text": "2 de les 4 primeres peticions *Canary* superen l'SLA de latència (`780 ms > 500 ms`, taxa `50% > 10%`); el router posa **`percentatge_canary = 0`** i **`rollback_activat = True`**, redirigint automàticament el **100% de `#04..#24` cap a `v1_champion`**!" },
+        { "key": "B", "text": "El router es bloqueja i deixa de respondre a totes les peticions `#04..#24`." },
+        { "key": "C", "text": "El router augmenta el *Canary* del 20% al 100%." },
+        { "key": "D", "text": "El *rollback* no es dispara perquè `error` era `False`." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "El circuit breaker de Canary vigila tant errors explícits com violacions d'SLA de latència (`latencia_ms > 500 ms`), protegint el servei automàticament sense esperar intervenció humana!",
+      "explanationsIncorrect": {
+        "B": "No deixa de respondre: torna a servir el 100% amb la versió estable `v1_champion`.",
+        "C": "El baixa immediatament a `0%`.",
+        "D": "La condició és `if error or latencia_ms > self.max_lat_ms:` — una violació d'SLA compta com a fallada!"
+      }
+    },
+    {
+      "id": "m07-05-q09",
+      "module": 7,
+      "conceptId": "m07-05-desplegament",
+      "lessonRef": "content/module-07/m07-05-desplegament.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Quin antipatró crític de rendiment es comet en una API FastAPI si carregues el model ML (`joblib.load('model.pkl')` o `AutoModel.from_pretrained(...)`) **dins de la funció de l'endpoint `@app.post('/predict')`**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Cap, perquè carregar-lo a cada petició és instantani." },
+        { "key": "B", "text": "Cada petició torna a llegir gigabytes del disc i a reservar RAM/VRAM, **disparant la latència de mil·lisegons a segons i tombant el servidor per OOM (*Out-Of-Memory*)** sota concurrència; el model s'ha de carregar **una sola vegada al *lifespan* d'arrencada**!" },
+        { "key": "C", "text": "Millora el F1 del model." },
+        { "key": "D", "text": "Estalvia memòria en pics de 100 usuaris simultanis." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Carregar el model un sol cop a l'arrencada (`lifespan` / singleton de worker) i reutilitzar-lo en memòria per a totes les peticions és regla elemental de *Model Serving*.",
+      "explanationsIncorrect": {
+        "A": "Carregar pesos des de disc triga segons sencers.",
+        "C": "No té cap efecte positiu sobre el F1.",
+        "D": "100 peticions simultànies intentant carregar 100 còpies del model en RAM col·lapsen el servidor immediatament!"
+      }
+    },
+    {
+      "id": "m07-05-q10",
+      "module": 7,
+      "conceptId": "m07-05-desplegament",
+      "lessonRef": "content/module-07/m07-05-desplegament.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Quan convé escollir ***Blue-Green Deployment*** en lloc de ***Canary Release***?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Quan no disposes de segon entorn i només vols provar sense usuaris." },
+        { "key": "B", "text": "Quan vols barrejar 5 versions diferents alhora." },
+        { "key": "C", "text": "Quan **no és viable que dues versions convisquin en paral·lel** sobre el mateix trànsit (ex. canvi d'esquema de base de dades o contracte d'API) però necessites **commutació atòmica i *rollback* instantani** tornant el balancejador a l'entorn *Blue*." },
+        { "key": "D", "text": "Sempre que no tinguis pressupost per duplicar temporalment la infraestructura." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Blue-Green proporciona un tall net i retorn en 1 segon a costa de mantenir temporalment dos entorns complets en paral·lel.",
+      "explanationsIncorrect": {
+        "A": "Això seria Shadow; Blue-Green precisament requereix dos entorns complets.",
+        "B": "Blue-Green serveix una sola versió activa a producció en cada moment.",
+        "D": "Blue-Green té precisament el cost temporal de duplicar els recursos de còmput."
+      }
+    }
+  ]
+}

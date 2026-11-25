@@ -1,0 +1,236 @@
+{
+  "conceptId": "m07-01-preparacio-dades",
+  "module": 7,
+  "questions": [
+    {
+      "id": "m07-01-q01",
+      "module": 7,
+      "conceptId": "m07-01-preparacio-dades",
+      "lessonRef": "content/module-07/m07-01-preparacio-dades.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Què és el ***Training-Serving Skew*** en un sistema de Machine Learning en producció?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "La discrepància entre la manera com es transformen, imputen o calculen les característiques durant l'**entrenament** respecte de la **inferència en producció**, provocant caiguda de rendiment real." },
+        { "key": "B", "text": "El temps que triga un usuari a obrir la web." },
+        { "key": "C", "text": "Tenir massa dades d'entrenament netes." },
+        { "key": "D", "text": "Un tipus d'atac de *prompt injection*." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Si l'entrenament usa una transformació (ex. z-score + mediana) i l'API de producció n'implementa una altra diferent (ex. dividir per 1000 + imputar 0), el model rep entrades fora de distribució.",
+      "explanationsIncorrect": {
+        "B": "No és una mètrica de latència de frontend.",
+        "C": "Tenir més dades netes és positiu, no és skew.",
+        "D": "És un error de pipeline de dades, no un atac d'LLM."
+      }
+    },
+    {
+      "id": "m07-01-q02",
+      "module": 7,
+      "conceptId": "m07-01-preparacio-dades",
+      "lessonRef": "content/module-07/m07-01-preparacio-dades.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina funció compleix un **contracte de dades (*Data Contract*)** situat a l'entrada d'un pipeline MLOps?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Contractar proveïdors de maquinari." },
+        { "key": "B", "text": "Validar automàticament l'**esquema, tipus, rangs vàlids i taxa màxima de nuls** de les dades entrants, posant en quarantena lots corruptes abans que contaminin l'entrenament o la inferència." },
+        { "key": "C", "text": "Eliminar les dades de la capa Bronze." },
+        { "key": "D", "text": "Substituir els models de classificació." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Els Data Contracts (Pandera, Pydantic, Great Expectations) actuen com a porta de qualitat automatitzada contra el *Schema Drift* i les dades corruptes.",
+      "explanationsIncorrect": {
+        "A": "És una especificació tècnica executable de qualitat de dades, no un contracte mercantil.",
+        "C": "La capa Bronze es manté immutable.",
+        "D": "Protegeix les entrades del model, no el substitueix."
+      }
+    },
+    {
+      "id": "m07-01-q03",
+      "module": 7,
+      "conceptId": "m07-01-preparacio-dades",
+      "lessonRef": "content/module-07/m07-01-preparacio-dades.md",
+      "difficulty": "basic",
+      "questionType": "architecture",
+      "prompt": "En l'arquitectura de dades ***Medallion* (Bronze → Silver → Gold)**, en quina capa s'ha d'aplicar la **neteja, deduplicació i pseudonimització RGPD** abans que els equips d'IA construeixin característiques?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "No es fa en cap capa." },
+        { "key": "B", "text": "Modificant a mà la capa Bronze original." },
+        { "key": "C", "text": "En la transició cap a la capa **Silver** (mantenint Bronze cru i immutable amb accés restringit, i produint en Silver dades netes, validades i pseudonimitzades)." },
+        { "key": "D", "text": "Només després de publicar el model a Internet." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Silver actua com la zona curada i pseudonimitzada (privacitat des del disseny RGPD art. 25), protegint Bronze com a còpia crua d'auditoria restringida.",
+      "explanationsIncorrect": {
+        "A": "Incompliria el RGPD i degradaria la qualitat del model.",
+        "B": "Bronze ha de ser immutable per a reproduïbilitat i auditoria.",
+        "D": "La minimització ha de ser prèvia a l'entrenament."
+      }
+    },
+    {
+      "id": "m07-01-q04",
+      "module": 7,
+      "conceptId": "m07-01-preparacio-dades",
+      "lessonRef": "content/module-07/m07-01-preparacio-dades.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Un model entrenat per predir el **dia 0 del registre** si una subvenció necessitarà requeriment d'esmena obté **`ROC-AUC = 0,994`** al notebook, però cau a **`0,58`** en producció perquè incloïa la columna `num_notificacions_enviades`. Quin error exacte s'ha comès?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "***Target / Future Leakage***: `num_notificacions_enviades` és una dada que només existeix *després* de tramitar l'expedient (no el dia 0 del registre!), inflant falsament les mètriques *offline* i deixant el model cec en producció." },
+        { "key": "B", "text": "Infraajustament (*underfitting*) per tenir massa poques capes." },
+        { "key": "C", "text": "Manca de memòria GPU." },
+        { "key": "D", "text": "Bona generalització temporal." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Qualsevol variable generada posteriorment a l'instant de predicció (*Point-in-Time*) constitueix *Future Leakage*, el primer sospitós sempre que un ROC-AUC sembla «massa bo per ser veritat» (>0,98).",
+      "explanationsIncorrect": {
+        "B": "Amb 0,994 en validació offline no hi ha infraajustament, sinó fuga del futur.",
+        "C": "No té res a veure amb el maquinari.",
+        "D": "En producció cau de 0,994 a 0,58 (gairebé atzar!)."
+      }
+    },
+    {
+      "id": "m07-01-q05",
+      "module": 7,
+      "conceptId": "m07-01-preparacio-dades",
+      "lessonRef": "content/module-07/m07-01-preparacio-dades.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Com elimina un ***Feature Store*** (o un **`sklearn.Pipeline` únic empaquetat**) el risc de ***Training-Serving Skew***?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Permetent que cada equip escrigui la seva pròpia fórmula de normalització a mà." },
+        { "key": "B", "text": "Garantint que exactament la **mateixa definició i els mateixos paràmetres de transformació** (ajustats només en `train`) s'executen tant en entrenament *offline* com en inferència *online* en producció." },
+        { "key": "C", "text": "Eliminant totes les transformacions de dades." },
+        { "key": "D", "text": "Canviant els noms de les columnes aleatòriament." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Una única font de veritat per al càlcul i transformació de *features* elimina la duplicació manual de lògica entre el notebook i l'API de producció.",
+      "explanationsIncorrect": {
+        "A": "Duplicar lògica manualment entre equips és precisament la causa del skew.",
+        "C": "Les transformacions segueixen sent necessàries, però unificades.",
+        "D": "Provocaria errors d'esquema."
+      }
+    },
+    {
+      "id": "m07-01-q06",
+      "module": 7,
+      "conceptId": "m07-01-preparacio-dades",
+      "lessonRef": "content/module-07/m07-01-preparacio-dades.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Per què en dades administratives amb evolució al llarg dels anys (ex. campanyes tributàries 2021–2025) s'ha d'utilitzar **partició temporal (*Time-Based Split*)** en lloc de `train_test_split` aleatori?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè el `split` aleatori és més lent de calcular." },
+        { "key": "B", "text": "Perquè Python no permet particions aleatòries en dates." },
+        { "key": "C", "text": "Per simular fidelment l'escenari real de producció (**entrenar amb el passat per predir el futur**) i evitar que patrons econòmics o normatius del 2025 es filtrin al conjunt d'entrenament del 2023." },
+        { "key": "D", "text": "Per aconseguir sempre una precisió artificialment més alta." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "En producció sempre predius el futur a partir del passat; un split aleatori barreja anys i sobreestima artificialment el rendiment real!",
+      "explanationsIncorrect": {
+        "A": "El temps de càlcul és negligible en ambdós casos.",
+        "B": "Es pot fer tècnicament, però metodològicament és erroni en sèries/processos temporals.",
+        "D": "Al contrari, dona una estimació més realista (i sovint més exigent) que el split aleatori."
+      }
+    },
+    {
+      "id": "m07-01-q07",
+      "module": 7,
+      "conceptId": "m07-01-preparacio-dades",
+      "lessonRef": "content/module-07/m07-01-preparacio-dades.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "En **LLMOps**, per què la **deduplicació aproximada (*MinHash / SimHash*)** i el ***PII Scrubbing*** són passos crítics de la preparació de dades abans de fer *fine-tuning* o indexar un RAG?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Només per fer el fitxer JSON més bonic." },
+        { "key": "B", "text": "Per augmentar el nombre de còpies duplicades de cada document." },
+        { "key": "C", "text": "Perquè els LLMs no poden llegir text sense duplicats." },
+        { "key": "D", "text": "Per evitar que documents quasi duplicats saturin el Top-K del RAG o causin memorització en *fine-tuning*, i per impedir que el model **memoritzi o filtri dades personals (RGPD)**!" }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Els duplicats degraden la diversitat del RAG i disparen la memorització verbatim en fine-tuning; i un cop entrenat un LLM amb PII, esborrar-la dels pesos és pràcticament impossible sense reentrenar!",
+      "explanationsIncorrect": {
+        "A": "Són requisits fonamentals de qualitat i protecció de dades.",
+        "B": "Precisament redueix i elimina els duplicats.",
+        "C": "Llegeixen millor i recuperen context més ric quan el corpus és net i deduplicat."
+      }
+    },
+    {
+      "id": "m07-01-q08",
+      "module": 7,
+      "conceptId": "m07-01-preparacio-dades",
+      "lessonRef": "content/module-07/m07-01-preparacio-dades.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En la classe `PreprocessorSenseLeakage` de l'exemple 7.1, què passaria si algú cridés **`prep.fit(dades)`** (sobre tot el conjunt) abans de separar `train` i `test`?",
+      "codeSnippet": "train = [r for r in dades if r.data < \"2025-01-01\"]\ntest = [r for r in dades if r.data >= \"2025-01-01\"]\nprep = PreprocessorSenseLeakage().fit(train)",
+      "options": [
+        { "key": "A", "text": "Es produiria ***Preprocessing + Temporal Leakage***: el valor extrem del futur (`900.0 €` de l'abril 2025) contaminaria `mediana_import`, `mitjana_import` i `std_import`, distorsionant la validació i trencant la independència del conjunt de prova." },
+        { "key": "B", "text": "El codi llançaria un `SyntaxError`." },
+        { "key": "C", "text": "Milloraria legítimament la capacitat real de producció." },
+        { "key": "D", "text": "No alteraria ni la mitjana ni la desviació estàndard." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "L'estadística d'escalat i imputació s'ha d'aprendre exclusivament sobre `train` (`fit(train)`) i aplicar-se congelada sobre `test` i producció (`transform(...)`).",
+      "explanationsIncorrect": {
+        "B": "Executaria silenciosament sense error de sintaxi — per això el leakage és tan perillós!",
+        "C": "No millora producció; només enganya les mètriques de test fent servir informació futura no disponible en realitat.",
+        "D": "Incloure `900.0 €` altera dràsticament tant la mitjana com la desviació estàndard."
+      }
+    },
+    {
+      "id": "m07-01-q09",
+      "module": 7,
+      "conceptId": "m07-01-preparacio-dades",
+      "lessonRef": "content/module-07/m07-01-preparacio-dades.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Per què les eines de **versionat de dades (com DVC o LakeFS amb hashes SHA-256)** no guarden els datasets gegants directament dins de Git?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè Git no té suport per a hashes." },
+        { "key": "B", "text": "Perquè Git no està dissenyat per a fitxers binaris grans (inflaria el repositori); DVC guarda a Git només un **fitxer punter lleuger amb el hash SHA-256** i emmagatzema les dades reals en un **emmagatzematge d'objectes segur (S3/MinIO/on-prem)**, vinculant exactament codi + dades!" },
+        { "key": "C", "text": "Perquè no cal vincular mai el codi amb les dades d'entrenament." },
+        { "key": "D", "text": "Perquè DVC publica automàticament les dades en obert a GitHub." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Guardar punters versionats amb hash a Git + dades reals en emmagatzematge d'objectes privat combina reproduïbilitat exacta (`git checkout` + `dvc pull`) amb seguretat i escalabilitat!",
+      "explanationsIncorrect": {
+        "A": "Git utilitza hashes SHA internament, però no escala amb binaris de GB/TB.",
+        "C": "Vincular exactament commit de codi + versió exacta del dataset és la base de la reproduïbilitat MLOps i l'auditoria.",
+        "D": "Les dades reals es guarden al bucket privat corporatiu (S3/MinIO on-premise), mai públiques."
+      }
+    },
+    {
+      "id": "m07-01-q10",
+      "module": 7,
+      "conceptId": "m07-01-preparacio-dades",
+      "lessonRef": "content/module-07/m07-01-preparacio-dades.md",
+      "difficulty": "advanced",
+      "questionType": "normative",
+      "prompt": "Com facilita un pipeline reproduïble amb **hashes de dataset i llinatge (*Data Lineage*)** el compliment de l'**article 10 (Governança de dades) i article 11 (Documentació tècnica) de l'AI Act**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Permetent esborrar l'origen de totes les dades perquè ningú no sàpiga d'on venen." },
+        { "key": "B", "text": "Evitant documentar quines transformacions s'han aplicat." },
+        { "key": "C", "text": "Garantint **traçabilitat completa i demostrable** sobre l'origen, filtres de neteja, controls de qualitat/biaix i versió exacta dels conjunts d'entrenament, validació i prova utilitzats per construir cada versió del model." },
+        { "key": "D", "text": "Exemptant el model de qualsevol prova de validació." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "El llinatge automatitzat (codi Git + contracte de dades + hash de dataset) aporta proves objectives i auditables del compliment de qualitat i governança de dades exigit per l'AI Act.",
+      "explanationsIncorrect": {
+        "A": "L'AI Act exigeix exactament el contrari: documentació i traçabilitat de procedència.",
+        "B": "Cal documentar explícitament les operacions de preparació, etiquetatge i neteja.",
+        "D": "La validació continua sent obligatòria."
+      }
+    }
+  ]
+}

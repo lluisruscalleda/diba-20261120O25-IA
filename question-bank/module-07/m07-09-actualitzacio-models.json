@@ -1,0 +1,236 @@
+{
+  "conceptId": "m07-09-actualitzacio-models",
+  "module": 7,
+  "questions": [
+    {
+      "id": "m07-09-q01",
+      "module": 7,
+      "conceptId": "m07-09-actualitzacio-models",
+      "lessonRef": "content/module-07/m07-09-actualitzacio-models.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Què afegeix la sigla **CT (*Continuous Training*)** al cicle clàssic **CI/CD** de l'enginyeria de programari quan treballem amb Machine Learning?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "L'**automatització governada del reentrenament, calibratge i validació dels models** quan canvien les dades, apareix *drift* o s'assoleix un cicle programat, ja que en IA no només evoluciona el codi sinó també les dades." },
+        { "key": "B", "text": "L'eliminació de tots els tests de codi de la fase CI." },
+        { "key": "C", "text": "L'ús obligatori de servidors sense Docker." },
+        { "key": "D", "text": "La traducció automàtica del codi de Python a C++." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "En programari clàssic n'hi ha prou amb CI/CD perquè el comportament només depèn del codi; en IA les dades evolucionen i cal CT per mantenir el model vigent i validat.",
+      "explanationsIncorrect": {
+        "B": "CI continua sent essencial per validar codi, esquemes i prompts.",
+        "C": "Docker immutable és clau en CI/CD/CT.",
+        "D": "CT significa *Continuous Training* (entrenament continu)."
+      }
+    },
+    {
+      "id": "m07-09-q02",
+      "module": 7,
+      "conceptId": "m07-09-actualitzacio-models",
+      "lessonRef": "content/module-07/m07-09-actualitzacio-models.md",
+      "difficulty": "basic",
+      "questionType": "architecture",
+      "prompt": "Quan un ajuntament aprova una **nova convocatòria de subvencions o modifica una ordenança fiscal**, quin nivell de la **jerarquia d'actualització LLMOps** s'ha d'aplicar?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Reentrenar un LLM des de zero durant 3 setmanes." },
+        { "key": "B", "text": "**Nivell 1 — Actualització incremental de la base de coneixement RAG (SSOT)** (en minuts, cost quasi zero, vigència controlada `valid_from/valid_until` i zero risc de *catastrophic forgetting*!)." },
+        { "key": "C", "text": "Fer *fine-tuning* setmanal dels pesos de l'LLM." },
+        { "key": "D", "text": "Canviar el sistema operatiu del servidor." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "El coneixement normatiu canviant es gestiona sempre a la capa RAG SSOT, mai gravant-lo als pesos de l'LLM via *fine-tuning* freqüent!",
+      "explanationsIncorrect": {
+        "A": "Totalment inviable i absurdament costós.",
+        "C": "El *fine-tuning* és car, lent i no permet esborrar fàcilment normes derogades dels pesos.",
+        "D": "Irrellevant per actualitzar coneixement normatiu."
+      }
+    },
+    {
+      "id": "m07-09-q03",
+      "module": 7,
+      "conceptId": "m07-09-actualitzacio-models",
+      "lessonRef": "content/module-07/m07-09-actualitzacio-models.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Per a què serveix un **període de refredament (*Cooldown*, ex. 14 dies)** en un orquestrador de reentrenament automàtic (CT)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Per refredar físicament els ventiladors de l'edifici." },
+        { "key": "B", "text": "Per impedir que el model es pugui actualitzar mai més." },
+        { "key": "C", "text": "Per **evitar reentrenaments compulsius i oscil·lacions (*thrashing*)** provocats per pics passatgers d'un sol dia, donant temps a acumular dades verificades i investigar anomalies puntuals." },
+        { "key": "D", "text": "Per esborrar totes les etiquetes humanes cada 14 dies." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Sense *Cooldown*, una anomalia puntual de 24 hores dispararia reentrenaments en cadena inútils i costosos.",
+      "explanationsIncorrect": {
+        "A": "És una regla temporal de governança MLOps, no refrigeració física.",
+        "B": "Només fixa un interval mínim entre reentrenaments automàtics (no impedeix intervencions manuals d'emergència).",
+        "D": "No esborra etiquetes."
+      }
+    },
+    {
+      "id": "m07-09-q04",
+      "module": 7,
+      "conceptId": "m07-09-actualitzacio-models",
+      "lessonRef": "content/module-07/m07-09-actualitzacio-models.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Quina diferència pràctica separa ***Continuous Delivery*** de ***Continuous Deployment***, i quin dels dos s'ha d'exigir en un sistema públic d'**alt risc (AI Act Annex III)** com la priorització de Serveis Socials?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "***Continuous Delivery*** automatitza tot fins a `@staging` però exigeix una **porta d'aprovació humana documentada** abans de producció (obligatòria en alt risc AI Act!), mentre que *Continuous Deployment* puja a producció sense intervenció humana." },
+        { "key": "B", "text": "*Continuous Deployment* exigeix més aprovacions humanes que *Continuous Delivery*." },
+        { "key": "C", "text": "Són exactament el mateix concepte." },
+        { "key": "D", "text": "En sistemes d'alt risc es recomana desplegar automàticament cada nit sense revisió humana." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Mantenir una porta d'aprovació humana documentada (*Continuous Delivery*) garanteix supervisió humana efectiva, revisió de la *Model Card* i assumpció de responsabilitat administrativa.",
+      "explanationsIncorrect": {
+        "B": "És exactament a l'inrevés.",
+        "C": "La presència d'aprovació humana abans de producció és precisament el que els distingeix.",
+        "D": "Seria contrari a la governança de riscos i a l'art. 14 AI Act."
+      }
+    },
+    {
+      "id": "m07-09-q05",
+      "module": 7,
+      "conceptId": "m07-09-actualitzacio-models",
+      "lessonRef": "content/module-07/m07-09-actualitzacio-models.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Quin problema greu provoca configurar un pipeline CT que **cada nit reentrena un classificador usant les pròpies prediccions que el model va fer durant el dia** (sense verificació humana)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Fa que la precisió arribi automàticament al 100% en una setmana." },
+        { "key": "B", "text": "Crea un **bucle de retroalimentació auto-reforçat (*Feedback Loop* / *Model Collapse*)**: el model aprèn dels seus propis errors i biaixos, amplificant-los a cada iteració fins a degradar-se completament!" },
+        { "key": "C", "text": "Elimina completament el risc de *Data Poisoning*." },
+        { "key": "D", "text": "Resol automàticament qualsevol *Concept Drift*." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Un model no pot crear nova informació verídica etiquetant-se a si mateix; el reentrenament CT requereix etiquetes independents verificades per humans (*Ground Truth*)!",
+      "explanationsIncorrect": {
+        "A": "Al contrari, col·lapsa la qualitat real.",
+        "C": "Encara el fa més vulnerable: un atacant que enganyi el model un dia veuria el seu atac gravat al model l'endemà!",
+        "D": "Si canvia la realitat (Concept Drift), reentrenar amb prediccions velles congela el model al passat!"
+      }
+    },
+    {
+      "id": "m07-09-q06",
+      "module": 7,
+      "conceptId": "m07-09-actualitzacio-models",
+      "lessonRef": "content/module-07/m07-09-actualitzacio-models.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Quins **3 tipus principals de disparadors (*Triggers*)** governen un pipeline de *Continuous Training* (CT) madur en l'Administració pública?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Només reiniciar el servidor cada dilluns." },
+        { "key": "B", "text": "Només quan un desenvolupador se'n recorda un cop cada dos anys." },
+        { "key": "C", "text": "1) **Periòdic (*Scheduled*)** (ex. trimestral/campanya); 2) **Basat en *Drift*/rendiment** (`PSI >= 0,25` o taxa de rebots `> 6%` + volum mínim d'etiquetes humanes); 3) **Sota demanda (*On-Demand*)** davant un canvi legal o organitzatiu." },
+        { "key": "D", "text": "Disparar un reentrenament per cada petició HTTP individual." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Combinar cadència periòdica + detectors de drift + activació manual davant canvis legals cobreix tant l'evolució lenta com els canvis normatius sobtats.",
+      "explanationsIncorrect": {
+        "A": "Reiniciar un servidor no actualitza cap model.",
+        "B": "Deixaria el model degradar-se durant anys.",
+        "D": "Inviable, caríssim i vulnerable a *poisoning*."
+      }
+    },
+    {
+      "id": "m07-09-q07",
+      "module": 7,
+      "conceptId": "m07-09-actualitzacio-models",
+      "lessonRef": "content/module-07/m07-09-actualitzacio-models.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Quan sí que està justificat baixar al **Nivell 3 (Fine-tuning LoRA/QLoRA)** dins la jerarquia d'actualització LLMOps?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Cada vegada que canvia el telèfon d'una oficina municipal." },
+        { "key": "B", "text": "Cada vegada que es publica una nova subvenció amb data límit." },
+        { "key": "C", "text": "Per corregir una falta d'ortografia al *system prompt*." },
+        { "key": "D", "text": "Quan es vol especialitzar un model *open-weights* petit *on-premise* en un **estil administratiu estable, format estructurat complex o terminologia jurídica específica** on el prompting i el RAG sols ja han arribat al seu sostre." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "RAG gestiona fets i normes canviants; LoRA/QLoRA adapta comportament, estil o eficiència d'un model local petit en tasques estables i repetitives!",
+      "explanationsIncorrect": {
+        "A": "Fet canviant → Nivell 1 (RAG SSOT).",
+        "B": "Convocatòria nova → Nivell 1 (RAG SSOT).",
+        "C": "Ajust de prompt → Nivell 2 (*Prompt-as-Code*)."
+      }
+    },
+    {
+      "id": "m07-09-q08",
+      "module": 7,
+      "conceptId": "m07-09-actualitzacio-models",
+      "lessonRef": "content/module-07/m07-09-actualitzacio-models.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En `avaluar_politica_ct_cd` de l'exemple 7.9, per què el **Cas 2** (`Prioritzador_ServeisSocials`, `PSI=0.31`, `45 dies`, `120` etiquetes humanes noves) retorna **`SOL·LICITAR_ETIQUETATGE_ACTIVE_LEARNING`** en lloc d'entrenar immediatament?",
+      "codeSnippet": "if m.dies_des_ultim_ct < 14:\n    return {\"model\": m.nom, \"accio\": \"ESPERAR_COOLDOWN\", ...}\nif m.etiquetes_humanes_noves < 200:\n    return {\"model\": m.nom, \"accio\": \"SOL·LICITAR_ETIQUETATGE_ACTIVE_LEARNING\", ...}",
+      "options": [
+        { "key": "A", "text": "Perquè tot i haver-hi *Data Drift* greu (`PSI=0.31`) i haver superat el *Cooldown* (`45 >= 14`), **120 etiquetes humanes noves són insuficients (`< 200`)** per reentrenar amb fiabilitat estadística; el sistema demana abans ampliar l'etiquetatge humà focalitzat!" },
+        { "key": "B", "text": "Perquè no s'ha detectat cap disparador de drift." },
+        { "key": "C", "text": "Perquè el sistema estava dins el període de *Cooldown*." },
+        { "key": "D", "text": "Perquè el *Quality Gate* havia fallat." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Exigir un volum mínim d'etiquetes verificades abans de disparar CT evita entrenar models inestables sobre pocs casos recents i connecta directament el monitoratge de drift amb la cua d'*Active Learning*!",
+      "explanationsIncorrect": {
+        "B": "`PSI=0.31 >= 0.25` sí que dispara `DATA_DRIFT`.",
+        "C": "`45 dies >= 14 dies` supera el *Cooldown*.",
+        "D": "Comprova el volum d'etiquetes abans d'arribar al *Quality Gate*."
+      }
+    },
+    {
+      "id": "m07-09-q09",
+      "module": 7,
+      "conceptId": "m07-09-actualitzacio-models",
+      "lessonRef": "content/module-07/m07-09-actualitzacio-models.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "En un reentrenament periòdic CT d'un model d'inspecció tributària que porta 4 anys en producció, per què sol ser millor usar una **finestra lliscant (*Sliding Window*) o ponderació temporal (*Exponential Decay*)** en lloc d'acumular indefinidament dades de fa 10 anys amb igual pes?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè les dades antigues no caben en cap disc dur modern." },
+        { "key": "B", "text": "Perquè en entorns on les lleis i l'economia canvien, donar el mateix pes a dades obsoletes de fa 10 anys **dilueix els patrons recents i retarda l'adaptació al *Concept Drift***; una finestra lliscant o decaïment exponencial prioritza les dades vigents mantenint prou volum." },
+        { "key": "C", "text": "Per esborrar l'arxiu històric de la capa Bronze." },
+        { "key": "D", "text": "Perquè *scikit-learn* no accepta més de 1.000 files." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Equilibrar volum històric i rellevància temporal (ponderant més els exercicis recents o usant una finestra de 2–3 anys) manté el model alineat amb la normativa i la realitat econòmica actual.",
+      "explanationsIncorrect": {
+        "A": "És una qüestió estadística de vigència dels patrons, no d'espai de disc.",
+        "C": "Bronze històric es conserva per auditoria; només s'ajusta la finestra/pesos d'entrenament.",
+        "D": "Admet milions de files perfectament."
+      }
+    },
+    {
+      "id": "m07-09-q10",
+      "module": 7,
+      "conceptId": "m07-09-actualitzacio-models",
+      "lessonRef": "content/module-07/m07-09-actualitzacio-models.md",
+      "difficulty": "advanced",
+      "questionType": "normative",
+      "prompt": "Com afecta el **Reglament (UE) 2024/1689 (AI Act)** a l'actualització contínua (CT) d'un sistema d'IA d'alt risc ja avaluat de conformitat?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Prohibeix absolutament actualitzar mai cap model un cop desplegat." },
+        { "key": "B", "text": "Permet canviar completament la finalitat del sistema sense tornar a avaluar res." },
+        { "key": "C", "text": "Les actualitzacions que estiguin **predeterminades i documentades en la gestió del cicle de vida de l'avaluació de conformitat inicial** (dins paràmetres i *Quality Gates* controlats) no constitueixen una modificació substancial no prevista, mentre que un canvi de finalitat o modificació substancial fora d'aquest marc exigeix **nova avaluació de conformitat**." },
+        { "key": "D", "text": "Exempta els reentrenaments automàtics de tenir documentació tècnica." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "L'AI Act (art. 43.4) reconeix la naturalesa evolutiva dels models: documentar prèviament la política de CT, *Quality Gates* i límits d'actualització permet mantenir el model sa sense perdre la conformitat!",
+      "explanationsIncorrect": {
+        "A": "Al contrari, mantenir el rendiment i la precisió al llarg del cicle de vida és una obligació.",
+        "B": "Canviar la finalitat prevista és precisament una modificació substancial que exigeix nova avaluació!",
+        "D": "Tota actualització ha de mantenir actualitzada la documentació tècnica i la traçabilitat."
+      }
+    }
+  ]
+}

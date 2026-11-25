@@ -1,0 +1,46 @@
+{
+  "conceptId": "m07-05-desplegament",
+  "module": 7,
+  "cards": [
+    {
+      "id": "m07-05-fc01",
+      "module": 7,
+      "conceptId": "m07-05-desplegament",
+      "front": "Quan es tria inferència *Batch*, *Online* síncrona o *Asíncrona per cua*?",
+      "back": "*Batch*: lots periòdics sense urgència (cost mínim). *Online*: resposta immediata (<200 ms ML / SSE LLM). *Asíncrona per cua* (`202 Accepted` + workers + DLQ): tasques pesades (ex. OCR de 80 pàgines) i pics!",
+      "tags": ["desplegament", "Batch", "Async Queue"]
+    },
+    {
+      "id": "m07-05-fc02",
+      "module": 7,
+      "conceptId": "m07-05-desplegament",
+      "front": "Quina diferència hi ha entre *Shadow*, *Canary*, *Blue-Green* i *A/B Testing*?",
+      "back": "*Shadow*: 0% impacte usuari (còpia paral·lela). *Canary*: 5%→25%→100% + rollback automàtic. *Blue-Green*: 2 entorns complets, canvi/retorn en 1 s. *A/B Testing*: experiment estadístic de KPIs de negoci.",
+      "tags": ["Shadow", "Canary", "Blue-Green", "A/B"]
+    },
+    {
+      "id": "m07-05-fc03",
+      "module": 7,
+      "conceptId": "m07-05-desplegament",
+      "front": "Quina diferència hi ha entre `/health/live` i `/health/ready` en una API ML/LLM?",
+      "back": "`/health/live` comprova si el procés està viu; `/health/ready` només retorna `200 OK` un cop el model pesat s'ha carregat completament a RAM/VRAM i està llest per rebre trànsit del balancejador.",
+      "tags": ["FastAPI", "healthcheck", "readiness"]
+    },
+    {
+      "id": "m07-05-fc04",
+      "module": 7,
+      "conceptId": "m07-05-desplegament",
+      "front": "Quines dues tècniques de **vLLM** multipliquen el *throughput* en servir LLMs concurrents?",
+      "back": "***PagedAttention*** (gestiona la KV-Cache en blocs paginats sense fragmentar VRAM) i ***Continuous Batching*** (agrupa dinàmicament tokens de peticions concurrents), combinats amb SSE *streaming* (baix TTFT).",
+      "tags": ["vLLM", "PagedAttention", "Continuous Batching"]
+    },
+    {
+      "id": "m07-05-fc05",
+      "module": 7,
+      "conceptId": "m07-05-desplegament",
+      "front": "On s'ha de carregar el model en una API FastAPI i què passa si es carrega dins `/predict`?",
+      "back": "Sempre una sola vegada al *lifespan* d'arrencada del servidor! Carregar-lo dins `/predict` llegeix GB a cada petició, dispara la latència i provoca caiguda per OOM (*Out-Of-Memory*) sota concurrència.",
+      "tags": ["FastAPI", "OOM", "serving"]
+    }
+  ]
+}

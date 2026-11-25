@@ -1,0 +1,46 @@
+{
+  "conceptId": "m07-09-actualitzacio-models",
+  "module": 7,
+  "cards": [
+    {
+      "id": "m07-09-fc01",
+      "module": 7,
+      "conceptId": "m07-09-actualitzacio-models",
+      "front": "Quina diferència hi ha entre CI, CT, *Continuous Delivery* i *Continuous Deployment*?",
+      "back": "CI: tests codi/esquemes/prompts + Docker. CT: reentrenament reproduïble + *Quality Gate*. *Continuous Delivery*: automatitzat fins a `@staging` amb aprovació humana obligatòria (alt risc AI Act!). *Deployment*: 100% autònom a producció.",
+      "tags": ["CI/CD/CT", "Continuous Delivery"]
+    },
+    {
+      "id": "m07-09-fc02",
+      "module": 7,
+      "conceptId": "m07-09-actualitzacio-models",
+      "front": "Quina és la jerarquia de 4 nivells d'actualització en LLMOps?",
+      "back": "1) Base RAG SSOT (minuts — normes noves!); 2) Prompt/Guardrails (hores); 3) LoRA/QLoRA (dies — estil/format estable); 4) Migració model base/embeddings (índex paral·lel + revisió humana *Side-by-Side*).",
+      "tags": ["LLMOps", "jerarquia actualització"]
+    },
+    {
+      "id": "m07-09-fc03",
+      "module": 7,
+      "conceptId": "m07-09-actualitzacio-models",
+      "front": "Per què MAI no s'ha de reentrenar un model sobre les seves pròpies prediccions?",
+      "back": "Crea un *Feedback Loop* (*Model Collapse*) que amplifica els propis errors i biaixos a cada iteració i congela el model davant *Concept Drift*. Calen etiquetes humanes verificades i mostra aleatòria d'exploració.",
+      "tags": ["Feedback Loop", "CT"]
+    },
+    {
+      "id": "m07-09-fc04",
+      "module": 7,
+      "conceptId": "m07-09-actualitzacio-models",
+      "front": "Per a què serveixen el *Cooldown* i el llindar mínim d'etiquetes en un pipeline CT?",
+      "back": "El *Cooldown* (ex. >=14 dies) evita oscil·lacions (*thrashing*) per pics passatgers; el mínim d'etiquetes humanes (ex. >=200) evita entrenar models inestables i dispara *Active Learning* si en falten.",
+      "tags": ["Cooldown", "triggers CT"]
+    },
+    {
+      "id": "m07-09-fc05",
+      "module": 7,
+      "conceptId": "m07-09-actualitzacio-models",
+      "front": "Com tracta l'AI Act (art. 43.4) les actualitzacions contínues (CT) d'un sistema d'alt risc?",
+      "back": "Els canvis predefinits i documentats en l'avaluació de conformitat inicial (dins *Quality Gates* controlats) no requereixen nova conformitat, però un canvi de finalitat o modificació substancial fora d'aquest marc sí!",
+      "tags": ["AI Act", "modificació substancial"]
+    }
+  ]
+}

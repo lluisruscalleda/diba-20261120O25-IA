@@ -1,0 +1,46 @@
+{
+  "conceptId": "m07-04-validacio-models",
+  "module": 7,
+  "cards": [
+    {
+      "id": "m07-04-fc01",
+      "module": 7,
+      "conceptId": "m07-04-validacio-models",
+      "front": "Què és la *Sliced Evaluation* i per què una mitjana global pot enganyar?",
+      "back": "Desglossar mètriques per subgrups crítics (català/castellà, classes rares, municipis petits, col·lectius protegits). Una mitjana global pot pujar (0,90→0,92) mentre un *slice* crític cau de 0,88 a 0,74!",
+      "tags": ["Sliced Evaluation", "Quality Gate"]
+    },
+    {
+      "id": "m07-04-fc02",
+      "module": 7,
+      "conceptId": "m07-04-validacio-models",
+      "front": "Quins són els 3 nivells de la piràmide d'avaluació *PromptOps*?",
+      "back": "Nivell 1: assercions deterministes (JSON estricte, cites existents, injecció — cada PR); Nivell 2: Golden Set + RAGAS/Refusal Acc + *Sliced Eval* (cada release); Nivell 3: revisió humana cega *Side-by-Side* (canvis majors).",
+      "tags": ["PromptOps", "piràmide"]
+    },
+    {
+      "id": "m07-04-fc03",
+      "module": 7,
+      "conceptId": "m07-04-validacio-models",
+      "front": "Què validen les 3 proves comportamentals *CheckList* (`MFT`, `INV`, `DIR`)?",
+      "back": "`MFT`: funcionalitat mínima imprescindible; `INV`: invariància (canviar nom propi/majúscules NO altera la predicció — anti-biaix!); `DIR`: expectativa direccional (afegir perill fa pujar prioritat).",
+      "tags": ["CheckList", "INV", "robustesa"]
+    },
+    {
+      "id": "m07-04-fc04",
+      "module": 7,
+      "conceptId": "m07-04-validacio-models",
+      "front": "Què és el *Vibe Checking* i com s'erradica en LLMOps?",
+      "back": "Canviar un prompt i pujar-lo a producció després de provar-lo manualment amb 3 preguntes. S'erradica amb *Prompt-as-Code* en Git + *Quality Gates* bloquejants sobre el *Golden Set* en CI/CD.",
+      "tags": ["Vibe Checking", "Prompt-as-Code"]
+    },
+    {
+      "id": "m07-04-fc05",
+      "module": 7,
+      "conceptId": "m07-04-validacio-models",
+      "front": "Per què l'Administració ha de custodiar un *Golden Set* cec d'acceptació en contractes d'IA?",
+      "back": "Per evitar *benchmark overfitting* o memorització per part del proveïdor i disposar d'una prova objectiva i imparcial d'acceptació contractual.",
+      "tags": ["Golden Set", "contractació pública"]
+    }
+  ]
+}

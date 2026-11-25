@@ -1,0 +1,46 @@
+{
+  "conceptId": "m07-07-versionat",
+  "module": 7,
+  "cards": [
+    {
+      "id": "m07-07-fc01",
+      "module": 7,
+      "conceptId": "m07-07-versionat",
+      "front": "Quines 5 dimensions s'han de versionar conjuntament en MLOps i LLMOps?",
+      "back": "1) Codi (Git SHA + SemVer); 2) Dades (DVC/SHA-256); 3) Model/Pesos (*Model Registry* immutable); 4) Prompt + configuració RAG / índex vectorial; 5) Entorn (Docker `@sha256`, MAI `:latest`!).",
+      "tags": ["versionat", "5 dimensions"]
+    },
+    {
+      "id": "m07-07-fc02",
+      "module": 7,
+      "conceptId": "m07-07-versionat",
+      "front": "Com permet un *Model Registry* amb àlies fer un *rollback* en < 10 segons?",
+      "back": "Les versions físiques (`v1..v4`) són immutables; producció apunta a l'àlies `@champion` i es conserva `@previous_champion`. Davant incident, reassignar `@champion -> v3` restaura el servei atòmicament!",
+      "tags": ["Model Registry", "rollback", "àlies"]
+    },
+    {
+      "id": "m07-07-fc03",
+      "module": 7,
+      "conceptId": "m07-07-versionat",
+      "front": "Quina precaució és crítica en canviar de model d'embeddings (ex. 768d → 1024d) en producció?",
+      "back": "Construir un índex vectorial paral·lel (`kb_v2`) i mantenir `kb_v1` viu 7–14 dies; si s'esborra `kb_v1`, el *rollback* a `v1` falla per incompatibilitat dimensional i obligaria a re-indexar durant hores!",
+      "tags": ["embeddings", "índex paral·lel", "rollback"]
+    },
+    {
+      "id": "m07-07-fc04",
+      "module": 7,
+      "conceptId": "m07-07-versionat",
+      "front": "Per què està prohibit usar etiquetes Docker `:latest` en desplegaments ENS?",
+      "back": "Perquè `:latest` és mutable (pot canviar entre reinicis, trenca reproduïbilitat/rollback i exposa a atacs *supply-chain*); cal fixar sempre el digest criptogràfic immutable `@sha256:...`.",
+      "tags": ["Docker", "sha256", "ENS"]
+    },
+    {
+      "id": "m07-07-fc05",
+      "module": 7,
+      "conceptId": "m07-07-versionat",
+      "front": "Per què un *Prompt Registry* ha de versionar el prompt acoblat al model base (`base_model_sha`)?",
+      "back": "Perquè un prompt afinat per a un model pot trencar format JSON, cites o abstenció en un altre model base; canviar qualsevol peça de la tupla exigeix nova versió i re-passar el *Quality Gate*.",
+      "tags": ["Prompt Registry", "LLMOps"]
+    }
+  ]
+}

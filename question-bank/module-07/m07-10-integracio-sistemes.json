@@ -1,0 +1,236 @@
+{
+  "conceptId": "m07-10-integracio-sistemes",
+  "module": 7,
+  "questions": [
+    {
+      "id": "m07-10-q01",
+      "module": 7,
+      "conceptId": "m07-10-integracio-sistemes",
+      "lessonRef": "content/module-07/m07-10-integracio-sistemes.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina és la funció principal del patró ***Circuit Breaker*** en integrar un servei d'IA amb el Registre General d'un ajuntament?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "**Tallar ràpidament (*fail-fast*)** les crides cap a un servei d'IA caigut o saturat (estat `OPEN`) i retornar un ***fallback* degradat segur** (ex. cua manual) perquè el Registre General continuï operant 24/7 sense caigudes en cascada!" },
+        { "key": "B", "text": "Apagar també el Registre General sempre que falla la GPU." },
+        { "key": "C", "text": "Accelerar l'entrenament de xarxes neuronals." },
+        { "key": "D", "text": "Substituir l'autenticació OAuth2." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "El Circuit Breaker aïlla les fallades del servei d'IA i evita que centenars de peticions del Registre es quedin bloquejades esperant timeouts.",
+      "explanationsIncorrect": {
+        "B": "Exactament el contrari: protegeix el Registre perquè NO caigui!",
+        "C": "És un patró de resiliència d'integració en producció.",
+        "D": "No substitueix la seguretat d'autenticació."
+      }
+    },
+    {
+      "id": "m07-10-q02",
+      "module": 7,
+      "conceptId": "m07-10-integracio-sistemes",
+      "lessonRef": "content/module-07/m07-10-integracio-sistemes.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Per a què serveix propagar una capçalera **`X-Correlation-ID`** a través de tots els sistemes (`Seu → API Gateway → IDP → Classificador → Gestor d'Expedients`)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Per calcular la correlació de Pearson entre dues columnes del dataset." },
+        { "key": "B", "text": "Per **traçar i reconstruir de punta a punta en segons** tot el recorregut, latències i errors d'un expedient concret a través de múltiples microserveis i cues distribuïdes." },
+        { "key": "C", "text": "Per substituir el DNI del ciutadà a les resolucions." },
+        { "key": "D", "text": "Per xifrar les imatges Docker." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "El Correlation ID és el fil conductor de la traçabilitat distribuïda: permet trobar tots els logs relacionats amb una mateixa petició en una arquitectura multi-sistema.",
+      "explanationsIncorrect": {
+        "A": "No té relació amb el coeficient estadístic de correlació.",
+        "C": "És un UUID tècnic de traçabilitat per petició.",
+        "D": "No és un algorisme de xifratge."
+      }
+    },
+    {
+      "id": "m07-10-q03",
+      "module": 7,
+      "conceptId": "m07-10-integracio-sistemes",
+      "lessonRef": "content/module-07/m07-10-integracio-sistemes.md",
+      "difficulty": "basic",
+      "questionType": "architecture",
+      "prompt": "Quin problema resol el patró ***Anti-Corruption Layer (ACL)*** quan una diputació integra un únic motor d'IA amb 80 ajuntaments que fan servir **4 gestors d'expedients diferents** (REST moderns i SOAP/XML *legacy*)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Obliga a programar 4 motors d'IA completament diferents." },
+        { "key": "B", "text": "Elimina la necessitat d'utilitzar un contracte canònic ENI/OpenAPI." },
+        { "key": "C", "text": "**Aïlla el nucli net d'IA** (basat en un únic contracte canònic ENI/OpenAPI) mitjançant petits adaptadors de traducció per fabricant, evitant que les rareses *legacy* contaminin els serveis d'IA!" },
+        { "key": "D", "text": "Detecta casos de corrupció econòmica en contractes públics." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "En arquitectura de programari (DDD), l'Anti-Corruption Layer evita que models de dades antics o propietaris d'un sistema extern «corrompin» l'arquitectura neta del servei propi.",
+      "explanationsIncorrect": {
+        "A": "Precisament permet mantenir un únic nucli d'IA compartit.",
+        "B": "Al contrari, es recolza en un contracte canònic net al nucli.",
+        "D": "Malgrat el nom, és un patró clàssic d'arquitectura d'integració (Domain-Driven Design)."
+      }
+    },
+    {
+      "id": "m07-10-q04",
+      "module": 7,
+      "conceptId": "m07-10-integracio-sistemes",
+      "lessonRef": "content/module-07/m07-10-integracio-sistemes.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Per què en els reintents automàtics davant errors transitoris (`HTTP 503`) s'afegeix ***Jitter* (variació aleatòria)** a l'***Exponential Backoff*** (`1s → 2s → 4s`)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Per evitar l'efecte ***Thundering Herd* (estampida sincronitzada)**, on centenars de clients fallen alhora i reintenten exactament al mateix mil·lisegon tornant a tombar el servidor d'IA quan tot just es recuperava!" },
+        { "key": "B", "text": "Per fer que els reintents es produeixin tots alhora en el mateix instant." },
+        { "key": "C", "text": "Per eliminar la necessitat d'idempotència." },
+        { "key": "D", "text": "Per augmentar el consum de CPU del servidor." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Escampar aleatòriament els reintents amb *jitter* suavitza els pics de trànsit i permet que el servidor recuperi l'estabilitat progressivament.",
+      "explanationsIncorrect": {
+        "B": "Això és exactament el que evita el *jitter*.",
+        "C": "L'idempotència continua sent obligatòria sempre que hi hagi reintents!",
+        "D": "Redueix els pics sobtats de càrrega."
+      }
+    },
+    {
+      "id": "m07-10-q05",
+      "module": 7,
+      "conceptId": "m07-10-integracio-sistemes",
+      "lessonRef": "content/module-07/m07-10-integracio-sistemes.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Quin paper té la ***Dead-Letter Queue* (DLQ)** en una integració *Event-Driven* (Kafka / RabbitMQ) entre el Registre General i el pipeline d'IDP?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Esborrar silenciosament qualsevol expedient que doni un error." },
+        { "key": "B", "text": "Apartar de forma segura els missatges/expedients que **fallen repetidament després d'esgotar reintents** (ex. un PDF corrupte) perquè **no bloquegin la cua principal** i puguin ser inspeccionats o reprocessats sense perdre mai cap expedient!" },
+        { "key": "C", "text": "Enviar cartes postals en paper als ciutadans." },
+        { "key": "D", "text": "Substituir el balancejador de càrrega." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "La DLQ impedeix que un «missatge verinós» (*poison pill*) encalli tots els expedients que venen darrere i garanteix zero pèrdua de dades registrades.",
+      "explanationsIncorrect": {
+        "A": "Mai es perden ni s'esborren expedients registrats.",
+        "C": "És un patró estàndard de cues de missatgeria.",
+        "D": "No fa funcions de balanceig de xarxa."
+      }
+    },
+    {
+      "id": "m07-10-q06",
+      "module": 7,
+      "conceptId": "m07-10-integracio-sistemes",
+      "lessonRef": "content/module-07/m07-10-integracio-sistemes.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Quin mecanisme protegeix l'autenticitat i integritat d'un **Webhook** quan el servei d'IDP notifica asíncronament al Gestor d'Expedients que ha acabat d'extreure un PDF?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Enviar la notificació en HTTP pla sense cap capçalera de seguretat." },
+        { "key": "B", "text": "Confiar únicament en el nom del fitxer PDF." },
+        { "key": "C", "text": "Signar el cos de la notificació i un segell temporal amb **HMAC-SHA256** (clau compartida custodiada en Vault) sobre **HTTPS/mTLS**, permetent al receptor verificar criptogràficament que prové del servei d'IA legítim i no ha estat alterat ni reenviat (*replay attack*)." },
+        { "key": "D", "text": "Acceptar peticions des de qualsevol adreça IP pública sense autenticació." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "HMAC-SHA256 amb timestamp sobre TLS/mTLS verifica remitent, integritat del payload i protegeix contra atacs de repetició (*replay*).",
+      "explanationsIncorrect": {
+        "A": "Vulnerable a suplantació i manipulació en trànsit.",
+        "B": "No aporta cap garantia criptogràfica.",
+        "D": "Vulneraria frontalment el principi Zero Trust i l'ENS."
+      }
+    },
+    {
+      "id": "m07-10-q07",
+      "module": 7,
+      "conceptId": "m07-10-integracio-sistemes",
+      "lessonRef": "content/module-07/m07-10-integracio-sistemes.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Per què un botó «Registrar instància» de la Seu Electrònica **MAI** no ha de dependre d'una crida síncrona bloquejant al servidor d'IA abans de gravar el registre oficial?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè els formularis web no poden cridar APIs." },
+        { "key": "B", "text": "Perquè el registre oficial no necessita guardar les dades." },
+        { "key": "C", "text": "Només per estalviar 2 línies de JavaScript." },
+        { "key": "D", "text": "Perquè el registre electrònic és un servei públic crític 24/7 amb **efectes jurídics de termini (LPACAP)**: qualsevol reinici, lentitud o caiguda de GPU de la IA impediria als ciutadans presentar sol·licituds dins termini!" }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "La separació entre el camí crític jurídic (registre oficial 24/7) i l'enriquiment intel·ligent desacoblat (esdeveniment asíncron o fallback segur) és regla sagrada d'arquitectura pública!",
+      "explanationsIncorrect": {
+        "A": "Tècnicament poden, però arquitectònicament acoblaria un servei legal crític a un servei auxiliar d'IA.",
+        "B": "Al contrari, gravar i expedir el justificant de registre és la funció legal essencial.",
+        "C": "És una decisió crítica de disponibilitat i garantia jurídica."
+      }
+    },
+    {
+      "id": "m07-10-q08",
+      "module": 7,
+      "conceptId": "m07-10-integracio-sistemes",
+      "lessonRef": "content/module-07/m07-10-integracio-sistemes.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En `CircuitBreakerIA` de l'exemple 7.10, què succeeix exactament a la **Petició `#4`** (quan `self.estat == 'OPEN'`) i per què la **Petició `#5`** passa abans per `HALF_OPEN`?",
+      "codeSnippet": "if self.estat == \"OPEN\":\n    return {\"correlation_id\": correlation_id, \"circuit\": \"OPEN\", \"resultat\": \"FALLBACK_CUA_TRIATGE_HUMA (fail-fast 0ms, Registre operatiu!)\"}",
+      "options": [
+        { "key": "A", "text": "A `#4`, el circuit `OPEN` **no intenta contactar el servidor d'IA** (retorna immediatament *fail-fast* en 0 ms cap a `FALLBACK_CUA_TRIATGE_HUMA`); a `#5`, `HALF_OPEN` deixa passar una **sonda controlada** que, en tenir èxit, tanca automàticament el circuit (`CLOSED`) per reprendre la normalitat!" },
+        { "key": "B", "text": "A `#4`, el circuit es queda esperant 60 segons fins que falla per timeout." },
+        { "key": "C", "text": "Un cop el circuit entra a `OPEN`, no es pot recuperar mai més sense reiniciar el Registre." },
+        { "key": "D", "text": "En `HALF_OPEN`, si la sonda falla, el circuit passa a `CLOSED`." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "El cicle `CLOSED → OPEN (fail-fast) → HALF_OPEN (sonda) → CLOSED` protegeix el sistema durant la caiguda i permet auto-recuperació automàtica quan la IA torna a estar sana!",
+      "explanationsIncorrect": {
+        "B": "El retorn anticipat en `OPEN` elimina precisament qualsevol espera de timeout.",
+        "C": "`HALF_OPEN` proporciona precisament la prova controlada de recuperació.",
+        "D": "Si la sonda en `HALF_OPEN` falla (`or self.estat == 'HALF_OPEN'`), torna immediatament a `OPEN`!"
+      }
+    },
+    {
+      "id": "m07-10-q09",
+      "module": 7,
+      "conceptId": "m07-10-integracio-sistemes",
+      "lessonRef": "content/module-07/m07-10-integracio-sistemes.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "En una integració *Event-Driven* on el Registre grava un expedient a la seva base de dades SQL i ha de publicar un esdeveniment `expedient.registrat` a Kafka/RabbitMQ, quin patró evita la inconsistència si el servidor cau **just entre el `COMMIT` SQL i la publicació al bus**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "No fer `COMMIT` mai a la base de dades." },
+        { "key": "B", "text": "El patró ***Transactional Outbox***: gravar l'expedient i el registre de l'esdeveniment pendent dins la **mateixa transacció atòmica SQL**, i deixar que un procés *relay* (o CDC) publiqui de forma fiable l'esdeveniment al bus fins a confirmar-lo!" },
+        { "key": "C", "text": "Ignorar els expedients que no s'hagin publicat a Kafka." },
+        { "key": "D", "text": "Desactivar la base de dades SQL." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "El Transactional Outbox resol el clàssic problema del *dual-write* entre BD i bus de missatges, garantint entrega *at-least-once* (combinada amb idempotència al consumidor) sense perdre cap expedient!",
+      "explanationsIncorrect": {
+        "A": "Es perdrien tots els expedients.",
+        "C": "Deixaria expedients registrats sense processar ni classificar.",
+        "D": "La BD relacional és la font transaccional de veritat del Registre."
+      }
+    },
+    {
+      "id": "m07-10-q10",
+      "module": 7,
+      "conceptId": "m07-10-integracio-sistemes",
+      "lessonRef": "content/module-07/m07-10-integracio-sistemes.md",
+      "difficulty": "advanced",
+      "questionType": "normative",
+      "prompt": "Com aplica el principi de **Zero Trust i seguretat d'integració ENS** quan diversos sistemes interns municipals consumeixen una API d'IA corporativa a través de l'**API Gateway**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Deixar l'API d'IA completament oberta sense autenticació perquè «està a la xarxa interna»." },
+        { "key": "B", "text": "Compartir una única clau API en text pla entre tots els 80 ajuntaments." },
+        { "key": "C", "text": "Autenticació forta per servei (**OAuth2 *Client Credentials* o mTLS** amb secrets/certificats en Vault), autorització granular per **`tenant_id` i *scope***, *rate limiting*, xifratge TLS extrem a extrem i enviament de logs d'accés al SIEM." },
+        { "key": "D", "text": "Desactivar TLS dins la xarxa corporativa." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Zero Trust assumeix que la xarxa interna no és suficient per si sola: cada microservei i cada municipi s'autentica, s'autoritza amb mínim privilegi, xifra el trànsit i deixa traça al SIEM (ENS).",
+      "explanationsIncorrect": {
+        "A": "Viola Zero Trust i l'ENS (moviment lateral fàcil davant qualsevol compromís intern).",
+        "B": "Una clau compartida destrueix l'aïllament multi-tenant i la traçabilitat per ajuntament.",
+        "D": "L'ENS exigeix protecció de comunicacions en trànsit (TLS/mTLS)."
+      }
+    }
+  ]
+}

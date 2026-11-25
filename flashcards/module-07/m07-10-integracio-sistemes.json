@@ -1,0 +1,46 @@
+{
+  "conceptId": "m07-10-integracio-sistemes",
+  "module": 7,
+  "cards": [
+    {
+      "id": "m07-10-fc01",
+      "module": 7,
+      "conceptId": "m07-10-integracio-sistemes",
+      "front": "Quins són els 3 estats del patró *Circuit Breaker* i què protegeix?",
+      "back": "`CLOSED` (normal) → `OPEN` (després de N fallades: *fail-fast* en 0 ms retornant *fallback* segur) → `HALF_OPEN` (sonda de recuperació). Evita que una caiguda d'IA pari la Seu Electrònica o el Registre!",
+      "tags": ["Circuit Breaker", "resiliència"]
+    },
+    {
+      "id": "m07-10-fc02",
+      "module": 7,
+      "conceptId": "m07-10-integracio-sistemes",
+      "front": "Què és una *Anti-Corruption Layer (ACL)* en integració amb gestors d'expedients?",
+      "back": "Una capa adaptadora que tradueix formats *legacy* heterogenis (SOAP/XML de diferents fabricants) cap al contracte canònic net ENI/OpenAPI del nucli d'IA, evitant acoblament i duplicació.",
+      "tags": ["Anti-Corruption Layer", "ENI", "integració"]
+    },
+    {
+      "id": "m07-10-fc03",
+      "module": 7,
+      "conceptId": "m07-10-integracio-sistemes",
+      "front": "Per què s'afegeix *Jitter* a l'*Exponential Backoff* i per a què serveix una *Dead-Letter Queue (DLQ)*?",
+      "back": "*Jitter* evita el *Thundering Herd* (centenars de clients reintentant alhora); la *DLQ* aparta missatges que fallen repetidament perquè no encallin la cua principal sense perdre mai cap expedient!",
+      "tags": ["Jitter", "DLQ", "Event-Driven"]
+    },
+    {
+      "id": "m07-10-fc04",
+      "module": 7,
+      "conceptId": "m07-10-integracio-sistemes",
+      "front": "Quin problema resol el patró *Transactional Outbox* entre BD SQL i Kafka/RabbitMQ?",
+      "back": "Evita la pèrdua d'esdeveniments (*dual-write*) si el servidor cau entre el `COMMIT` SQL i la publicació al bus: grava l'expedient i l'esdeveniment pendent dins la mateixa transacció atòmica SQL!",
+      "tags": ["Transactional Outbox", "Event-Driven"]
+    },
+    {
+      "id": "m07-10-fc05",
+      "module": 7,
+      "conceptId": "m07-10-integracio-sistemes",
+      "front": "Quins controls Zero Trust (ENS) protegeixen una API d'IA corporativa multi-ajuntament?",
+      "back": "API Gateway + OAuth2 Client Credentials / mTLS (secrets en Vault) + aïllament per `tenant_id` + *rate limiting* + webhooks signats HMAC-SHA256 + propagació `X-Correlation-ID` al SIEM.",
+      "tags": ["Zero Trust", "OAuth2", "mTLS", "X-Correlation-ID"]
+    }
+  ]
+}

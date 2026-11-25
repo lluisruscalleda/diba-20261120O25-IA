@@ -1,0 +1,46 @@
+{
+  "conceptId": "m07-01-preparacio-dades",
+  "module": 7,
+  "cards": [
+    {
+      "id": "m07-01-fc01",
+      "module": 7,
+      "conceptId": "m07-01-preparacio-dades",
+      "front": "Quina diferència hi ha entre *Future/Target Leakage* i *Preprocessing Leakage*?",
+      "back": "Future Leakage usa variables que només existeixen DESPRÉS de la decisió (ex. notificacions enviades per predir el dia 0). Preprocessing Leakage ajusta escaladors/imputadors abans del train/test split.",
+      "tags": ["Data Leakage", "MLOps"]
+    },
+    {
+      "id": "m07-01-fc02",
+      "module": 7,
+      "conceptId": "m07-01-preparacio-dades",
+      "front": "Què és el *Training-Serving Skew* i com s'elimina d'arrel?",
+      "back": "Discrepància entre les transformacions de dades en entrenament i en inferència de producció. S'elimina empaquetant preprocés+model en un únic artefacte (`Pipeline`) o usant un *Feature Store* compartit + tests de paritat.",
+      "tags": ["Training-Serving Skew", "Feature Store"]
+    },
+    {
+      "id": "m07-01-fc03",
+      "module": 7,
+      "conceptId": "m07-01-preparacio-dades",
+      "front": "Com s'organitza l'arquitectura *Medallion* (Bronze → Silver → Gold) en l'Administració?",
+      "back": "Bronze = cru immutable restringit; Data Contract Gate = valida esquema/rangs/nuls; Silver = net, deduplicat i pseudonimitzat RGPD; Gold = features/chunks versionats amb hash/DVC.",
+      "tags": ["Medallion", "Data Contracts", "RGPD"]
+    },
+    {
+      "id": "m07-01-fc04",
+      "module": 7,
+      "conceptId": "m07-01-preparacio-dades",
+      "front": "Com versiona DVC datasets grans sense col·lapsar Git?",
+      "back": "Guarda dins de Git només un fitxer punter lleuger amb el hash criptogràfic (SHA-256/MD5) i emmagatzema les dades reals en un bucket privat corporatiu (S3/MinIO/on-prem), vinculant exactament codi i dades.",
+      "tags": ["DVC", "reproduïbilitat", "versionat"]
+    },
+    {
+      "id": "m07-01-fc05",
+      "module": 7,
+      "conceptId": "m07-01-preparacio-dades",
+      "front": "Quins 3 passos clau exigeix la curació de dades en LLMOps abans de *fine-tuning* o RAG?",
+      "back": "1) Neteja estructural de PDFs (treure capçaleres/peus repetitius); 2) Deduplicació aproximada (MinHash/SimHash); 3) PII Scrubbing obligatori (RGPD) + etiquetatge de vigència i ACL.",
+      "tags": ["LLMOps", "curació", "PII"]
+    }
+  ]
+}

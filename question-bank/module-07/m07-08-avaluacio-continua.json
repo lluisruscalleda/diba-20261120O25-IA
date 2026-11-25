@@ -1,0 +1,236 @@
+{
+  "conceptId": "m07-08-avaluacio-continua",
+  "module": 7,
+  "questions": [
+    {
+      "id": "m07-08-q01",
+      "module": 7,
+      "conceptId": "m07-08-avaluacio-continua",
+      "lessonRef": "content/module-07/m07-08-avaluacio-continua.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Què són les ***Guardrail Metrics*** (mètriques salvaguarda) en un experiment *online* d'un sistema d'IA públic?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "**Línies vermelles bloquejants** (equitat lingüística/territorial, `0` fuites PII, cites errònies `< 1%`, latència P95, cost) que **rebutgen automàticament una nova versió** si es violen, encara que hagi millorat la mètrica principal." },
+        { "key": "B", "text": "Mètriques decoratives que mai no influeixen en cap decisió." },
+        { "key": "C", "text": "Només el nombre de clics al peu de pàgina." },
+        { "key": "D", "text": "Un sinònim de *Data Drift*." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Les Guardrail Metrics protegeixen contra efectes secundaris greus (com augmentar clics a costa de més al·lucinacions o pitjor rendiment en català).",
+      "explanationsIncorrect": {
+        "B": "Són criteris vinculants de bloqueig/rebutig.",
+        "C": "Cobreixen seguretat, fidelitat, equitat i SLA.",
+        "D": "Són criteris de decisió en avaluació contínua, no només drift."
+      }
+    },
+    {
+      "id": "m07-08-q02",
+      "module": 7,
+      "conceptId": "m07-08-avaluacio-continua",
+      "lessonRef": "content/module-07/m07-08-avaluacio-continua.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Què és el ***Sticky Bucketing*** en un experiment *online* A/B d'un assistent conversacional?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Canviar el ciutadà de la versió A a la B en cada missatge de la conversa." },
+        { "key": "B", "text": "Assignar consistentment cada usuari/sessió a la **mateixa variant (`A` o `B`) durant tota la conversa** (ex. via `hash(session_id)`) per evitar contaminació creuada i incoherència d'experiència." },
+        { "key": "C", "text": "Assignar tots els usuaris només a la versió A." },
+        { "key": "D", "text": "Guardar les converses en una base de dades sense índex." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "El Sticky Bucketing assegura independència estadística entre grups i evita que un ciutadà parli amb dos assistents diferents dins del mateix fil.",
+      "explanationsIncorrect": {
+        "A": "Això provoca contaminació creuada i invalida l'experiment.",
+        "C": "Això no seria un experiment A/B.",
+        "D": "És un mecanisme d'enrutament determinista d'experiments."
+      }
+    },
+    {
+      "id": "m07-08-q03",
+      "module": 7,
+      "conceptId": "m07-08-avaluacio-continua",
+      "lessonRef": "content/module-07/m07-08-avaluacio-continua.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quin és l'objectiu del ***Living Golden Set* (*Error-to-Eval Flywheel*)**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Deixar congelat el conjunt de proves inicial durant 5 anys sense afegir-hi mai res." },
+        { "key": "B", "text": "Esborrar tots els casos on el model ha fallat per pujar la nota." },
+        { "key": "C", "text": "Convertir sistemàticament els **errors reals anonimitzats detectats en producció** (rebots, `👎`, al·lucinacions) en nous casos permanents de regressió del *Golden Set* perquè un error greu **no es repeteixi mai dues vegades**!" },
+        { "key": "D", "text": "Substituir els anotadors humans per dades aleatòries." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "L'Error-to-Eval Flywheel transforma cada incidència de producció en immunitat permanent per a totes les versions futures del model o prompt!",
+      "explanationsIncorrect": {
+        "A": "Un *Golden Set* estàtic queda ràpidament obsolet davant noves normes i consultes.",
+        "B": "Esborrar errors seria enganyar-se a un mateix.",
+        "D": "Els nous casos afegeixen etiquetes verificades per experts."
+      }
+    },
+    {
+      "id": "m07-08-q04",
+      "module": 7,
+      "conceptId": "m07-08-avaluacio-continua",
+      "lessonRef": "content/module-07/m07-08-avaluacio-continua.md",
+      "difficulty": "intermediate",
+      "questionType": "metrics",
+      "prompt": "Per què el ***Peeking*** (mirar el *p-valor* cada hora i aturar un experiment A/B el primer cop que veus `p < 0,05`) invalida estadísticament les conclusions de l'experiment?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè realitzar múltiples comparacions seqüencials sense correcció **infla dràsticament la taxa real de falsos positius** (del 5% teòric a >25–30%), fent promoure versions que en realitat no milloren res!" },
+        { "key": "B", "text": "Perquè mirar el *p-valor* esborra les dades de la base de dades." },
+        { "key": "C", "text": "Perquè `p < 0,05` vol dir sempre que la versió A és millor." },
+        { "key": "D", "text": "Perquè els experiments A/B mai no poden durar més d'una hora." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "El test d'hipòtesi clàssic assumeix una mida mostral fixada prèviament (*fixed-horizon*); aturar oportunistament en veure un pic infla enormement l'error tipus I.",
+      "explanationsIncorrect": {
+        "B": "No altera la base de dades, sinó la validesa inferencial del test estadístic.",
+        "C": "`p < 0,05` indica baixa probabilitat sota hipòtesi nul·la, independentment de quina banda guanya.",
+        "D": "Al contrari, han de durar mínim 1–2 setmanes completes per capturar estacionalitat setmanal."
+      }
+    },
+    {
+      "id": "m07-08-q05",
+      "module": 7,
+      "conceptId": "m07-08-avaluacio-continua",
+      "lessonRef": "content/module-07/m07-08-avaluacio-continua.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Quin **límit ètic i jurídic irrenunciable** aplica a l'***Online A/B Testing*** dins d'una administració pública?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Està prohibit fer qualsevol prova de millora de la interfície web." },
+        { "key": "B", "text": "Es pot fer A/B sobre qualitat d'assistència, UX o velocitat d'enrutament entre versions equivalents, però **MAI** aplicar **requisits legals, puntuacions de barem o drets diferents** a ciutadans en idèntica situació (principi constitucional d'igualtat!)." },
+        { "key": "C", "text": "Es pot denegar una subvenció al 50% de les famílies a l'atzar per provar el sistema." },
+        { "key": "D", "text": "No hi ha cap límit ètic en A/B Testing públic." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "L'experimentació pública ha de respectar rigorosament la igualtat davant la llei i no perjudicar mai drets ni accés a prestacions d'un grup de control.",
+      "explanationsIncorrect": {
+        "A": "Provar millores d'usabilitat, claredat o precisió d'un cercador/assistent sí que és plenament legítim.",
+        "C": "Seria completament il·legal i inconstitucional.",
+        "D": "L'Administració està sotmesa al principi de legalitat i igualtat."
+      }
+    },
+    {
+      "id": "m07-08-q06",
+      "module": 7,
+      "conceptId": "m07-08-avaluacio-continua",
+      "lessonRef": "content/module-07/m07-08-avaluacio-continua.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Per què un model nou d'assistència a redacció d'informes que guanya **`+4%` en mètrica *offline*** pot acabar **sense millorar (o empitjorant)** el temps real de treball del funcionari en l'avaluació *online*?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè les mètriques *offline* sempre són falses i no serveixen per a res." },
+        { "key": "B", "text": "Perquè els funcionaris no saben llegir." },
+        { "key": "C", "text": "Per la **bretxa *offline-online***: respostes més llargues o menys estructurades poden puntuar més alt en ROUGE/*LLM-Judge* però fer perdre més temps al tècnic verificant cites o editant format; només l'avaluació *online* mesura l'impacte real!" },
+        { "key": "D", "text": "Perquè `4%` és sempre negatiu." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Les mètriques *offline* són proxies molt útils com a filtre inicial, però només l'observació *online* del procés real confirma si hi ha guany real en valor públic i productivitat!",
+      "explanationsIncorrect": {
+        "A": "L'avaluació offline és indispensable com a porta de qualitat ràpida, però incompleta sense l'online.",
+        "B": "Al contrari, el seu criteri expert revela friccions reals d'usabilitat i rigor.",
+        "D": "És una millora positiva offline que no es tradueix necessàriament en millora operativa."
+      }
+    },
+    {
+      "id": "m07-08-q07",
+      "module": 7,
+      "conceptId": "m07-08-avaluacio-continua",
+      "lessonRef": "content/module-07/m07-08-avaluacio-continua.md",
+      "difficulty": "intermediate",
+      "questionType": "metrics",
+      "prompt": "Per què un experiment A/B *online* en un portal municipal ha de durar com a mínim **1 o 2 setmanes completes** (encara que s'assoleixi la mida mostral en 2 dies)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè els servidors només calculen estadístiques els diumenges." },
+        { "key": "B", "text": "Per obligar els ciutadans a esperar 14 dies cada resposta." },
+        { "key": "C", "text": "Només per consumir més electricitat." },
+        { "key": "D", "text": "Per capturar l'**estacionalitat del cicle setmanal** (trànsit laboral vs. cap de setmana, empreses vs. particulars) i esmorteir l'**efecte novetat** inicial." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Els patrons de consulta d'un dilluns al matí (gestories i empreses) són molt diferents dels d'un diumenge a la nit (ciutadans particulars); cobrir cicles complets evita biaixos temporals.",
+      "explanationsIncorrect": {
+        "A": "Les mètriques es recullen contínuament, però el patró de trànsit canvia segons el dia.",
+        "B": "L'usuari rep resposta immediata; és l'experiment el que dura 14 dies.",
+        "C": "És un criteri d'estacionalitat estadística."
+      }
+    },
+    {
+      "id": "m07-08-q08",
+      "module": 7,
+      "conceptId": "m07-08-avaluacio-continua",
+      "lessonRef": "content/module-07/m07-08-avaluacio-continua.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En `decidir_experiment` de l'exemple 7.8, per què **Exp 1 (`72% vs 76%`, `n=50`)** retorna `MANTENIR_A_NO_SIGNIFICATIU` i **Exp 3 (`72% vs 78,5%`, `n=1000`)** retorna `REBUTJAR_B_VIOLACIO_GUARDRAIL`?",
+      "codeSnippet": "significatiu = (p_b > p_a) and (p_val < 0.05)\nif violacions:\n    decisio = \"REBUTJAR_B_VIOLACIO_GUARDRAIL\"\nelif significatiu:\n    decisio = \"PROMOCIONAR_B_A_100\"",
+      "options": [
+        { "key": "A", "text": "A **Exp 1**, `n=50` és massa petit (`p_val = 0.648 >= 0.05`: la diferència de `+4 pp` és soroll estadístic); a **Exp 3**, tot i ser estadísticament significativa (`+6,5 pp`), les ***Guardrail Metrics* tenen precedència bloquejant** (`error_cites 2,4% > 1%` i `gap_cat_es 3,5% > 2%`)!" },
+        { "key": "B", "text": "Perquè `Exp 3` no era estadísticament significatiu." },
+        { "key": "C", "text": "Perquè a `Exp 1` la versió B tenia pitjor percentatge que A." },
+        { "key": "D", "text": "Perquè el codi sempre rebutja B en tots els casos." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "El motor combina rigor estadístic (test Z contra soroll de mostra petita) amb precedència absoluta de les *Guardrail Metrics* (fidelitat + equitat lingüística + SLA)!",
+      "explanationsIncorrect": {
+        "B": "`72% vs 78,5%` amb `n=1000` té `p < 0,001` (molt significatiu), però viola dos guardrails.",
+        "C": "A Exp 1, B té `76% > 72%`, però no significatiu (`p=0.648`).",
+        "D": "A `Exp 2`, el codi retorna precisament `PROMOCIONAR_B_A_100`."
+      }
+    },
+    {
+      "id": "m07-08-q09",
+      "module": 7,
+      "conceptId": "m07-08-avaluacio-continua",
+      "lessonRef": "content/module-07/m07-08-avaluacio-continua.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Quan s'amplia un ***Living Golden Set*** (`golden_v2026_Q1 → golden_v2026_Q2`) afegint 40 casos nous difícils de producció, què has de fer per comparar justament el *Challenger* amb el *Champion*?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Comparar el *Challenger* sobre `Q2` contra la nota antiga del *Champion* sobre `Q1`." },
+        { "key": "B", "text": "**Re-avaluar tant el *Champion* com el *Challenger* sobre exactament la mateixa versió nova (`golden_v2026_Q2`)** perquè la comparativa sigui «pomes amb pomes» (ja que afegir 40 casos difícils pot baixar la puntuació absoluta de tots dos!)." },
+        { "key": "C", "text": "No afegir mai casos difícils perquè baixen el número de F1." },
+        { "key": "D", "text": "Esborrar `Q1` i no versionar el *Golden Set*." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Afegir casos difícils de producció sovint fa baixar el score absolut, cosa totalment sana! Però la comparativa Champion vs. Challenger sempre s'ha d'executar sobre exactament la mateixa versió del Golden Set.",
+      "explanationsIncorrect": {
+        "A": "Comparar Q2 contra Q1 penalitzaria injustament el Challenger pels 40 casos nous difícils!",
+        "C": "Ometre casos difícils falsificaria la percepció de qualitat.",
+        "D": "Cal versionar cada snapshot del *Golden Set* per a auditoria històrica."
+      }
+    },
+    {
+      "id": "m07-08-q10",
+      "module": 7,
+      "conceptId": "m07-08-avaluacio-continua",
+      "lessonRef": "content/module-07/m07-08-avaluacio-continua.md",
+      "difficulty": "advanced",
+      "questionType": "metrics",
+      "prompt": "Quina **Mètrica Nord (*North Star*)** reflecteix millor el valor públic real d'un assistent virtual ciutadà (millor que el simple «nombre de missatges intercanviats»)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Maximitzar el nombre de torns per conversa perquè el ciutadà passi més temps xatejant." },
+        { "key": "B", "text": "Maximitzar el nombre total de paraules generades per l'LLM." },
+        { "key": "C", "text": "La **taxa de resolució efectiva en primer contacte** (tràmit iniciat/completat o consulta resolta amb cites verificades **sense re-contacte al 010 en 48 h**), subjecta a *Guardrails* de fidelitat i equitat." },
+        { "key": "D", "text": "El nombre de vegades que el ciutadà obre la finestra del xat." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "En sector públic, més torns de xat solen indicar que el bot no resol el dubte! La Mètrica Nord és resoldre efectivament la necessitat ciutadana amb rigor i sense fricció.",
+      "explanationsIncorrect": {
+        "A": "Més torns sovint significa frustració i bucle conversacional!",
+        "B": "Respostes excessivament llargues empitjoren la claredat ciutadana.",
+        "D": "Obrir el xat sense resoldre la consulta no aporta valor públic."
+      }
+    }
+  ]
+}

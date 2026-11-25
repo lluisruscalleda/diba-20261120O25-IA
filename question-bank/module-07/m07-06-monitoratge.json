@@ -1,0 +1,236 @@
+{
+  "conceptId": "m07-06-monitoratge",
+  "module": 7,
+  "questions": [
+    {
+      "id": "m07-06-q01",
+      "module": 7,
+      "conceptId": "m07-06-monitoratge",
+      "lessonRef": "content/module-07/m07-06-monitoratge.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Què és una **fallada silenciosa (*Silent Failure*)** en un sistema d'IA en producció?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "La situació en què l'API continua retornant **`HTTP 200 OK` sense errors tècnics**, però la **qualitat real de les prediccions o respostes s'ha degradat severament** (per *drift*, dades canviades o normes obsoletes)." },
+        { "key": "B", "text": "Que el ventilador del servidor fa poc soroll." },
+        { "key": "C", "text": "Un error `HTTP 500` que atura tota la web." },
+        { "key": "D", "text": "Apagar els altaveus del despatx." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "El monitoratge clàssic d'infraestructura (CPU/HTTP 200) és cec a la degradació estadística i semàntica dels models d'IA; cal observabilitat de dades, drift i qualitat.",
+      "explanationsIncorrect": {
+        "B": "No és un fenomen acústic.",
+        "C": "Un HTTP 500 és una fallada sorollosa i immediatament visible.",
+        "D": "Sense relació amb MLOps."
+      }
+    },
+    {
+      "id": "m07-06-q02",
+      "module": 7,
+      "conceptId": "m07-06-monitoratge",
+      "lessonRef": "content/module-07/m07-06-monitoratge.md",
+      "difficulty": "basic",
+      "questionType": "metrics",
+      "prompt": "Com s'interpreta un valor de **PSI (*Population Stability Index*) igual a `0,35`** sobre una variable d'entrada en producció?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Totalment estable, no cal fer res." },
+        { "key": "B", "text": "**Desplaçament greu (*Data Drift* significatiu, `>= 0,25`)**: cal investigar immediatament la causa del canvi de distribució i avaluar si el model requereix reentrenament." },
+        { "key": "C", "text": "Vol dir que el 35% dels servidors estan apagats." },
+        { "key": "D", "text": "Vol dir que el model té 35% de precisió." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Llindars estàndard del PSI: `< 0,10` estable, `0,10–0,25` moderat (investigar), `>= 0,25` drift greu (alerta crítica).",
+      "explanationsIncorrect": {
+        "A": "Estable seria per sota de `0,10`.",
+        "C": "El PSI mesura divergència entre dues distribucions de dades, no servidors.",
+        "D": "No és una mètrica de precisió, sinó d'estabilitat poblacional."
+      }
+    },
+    {
+      "id": "m07-06-q03",
+      "module": 7,
+      "conceptId": "m07-06-monitoratge",
+      "lessonRef": "content/module-07/m07-06-monitoratge.md",
+      "difficulty": "basic",
+      "questionType": "metrics",
+      "prompt": "Per què en el monitoratge de latència d'una API ML/LLM **NO n'hi ha prou amb vigilar la latència mitjana**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè la mitjana és impossible de calcular en Python." },
+        { "key": "B", "text": "Perquè la latència mitjana és sempre més gran que el P99." },
+        { "key": "C", "text": "Perquè la mitjana **amaga cues lentes (*tail latency*)**: un 5–10% de ciutadans poden estar patint esperes de >10 segons mentre la mitjana sembla acceptable; cal monitorar **P95, P99 i TTFT**." },
+        { "key": "D", "text": "Perquè els percentils no depenen dels temps de resposta." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Els percentils P95 i P99 reflecteixen l'experiència real dels casos més lents i solen ser els primers a avisar de saturació de GPU, cues o consultes patològiques.",
+      "explanationsIncorrect": {
+        "A": "És trivial de calcular, però estadísticament enganyosa en distribucions asimètriques.",
+        "B": "Al contrari, en latències amb cua llarga dreta, P99 sol ser molt superior a la mitjana.",
+        "D": "Els percentils es calculen directament sobre els temps de resposta."
+      }
+    },
+    {
+      "id": "m07-06-q04",
+      "module": 7,
+      "conceptId": "m07-06-monitoratge",
+      "lessonRef": "content/module-07/m07-06-monitoratge.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Després d'una reestructuració municipal, les instàncies de «terrasses de bars» (que tenen exactament el mateix text que abans!) passen de correspondre a `Activitats` a correspondre a `Via Pública`, fent caure la precisió del classificador. Quin tipus exacte de *drift* s'ha produït?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "***Concept Drift***: les característiques d'entrada X no han canviat, però ha canviat la **relació real entre entrada i etiqueta P(Y|X)**; no el detectarà el PSI d'entrades, sinó la **taxa de rebots per classe / mostreig humà**!" },
+        { "key": "B", "text": "*Data Drift* pur, perquè han canviat els noms de les columnes." },
+        { "key": "C", "text": "*Schema Drift*, perquè falta el camp `data`." },
+        { "key": "D", "text": "No hi ha cap tipus de *drift*." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Quan la mateixa entrada exacta X passa a tenir una etiqueta correcta Y diferent per canvi de llei, competència o comportament, és Concept Drift pur!",
+      "explanationsIncorrect": {
+        "B": "El text d'entrada X dels bars no ha canviat; ha canviat el destí administratiu Y donat X.",
+        "C": "L'esquema de dades no ha canviat.",
+        "D": "És un cas de llibre de Concept Drift en l'Administració pública."
+      }
+    },
+    {
+      "id": "m07-06-q05",
+      "module": 7,
+      "conceptId": "m07-06-monitoratge",
+      "lessonRef": "content/module-07/m07-06-monitoratge.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "En un sistema de predicció d'impagaments tributaris on no se sabrà el resultat real fins al cap de 6 mesos (***Delayed Ground Truth***), com detectes degradacions primerenques sense esperar mig any?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "No es pot monitorar res fins al cap de 6 mesos." },
+        { "key": "B", "text": "Monitorant **senyals sense etiquetes** (**PSI / KS** sobre variables econòmiques d'entrada per *Data Drift*, ***Prediction Drift*** sobre la distribució de scores i confiança) combinats amb **mostreig humà estratificat** de casos recents." },
+        { "key": "C", "text": "Reentrenant el model cada dia amb etiquetes inventades a l'atzar." },
+        { "key": "D", "text": "Desactivant les alertes durant 6 mesos." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Els detectors de Data Drift i Prediction Drift operen en temps real sense etiquetes, actuant com a radar primerenc davant el Delayed Ground Truth.",
+      "explanationsIncorrect": {
+        "A": "Hi ha senyals molt potents disponibles des del primer dia.",
+        "C": "Etiquetes inventades destruirien completament el model.",
+        "D": "Deixaria el servei a cegues mig any."
+      }
+    },
+    {
+      "id": "m07-06-q06",
+      "module": 7,
+      "conceptId": "m07-06-monitoratge",
+      "lessonRef": "content/module-07/m07-06-monitoratge.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Quin valor aporta instrumentar un pipeline RAG amb **traces distribuïdes per *spans* (*OpenTelemetry / Langfuse on-premise*)**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Substitueix el model d'embeddings." },
+        { "key": "B", "text": "Elimina la necessitat de protegir PII." },
+        { "key": "C", "text": "Permet desglossar la latència i errors **pas per pas** (`guardrail_in`, `embedding`, `vector_db`, `rerank`, `llm_ttft`, `llm_total`) i veure exactament **quin component és el coll d'ampolla** en les consultes lentes P95!" },
+        { "key": "D", "text": "Fa que tots els prompts siguin de 0 tokens." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Sense spans per component, només saps que el xat ha trigat 8 segons, però no si la culpa és de la base vectorial, del reranker en CPU o del temps de cua a la GPU de l'LLM.",
+      "explanationsIncorrect": {
+        "A": "És observabilitat, no substitueix components del RAG.",
+        "B": "Les traces també han de passar PII scrubbing abans de persistir-se!",
+        "D": "Mesura els tokens consumits, no els elimina."
+      }
+    },
+    {
+      "id": "m07-06-q07",
+      "module": 7,
+      "conceptId": "m07-06-monitoratge",
+      "lessonRef": "content/module-07/m07-06-monitoratge.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Durant la campanya de l'IBI, el cost de tokens del chatbot s'ha triplicat perquè milers de veïns fan les mateixes 30 preguntes. Quina mesura ***FinOps*** (amb una salvaguarda clau!) ho redueix dràsticament?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Apagar el chatbot durant tota la campanya de l'IBI." },
+        { "key": "B", "text": "Posar un LLM 10 vegades més gran." },
+        { "key": "C", "text": "Desactivar les cites normatives." },
+        { "key": "D", "text": "Implantar una **memòria cau semàntica/FAQ** (i enrutament a model lleuger per consultes simples) amb **invalidació automàtica de la cau cada vegada que s'actualitza un document de la base de coneixement**!" }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "La cache semàntica retalla dràsticament cost i latència en pics repetitius, i la invalidació vinculada a la versió de la KB impedeix servir mai respostes caducades!",
+      "explanationsIncorrect": {
+        "A": "Deixaria els ciutadans sense servei just quan més el necessiten.",
+        "B": "Multiplicaria encara més la factura.",
+        "C": "Les cites gairebé no afegeixen cost i són essencials per a la fiabilitat."
+      }
+    },
+    {
+      "id": "m07-06-q08",
+      "module": 7,
+      "conceptId": "m07-06-monitoratge",
+      "lessonRef": "content/module-07/m07-06-monitoratge.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En `calcular_psi` de l'exemple 7.6, per què s'aplica `e_c, a_c = max(e, eps), max(a, eps)` amb `eps = 1e-6` abans de calcular `math.log(a_c / e_c)`?",
+      "codeSnippet": "for e, a in zip(esperat, actual):\n    e_c, a_c = max(e, eps), max(a, eps)\n    psi += (a_c - e_c) * math.log(a_c / e_c)",
+      "options": [
+        { "key": "A", "text": "Per evitar **`ZeroDivisionError` i `math.log(0)` (`ValueError`)** quan una franja (*bin*) té proporció `0.0` a l'entrenament o en producció (estabilitat numèrica estàndard en el càlcul del PSI)." },
+        { "key": "B", "text": "Per forçar que el PSI surti sempre menor que `0,10`." },
+        { "key": "C", "text": "Per convertir el PSI en una latència en mil·lisegons." },
+        { "key": "D", "text": "Per eliminar les franges amb més del 50% de dades." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "El logaritme de zero o la divisió per zero farien petar el monitor de drift just quan apareix un valor en una franja nova; el suavitzat `eps` evita errors numèrics.",
+      "explanationsIncorrect": {
+        "B": "Al contrari, quan una franja passa de `0` (`1e-6`) a un valor real, `log(a/e)` produeix una contribució alta que alerta del drift!",
+        "C": "El PSI és adimensional.",
+        "D": "`max(e, 1e-6)` deixa intactes tots els valors superiors a `1e-6`."
+      }
+    },
+    {
+      "id": "m07-06-q09",
+      "module": 7,
+      "conceptId": "m07-06-monitoratge",
+      "lessonRef": "content/module-07/m07-06-monitoratge.md",
+      "difficulty": "advanced",
+      "questionType": "metrics",
+      "prompt": "Com pots detectar ***Data Drift* en dades no estructurades de text** (ex. noves consultes ciutadanes en un chatbot o noves instàncies genèriques) on no tens columnes numèriques simples per aplicar el test KS?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "És impossible detectar drift en text." },
+        { "key": "B", "text": "Calculant els **embeddings densos** de les consultes recents i mesurant la **distància respecte dels centroides/distribució d'embeddings de referència** (ex. distància cosinus, MMD o nous clústers no coberts), combinat amb taxa d'abstenció RAG i longitud de text." },
+        { "key": "C", "text": "Comptant únicament quantes vegades apareix la lletra 'a'." },
+        { "key": "D", "text": "Mirant només el consum de memòria RAM del navegador." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "El desplaçament en l'espai d'embeddings (*Embedding Drift*) detecta ràpidament l'aparició de temes emergents o canvis de registre lingüístic en producció!",
+      "explanationsIncorrect": {
+        "A": "L'Embedding Drift + monitoratge d'abstenció/clústers és estàndard en NLP/LLMOps.",
+        "C": "No captura canvis semàntics ni temàtics.",
+        "D": "Irrellevant per a la distribució semàntica dels textos."
+      }
+    },
+    {
+      "id": "m07-06-q10",
+      "module": 7,
+      "conceptId": "m07-06-monitoratge",
+      "lessonRef": "content/module-07/m07-06-monitoratge.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Quin risc operacional subtil introdueix una **memòria cau semàntica** davant d'un chatbot municipal si NO s'implementa una **política d'invalidació lligada a la versió de la base de coneixement (KB)**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Cap risc, perquè les ordenances municipals no canvien mai." },
+        { "key": "B", "text": "Que les respostes surtin massa lentes." },
+        { "key": "C", "text": "Servir **respostes caducades o derogades amb latència ultraràpida** fins i tot després d'haver actualitzat la base vectorial, o barrejar respostes entre **tenants/rols ACL diferents** si la clau de cau no inclou `(tenant_id, rol_acl, kb_version)`!" },
+        { "key": "D", "text": "Augmentar la factura de tokens un 500%." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Una cache en entorns públics multi-tenant ha d'incloure sempre `(kb_version, tenant_id, acl_scope)` a la clau (o purgar-se per esdeveniment d'actualització SSOT) per evitar respostes obsoletes i fuites de seguretat!",
+      "explanationsIncorrect": {
+        "A": "Les ordenances, terminis i convocatòries canvien constantment cada any.",
+        "B": "La cache precisament fa les respostes molt ràpides (el risc és que siguin ràpides i obsoletes o insegures!).",
+        "D": "La cache redueix el consum de tokens."
+      }
+    }
+  ]
+}

@@ -447,6 +447,62 @@
       "module": 6,
       "conceptId": "m06-06-validacio-automatica-processos",
       "definition": "Prevenció d'errors al formulari de la Seu combinada amb consultes telemàtiques resilients a Via Oberta / PID per estalviar certificats en paper i generar esborranys d'esmena (art. 68 LPACAP, 10 dies hàbils)."
+    },
+    {
+      "id": "training-serving-skew",
+      "term": "Training-Serving Skew i Data Contracts",
+      "english": "Training-Serving Skew & Data Contracts",
+      "module": 7,
+      "conceptId": "m07-01-preparacio-dades",
+      "definition": "El Skew és la discrepància de transformacions entre entrenament i inferència en producció; s'elimina empaquetant preprocés+model en un únic Pipeline (o Feature Store) protegit per contractes d'esquema (Data Contracts)."
+    },
+    {
+      "id": "kappa-cohen",
+      "term": "Kappa de Cohen (Acord inter-anotador)",
+      "english": "Cohen's Kappa (IAA)",
+      "module": 7,
+      "conceptId": "m07-02-etiquetatge",
+      "definition": "Coeficient d'acord entre dos anotadors humans que descompta l'acord esperat per pur atzar; imprescindible en classes desequilibrades (objectiu >= 0,80 per escalar etiquetatge i Golden Sets)."
+    },
+    {
+      "id": "sliced-evaluation-promptops",
+      "term": "Sliced Evaluation i PromptOps Quality Gate",
+      "english": "Sliced Evaluation & PromptOps",
+      "module": 7,
+      "conceptId": "m07-04-validacio-models",
+      "definition": "Desglossament de mètriques per subgrups crítics (català/castellà, classes rares, equitat) dins portes bloquejants en CI/CD que substitueixen el Vibe Checking per proves deterministes i Champion vs. Challenger."
+    },
+    {
+      "id": "shadow-canary-vllm",
+      "term": "Desplegament Shadow / Canary i vLLM",
+      "english": "Shadow / Canary Deployment & vLLM",
+      "module": 7,
+      "conceptId": "m07-05-desplegament",
+      "definition": "Shadow prova el model nou en paral·lel amb 0% risc per al ciutadà; Canary augmenta el trànsit progressivament (5%->100%) amb rollback automàtic; vLLM optimitza el servei LLM concurrent amb PagedAttention i Continuous Batching."
+    },
+    {
+      "id": "data-concept-drift-psi",
+      "term": "Data Drift, Concept Drift i PSI",
+      "english": "Data Drift, Concept Drift & Population Stability Index",
+      "module": 7,
+      "conceptId": "m07-06-monitoratge",
+      "definition": "Data Drift és el canvi en la distribució d'entrades P(X) (mesurat amb PSI: >=0,25 greu); Concept Drift és el canvi en la relació real P(Y|X) per noves normes o competències (detectat amb etiquetes reals/rebots)."
+    },
+    {
+      "id": "model-registry-cicdct",
+      "term": "Model Registry, Rollback atòmic i CI/CD/CT",
+      "english": "Model Registry & Continuous Training (CI/CD/CT)",
+      "module": 7,
+      "conceptId": "m07-07-versionat",
+      "definition": "Registre immutable de versions vinculant codi, dades, model, prompt+índex paral·lel i Docker @sha256 amb promoció per àlies (@champion) i Continuous Delivery amb aprovació humana en sistemes d'alt risc."
+    },
+    {
+      "id": "circuit-breaker-acl",
+      "term": "Circuit Breaker i Anti-Corruption Layer (ACL)",
+      "english": "Circuit Breaker & Anti-Corruption Layer",
+      "module": 7,
+      "conceptId": "m07-10-integracio-sistemes",
+      "definition": "El Circuit Breaker (CLOSED/OPEN/HALF_OPEN) evita que una caiguda del servei d'IA aturi la Seu Electrònica o el Registre retornant fallback segur; l'ACL tradueix formats legacy externs al contracte canònic ENI/OpenAPI."
     }
   ]
 }
