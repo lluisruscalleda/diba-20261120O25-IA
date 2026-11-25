@@ -1,0 +1,236 @@
+{
+  "conceptId": "m06-05-prioritzacio-casos",
+  "module": 6,
+  "questions": [
+    {
+      "id": "m06-05-q01",
+      "module": 6,
+      "conceptId": "m06-05-prioritzacio-casos",
+      "lessonRef": "content/module-06/m06-05-prioritzacio-casos.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Què és el fenomen de la **inanició de cua (*Starvation*)** en un sistema de priorització d'expedients?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "La situació en què els casos de baixa prioritat queden **desplaçats indefinidament cap al fons de la cua** per l'arribada contínua de casos més prioritaris i no s'arriben a resoldre mai dins termini." },
+        { "key": "B", "text": "Que la cua està completament buida." },
+        { "key": "C", "text": "Que tots els expedients s'atenen en menys d'1 minut." },
+        { "key": "D", "text": "Que el servidor es queda sense memòria RAM." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Sense mecanismes anti-inanició (*Aging* o reserva de capacitat), els casos de baixa gravetat poden acumular mesos de retard indefinidament.",
+      "explanationsIncorrect": {
+        "B": "Al contrari, passa quan entren contínuament casos nous de major prioritat.",
+        "C": "Això indicaria sobrada capacitat, no inanició.",
+        "D": "És un fenomen de teoria de cues i planificació, no de RAM."
+      }
+    },
+    {
+      "id": "m06-05-q02",
+      "module": 6,
+      "conceptId": "m06-05-prioritzacio-casos",
+      "lessonRef": "content/module-06/m06-05-prioritzacio-casos.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Com evita el mecanisme d'***Aging* (envelliment)** la inanició (*Starvation*) en una cua prioritzada?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Esborrant automàticament els casos que porten més de 30 dies." },
+        { "key": "B", "text": "**Incrementant progressivament la puntuació de prioritat d'un cas en funció dels dies que porta esperant**, de manera que qualsevol cas ordinari acaba pujant i resolent-se dins SLA." },
+        { "key": "C", "text": "Baixant la prioritat dels casos antics perquè esperin encara més." },
+        { "key": "D", "text": "Desactivant les prioritats crítiques P0." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "El factor Aging assegura matemàticament que l'antiguitat acumulada eleva els casos de baix impacte abans que quedin abandonats.",
+      "explanationsIncorrect": {
+        "A": "Esborrar expedients no resolts seria il·legal.",
+        "C": "Això empitjoraria la inanició.",
+        "D": "Les urgències crítiques P0 mantenen sempre el seu *override* determinista."
+      }
+    },
+    {
+      "id": "m06-05-q03",
+      "module": 6,
+      "conceptId": "m06-05-prioritzacio-casos",
+      "lessonRef": "content/module-06/m06-05-prioritzacio-casos.md",
+      "difficulty": "basic",
+      "questionType": "architecture",
+      "prompt": "Quina funció té la **Capa 0 (*Override P0* determinista)** dins d'un motor de priorització d'incidències municipals?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Deixar les emergències al final de la cua." },
+        { "key": "B", "text": "Substituir totes les brigades de manteniment." },
+        { "key": "C", "text": "Garantir que qualsevol cas de **perill físic immediat, urgència vital o incident crític** pugi automàticament a la **posició #1** amb un sol avís, sense dependre del nombre de queixes ni d'un score ML." },
+        { "key": "D", "text": "Ordenar la cua alfabèticament pel cognom del ciutadà." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Un cable elèctric pelat o una branca a punt de caure sobre una escola no pot esperar que acumuli 10 queixes; exigeix un *override* determinista immediat.",
+      "explanationsIncorrect": {
+        "A": "Exactament al contrari: les posa al capdavant.",
+        "B": "Serveix per assignar ràpidament el treball a les brigades humanes.",
+        "D": "Ordenar alfabèticament seria arbitrari i perillós."
+      }
+    },
+    {
+      "id": "m06-05-q04",
+      "module": 6,
+      "conceptId": "m06-05-prioritzacio-casos",
+      "lessonRef": "content/module-06/m06-05-prioritzacio-casos.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Què estableix l'**article 71.2 de la Llei 39/2015 (LPACAP)** respecte de l'ordre de tramitació dels expedients administratius?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Que en assumptes d'**homogènia naturalesa** s'ha de guardar l'**ordre rigorós d'incoació (FIFO)**, llevat ordre motivada en contrari del titular de la unitat administrativa de la qual quedi constància." },
+        { "key": "B", "text": "Que els expedients homogenis s'han d'ordenar sempre amb una xarxa neuronal caixa negra." },
+        { "key": "C", "text": "Que mai no es pot prioritzar una emergència de seguretat pública." },
+        { "key": "D", "text": "Que no existeix cap norma sobre l'ordre dels expedients." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "L'art. 71.2 LPACAP protegeix la igualtat i evita arbitrarietat en expedients homogenis (FIFO), alhora que admet alteracions motivades i registrades quan hi ha raons objectives d'interès públic.",
+      "explanationsIncorrect": {
+        "B": "Vulneraria directament l'art. 71.2 LPACAP.",
+        "C": "En casos d'urgència o naturalesa heterogènia la priorització motivada és legítima i necessària.",
+        "D": "L'art. 71.2 LPACAP regula explícitament l'ordre de despatx."
+      }
+    },
+    {
+      "id": "m06-05-q05",
+      "module": 6,
+      "conceptId": "m06-05-prioritzacio-casos",
+      "lessonRef": "content/module-06/m06-05-prioritzacio-casos.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Un sistema de priorització d'incidències de via pública dóna un pes enorme al **`nombre de queixes rebudes a l'app mòbil`**, provocant que els barris joves es resolguin en 3 dies i el barri més envellit en 27 dies. Quin biaix s'ha produït i com es corregeix?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "No hi ha cap biaix perquè l'app és gratuïta." },
+        { "key": "B", "text": "Un **biaix de canal i bretxa digital** (els barris envellits avisen pel 010/presencialment o menys per app); cal **unificar tots els canals amb igual pes**, prioritzar per **gravetat objectiva/seguretat + SLA** i auditar la **paritat de temps de resolució per barri**." },
+        { "key": "C", "text": "S'ha de tancar el telèfon 010 per obligar tothom a usar l'app." },
+        { "key": "D", "text": "S'ha de multiplicar `num_queixes_app` per 100." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Usar el volum de reportes d'un canal digital com a proxy d'urgència discrimina sistemàticament col·lectius amb bretxa digital i genera desigualtat territorial.",
+      "explanationsIncorrect": {
+        "A": "Que sigui gratuïta no elimina la bretxa digital d'ús per edat o situació socioeconòmica.",
+        "C": "Tancar el 010 agreujaria l'exclusió ciutadana.",
+        "D": "Empitjoraria encara més la desigualtat territorial."
+      }
+    },
+    {
+      "id": "m06-05-q06",
+      "module": 6,
+      "conceptId": "m06-05-prioritzacio-casos",
+      "lessonRef": "content/module-06/m06-05-prioritzacio-casos.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "A més del factor *Aging*, quin **segon mecanisme operatiu** garanteix el drenatge constant de la cua ordinària durant pics de feina?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Aturar totes les urgències P0 durant dues setmanes." },
+        { "key": "B", "text": "Duplicar els expedients ordinaris perquè comptin doble." },
+        { "key": "C", "text": "**Reserva de capacitat (*Guaranteed Bandwidth*)**: destinar un percentatge fix de la capacitat (ex. 15–20% de les assignacions) exclusivament als casos més antics de la cua ordinària." },
+        { "key": "D", "text": "Augmentar l'SLA a 10 anys." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Combinar *Aging* a la fórmula amb una reserva de capacitat garantida assegura un avanç mínim sostingut dels expedients ordinaris fins i tot en campanyes punta.",
+      "explanationsIncorrect": {
+        "A": "Mai no es poden desatendre emergències P0.",
+        "B": "Corrompria el registre d'expedients.",
+        "D": "Incompliria els terminis legals de resolució."
+      }
+    },
+    {
+      "id": "m06-05-q07",
+      "module": 6,
+      "conceptId": "m06-05-prioritzacio-casos",
+      "lessonRef": "content/module-06/m06-05-prioritzacio-casos.md",
+      "difficulty": "intermediate",
+      "questionType": "metrics",
+      "prompt": "En un pla d'inspecció tributària o de subvencions amb capacitat per revisar 200 expedients al mes, quin criteri combina millor ML i impacte econòmic per prioritzar la llista?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Ordenar només pels imports més petits (< 5 €)." },
+        { "key": "B", "text": "Ordenar només per ordre alfabètic del municipi." },
+        { "key": "C", "text": "Seleccionar únicament expedients ja prescrits." },
+        { "key": "D", "text": "Combinar el **risc esperat (`probabilitat_calibrada_anomalia * import_econòmic`)** amb la **proximitat a la prescripció legal**, mostrant sempre als inspectors els indicadors explicables de per què cada cas és al Top-200." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "El risc esperat + proximitat a prescripció maximitza la protecció dels fons públics mentre l'explicabilitat facilita la comprovació humana objectiva de l'inspector.",
+      "explanationsIncorrect": {
+        "A": "Malbarataria la capacitat inspectora en imports residuals.",
+        "B": "Arbitrari i ineficient.",
+        "C": "Els expedients prescrits ja no es poden liquidar."
+      }
+    },
+    {
+      "id": "m06-05-q08",
+      "module": 6,
+      "conceptId": "m06-05-prioritzacio-casos",
+      "lessonRef": "content/module-06/m06-05-prioritzacio-casos.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En `calcular_prioritat` de l'exemple 6.5, per què `INC-01` (banc despintat, `impacte=15`, `25 dies d'espera`) obté una puntuació (`107,5`) **superior** a `INC-02` (sot profund, `impacte=75`, `2 dies d'espera`, score `59,5`), però **inferior** a `INC-04` (`perill_immediat=True`, score `1000,0`)?",
+      "codeSnippet": "aging = min(120.0, c.dies_espera * 4.0)\nscore = round(0.50 * c.impacte + 0.35 * urgencia_sla + aging, 1)",
+      "options": [
+        { "key": "A", "text": "Perquè el **factor *Aging* (`25 * 4 = 100,0`)** rescata `INC-01` de la inanició fent-lo passar davant d'un cas recent no crític (`INC-02`), però el sostre (`min(120.0, ...)`) i l'***Override P0* (`1000,0`)** garanteixen que **cap cas antic ordinari no podrà desplaçar mai una emergència real (`INC-04`)**!" },
+        { "key": "B", "text": "Per un error de càlcul que posa el banc despintat davant de tot." },
+        { "key": "C", "text": "Perquè `INC-04` no té `dies_espera`." },
+        { "key": "D", "text": "Perquè `urgencia_sla` de `INC-01` val 100." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Aquesta és l'enginyeria fina d'una cua prioritzada: *Aging* amb sostre (*cap*) impedeix la inanició dels casos ordinaris sense violar mai la jerarquia absoluta de les emergències P0!",
+      "explanationsIncorrect": {
+        "B": "És exactament el disseny intencionat: `INC-04` (P0) continua sent #1 amb `1000,0`!",
+        "C": "`INC-04` entra per l'`if c.perill_immediat:` i retorna `1000.0` immediatament.",
+        "D": "Per a `INC-01` (`dies_fins_sla=20 > 10`), `urgencia_sla` val `0.0`."
+      }
+    },
+    {
+      "id": "m06-05-q09",
+      "module": 6,
+      "conceptId": "m06-05-prioritzacio-casos",
+      "lessonRef": "content/module-06/m06-05-prioritzacio-casos.md",
+      "difficulty": "advanced",
+      "questionType": "normative",
+      "prompt": "Segons l'**Annex III del Reglament (UE) 2024/1689 (AI Act)**, com es classifiquen els sistemes d'IA destinats a **prioritzar l'accés a prestacions/serveis públics essencials** o a **prioritzar l'enviament de serveis d'emergència**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Risc mínim sense cap obligació." },
+        { "key": "B", "text": "**Sistemes d'IA d'ALT RISC**, subjectes a requisits estrictes de gestió de riscos, governança de dades contra biaixos, documentació tècnica, registres automàtics, transparència, **supervisió humana efectiva (art. 14)** i **FRIA (art. 27)** per als desplegadors públics." },
+        { "key": "C", "text": "Totalment prohibits en qualsevol circumstància." },
+        { "key": "D", "text": "Exempts de qualsevol supervisió humana." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "L'Annex III de l'AI Act (punt 5: accés a serveis públics essencials i priorització d'emergències) els classifica explícitament com a alt risc, amb obligacions reforçades per a entitats públiques (incloent FRIA, art. 27).",
+      "explanationsIncorrect": {
+        "A": "Precisament són un dels casos típics d'alt risc a l'Administració.",
+        "C": "No són pràctiques prohibides de l'art. 5 (com *social scoring* general), sinó alt risc regulat a l'Annex III.",
+        "D": "L'art. 14 AI Act imposa supervisió humana efectiva obligatòria."
+      }
+    },
+    {
+      "id": "m06-05-q10",
+      "module": 6,
+      "conceptId": "m06-05-prioritzacio-casos",
+      "lessonRef": "content/module-06/m06-05-prioritzacio-casos.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Per què la interfície d'una cua prioritzada ha d'incorporar **explicabilitat del desglossament de puntuació** i un botó d'***override* humà motivat**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè els supervisors puguin canviar l'ordre sense deixar cap rastre ni justificació." },
+        { "key": "B", "text": "Per eliminar el registre d'auditoria." },
+        { "key": "C", "text": "Perquè el cap de servei entengui immediatament **per què cada cas ocupa aquella posició** (`impacte`, `SLA`, `aging`), detecti possibles errors de dades i pugui **reprioritzar manualment deixant traça motivada** (art. 71.2 LPACAP i art. 14 AI Act)." },
+        { "key": "D", "text": "Per ocultar la data de venciment del silenci administratiu." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Explicabilitat + override motivat i auditat garanteixen supervisió humana real (contra el biaix d'automatització) i compliment administratiu i d'AI Act.",
+      "explanationsIncorrect": {
+        "A": "L'*override* sempre ha de requerir motiu i quedar registrat al log d'auditoria.",
+        "B": "Al contrari, reforça el registre d'auditoria.",
+        "D": "La data d'SLA/silenci administratiu ha de ser ben visible per evitar venciments."
+      }
+    }
+  ]
+}

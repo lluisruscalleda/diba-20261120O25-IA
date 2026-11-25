@@ -399,6 +399,54 @@
       "module": 5,
       "conceptId": "m05-08-escalada-humana",
       "definition": "Transferència d'una conversa a la cua especialitzada OAC/010 adjuntant un paquet estructurat breu (resum, slots, cites RAG ja mostrades i motiu d'escalada) perquè el ciutadà no hagi de repetir-ho tot."
+    },
+    {
+      "id": "rpa-idempotencia",
+      "term": "RPA, principi API-first i idempotència",
+      "english": "Robotic Process Automation (RPA) & Idempotency",
+      "module": 6,
+      "conceptId": "m06-01-rpa",
+      "definition": "Robots de programari per a tasques repetitives sobre sistemes legacy sense API (mai si existeix API), executats amb comptes de servei en Vault, separació d'excepcions tècniques vs. negoci i claus d'idempotència anti-duplicats."
+    },
+    {
+      "id": "brms-dmn",
+      "term": "Motor de regles de negoci (BRMS / DMN)",
+      "english": "Business Rules Management System / Decision Model and Notation",
+      "module": 6,
+      "conceptId": "m06-02-regles-negoci",
+      "definition": "Motor declaratiu de taules de decisió versionades per vigència temporal (polítiques UNIQUE, FIRST, COLLECT) que garanteix 100% de determinisme i motivació jurídica (art. 35 LPACAP) en procediments reglats."
+    },
+    {
+      "id": "calibratge-ece",
+      "term": "Calibratge de probabilitats i ECE",
+      "english": "Probability Calibration & Expected Calibration Error",
+      "module": 6,
+      "conceptId": "m06-03-classificadors-automatics",
+      "definition": "Ajust de les sortides d'un classificador (Temperature/Platt/Isotonic Scaling) perquè la confiança predita coincideixi amb l'encert real abans de fixar llindars asimètrics d'auto-enrutament i opció de rejecció."
+    },
+    {
+      "id": "ndcg-cold-start",
+      "term": "NDCG@K i Cold Start (Sistemes de recomanació)",
+      "english": "Normalized Discounted Cumulative Gain & Cold Start",
+      "module": 6,
+      "conceptId": "m06-04-sistemes-recomanacio",
+      "definition": "NDCG@K avalua la qualitat d'ordenació amb rellevància graduada i descompte posicional; el Cold Start (nous ítems/usuaris sense historial) es mitiga combinant filtre legal, contingut i re-ranking de diversitat."
+    },
+    {
+      "id": "aging-starvation",
+      "term": "Starvation i Aging en cues prioritzades",
+      "english": "Queue Starvation & Aging",
+      "module": 6,
+      "conceptId": "m06-05-prioritzacio-casos",
+      "definition": "Starvation és l'abandonament indefinit de casos de baixa prioritat; es prevè mitjançant Aging (augment progressiu de punts per dies d'espera amb sostre sota P0) i reserva de capacitat, respectant l'art. 71.2 LPACAP."
+    },
+    {
+      "id": "once-only-shift-left",
+      "term": "Validació Shift-Left i principi Once-Only (art. 28 LPACAP)",
+      "english": "Shift-Left Validation & Once-Only Principle",
+      "module": 6,
+      "conceptId": "m06-06-validacio-automatica-processos",
+      "definition": "Prevenció d'errors al formulari de la Seu combinada amb consultes telemàtiques resilients a Via Oberta / PID per estalviar certificats en paper i generar esborranys d'esmena (art. 68 LPACAP, 10 dies hàbils)."
     }
   ]
 }

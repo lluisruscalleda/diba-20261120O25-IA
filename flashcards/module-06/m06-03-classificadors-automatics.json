@@ -1,0 +1,46 @@
+{
+  "conceptId": "m06-03-classificadors-automatics",
+  "module": 6,
+  "cards": [
+    {
+      "id": "m06-03-fc01",
+      "module": 6,
+      "conceptId": "m06-03-classificadors-automatics",
+      "front": "Per què cal calibrar un classificador Transformer (*Temperature Scaling* / *Isotonic*) abans d'auto-enrutar expedients?",
+      "back": "Perquè els Transformers solen ser sobreconfiats (prediuen 0,90 quan encerten un 75%); calibrar i mesurar ECE/Brier Score assegura que els llindars d'automatització corresponen a la precisió real.",
+      "tags": ["calibratge", "ECE", "Brier Score"]
+    },
+    {
+      "id": "m06-03-fc02",
+      "module": 6,
+      "conceptId": "m06-03-classificadors-automatics",
+      "front": "Quina funció té el marge Top-1 vs Top-2 (`p1 - p2`) en un enrutador automàtic?",
+      "back": "Detectar ambigüitat o instàncies multi-departament (ex. 0,52 vs 0,44) per derivar-les a triatge humà amb ambdós serveis suggerits en lloc de forçar una única classe.",
+      "tags": ["marge", "multi-departament"]
+    },
+    {
+      "id": "m06-03-fc03",
+      "module": 6,
+      "conceptId": "m06-03-classificadors-automatics",
+      "front": "Per què s'utilitzen llindars asimètrics per classe en producció?",
+      "back": "Per adaptar l'exigència de confiança al cost real d'error de cada departament (ex. 0,80 per Via Pública vs. 0,95 o revisió obligatòria per Serveis Socials/Jurídic).",
+      "tags": ["llindars", "risc asimètric"]
+    },
+    {
+      "id": "m06-03-fc04",
+      "module": 6,
+      "conceptId": "m06-03-classificadors-automatics",
+      "front": "Què mesura la corba Risc-Cobertura (*Risk-Coverage Curve*)?",
+      "back": "El compromís directe entre % d'expedients auto-enrutats (*Coverage*) i la taxa d'error/rebot (*Risk*) en variar el llindar de confiança, permetent fixar el punt òptim (rebots < 3–5%).",
+      "tags": ["Risc-Cobertura", "taxa de rebot"]
+    },
+    {
+      "id": "m06-03-fc05",
+      "module": 6,
+      "conceptId": "m06-03-classificadors-automatics",
+      "front": "Com s'evita el ping-pong i com s'aprofita cada rebot manual en producció?",
+      "back": "Regla anti-ping-pong: un expedient rebotat manualment surt definitivament de l'auto-enrutament. Alhora, cada rebot es registra com a etiqueta real per al bucle controlat d'*Active Learning*.",
+      "tags": ["Active Learning", "anti-ping-pong"]
+    }
+  ]
+}

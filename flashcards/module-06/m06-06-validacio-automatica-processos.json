@@ -1,0 +1,46 @@
+{
+  "conceptId": "m06-06-validacio-automatica-processos",
+  "module": 6,
+  "cards": [
+    {
+      "id": "m06-06-fc01",
+      "module": 6,
+      "conceptId": "m06-06-validacio-automatica-processos",
+      "front": "Què és la validació *Shift-Left* en processos administratius?",
+      "back": "Incorporar validacions en temps real (NIF/IBAN, sumes automàtiques, adjunts obligatoris) dins el formulari de la Seu Electrònica abans del registre, eliminant un 30–40% de defectes d'entrada.",
+      "tags": ["Shift-Left", "Seu Electrònica"]
+    },
+    {
+      "id": "m06-06-fc02",
+      "module": 6,
+      "conceptId": "m06-06-validacio-automatica-processos",
+      "front": "Com es combinen l'art. 28 LPACAP i l'art. 95.1.k LGT en consultes a Via Oberta / PID?",
+      "back": "Art. 28 LPACAP: dret a no aportar documents en poder de l'Administració (consulta automàtica llevat oposició). Art. 95.1.k LGT: per a dades tributàries (AEAT) cal consentiment exprés de l'interessat.",
+      "tags": ["art. 28 LPACAP", "Via Oberta", "AEAT"]
+    },
+    {
+      "id": "m06-06-fc03",
+      "module": 6,
+      "conceptId": "m06-06-validacio-automatica-processos",
+      "front": "Com ha d'actuar el validador si Via Oberta / AEAT retorna un `TIMEOUT` o `HTTP 503`?",
+      "back": "Marcar l'expedient com a `PENDENT_REINTENT_INTEROP`, reintentar automàticament amb *backoff* i BLOQUEJAR qualsevol requeriment d'esmena: MAI culpar el ciutadà d'una caiguda tècnica externa!",
+      "tags": ["resiliència", "Via Oberta", "reintents"]
+    },
+    {
+      "id": "m06-06-fc04",
+      "module": 6,
+      "conceptId": "m06-06-validacio-automatica-processos",
+      "front": "Què significa cada color de la semaforització (`VERD / GROC / VERMELL`) en validació de processos?",
+      "back": "VERD: 100% OK per a baremació; GROC: defectes subsanables → esborrany de requeriment d'esmena (art. 68 LPACAP, 10 dies hàbils); VERMELL: fora termini / deute / alerta ML → revisió tècnica humana (zero denegació autònoma!).",
+      "tags": ["semaforització", "art. 68 LPACAP"]
+    },
+    {
+      "id": "m06-06-fc05",
+      "module": 6,
+      "conceptId": "m06-06-validacio-automatica-processos",
+      "front": "Per què la validació de signatura electrònica s'ha de fer via PSIS (AOC) / @firma i no visualment?",
+      "back": "Perquè verifica criptogràficament la integritat del document, la cadena de confiança del certificat qualificat i l'estat de no-revocació (OCSP/CRL), no una simple imatge enganxada al PDF.",
+      "tags": ["PSIS", "@firma", "signatura electrònica"]
+    }
+  ]
+}

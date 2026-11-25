@@ -1,0 +1,236 @@
+{
+  "conceptId": "m06-02-regles-negoci",
+  "module": 6,
+  "questions": [
+    {
+      "id": "m06-02-q01",
+      "module": 6,
+      "conceptId": "m06-02-regles-negoci",
+      "lessonRef": "content/module-06/m06-02-regles-negoci.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quin avantatge fonamental ofereix un **Motor de Regles de Negoci (BRMS / DMN)** respecte de programar la lògica normativa amb `if/else` incrustats dins el codi font?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "**Desacobla les regles del codi**, permetent que juristes i tècnics les revisin en taules llegibles, es **versionin per vigència temporal** i s'actualitzin sense recompilar el nucli de l'aplicació." },
+        { "key": "B", "text": "Converteix les lleis en prediccions aleatòries." },
+        { "key": "C", "text": "Elimina la necessitat de provar els canvis abans de producció." },
+        { "key": "D", "text": "Només serveix per a imatges i vídeos." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Externalitzar i versionar regles en taules declaratives DMN facilita el manteniment anual d'ordenances i bases i proporciona traçabilitat jurídica exacta.",
+      "explanationsIncorrect": {
+        "B": "Al contrari, els motors de regles són 100% deterministes.",
+        "C": "Tota nova versió de taula requereix proves de completitud i casos regressius.",
+        "D": "Opera sobre dades estructurades i regles lògiques."
+      }
+    },
+    {
+      "id": "m06-02-q02",
+      "module": 6,
+      "conceptId": "m06-02-regles-negoci",
+      "lessonRef": "content/module-06/m06-02-regles-negoci.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Per què un **barem oficial de beques menjador** (punts per renda, monoparentalitat i informe social) s'ha d'implementar amb **regles deterministes** i NO amb un model de Machine Learning?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè Python no suporta models de Machine Learning." },
+        { "key": "B", "text": "Perquè els criteris estan **explícitament reglats en una norma jurídica**: un motor determinista garanteix **100% d'exactitud, igualtat entre sol·licitants i motivació jurídica article per article**, mentre que un ML introduiria incertesa i arbitrarietat." },
+        { "key": "C", "text": "Perquè les regles deterministes són més lentes que un LLM de 70B." },
+        { "key": "D", "text": "Perquè el Machine Learning no pot llegir números." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Tot procediment reglat amb llindars i punts normatius exigeix determinisme estricte i motivació legal (art. 35 LPACAP), mai aproximació probabilística.",
+      "explanationsIncorrect": {
+        "A": "Python és l'ecosistema principal de ML.",
+        "C": "Les regles deterministes s'executen en microsegons.",
+        "D": "El ML opera amb números, però de manera probabilística i aproximada."
+      }
+    },
+    {
+      "id": "m06-02-q03",
+      "module": 6,
+      "conceptId": "m06-02-regles-negoci",
+      "lessonRef": "content/module-06/m06-02-regles-negoci.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina *Hit Policy* de l'estàndard **DMN** és l'adequada per a un **barem de subvencions** on una família pot acumular punts de diverses files simultàniament (renda + família nombrosa + vulnerabilitat)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "`UNIQUE` (només pot coincidir una fila)." },
+        { "key": "B", "text": "`FIRST` (s'atura a la primera fila)." },
+        { "key": "C", "text": "`COLLECT (C+)` (avalua totes les regles i suma els punts de totes les que es compleixen)." },
+        { "key": "D", "text": "`RANDOM` (tria una fila a l'atzar)." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "COLLECT (C+) acumula totes les regles coincidents en un barem sumatori, registrant cada concepte puntuat per a la resolució.",
+      "explanationsIncorrect": {
+        "A": "UNIQUE prohibeix que coincideixin més d'una fila alhora.",
+        "B": "FIRST deixaria de comptar punts després de la primera fila certa.",
+        "D": "No existeix cap política aleatòria en DMN normatiu."
+      }
+    },
+    {
+      "id": "m06-02-q04",
+      "module": 6,
+      "conceptId": "m06-02-regles-negoci",
+      "lessonRef": "content/module-06/m06-02-regles-negoci.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Per què és obligatori conservar **versions històriques amb dates de vigència (`valid_from` / `valid_to`)** de les taules de regles d'una ordenança fiscal o convocatòria?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Per poder resoldre **recursos, inspeccions o auditories d'exercicis anteriors** aplicant exactament les regles vigents en la **data de meritació o sol·licitud**, i no les de l'any en curs." },
+        { "key": "B", "text": "Només per omplir més espai al servidor." },
+        { "key": "C", "text": "Per aplicar retroactivament les pujades d'impostos del 2026 als rebuts del 2022." },
+        { "key": "D", "text": "Perquè els motors DMN esborren les regles cada mes." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Els procediments i recursos sovint es resolen anys després; executar la versió exacta vigent en la data de meritació garanteix seguretat jurídica i auditabilitat.",
+      "explanationsIncorrect": {
+        "B": "És un requisit jurídic i d'auditoria essencial.",
+        "C": "Precisament s'evita aplicar retroactivament regles noves a expedients antics.",
+        "D": "Les regles versionades són persistents i immutables."
+      }
+    },
+    {
+      "id": "m06-02-q05",
+      "module": 6,
+      "conceptId": "m06-02-regles-negoci",
+      "lessonRef": "content/module-06/m06-02-regles-negoci.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "En una arquitectura híbrida (regles deterministes + model ML d'anomalies documentals), com ha d'actuar el sistema quan un expedient compleix tots els requisits del barem però el **model ML marca un score d'anomalia de `0,88`**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Denegar automàticament la beca al ciutadà basant-se en el `0,88`." },
+        { "key": "B", "text": "Conservar la puntuació determinista però derivar l'expedient a **revisió tècnica humana (`REVISIO_TECNICA_ALERTA_ML`)** perquè un empleat verifiqui la documentació; un senyal probabilístic ML **mai no denega per si sol**." },
+        { "key": "C", "text": "Ignorar completament el model ML en tots els casos." },
+        { "key": "D", "text": "Restar 8,8 punts al barem legal." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "El ML serveix per prioritzar la comprovació humana (control de qualitat/antifrau), però cap ciutadà pot ser exclòs d'un dret reglat únicament per un score estadístic sense verificació humana i causa jurídica.",
+      "explanationsIncorrect": {
+        "A": "Vulneraria el principi de legalitat, motivació i supervisió humana.",
+        "C": "L'alerta ML és molt útil per focalitzar la inspecció humana en casos sospitosos.",
+        "D": "Mai es poden alterar puntuacions d'un barem legal amb un score no previst a les bases."
+      }
+    },
+    {
+      "id": "m06-02-q06",
+      "module": 6,
+      "conceptId": "m06-02-regles-negoci",
+      "lessonRef": "content/module-06/m06-02-regles-negoci.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Com facilita un motor de regles ben dissenyat el compliment del **deure de motivació dels actes administratius (art. 35 LPACAP)**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Imprimint únicament la paraula «DENEGAT»." },
+        { "key": "B", "text": "Ocultant quines regles han intervingut per secret industrial." },
+        { "key": "C", "text": "Retornant en cada execució la **traça exacta de regles disparades** (`versio_regles`, `id_regla`, **article normatiu concret** i motiu), que fonamenta de manera transparent i auditable la proposta de resolució." },
+        { "key": "D", "text": "Demanant a un LLM que inventi una justificació posterior." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "La traça exacta d'execució de regles vinculada a cada article de les bases proporciona una motivació directa, verificable i 100% fidel.",
+      "explanationsIncorrect": {
+        "A": "Un acte desfavorable sense motivació és nul o anul·lable.",
+        "B": "Les regles de barems públics són públiques i transparents.",
+        "D": "Una justificació inventada post-hoc no reflecteix fidelment el càlcul real."
+      }
+    },
+    {
+      "id": "m06-02-q07",
+      "module": 6,
+      "conceptId": "m06-02-regles-negoci",
+      "lessonRef": "content/module-06/m06-02-regles-negoci.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Què comprova una anàlisi estàtica de qualitat sobre una taula de decisió DMN amb política **`UNIQUE`** abans de publicar-la a producció?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Només el color de fons del document." },
+        { "key": "B", "text": "La velocitat de connexió a Internet." },
+        { "key": "C", "text": "El nombre de tokens del prompt." },
+        { "key": "D", "text": "Que no existeixin **buits (*gaps*)** (valors d'entrada que no encaixen en cap fila) ni **solapaments/contradiccions** (valors que disparen dues files diferents alhora, ex. `<= 7000` i `>= 7000`)." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Detectar fronteres solapades (`7000` en dues files) o forats (`7000,50` en cap fila) abans de desplegar evita errors massius el dia que s'obre la convocatòria.",
+      "explanationsIncorrect": {
+        "A": "Irrellevant per a la lògica normativa.",
+        "B": "És verificació lògica de regles, no de xarxa.",
+        "C": "DMN és determinista, no utilitza tokens d'LLM."
+      }
+    },
+    {
+      "id": "m06-02-q08",
+      "module": 6,
+      "conceptId": "m06-02-regles-negoci",
+      "lessonRef": "content/module-06/m06-02-regles-negoci.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En la funció `avaluar_expedient` de l'exemple 6.2, què succeeix amb el cas `SOL-03` (`empadronat=False`, `renda_pc=5000`, `informe_social=True`) i per què?",
+      "codeSnippet": "for r in REGLES_EXCLUSIO_FIRST:\n    if r.condicio(dades):\n        return {\n            \"versio_regles\": VERSIO_REGLEMENT,\n            \"estat\": \"PROPOSTA_EXCLOS\",\n            \"punts\": 0,\n            \"motivacio\": [f\"{r.id_regla} ({r.article}): {r.descripcio}\"],\n        }",
+      "options": [
+        { "key": "A", "text": "La regla `EX-01` (`Art. 4.1`, no empadronat) s'avalua primer sota *Hit Policy* **`FIRST`** i retorna immediatament **`PROPOSTA_EXCLOS` amb `0` punts** i cita exacta de l'article, sense entrar al barem acumulatiu." },
+        { "key": "B", "text": "Suma 16 punts (`BR-01` + `BR-04`) i s'aprova automàticament." },
+        { "key": "C", "text": "Llança una excepció de Python perquè falta `empadronat`." },
+        { "key": "D", "text": "Activa `REVISIO_TECNICA_ALERTA_ML`." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Els requisits essencials d'admissió s'avaluen en la fase d'exclusió `FIRST` abans de baremar punts, retornant immediatament la causa legal exacta d'inadmissió.",
+      "explanationsIncorrect": {
+        "B": "El `return` anticipat evita assignar punts a una sol·licitud exclosa.",
+        "C": "`empadronat` és present (`False`), no llança cap error.",
+        "D": "`score_anomalia_ml` és `0.05` (< 0.80) i a més ja ha sortit a la fase d'exclusió."
+      }
+    },
+    {
+      "id": "m06-02-q09",
+      "module": 6,
+      "conceptId": "m06-02-regles-negoci",
+      "lessonRef": "content/module-06/m06-02-regles-negoci.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Quin risc operatiu apareix si intentes resoldre **classificació de queixes ciutadanes en text lliure** exclusivament amb un motor de regles de paraules clau (`IF conté 'contenidor' THEN Neteja`)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Les regles de paraules clau sempre assoleixen 100% d'F1 en text lliure." },
+        { "key": "B", "text": "**Explosió combinatòria i *Rule Rot***: milers de sinònims, faltes d'ortografia, negacions («NO és un problema de contenidors sinó d'enllumenat») i excepcions fan les regles ingovernables i fràgils; aquí correspon un **classificador NLP/ML** (Mòdul 2)!" },
+        { "key": "C", "text": "Les regles de paraules clau no poden executar-se en Python." },
+        { "key": "D", "text": "L'AI Act prohibeix l'ús de regles deterministes." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Cada eina al seu lloc: les regles brillen en normes estructurades, però pateixen explosió combinatòria en text lliure o imatges, on el ML/NLP és molt superior.",
+      "explanationsIncorrect": {
+        "A": "Fallen estrepitosament amb sinonímia, ambigüitat i negacions.",
+        "C": "Són trivials de programar, però molt dolentes per entendre llenguatge natural.",
+        "D": "L'AI Act precisament promou transparència i determinisme allà on és viable."
+      }
+    },
+    {
+      "id": "m06-02-q10",
+      "module": 6,
+      "conceptId": "m06-02-regles-negoci",
+      "lessonRef": "content/module-06/m06-02-regles-negoci.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "En revisar una taula DMN abans d'obrir una convocatòria de subvencions, un tècnic detecta que la fila 1 diu `renda < 7000` i la fila 2 diu `renda > 7000`. Quina anomalia lògica s'ha detectat i com es corregeix?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Cap anomalia; `7000` s'assignarà a les dues files." },
+        { "key": "B", "text": "Un solapament excessiu de 5 files." },
+        { "key": "C", "text": "Un **buit (*gap*) en la frontera exacta `renda == 7000,00 €`**: qualsevol família amb exactament 7.000,00 € no encaixaria en cap regla! Es corregeix fent els intervals contigus i disjunts (`<= 7000` i `> 7000`) i afegint un **test de valor frontera** a la suite CI/CD." },
+        { "key": "D", "text": "Cal eliminar la variable `renda` de les bases." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Les proves de valors frontera (`6999.99`, `7000.00`, `7000.01`) i l'anàlisi de buits són imprescindibles en tota taula de decisió normativa.",
+      "explanationsIncorrect": {
+        "A": "7000 no compleix ni `< 7000` ni `> 7000`!",
+        "B": "És un buit (0 coincidències), no un solapament (>1 coincidències).",
+        "D": "La renda és un criteri legal de la convocatòria."
+      }
+    }
+  ]
+}

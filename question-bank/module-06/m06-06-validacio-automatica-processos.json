@@ -1,0 +1,236 @@
+{
+  "conceptId": "m06-06-validacio-automatica-processos",
+  "module": 6,
+  "questions": [
+    {
+      "id": "m06-06-q01",
+      "module": 6,
+      "conceptId": "m06-06-validacio-automatica-processos",
+      "lessonRef": "content/module-06/m06-06-validacio-automatica-processos.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Què és la validació ***Shift-Left* (validació en origen)** en la tramitació electrònica d'expedients?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Traslladar les comprovacions de format (NIF/IBAN), sumes automàtiques i adjunts obligatoris al **formulari web de la Seu Electrònica abans del registre**, evitant que un 30–40% de defectes arribin mai al *back-office*." },
+        { "key": "B", "text": "Desplaçar tots els botons de la pantalla cap a l'esquerra." },
+        { "key": "C", "text": "Validar els expedients únicament un any després de pagar la subvenció." },
+        { "key": "D", "text": "Eliminar totes les validacions del formulari." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Prevenir l'error en el moment que el ciutadà omple el formulari estalvia milers de requeriments d'esmena i mesos de tramitació.",
+      "explanationsIncorrect": {
+        "B": "No és una qüestió d'alineació visual CSS.",
+        "C": "Això seria validació tardana (*shift-right*), exactament el contrari.",
+        "D": "Precisament afegeix validacions preventives en temps real."
+      }
+    },
+    {
+      "id": "m06-06-q02",
+      "module": 6,
+      "conceptId": "m06-06-validacio-automatica-processos",
+      "lessonRef": "content/module-06/m06-06-validacio-automatica-processos.md",
+      "difficulty": "basic",
+      "questionType": "normative",
+      "prompt": "Quin termini legal estableix amb caràcter general l'**article 68 de la Llei 39/2015 (LPACAP)** per requerir al ciutadà l'**esmena de defectes formals o documentació incompleta** en una sol·licitud?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "2 hores." },
+        { "key": "B", "text": "**10 dies hàbils** (generant el validador un esborrany de requeriment amb els punts exactes a esmenar, revisat abans de notificar)." },
+        { "key": "C", "text": "No existeix cap tràmit d'esmena: s'arxiva immediatament el mateix dia." },
+        { "key": "D", "text": "5 anys." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "L'art. 68.1 LPACAP garanteix el termini general de 10 dies hàbils per esmenar la sol·licitud o acompanyar els documents preceptius.",
+      "explanationsIncorrect": {
+        "A": "Termini inexistent i desproporcionat.",
+        "C": "Arxivar sense donar tràmit d'esmena vulnera l'art. 68 LPACAP.",
+        "D": "El termini general d'esmena són 10 dies hàbils."
+      }
+    },
+    {
+      "id": "m06-06-q03",
+      "module": 6,
+      "conceptId": "m06-06-validacio-automatica-processos",
+      "lessonRef": "content/module-06/m06-06-validacio-automatica-processos.md",
+      "difficulty": "basic",
+      "questionType": "normative",
+      "prompt": "Què permet el principi ***Once-Only* (art. 28.2 i 28.3 LPACAP)** mitjançant plataformes com **Via Oberta (Consorci AOC)** o la **PID**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Demanar els mateixos certificats en paper 3 vegades a cada ciutadà." },
+        { "key": "B", "text": "Accedir a les xarxes socials privades dels sol·licitants." },
+        { "key": "C", "text": "Consultar telemàticament i automàtica dades i certificats ja en poder de les administracions (padró, TGSS, títols, registres) **evitant exigir-los en paper al ciutadà**, respectant el seu dret d'oposició." },
+        { "key": "D", "text": "Suprimir la signatura electrònica de totes les resolucions." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "La interoperabilitat Via Oberta / PID implementa el dret a no aportar documents elaborats per qualsevol Administració, agilitzant la validació i reduint errors documentals.",
+      "explanationsIncorrect": {
+        "A": "Precisament elimina les peticions repetitives de certificats.",
+        "B": "Només consulta registres administratius oficials autoritzats per llei.",
+        "D": "La signatura electrònica continua sent preceptiva."
+      }
+    },
+    {
+      "id": "m06-06-q04",
+      "module": 6,
+      "conceptId": "m06-06-validacio-automatica-processos",
+      "lessonRef": "content/module-06/m06-06-validacio-automatica-processos.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Durant la validació automàtica d'un lot de 500 subvencions, el servei extern de **Via Oberta / AEAT retorna un error `HTTP 503 / TIMEOUT`** durant una hora. Com ha d'actuar el validador?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Marcar els expedients afectats com a **`PENDENT_REINTENT_INTEROP`**, **bloquejar qualsevol requeriment d'esmena al ciutadà**, executar reintents automàtics amb *backoff* i alertar IT si la caiguda persisteix." },
+        { "key": "B", "text": "Enviar immediatament 500 requeriments d'esmena dient que tenen deutes amb Hisenda." },
+        { "key": "C", "text": "Denegar definitivament les 500 sol·licituds." },
+        { "key": "D", "text": "Aprovar automàticament les 500 sol·licituds sense comprovar mai si tenen deutes." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Mai no s'ha de confondre una errada tècnica de comunicació amb un incompliment de negoci del ciutadà (ni tampoc saltar-se el requisit legal!).",
+      "explanationsIncorrect": {
+        "B": "Generaria 500 requeriments falsos i alarma ciutadana injustificada.",
+        "C": "Il·legal i greument lesiu per als drets dels interessats.",
+        "D": "Ometria una comprovació legal preceptiva (Llei General de Subvencions)."
+      }
+    },
+    {
+      "id": "m06-06-q05",
+      "module": 6,
+      "conceptId": "m06-06-validacio-automatica-processos",
+      "lessonRef": "content/module-06/m06-06-validacio-automatica-processos.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Quina particularitat jurídica (art. 95.1.k de la **Llei General Tributària**) s'ha de respectar en automatitzar la consulta d'**estar al corrent d'obligacions tributàries (AEAT)** via interoperabilitat?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Cap, les dades tributàries són públiques a Internet." },
+        { "key": "B", "text": "Les dades tributàries tenen **caràcter reservat**, per la qual cosa la consulta automatitzada requereix habitualment **autorització/consentiment exprés** de l'interessat al formulari (si no l'atorga, ha d'adjuntar el certificat vigent)." },
+        { "key": "C", "text": "L'AEAT només respon per correu postal." },
+        { "key": "D", "text": "Està prohibit consultar l'AEAT fins i tot amb consentiment exprés." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "A diferència d'altres dades sota règim general d'oposició (art. 28.2 LPACAP), la consulta de dades tributàries AEAT exigeix consentiment exprés conforme a l'art. 95.1.k LGT.",
+      "explanationsIncorrect": {
+        "A": "Les dades tributàries estan estrictament protegides pel secret tributari.",
+        "C": "Està plenament integrada telemàticament via PID / Via Oberta.",
+        "D": "Amb consentiment exprés del sol·licitant la consulta telemàtica és plenament vàlida i recomanada."
+      }
+    },
+    {
+      "id": "m06-06-q06",
+      "module": 6,
+      "conceptId": "m06-06-validacio-automatica-processos",
+      "lessonRef": "content/module-06/m06-06-validacio-automatica-processos.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "En el patró de **semaforització d'expedients (`VERD / GROC / VERMELL`)**, què fa el sistema quan un expedient cau a **`VERMELL`** (p. ex., presentat fora de termini o amb deute confirmat a TGSS)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Dicta i notifica automàticament la denegació definitiva sense que cap persona ho revisi." },
+        { "key": "B", "text": "Esborra l'expedient de la base de dades." },
+        { "key": "C", "text": "El deriva a **revisió tècnica humana (`VERMELL_REVISIO_TECNICA`)** amb la traça exacta de les regles incomplertes perquè el tècnic instructor verifiqui el cas i prepari la proposta de resolució motivada." },
+        { "key": "D", "text": "El converteix automàticament en `VERD` al cap de 24 hores." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "El validador automatitza les comprovacions i prepara l'evidència, però **mai** dicta resolucions denegatòries definitives de forma autònoma sense supervisió humana.",
+      "explanationsIncorrect": {
+        "A": "Vulneraria el principi de supervisió humana en actes desfavorables.",
+        "B": "Tot expedient registrat s'ha de tramitar i resoldre (art. 21 LPACAP).",
+        "D": "Un incompliment de termini o deute mai no es valida automàticament."
+      }
+    },
+    {
+      "id": "m06-06-q07",
+      "module": 6,
+      "conceptId": "m06-06-validacio-automatica-processos",
+      "lessonRef": "content/module-06/m06-06-validacio-automatica-processos.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Quin control específic pertany a la **Capa 3 (Validació creuada de negoci i pressupost)** en una convocatòria de subvencions?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Comprovar el color del logotip de l'associació." },
+        { "key": "B", "text": "Només verificar la resolució DPI de l'escàner." },
+        { "key": "C", "text": "Contar el nombre d'adjectius de la memòria tècnica." },
+        { "key": "D", "text": "Verificar que l'**import sol·licitat al formulari coincideix amb el pressupost de la memòria**, no supera el màxim de les bases i no provoca **doble finançament (>100% del cost)** creuant-ho amb la **BDNS**." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "La Capa 3 valida la coherència global de tot l'expedient i el compliment de restriccions pressupostàries i d'incompatibilitat entre múltiples fonts.",
+      "explanationsIncorrect": {
+        "A": "Irrellevant per a la validesa de l'expedient.",
+        "B": "Això és qualitat d'imatge prèvia a OCR (Mòdul 4).",
+        "C": "Mètrica lingüística irrellevant per al control pressupostari."
+      }
+    },
+    {
+      "id": "m06-06-q08",
+      "module": 6,
+      "conceptId": "m06-06-validacio-automatica-processos",
+      "lessonRef": "content/module-06/m06-06-validacio-automatica-processos.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En la funció `validar_proces` de l'exemple 6.6, què retorna l'expedient **`SUB-02`** (`te_memoria_tecnica=False`, `autoritzacio_aeat=False`, `certificat_aeat_adjunt=False`, `import_sollicitat=5000`, `import_memoria=4800`) i per què?",
+      "codeSnippet": "if bloquejos:\n    return {\"id\": exp.id, \"semafor\": \"VERMELL_REVISIO_TECNICA\", ...}\nif esmenables:\n    return {\"id\": exp.id, \"semafor\": \"GROC_ESBORRANY_ESMENA_ART68\", \"termini_esmena\": \"10 dies hàbils (art. 68 LPACAP)\", \"punts_a_esmenar\": esmenables}",
+      "options": [
+        { "key": "A", "text": "Retorna **`GROC_ESBORRANY_ESMENA_ART68`** agrupant en un **únic requeriment d'esmena (10 dies hàbils)** els **3 defectes subsanables** (falta memòria, falta certificat AEAT per no autoritzar consulta, i discrepància `5000 € vs 4800 €`), evitant fer 3 requeriments separats!" },
+        { "key": "B", "text": "Retorna `VERD_VALIDAT_BAREMACIO`." },
+        { "key": "C", "text": "Retorna `VERMELL_REVISIO_TECNICA` perquè no autoritza la consulta AEAT." },
+        { "key": "D", "text": "Retorna `PENDENT_REINTENT_INTEROP`." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Agrupar tots els defectes subsanables en un únic requeriment clar i detallat (principi d'economia procedimental i art. 68 LPACAP) estalvia setmanes de tramitació i evita marejar el ciutadà!",
+      "explanationsIncorrect": {
+        "B": "Té 3 defectes formals/documentals pendents d'esmenar.",
+        "C": "No autoritzar la consulta AEAT és un dret legítim; simplement fa exigible aportar el certificat vigent (subsanable!).",
+        "D": "En no autoritzar la consulta AEAT, ni tan sols crida Via Oberta."
+      }
+    },
+    {
+      "id": "m06-06-q09",
+      "module": 6,
+      "conceptId": "m06-06-validacio-automatica-processos",
+      "lessonRef": "content/module-06/m06-06-validacio-automatica-processos.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Quina diferència fonamental hi ha entre validar una **signatura electrònica** comprovant només que el PDF té «un requadre visual amb un dibuix de signatura» vs. validar-la amb **PSIS (AOC) / @firma**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Cap diferència: un dibuix de signatura té exactament el mateix valor criptogràfic." },
+        { "key": "B", "text": "Un segell visual pot ser una imatge enganxada sense validesa; **PSIS / @firma** verifica criptogràficament la **integritat del document, la validesa i cadena de confiança del certificat qualificat i l'estat de no-revocació (OCSP/CRL)** en el moment de la signatura." },
+        { "key": "C", "text": "PSIS / @firma només comprova la mida del fitxer en kilobytes." },
+        { "key": "D", "text": "PSIS / @firma substitueix el padró municipal." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "La validació de signatura electrònica (Reglament eIDAS / Llei 39/2015) és criptogràfica contra autoritats de certificació i llistes de revocació, mai visual!",
+      "explanationsIncorrect": {
+        "A": "Qualsevol pot enganxar una imatge d'una signatura o un segell fals en un PDF.",
+        "C": "Verifica criptografia asimètrica, cadena de certificats i estat de revocació.",
+        "D": "És la plataforma de validació de certificats i signatures, no un registre poblacional."
+      }
+    },
+    {
+      "id": "m06-06-q10",
+      "module": 6,
+      "conceptId": "m06-06-validacio-automatica-processos",
+      "lessonRef": "content/module-06/m06-06-validacio-automatica-processos.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "Per què en una convocatòria massiva convé que l'esborrany de requeriment d'esmena generat pel sistema (`GROC`) passi una **validació humana per lots o per mostra crítica abans de notificar-se telemàticament (e-NOTUM)**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Per fer el procés artificialment més lent." },
+        { "key": "B", "text": "Perquè e-NOTUM no admet notificacions generades per sistemes digitals." },
+        { "key": "C", "text": "Perquè una notificació de requeriment d'esmena **obre un termini jurídic preclusiu de 10 dies hàbils** (amb advertiment de desistiment art. 68 LPACAP); revisar l'esborrany (o l'actuació AAA aprovada sota art. 41 LRJSP) evita enviar requeriments erronis amb conseqüències jurídiques per als ciutadans." },
+        { "key": "D", "text": "Per esborrar els motius d'esmena del text de la notificació." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Un requeriment d'esmena té efectes jurídics directes (pot conduir a tenir per desistida la sol·licitud!); exigeix supervisió humana prèvia o aprovació formal com a AAA (art. 41 LRJSP) amb controls de qualitat estrictes.",
+      "explanationsIncorrect": {
+        "A": "És una salvaguarda jurídica i de qualitat, no burocràcia innecessària.",
+        "B": "e-NOTUM està dissenyat precisament per a notificacions electròniques integrades.",
+        "D": "El text del requeriment ha d'explicar amb total claredat què falta esmenar."
+      }
+    }
+  ]
+}

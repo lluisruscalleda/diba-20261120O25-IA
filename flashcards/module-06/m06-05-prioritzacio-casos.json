@@ -1,0 +1,46 @@
+{
+  "conceptId": "m06-05-prioritzacio-casos",
+  "module": 6,
+  "cards": [
+    {
+      "id": "m06-05-fc01",
+      "module": 6,
+      "conceptId": "m06-05-prioritzacio-casos",
+      "front": "Quin principi fixa l'art. 71.2 de la Llei 39/2015 (LPACAP) sobre l'ordre dels expedients?",
+      "back": "Ordre rigorós d'incoació (FIFO) en assumptes d'homogènia naturalesa, llevat ordre motivada en contrari del titular de la unitat administrativa de la qual quedi constància.",
+      "tags": ["LPACAP", "art. 71.2", "FIFO"]
+    },
+    {
+      "id": "m06-05-fc02",
+      "module": 6,
+      "conceptId": "m06-05-prioritzacio-casos",
+      "front": "Quines 4 capes estructuren un motor segur de priorització de casos?",
+      "back": "0) Override P0 determinista (perill físic / urgència vital); 1) Impacte/risc; 2) Urgència de termini/SLA (silenci administratiu); 3) Factor *Aging* amb sostre (*cap*) per evitar *Starvation*.",
+      "tags": ["priorització", "Override P0", "Aging"]
+    },
+    {
+      "id": "m06-05-fc03",
+      "module": 6,
+      "conceptId": "m06-05-prioritzacio-casos",
+      "front": "Com s'evita la inanició de cua (*Starvation*) sense perjudicar les emergències P0?",
+      "back": "Combinar factor *Aging* amb un sostre màxim inferior a P0 (`+alpha * dies_espera`, capped) i una reserva de capacitat (ex. 15–20% dels slots dedicats als casos més antics).",
+      "tags": ["Starvation", "Aging", "reserva capacitat"]
+    },
+    {
+      "id": "m06-05-fc04",
+      "module": 6,
+      "conceptId": "m06-05-prioritzacio-casos",
+      "front": "Quin biaix produeix prioritzar incidències municipals pel nombre de queixes a l'app mòbil?",
+      "back": "Biaix de canal i bretxa digital: discrimina barris envellits o vulnerables (que usen el 010 o presencial). Cal unificar canals amb igual pes i auditar paritat de temps de resolució per barri.",
+      "tags": ["biaix territorial", "bretxa digital"]
+    },
+    {
+      "id": "m06-05-fc05",
+      "module": 6,
+      "conceptId": "m06-05-prioritzacio-casos",
+      "front": "Com classifica l'Annex III de l'AI Act la priorització de serveis públics essencials o emergències?",
+      "back": "Com a sistemes d'IA d'ALT RISC: exigeixen gestió de riscos, governança de dades contra biaixos, registres, transparència, supervisió humana efectiva (art. 14) i FRIA (art. 27) en entitats públiques.",
+      "tags": ["AI Act", "Annex III", "alt risc"]
+    }
+  ]
+}

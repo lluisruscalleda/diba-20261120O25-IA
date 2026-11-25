@@ -1,0 +1,46 @@
+{
+  "conceptId": "m06-04-sistemes-recomanacio",
+  "module": 6,
+  "cards": [
+    {
+      "id": "m06-04-fc01",
+      "module": 6,
+      "conceptId": "m06-04-sistemes-recomanacio",
+      "front": "Com s'estructura un recomanador públic híbrid per a ajuts o cursos?",
+      "back": "1) Filtre determinista de vigència i elegibilitat legal; 2) Emparellament *Content-Based* (embeddings/competències, 0 *Cold Start* d'ítems nous); 3) Re-ranking de diversitat, cobertura i equitat + explicació transparent.",
+      "tags": ["recomanador", "híbrid", "arquitectura"]
+    },
+    {
+      "id": "m06-04-fc02",
+      "module": 6,
+      "conceptId": "m06-04-sistemes-recomanacio",
+      "front": "En què millora `NDCG@K` la mètrica `Precision@K`?",
+      "back": "`NDCG@K` suporta rellevància graduada (0, 1, 2, 3) i aplica descompte logarítmic per posició, premiant posar els ítems més útils a les primeres posicions del rànquing.",
+      "tags": ["NDCG@K", "mètriques"]
+    },
+    {
+      "id": "m06-04-fc03",
+      "module": 6,
+      "conceptId": "m06-04-sistemes-recomanacio",
+      "front": "Per què eliminar la columna `gènere` NO elimina el biaix d'un recomanador col·laboratiu d'ocupació?",
+      "back": "Perquè l'historial d'inscripcions actua com a variable *proxy* del gènere en un mercat segregat; cal basar-lo en competències declarades (*Content-Based*) i fer auditories contrafactuals d'equitat.",
+      "tags": ["biaixos", "proxy", "equitat"]
+    },
+    {
+      "id": "m06-04-fc04",
+      "module": 6,
+      "conceptId": "m06-04-sistemes-recomanacio",
+      "front": "Quines 3 mètriques *Beyond-Accuracy* són essencials en un recomanador públic?",
+      "back": "1) Cobertura de catàleg (combat el biaix de popularitat i visibilitza novetats); 2) Diversitat (evita redundància/bombolles); 3) Equitat entre grups (no discriminació).",
+      "tags": ["cobertura", "diversitat", "equitat"]
+    },
+    {
+      "id": "m06-04-fc05",
+      "module": 6,
+      "conceptId": "m06-04-sistemes-recomanacio",
+      "front": "Quin risc comporta optimitzar un recomanador públic només per CTR (clics)?",
+      "back": "Afavoreix ítems populars o *clickbait* en lloc de l'objectiu públic real: reduir el *non-take-up* d'ajuts elegibles, completar tràmits útils i garantir accés equitatiu.",
+      "tags": ["CTR", "valor públic", "non-take-up"]
+    }
+  ]
+}

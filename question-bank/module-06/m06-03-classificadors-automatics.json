@@ -1,0 +1,236 @@
+{
+  "conceptId": "m06-03-classificadors-automatics",
+  "module": 6,
+  "questions": [
+    {
+      "id": "m06-03-q01",
+      "module": 6,
+      "conceptId": "m06-03-classificadors-automatics",
+      "lessonRef": "content/module-06/m06-03-classificadors-automatics.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Què és l'**opció de rejecció (*Reject Option* / abstenció)** en un classificador automàtic d'instàncies municipals?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Derivar els casos que no superen el llindar de confiança (o el marge mínim) a una **cua de triatge humà** (mostrant les classes més probables) en lloc d'enrutar-los automàticament amb risc alt d'error." },
+        { "key": "B", "text": "Esborrar del registre les instàncies difícils." },
+        { "key": "C", "text": "Assignar tots els casos dubtosos al primer departament per ordre alfabètic." },
+        { "key": "D", "text": "Desactivar el classificador els caps de setmana." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "La Reject Option protegeix la qualitat operativa enviant només els casos d'alta confiança a auto-enrutament i assistint els humans en els casos dubtosos.",
+      "explanationsIncorrect": {
+        "B": "Mai no es poden esborrar instàncies registrades.",
+        "C": "Col·lapsaria un departament amb errors constants.",
+        "D": "Depèn de la confiança per cas, no del dia de la setmana."
+      }
+    },
+    {
+      "id": "m06-03-q02",
+      "module": 6,
+      "conceptId": "m06-03-classificadors-automatics",
+      "lessonRef": "content/module-06/m06-03-classificadors-automatics.md",
+      "difficulty": "basic",
+      "questionType": "metrics",
+      "prompt": "Quina mètrica operativa mesura directament el percentatge d'expedients auto-enrutats que el departament receptor ha hagut de retornar o re-assignar per error?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "La velocitat de CPU del servidor." },
+        { "key": "B", "text": "La **taxa de rebot (*Misrouting / Reassignment Rate*)** (objectiu habitual `< 3–5%` per mantenir la confiança dels equips receptors)." },
+        { "key": "C", "text": "El nombre total de paràmetres del model." },
+        { "key": "D", "text": "La longitud mitjana dels correus electrònics." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "La taxa de rebot reflecteix l'impacte real dels errors del classificador sobre el treball quotidià dels serveis municipals.",
+      "explanationsIncorrect": {
+        "A": "Mètrica de sistema, no de qualitat d'enrutament.",
+        "C": "Mètrica d'arquitectura del model.",
+        "D": "Característica de les dades d'entrada."
+      }
+    },
+    {
+      "id": "m06-03-q03",
+      "module": 6,
+      "conceptId": "m06-03-classificadors-automatics",
+      "lessonRef": "content/module-06/m06-03-classificadors-automatics.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Per què convé configurar **llindars asimètrics per classe** en lloc d'un únic llindar global (`0,50`) per a tots els serveis municipals?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Per complicar el fitxer de configuració sense motiu." },
+        { "key": "B", "text": "Perquè els classificadors no permeten tenir el mateix llindar en dues classes." },
+        { "key": "C", "text": "Perquè el **cost d'un error és molt diferent segons el servei**: un error en incidències de via pública és fàcil de rebotar (`0,80`), mentre que un error en Serveis Socials o recursos jurídics té un impacte molt greu (`0,95` o revisió obligatòria)." },
+        { "key": "D", "text": "Per garantir que cap instància vagi mai a Via Pública." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Ajustar el llindar al cost real de negoci/ciutadà de cada classe maximitza l'automatització segura allà on el risc és baix i blinda les àrees crítiques.",
+      "explanationsIncorrect": {
+        "A": "Respon directament a la gestió asimètrica del risc.",
+        "B": "Tècnicament es podria usar un llindar únic, però seria subòptim operacionalment.",
+        "D": "Un llindar de 0,80 a Via Pública precisament facilita l'enrutament automàtic àgil."
+      }
+    },
+    {
+      "id": "m06-03-q04",
+      "module": 6,
+      "conceptId": "m06-03-classificadors-automatics",
+      "lessonRef": "content/module-06/m06-03-classificadors-automatics.md",
+      "difficulty": "intermediate",
+      "questionType": "metrics",
+      "prompt": "Un classificador Transformer envia a auto-enrutament totes les instàncies amb probabilitat predita `>= 0,85`, però en producció pateix un **22% d'errors**. Quina és la causa tècnica més probable?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "**Sobreconfiança (*overconfidence*) per falta de calibratge**: les probabilitats `softmax` del model no reflecteixen la freqüència real d'encert; cal mesurar **ECE/Brier Score** i aplicar ***Temperature Scaling*** o ***Isotonic Regression*** sobre un conjunt de validació." },
+        { "key": "B", "text": "El model té massa bona calibració." },
+        { "key": "C", "text": "El servidor no té prou espai de disc." },
+        { "key": "D", "text": "El llindar `0,85` sempre equival matemàticament a 22% d'error." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "En un model ben calibrat, les prediccions amb confiança >= 0,85 haurien de tenir <= 15% d'error (normalment ~5–8%); un 22% d'error delata sobreconfiança severa.",
+      "explanationsIncorrect": {
+        "B": "Un model ben calibrat tindria una exactitud real >= 85% en aquesta franja.",
+        "C": "L'espai de disc no influeix en la distribució softmax.",
+        "D": "En un model calibrat, `>= 0,85` implica `<= 15%` d'error."
+      }
+    },
+    {
+      "id": "m06-03-q05",
+      "module": 6,
+      "conceptId": "m06-03-classificadors-automatics",
+      "lessonRef": "content/module-06/m06-03-classificadors-automatics.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Què detecta comprovar el **marge entre la 1a i la 2a classe més probable (`p1 - p2`)** a més del llindar sobre `p1`?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Detecta si el PDF té més de 10 pàgines." },
+        { "key": "B", "text": "Detecta **ambigüitat entre dues classes properes o instàncies multi-departament** (ex. `Urbanisme 0,52` vs `Via Pública 0,44`), derivant-les a triatge humà amb ambdós serveis suggerits." },
+        { "key": "C", "text": "Accelera la velocitat de la GPU un 50%." },
+        { "key": "D", "text": "Substitueix completament el calibratge del model." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Un marge `p1 - p2` estret indica que el model dubta entre dos serveis o que el document tracta efectivament dos temes simultanis.",
+      "explanationsIncorrect": {
+        "A": "No depèn del nombre de pàgines.",
+        "C": "És una resta simple de dos nombres a la sortida.",
+        "D": "Complementa el calibratge, no el substitueix."
+      }
+    },
+    {
+      "id": "m06-03-q06",
+      "module": 6,
+      "conceptId": "m06-03-classificadors-automatics",
+      "lessonRef": "content/module-06/m06-03-classificadors-automatics.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Com converteixes els **rebots manuals** dels serveis municipals (`[Re-assignar a un altre servei]`) en un avantatge sostenible per al classificador?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Eliminant el botó de re-assignació perquè no es vegin els errors." },
+        { "key": "B", "text": "Reentrenant el model automàticament cada minut amb un sol exemple sense cap validació." },
+        { "key": "C", "text": "Registrant cada rebot com a dada etiquetada `(expedient, classe_predita, classe_real_humana)` per alimentar un **bucle controlat d'*Active Learning*** amb reentrenament i validació periòdica contra un conjunt de prova congelat." },
+        { "key": "D", "text": "Penalitzant el funcionari que fa el rebot." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Les correccions humanes sobre errors reals del model són exactament les dades més valuoses per reduir futures equivocacions i adaptar-se al *drift*, sempre passant validació abans de promoure el nou model.",
+      "explanationsIncorrect": {
+        "A": "Amagar errors agreuja el mal servei.",
+        "B": "Reentrenar sense validació pot causar regressions o *catastrophic forgetting*.",
+        "D": "Els funcionaris aporten l'etiqueta veritable que fa millorar el sistema."
+      }
+    },
+    {
+      "id": "m06-03-q07",
+      "module": 6,
+      "conceptId": "m06-03-classificadors-automatics",
+      "lessonRef": "content/module-06/m06-03-classificadors-automatics.md",
+      "difficulty": "intermediate",
+      "questionType": "metrics",
+      "prompt": "Què representa la **corba Risc-Cobertura (*Risk-Coverage Curve*)** en l'ajust dels llindars d'un enrutador automàtic?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "El cost d'assegurança d'incendis del centre de dades." },
+        { "key": "B", "text": "La velocitat d'escriptura del disc SSD." },
+        { "key": "C", "text": "El nombre de neurones per capa oculta." },
+        { "key": "D", "text": "El **compromís directe entre el percentatge de casos auto-enrutats (*Coverage*) i la taxa d'error sobre aquests casos (*Risk*)** a mesura que variem el llindar de confiança." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "La corba Risc-Cobertura permet a negoci i tecnologia escollir exactament el llindar que maximitza l'automatització dins del pressupost màxim d'error (ex. <= 3% de rebots).",
+      "explanationsIncorrect": {
+        "A": "És una corba de decisió estadística/operativa de ML.",
+        "B": "No mesura rendiment de maquinari.",
+        "C": "No és un paràmetre d'arquitectura de xarxa."
+      }
+    },
+    {
+      "id": "m06-03-q08",
+      "module": 6,
+      "conceptId": "m06-03-classificadors-automatics",
+      "lessonRef": "content/module-06/m06-03-classificadors-automatics.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En `enrutar_cas` de l'exemple 6.3, per què `INS-2` (`SERVEIS_SOCIALS: 0.89`, marge `0.83`) **NO** s'auto-enruta malgrat tenir una probabilitat més alta que `INS-1` (`VIA_PUBLICA: 0.86`, que SÍ que s'auto-enruta)?",
+      "codeSnippet": "LLINDARS_PER_CLASSE = {\n    \"VIA_PUBLICA\": 0.80,\n    \"TRIBUTS\": 0.90,\n    \"URBANISME\": 0.88,\n    \"SERVEIS_SOCIALS\": 0.95,\n}",
+      "options": [
+        { "key": "A", "text": "Perquè s'aplica un **llindar asimètric més exigent (`0,95`) per a `SERVEIS_SOCIALS`** a causa de l'alt impacte d'un error en casos vulnerables (`0.89 < 0.95`), mentre que `VIA_PUBLICA` té un llindar de `0,80` (`0.86 >= 0.80`)." },
+        { "key": "B", "text": "Perquè `INS-2` té un marge inferior a `0,15`." },
+        { "key": "C", "text": "Per un error d'ordenació en `sorted()`." },
+        { "key": "D", "text": "Perquè `SERVEIS_SOCIALS` mai no pot ser la classe guanyadora." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Els llindars asimètrics alineen la política d'automatització amb el risc real de cada àmbit administratiu.",
+      "explanationsIncorrect": {
+        "B": "El marge de `INS-2` és `0.89 - 0.06 = 0.83`, molt per sobre de `0.15`.",
+        "C": "`sorted(..., reverse=True)` ordena correctament de major a menor.",
+        "D": "Si tingués `>= 0.95` i marge `>= 0.15`, s'auto-enrutaria."
+      }
+    },
+    {
+      "id": "m06-03-q09",
+      "module": 6,
+      "conceptId": "m06-03-classificadors-automatics",
+      "lessonRef": "content/module-06/m06-03-classificadors-automatics.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Quina regla determinista **anti-ping-pong** s'ha d'afegir a un enrutador automàtic d'expedients en producció?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Tornar a passar l'expedient pel mateix classificador cada vegada que un servei el rebutja." },
+        { "key": "B", "text": "Un cop un expedient ha estat **rebotat manualment per una unitat gestora**, **excloure'l definitivament de l'auto-enrutament** (assignació humana pel Registre) i escalar a supervisió si rep un segon rebot entre serveis." },
+        { "key": "C", "text": "Tancar l'expedient automàticament després del primer rebot." },
+        { "key": "D", "text": "Baixar el llindar a 0,10 quan hi ha rebots." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Evitar que el classificador torni a enviar un expedient al mateix departament que acaba de rebutjar-lo és una regla de seguretat operativa elemental.",
+      "explanationsIncorrect": {
+        "A": "Crearia un bucle infinit entre el classificador i el departament!",
+        "C": "Tancar un expedient ciutadà per un error intern d'enrutament vulneraria els drets de l'interessat.",
+        "D": "Baixar el llindar multiplicaria encara més els rebots."
+      }
+    },
+    {
+      "id": "m06-03-q10",
+      "module": 6,
+      "conceptId": "m06-03-classificadors-automatics",
+      "lessonRef": "content/module-06/m06-03-classificadors-automatics.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Quan un volum significatiu d'instàncies ciutadanes (ex. 15%) afecta **dos departaments simultàniament** (p. ex., «tala d'arbres + obres sense llicència»), quin canvi de formulació del classificador resol el problema d'arrel millor que forçar `softmax`?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Treure un dels dos departaments del model." },
+        { "key": "B", "text": "Assignar l'expedient només al departament que tingui menys feina." },
+        { "key": "C", "text": "Passar de classificació *multi-class* (`softmax`, suma=1, mútuament excloent) a **classificació *multi-label*** (una sortida **`sigmoid` independent per departament** amb llindar propi), permetent obrir tasques coordinades als dos serveis." },
+        { "key": "D", "text": "Aplicar una regressió lineal." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Softmax obliga les classes a competir entre si (si una puja, l'altra baixa); en canvi, multi-label amb sigmoide independent permet predir amb alta probabilitat ambdós serveis alhora!",
+      "explanationsIncorrect": {
+        "A": "Deixaria un departament sense atenció.",
+        "B": "L'assignació es regeix per competència administrativa, no per càrrega arbitrària.",
+        "D": "La regressió lineal prediu valors continus, no múltiples etiquetes departamentals."
+      }
+    }
+  ]
+}

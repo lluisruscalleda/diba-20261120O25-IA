@@ -1,0 +1,236 @@
+{
+  "conceptId": "m06-01-rpa",
+  "module": 6,
+  "questions": [
+    {
+      "id": "m06-01-q01",
+      "module": 6,
+      "conceptId": "m06-01-rpa",
+      "lessonRef": "content/module-06/m06-01-rpa.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina és la diferència principal entre **RPA atesa (*attended*)** i **RPA no atesa (*unattended*)**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "L'**atesa** s'executa a l'escriptori del funcionari sota demanda per assistir-lo en temps real, mentre que la **no atesa** s'executa de manera autònoma en servidors sobre una cua de treball (*work queue*) programada o per esdeveniments." },
+        { "key": "B", "text": "L'atesa només funciona de nit i la no atesa només de dia." },
+        { "key": "C", "text": "La no atesa utilitza robots físics amb braços mecànics." },
+        { "key": "D", "text": "L'atesa no necessita cap regla ni procés definit." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Attended = co-pilot a l'estació de treball disparat per la persona; Unattended = execució en servidor en segon pla sobre cues de gran volum.",
+      "explanationsIncorrect": {
+        "B": "No és una qüestió horària, sinó d'interacció humana vs. execució autònoma en servidor.",
+        "C": "RPA sempre és programari (bots de software).",
+        "D": "Totes dues modalitats de RPA són basades en regles definides."
+      }
+    },
+    {
+      "id": "m06-01-q02",
+      "module": 6,
+      "conceptId": "m06-01-rpa",
+      "lessonRef": "content/module-06/m06-01-rpa.md",
+      "difficulty": "basic",
+      "questionType": "architecture",
+      "prompt": "Dues aplicacions municipals modernes disposen totes dues d'**API REST documentada**. Quin enfocament d'integració has d'escollir segons les bones pràctiques d'enginyeria?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Un bot RPA que obri Chrome i faci clics sobre els botons de la pantalla." },
+        { "key": "B", "text": "**Integració directa per API REST** (*API-first*), reservant la RPA d'interfície gràfica només per a aplicacions *legacy* sense API." },
+        { "key": "C", "text": "Imprimir les dades en paper i tornar-les a escanejar amb OCR." },
+        { "key": "D", "text": "Enviar un correu electrònic diari perquè algú les teclegi." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "El principi API-first evita la fragilitat dels canvis visuals d'UI, redueix latència i cost de llicències RPA i millora la seguretat i escalabilitat.",
+      "explanationsIncorrect": {
+        "A": "Usar RPA d'UI havent-hi API és un antipatró costós i molt fràgil.",
+        "C": "Absurd i propens a errors.",
+        "D": "No automatitza el procés."
+      }
+    },
+    {
+      "id": "m06-01-q03",
+      "module": 6,
+      "conceptId": "m06-01-rpa",
+      "lessonRef": "content/module-06/m06-01-rpa.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quin rol juga un **motor BPM (*Business Process Management*)** dins d'una arquitectura d'**Automatització Intel·ligent (IPA)** respecte de la RPA i l'IDP?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Substitueix completament les bases de dades SQL." },
+        { "key": "B", "text": "Només serveix per entrenar xarxes neuronals profundes." },
+        { "key": "C", "text": "**Orquestra el flux de punta a punta de l'expedient** (estats de llarga durada, SLAs, regles de derivació i tasques humanes), invocant IDP/ML per llegir documents i APIs/RPA per executar tasques puntuals en sistemes." },
+        { "key": "D", "text": "És un sinònim exacte de *UI screen scraping*." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "BPM governa el cicle de vida complet del procés administratiu (que pot durar dies o mesos), mentre que RPA/API executen passos puntuals i IDP extreu dades de documents.",
+      "explanationsIncorrect": {
+        "A": "No substitueix les bases de dades transaccionals.",
+        "B": "No entrena models de Deep Learning.",
+        "D": "UI scraping és una tècnica de RPA, no de BPM."
+      }
+    },
+    {
+      "id": "m06-01-q04",
+      "module": 6,
+      "conceptId": "m06-01-rpa",
+      "lessonRef": "content/module-06/m06-01-rpa.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Com s'han de tractar de manera diferenciada una **excepció tècnica** (*timeout* de xarxa) i una **excepció de negoci** (factura que supera el límit de contracte menor) en una cua RPA?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "L'**excepció tècnica** es gestiona amb **reintents idempotents controlats** (ex. màx. 3 intents amb *backoff*); l'**excepció de negoci NO es reintenta** i es deriva immediatament a la **cua de revisió humana**." },
+        { "key": "B", "text": "Les dues s'han de reintentar en bucle infinit fins que l'import canviï sol." },
+        { "key": "C", "text": "Les excepcions de negoci s'han d'esborrar sense avisar ningú." },
+        { "key": "D", "text": "Les excepcions tècniques no s'han de reintentar mai." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Reintentar una regla de negoci fallida consumeix recursos sense cap possibilitat d'èxit; en canvi, un tall transitori de xarxa sol recuperar-se al 2n o 3r intent.",
+      "explanationsIncorrect": {
+        "B": "Un bucle infinit bloquejaria la cua i no arreglaria una infracció de negoci.",
+        "C": "Esborrar expedients provocaria pèrdua de traçabilitat i incompliment administratiu.",
+        "D": "Els talls breus de xarxa o ERP legacy es resolen habitualment amb reintents segurs."
+      }
+    },
+    {
+      "id": "m06-01-q05",
+      "module": 6,
+      "conceptId": "m06-01-rpa",
+      "lessonRef": "content/module-06/m06-01-rpa.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Un cap de servei proposa configurar el bot RPA *unattended* de comptabilitat utilitzant l'**usuari i contrasenya personals d'una tècnica** que es jubila aviat per «estalviar tràmits d'alta d'usuari». Per què és inacceptable segons l'ENS?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Només perquè la contrasenya pot ser massa llarga." },
+        { "key": "B", "text": "Destrueix la **traçabilitat i responsabilitat individual** (atribueix actes del bot a una persona física), vulnera el **mínim privilegi** i trencarà el servei en donar de baixa l'empleada; cal un **compte de servei dedicat nominal** amb credencials en **Vault xifrat**." },
+        { "key": "C", "text": "És totalment correcte i recomanat per l'ENS." },
+        { "key": "D", "text": "Perquè els bots RPA no poden autenticar-se en cap aplicació." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "L'ENS exigeix comptes nominals auditables, mínim privilegi i separació clara entre identitats humanes i comptes de servei automatitzats custodiats en Vault.",
+      "explanationsIncorrect": {
+        "A": "El problema és de governança, seguretat i auditoria, no de longitud.",
+        "C": "Contraven directament els controls d'accés i traçabilitat de l'ENS.",
+        "D": "Els bots s'autentiquen amb comptes de servei dedicats i auditats."
+      }
+    },
+    {
+      "id": "m06-01-q06",
+      "module": 6,
+      "conceptId": "m06-01-rpa",
+      "lessonRef": "content/module-06/m06-01-rpa.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Quin dels següents casos municipals és l'**encaix més legítim** per implantar un bot **RPA *unattended***?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Redactar informes jurídics discrecionals sobre recursos d'urbanisme." },
+        { "key": "B", "text": "Interpretar factures escanejades en PDF amb formats molt variats i taules manuscrites." },
+        { "key": "C", "text": "Carregar cada mes 1.500 registres d'un CSV validat en un programa de comptabilitat *legacy* de fa 18 anys **sense API** seguint passos 100% deterministes." },
+        { "key": "D", "text": "Connectar dues plataformes cloud modernes amb APIs REST OpenAPI." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Alt volum + dades ja estructurades + regles 100% deterministes + sistema heretat sense API = el cas d'ús de llibre per a RPA unattended!",
+      "explanationsIncorrect": {
+        "A": "Activitat jurídica discrecional i no estructurada (sempre humana, amb eventual suport documental).",
+        "B": "Correspon a IDP (OCR/ML/VLM), no a RPA clàssic.",
+        "D": "S'ha d'integrar directament via API (*API-first*)."
+      }
+    },
+    {
+      "id": "m06-01-q07",
+      "module": 6,
+      "conceptId": "m06-01-rpa",
+      "lessonRef": "content/module-06/m06-01-rpa.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Per què la **RPA basada en *UI Scraping* (clics sobre pantalla)** té un cost de manteniment elevat a mitjà termini?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè no pot executar-se més d'un cop al mes." },
+        { "key": "B", "text": "Perquè només funciona en sistemes Linux." },
+        { "key": "C", "text": "Perquè requereix sempre GPUs H100." },
+        { "key": "D", "text": "Per la seva **fragilitat davant canvis d'interfície**: una actualització menor de l'aplicació (canvi d'ID de botó, nova finestra emergent, canvi de resolució o lentitud) trenca el selector del bot i obliga a reprogramar-lo." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "A diferència d'una API versionada amb contracte estable, una UI canvia sovint per millores estètiques o actualitzacions del proveïdor, trencant els selectors RPA.",
+      "explanationsIncorrect": {
+        "A": "Pot executar-se 24/7.",
+        "B": "Moltes plataformes RPA operen principalment en Windows.",
+        "C": "RPA determinista no necessita GPUs."
+      }
+    },
+    {
+      "id": "m06-01-q08",
+      "module": 6,
+      "conceptId": "m06-01-rpa",
+      "lessonRef": "content/module-06/m06-01-rpa.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En `OrquestradorRPA` de l'exemple 6.1, quina és la funció exacta del bloc `if t.idempotency_key in self.ja_assentades:`?",
+      "codeSnippet": "if t.idempotency_key in self.ja_assentades:\n    t.estat = \"OMES_JA_ASSENTAT_IDEMPOTENT\"\n    t.detall = \"Evitat duplicat per clau d'idempotència.\"\n    continue",
+      "options": [
+        { "key": "A", "text": "Garantir la **idempotència**: si una factura ja ha estat assentada prèviament i arriba duplicada a la cua o es reexecuta el lot després d'una caiguda, el bot l'omet amb traça explícita i **impedeix un doble assentament o doble pagament**." },
+        { "key": "B", "text": "Esborrar totes les factures de l'exercici anterior." },
+        { "key": "C", "text": "Reintentar l'assentament fins a 10 vegades." },
+        { "key": "D", "text": "Convertir una excepció de negoci en tècnica." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "La comprovació prèvia per clau única d'idempotència és el mecanisme bàsic que fa segurs els reintents i les recuperacions davant caigudes en processos financers.",
+      "explanationsIncorrect": {
+        "B": "No esborra res, omet de manera segura el duplicat.",
+        "C": "Executa `continue` amb 0 intents sobre l'ERP.",
+        "D": "Actua abans d'entrar al bucle d'execució."
+      }
+    },
+    {
+      "id": "m06-01-q09",
+      "module": 6,
+      "conceptId": "m06-01-rpa",
+      "lessonRef": "content/module-06/m06-01-rpa.md",
+      "difficulty": "advanced",
+      "questionType": "normative",
+      "prompt": "Quan un bot RPA *unattended* deixa de ser una mera eina auxiliar interna i passa a requerir aprovació formal com a **Actuació Administrativa Automatitzada (AAA)** segons l'**article 41 de la Llei 40/2015 (LRJSP)**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Sempre que mogui un fitxer temporal dins una carpeta interna." },
+        { "key": "B", "text": "Quan realitza **actes o actuacions administratives íntegrament a través de mitjans electrònics sense intervenció directa d'un empleat públic** (ex. emissió de certificats, resolucions massives o assentaments definitius amb efectes jurídics), havent d'establir òrgan responsable, auditoria i **segell electrònic d'òrgan** (art. 42)." },
+        { "key": "C", "text": "Mai, perquè la Llei 40/2015 només aplica a empreses privades." },
+        { "key": "D", "text": "Només si el bot utilitza un LLM." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "L'art. 41 LRJSP regula específicament qualsevol actuació administrativa produïda íntegrament per mitjans electrònics sense intervenció directa d'un empleat, independentment de si usa RPA, regles o codi tradicional.",
+      "explanationsIncorrect": {
+        "A": "Tasques merament preparatòries o auxiliars internes sense efectes administratius directes no són actes administratius.",
+        "C": "La Llei 40/2015 (LRJSP) és precisament la norma bàsica del sector públic espanyol.",
+        "D": "Aplica a qualsevol actuació automatitzada (regles, scripts o RPA), no només a LLMs."
+      }
+    },
+    {
+      "id": "m06-01-q10",
+      "module": 6,
+      "conceptId": "m06-01-rpa",
+      "lessonRef": "content/module-06/m06-01-rpa.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Per què **NO** s'ha d'utilitzar un **Agent d'IA autònom basat en LLM** per substituir un bot RPA/API en un procés comptable d'assentament de 2.000 factures diàries on les regles són 100% conegudes i deterministes?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè els Agents d'IA només funcionen en anglès." },
+        { "key": "B", "text": "Perquè els processos comptables no tenen cap regla." },
+        { "key": "C", "text": "Perquè un Agent LLM introdueix **no-determinisme, risc d'al·lucinació o *prompt injection*, latència i cost d'inferència innecessaris** allà on una API/RPA determinista ofereix **100% de predictibilitat, velocitat i auditabilitat exacta**." },
+        { "key": "D", "text": "Perquè els Agents d'IA són massa barats." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Principi d'or de l'automatització intel·ligent: mai usis un sistema probabilístic (LLM/Agent) per a una tasca 100% determinista on el codi, les APIs o la RPA garanteixen exactitud total a cost mínim!",
+      "explanationsIncorrect": {
+        "A": "Els LLMs suporten català, però el problema és no-determinisme, seguretat i cost.",
+        "B": "Al contrari, la comptabilitat pública té regles estrictes i deterministes.",
+        "D": "Les crides LLM són ordres de magnitud més cares i lentes que una transacció API/codi."
+      }
+    }
+  ]
+}

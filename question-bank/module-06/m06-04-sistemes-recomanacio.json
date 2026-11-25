@@ -1,0 +1,236 @@
+{
+  "conceptId": "m06-04-sistemes-recomanacio",
+  "module": 6,
+  "questions": [
+    {
+      "id": "m06-04-q01",
+      "module": 6,
+      "conceptId": "m06-04-sistemes-recomanacio",
+      "lessonRef": "content/module-06/m06-04-sistemes-recomanacio.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Què és el problema del ***Cold Start* (arrencada en fred)** en un sistema de recomanació basat en filtratge col·laboratiu?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "La dificultat per recomanar **ítems acabats d'incorporar sense interaccions prèvies** (ex. cursos nous) o **usuaris nous sense historial**, perquè no hi ha dades de comportament compartit en què basar-se." },
+        { "key": "B", "text": "Que el servidor necessita escalfar la GPU durant 2 hores." },
+        { "key": "C", "text": "Que el recomanador només funciona a l'hivern." },
+        { "key": "D", "text": "Que els usuaris tenen massa historial d'interaccions." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "El filtratge col·laboratiu depèn de la matriu d'interaccions; si un ítem o usuari té 0 interaccions, no té veïns col·laboratius i cal recórrer a contingut (*Content-Based*) o regles (*Knowledge-Based*).",
+      "explanationsIncorrect": {
+        "B": "No és un fenomen tèrmic de maquinari.",
+        "C": "És un problema de dades i historial.",
+        "D": "Tenir poc o nul historial és precisament la causa del Cold Start."
+      }
+    },
+    {
+      "id": "m06-04-q02",
+      "module": 6,
+      "conceptId": "m06-04-sistemes-recomanacio",
+      "lessonRef": "content/module-06/m06-04-sistemes-recomanacio.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quin paradigma de recomanació és el més adequat com a base per a un **recomanador proactiu d'ajuts i bonificacions municipals per esdeveniment vital** (ex. naixement d'un fill, atur, >65 anys)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Filtratge col·laboratiu pur sense cap filtre de requisits." },
+        { "key": "B", "text": "Un enfocament **basat en coneixement/regles (*Knowledge-Based*) combinat amb contingut (híbrid)**, que filtra deterministament per vigència i requisits d'elegibilitat legals amb 100% d'explicabilitat." },
+        { "key": "C", "text": "Mostrar els 5 tràmits més clicats per tothom sense distingir perfil." },
+        { "key": "D", "text": "Selecció completament aleatòria." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Els ajuts públics estan subjectes a vigència i requisits normatius exactes; les regles d'elegibilitat + contingut garanteixen zero Cold Start, precisió jurídica i transparència.",
+      "explanationsIncorrect": {
+        "A": "Podria recomanar ajudes a què el ciutadà no té dret o que ja estan caducades.",
+        "C": "Ignoraria les necessitats específiques de l'esdeveniment vital.",
+        "D": "No aportaria valor al ciutadà."
+      }
+    },
+    {
+      "id": "m06-04-q03",
+      "module": 6,
+      "conceptId": "m06-04-sistemes-recomanacio",
+      "lessonRef": "content/module-06/m06-04-sistemes-recomanacio.md",
+      "difficulty": "basic",
+      "questionType": "metrics",
+      "prompt": "Quin avantatge té la mètrica **`NDCG@K`** respecte de **`Precision@K`** per avaluar un sistema de recomanació?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "`NDCG@K` ignora completament l'ordre dels resultats." },
+        { "key": "B", "text": "`NDCG@K` només funciona per a `K = 1`." },
+        { "key": "C", "text": "`NDCG@K` admet **rellevància graduada** (ex. 0, 1, 2, 3) i aplica un **descompte logarítmic per posició**, premiant posar els ítems més rellevants a dalt del rànquing (posició 1 molt millor que posició 5!)." },
+        { "key": "D", "text": "`NDCG@K` mesura únicament la latència en mil·lisegons." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Els usuaris miren sobretot les 2–3 primeres recomanacions; NDCG@K captura tant el grau de rellevància com la qualitat de l'ordenació.",
+      "explanationsIncorrect": {
+        "A": "Al contrari, penalitza posar ítems rellevants a posicions baixes.",
+        "B": "S'utilitza habitualment per a K=3, 5, 10, etc.",
+        "D": "És una mètrica de qualitat de rànquing, no de latència."
+      }
+    },
+    {
+      "id": "m06-04-q04",
+      "module": 6,
+      "conceptId": "m06-04-sistemes-recomanacio",
+      "lessonRef": "content/module-06/m06-04-sistemes-recomanacio.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Per què en un recomanador municipal de cursos o ajuts és imprescindible una **fase de *Re-ranking* de diversitat** després de puntuar els candidats per similitud?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Per evitar que el Top-K quedi monopolitzat per ítems gairebé idèntics d'una mateixa categoria (redundància / *filter bubble*) i assegurar que el ciutadà descobreixi també opcions complementàries i novetats." },
+        { "key": "B", "text": "Per mostrar sempre exactament el mateix curs repetit 3 vegades." },
+        { "key": "C", "text": "Per eliminar tots els ítems elegibles." },
+        { "key": "D", "text": "Per fer que el recomanador triga 10 vegades més." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "El re-ranking amb diversitat (com MMR o penalització per categoria repetida) millora la utilitat real i la descoberta d'opcions complementàries.",
+      "explanationsIncorrect": {
+        "B": "Això és precisament el que evita la diversitat.",
+        "C": "Només reordena candidats ja filtrats com a elegibles.",
+        "D": "S'executa sobre pocs candidats (~50–100) en pocs mil·lisegons."
+      }
+    },
+    {
+      "id": "m06-04-q05",
+      "module": 6,
+      "conceptId": "m06-04-sistemes-recomanacio",
+      "lessonRef": "content/module-06/m06-04-sistemes-recomanacio.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Un servei d'ocupació entrena un recomanador col·laboratiu amb l'històric d'inscripcions dels darrers 5 anys, **eliminant la columna `gènere`**, però observa que segueix recomanant cursos tècnics als homes i cursos administratius/cures a les dones. Per què passa això?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Per un error de tipus de dades en Python." },
+        { "key": "B", "text": "Perquè les **interaccions històriques prèvies actuen com a variable *proxy* del gènere** en un mercat laboral segregat; cal basar la recomanació en **competències i interessos declarats (*Content-Based*)** i executar **auditories d'equitat contrafactual**." },
+        { "key": "C", "text": "Perquè eliminar la columna `gènere` sempre elimina al 100% qualsevol biaix." },
+        { "key": "D", "text": "Perquè el `NDCG@K` és massa baix." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "La «ceguesa a l'atribut» (*fairness through unawareness*) falla quan les dades històriques contenen *proxies* fortament correlacionats amb el gènere.",
+      "explanationsIncorrect": {
+        "A": "És un biaix estructural de les dades, no un bug de tipus.",
+        "C": "Fals! És un dels errors conceptuals més importants en ètica d'IA (Mòdul 8).",
+        "D": "Un model esbiaixat pot tenir fins i tot un NDCG alt sobre dades històriques esbiaixades!"
+      }
+    },
+    {
+      "id": "m06-04-q06",
+      "module": 6,
+      "conceptId": "m06-04-sistemes-recomanacio",
+      "lessonRef": "content/module-06/m06-04-sistemes-recomanacio.md",
+      "difficulty": "intermediate",
+      "questionType": "metrics",
+      "prompt": "Què mesura la **cobertura de catàleg (*Catalog Coverage*)** en un recomanador de la Xarxa de Biblioteques Municipals?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Quants metres quadrats ocupa la biblioteca." },
+        { "key": "B", "text": "El nombre de bibliotecaris en plantilla." },
+        { "key": "C", "text": "El **percentatge d'ítems diferents del catàleg** que arriben a ser recomanats almenys una vegada als usuaris, permetent detectar si el **biaix de popularitat** està invisibilitzant el 90% del fons i les novetats." },
+        { "key": "D", "text": "La velocitat d'escaneig del codi de barres." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Una cobertura baixa revela que el recomanador només promociona els 20 best-sellers habituals i condemna a la invisibilitat la resta del fons bibliogràfic i les editorials locals.",
+      "explanationsIncorrect": {
+        "A": "No és una mesura física.",
+        "B": "No és una mètrica de recursos humans.",
+        "D": "És una mètrica *beyond-accuracy* del recomanador."
+      }
+    },
+    {
+      "id": "m06-04-q07",
+      "module": 6,
+      "conceptId": "m06-04-sistemes-recomanacio",
+      "lessonRef": "content/module-06/m06-04-sistemes-recomanacio.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Quina garantia de privacitat (RGPD) i transparència ha d'oferir un recomanador en un portal ciutadà públic?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Creuar dades mèdiques, tributàries i policials sense base jurídica per perfilar cada veí." },
+        { "key": "B", "text": "Amagar sempre per què apareix cada recomanació." },
+        { "key": "C", "text": "Obligar tots els ciutadans a acceptar personalització sense possibilitat de veure el catàleg complet." },
+        { "key": "D", "text": "**Minimització de dades** (preferiblement basat en consulta o perfil voluntari), **explicació clara** (*«Per què t'ho recomanem»*) i **dret d'*opt-out*** per consultar el catàleg complet sense personalització." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "El sector públic ha d'evitar el perfilatge invasiu, ser transparent sobre els criteris de recomanació i garantir l'accés universal sense personalització forçada.",
+      "explanationsIncorrect": {
+        "A": "Vulneraria greument la limitació de la finalitat i la minimització del RGPD.",
+        "B": "La transparència explica al ciutadà per què se li suggereix un servei.",
+        "C": "L'accés al catàleg públic complet ha de ser sempre possible."
+      }
+    },
+    {
+      "id": "m06-04-q08",
+      "module": 6,
+      "conceptId": "m06-04-sistemes-recomanacio",
+      "lessonRef": "content/module-06/m06-04-sistemes-recomanacio.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En la funció `recomanar` de l'exemple 6.4, per què **`AJ-CADUCAT`** no entra al Top-3 tot i tenir la similitud cosinus més alta amb el component familiar, i per què **`CURS-PYTHON`** supera **`AJ-LUDOTECA`**?",
+      "codeSnippet": "candidats = [it for it in ITEMS if it[\"vigent\"] and renda <= it[\"max_renda\"]]\n...\nmillor = max(restants, key=lambda x: x[\"sim\"] - (0.25 if x[\"cat\"] in cats_vistes else 0.0))",
+      "options": [
+        { "key": "A", "text": "`AJ-CADUCAT` es descarta **deterministament** a la capa 1 per `vigent=False`, i `AJ-LUDOTECA` rep una **penalització de diversitat `-0.25`** perquè la categoria `FAMILIA` ja havia estat seleccionada amb `AJ-BEQUES`, permetent que `CURS-PYTHON` (`OCUPACIO`) entri al Top-3!" },
+        { "key": "B", "text": "Perquè `AJ-CADUCAT` té una renda màxima de 0." },
+        { "key": "C", "text": "Perquè `cosinus()` retorna valors negatius per a `AJ-LUDOTECA`." },
+        { "key": "D", "text": "Perquè el bucle selecciona els ítems amb `min()` en lloc de `max()`." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "L'exemple il·lustra exactament les dues capes de governança: filtre determinista de vigència/elegibilitat abans del rànquing + re-ranking de diversitat de categories!",
+      "explanationsIncorrect": {
+        "B": "La seva `max_renda` és 12.000, però `vigent` és `False`.",
+        "C": "Tots els vectors són positius, així que el cosinus és estrictament positiu.",
+        "D": "Usa `max()` aplicant la penalització de diversitat de `0.25`."
+      }
+    },
+    {
+      "id": "m06-04-q09",
+      "module": 6,
+      "conceptId": "m06-04-sistemes-recomanacio",
+      "lessonRef": "content/module-06/m06-04-sistemes-recomanacio.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "En una arquitectura de recomanació en **dues etapes (*Two-Stage Recommender*)** sobre 100.000 recursos públics, per què es separa la **generació de candidats** del **rànquing fi**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Per fer el sistema més lent expressament." },
+        { "key": "B", "text": "Perquè executar un model de rànquing ric (o *Cross-Encoder*) sobre 100.000 ítems en temps real excediria la latència; la fase 1 (*Retrieval* amb filtres + vectors) redueix ràpidament a ~100 candidats en mil·lisegons i la fase 2 els ordena amb alta precisió." },
+        { "key": "C", "text": "Perquè la fase 2 no pot treballar amb menys de 100.000 ítems." },
+        { "key": "D", "text": "Per eliminar el filtre d'elegibilitat." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Igual que en cerca híbrida + reranking (Mòdul 2/3), separar recuperació ràpida (alt Recall) de rànquing precís (alt NDCG) permet baixa latència i alta qualitat a escala.",
+      "explanationsIncorrect": {
+        "A": "Precisament serveix per reduir dràsticament la latència.",
+        "C": "La fase 2 opera precisament sobre un conjunt reduït (~50–200 candidats).",
+        "D": "El filtre d'elegibilitat es manté com a pas previ indispensable."
+      }
+    },
+    {
+      "id": "m06-04-q10",
+      "module": 6,
+      "conceptId": "m06-04-sistemes-recomanacio",
+      "lessonRef": "content/module-06/m06-04-sistemes-recomanacio.md",
+      "difficulty": "advanced",
+      "questionType": "metrics",
+      "prompt": "Per què en un portal de serveis públics optimitzar un recomanador únicament per **CTR (*Click-Through Rate*)** pot degradar el servei ciutadà?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè el CTR sempre és 100%." },
+        { "key": "B", "text": "Perquè els clics no es poden mesurar en pàgines web." },
+        { "key": "C", "text": "Perquè optimitzar només clics promou **títols cridaners (*clickbait*) i ítems ja populars**, descuidant el que realment importa a l'Administració: **tràmits efectivament completats, reducció del *non-take-up* d'ajuts a famílies elegibles, diversitat i equitat**." },
+        { "key": "D", "text": "Perquè el CTR prohibeix utilitzar `NDCG@K`." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Alineació d'objectius (*Objective Alignment*): en sector públic la mètrica nord és la utilitat pública efectiva (ajuts/serveis elegibles completats i equitat), no el nombre de clics o temps en pantalla!",
+      "explanationsIncorrect": {
+        "A": "El CTR varia segons el disseny i els ítems.",
+        "B": "Es poden mesurar, però són una mètrica *proxy* feble o contraproduent.",
+        "D": "Es poden mesurar conjuntament, però la rellevància real s'ha de definir per utilitat/conversió de tràmit, no per clic superficial."
+      }
+    }
+  ]
+}

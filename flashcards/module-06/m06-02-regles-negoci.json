@@ -1,0 +1,46 @@
+{
+  "conceptId": "m06-02-regles-negoci",
+  "module": 6,
+  "cards": [
+    {
+      "id": "m06-02-fc01",
+      "module": 6,
+      "conceptId": "m06-02-regles-negoci",
+      "front": "Quina és la regla d'or per triar entre motor de regles (BRMS/DMN) i Machine Learning?",
+      "back": "Criteris reglats per llei, ordenança o barem → SEMPRE regles deterministes (100% exactitud i motivació jurídica). Entrades no estructurades o detecció de risc → ML/IDP (mai denegant automàticament!).",
+      "tags": ["determinisme", "probabilisme", "BRMS"]
+    },
+    {
+      "id": "m06-02-fc02",
+      "module": 6,
+      "conceptId": "m06-02-regles-negoci",
+      "front": "Què diferencien les *Hit Policies* DMN `UNIQUE`, `FIRST` i `COLLECT (C+)`?",
+      "back": "`UNIQUE`: exactament 1 fila coincideix (trams excloents); `FIRST`: s'atura a la 1a coincidència per prioritat (exclusions); `COLLECT (C+)`: suma totes les files coincidents (barems de punts).",
+      "tags": ["DMN", "Hit Policy"]
+    },
+    {
+      "id": "m06-02-fc03",
+      "module": 6,
+      "conceptId": "m06-02-regles-negoci",
+      "front": "Per què les taules de regles públiques han de tenir versionat temporal (`valid_from` / `valid_to`)?",
+      "back": "Per poder resoldre recursos, inspeccions o auditories d'exercicis passats aplicant exactament la versió normativa vigent en la data de meritació o sol·licitud.",
+      "tags": ["versionat", "seguretat jurídica"]
+    },
+    {
+      "id": "m06-02-fc04",
+      "module": 6,
+      "conceptId": "m06-02-regles-negoci",
+      "front": "Com garanteix un BRMS la motivació dels actes administratius (art. 35 LPACAP)?",
+      "back": "Retornant en cada decisió la traça exacta: `versio_regles`, `id_regla`, article normatiu concret i explicació dels requisits complerts o incomplerts.",
+      "tags": ["LPACAP", "art. 35", "motivació"]
+    },
+    {
+      "id": "m06-02-fc05",
+      "module": 6,
+      "conceptId": "m06-02-regles-negoci",
+      "front": "Quines dues anomalies lògiques detecta la validació estàtica d'una taula DMN `UNIQUE`?",
+      "back": "Buits (*gaps*, ex. `renda == 7000` fora de `<7000` i `>7000`) i solapaments/contradiccions (dues files que es disparen alhora per a la mateixa entrada).",
+      "tags": ["DMN", "validació", "fronteres"]
+    }
+  ]
+}

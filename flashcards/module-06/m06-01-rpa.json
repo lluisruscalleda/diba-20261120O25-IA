@@ -1,0 +1,46 @@
+{
+  "conceptId": "m06-01-rpa",
+  "module": 6,
+  "cards": [
+    {
+      "id": "m06-01-fc01",
+      "module": 6,
+      "conceptId": "m06-01-rpa",
+      "front": "Quin és el principi *API-first* respecte de la RPA?",
+      "back": "Si els sistemes disposen d'API REST/SOAP, integrar SEMPRE per API (ràpida, segura i estable); reservar la RPA d'UI únicament per a aplicacions *legacy* sense API.",
+      "tags": ["RPA", "API-first"]
+    },
+    {
+      "id": "m06-01-fc02",
+      "module": 6,
+      "conceptId": "m06-01-rpa",
+      "front": "Com es combinen IDP/ML, BPM i API/RPA en l'Automatització Intel·ligent (IPA)?",
+      "back": "IDP/ML converteix entrades no estructurades (PDFs) en JSON validat → BPM orquestra l'expedient, SLAs i tasques humanes → API/RPA executen transaccions en sistemes moderns o *legacy*.",
+      "tags": ["IPA", "BPM", "IDP", "RPA"]
+    },
+    {
+      "id": "m06-01-fc03",
+      "module": 6,
+      "conceptId": "m06-01-rpa",
+      "front": "Com s'han de gestionar les excepcions tècniques vs. les excepcions de negoci en una cua RPA?",
+      "back": "Excepció tècnica (*timeout*/xarxa) → reintents idempotents controlats (màx. 3). Excepció de negoci (import fora de límit, NIF invàlid) → 0 reintents i derivació immediata a cua humana!",
+      "tags": ["excepcions", "idempotència"]
+    },
+    {
+      "id": "m06-01-fc04",
+      "module": 6,
+      "conceptId": "m06-01-rpa",
+      "front": "Quins requisits de seguretat ENS exigeix un bot RPA en l'Administració pública?",
+      "back": "Compte de servei nominal dedicat (mai credencials personals d'un funcionari!), mínim privilegi, secrets en Password Vault xifrat i logs d'auditoria centralitzats.",
+      "tags": ["ENS", "seguretat", "Vault"]
+    },
+    {
+      "id": "m06-01-fc05",
+      "module": 6,
+      "conceptId": "m06-01-rpa",
+      "front": "Què exigeix l'art. 41 i 42 de la Llei 40/2015 (LRJSP) si un bot produeix actes administratius automàtics?",
+      "back": "Aprovació formal prèvia com a Actuació Administrativa Automatitzada (AAA) indicant òrgan competent, especificacions, supervisió/auditoria, recursos i signatura amb segell electrònic d'òrgan.",
+      "tags": ["LRJSP", "art. 41", "AAA"]
+    }
+  ]
+}

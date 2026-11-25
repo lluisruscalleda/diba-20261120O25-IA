@@ -9,9 +9,9 @@ Llegenda d'estat:
 
 | Dimensió | Completats | Objectiu | Cobertura |
 |---|---:|---:|---:|
-| Lliçons (Teoria + Exemple + Exercici + Desenvolupament + Resum) | 46 | 70 | 65,7% |
-| Tests individuals (mín. 10 preguntes / concepte) | 46 (460 preg.) | 70 (≥700 preg.) | 65,7% |
-| Flashcards per concepte (mín. 5 / concepte) | 46 (240 fitxes) | 70 (≥350 fitxes) | 65,7% |
+| Lliçons (Teoria + Exemple + Exercici + Desenvolupament + Resum) | 52 | 70 | 74,3% |
+| Tests individuals (mín. 10 preguntes / concepte) | 52 (520 preg.) | 70 (≥700 preg.) | 74,3% |
+| Flashcards per concepte (mín. 5 / concepte) | 52 (270 fitxes) | 70 (≥350 fitxes) | 74,3% |
 | Laboratoris pràctics | 0 | 8 | 0% |
 | Exàmens de mòdul (40 preg.) | 0 | 8 | 0% |
 | Simulacres globals (50 preg.) | 0 | 10 | 0% |
@@ -96,12 +96,12 @@ Llegenda d'estat:
 
 | ID | Concepte oficial | Teoria (A-E) | Exemple (F) | Exercici (G) | Test ≥10 (H) | Desenv. ≥3 (I) | Resum+FC (J) | Estat |
 |---|---|---|---|---|---|---|---|---|
-| `m06-01-rpa` | Robotic Process Automation (RPA vs BPM vs ML vs agents) | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m06-02-regles-negoci` | Regles de negoci (determinisme vs probabilisme) | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m06-03-classificadors-automatics` | Classificadors automàtics | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m06-04-sistemes-recomanacio` | Sistemes de recomanació | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m06-05-prioritzacio-casos` | Priorització de casos | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m06-06-validacio-automatica-processos` | Validació automàtica | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
+| `m06-01-rpa` | Robotic Process Automation (RPA vs BPM vs ML vs agents) | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m06-02-regles-negoci` | Regles de negoci (determinisme vs probabilisme) | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m06-03-classificadors-automatics` | Classificadors automàtics | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m06-04-sistemes-recomanacio` | Sistemes de recomanació | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m06-05-prioritzacio-casos` | Priorització de casos | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m06-06-validacio-automatica-processos` | Validació automàtica | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
 
 ## Mòdul 7. MLOps i LLMOps
 
