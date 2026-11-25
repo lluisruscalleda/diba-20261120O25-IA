@@ -1,0 +1,46 @@
+{
+  "conceptId": "m08-02-biaixos",
+  "module": 8,
+  "cards": [
+    {
+      "id": "m08-02-fc01",
+      "module": 8,
+      "conceptId": "m08-02-biaixos",
+      "front": "Per què falla el principi de Fairness through Unawareness (esborrar columnes sensibles)?",
+      "back": "Perquè les variables proxy (codi postal, nom, idioma, trajectòria) reprodueixen correlacions amb l'atribut protegit generant discriminació indirecta, i a més impedeix auditar si el model discrimina.",
+      "tags": ["proxies", "discriminació indirecta", "biaixos"]
+    },
+    {
+      "id": "m08-02-fc02",
+      "module": 8,
+      "conceptId": "m08-02-biaixos",
+      "front": "Quina diferència hi ha entre Equal Opportunity i Equalized Odds?",
+      "back": "Equal Opportunity iguala el TPR (Recall) entre grups (ideal en ajuts i selecció); Equalized Odds iguala tant el TPR com el FPR (crític en inspeccions i frau per no penalitzar injustament un col·lectiu).",
+      "tags": ["Equal Opportunity", "Equalized Odds", "mètriques"]
+    },
+    {
+      "id": "m08-02-fc03",
+      "module": 8,
+      "conceptId": "m08-02-biaixos",
+      "front": "Què estableix la regla orientativa dels 4/5 (Disparate Impact)?",
+      "back": "Si la taxa de selecció positiva d'un grup protegit dividida per la del grup de referència és inferior a 0,80 (DI < 0,80), es dispara un senyal orientatiu d'alerta d'impacte dispar a investigar.",
+      "tags": ["Disparate Impact", "4/5", "auditoria"]
+    },
+    {
+      "id": "m08-02-fc04",
+      "module": 8,
+      "conceptId": "m08-02-biaixos",
+      "front": "Què diu el teorema d'impossibilitat de l'equitat algorítmica?",
+      "back": "Quan les taxes base reals difereixen entre grups i el model no és perfecte, és matemàticament impossible satisfer alhora Demographic Parity, Equalized Odds i calibració; triar la mètrica és una decisió jurídica i política.",
+      "tags": ["teorema impossibilitat", "equitat"]
+    },
+    {
+      "id": "m08-02-fc05",
+      "module": 8,
+      "conceptId": "m08-02-biaixos",
+      "front": "Què autoritza excepcionalment l'art. 10.5 de l'AI Act en matèria de biaixos?",
+      "back": "El tractament estrictament necessari i protegit de categories especials de dades (pseudonimització, accés restringit, supressió posterior) únicament per detectar i corregir biaixos en sistemes d'alt risc.",
+      "tags": ["AI Act", "art. 10", "dades sensibles"]
+    }
+  ]
+}

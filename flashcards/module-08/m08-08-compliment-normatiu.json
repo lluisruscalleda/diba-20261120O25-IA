@@ -1,0 +1,46 @@
+{
+  "conceptId": "m08-08-compliment-normatiu",
+  "module": 8,
+  "cards": [
+    {
+      "id": "m08-08-fc01",
+      "module": 8,
+      "conceptId": "m08-08-compliment-normatiu",
+      "front": "Quines són les 5 dates del calendari oficial d'aplicació de l'AI Act (Reglament UE 2024/1689, art. 113)?",
+      "back": "1/08/2024: entrada en vigor; 2/02/2025: art. 4 alfabetització + art. 5 prohibicions; 2/08/2025: governança + GPAI + sancions; 2/08/2026: aplicació general, alt risc Annex III, FRIA i art. 50; 2/08/2027: alt risc productes Annex I.",
+      "tags": ["AI Act", "calendari", "art. 113"]
+    },
+    {
+      "id": "m08-08-fc02",
+      "module": 8,
+      "conceptId": "m08-08-compliment-normatiu",
+      "front": "Quins dos àmbits de l'Annex III de l'AI Act afecten més directament els ajuntaments i diputacions?",
+      "back": "Punt 5.a (elegibilitat, concessió, reducció o revocació de prestacions i serveis d'assistència pública essencials, i 5.d triatge d'emergències) i punt 4 (ocupació i selecció de personal públic).",
+      "tags": ["AI Act", "Annex III", "alt risc"]
+    },
+    {
+      "id": "m08-08-fc03",
+      "module": 8,
+      "conceptId": "m08-08-compliment-normatiu",
+      "front": "Quan una administració pública passa de deployer a provider (proveïdor) segons l'art. 25 AI Act?",
+      "back": "Quan posa la seva marca a un sistema d'alt risc, hi fa una modificació substancial o modifica la finalitat prevista d'un sistema (inclòs un GPAI!) convertint-lo en alt risc.",
+      "tags": ["AI Act", "art. 25", "provider vs deployer"]
+    },
+    {
+      "id": "m08-08-fc04",
+      "module": 8,
+      "conceptId": "m08-08-compliment-normatiu",
+      "front": "Quins són els límits sancionadors màxims de l'art. 99 de l'AI Act?",
+      "back": "Fins a 35 M€ o 7% (pràctiques prohibides art. 5); fins a 15 M€ o 3% (obligacions alt risc, deployers, art. 50, GPAI); fins a 7,5 M€ o 1% (informació incorrecta a autoritats).",
+      "tags": ["AI Act", "art. 99", "sancions"]
+    },
+    {
+      "id": "m08-08-fc05",
+      "module": 8,
+      "conceptId": "m08-08-compliment-normatiu",
+      "front": "Quines autoritats supervisen IA, protecció de dades i ciberseguretat per a un ens local català?",
+      "back": "AESIA (supervisió estatal IA), APDCAT (protecció de dades dels ens locals de Catalunya; AEPD a nivell estatal) i CCN-CERT (ciberseguretat i guies ENS RD 311/2022).",
+      "tags": ["AESIA", "APDCAT", "CCN-CERT"]
+    }
+  ]
+}

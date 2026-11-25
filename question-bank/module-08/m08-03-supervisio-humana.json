@@ -1,0 +1,236 @@
+{
+  "conceptId": "m08-03-supervisio-humana",
+  "module": 8,
+  "questions": [
+    {
+      "id": "m08-03-q01",
+      "module": 8,
+      "conceptId": "m08-03-supervisio-humana",
+      "lessonRef": "content/module-08/m08-03-supervisio-humana.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina diferència hi ha entre HITL (Human-in-the-Loop), HOTL (Human-on-the-Loop) i HIC (Human-in-Command)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "HITL exigeix revisió i validació humana dins cada decisió; HOTL deixa executar accions de menor risc sota monitoratge i intervenció humana per excepcions; HIC és el govern estratègic global sobre quan i com s'utilitza o s'atura el sistema." },
+        { "key": "B", "text": "Són tres versions del mateix algorisme de xarxes neuronals." },
+        { "key": "C", "text": "HITL vol dir sense humans, HOTL amb un humà i HIC amb dos humans." },
+        { "key": "D", "text": "Només HOTL està permès per a resolucions sancionadores." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "HITL situa l'humà dins cada decisió individual, HOTL el situa supervisant el flux amb capacitat d'intervenció, i HIC representa el comandament estratègic i de governança del sistema.",
+      "explanationsIncorrect": {
+        "B": "Són models organitzatius i tècnics de supervisió humana, no algorismes neuronals.",
+        "C": "No responen al nombre d'humans, sinó al seu rol en el bucle de decisió.",
+        "D": "Les resolucions sancionadores o limitatives de drets requereixen HITL significatiu, no HOTL."
+      }
+    },
+    {
+      "id": "m08-03-q02",
+      "module": 8,
+      "conceptId": "m08-03-supervisio-humana",
+      "lessonRef": "content/module-08/m08-03-supervisio-humana.md",
+      "difficulty": "basic",
+      "questionType": "normative",
+      "prompt": "Quin dret general reconeix l'article 22.1 del RGPD (Reglament UE 2016/679) a les persones interessades?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "El dret a obtenir gratuïtament el codi font de tots els models comercials del món." },
+        { "key": "B", "text": "El dret a no ser objecte d'una decisió basada únicament en el tractament automatitzat, inclosa l'elaboració de perfils, que produeixi efectes jurídics en ella o l'afecti significativament de manera similar." },
+        { "key": "C", "text": "El dret a ser atès obligatòriament per un xatbot les 24 hores." },
+        { "key": "D", "text": "L'obligació d'acceptar qualsevol decisió d'una IA sense possibilitat de recurs." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "L'article 22.1 del RGPD protegeix les persones davant decisions únicament automatitzades amb efectes jurídics o similars significatius, llevat d'excepcions taxades amb salvaguardes.",
+      "explanationsIncorrect": {
+        "A": "L'article 22 no regula llicències de codi font.",
+        "C": "No imposa l'obligació de disposar de xatbots.",
+        "D": "Al contrari: protegeix el dret a intervenció humana i impugnació."
+      }
+    },
+    {
+      "id": "m08-03-q03",
+      "module": 8,
+      "conceptId": "m08-03-supervisio-humana",
+      "lessonRef": "content/module-08/m08-03-supervisio-humana.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Què és el biaix d'automatització (automation bias) esmentat expressament a l'article 14 de l'AI Act?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Un error de memòria RAM en desplegar un model Docker." },
+        { "key": "B", "text": "La preferència d'un model pel castellà respecte del català." },
+        { "key": "C", "text": "La tendència humana a confiar automàticament o excessivament en les sortides produïdes per un sistema d'IA, deixant de qüestionar-les críticament." },
+        { "key": "D", "text": "La diferència entre el conjunt d'entrenament i el de validació." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "El biaix d'automatització és el biaix cognitiu de delegació acrítica cap a la màquina; l'art. 14.4.b de l'AI Act exigeix mesures perquè els supervisors en siguin conscients i l'evitin.",
+      "explanationsIncorrect": {
+        "A": "És un biaix psicològic/humà, no un error de maquinari.",
+        "B": "Això seria biaix lingüístic de representació.",
+        "D": "Això és Data Drift o sobreajustament."
+      }
+    },
+    {
+      "id": "m08-03-q04",
+      "module": 8,
+      "conceptId": "m08-03-supervisio-humana",
+      "lessonRef": "content/module-08/m08-03-supervisio-humana.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Un empleat públic prem el botó «Aprovar tots» en 2 segons per validar 50 recomanacions d'una IA sobre ajuts socials (rubber-stamping). Com valora aquesta pràctica el criteri del CEPD/EDPB respecte de l'article 22 del RGPD?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Com a supervisió humana vàlida, perquè hi ha hagut un clic d'una persona física." },
+        { "key": "B", "text": "Com a decisió que continua essent únicament automatitzada, perquè la intervenció humana no ha estat significativa (ni anàlisi real ni exercici efectiu d'autoritat)." },
+        { "key": "C", "text": "Com a actuació administrativa automatitzada exenta de qualsevol garantia." },
+        { "key": "D", "text": "Com a compliment automàtic de l'article 14 de l'AI Act." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Segons les directrius europees de protecció de dades, una revisió simbòlica o rubber-stamping no trenca el caràcter «únicament automatitzat» de l'art. 22 RGPD.",
+      "explanationsIncorrect": {
+        "A": "Un clic mecànic sense anàlisi real no compleix el requisit d'intervenció humana significativa.",
+        "C": "Cap actuació pública no està exenta de garanties jurídiques ni del RGPD.",
+        "D": "Vulneraria frontalment l'article 14 de l'AI Act (supervisió efectiva i prevenció del biaix d'automatització)."
+      }
+    },
+    {
+      "id": "m08-03-q05",
+      "module": 8,
+      "conceptId": "m08-03-supervisio-humana",
+      "lessonRef": "content/module-08/m08-03-supervisio-humana.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Quina obligació específica imposa l'article 26.2 de l'AI Act a una administració pública que actua com a responsable del desplegament (deployer) d'un sistema d'IA d'alt risc?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Reentrenar el model cada setmana des de zero." },
+        { "key": "B", "text": "Encomanar la supervisió humana a persones físiques que disposin de la competència, formació i autoritat necessàries, així com del suport adequat." },
+        { "key": "C", "text": "Delegar tota la supervisió exclusivament a l'empresa proveïdora del programari." },
+        { "key": "D", "text": "Prohibir que els funcionaris puguin discrepar mai del resultat del model." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "L'article 26.2 de l'AI Act exigeix que el deployer assigni la supervisió humana a persones amb competència, formació, autoritat i suport reals.",
+      "explanationsIncorrect": {
+        "A": "No existeix cap obligació legal de reentrenament setmanal.",
+        "C": "La responsabilitat de la supervisió en l'ús recau sobre el deployer (l'Administració).",
+        "D": "Justament al contrari: l'art. 14.4.d exigeix que puguin invalidar o revertir el resultat!"
+      }
+    },
+    {
+      "id": "m08-03-q06",
+      "module": 8,
+      "conceptId": "m08-03-supervisio-humana",
+      "lessonRef": "content/module-08/m08-03-supervisio-humana.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Què exigeix l'article 41.2 de la Llei 40/2015 (LRJSP) abans de posar en marxa una Actuació Administrativa Automatitzada (AAA)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Publicar els noms i DNI de tots els ciutadans afectats al BOE." },
+        { "key": "B", "text": "Només contractar un model GPT extern per API." },
+        { "key": "C", "text": "Establir prèviament l'òrgan competent per a especificacions, programació, manteniment, supervisió, control de qualitat i auditoria del sistema i codi font, i indicar l'òrgan responsable a efectes d'impugnació." },
+        { "key": "D", "text": "Eliminar el dret de recurs administratiu contra l'acte automatitzat." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "L'article 41.2 de la LRJSP exigeix assignar formalment i prèviament els òrgans competents de governança tècnica, auditoria i impugnació per garantir seguretat jurídica.",
+      "explanationsIncorrect": {
+        "A": "Això vulneraria greument el RGPD.",
+        "B": "Una AAA requereix garanties internes de l'Administració, no una API externa opaca.",
+        "D": "L'article 41.2 exigeix expressament indicar l'òrgan davant el qual es pot impugnar l'acte!"
+      }
+    },
+    {
+      "id": "m08-03-q07",
+      "module": 8,
+      "conceptId": "m08-03-supervisio-humana",
+      "lessonRef": "content/module-08/m08-03-supervisio-humana.md",
+      "difficulty": "intermediate",
+      "questionType": "code",
+      "prompt": "En un sistema HITL d'expedients amb temps mínim de revisió de 5 segons i principi de quatre ulls per a denegacions, un funcionari rebutja un expedient en 1,4 segons posant motivació «OK» i sense segon supervisor. Quantes alertes bloquejants s'han d'activar?",
+      "codeSnippet": "segons_revisio = 1.4\ndecisio = 'DESFAVORABLE'\nmotivacio = 'OK'\nsegon_supervisor = None",
+      "options": [
+        { "key": "A", "text": "Cap alerta, perquè la denegació coincideix amb el model." },
+        { "key": "B", "text": "1 alerta (només el temps)." },
+        { "key": "C", "text": "2 alertes (temps i motivació, però els quatre ulls no calen en denegacions)." },
+        { "key": "D", "text": "3 alertes (rubber-stamping per temps insuficient, motivació insuficient i absència de segon supervisor independent)." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Incompleix simultàniament els tres controls de seguretat: revisió exprés (< 5s), manca de motivació fàctica/jurídica i absència del segon supervisor de quatre ulls.",
+      "explanationsIncorrect": {
+        "A": "Coincidir amb el model en 1,4 segons és precisament el símptoma típic de rubber-stamping.",
+        "B": "També fallen la motivació i el principi dels quatre ulls.",
+        "C": "Les denegacions o actes limitatius són precisament on el doble control és més necessari."
+      }
+    },
+    {
+      "id": "m08-03-q08",
+      "module": 8,
+      "conceptId": "m08-03-supervisio-humana",
+      "lessonRef": "content/module-08/m08-03-supervisio-humana.md",
+      "difficulty": "advanced",
+      "questionType": "normative",
+      "prompt": "Quina de les mesures següents figura expressament a l'article 14.4.e de l'AI Act com a capacitat que ha de permetre la supervisió humana d'un sistema d'IA d'alt risc?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Intervenir en el funcionament del sistema d'IA d'alt risc o interrompre'l mitjançant un «botó d'aturada» o un procediment similar que permeti aturar-lo en condicions de seguretat." },
+        { "key": "B", "text": "Augmentar automàticament el pressupost de cloud sense aprovació." },
+        { "key": "C", "text": "Evitar que qualsevol auditor pugui consultar els logs del sistema." },
+        { "key": "D", "text": "Substituir totes les resolucions judicials per prediccions automàtiques." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "L'article 14.4.e de l'AI Act estableix explícitament la capacitat d'intervenir o interrompre el sistema de manera segura mitjançant un botó d'aturada o procediment equivalent.",
+      "explanationsIncorrect": {
+        "B": "No té relació amb l'article 14 de l'AI Act.",
+        "C": "L'article 12 exigeix justament conservació i auditabilitat dels registres.",
+        "D": "L'AI Act reforça la supervisió humana i prohibeix substituir garanties jurisdiccionals."
+      }
+    },
+    {
+      "id": "m08-03-q09",
+      "module": 8,
+      "conceptId": "m08-03-supervisio-humana",
+      "lessonRef": "content/module-08/m08-03-supervisio-humana.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Quina combinació de patrons de disseny d'interfície (UX) redueix més eficaçment el biaix d'automatització dels empleats públics supervisors?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Ressaltar la recomanació de la IA en verd brillant, amagar la incertesa i exigir aprovar 100 expedients per hora." },
+        { "key": "B", "text": "Ocultar els documents originals del ciutadà per estalviar temps de lectura." },
+        { "key": "C", "text": "Aplicar funcions de fricció cognitiva (mostrar fets i documents abans del veredicte del model), exposar la zona d'incertesa i explicació XAI, i registrar els overrides sense penalitzar la discrepància." },
+        { "key": "D", "text": "Eliminar la possibilitat d'override perquè tots els funcionaris decideixin igual que el model." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Les funcions de fricció cognitiva, la transparència d'incertesa/evidències i la protecció organitzativa de l'override combaten eficaçment la delegació acrítica.",
+      "explanationsIncorrect": {
+        "A": "Aquest disseny maximitza el biaix d'automatització i força el rubber-stamping.",
+        "B": "Impedeix contrastar la recomanació del model amb la realitat de l'expedient.",
+        "D": "Eliminar l'override incompleix directament l'article 14.4.d de l'AI Act."
+      }
+    },
+    {
+      "id": "m08-03-q10",
+      "module": 8,
+      "conceptId": "m08-03-supervisio-humana",
+      "lessonRef": "content/module-08/m08-03-supervisio-humana.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "Quin valor afegit té registrar estructuradament cada override (discrepància motivada d'un empleat públic respecte del suggeriment de la IA)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Serveix per sancionar els empleats que no obeeixen l'algorisme." },
+        { "key": "B", "text": "No aporta cap valor i només consumeix espai de disc." },
+        { "key": "C", "text": "Permet esborrar les dades d'auditoria més ràpidament." },
+        { "key": "D", "text": "Acredita en auditoria que la supervisió humana és real i efectiva (no rubber-stamping) i genera exemples d'alt valor (casos difícils) per millorar i reentrenar el model." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "El registre d'overrides és alhora prova jurídica de supervisió humana significativa i font d'or d'aprenentatge actiu sobre casos límit o canvis de criteri (Concept Drift).",
+      "explanationsIncorrect": {
+        "A": "Penalitzar l'override destruiria l'autoritat del supervisor i vulneraria l'art. 14 i 26.2 AI Act.",
+        "B": "És un dels actius de governança i MLOps més valuosos del sistema.",
+        "C": "Al contrari, enriqueix la traçabilitat i l'evidència d'auditoria."
+      }
+    }
+  ]
+}

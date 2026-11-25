@@ -503,6 +503,70 @@
       "module": 7,
       "conceptId": "m07-10-integracio-sistemes",
       "definition": "El Circuit Breaker (CLOSED/OPEN/HALF_OPEN) evita que una caiguda del servei d'IA aturi la Seu Electrònica o el Registre retornant fallback segur; l'ACL tradueix formats legacy externs al contracte canònic ENI/OpenAPI."
+    },
+    {
+      "id": "xai-shap-contrafactuals",
+      "term": "Explicabilitat (XAI): SHAP, LIME i contrafactuals",
+      "english": "Explainable AI (SHAP, LIME & Counterfactuals)",
+      "module": 8,
+      "conceptId": "m08-01-transparencia",
+      "definition": "SHAP reparteix exactament la predicció en contribucions additives (valors de Shapley); LIME aproxima localment amb pertorbacions aleatòries (inestable); els contrafactuals accionables indiquen el canvi mínim en variables modificables per capgirar una decisió."
+    },
+    {
+      "id": "fairness-disparate-impact-equalized-odds",
+      "term": "Equitat algorítmica: Disparate Impact, Equal Opportunity i Equalized Odds",
+      "english": "Algorithmic Fairness (DI, Equal Opportunity & Equalized Odds)",
+      "module": 8,
+      "conceptId": "m08-02-biaixos",
+      "definition": "Disparate Impact (<0,80 alerta regla 4/5) mesura paritat de selecció; Equal Opportunity iguala el TPR entre grups (ajuts/selecció); Equalized Odds iguala TPR i FPR (crític en inspeccions/frau); el teorema d'impossibilitat mostra que no es poden satisfer totes alhora si difereixen les taxes base."
+    },
+    {
+      "id": "supervisio-humana-rubber-stamping",
+      "term": "Supervisió humana significativa (HITL) i biaix d'automatització",
+      "english": "Meaningful Human Oversight & Automation Bias",
+      "module": 8,
+      "conceptId": "m08-03-supervisio-humana",
+      "definition": "Requisit dels art. 22 RGPD, art. 14 i 26.2 AI Act: la revisió humana ha de tenir temps, competència i autoritat real d'override i botó d'aturada; el rubber-stamping (acceptació acrítica) NO trenca el caràcter únicament automatitzat."
+    },
+    {
+      "id": "eipd-dpia-apdcat",
+      "term": "EIPD / DPIA (art. 35 RGPD), Pseudonimització i APDCAT",
+      "english": "Data Protection Impact Assessment (DPIA)",
+      "module": 8,
+      "conceptId": "m08-04-proteccio-dades",
+      "definition": "Avaluació preventiva obligatòria abans de tractaments d'IA d'alt risc amb assessorament del DPD (i consulta prèvia a l'APDCAT en ens locals catalans si resta alt risc). La pseudonimització continua essent dada personal; només l'anonimització irreversible surt del RGPD."
+    },
+    {
+      "id": "ens-rd311-owasp-llm",
+      "term": "ENS (RD 311/2022) i OWASP Top 10 for LLM Applications",
+      "english": "Spanish National Security Framework (ENS) & OWASP LLM Security",
+      "module": 8,
+      "conceptId": "m08-05-seguretat-ia",
+      "definition": "L'ENS valora 5 dimensions (C-I-D-A-T) i assigna categoria (BAIX/MITJÀ/ALT) pel màxim (MITJÀ/ALT exigeixen Certificació ENS cada 2 anys, extensible a proveïdors); OWASP LLM cobreix prompt injection directe/indirecte, data poisoning, RBAC pre-recuperació, Insecure Output Handling i Excessive Agency."
+    },
+    {
+      "id": "fria-art27-ai-act",
+      "term": "FRIA (Avaluació d'Impacte en Drets Fonamentals — art. 27 AI Act)",
+      "english": "Fundamental Rights Impact Assessment (FRIA)",
+      "module": 8,
+      "conceptId": "m08-06-auditoria",
+      "definition": "Avaluació obligatòria per als organismes de dret públic abans de desplegar sistemes d'IA d'alt risc (Annex III, 6 blocs mínims), notificada a l'AESIA i complementària a la EIPD (art. 27.4), juntament amb conservació de logs >= 6 mesos (art. 26.6)."
+    },
+    {
+      "id": "shadow-ai-iso42001",
+      "term": "Shadow AI, ISO/IEC 42001 i Contractació Pública Responsable",
+      "english": "Shadow AI, ISO/IEC 42001 & Responsible AI Procurement",
+      "module": 8,
+      "conceptId": "m08-07-governanca-models",
+      "definition": "Shadow AI és l'ús no autoritzat d'eines d'IA fora de governança; es combat amb plataforma corporativa sobirana, inventari + Comitè RACI, estàndards ISO 42001 / NIST AI RMF i plecs LCSP amb ENS, zero-data-retention, anti-vendor lock-in i català."
+    },
+    {
+      "id": "ai-act-reglament-2024-1689",
+      "term": "AI Act — Reglament (UE) 2024/1689 i Calendari oficial",
+      "english": "EU Artificial Intelligence Act (Regulation 2024/1689)",
+      "module": 8,
+      "conceptId": "m08-08-compliment-normatiu",
+      "definition": "Marc europeu basat en el risc (Prohibit art. 5, Alt Risc Annex I/III, Transparència art. 50, GPAI Cap. V; sancions fins 35M€/7%). Calendari: 1/08/2024 vigor; 2/02/2025 art. 4 i 5; 2/08/2025 governança/GPAI; 2/08/2026 aplicació general/Annex III/FRIA; 2/08/2027 Annex I."
     }
   ]
 }

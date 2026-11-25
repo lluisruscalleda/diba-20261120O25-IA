@@ -1,0 +1,236 @@
+{
+  "conceptId": "m08-05-seguretat-ia",
+  "module": 8,
+  "questions": [
+    {
+      "id": "m08-05-q01",
+      "module": 8,
+      "conceptId": "m08-05-seguretat-ia",
+      "lessonRef": "content/module-08/m08-05-seguretat-ia.md",
+      "difficulty": "basic",
+      "questionType": "normative",
+      "prompt": "Quines són les 5 dimensions de seguretat de l'Esquema Nacional de Seguretat (ENS — Reial decret 311/2022)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Confidencialitat, Integritat, Disponibilitat, Autenticitat i Traçabilitat (C-I-D-A-T)." },
+        { "key": "B", "text": "Precisió, Recall, F1, Latència i Cost." },
+        { "key": "C", "text": "Només Confidencialitat i Disponibilitat." },
+        { "key": "D", "text": "Transparència, Equitat, Explicabilitat, Privacitat i Sostenibilitat." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "L'ENS (RD 311/2022) afegeix Autenticitat i Traçabilitat a la tríada clàssica CIA, definint les 5 dimensions C-I-D-A-T.",
+      "explanationsIncorrect": {
+        "B": "Aquestes són mètriques de Machine Learning i MLOps, no les dimensions de l'ENS.",
+        "C": "Falten Integritat, Autenticitat i Traçabilitat.",
+        "D": "Aquests són principis ètics d'IA responsable, no les 5 dimensions tècniques de l'ENS."
+      }
+    },
+    {
+      "id": "m08-05-q02",
+      "module": 8,
+      "conceptId": "m08-05-seguretat-ia",
+      "lessonRef": "content/module-08/m08-05-seguretat-ia.md",
+      "difficulty": "basic",
+      "questionType": "normative",
+      "prompt": "Un sistema d'IA municipal presenta les valoracions ENS següents: Confidencialitat = ALT, Integritat = MITJÀ, Disponibilitat = BAIX, Autenticitat = BAIX, Traçabilitat = MITJÀ. Quina és la categoria global del sistema i quin mecanisme de conformitat exigeix?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Categoria MITJÀ (per la mitjana aritmètica), amb declaració de conformitat." },
+        { "key": "B", "text": "Categoria ALT (màxima valoració entre les 5 dimensions), exigint Certificació de Conformitat ENS i auditoria periòdica cada 2 anys." },
+        { "key": "C", "text": "Categoria BAIX (per majoria de dimensions en BAIX/MITJÀ)." },
+        { "key": "D", "text": "No aplica l'ENS perquè utilitza intel·ligència artificial." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Segons l'Annex I del RD 311/2022, n'hi ha prou que una sola dimensió tingui nivell ALT perquè tot el sistema sigui categoria ALT, requerint Certificació ENS i auditoria biennal.",
+      "explanationsIncorrect": {
+        "A": "La categoria ENS no es calcula mai per mitjana, sinó pel màxim de les dimensions!",
+        "C": "No funciona per votació ni majoria.",
+        "D": "L'ENS s'aplica plenament a qualsevol sistema d'informació del sector públic, inclosos els d'IA."
+      }
+    },
+    {
+      "id": "m08-05-q03",
+      "module": 8,
+      "conceptId": "m08-05-seguretat-ia",
+      "lessonRef": "content/module-08/m08-05-seguretat-ia.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Què és un atac de Prompt Injection indirecte en un assistent o agent d'IA municipal?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Un tall elèctric al centre de processament de dades." },
+        { "key": "B", "text": "Una ordre maliciosa incrustada dins un document extern (PDF, correu electrònic, web) recuperat pel sistema, que segresta el comportament de l'LLM quan aquest el processa." },
+        { "key": "C", "text": "Una actualització oficial del sistema operatiu Linux." },
+        { "key": "D", "text": "Una consulta molt llarga escrita correctament per un funcionari." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "En el Prompt Injection indirecte, l'atacant no parla directament amb el xat: amaga instruccions dins dades externes que el RAG o l'agent acaba llegint i obeint si no hi ha aïllament.",
+      "explanationsIncorrect": {
+        "A": "Un tall elèctric afecta la disponibilitat física, no és prompt injection.",
+        "C": "No té res a veure amb actualitzacions del sistema operatiu.",
+        "D": "Una consulta legítima llarga no és un atac d'injecció."
+      }
+    },
+    {
+      "id": "m08-05-q04",
+      "module": 8,
+      "conceptId": "m08-05-seguretat-ia",
+      "lessonRef": "content/module-08/m08-05-seguretat-ia.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "On s'ha d'aplicar obligatòriament el control d'accés (RBAC/ABAC) en un sistema RAG corporatiu que indexa documents públics i expedients confidencials?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Abans de la recuperació (pre-filtering determinista a la consulta de la base vectorial per rol/ACL), perquè cap fragment no autoritzat no entri mai al context de l'LLM." },
+        { "key": "B", "text": "Al system prompt dient a l'LLM «si us plau, no diguis res confidencial si l'usuari no és cap de servei»." },
+        { "key": "C", "text": "Només al frontend JavaScript amagant paràgrafs amb CSS." },
+        { "key": "D", "text": "No cal control d'accés en bases vectorials perquè els embeddings no contenen text." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "El filtratge determinista pre-recuperació a la base vectorial és l'única barrera fiable: si el text confidencial arriba al context de l'LLM, un prompt injection pot exfiltrar-lo!",
+      "explanationsIncorrect": {
+        "B": "Confiar la seguretat al system prompt és probabilístic i fàcilment evadible per prompt injection.",
+        "C": "Amagar text al frontend permet llegir la resposta completa a la pestanya de xarxa del navegador.",
+        "D": "Cada vector a la BD vectorial emmagatzema associat el chunk de text original que es passa a l'LLM!"
+      }
+    },
+    {
+      "id": "m08-05-q05",
+      "module": 8,
+      "conceptId": "m08-05-seguretat-ia",
+      "lessonRef": "content/module-08/m08-05-seguretat-ia.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "En què consisteix la vulnerabilitat OWASP LLM denominada Excessive Agency (Agència Excessiva) en un agent d'IA autònom?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Contractar massa proveïdors de maquinari GPU." },
+        { "key": "B", "text": "Atorgar a l'agent massa eines, permisos excessius (escriptura/esborrat/enviament extern) o autonomia sense confirmació humana (HITL), amplificant l'impacte d'una al·lucinació o prompt injection." },
+        { "key": "C", "text": "Limitar l'agent a només dues eines de lectura." },
+        { "key": "D", "text": "Utilitzar un model open-weights massa petit." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Excessive Agency apareix quan un agent té capacitat per executar accions destructives o externes sense principi de mínim privilegi ni supervisió humana.",
+      "explanationsIncorrect": {
+        "A": "No té relació amb el nombre de proveïdors de maquinari.",
+        "C": "Limitar a dues eines de lectura és justament una bona pràctica de mínim privilegi!",
+        "D": "La mida del model no defineix l'agència excessiva, sinó els permisos de les seves eines."
+      }
+    },
+    {
+      "id": "m08-05-q06",
+      "module": 8,
+      "conceptId": "m08-05-seguretat-ia",
+      "lessonRef": "content/module-08/m08-05-seguretat-ia.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Què és l'atac de Data Poisoning aplicat a un sistema d'IA o a una base de coneixement RAG?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Esborrar accidentalment un disc dur sense còpia de seguretat." },
+        { "key": "B", "text": "Augmentar la temperatura de l'LLM de 0,1 a 0,9." },
+        { "key": "C", "text": "Introduir deliberadament dades manipulades o documents maliciosos en el conjunt d'entrenament o a la base documental RAG per degradar el model, introduir portes del darrere (backdoors) o induir respostes falses." },
+        { "key": "D", "text": "Xifrar les comunicacions amb TLS 1.3." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "El Data Poisoning compromet la integritat de les dades d'entrenament o del corpus RAG per manipular el comportament futur del sistema.",
+      "explanationsIncorrect": {
+        "A": "Això és un incident de disponibilitat, no enverinament de dades.",
+        "B": "Canviar la temperatura és un hiperparàmetre d'inferència.",
+        "D": "TLS 1.3 és una mesura de seguretat, no un atac."
+      }
+    },
+    {
+      "id": "m08-05-q07",
+      "module": 8,
+      "conceptId": "m08-05-seguretat-ia",
+      "lessonRef": "content/module-08/m08-05-seguretat-ia.md",
+      "difficulty": "intermediate",
+      "questionType": "code",
+      "prompt": "Una aplicació web municipal executa directament una consulta SQL generada per un LLM a partir de la pregunta d'un ciutadà i renderitza el retorn HTML sense escapar. Quina vulnerabilitat OWASP LLM s'està introduint?",
+      "codeSnippet": "sql = llm.generate(f'Fes SQL per: {pregunta_ciutada}')\ndb.execute(sql)",
+      "options": [
+        { "key": "A", "text": "Biaix de mostreig demogràfic." },
+        { "key": "B", "text": "Training-Serving Skew." },
+        { "key": "C", "text": "Overfitting per excés d'èpoques." },
+        { "key": "D", "text": "Insecure Output Handling (tractar la sortida no confiable de l'LLM com a codi executable, exposant el sistema a SQL Injection i XSS)." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "La sortida d'un LLM s'ha de tractar sempre com a entrada d'usuari no confiable: mai s'ha d'executar SQL/codi cru ni renderitzar HTML sense sanititzar i parametritzar!",
+      "explanationsIncorrect": {
+        "A": "No té res a veure amb biaix demogràfic.",
+        "B": "No és una discrepància de preprocés MLOps.",
+        "C": "No és un fenomen d'entrenament, sinó una vulnerabilitat crítica de seguretat aplicativa."
+      }
+    },
+    {
+      "id": "m08-05-q08",
+      "module": 8,
+      "conceptId": "m08-05-seguretat-ia",
+      "lessonRef": "content/module-08/m08-05-seguretat-ia.md",
+      "difficulty": "advanced",
+      "questionType": "normative",
+      "prompt": "Quina obligació específica estableix l'article 15.5 de l'AI Act (Reglament UE 2024/1689) sobre la ciberseguretat dels sistemes d'IA d'alt risc?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Que han de ser resilients davant intents de tercers no autoritzats d'alterar-ne l'ús, els resultats o el rendiment, incloent-hi mesures específiques contra enverinament de dades, enverinament de models i entrades adversarials." },
+        { "key": "B", "text": "Que queden exclosos de complir l'Esquema Nacional de Seguretat espanyol." },
+        { "key": "C", "text": "Que només cal protegir-los amb una contrasenya compartida per tot l'ajuntament." },
+        { "key": "D", "text": "Que han d'estar desconnectats d'Internet en tots els casos sense excepció." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "L'article 15.5 de l'AI Act exigeix ciberseguretat adequada als riscos específics de la IA (data/model poisoning, adversarial inputs i defectes de confidencialitat).",
+      "explanationsIncorrect": {
+        "B": "L'AI Act i l'ENS són acumulatius i complementaris en el sector públic espanyol.",
+        "C": "Les contrasenyes compartides vulneren frontalment l'autenticitat i traçabilitat de l'ENS.",
+        "D": "L'AI Act exigeix seguretat proporcional al risc, no air-gap universal obligatori."
+      }
+    },
+    {
+      "id": "m08-05-q09",
+      "module": 8,
+      "conceptId": "m08-05-seguretat-ia",
+      "lessonRef": "content/module-08/m08-05-seguretat-ia.md",
+      "difficulty": "advanced",
+      "questionType": "normative",
+      "prompt": "Quan una diputació contracta una plataforma cloud SaaS d'IA a un proveïdor extern per tramitar expedients de categoria ENS MITJÀ, qui ha de complir l'ENS (RD 311/2022)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Només la diputació; el proveïdor privat mai no està afectat per l'ENS." },
+        { "key": "B", "text": "Només el proveïdor; la diputació perd tota responsabilitat." },
+        { "key": "C", "text": "Tant la diputació com els sistemes del proveïdor privat que presten el servei, havent d'exigir Certificació de Conformitat ENS (categoria MITJÀ o superior) als plecs de contractació." },
+        { "key": "D", "text": "Cap dels dos si el proveïdor té una certificació ISO 9001 de qualitat." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "L'article 2.3 del RD 311/2022 estén l'obligatorietat de l'ENS als sistemes dels contractistes del sector privat que prestin serveis a les administracions públiques.",
+      "explanationsIncorrect": {
+        "A": "L'ENS és expressament obligatori per als contractistes que presten serveis o tracten dades públiques!",
+        "B": "L'Administració continua essent responsable del servei i de la informació.",
+        "D": "La ISO 9001 és gestió de qualitat, no substitueix la Certificació ENS."
+      }
+    },
+    {
+      "id": "m08-05-q10",
+      "module": 8,
+      "conceptId": "m08-05-seguretat-ia",
+      "lessonRef": "content/module-08/m08-05-seguretat-ia.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "Quin risc principal comporta exposar públicament una API d'inferència LLM sense quotes de tokens ni rate limiting per usuari/clau?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Aumentar la precisió del model massa ràpidament." },
+        { "key": "B", "text": "Millorar la seguretat contra prompt injection." },
+        { "key": "C", "text": "Eliminar automàticament les al·lucinacions." },
+        { "key": "D", "text": "Exposar el servei a atacs de Model DoS / Denial of Wallet (esgotament de GPUs i pressupost) i facilitar atacs automatitzats de Model Extraction." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Sense rate limiting ni quotes estrictes, un atacant pot saturar la infraestructura GPU, disparar la factura cloud (Denial of Wallet) o consultar massivament l'API per clonar/extraure el model.",
+      "explanationsIncorrect": {
+        "A": "Les peticions externes d'inferència no entrenen ni milloren el model.",
+        "B": "L'absència de límits facilita fer milers d'intents automatitzats de prompt injection!",
+        "C": "No redueix les al·lucinacions."
+      }
+    }
+  ]
+}

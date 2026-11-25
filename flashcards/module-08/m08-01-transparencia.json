@@ -1,0 +1,46 @@
+{
+  "conceptId": "m08-01-transparencia",
+  "module": 8,
+  "cards": [
+    {
+      "id": "m08-01-fc01",
+      "module": 8,
+      "conceptId": "m08-01-transparencia",
+      "front": "Quina diferència hi ha entre transparència algorítmica i explicabilitat (XAI)?",
+      "back": "La transparència és la visibilitat i rendició de comptes (informar que hi ha IA, finalitat, límits i responsable); l'explicabilitat (XAI) és la capacitat tècnica d'oferir raons comprensibles sobre com i per què decideix un model.",
+      "tags": ["transparència", "XAI", "definició"]
+    },
+    {
+      "id": "m08-01-fc02",
+      "module": 8,
+      "conceptId": "m08-01-transparencia",
+      "front": "Per què TreeSHAP és preferible a LIME per explicar models tabulars d'arbres en expedients públics?",
+      "back": "TreeSHAP calcula exactament i deterministament les contribucions additives de Shapley (f(x) = base + suma(phi_j)), mentre que LIME usa pertorbacions aleatòries locals que poden variar entre execucions.",
+      "tags": ["SHAP", "LIME", "XAI"]
+    },
+    {
+      "id": "m08-01-fc03",
+      "module": 8,
+      "conceptId": "m08-01-transparencia",
+      "front": "Quina regla obligatòria han de complir les explicacions contrafactuals adreçades a la ciutadania?",
+      "back": "Han de proposar canvis mínims i accionables, bloquejant estrictament les variables immutables o protegides (edat, origen, gènere) perquè mai no suggereixin accions impossibles ni discriminatòries.",
+      "tags": ["contrafactuals", "accionabilitat", "ciutadania"]
+    },
+    {
+      "id": "m08-01-fc04",
+      "module": 8,
+      "conceptId": "m08-01-transparencia",
+      "front": "Quina diferència hi ha entre l'art. 13 i l'art. 50 de l'AI Act (Reglament UE 2024/1689)?",
+      "back": "L'art. 13 regula la transparència i les instruccions d'ús de sistemes d'alt risc cap als responsables del desplegament (deployers); l'art. 50 imposa obligacions directes d'avís (xatbots) i marcatge de contingut sintètic/deepfakes.",
+      "tags": ["AI Act", "art. 13", "art. 50"]
+    },
+    {
+      "id": "m08-01-fc05",
+      "module": 8,
+      "conceptId": "m08-01-transparencia",
+      "front": "Com s'aconsegueix transparència real en un assistent jurídic basat en LLM si el Chain-of-Thought pot ser infidel?",
+      "back": "Mitjançant arquitectura RAG amb citacions verificables enllaçades al text normatiu vigent, abstenció sense suport documental i separació entre regles deterministes auditables i redacció en llenguatge planer.",
+      "tags": ["LLM", "RAG", "fidelitat"]
+    }
+  ]
+}

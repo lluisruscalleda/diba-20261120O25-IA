@@ -1,0 +1,236 @@
+{
+  "conceptId": "m08-01-transparencia",
+  "module": 8,
+  "questions": [
+    {
+      "id": "m08-01-q01",
+      "module": 8,
+      "conceptId": "m08-01-transparencia",
+      "lessonRef": "content/module-08/m08-01-transparencia.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina diferència fonamental hi ha entre interpretabilitat intrínseca (white-box) i explicabilitat post-hoc (XAI)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "La interpretabilitat intrínseca prové de models senzills que es comprenen directament per la seva estructura (regressió logística, arbre curt), mentre que l'explicabilitat post-hoc aplica tècniques externes (SHAP, LIME) per aproximar o atribuir decisions d'un model caixa negra ja entrenat." },
+        { "key": "B", "text": "La interpretabilitat intrínseca només serveix per a LLMs i l'explicabilitat post-hoc només per a regressions lineals." },
+        { "key": "C", "text": "Són sinònims exactes dins el Reglament Europeu d'IA." },
+        { "key": "D", "text": "L'explicabilitat post-hoc elimina completament la necessitat de motivar els actes administratius." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Els models intrínsecament interpretables ofereixen explicació exacta per construcció; els mètodes post-hoc intenten explicar models complexos opacs un cop entrenats.",
+      "explanationsIncorrect": {
+        "B": "És just a l'inrevés: els LLMs són models caixa negra complexos i les regressions lineals són intrínsecament interpretables.",
+        "C": "Són conceptes tècnics clarament diferenciats en literatura XAI.",
+        "D": "Cap mètode XAI no substitueix l'obligació legal de motivar l'acte administratiu (art. 35 LPACAP)."
+      }
+    },
+    {
+      "id": "m08-01-q02",
+      "module": 8,
+      "conceptId": "m08-01-transparencia",
+      "lessonRef": "content/module-08/m08-01-transparencia.md",
+      "difficulty": "basic",
+      "questionType": "normative",
+      "prompt": "Quina obligació específica imposa l'article 50.1 de l'AI Act (Reglament UE 2024/1689) quan un ajuntament posa un xatbot d'IA d'atenció ciutadana a la Seu Electrònica?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Publicar el conjunt complet de dades d'entrenament del model al tauler d'anuncis." },
+        { "key": "B", "text": "Informar les persones físiques que estan interactuant amb un sistema d'IA, llevat que sigui evident per a una persona raonablement informada." },
+        { "key": "C", "text": "Prohibir qualsevol xatbot municipal per ser una pràctica de l'article 5." },
+        { "key": "D", "text": "Obtenir el consentiment notarial de cada ciutadà abans d'obrir el xat." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "L'article 50.1 de l'AI Act estableix l'obligació de transparència d'informar els usuaris que interactuen amb un sistema d'IA (com ara un xatbot conversacional).",
+      "explanationsIncorrect": {
+        "A": "L'article 50.1 no obliga els ajuntaments a publicar datasets d'entrenament de tercers.",
+        "C": "Un xatbot informatiu no és una pràctica prohibida de l'article 5.",
+        "D": "No existeix cap requisit de consentiment notarial."
+      }
+    },
+    {
+      "id": "m08-01-q03",
+      "module": 8,
+      "conceptId": "m08-01-transparencia",
+      "lessonRef": "content/module-08/m08-01-transparencia.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Què és una explicació contrafactual en un sistema de suport a la decisió per a ajuts públics?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Una matriu de pesos interns de totes les capes d'una xarxa neuronal." },
+        { "key": "B", "text": "Un resum estadístic de la mitjana de tots els expedients de l'any anterior." },
+        { "key": "C", "text": "La indicació del canvi mínim i accionable en les variables d'una sol·licitud que hauria invertit el resultat (per exemple, de denegat a favorable)." },
+        { "key": "D", "text": "Un mecanisme per ocultar la decisió al ciutadà fins que es tanqui l'exercici pressupostari." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Els contrafactuals responen a la pregunta pràctica «què hauria de canviar mínimament perquè el resultat fos favorable?», resultant molt comprensibles per a la ciutadania.",
+      "explanationsIncorrect": {
+        "A": "Els pesos interns d'una xarxa no són comprensibles ni constitueixen un contrafactual.",
+        "B": "Això és estadística descriptiva global, no una explicació local contrafactual.",
+        "D": "És justament una eina de transparència i comprensió, mai d'ocultació."
+      }
+    },
+    {
+      "id": "m08-01-q04",
+      "module": 8,
+      "conceptId": "m08-01-transparencia",
+      "lessonRef": "content/module-08/m08-01-transparencia.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Quin és el principal avantatge matemàtic de SHAP (especialment TreeSHAP) respecte de LIME per explicar models tabulars com XGBoost en l'Administració pública?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "SHAP es basa en valors de Shapley (exactitud additiva local i consistència determinista amb TreeSHAP), mentre que LIME depèn de pertorbacions aleatòries locals que poden produir explicacions inestables entre execucions." },
+        { "key": "B", "text": "LIME només funciona amb imatges i mai no es pot aplicar a dades tabulars." },
+        { "key": "C", "text": "SHAP demostra relacions causals físiques garantides al 100% sense biaixos." },
+        { "key": "D", "text": "TreeSHAP no necessita el model entrenat i funciona només amb el nom de les columnes." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "TreeSHAP calcula exactament i deterministament les contribucions additives de Shapley en arbres, evitant la variància aleatòria i els punts fora de distribució típics de LIME.",
+      "explanationsIncorrect": {
+        "B": "LIME és agnòstic i sí que s'aplica a dades tabulars, text i imatges.",
+        "C": "SHAP mesura atribució predictiva (correlacional al model), no causalitat real del món!",
+        "D": "TreeSHAP inspecciona directament l'estructura dels arbres del model entrenat."
+      }
+    },
+    {
+      "id": "m08-01-q05",
+      "module": 8,
+      "conceptId": "m08-01-transparencia",
+      "lessonRef": "content/module-08/m08-01-transparencia.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Per puntuar sol·licituds tabulars d'ajuts socials, una regressió logística assoleix AUC = 0,85 i una xarxa neuronal profunda assoleix AUC = 0,86. Quina és la millor decisió d'enginyeria responsable?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Desplegar la xarxa neuronal profunda perquè 0,01 d'AUC sempre preval sobre qualsevol requisit jurídic." },
+        { "key": "B", "text": "Utilitzar la regressió logística perquè és intrínsecament interpretable, auditabilitzable i facilita la motivació de l'art. 35 LPACAP sense dependre d'aproximacions post-hoc per a un guany marginal d'0,01." },
+        { "key": "C", "text": "Entrenar una xarxa encara més gran sense explicabilitat per pujar a 0,87." },
+        { "key": "D", "text": "Descartar tots dos models perquè cap no arriba a AUC = 1,00." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "En decisions públiques d'alt impacte sobre dades tabulars, un model intrínsecament interpretable que iguala gairebé la precisió d'una caixa negra és clarament preferible per transparència, auditabilitat i seguretat jurídica.",
+      "explanationsIncorrect": {
+        "A": "Optimitzar un 0,01 marginal d'AUC a costa de perdre interpretabilitat directa és un antipatró greu en el sector públic.",
+        "C": "Empitjora encara més l'opacitat i el risc de sobreajustament.",
+        "D": "Cap model predictiu real en problemes socials complexos té AUC = 1,00 sense fuita de dades."
+      }
+    },
+    {
+      "id": "m08-01-q06",
+      "module": 8,
+      "conceptId": "m08-01-transparencia",
+      "lessonRef": "content/module-08/m08-01-transparencia.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Quin vincle jurídic existeix entre la transparència algorítmica i l'article 35 de la Llei 39/2015 (LPACAP) o els articles 13–15 del RGPD?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Cap vincle: l'LPACAP i el RGPD només regulen expedients en paper." },
+        { "key": "B", "text": "L'art. 35 LPACAP obliga a motivar els actes que limiten drets i els art. 13–15 RGPD exigeixen proporcionar informació significativa sobre la lògica aplicada en decisions automatitzades de l'art. 22." },
+        { "key": "C", "text": "Els articles 13–15 RGPD prohibeixen donar cap explicació als ciutadans per secret estadístic." },
+        { "key": "D", "text": "L'art. 35 LPACAP considera motivació suficient mostrar únicament un número decimal generat per una xarxa neuronal." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "La motivació administrativa (art. 35 LPACAP) i el dret d'informació sobre la lògica aplicada (art. 13–15 RGPD) impedeixen emparar-se en una caixa negra opaca quan s'afecten drets de la ciutadania.",
+      "explanationsIncorrect": {
+        "A": "Totes dues normes s'apliquen plenament a l'Administració electrònica i als sistemes d'IA.",
+        "C": "És exactament al contrari: reconeixen el dret a rebre informació significativa sobre la lògica aplicada.",
+        "D": "Una puntuació opaca sense raons comprensibles ni fonament jurídic provoca indefensió."
+      }
+    },
+    {
+      "id": "m08-01-q07",
+      "module": 8,
+      "conceptId": "m08-01-transparencia",
+      "lessonRef": "content/module-08/m08-01-transparencia.md",
+      "difficulty": "intermediate",
+      "questionType": "code",
+      "prompt": "En un model lineal amb predicció base E[f(X)] = 0,62 i tres variables amb contribucions SHAP (-0,12, -0,05, -0,01), quina és la predicció exacta del model per la propietat d'additivitat local?",
+      "codeSnippet": "base = 0.62\nphis = [-0.12, -0.05, -0.01]",
+      "options": [
+        { "key": "A", "text": "0,80" },
+        { "key": "B", "text": "0,50" },
+        { "key": "C", "text": "0,62" },
+        { "key": "D", "text": "0,44" }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Per la propietat d'exactitud local (additivitat) de SHAP, f(x) = base + suma(phi_j) = 0,62 - 0,12 - 0,05 - 0,01 = 0,44.",
+      "explanationsIncorrect": {
+        "A": "Això sumaria en valor absolut (0,62 + 0,18) ignorant els signes negatius.",
+        "B": "No correspon a la suma exacta de la base més les contribucions.",
+        "C": "0,62 és la predicció mitjana base, abans d'aplicar les contribucions individuals."
+      }
+    },
+    {
+      "id": "m08-01-q08",
+      "module": 8,
+      "conceptId": "m08-01-transparencia",
+      "lessonRef": "content/module-08/m08-01-transparencia.md",
+      "difficulty": "advanced",
+      "questionType": "conceptual",
+      "prompt": "Per què el Chain-of-Thought (CoT) d'un LLM NO s'ha de considerar una explicació fidel del seu funcionament intern en un sistema públic?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè els LLMs no poden escriure text en català." },
+        { "key": "B", "text": "Perquè el CoT és text generat probabilísticament que pot ser una racionalització post-hoc plausible però infidel als factors reals (o fins i tot al·lucinar justificacions); la transparència real en assistents normatius requereix RAG amb citacions verificables." },
+        { "key": "C", "text": "Perquè el CoT està prohibit per l'article 5 de l'AI Act." },
+        { "key": "D", "text": "Perquè només funciona amb arbres de decisió." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "El fenomen d'unfaithful Chain-of-Thought demostra que un LLM pot generar raonaments aparentment lògics que no reflecteixen el seu procés real; per això cal grounded RAG amb citacions verificables i separació de regles deterministes.",
+      "explanationsIncorrect": {
+        "A": "Els LLMs moderns redacten en català sense problema.",
+        "C": "L'article 5 de l'AI Act no prohibeix el Chain-of-Thought.",
+        "D": "El CoT és una tècnica de prompting per a LLMs, no d'arbres de decisió."
+      }
+    },
+    {
+      "id": "m08-01-q09",
+      "module": 8,
+      "conceptId": "m08-01-transparencia",
+      "lessonRef": "content/module-08/m08-01-transparencia.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "Un generador automàtic de contrafactuals recomana a un ciutadà: «Si tinguessis 8 anys menys d'edat i un altre codi postal de naixement, la teva ajuda s'aprovaria». Quin error greu d'enginyeria s'ha comès?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "No s'han imposat restriccions d'accionabilitat i immutabilitat sobre les variables del cercador contrafactual (i a més s'evidencia l'ús problemàtic d'atributs sensibles o proxies en el model!)." },
+        { "key": "B", "text": "S'ha utilitzat un llindar de classificació massa baix." },
+        { "key": "C", "text": "Falta augmentar la temperatura del generador contrafactual." },
+        { "key": "D", "text": "Cap error: tots els contrafactuals vàlids matemàticament s'han d'enviar tal qual al ciutadà." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Els contrafactuals han de restringir-se sempre a variables modificables i accionables; a més, si l'edat o el codi postal de naixement capgiren la decisió sense base legal, cal revisar possibles biaixos discriminatoris del model!",
+      "explanationsIncorrect": {
+        "B": "El problema no és el llindar, sinó proposar canvis impossibles en variables immutables.",
+        "C": "Els contrafactuals tabulars no es regulen amb temperatura d'LLM.",
+        "D": "Enviar contrafactuals absurds o discriminatoris vulnera la qualitat del servei i pot evidenciar discriminació."
+      }
+    },
+    {
+      "id": "m08-01-q10",
+      "module": 8,
+      "conceptId": "m08-01-transparencia",
+      "lessonRef": "content/module-08/m08-01-transparencia.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Com equilibra l'Administració pública el deure de transparència amb el risc de gaming (manipulació fraudulenta) en un model de selecció d'inspeccions tributàries?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Eliminant tota transparència i mantenint fins i tot en secret que existeix un sistema d'IA." },
+        { "key": "B", "text": "Publicant tots els pesos exactes, llindars antifrau i regles secretes d'inspecció a la portada del web municipal." },
+        { "key": "C", "text": "Aplicant transparència en capes ponderada: es publica l'existència, la finalitat, els criteris generals i les garanties, mentre que els llindars operatius antifrau s'auditen internament i per òrgans de control sense facilitar l'evasió." },
+        { "key": "D", "text": "Substituint els inspectors humans per decisions 100% automatitzades sense motivació." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "La transparència en capes permet informar públicament sobre l'existència, finalitat i garanties del sistema i motivar qualsevol acte posterior d'inspecció, mentre protegeix els llindars antifrau sota auditoria d'òrgans de control.",
+      "explanationsIncorrect": {
+        "A": "L'ocultació absoluta vulnera els principis de transparència i bon govern.",
+        "B": "Revelar els llindars exactes d'inspecció facilitaria que els defraudadors ajustessin les dades just per sota del llindar (gaming).",
+        "D": "Qualsevol liquidació o sanció tributària requereix procediment administratiu motivat i supervisió humana."
+      }
+    }
+  ]
+}

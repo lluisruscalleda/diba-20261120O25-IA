@@ -1,0 +1,236 @@
+{
+  "conceptId": "m08-08-compliment-normatiu",
+  "module": 8,
+  "questions": [
+    {
+      "id": "m08-08-q01",
+      "module": 8,
+      "conceptId": "m08-08-compliment-normatiu",
+      "lessonRef": "content/module-08/m08-08-compliment-normatiu.md",
+      "difficulty": "basic",
+      "questionType": "normative",
+      "prompt": "Quina és la norma jurídica exacta coneguda com a AI Act (Reglament Europeu d'Intel·ligència Artificial)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Reglament (UE) 2024/1689 del Parlament Europeu i del Consell, de 13 de juny de 2024." },
+        { "key": "B", "text": "Reglament (UE) 2016/679 del Parlament Europeu i del Consell." },
+        { "key": "C", "text": "Reial decret 311/2022, de 3 de maig." },
+        { "key": "D", "text": "Llei 39/2015, d'1 d'octubre." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "L'AI Act és el Reglament (UE) 2024/1689, de 13 de juny de 2024, directament aplicable a tots els Estats membres de la UE.",
+      "explanationsIncorrect": {
+        "B": "El Reglament (UE) 2016/679 és el RGPD (protecció de dades).",
+        "C": "El RD 311/2022 regula l'Esquema Nacional de Seguretat (ENS).",
+        "D": "La Llei 39/2015 és la LPACAP (procediment administratiu comú)."
+      }
+    },
+    {
+      "id": "m08-08-q02",
+      "module": 8,
+      "conceptId": "m08-08-compliment-normatiu",
+      "lessonRef": "content/module-08/m08-08-compliment-normatiu.md",
+      "difficulty": "basic",
+      "questionType": "normative",
+      "prompt": "Des de quina data exacta són aplicables les pràctiques d'IA prohibides (art. 5) i l'obligació d'alfabetització en IA (art. 4) de l'AI Act?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "1 de gener de 2030." },
+        { "key": "B", "text": "2 de febrer de 2025 (6 mesos després de l'entrada en vigor l'1 d'agost de 2024)." },
+        { "key": "C", "text": "2 d'agost de 2027." },
+        { "key": "D", "text": "25 de maig de 2018." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Segons l'article 113 de l'AI Act, els Capítols I i II (incloent-hi l'art. 4 d'alfabetització i l'art. 5 de pràctiques prohibides) són aplicables des del 2 de febrer de 2025.",
+      "explanationsIncorrect": {
+        "A": "Data inexistent al calendari de l'art. 113.",
+        "C": "El 2 d'agost de 2027 és la fita dels productes regulats de l'Annex I (art. 6.1).",
+        "D": "El 25 de maig de 2018 és la data d'aplicació del RGPD!"
+      }
+    },
+    {
+      "id": "m08-08-q03",
+      "module": 8,
+      "conceptId": "m08-08-compliment-normatiu",
+      "lessonRef": "content/module-08/m08-08-compliment-normatiu.md",
+      "difficulty": "basic",
+      "questionType": "normative",
+      "prompt": "Quina d'aquestes pràctiques està prohibida per l'article 5 de l'AI Act?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Un filtre de correu brossa (spam) al servidor municipal." },
+        { "key": "B", "text": "Un xatbot informatiu d'horaris de biblioteques amb avís d'IA." },
+        { "key": "C", "text": "La puntuació social (social scoring) de ciutadans o el reconeixement d'emocions en el lloc de treball fora de motius mèdics o de seguretat." },
+        { "key": "D", "text": "Un model predictiu de manteniment d'enllumenat públic." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Tant el social scoring (art. 5.1.c) com el reconeixement d'emocions en el lloc de treball o centres educatius sense excepció mèdica/seguretat (art. 5.1.f) són pràctiques prohibides.",
+      "explanationsIncorrect": {
+        "A": "Un filtre d'spam és un sistema de risc mínim.",
+        "B": "Un xatbot informatiu pertany a obligacions de transparència (art. 50), no està prohibit.",
+        "D": "El manteniment predictiu d'enllumenat sense infraestructura crítica és de risc mínim."
+      }
+    },
+    {
+      "id": "m08-08-q04",
+      "module": 8,
+      "conceptId": "m08-08-compliment-normatiu",
+      "lessonRef": "content/module-08/m08-08-compliment-normatiu.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Com classifica l'Annex III de l'AI Act un sistema d'IA utilitzat per una administració pública per avaluar l'elegibilitat de persones físiques per a prestacions i serveis d'assistència pública (ajuts socials, beques, habitatge)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Sistema d'IA d'alt risc (Annex III, punt 5.a), amb aplicació general des del 2 d'agost de 2026." },
+        { "key": "B", "text": "Sistema de risc mínim sense obligacions." },
+        { "key": "C", "text": "Pràctica prohibida en tots els casos." },
+        { "key": "D", "text": "Només obligació d'avís d'art. 50 sense supervisió humana ni FRIA." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "L'Annex III punt 5.a inclou expressament l'avaluació d'elegibilitat i la concessió, reducció o revocació de prestacions i serveis d'assistència pública essencials com a alt risc.",
+      "explanationsIncorrect": {
+        "B": "Té un impacte directe en drets fonamentals i és un dels casos paradigmàtics d'alt risc públic.",
+        "C": "No està prohibit, però està sotmès a garanties estrictes d'alt risc i FRIA.",
+        "D": "Exigeix totes les obligacions d'alt risc (art. 26, FRIA art. 27, registre UE art. 49, supervisió humana)."
+      }
+    },
+    {
+      "id": "m08-08-q05",
+      "module": 8,
+      "conceptId": "m08-08-compliment-normatiu",
+      "lessonRef": "content/module-08/m08-08-compliment-normatiu.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Quina fita del calendari oficial de l'AI Act (art. 113) va entrar en aplicació el 2 d'agost de 2025?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Les pràctiques prohibides de l'article 5." },
+        { "key": "B", "text": "Les normes de governança (autoritats nacionals), el Capítol V sobre models d'IA d'ús general (GPAI) i el règim sancionador general." },
+        { "key": "C", "text": "Els sistemes d'alt risc de l'Annex I integrats en dispositius mèdics." },
+        { "key": "D", "text": "L'entrada en vigor inicial del Reglament." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Als 12 mesos de l'entrada en vigor (2 d'agost de 2025) s'apliquen governança, models GPAI (Capítol V) i sancions generals.",
+      "explanationsIncorrect": {
+        "A": "Les prohibicions de l'art. 5 van ser aplicables abans: el 2 de febrer de 2025.",
+        "C": "L'Annex I (art. 6.1) s'aplica als 36 mesos: el 2 d'agost de 2027.",
+        "D": "L'entrada en vigor va ser l'1 d'agost de 2024."
+      }
+    },
+    {
+      "id": "m08-08-q06",
+      "module": 8,
+      "conceptId": "m08-08-compliment-normatiu",
+      "lessonRef": "content/module-08/m08-08-compliment-normatiu.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Quins són els tres graons màxims del règim sancionador de l'article 99 de l'AI Act?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "1 M€ / 0,5%, 500.000 € / 0,2% i 100.000 €." },
+        { "key": "B", "text": "20 M€ / 4% i 10 M€ / 2% únicament." },
+        { "key": "C", "text": "Fins a 35 M€ o 7% (pràctiques prohibides art. 5), fins a 15 M€ o 3% (obligacions clau alt risc/GPAI/transparència) i fins a 7,5 M€ o 1% (informació incorrecta a autoritats)." },
+        { "key": "D", "text": "L'AI Act no preveu cap règim sancionador." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "L'article 99 fixa els llindars màxims en 35M€/7%, 15M€/3% i 7,5M€/1% del volum de negoci mundial anual (més elevats que els del RGPD en les infraccions més greus!).",
+      "explanationsIncorrect": {
+        "A": "Xifres inventades que no corresponen a l'art. 99.",
+        "B": "20 M€ / 4% i 10 M€ / 2% són els límits del RGPD (art. 83), no els de l'AI Act!",
+        "D": "L'article 99 regula detalladament les multes administratives."
+      }
+    },
+    {
+      "id": "m08-08-q07",
+      "module": 8,
+      "conceptId": "m08-08-compliment-normatiu",
+      "lessonRef": "content/module-08/m08-08-compliment-normatiu.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Quin organisme estatal espanyol ha estat creat pel Reial decret 729/2023 com a autoritat de supervisió de la intel·ligència artificial?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "La CNMC exclusivament." },
+        { "key": "B", "text": "El Tribunal Constitucional." },
+        { "key": "C", "text": "L'Institut Nacional d'Estadística (INE)." },
+        { "key": "D", "text": "L'AESIA (Agencia Española de Supervisión de la Inteligencia Artificial)." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Espanya va ser el primer Estat membre de la UE a crear una agència específica de supervisió d'IA, l'AESIA (RD 729/2023, seu a La Corunya).",
+      "explanationsIncorrect": {
+        "A": "La CNMC regula mercats i competència, no és l'agència específica d'IA.",
+        "B": "És l'òrgan jurisdiccional constitucional, no l'autoritat administrativa d'IA.",
+        "C": "L'INE gestiona l'estadística estatal."
+      }
+    },
+    {
+      "id": "m08-08-q08",
+      "module": 8,
+      "conceptId": "m08-08-compliment-normatiu",
+      "lessonRef": "content/module-08/m08-08-compliment-normatiu.md",
+      "difficulty": "advanced",
+      "questionType": "normative",
+      "prompt": "Segons l'article 25 de l'AI Act, en quina situació una administració pública que pren un model d'IA d'ús general (GPAI) d'un tercer passa a assumir totes les obligacions de PROVEÏDOR (provider) d'alt risc?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Quan modifica la finalitat prevista del sistema (o en fa una modificació substancial) de manera que es converteixi en un sistema d'IA d'alt risc (per exemple, adaptant-lo per baremar ajuts socials de l'Annex III punt 5)." },
+        { "key": "B", "text": "Mai: les administracions públiques només poden ser deployers i mai providers." },
+        { "key": "C", "text": "Sempre que el model s'utilitzi per corregir faltes d'ortografia." },
+        { "key": "D", "text": "Únicament si venen el model a un altre país." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "L'article 25.1.c estableix que qui modifica la finalitat prevista d'un sistema (inclòs un GPAI) transformant-lo en alt risc assumeix íntegrament el rol i obligacions de proveïdor.",
+      "explanationsIncorrect": {
+        "B": "Una administració pot ser perfectament proveïdora si desenvolupa in-house o reorienta un sistema cap a alt risc.",
+        "C": "Corregir faltes d'ortografia és un ús de risc mínim, no d'alt risc.",
+        "D": "L'AI Act cobreix tant la introducció al mercat com la posada en servei per a ús propi!"
+      }
+    },
+    {
+      "id": "m08-08-q09",
+      "module": 8,
+      "conceptId": "m08-08-compliment-normatiu",
+      "lessonRef": "content/module-08/m08-08-compliment-normatiu.md",
+      "difficulty": "advanced",
+      "questionType": "normative",
+      "prompt": "Quin criteri quantitatiu indicatiu estableix l'article 51.2 de l'AI Act per presumir que un model d'IA d'ús general (GPAI) presenta risc sistèmic?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Tenir més de 100 usuaris registrats." },
+        { "key": "B", "text": "Que la quantitat acumulada de càlcul utilitzada per al seu entrenament mesurada en operacions de coma flotant sigui superior a 10^25 FLOPs." },
+        { "key": "C", "text": "Ocupar més de 500 MB de memòria RAM." },
+        { "key": "D", "text": "Estar escrit en llenguatge Python." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "L'article 51.2 de l'AI Act fixa el llindar indicatiu de càlcul acumulat d'entrenament > 10^25 FLOPs per presumir capacitats d'alt impacte i risc sistèmic en models GPAI.",
+      "explanationsIncorrect": {
+        "A": "El nombre d'usuaris no és el criteri de l'art. 51.2.",
+        "C": "500 MB és la mida d'un model diminut, molt lluny d'un model GPAI amb risc sistèmic.",
+        "D": "El llenguatge de programació és irrellevant per al risc sistèmic."
+      }
+    },
+    {
+      "id": "m08-08-q10",
+      "module": 8,
+      "conceptId": "m08-08-compliment-normatiu",
+      "lessonRef": "content/module-08/m08-08-compliment-normatiu.md",
+      "difficulty": "advanced",
+      "questionType": "normative",
+      "prompt": "Respecte de l'excepció de l'article 6.3 de l'AI Act (que permet excloure d'alt risc certs sistemes de l'Annex III que no plantegen risc significatiu), en quin cas NO es pot aplicar MAI aquesta excepció?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Quan el sistema s'executa en servidors Linux." },
+        { "key": "B", "text": "Quan el sistema té una exactitud superior al 90%." },
+        { "key": "C", "text": "Quan el sistema d'IA realitza elaboració de perfils de persones físiques (en aquest cas es considera SEMPRE d'alt risc!)." },
+        { "key": "D", "text": "Quan el sistema només tradueix documents interns." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "L'article 6.3 in fine disposa expressament que, malgrat les excepcions previstes, un sistema d'IA de l'Annex III es considerarà SEMPRE d'alt risc si realitza elaboració de perfils de persones físiques.",
+      "explanationsIncorrect": {
+        "A": "El sistema operatiu no afecta la classificació jurídica de risc.",
+        "B": "L'exactitud tècnica no exclou de la categoria d'alt risc.",
+        "D": "Una traducció genèrica no sol entrar a l'Annex III."
+      }
+    }
+  ]
+}

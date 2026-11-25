@@ -9,9 +9,9 @@ Llegenda d'estat:
 
 | Dimensió | Completats | Objectiu | Cobertura |
 |---|---:|---:|---:|
-| Lliçons (Teoria + Exemple + Exercici + Desenvolupament + Resum) | 62 | 70 | 88,6% |
-| Tests individuals (mín. 10 preguntes / concepte) | 62 (620 preg.) | 70 (≥700 preg.) | 88,6% |
-| Flashcards per concepte (mín. 5 / concepte) | 62 (320 fitxes) | 70 (≥350 fitxes) | 88,6% |
+| Lliçons (Teoria + Exemple + Exercici + Desenvolupament + Resum) | 70 | 70 | 100,0% |
+| Tests individuals (mín. 10 preguntes / concepte) | 70 (700 preg.) | 70 (≥700 preg.) | 100,0% |
+| Flashcards per concepte (mín. 5 / concepte) | 70 (360 fitxes) | 70 (≥350 fitxes) | 100,0% |
 | Laboratoris pràctics | 0 | 8 | 0% |
 | Exàmens de mòdul (40 preg.) | 0 | 8 | 0% |
 | Simulacres globals (50 preg.) | 0 | 10 | 0% |
@@ -122,14 +122,14 @@ Llegenda d'estat:
 
 | ID | Concepte oficial | Teoria (A-E) | Exemple (F) | Exercici (G) | Test ≥10 (H) | Desenv. ≥3 (I) | Resum+FC (J) | Estat |
 |---|---|---|---|---|---|---|---|---|
-| `m08-01-transparencia` | Transparència (explicabilitat de models) | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m08-02-biaixos` | Biaixos | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m08-03-supervisio-humana` | Supervisió humana (decisions individuals automatitzades) | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m08-04-proteccio-dades` | Protecció de dades (RGPD, LOPDGDD, EIPD, minimització, privacitat des del disseny) | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m08-05-seguretat-ia` | Seguretat (ENS, prompt injection, data poisoning, fuites, control d'accés, LLM/agents) | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m08-06-auditoria` | Auditoria | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m08-07-governanca-models` | Governança de models | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m08-08-compliment-normatiu` | Compliment normatiu (AI Act, dates d'aplicació, responsabilitats Administració pública) | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
+| `m08-01-transparencia` | Transparència (explicabilitat de models) | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m08-02-biaixos` | Biaixos | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m08-03-supervisio-humana` | Supervisió humana (decisions individuals automatitzades) | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m08-04-proteccio-dades` | Protecció de dades (RGPD, LOPDGDD, EIPD, minimització, privacitat des del disseny) | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m08-05-seguretat-ia` | Seguretat (ENS, prompt injection, data poisoning, fuites, control d'accés, LLM/agents) | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m08-06-auditoria` | Auditoria | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m08-07-governanca-models` | Governança de models | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m08-08-compliment-normatiu` | Compliment normatiu (AI Act, dates d'aplicació, responsabilitats Administració pública) | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
 
 ---
 

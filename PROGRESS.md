@@ -1,12 +1,12 @@
 # PROGRESS.md — Registre d'avanç incremental
 
-Última actualització: 2026-11-25 (Mòduls 1 a 7 completats al 100% — 88,6% del temari oficial!)
+Última actualització: 2026-11-25 (FITA COMPLETADA: Mòduls 1 a 8 — 70/70 conceptes = 100% del temari oficial!)
 
 ## Estat actual per fases
 
 - **Fase 1. Planificació**: ✅ Completada
 - **Fase 2. Infraestructura**: ✅ Completada i compilada sense errors
-- **Fase 3. Contingut (Mòduls 1–8)**: 🟨 En curs — **62 de 70 conceptes completats (88,6% del temari global; Mòdul 1: 11/11 ✅, Mòdul 2: 10/10 ✅, Mòdul 3: 9/9 ✅, Mòdul 4: 8/8 ✅, Mòdul 5: 8/8 ✅, Mòdul 6: 6/6 ✅, Mòdul 7: 10/10 ✅)** — 620 preguntes test, 320 flashcards, 186 preguntes de desenvolupament, 62 exercicis amb solució oculta, 63 termes al glossari.
+- **Fase 3. Contingut (Mòduls 1–8)**: ✅ **COMPLETADA AL 100% — 70 de 70 conceptes oficials!** (M1: 11/11 ✅, M2: 10/10 ✅, M3: 9/9 ✅, M4: 8/8 ✅, M5: 8/8 ✅, M6: 6/6 ✅, M7: 10/10 ✅, M8: 8/8 ✅) — **700 preguntes test**, **360 flashcards**, **210 preguntes de desenvolupament**, **70 exercicis pràctics amb solució oculta**, **71 termes al glossari**.
 - **Fase 4. Laboratoris (1–8)**: ⬜ Pendent
 - **Fase 5. Exàmens i simulacres**: ⬜ Pendent
 - **Fase 6. Projecte integrador**: ⬜ Pendent
@@ -14,7 +14,7 @@
 
 ---
 
-## 1. Què s'ha completat
+## 1. Què s'ha completat (Mòduls 1–8 al 100%)
 
 - **Mòdul 1 — Fonaments d'IA (11/11 ✅)**: 110 preguntes, 64 flashcards. Commit `ad6bd39`.
 - **Mòdul 2 — Processament del llenguatge natural (10/10 ✅)**: 100 preguntes, 51 flashcards. Commit `111dc4f`.
@@ -22,36 +22,36 @@
 - **Mòdul 4 — Processament intel·ligent de documents (8/8 ✅)**: 80 preguntes, 40 flashcards. Commit `b8990e2`.
 - **Mòdul 5 — Assistents virtuals i IA conversacional (8/8 ✅)**: 80 preguntes, 40 flashcards. Commit `661bd39`.
 - **Mòdul 6 — Automatització intel·ligent (6/6 ✅)**: 60 preguntes, 30 flashcards. Commit `47bb62a`.
-- **Mòdul 7 — MLOps i LLMOps (10/10 ✅)**:
-  1. `m07-01-preparacio-dades` — 10 preg., 5 flashcards, *Data Contract Gate* + partició temporal sense *Data Leakage* verificat.
-  2. `m07-02-etiquetatge` — 10 preg., 5 flashcards, càlcul exacte Kappa de Cohen en classe desequilibrada + *Active Learning* per marge verificat.
-  3. `m07-03-entrenament` — 10 preg., 5 flashcards, *MiniMLflowTracker* multi-criteri amb bloqueig `git_dirty` verificat.
-  4. `m07-04-validacio-models` — 10 preg., 5 flashcards, *Quality Gate* (*Champion vs. Challenger* + *Sliced Evaluation* + assercions PromptOps) verificat.
-  5. `m07-05-desplegament` — 10 preg., 5 flashcards, *CanaryRouter* amb *rollback* automàtic davant violació d'SLA verificat.
-  6. `m07-06-monitoratge` — 10 preg., 5 flashcards, càlcul exacte PSI (`0.0018` vs `0.6847`) + mitjana vs P95/P99 verificat.
-  7. `m07-07-versionat` — 10 preg., 5 flashcards, *RegistryImmutable* amb bloqueig `:latest`, promoció per àlies i *rollback* atòmic verificat.
-  8. `m07-08-avaluacio-continua` — 10 preg., 5 flashcards, test Z bilateral de proporcions A/B + *Guardrail Metrics* verificat.
-  9. `m07-09-actualitzacio-models` — 10 preg., 5 flashcards, orquestrador CI/CD/CT amb *Cooldown*, mínim d'etiquetes i *Continuous Delivery* verificat.
-  10. `m07-10-integracio-sistemes` — 10 preg., 5 flashcards, *CircuitBreakerIA* (`CLOSED → OPEN → HALF_OPEN`) amb `correlation_id` i *fallback* segur verificat.
+- **Mòdul 7 — MLOps i LLMOps (10/10 ✅)**: 100 preguntes, 50 flashcards. Commit `c94e303`.
+- **Mòdul 8 — Ús responsable i seguretat de la IA (8/8 ✅)**:
+  1. `m08-01-transparencia` — 10 preg., 5 flashcards, atribució additiva (SHAP lineal) + contrafactual accionable bloquejant variables immutables verificat (AI Act art. 13 i 50, RGPD art. 13–15, LPACAP art. 35).
+  2. `m08-02-biaixos` — 10 preg., 5 flashcards, auditor d'equitat (*Disparate Impact 4/5*, *Equal Opportunity*, *Equalized Odds*, *proxies* i AI Act art. 10) verificat.
+  3. `m08-03-supervisio-humana` — 10 preg., 5 flashcards, supervisor HITL amb detector de *rubber-stamping* i quatre ulls verificat (RGPD art. 22, AI Act art. 14 i 26.2, LRJSP art. 41).
+  4. `m08-04-proteccio-dades` — 10 preg., 5 flashcards, cribratge automàtic EIPD (art. 35 RGPD) + porta de minimització/transferències EEE verificat (RGPD, LOPDGDD, DPD, APDCAT/AEPD).
+  5. `m08-05-seguretat-ia` — 10 preg., 5 flashcards, calculador categoria ENS (RD 311/2022) + tallafoc d'agents RBAC/HITL contra *Indirect Prompt Injection* verificat (ENS, CCN-CERT, OWASP LLM, AI Act art. 15).
+  6. `m08-06-auditoria` — 10 preg., 5 flashcards, verificador automatitzat d'expedient FRIA (6 blocs art. 27.1 AI Act), retenció logs >= 6 mesos (art. 26.6) i segellat SHA-256 verificat.
+  7. `m08-07-governanca-models` — 10 preg., 5 flashcards, registre corporatiu amb portes *Stage-Gate* i matriu RACI verificat (ISO 42001, NIST AI RMF, *Shadow AI*, art. 26.7 AI Act, LCSP).
+  8. `m08-08-compliment-normatiu` — 10 preg., 5 flashcards, motor classificatori AI Act (Reglament UE 2024/1689, piràmide de risc, calendari exacte 2024–2027 art. 113, rol *Provider/Deployer* art. 25, sancions art. 99 i AESIA) verificat.
 
 ---
 
 ## 2. Què queda pendent
 
-- **Mòdul 8** (darrer mòdul del temari oficial — 8 conceptes restants!):
-  - `m08-01-transparencia` .. `m08-08-compliment-normatiu` (amb rigor normatiu estricte: AI Act UE 2024/1689, RGPD UE 2016/679, LOPDGDD 3/2018, ENS RD 311/2022, LPACAP 39/2015, LRJSP 40/2015, AEPD, APDCAT, CCN-CERT).
-- **Fases 4–7**: Laboratoris, Exàmens/simulacres, Projecte final i Validació integral.
+- **Fase 4**: Laboratoris pràctics 1–8 (`labs/`).
+- **Fase 5**: Exàmens per mòdul (8 × 40 preg.), simulacres globals (10 × 50 preg.), supòsits pràctics (20) i simulacres teoricopràctics complets (5).
+- **Fase 6**: Projecte integrador final.
+- **Fase 7**: Validació final i revisió integral.
 
 ---
 
 ## 3. Comprovacions executades i resultat
 
-- `node scripts/sync_content.mjs`: ✅ OK (62/70 lliçons, 620 preguntes, 320 flashcards, 63 termes glossari).
+- `node scripts/sync_content.mjs`: ✅ OK (70/70 lliçons, 700 preguntes, 360 flashcards, 71 termes glossari).
 - `node scripts/validate_content.mjs`: ✅ OK (0 errors, 0 avisos).
-- Execució directa amb `python3` dels 10 exemples de codi del Mòdul 7 (`7.1` a `7.10`): ✅ Tots verificats i contrastats.
+- Execució directa amb `python3` dels 8 exemples de codi del Mòdul 8 (`8.1` a `8.8`): ✅ Tots verificats i contrastats.
 
 ---
 
 ## 4. Següent tasca exacta
 
-Completar el **Mòdul 8 — Ús responsable i seguretat de la IA (8 conceptes)** des de `m08-01-transparencia` fins a `m08-08-compliment-normatiu`, validar el 100% del temari oficial (70/70 conceptes, 700 preguntes, ≥360 flashcards) amb 0 errors i 0 avisos, actualitzar `COVERAGE.md`, `ROADMAP.md`, `PROGRESS.md` i `docs/glossary.json`, i fer-ne el commit.
+Iniciar la **Fase 4 (Laboratoris pràctics 1–8)** o la **Fase 5 (Exàmens de mòdul i simulacres)** segons la prioritat de l'usuari.

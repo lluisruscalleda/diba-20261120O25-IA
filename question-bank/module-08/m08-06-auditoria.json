@@ -1,0 +1,236 @@
+{
+  "conceptId": "m08-06-auditoria",
+  "module": 8,
+  "questions": [
+    {
+      "id": "m08-06-q01",
+      "module": 8,
+      "conceptId": "m08-06-auditoria",
+      "lessonRef": "content/module-08/m08-06-auditoria.md",
+      "difficulty": "basic",
+      "questionType": "normative",
+      "prompt": "Què és la FRIA regulada a l'article 27 de l'AI Act (Reglament UE 2024/1689) i a qui obliga especialment?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "L'Avaluació d'Impacte relativa als Drets Fonamentals, obligatòria per als organismes de dret públic (i entitats privades que presten serveis públics) abans de desplegar un sistema d'IA d'alt risc de l'Annex III (llevat infraestructures crítiques del punt 2)." },
+        { "key": "B", "text": "Un certificat voluntari de velocitat de xarxa de fibra òptica." },
+        { "key": "C", "text": "Una auditoria financera exclusiva per a bancs centrals." },
+        { "key": "D", "text": "Un registre opcional només per a xatbots recreatius." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "L'article 27 de l'AI Act obliga els organismes de dret públic (diputacions, ajuntaments, comunitats) a realitzar la FRIA abans de desplegar sistemes d'alt risc i notificar-ne els resultats.",
+      "explanationsIncorrect": {
+        "B": "No té res a veure amb infraestructures de telecomunicacions.",
+        "C": "Aplica directament a totes les administracions públiques desplegadores d'IA d'alt risc.",
+        "D": "És obligatòria per a sistemes d'alt risc, no opcional per a xatbots recreatius."
+      }
+    },
+    {
+      "id": "m08-06-q02",
+      "module": 8,
+      "conceptId": "m08-06-auditoria",
+      "lessonRef": "content/module-08/m08-06-auditoria.md",
+      "difficulty": "basic",
+      "questionType": "normative",
+      "prompt": "Quin període mínim de conservació exigeix l'article 26.6 de l'AI Act als responsables del desplegament (deployers) per als registres automàtics (logs) generats per un sistema d'IA d'alt risc sota el seu control?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "24 hores." },
+        { "key": "B", "text": "Com a mínim 6 mesos (llevat que el Dret de la UE o nacional disposi una altra cosa)." },
+        { "key": "C", "text": "7 dies naturals." },
+        { "key": "D", "text": "No existeix cap obligació de conservar logs en sistemes d'alt risc." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "L'article 26.6 de l'AI Act estableix un mínim legal de 6 mesos de conservació dels logs generats automàticament sota control del deployer.",
+      "explanationsIncorrect": {
+        "A": "24 hores faria impossible qualsevol investigació o recurs posterior.",
+        "C": "7 dies està molt per sota del mínim legal europeu.",
+        "D": "L'article 12 i l'article 26.6 imposen explícitament el registre automàtic i la seva conservació."
+      }
+    },
+    {
+      "id": "m08-06-q03",
+      "module": 8,
+      "conceptId": "m08-06-auditoria",
+      "lessonRef": "content/module-08/m08-06-auditoria.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina diferència hi ha entre una Model Card i un Datasheet for Datasets?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Són noms diferents per al mateix fitxer YAML de Docker." },
+        { "key": "B", "text": "La Model Card només s'utilitza en xarxes convolucionals i el Datasheet només en SQL." },
+        { "key": "C", "text": "La Model Card documenta el model entrenat (usos previstos i fora d'abast, mètriques globals i desagregades per grups, limitacions), mentre que el Datasheet documenta el conjunt de dades (origen, composició, recollida, preprocés i biaixos)." },
+        { "key": "D", "text": "La Model Card substitueix la EIPD i el Datasheet substitueix l'ENS." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Ambdós artefactes es complementen: el Datasheet documenta la procedència i qualitat de les dades, i la Model Card documenta el comportament, límits i rendiment desagregat del model.",
+      "explanationsIncorrect": {
+        "A": "Són documents d'auditoria i transparència d'IA, no configuracions de Docker.",
+        "B": "S'apliquen a qualsevol tipus de model i dataset d'IA.",
+        "D": "Són bones pràctiques que donen suport a la documentació legal (Annex IV), però no substitueixen la EIPD ni l'ENS."
+      }
+    },
+    {
+      "id": "m08-06-q04",
+      "module": 8,
+      "conceptId": "m08-06-auditoria",
+      "lessonRef": "content/module-08/m08-06-auditoria.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Quin dels elements següents forma part explícitament dels 6 continguts mínims obligatoris d'una FRIA segons l'article 27.1 de l'AI Act?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "El codi font complet compilat en llenguatge ensamblador." },
+        { "key": "B", "text": "Les mesures que s'adoptaran en cas que es materialitzin els riscos identificats, inclosos els mecanismes de governança interna i de tramitació de reclamacions." },
+        { "key": "C", "text": "El sou brut dels desenvolupadors del proveïdor." },
+        { "key": "D", "text": "Una llista nominal dels DNI de tots els ciutadans del municipi." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "L'article 27.1.f de l'AI Act exigeix descriure les mesures de resposta davant la materialització de riscos, incloent-hi governança interna i mecanismes de reclamació.",
+      "explanationsIncorrect": {
+        "A": "La FRIA és una avaluació d'impacte en drets fonamentals del deployer, no un bolcat de codi ensamblador.",
+        "C": "Irrellevant per a l'avaluació de drets fonamentals.",
+        "D": "Incloure DNI nominals vulneraria el principi de minimització del RGPD."
+      }
+    },
+    {
+      "id": "m08-06-q05",
+      "module": 8,
+      "conceptId": "m08-06-auditoria",
+      "lessonRef": "content/module-08/m08-06-auditoria.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "En una auditoria algorítmica d'un sistema contractat a un tercer, quina diferència hi ha entre auditoria white-box i auditoria black-box?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "En la white-box l'auditor accedeix al codi, pesos, dades, prompts i logs interns; en la black-box l'auditor només prova el sistema externament enviant casos sintètics via API i analitzant les sortides." },
+        { "key": "B", "text": "La white-box es fa de dia i la black-box de nit." },
+        { "key": "C", "text": "La black-box dona sempre més visibilitat interna que la white-box." },
+        { "key": "D", "text": "La white-box està prohibida en el sector públic." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "L'auditoria white-box ofereix inspecció interna completa, mentre que la black-box avalua el comportament extern mitjançant proves estructurades (probes d'equitat i seguretat).",
+      "explanationsIncorrect": {
+        "B": "No té res a veure amb l'horari d'execució.",
+        "C": "És just al contrari: la white-box té visibilitat interna total.",
+        "D": "De fet, l'art. 41.2 LRJSP preveu expressament l'auditoria del sistema i del seu codi font en AAA!"
+      }
+    },
+    {
+      "id": "m08-06-q06",
+      "module": 8,
+      "conceptId": "m08-06-auditoria",
+      "lessonRef": "content/module-08/m08-06-auditoria.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "A qui ha de notificar una administració pública espanyola els resultats de la seva FRIA segons l'article 27.3 de l'AI Act?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "A cap organisme: s'ha de destruir un cop llegida." },
+        { "key": "B", "text": "Exclusivament al proveïdor comercial del programari." },
+        { "key": "C", "text": "A l'autoritat de vigilància del mercat competent (a Espanya, l'AESIA), utilitzant la plantilla automatitzada prevista." },
+        { "key": "D", "text": "Al Banc Central Europeu." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "L'article 27.3 de l'AI Act imposa al deployer l'obligació de notificar els resultats de la FRIA a l'autoritat de vigilància del mercat competent (AESIA a Espanya).",
+      "explanationsIncorrect": {
+        "A": "Cal conservar-la, actualitzar-la i notificar-ne els resultats.",
+        "B": "La notificació és cap a l'autoritat pública de supervisió, no cap al proveïdor comercial.",
+        "D": "El BCE no és l'autoritat de vigilància de l'AI Act per a administracions locals."
+      }
+    },
+    {
+      "id": "m08-06-q07",
+      "module": 8,
+      "conceptId": "m08-06-auditoria",
+      "lessonRef": "content/module-08/m08-06-auditoria.md",
+      "difficulty": "intermediate",
+      "questionType": "code",
+      "prompt": "Un verificador automàtic d'auditoria revisa un sistema d'IA d'alt risc abans de desplegar-lo i troba: els 6 blocs FRIA plens, EIPD validada pel DPD, Model Card desagregada completa, però retencio_logs_dies = 90. Quin ha de ser el veredicte?",
+      "codeSnippet": "retencio_logs_dies = 90\nminim_legal_dies = 180",
+      "options": [
+        { "key": "A", "text": "APROVAT sense condicions perquè 90 dies són 3 mesos." },
+        { "key": "B", "text": "APROVAT només si el model és open-source." },
+        { "key": "C", "text": "Eliminar completament tots els logs per complir minimització." },
+        { "key": "D", "text": "NO_APTE_AUDITORIA perquè incompleix el mínim legal de conservació de logs de 6 mesos (180 dies) de l'article 26.6 de l'AI Act." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "90 dies incompleix el mínim de 6 mesos establert a l'art. 26.6 de l'AI Act per als logs automàtics d'un sistema d'alt risc.",
+      "explanationsIncorrect": {
+        "A": "3 mesos és la meitat del mínim legal de 6 mesos.",
+        "B": "La llicència open-source no eximeix de la conservació de logs en sistemes d'alt risc desplegats.",
+        "C": "Eliminar logs destruiria la traçabilitat obligatòria (art. 12 i 26.6 AI Act i ENS)."
+      }
+    },
+    {
+      "id": "m08-06-q08",
+      "module": 8,
+      "conceptId": "m08-06-auditoria",
+      "lessonRef": "content/module-08/m08-06-auditoria.md",
+      "difficulty": "advanced",
+      "questionType": "normative",
+      "prompt": "Quina és la diferència entre els dos procediments d'avaluació de conformitat previstos a l'article 43 de l'AI Act (Annex VI vs. Annex VII)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "L'Annex VI és avaluació basada en control intern del proveïdor (aplicable a la majoria de sistemes de l'Annex III si compleixen requisits), mentre que l'Annex VII implica l'avaluació del sistema de gestió de qualitat i documentació tècnica per un organisme notificat extern independent." },
+        { "key": "B", "text": "L'Annex VI només s'aplica a robots físics i l'Annex VII només a fulls de càlcul." },
+        { "key": "C", "text": "L'Annex VII permet saltar-se el marcatge CE." },
+        { "key": "D", "text": "Cap dels dos no s'aplica a sistemes d'IA d'alt risc." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "L'article 43 regula l'avaluació de conformitat prèvia al marcatge CE: control intern (Annex VI) per a la majoria de casos d'Annex III i intervenció d'organisme notificat (Annex VII) quan és preceptiu (p. ex. biometria sense normes harmonitzades).",
+      "explanationsIncorrect": {
+        "B": "La distinció no és robot vs. full de càlcul, sinó control intern vs. organisme notificat.",
+        "C": "Ambdós procediments culminen en declaració UE de conformitat i marcatge CE.",
+        "D": "Tots dos estan dissenyats específicament per a sistemes d'alt risc."
+      }
+    },
+    {
+      "id": "m08-06-q09",
+      "module": 8,
+      "conceptId": "m08-06-auditoria",
+      "lessonRef": "content/module-08/m08-06-auditoria.md",
+      "difficulty": "advanced",
+      "questionType": "normative",
+      "prompt": "Quina obligació específica imposa l'article 49.3 de l'AI Act a una autoritat pública que desplega (com a deployer) un sistema d'IA d'alt risc de l'Annex III?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Cap obligació de registre perquè només es registren els fabricants privats." },
+        { "key": "B", "text": "Inscriure's i registrar l'ús del sistema a la base de dades pública de la UE de sistemes d'IA d'alt risc abans de posar-lo en servei." },
+        { "key": "C", "text": "Publicar les contrasenyes d'administrador del servidor al DOGC." },
+        { "key": "D", "text": "Registrar únicament el cost de les factures elèctriques." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "L'article 49.3 de l'AI Act obliga les autoritats públiques (i organismes que actuen en el seu nom) que despleguen sistemes d'alt risc de l'Annex III a registrar-se a la base de dades de la UE.",
+      "explanationsIncorrect": {
+        "A": "L'AI Act crea expressament una obligació de registre també per als deployers que són autoritats públiques!",
+        "C": "Publicar credencials seria una bretxa de seguretat crítica.",
+        "D": "La base de dades registra metadades de transparència i governança del sistema d'IA, no factures elèctriques."
+      }
+    },
+    {
+      "id": "m08-06-q10",
+      "module": 8,
+      "conceptId": "m08-06-auditoria",
+      "lessonRef": "content/module-08/m08-06-auditoria.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "Quin problema pràctic greu sorgeix si una administració contracta un model d'IA comercial sense incloure clàusules contractuals de dret d'auditoria i accés a evidències?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Cap problema, perquè el proveïdor està obligat a regalar el codi font gratuïtament en tots els contractes." },
+        { "key": "B", "text": "Només un retard de 2 mil·lisegons en la latència de l'API." },
+        { "key": "C", "text": "El proveïdor pot oposar secret comercial davant peticions de proves desagregades de biaixos, logs o documentació, deixant l'Administració incapaç d'exercir el control de qualitat, respondre a recursos o complir la FRIA i l'ENS." },
+        { "key": "D", "text": "El model deixa de funcionar automàticament al cap de 30 dies." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Sense clàusules clares d'auditabilitat, accés a logs (art. 12/26.6), mètriques desagregades i cooperació davant òrgans de control, l'Administració queda atrapada i incompleix les seves obligacions públiques.",
+      "explanationsIncorrect": {
+        "A": "Els proveïdors propietaris no cedeixen el codi font si no s'ha pactat contractualment.",
+        "B": "És un risc jurídic i de governança, no de latència de xarxa.",
+        "D": "El model continuaria funcionant, però fora de control i inauditable."
+      }
+    }
+  ]
+}

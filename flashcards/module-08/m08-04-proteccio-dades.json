@@ -1,0 +1,46 @@
+{
+  "conceptId": "m08-04-proteccio-dades",
+  "module": 8,
+  "cards": [
+    {
+      "id": "m08-04-fc01",
+      "module": 8,
+      "conceptId": "m08-04-proteccio-dades",
+      "front": "Quina diferència hi ha entre pseudonimització i anonimització al RGPD?",
+      "back": "La pseudonimització continua essent dada personal (subjecta al RGPD, mesura de seguretat art. 25/32); només l'anonimització real i irreversible queda fora del RGPD.",
+      "tags": ["pseudonimització", "anonimització", "RGPD"]
+    },
+    {
+      "id": "m08-04-fc02",
+      "module": 8,
+      "conceptId": "m08-04-proteccio-dades",
+      "front": "Quines bases jurídiques (art. 6 RGPD) són les adequades en una administració pública i per què no el consentiment?",
+      "back": "Art. 6.1.c (obligació legal) o art. 6.1.e (missió en interès públic / poders públics amb rang legal, art. 8 LOPDGDD). El consentiment no sol ser lliure pel desequilibri amb l'autoritat pública (Considerant 43).",
+      "tags": ["art. 6 RGPD", "LOPDGDD", "bases jurídiques"]
+    },
+    {
+      "id": "m08-04-fc03",
+      "module": 8,
+      "conceptId": "m08-04-proteccio-dades",
+      "front": "Quan és obligatòria una EIPD (art. 35 RGPD) i quins actors hi intervenen en un ens local català?",
+      "back": "Abans d'iniciar tractaments d'alt risc (IA + perfilat, art. 22, dades art. 9, gran escala, vulnerables), amb assessorament obligatori del DPD i consulta prèvia a l'APDCAT (art. 36) si persisteix alt risc residual.",
+      "tags": ["EIPD", "DPIA", "DPD", "APDCAT"]
+    },
+    {
+      "id": "m08-04-fc04",
+      "module": 8,
+      "conceptId": "m08-04-proteccio-dades",
+      "front": "Per què s'ha d'evitar el fine-tuning amb dades personals i prioritzar el RAG?",
+      "back": "Perquè els pesos d'un LLM poden memoritzar PII i impedeixen exercir eficaçment el dret de supressió (art. 17) o aplicar permisos RBAC; en RAG s'esborra el chunk immediatament i es filtren permisos abans de recuperar.",
+      "tags": ["fine-tuning", "RAG", "dret supressió"]
+    },
+    {
+      "id": "m08-04-fc05",
+      "module": 8,
+      "conceptId": "m08-04-proteccio-dades",
+      "front": "Quina és l'autoritat de control dels ens locals catalans i quin termini fixa l'art. 33 RGPD per notificar bretxes?",
+      "back": "L'APDCAT (Autoritat Catalana de Protecció de Dades) per als ajuntaments i diputacions catalanes; les violacions de seguretat s'han de notificar en un màxim de 72 hores des que se'n té constància.",
+      "tags": ["APDCAT", "bretxes", "72 hores"]
+    }
+  ]
+}

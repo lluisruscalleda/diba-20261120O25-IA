@@ -1,0 +1,236 @@
+{
+  "conceptId": "m08-02-biaixos",
+  "module": 8,
+  "questions": [
+    {
+      "id": "m08-02-q01",
+      "module": 8,
+      "conceptId": "m08-02-biaixos",
+      "lessonRef": "content/module-08/m08-02-biaixos.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Per què eliminar les columnes de gènere o origen del conjunt d'entrenament (Fairness through Unawareness) NO garanteix l'absència de discriminació algorítmica?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè els algorismes sempre ignoren les columnes eliminades i les recuperen d'Internet." },
+        { "key": "B", "text": "Perquè altres variables aparentment neutres (variables proxy com el codi postal, el nom o la trajectòria laboral) estan correlacionades amb l'atribut protegit i reprodueixen discriminació indirecta." },
+        { "key": "C", "text": "Perquè el RGPD obliga a incloure el gènere com a variable predictora en tots els models." },
+        { "key": "D", "text": "Perquè sense la columna de gènere el model no pot compilar en Python." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Les variables proxy capturen correlacions amb atributs protegits i permeten que el model reprodueixi biaixos discriminatoris indirectes tot i haver eliminat la columna explícita.",
+      "explanationsIncorrect": {
+        "A": "Un model entrenat localment no recupera columnes esborrades d'Internet.",
+        "C": "El RGPD no obliga a usar el gènere com a variable predictora; exigeix minimització i licitud.",
+        "D": "Qualsevol model compila perfectament sense atributs protegits."
+      }
+    },
+    {
+      "id": "m08-02-q02",
+      "module": 8,
+      "conceptId": "m08-02-biaixos",
+      "lessonRef": "content/module-08/m08-02-biaixos.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Un assistent de veu municipal reconeix el castellà amb un 94% de precisió però el català amb un 72% perquè el conjunt d'entrenament contenia un 95% d'àudios en castellà. Quin tipus de biaix és principalment?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Biaix de representació (mostreig)." },
+        { "key": "B", "text": "Biaix d'automatització humana." },
+        { "key": "C", "text": "Biaix de sobrerregularització L2." },
+        { "key": "D", "text": "Biaix de quantització INT8." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "La infrarepresentació del català (i les seves variants dialectals) al conjunt de dades d'entrenament és un exemple clàssic de biaix de representació o mostreig.",
+      "explanationsIncorrect": {
+        "B": "El biaix d'automatització és psicològic en l'operador humà, no de cobertura del dataset.",
+        "C": "La regularització L2 no provoca asimetria lingüística entre idiomes.",
+        "D": "La quantització redueix precisió numèrica però no explica un 95%/5% d'entrenament."
+      }
+    },
+    {
+      "id": "m08-02-q03",
+      "module": 8,
+      "conceptId": "m08-02-biaixos",
+      "lessonRef": "content/module-08/m08-02-biaixos.md",
+      "difficulty": "basic",
+      "questionType": "metrics",
+      "prompt": "Què indica la regla orientativa dels 4/5 (Disparate Impact < 0,80) en una auditoria d'equitat?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Que el model té una exactitud global inferior al 80%." },
+        { "key": "B", "text": "Que la taxa de selecció positiva d'un grup protegit és inferior al 80% de la taxa del grup de referència, la qual cosa dispara una alerta d'impacte dispar a investigar." },
+        { "key": "C", "text": "Que cal eliminar 4 de cada 5 files del conjunt d'entrenament." },
+        { "key": "D", "text": "Que el model compleix automàticament l'AI Act." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "El Disparate Impact divideix la taxa positiva del grup protegit per la del grup de referència; per sota de 0,80 s'activa un senyal orientatiu d'alerta d'impacte dispar.",
+      "explanationsIncorrect": {
+        "A": "El Disparate Impact compara taxes de selecció entre grups, no l'exactitud global.",
+        "C": "No té res a veure amb eliminar files del dataset.",
+        "D": "Un valor inferior a 0,80 indica justament risc de discriminació, no compliment!"
+      }
+    },
+    {
+      "id": "m08-02-q04",
+      "module": 8,
+      "conceptId": "m08-02-biaixos",
+      "lessonRef": "content/module-08/m08-02-biaixos.md",
+      "difficulty": "intermediate",
+      "questionType": "metrics",
+      "prompt": "En un model d'assignació de beques o ajuts socials, el grup A té una taxa de selecció del 60% i el grup B del 20%. Quin és el Disparate Impact (DI) del grup B respecte del grup A?",
+      "codeSnippet": "taxa_A = 0.60\ntaxa_B = 0.20",
+      "options": [
+        { "key": "A", "text": "0,40 (dins del llindar acceptable)" },
+        { "key": "B", "text": "3,00 (sense alerta)" },
+        { "key": "C", "text": "0,3333 (alerta greu d'impacte dispar, molt per sota de 0,80)" },
+        { "key": "D", "text": "0,80 (exactament al llindar)" }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "DI = 0,20 / 0,60 = 0,3333, molt per sota de la referència de 0,80, evidenciant un impacte dispar sever que obliga a aturar el desplegament i investigar.",
+      "explanationsIncorrect": {
+        "A": "0,40 és la diferència absoluta (0,60 - 0,20), no la ràtio DI, i tampoc seria acceptable.",
+        "B": "Això inverteix el numerador i el denominador (0,60 / 0,20).",
+        "D": "0,20 / 0,60 no és 0,80."
+      }
+    },
+    {
+      "id": "m08-02-q05",
+      "module": 8,
+      "conceptId": "m08-02-biaixos",
+      "lessonRef": "content/module-08/m08-02-biaixos.md",
+      "difficulty": "intermediate",
+      "questionType": "metrics",
+      "prompt": "Quina diferència exacta hi ha entre Equal Opportunity i Equalized Odds?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Equal Opportunity exigeix igualar només la taxa de veritables positius (TPR/Recall) entre grups, mentre que Equalized Odds exigeix igualar tant el TPR com la taxa de falsos positius (FPR)." },
+        { "key": "B", "text": "Equal Opportunity només mesura la precisió global i Equalized Odds només mesura la latència." },
+        { "key": "C", "text": "Equalized Odds és menys estricta que Equal Opportunity." },
+        { "key": "D", "text": "Són noms diferents per a la paritat demogràfica." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Equalized Odds és més exigent perquè controla tant l'exclusió injusta de qui ho mereix (TPR) com la inclusió/acusació injusta de qui no ho mereix (FPR).",
+      "explanationsIncorrect": {
+        "B": "Totes dues són mètriques d'equitat sobre la matriu de confusió per grups.",
+        "C": "És just al contrari: Equalized Odds afegeix la restricció de FPR i és més estricta.",
+        "D": "La paritat demogràfica no condiciona per l'etiqueta real Y, mentre que TPR i FPR sí."
+      }
+    },
+    {
+      "id": "m08-02-q06",
+      "module": 8,
+      "conceptId": "m08-02-biaixos",
+      "lessonRef": "content/module-08/m08-02-biaixos.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Un model d'avaluació de necessitat social utilitza la «despesa històrica en serveis municipals» com a etiqueta objectiu (Y). Els barris amb menys equipaments públics presenten menys despesa històrica i el model els assigna menys recursos nous. Quin biaix s'ha produït?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Biaix de quantització del model." },
+        { "key": "B", "text": "Biaix de mesura (etiquetatge / proxy erroni de l'objectiu), agreujat per un bucle de retroalimentació." },
+        { "key": "C", "text": "Sobreajustament per manca de dropout." },
+        { "key": "D", "text": "Cap biaix, perquè la despesa és una dada numèrica objectiva." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Utilitzar la despesa històrica com a proxy de la «necessitat real» confon manca d'accés previ amb manca de necessitat (biaix de mesura famós també en salut pública) i crea un bucle de retroalimentació regressiu.",
+      "explanationsIncorrect": {
+        "A": "No té res a veure amb la precisió numèrica dels pesos.",
+        "C": "El problema és a la definició mateixa de l'etiqueta Y, no a la regularització.",
+        "D": "Que una variable sigui numèrica no vol dir que sigui un bon proxy lliure de biaixos."
+      }
+    },
+    {
+      "id": "m08-02-q07",
+      "module": 8,
+      "conceptId": "m08-02-biaixos",
+      "lessonRef": "content/module-08/m08-02-biaixos.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Què preveu de manera excepcional l'article 10.5 de l'AI Act (Reglament UE 2024/1689) respecte de les categories especials de dades personals en sistemes d'alt risc?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Permet vendre categories especials de dades a tercers per finançar el model." },
+        { "key": "B", "text": "Prohibeix absolutament qualsevol auditoria d'equitat sobre dades sensibles." },
+        { "key": "C", "text": "N'autoritza el tractament de manera estrictament limitada i amb salvaguardes rigoroses únicament en la mesura necessària per detectar i corregir biaixos." },
+        { "key": "D", "text": "Obliga a publicar l'origen ètnic de tots els sol·licitants d'ajuts." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "L'article 10.5 de l'AI Act resol la tensió entre no tractar dades sensibles i auditar biaixos, permetent-ne l'ús estrictament necessari i protegit (control d'accés, pseudonimització, supressió posterior) només per detectar i corregir biaixos.",
+      "explanationsIncorrect": {
+        "A": "Està terminantment prohibit tant pel RGPD com per l'AI Act.",
+        "B": "Al contrari, habilita un marc segur per poder dur a terme auditories de biaix.",
+        "D": "Mai no s'han de publicar dades personals sensibles."
+      }
+    },
+    {
+      "id": "m08-02-q08",
+      "module": 8,
+      "conceptId": "m08-02-biaixos",
+      "lessonRef": "content/module-08/m08-02-biaixos.md",
+      "difficulty": "advanced",
+      "questionType": "conceptual",
+      "prompt": "Quina implicació fonamental té el teorema d'impossibilitat de l'equitat algorítmica per als responsables públics?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Que quan les taxes base reals difereixen entre grups i el model no és perfecte, no es poden complir simultàniament totes les definicions d'equitat (Demographic Parity, Equalized Odds, Predictive Parity); per tant, triar la mètrica prioritària és una decisió jurídica i de política pública." },
+        { "key": "B", "text": "Que és matemàticament impossible reduir cap biaix en un model d'IA." },
+        { "key": "C", "text": "Que només les xarxes neuronals profundes poden satisfer totes les mètriques d'equitat alhora." },
+        { "key": "D", "text": "Que n'hi ha prou d'augmentar la mida del dataset per satisfer totes les definicions simultàniament." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "El teorema demostra incompatibilitats matemàtiques entre definicions d'equitat quan les taxes base difereixen; cal explicitar quina dimensió d'equitat protegeix millor els drets en cada procediment administratiu.",
+      "explanationsIncorrect": {
+        "B": "Sí que es poden reduir dràsticament els biaixos i satisfer la mètrica adequada al context.",
+        "C": "És una propietat matemàtica independent de l'arquitectura del model.",
+        "D": "Més dades no canvien una incompatibilitat algebraica entre taxes base diferents."
+      }
+    },
+    {
+      "id": "m08-02-q09",
+      "module": 8,
+      "conceptId": "m08-02-biaixos",
+      "lessonRef": "content/module-08/m08-02-biaixos.md",
+      "difficulty": "advanced",
+      "questionType": "normative",
+      "prompt": "Per què la mitigació de biaixos mitjançant Post-processing amb llindars de decisió diferents per gènere o origen en temps d'inferència presenta riscos jurídics elevats en l'Administració pública?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè augmenta la latència de la GPU en més de 10 segons." },
+        { "key": "B", "text": "Perquè aplicar un tracte formalment diferent segons un atribut protegit en la decisió individual pot constituir discriminació directa prohibida si no existeix habilitació legal expressa d'acció positiva; cal prioritzar Pre-processing i In-processing." },
+        { "key": "C", "text": "Perquè no és tècnicament possible canviar un llindar de classificació en Python." },
+        { "key": "D", "text": "Perquè només funciona amb models generatius de vídeo." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Corregir dades i representativitat (Pre-processing) o regularitzar l'entrenament (In-processing) elimina biaixos estructurals sense introduir tractaments desiguals directes per atribut protegit en la fase d'inferència.",
+      "explanationsIncorrect": {
+        "A": "Aplicar un llindar té un cost computacional pràcticament zero.",
+        "C": "Tècnicament és trivial; el problema és jurídic i constitucional.",
+        "D": "És una tècnica clàssica de classificadors tabulars."
+      }
+    },
+    {
+      "id": "m08-02-q10",
+      "module": 8,
+      "conceptId": "m08-02-biaixos",
+      "lessonRef": "content/module-08/m08-02-biaixos.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "En un model d'alerta de risc de frau en subvencions, quina combinació de mesures evita el bucle de retroalimentació (feedback loop) i protegeix els sol·licitants innocents?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Inspeccionar exclusivament el 10% amb puntuació més alta i reentrenar només amb aquests expedients cada mes." },
+        { "key": "B", "text": "Eliminar totes les auditories per grups i confiar en l'F1 global." },
+        { "key": "C", "text": "Desactivar la revisió humana dels expedients marcats com a frau." },
+        { "key": "D", "text": "Reservar una fracció d'inspeccions aleatòries estratificades (exploració) per obtenir etiquetes no esbiaixades i monitorar Equalized Odds (especialment FPR per col·lectiu/territori) amb revisió humana." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "El mostreig aleatori d'exploració trenca el bucle de confirmació dels logs històrics, i controlar el FPR (Equalized Odds) garanteix que cap col·lectiu pateixi inspeccions infundades desproporcionades.",
+      "explanationsIncorrect": {
+        "A": "Aquesta és justament la recepta que amplifica el bucle de retroalimentació!",
+        "B": "L'F1 global amaga bretxes greus entre subgrups.",
+        "C": "Sancionar o denegar per frau sense revisió humana vulnera garanties legals bàsiques."
+      }
+    }
+  ]
+}

@@ -1,0 +1,236 @@
+{
+  "conceptId": "m08-04-proteccio-dades",
+  "module": 8,
+  "questions": [
+    {
+      "id": "m08-04-q01",
+      "module": 8,
+      "conceptId": "m08-04-proteccio-dades",
+      "lessonRef": "content/module-08/m08-04-proteccio-dades.md",
+      "difficulty": "basic",
+      "questionType": "normative",
+      "prompt": "Quina és la diferència jurídica fonamental entre pseudonimització i anonimització segons el RGPD?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Les dades pseudonimitzades continuen essent dades personals subjectes al RGPD, mentre que només les dades realment i irreversiblement anonimitzades queden fora del seu àmbit d'aplicació." },
+        { "key": "B", "text": "Totes dues queden completament fora del RGPD." },
+        { "key": "C", "text": "La pseudonimització és irreversible i l'anonimització és reversible." },
+        { "key": "D", "text": "El RGPD prohibeix utilitzar pseudonimització com a mesura de seguretat." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Segons el Considerant 26 i l'art. 4.5 del RGPD, les dades pseudonimitzades poden atribuir-se a una persona amb informació addicional i segueixen essent dades personals; l'anonimització ha de ser irreversible.",
+      "explanationsIncorrect": {
+        "B": "Només l'anonimització efectiva queda fora del RGPD.",
+        "C": "És exactament a l'inrevés.",
+        "D": "Al contrari, l'art. 25 i l'art. 32 recomanen expressament la pseudonimització com a mesura de seguretat!"
+      }
+    },
+    {
+      "id": "m08-04-q02",
+      "module": 8,
+      "conceptId": "m08-04-proteccio-dades",
+      "lessonRef": "content/module-08/m08-04-proteccio-dades.md",
+      "difficulty": "basic",
+      "questionType": "normative",
+      "prompt": "Quina és l'autoritat de control de protecció de dades competent per a la Diputació de Barcelona i els ajuntaments de Catalunya?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Exclusivament l'AEPD (Agència Espanyola de Protecció de Dades)." },
+        { "key": "B", "text": "L'APDCAT (Autoritat Catalana de Protecció de Dades)." },
+        { "key": "C", "text": "L'Oficina Europea de Patents." },
+        { "key": "D", "text": "Les administracions locals no estan sotmeses a cap autoritat de control." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "L'APDCAT té competència sobre la Generalitat de Catalunya i els ens locals de Catalunya (ajuntaments, consells comarcals i diputacions provincials).",
+      "explanationsIncorrect": {
+        "A": "L'AEPD és l'autoritat estatal, però en el sector públic català la competència correspon a l'APDCAT.",
+        "C": "No té competències en protecció de dades.",
+        "D": "Totes les administracions públiques estan sotmeses al RGPD i al control de l'autoritat competent."
+      }
+    },
+    {
+      "id": "m08-04-q03",
+      "module": 8,
+      "conceptId": "m08-04-proteccio-dades",
+      "lessonRef": "content/module-08/m08-04-proteccio-dades.md",
+      "difficulty": "basic",
+      "questionType": "normative",
+      "prompt": "En quin termini màxim general ha de notificar una administració una violació de seguretat de dades personals (per exemple, una fuita d'historials d'un xatbot) a l'autoritat de control segons l'article 33 del RGPD?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "En un màxim de 30 dies naturals." },
+        { "key": "B", "text": "Només al tancament anual de l'exercici." },
+        { "key": "C", "text": "Sense dilació indeguda i, si és possible, a tot tardar en 72 hores després d'haver-ne tingut constància." },
+        { "key": "D", "text": "No cal notificar-la mai si el xatbot està en fase pilot." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "L'article 33.1 del RGPD fixa el termini màxim general de 72 hores des que es té constància de la bretxa, llevat que sigui improbable que constitueixi un risc per als drets i llibertats.",
+      "explanationsIncorrect": {
+        "A": "30 dies és el termini general per respondre exercicis de drets, no per notificar bretxes.",
+        "B": "Esperar al tancament anual infringeix greument l'art. 33 RGPD.",
+        "D": "Un pilot amb dades personals reals està plenament sotmès al RGPD."
+      }
+    },
+    {
+      "id": "m08-04-q04",
+      "module": 8,
+      "conceptId": "m08-04-proteccio-dades",
+      "lessonRef": "content/module-08/m08-04-proteccio-dades.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Per què el consentiment (art. 6.1.a RGPD) NO sol ser una base jurídica vàlida per tractar dades amb IA dins un procediment administratiu d'ajuts o tributs?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè el RGPD va derogar el consentiment l'any 2024." },
+        { "key": "B", "text": "Perquè existeix un desequilibri clar entre el ciutadà i l'autoritat pública que impedeix que el consentiment sigui lliure (Considerant 43); cal basar-se en obligació legal (6.1.c) o missió en interès públic/poders públics (6.1.e amb rang legal, art. 8 LOPDGDD)." },
+        { "key": "C", "text": "Perquè les administracions públiques només poden usar l'interès legítim (art. 6.1.f) en l'exercici de les seves funcions." },
+        { "key": "D", "text": "Perquè el consentiment només s'aplica a menors d'edat." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "El Considerant 43 del RGPD descarta el consentiment quan hi ha desequilibri manifest amb una autoritat pública; a més, l'art. 6.1.f exclou expressament l'interès legítim per a autoritats públiques en l'exercici de les seves funcions!",
+      "explanationsIncorrect": {
+        "A": "El consentiment continua vigent, però no és adequat en situacions de desequilibri públic.",
+        "C": "L'article 6.1 in fine del RGPD prohibeix expressament a les autoritats públiques usar l'interès legítim (6.1.f) en l'exercici de les seves funcions!",
+        "D": "El consentiment s'aplica a persones físiques en general fora de desequilibri."
+      }
+    },
+    {
+      "id": "m08-04-q05",
+      "module": 8,
+      "conceptId": "m08-04-proteccio-dades",
+      "lessonRef": "content/module-08/m08-04-proteccio-dades.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Quan s'ha de dur a terme una Avaluació d'Impacte relativa a la Protecció de Dades (EIPD / DPIA — art. 35 RGPD) en un projecte d'IA municipal?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Un cop el sistema porti 6 mesos en producció per veure si ha fallat." },
+        { "key": "B", "text": "Només si l'APDCAT obre un expedient sancionador." },
+        { "key": "C", "text": "Abans d'iniciar el tractament, amb l'assessorament obligatori del DPD, i amb consulta prèvia a l'APDCAT (art. 36) si persisteix un alt risc residual." },
+        { "key": "D", "text": "Únicament si el sistema supera els 10 milions d'euros de pressupost." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "La EIPD és un instrument preventiu (art. 35.1: «amb caràcter previ al tractament») que exigeix assessorament del DPD (art. 35.2) i consulta prèvia a l'autoritat de control si el risc residual continua essent alt (art. 36).",
+      "explanationsIncorrect": {
+        "A": "Fer la EIPD després de posar el sistema en producció incompleix l'art. 35.1 RGPD.",
+        "B": "És una obligació preventiva proactiva, no reactiva a una sanció.",
+        "D": "L'obligatorietat depèn del risc per als drets i llibertats, mai del pressupost econòmic."
+      }
+    },
+    {
+      "id": "m08-04-q06",
+      "module": 8,
+      "conceptId": "m08-04-proteccio-dades",
+      "lessonRef": "content/module-08/m08-04-proteccio-dades.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Per què NO s'ha de fer fine-tuning d'un LLM amb expedients que contenen dades personals identificables (PII) en l'Administració pública?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè els LLMs no accepten text en format UTF-8." },
+        { "key": "B", "text": "Perquè els pesos poden memoritzar i filtrar PII a altres usuaris i fan pràcticament inviable exercir el dret de supressió (art. 17) o rectificació (art. 16) sense reentrenar el model; és molt més segur usar RAG amb RBAC." },
+        { "key": "C", "text": "Perquè el fine-tuning redueix sempre la precisió del model al 0%." },
+        { "key": "D", "text": "Perquè el RGPD prohibeix absolutament qualsevol tipus de xarxa neuronal." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "El RAG manté els documents fora dels pesos, permet control d'accés RBAC pre-recuperació i facilita el compliment immediat dels drets de supressió i rectificació.",
+      "explanationsIncorrect": {
+        "A": "Els LLMs suporten UTF-8 perfectament.",
+        "C": "El risc no és que la precisió caigui a zero, sinó la privacitat i la impossibilitat de desaprendre dades.",
+        "D": "El RGPD és tecnològicament neutre i no prohibeix les xarxes neuronals."
+      }
+    },
+    {
+      "id": "m08-04-q07",
+      "module": 8,
+      "conceptId": "m08-04-proteccio-dades",
+      "lessonRef": "content/module-08/m08-04-proteccio-dades.md",
+      "difficulty": "intermediate",
+      "questionType": "code",
+      "prompt": "Un empleat intenta enviar un prompt amb un DNI i la frase «informe mèdic» a una API d'IA situada fora de l'EEE sense clàusules del Capítol V ni acord de zero-data-retention. Quina acció ha d'executar la porta de Privacy by Design (art. 25 RGPD)?",
+      "codeSnippet": "regio = 'FORA_EEE'\nte_dni = True\nte_salut = True\nte_scc_i_zero_retention = False",
+      "options": [
+        { "key": "A", "text": "Enviar el prompt igualment i anotar un avís menor." },
+        { "key": "B", "text": "Només canviar el nom del fitxer a anonim.txt i enviar-lo." },
+        { "key": "C", "text": "Reentrenar el model comercial amb l'informe mèdic." },
+        { "key": "D", "text": "Bloquejar la petició abans de sortir de la xarxa corporativa per evitar una transferència internacional il·lícita amb PII i dades de categoria especial (art. 9)." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "La protecció de dades per defecte (art. 25) exigeix bloquejar preventivament la fuga de PII/art. 9 cap a tercers fora de l'EEE sense base, contracte art. 28 ni garanties del Capítol V.",
+      "explanationsIncorrect": {
+        "A": "Això consumaria una bretxa de seguretat i una transferència il·lícita.",
+        "B": "Canviar el nom del fitxer no protegeix el contingut personal del text.",
+        "C": "Empitjoraria encara més la infracció."
+      }
+    },
+    {
+      "id": "m08-04-q08",
+      "module": 8,
+      "conceptId": "m08-04-proteccio-dades",
+      "lessonRef": "content/module-08/m08-04-proteccio-dades.md",
+      "difficulty": "advanced",
+      "questionType": "normative",
+      "prompt": "Quins requisits acumulatius exigeix el RGPD per utilitzar una API comercial d'IA allotjada als EUA amb dades personals d'una administració pública (si no hi ha alternativa on-premise/EEE)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Contracte d'encarregat de tractament (art. 28) amb prohibició expressa d'ús per a entrenament (zero-data-retention), mecanisme vàlid del Capítol V (decisió d'adequació aplicable o SCC + TIA i mesures suplementàries), base jurídica vàlida, minimització i EIPD si hi ha alt risc." },
+        { "key": "B", "text": "N'hi ha prou d'acceptar els termes gratuïts del web del proveïdor." },
+        { "key": "C", "text": "Només cal traduir el prompt a l'anglès." },
+        { "key": "D", "text": "Únicament pagar la subscripció mensual amb targeta corporativa." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Les transferències internacionals exigeixen complir simultàniament les regles generals (base jurídica, art. 28, minimització, EIPD) i les salvaguardes del Capítol V (art. 44–49 RGPD).",
+      "explanationsIncorrect": {
+        "B": "Els comptes gratuïts solen incloure clàusules de reentrenament i no compleixen l'art. 28 ni el Capítol V.",
+        "C": "L'idioma del prompt no altera el règim de transferències internacionals.",
+        "D": "Pagar una subscripció no substitueix les garanties contractuals ni jurídiques del RGPD."
+      }
+    },
+    {
+      "id": "m08-04-q09",
+      "module": 8,
+      "conceptId": "m08-04-proteccio-dades",
+      "lessonRef": "content/module-08/m08-04-proteccio-dades.md",
+      "difficulty": "advanced",
+      "questionType": "normative",
+      "prompt": "Com afecta el principi d'exactitud (art. 5.1.d RGPD) l'ús de models generatius (LLMs) per redactar informes sobre persones físiques identificades?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "No els afecta perquè els LLMs no processen números." },
+        { "key": "B", "text": "Una al·lucinació factual sobre una persona (per exemple, atribuir-li un deute o antecedents falsos) vulnera el principi d'exactitud del RGPD i exigeix mesures tècniques de grounding (RAG), verificació humana i rectificació." },
+        { "key": "C", "text": "Només s'aplica si la persona treballa a la mateixa administració." },
+        { "key": "D", "text": "Queda automàticament resolt posant un avís legal genèric al peu de pàgina." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Un avís legal no eximeix del principi d'exactitud (art. 5.1.d RGPD) quan una administració genera o tracta informació falsa sobre una persona física; cal grounding verificat i revisió humana.",
+      "explanationsIncorrect": {
+        "A": "L'exactitud cobreix qualsevol dada personal (textual, numèrica o documental).",
+        "C": "Protegeix totes les persones físiques sense excepció.",
+        "D": "Un disclaimer no legitima produir ni incorporar dades personals inexactes en expedients públics."
+      }
+    },
+    {
+      "id": "m08-04-q10",
+      "module": 8,
+      "conceptId": "m08-04-proteccio-dades",
+      "lessonRef": "content/module-08/m08-04-proteccio-dades.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "Quina relació operativa hi ha entre la EIPD (art. 35 RGPD) i la FRIA (Avaluació d'Impacte en Drets Fonamentals, art. 27 AI Act) quan una administració pública desplega un sistema d'IA d'alt risc amb dades personals?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "La FRIA deroga el RGPD i fa innecessària la EIPD." },
+        { "key": "B", "text": "La EIPD substitueix totalment la FRIA i ja no cal avaluar altres drets fonamentals ni notificar l'autoritat d'IA." },
+        { "key": "C", "text": "Són complementàries: l'art. 27.4 AI Act preveu expressament que la FRIA pot complementar la EIPD ja realitzada per evitar duplicitats, cobrint a més drets fonamentals més enllà de la privacitat (no discriminació, tutela efectiva, etc.)." },
+        { "key": "D", "text": "Només les empreses privades han de fer EIPD i només les públiques han de fer FRIA." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "L'article 27.4 de l'AI Act coordina explícitament ambdós instruments perquè la FRIA es recolzi en la EIPD i la complementi en la resta de drets fonamentals.",
+      "explanationsIncorrect": {
+        "A": "L'AI Act s'aplica sense perjudici del RGPD, mai no el deroga.",
+        "B": "La FRIA té un abast més ampli en drets fonamentals i té obligacions específiques de l'art. 27 AI Act.",
+        "D": "Tant entitats públiques com privades fan EIPD quan hi ha alt risc de privacitat."
+      }
+    }
+  ]
+}

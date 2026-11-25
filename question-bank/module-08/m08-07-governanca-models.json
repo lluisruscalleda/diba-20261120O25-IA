@@ -1,0 +1,236 @@
+{
+  "conceptId": "m08-07-governanca-models",
+  "module": 8,
+  "questions": [
+    {
+      "id": "m08-07-q01",
+      "module": 8,
+      "conceptId": "m08-07-governanca-models",
+      "lessonRef": "content/module-08/m08-07-governanca-models.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Què és la Shadow AI dins una administració pública?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "L'ús no autoritzat ni inventariat d'eines d'IA externes (comptes personals o proves SaaS sense control de Seguretat ni DPD) per part d'empleats o departaments." },
+        { "key": "B", "text": "El desplegament Shadow controlat en MLOps per validar un model nou en paral·lel." },
+        { "key": "C", "text": "Un algorisme oficial certificat per l'ENS per processar imatges fosques." },
+        { "key": "D", "text": "El mode fosc de la interfície web de la Seu Electrònica." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "La Shadow AI designa l'ús d'IA fora de governança corporativa, comportant greus riscos de fuites de PII, transferències il·lícites i manca de control normatiu.",
+      "explanationsIncorrect": {
+        "B": "Això és Shadow Deployment (tècnica controlada d'MLOps, M7.5), un concepte diferent de Shadow AI!",
+        "C": "No és un algorisme certificat.",
+        "D": "No té res a veure amb el disseny visual en mode fosc."
+      }
+    },
+    {
+      "id": "m08-07-q02",
+      "module": 8,
+      "conceptId": "m08-07-governanca-models",
+      "lessonRef": "content/module-08/m08-07-governanca-models.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quin estàndard internacional certifica un Sistema de Gestió d'Intel·ligència Artificial (AIMS)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "ISO 9001." },
+        { "key": "B", "text": "ISO/IEC 42001." },
+        { "key": "C", "text": "HTML 5.2." },
+        { "key": "D", "text": "TCP/IP v6." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "ISO/IEC 42001:2023 és la primera norma internacional específica i certificable per a sistemes de gestió d'IA (compatible amb ISO/IEC 27001).",
+      "explanationsIncorrect": {
+        "A": "ISO 9001 és gestió general de qualitat.",
+        "C": "HTML és un llenguatge de marcatge web.",
+        "D": "TCP/IP v6 és un protocol de xarxa."
+      }
+    },
+    {
+      "id": "m08-07-q03",
+      "module": 8,
+      "conceptId": "m08-07-governanca-models",
+      "lessonRef": "content/module-08/m08-07-governanca-models.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quines són les 4 funcions estructurals del marc NIST AI RMF (AI Risk Management Framework)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Train, Test, Deploy, Delete." },
+        { "key": "B", "text": "Buy, Build, Copy, Paste." },
+        { "key": "C", "text": "Govern, Map, Measure i Manage." },
+        { "key": "D", "text": "Prompt, Embed, Chunk i Generate." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "El NIST AI RMF articula la gestió contínua del risc d'IA al voltant de Govern (governar), Map (mapejar context i riscos), Measure (mesurar) i Manage (gestionar i mitigar).",
+      "explanationsIncorrect": {
+        "A": "Això descriu un flux simplificat de codi, no el NIST AI RMF.",
+        "B": "No existeix aquest marc.",
+        "D": "Això són passos tècnics d'un pipeline RAG."
+      }
+    },
+    {
+      "id": "m08-07-q04",
+      "module": 8,
+      "conceptId": "m08-07-governanca-models",
+      "lessonRef": "content/module-08/m08-07-governanca-models.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Quina obligació específica imposa l'article 26.7 de l'AI Act abans que una administració pública implanti un sistema d'IA d'alt risc en el lloc de treball?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Informar els representants dels treballadors i els empleats afectats que estaran sotmesos a l'ús del sistema d'IA d'alt risc." },
+        { "key": "B", "text": "Mantenir el sistema en secret absolut respecte de la plantilla per evitar biaixos." },
+        { "key": "C", "text": "Substituir automàticament el conveni col·lectiu." },
+        { "key": "D", "text": "No hi ha cap obligació específica en l'entorn laboral." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "L'article 26.7 de l'AI Act exigeix als ocupadors informar els representants dels treballadors i les persones treballadores afectades abans de posar en servei un sistema d'alt risc al lloc de treball.",
+      "explanationsIncorrect": {
+        "B": "L'ocultació vulnera frontalment l'article 26.7 de l'AI Act i les normes laborals.",
+        "C": "L'AI Act reforça les garanties laborals, mai no substitueix la negociació col·lectiva.",
+        "D": "L'article 26.7 estableix justament aquesta obligació expressa!"
+      }
+    },
+    {
+      "id": "m08-07-q05",
+      "module": 8,
+      "conceptId": "m08-07-governanca-models",
+      "lessonRef": "content/module-08/m08-07-governanca-models.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Quina és l'estratègia més eficaç per reduir la Shadow AI en una administració pública?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Enviar un únic correu prohibint tota la IA sense oferir cap alternativa." },
+        { "key": "B", "text": "Oferir una plataforma d'IA corporativa homologada i segura (sobirana/EEE, zero-data-retention), combinar-la amb formació d'alfabetització IA (art. 4 AI Act) i aplicar inventari + controls DLP." },
+        { "key": "C", "text": "Autoritzar els comptes personals gratuïts sempre que els empleats no ho expliquin." },
+        { "key": "D", "text": "Desconnectar tot l'ajuntament d'Internet." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "L'experiència demostra que la prohibició nua incentiva l'ús ocult en dispositius personals; donar una eina corporativa segura, formar la plantilla i aplicar DLP/inventari elimina l'arrel de la Shadow AI.",
+      "explanationsIncorrect": {
+        "A": "Sense alternativa útil, els empleats tendeixen a esquivar la prohibició en secret.",
+        "C": "Autoritzar comptes gratuïts amb dades públiques provoca bretxes greus del RGPD.",
+        "D": "Desconnectar l'ajuntament paralitzaria tots els serveis electrònics."
+      }
+    },
+    {
+      "id": "m08-07-q06",
+      "module": 8,
+      "conceptId": "m08-07-governanca-models",
+      "lessonRef": "content/module-08/m08-07-governanca-models.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "En l'estratègia Buy vs. Build vs. Adapt per a una administració local que necessita un assistent RAG d'ordenances municipals, quina opció sol oferir el millor equilibri entre sobirania, qualitat i cost?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Entrenar un LLM fundacional de 70B paràmetres des de zero (Build)." },
+        { "key": "B", "text": "Comprar una solució tancada sense accés a prompts ni exportació de dades (Buy cec)." },
+        { "key": "C", "text": "Adaptar un model open-weights desplegat on-premise o en núvol EEE mitjançant arquitectura RAG sobre les ordenances oficials (Adapt)." },
+        { "key": "D", "text": "No indexar les ordenances i demanar a un model genèric que se les inventi." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "L'estratègia Adapt (open-weights sobirà + RAG) evita el cost prohibitiu d'entrenar un LLM des de zero i el vendor lock-in d'un SaaS opac, mantenint sobirania i control total de les fonts.",
+      "explanationsIncorrect": {
+        "A": "Entrenar un LLM fundacional de 70B des de zero costa milions d'euros i és completament inviable per a un ens local.",
+        "B": "Una caixa negra sense exportació ni auditoria genera vendor lock-in i risc d'incompliment normatiu.",
+        "D": "Generaria al·lucinacions jurídiques constants."
+      }
+    },
+    {
+      "id": "m08-07-q07",
+      "module": 8,
+      "conceptId": "m08-07-governanca-models",
+      "lessonRef": "content/module-08/m08-07-governanca-models.md",
+      "difficulty": "intermediate",
+      "questionType": "code",
+      "prompt": "Un registre de governança amb Stage-Gates rep la sol·licitud d'alta en fase G0 (Ideació) d'un sistema de «reconeixement d'emocions dels empleats del 010 per avaluar-ne el rendiment». Quina acció automàtica ha d'executar la porta G0?",
+      "codeSnippet": "nivell_risc_ai_act = 'PROHIBIT'\n# Art. 5.1.f AI Act: reconeixement d'emocions en el lloc de treball",
+      "options": [
+        { "key": "A", "text": "Aprovar un pilot de 3 mesos per provar si funciona bé." },
+        { "key": "B", "text": "Enviar-lo a producció si els empleats signen un full." },
+        { "key": "C", "text": "Passar-lo a categoria de risc mínim." },
+        { "key": "D", "text": "Bloquejar immediatament el projecte a G0 (BLOQUEJAT_ART5_PROHIBIT) perquè és una pràctica prohibida per l'article 5.1.f de l'AI Act." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "El reconeixement d'emocions en el lloc de treball o centres educatius (fora de motius mèdics o de seguretat) és una pràctica prohibida per l'art. 5.1.f de l'AI Act des del 2/02/2025; cal frenar-lo a G0!",
+      "explanationsIncorrect": {
+        "A": "No es poden fer pilots operatius d'una pràctica legalment prohibida.",
+        "B": "El consentiment en l'entorn laboral no aixeca una prohibició de l'article 5 AI Act.",
+        "C": "Està expressament classificat com a risc inacceptable/prohibit."
+      }
+    },
+    {
+      "id": "m08-07-q08",
+      "module": 8,
+      "conceptId": "m08-07-governanca-models",
+      "lessonRef": "content/module-08/m08-07-governanca-models.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "Quina clàusula contractual és fonamental en un plec de contractació pública d'IA (LCSP) per evitar el segrest tecnològic (vendor lock-in)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Exigir APIs compatibles amb estàndards oberts, exportabilitat íntegra en formats oberts de dades, prompts, metadades, logs i etiquetes, i un pla de sortida (exit plan) sense penalitzacions ocultes." },
+        { "key": "B", "text": "Signar una permanència exclusiva de 20 anys amb un format binari propietari." },
+        { "key": "C", "text": "Cedir al proveïdor la propietat intel·lectual de totes les ordenances municipals." },
+        { "key": "D", "text": "Renunciar a realitzar proves d'acceptació prèvies al pagament." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "La portabilitat de dades, prompts i logs en formats oberts juntament amb un pla de sortida real evita quedar atrapat quan venç el contracte o puja el preu.",
+      "explanationsIncorrect": {
+        "B": "Això consolida un vendor lock-in absolut i vulnera els límits de durada de la LCSP.",
+        "C": "Les dades i normes públiques són sempre de titularitat pública.",
+        "D": "Renunciar a proves d'acceptació deixa l'Administració indefensa davant productes defectuosos."
+      }
+    },
+    {
+      "id": "m08-07-q09",
+      "module": 8,
+      "conceptId": "m08-07-governanca-models",
+      "lessonRef": "content/module-08/m08-07-governanca-models.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Què s'ha de garantir obligatòriament en la fase G4 de retirada (decommissioning) d'un sistema d'IA d'alt risc que deixa d'utilitzar-se en producció?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Esborrar immediatament el mateix dia tots els logs, versions del model i expedients de FRIA per estalviar disc." },
+        { "key": "B", "text": "Desactivar ordenadament el servei, actualitzar l'inventari corporatiu i el registre UE, i conservar els artefactes d'auditoria, documentació i logs durant els terminis legals aplicables (mínim 6 mesos art. 26.6 AI Act i normativa d'arxiu)." },
+        { "key": "C", "text": "Deixar l'API encesa indefinidament sense monitoratge per si algú la vol fer servir." },
+        { "key": "D", "text": "Publicar les dades personals del dataset d'entrenament en obert." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Una retirada governada evita sistemes «zombis» sense manteniment i alhora preserva les evidències i logs necessaris per atendre recursos administratius o auditories posteriors.",
+      "explanationsIncorrect": {
+        "A": "Destruir immediatament logs i evidències impedeix defensar l'Administració davant recursos en curs i incompleix l'art. 26.6 AI Act.",
+        "C": "Deixar un model zombi en producció sense manteniment multiplica riscos de drift i ciberseguretat.",
+        "D": "Publicar dades personals vulneraria greument el RGPD."
+      }
+    },
+    {
+      "id": "m08-07-q10",
+      "module": 8,
+      "conceptId": "m08-07-governanca-models",
+      "lessonRef": "content/module-08/m08-07-governanca-models.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "Quin valor diferencial aporta una Diputació (com la Diputació de Barcelona) en la governança de la IA per als municipis petits de la seva demarcació?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Obligar cada poble de 500 habitants a contractar el seu propi equip de 10 enginyers MLOps." },
+        { "key": "B", "text": "Prohibir qualsevol ús tecnològic als ajuntaments petits." },
+        { "key": "C", "text": "Proporcionar plataformes d'IA compartides ja certificades (ENS, EIPD/FRIA tipus, suport natiu al català), acords marc amb clàusules responsables i programes comuns d'alfabetització en IA (art. 4 AI Act)." },
+        { "key": "D", "text": "Substituir les competències municipals dels ajuntaments sense conveni." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "L'assistència tècnica, jurídica i tecnològica supramunicipal permet que els ajuntaments petits adoptin IA sobirana, segura i compliant sense costos ni riscos inassumibles individualment.",
+      "explanationsIncorrect": {
+        "A": "Completament inviable econòmicament i organitzativament per a municipis petits.",
+        "B": "Ampliaria la bretxa digital territorial.",
+        "D": "La cooperació supramunicipal dona suport als ens locals respectant-ne plenament l'autonomia municipal."
+      }
+    }
+  ]
+}

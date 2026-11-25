@@ -1,0 +1,46 @@
+{
+  "conceptId": "m08-06-auditoria",
+  "module": 8,
+  "cards": [
+    {
+      "id": "m08-06-fc01",
+      "module": 8,
+      "conceptId": "m08-06-auditoria",
+      "front": "Quins són els 6 continguts mínims obligatoris d'una FRIA (art. 27.1 AI Act)?",
+      "back": "1) Processos d'ús previst; 2) Període i freqüència; 3) Persones/grups afectats; 4) Riscos específics de perjudici; 5) Mesures de supervisió humana; 6) Mesures de resposta, governança interna i reclamacions.",
+      "tags": ["FRIA", "AI Act", "art. 27"]
+    },
+    {
+      "id": "m08-06-fc02",
+      "module": 8,
+      "conceptId": "m08-06-auditoria",
+      "front": "Com es relacionen la EIPD (art. 35 RGPD) i la FRIA (art. 27 AI Act)?",
+      "back": "No se substitueixen: l'art. 27.4 AI Act preveu que la FRIA complementa la EIPD ja realitzada per evitar duplicitats, ampliant l'anàlisi a tots els drets fonamentals i notificant els resultats a l'AESIA.",
+      "tags": ["FRIA", "EIPD", "complementarietat"]
+    },
+    {
+      "id": "m08-06-fc03",
+      "module": 8,
+      "conceptId": "m08-06-auditoria",
+      "front": "Quin termini mínim de conservació de logs exigeix l'art. 26.6 de l'AI Act als deployers d'alt risc?",
+      "back": "Un mínim de 6 mesos per als registres automàtics (art. 12) sota el seu control, llevat que la normativa europea o nacional estableixi un altre termini.",
+      "tags": ["logs", "traçabilitat", "art. 26.6"]
+    },
+    {
+      "id": "m08-06-fc04",
+      "module": 8,
+      "conceptId": "m08-06-auditoria",
+      "front": "Quina diferència hi ha entre una Model Card i un Datasheet for Datasets?",
+      "back": "La Model Card documenta el model (usos previstos i fora d'abast, mètriques globals i desagregades, limitacions); el Datasheet documenta el dataset (origen, composició, etiquetatge, preprocés i biaixos).",
+      "tags": ["Model Card", "Datasheet", "documentació"]
+    },
+    {
+      "id": "m08-06-fc05",
+      "module": 8,
+      "conceptId": "m08-06-auditoria",
+      "front": "Què exigeix l'art. 49.3 de l'AI Act a una autoritat pública que desplega un sistema d'alt risc de l'Annex III?",
+      "back": "Registrar-se i inscriure l'ús del sistema a la base de dades de la UE de sistemes d'IA d'alt risc abans de posar-lo en servei.",
+      "tags": ["AI Act", "art. 49", "registre UE"]
+    }
+  ]
+}

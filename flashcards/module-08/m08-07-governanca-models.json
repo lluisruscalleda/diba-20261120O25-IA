@@ -1,0 +1,46 @@
+{
+  "conceptId": "m08-07-governanca-models",
+  "module": 8,
+  "cards": [
+    {
+      "id": "m08-07-fc01",
+      "module": 8,
+      "conceptId": "m08-07-governanca-models",
+      "front": "Quina diferència hi ha entre Shadow AI i Shadow Deployment?",
+      "back": "Shadow AI és l'ús no autoritzat ni inventariat d'eines d'IA externes fora de governança; Shadow Deployment és una tècnica controlada d'MLOps per provar un model nou en paral·lel sense exposar-lo al ciutadà.",
+      "tags": ["Shadow AI", "governança"]
+    },
+    {
+      "id": "m08-07-fc02",
+      "module": 8,
+      "conceptId": "m08-07-governanca-models",
+      "front": "Quins són els dos estàndards internacionals de referència en governança de la IA?",
+      "back": "ISO/IEC 42001 (Sistema de Gestió d'IA certificable, compatible amb ISO 27001) i NIST AI RMF (4 funcions contínues: Govern, Map, Measure, Manage).",
+      "tags": ["ISO 42001", "NIST AI RMF", "estàndards"]
+    },
+    {
+      "id": "m08-07-fc03",
+      "module": 8,
+      "conceptId": "m08-07-governanca-models",
+      "front": "Què exigeix l'art. 26.7 de l'AI Act abans d'implantar un sistema d'IA d'alt risc al lloc de treball?",
+      "back": "Informar prèviament els representants dels treballadors i les persones treballadores afectades que estaran sotmeses a l'ús del sistema d'IA d'alt risc.",
+      "tags": ["AI Act", "art. 26.7", "treballadors"]
+    },
+    {
+      "id": "m08-07-fc04",
+      "module": 8,
+      "conceptId": "m08-07-governanca-models",
+      "front": "Quines 5 clàusules clau ha d'incloure un plec de contractació pública d'IA (LCSP)?",
+      "back": "1) Sobirania EEE + art. 28 RGPD + zero-data-retention; 2) Certificació ENS; 3) Compliment AI Act + dret d'auditoria; 4) Anti-vendor lock-in (exportació en formats oberts + exit plan); 5) Qualitat verificada en català.",
+      "tags": ["contractació pública", "LCSP", "sobirania"]
+    },
+    {
+      "id": "m08-07-fc05",
+      "module": 8,
+      "conceptId": "m08-07-governanca-models",
+      "front": "Per què l'estratègia Adapt (open-weights sobirà + RAG) sol ser superior a Buy i Build en IA generativa pública?",
+      "back": "Evita el cost prohibitiu d'entrenar un LLM des de zero (Build) i el vendor lock-in o opacitat d'un SaaS tancat (Buy), garantint sobirania de dades, auditabilitat i control de fonts.",
+      "tags": ["Buy Build Adapt", "estratègia", "sobirania"]
+    }
+  ]
+}

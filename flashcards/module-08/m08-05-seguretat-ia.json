@@ -1,0 +1,46 @@
+{
+  "conceptId": "m08-05-seguretat-ia",
+  "module": 8,
+  "cards": [
+    {
+      "id": "m08-05-fc01",
+      "module": 8,
+      "conceptId": "m08-05-seguretat-ia",
+      "front": "Quines són les 5 dimensions de l'ENS (RD 311/2022) i com es determina la categoria d'un sistema?",
+      "back": "Confidencialitat, Integritat, Disponibilitat, Autenticitat i Traçabilitat (C-I-D-A-T). La categoria (BAIX, MITJÀ o ALT) és la MÀXIMA valoració de les 5 dimensions; MITJÀ i ALT exigeixen Certificació ENS i auditoria cada 2 anys.",
+      "tags": ["ENS", "RD 311/2022", "C-I-D-A-T"]
+    },
+    {
+      "id": "m08-05-fc02",
+      "module": 8,
+      "conceptId": "m08-05-seguretat-ia",
+      "front": "Quina diferència hi ha entre Prompt Injection directe i indirecte?",
+      "back": "En el directe, l'usuari introdueix ordres malicioses al xat; en l'indirecte, les ordres venen amagades dins un document extern (PDF, web, correu) recuperat pel RAG o per un agent.",
+      "tags": ["prompt injection", "OWASP LLM", "seguretat"]
+    },
+    {
+      "id": "m08-05-fc03",
+      "module": 8,
+      "conceptId": "m08-05-seguretat-ia",
+      "front": "Com s'ha d'aplicar l'RBAC en un sistema RAG corporatiu segur?",
+      "back": "Sempre ABANS de la recuperació (pre-filtering determinista sobre metadades ACL a la base vectorial), mai confiant en instruccions al system prompt un cop el document confidencial ja és al context.",
+      "tags": ["RAG", "RBAC", "confidencialitat"]
+    },
+    {
+      "id": "m08-05-fc04",
+      "module": 8,
+      "conceptId": "m08-05-seguretat-ia",
+      "front": "Com es mitiga l'Excessive Agency en agents d'IA públics?",
+      "back": "Aplicant principi de mínim privilegi (allowlist estricta d'eines de lectura), sandboxing, eliminant SQL/codi cru generat per l'LLM i exigint confirmació humana (HITL) abans d'accions d'escriptura o enviaments externs.",
+      "tags": ["agents", "Excessive Agency", "mínim privilegi"]
+    },
+    {
+      "id": "m08-05-fc05",
+      "module": 8,
+      "conceptId": "m08-05-seguretat-ia",
+      "front": "Què exigeix l'article 15.5 de l'AI Act en ciberseguretat per a sistemes d'alt risc?",
+      "back": "Resiliència davant intents no autoritzats d'alterar l'ús, resultats o rendiment, incloent-hi mesures específiques contra enverinament de dades (data poisoning), enverinament de models i entrades adversarials.",
+      "tags": ["AI Act", "art. 15", "ciberseguretat"]
+    }
+  ]
+}

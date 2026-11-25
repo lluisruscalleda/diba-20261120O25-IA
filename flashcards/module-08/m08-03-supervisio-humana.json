@@ -1,0 +1,46 @@
+{
+  "conceptId": "m08-03-supervisio-humana",
+  "module": 8,
+  "cards": [
+    {
+      "id": "m08-03-fc01",
+      "module": 8,
+      "conceptId": "m08-03-supervisio-humana",
+      "front": "Quina diferència hi ha entre HITL, HOTL i HIC?",
+      "back": "HITL (Human-in-the-Loop): humà valida cada decisió; HOTL (Human-on-the-Loop): humà monitora i intervé per excepcions; HIC (Human-in-Command): govern estratègic global i decisió d'activar/aturar el sistema.",
+      "tags": ["HITL", "HOTL", "HIC"]
+    },
+    {
+      "id": "m08-03-fc02",
+      "module": 8,
+      "conceptId": "m08-03-supervisio-humana",
+      "front": "Què garanteix l'article 22 del RGPD davant decisions individuals automatitzades?",
+      "back": "El dret a no ser objecte d'una decisió basada únicament en tractament automatitzat amb efectes jurídics o similars significatius, amb salvaguardes d'intervenció humana real, expressar el punt de vista i impugnar.",
+      "tags": ["RGPD", "art. 22", "decisions automatitzades"]
+    },
+    {
+      "id": "m08-03-fc03",
+      "module": 8,
+      "conceptId": "m08-03-supervisio-humana",
+      "front": "Per què el rubber-stamping (acceptar mecànicament la IA) no compleix l'art. 22 RGPD?",
+      "back": "Perquè sense anàlisi real, temps raonable ni autoritat per canviar la decisió, la intervenció humana no és significativa i la decisió continua essent jurídicament «únicament automatitzada».",
+      "tags": ["rubber-stamping", "biaix automatització", "RGPD"]
+    },
+    {
+      "id": "m08-03-fc04",
+      "module": 8,
+      "conceptId": "m08-03-supervisio-humana",
+      "front": "Quines 5 capacitats exigeix l'art. 14.4 de l'AI Act per a la supervisió humana en alt risc?",
+      "back": "1) Comprendre capacitats i límits; 2) Prevenir el biaix d'automatització; 3) Interpretar sortides; 4) Invalidar o no usar el sistema (override); 5) Intervenir o aturar-lo de manera segura (botó d'aturada).",
+      "tags": ["AI Act", "art. 14", "supervisió humana"]
+    },
+    {
+      "id": "m08-03-fc05",
+      "module": 8,
+      "conceptId": "m08-03-supervisio-humana",
+      "front": "Què exigeix l'art. 41.2 de la Llei 40/2015 (LRJSP) per a una Actuació Administrativa Automatitzada?",
+      "back": "Designar prèviament l'òrgan competent per a especificacions, programació, manteniment, supervisió, control de qualitat i auditoria del sistema/codi font, i indicar l'òrgan responsable d'impugnació.",
+      "tags": ["LRJSP", "art. 41", "AAA"]
+    }
+  ]
+}
