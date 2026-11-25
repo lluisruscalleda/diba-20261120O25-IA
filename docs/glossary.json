@@ -183,6 +183,62 @@
       "module": 1,
       "conceptId": "m01-11-avaluacio-generalitzacio-hiperparametres",
       "definition": "Procediment de validació en dos bucles (intern per seleccionar hiperparàmetres, extern per avaluar el guanyador) que evita el biaix optimista de selecció en conjunts de dades reduïts."
+    },
+    {
+      "id": "tfidf",
+      "term": "TF-IDF",
+      "english": "Term Frequency – Inverse Document Frequency",
+      "module": 2,
+      "conceptId": "m02-01-fonaments-nlp",
+      "definition": "Ponderació estadística que multiplica la freqüència d'un terme en un document per la inversa logarítmica de la seva freqüència documental al corpus, destacant termes discriminatius i penalitzant els omnipresents."
+    },
+    {
+      "id": "bpe",
+      "term": "Byte-Pair Encoding (BPE)",
+      "english": "Byte-Pair Encoding",
+      "module": 2,
+      "conceptId": "m02-02-tokenitzacio",
+      "definition": "Algorisme de tokenització per subparaules que fusiona iterativament el parell adjacent de símbols o bytes més freqüent al corpus, eliminant paraules fora de vocabulari (OOV)."
+    },
+    {
+      "id": "ner-bio",
+      "term": "Esquema BIO (NER)",
+      "english": "Begin-Inside-Outside Tagging Scheme",
+      "module": 2,
+      "conceptId": "m02-06-ner",
+      "definition": "Esquema d'etiquetatge de seqüències per a Reconeixement d'Entitats Anomenades (B- inici d'entitat, I- continuació, O fora d'entitat) que permet delimitar entitats multiparaula adjacents."
+    },
+    {
+      "id": "bm25",
+      "term": "Okapi BM25",
+      "english": "Best Matching 25",
+      "module": 2,
+      "conceptId": "m02-09-recuperacio-informacio",
+      "definition": "Funció probabilística estàndard de recuperació lèxica que millora TF-IDF mitjançant saturació sublineal de la freqüència de terme (k1) i normalització per longitud de document (b)."
+    },
+    {
+      "id": "ndcg",
+      "term": "nDCG@k",
+      "english": "Normalized Discounted Cumulative Gain",
+      "module": 2,
+      "conceptId": "m02-09-recuperacio-informacio",
+      "definition": "Mètrica d'avaluació de rànquing que admet rellevància graduada, aplica un descompte logarítmic per posició i normalitza respecte del rànquing ideal (IDCG@k)."
+    },
+    {
+      "id": "rrf",
+      "term": "Reciprocal Rank Fusion (RRF)",
+      "english": "Reciprocal Rank Fusion",
+      "module": 2,
+      "conceptId": "m02-10-cerca-semantica",
+      "definition": "Mètode de fusió de rànquings en cerca híbrida (Σ w / (k + rank), k=60) que combina resultats de BM25 i cerca vectorial sense dependre d'escales de puntuació incompatibles."
+    },
+    {
+      "id": "cross-encoder",
+      "term": "Cross-Encoder (Reranker)",
+      "english": "Cross-Encoder Reranker",
+      "module": 2,
+      "conceptId": "m02-10-cerca-semantica",
+      "definition": "Arquitectura Transformer que concatena consulta i document en una única seqüència amb atenció creuada completa per reordenar amb alta precisió els top-K candidats d'una etapa prèvia."
     }
   ]
 }

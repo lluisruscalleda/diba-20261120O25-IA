@@ -1,0 +1,46 @@
+{
+  "conceptId": "m02-07-resum-automatic",
+  "module": 2,
+  "cards": [
+    {
+      "id": "m02-07-fc01",
+      "module": 2,
+      "conceptId": "m02-07-resum-automatic",
+      "front": "Quina diferència hi ha entre resum extractiu i resum abstractiu?",
+      "back": "Extractiu: selecciona frases literals existents al text (zero invenció de paraules, menor fluïdesa). Abstractiu: genera text nou sintetitzant/parafrasejant (molt fluid, però risc d'al·lucinacions).",
+      "tags": ["resum", "extractiu vs abstractiu"]
+    },
+    {
+      "id": "m02-07-fc02",
+      "module": 2,
+      "conceptId": "m02-07-resum-automatic",
+      "front": "Quina diferència hi ha entre al·lucinació intrínseca i al·lucinació extrínseca en un resum?",
+      "back": "Intrínseca: contradiu o barreja fets presents al document font (p. ex. 'favorable' en lloc de 'desfavorable'). Extrínseca: introdueix dades o normatives inexistents al text font.",
+      "tags": ["al·lucinacions", "fidelitat"]
+    },
+    {
+      "id": "m02-07-fc03",
+      "module": 2,
+      "conceptId": "m02-07-resum-automatic",
+      "front": "Per què ROUGE i BERTScore no basten per validar resums administratius?",
+      "back": "Perquè mesuren similitud superficial o temàtica i poden donar puntuacions altes fins i tot si el resum inverteix un 'desfavorable' en 'favorable' o altera una xifra. Cal verificació factual NLI + control de xifres/cites.",
+      "tags": ["ROUGE", "avaluació"]
+    },
+    {
+      "id": "m02-07-fc04",
+      "module": 2,
+      "conceptId": "m02-07-resum-automatic",
+      "front": "Com es diferencien Stuffing, Map-Reduce i Refine per resumir documents molt llargs?",
+      "back": "Stuffing: tot en 1 crida (risc Lost in the Middle). Map-Reduce: resumeix seccions en paral·lel i sintetitza. Refine: actualitza seqüencialment el resum bloc a bloc.",
+      "tags": ["documents llargs", "arquitectura"]
+    },
+    {
+      "id": "m02-07-fc05",
+      "module": 2,
+      "conceptId": "m02-07-resum-automatic",
+      "front": "Què és TextRank?",
+      "back": "Algorisme no supervisat de resum extractiu que aplica PageRank sobre el graf de similitud entre frases per seleccionar les més centrals i reordenar-les en l'ordre original.",
+      "tags": ["TextRank", "extractiu"]
+    }
+  ]
+}

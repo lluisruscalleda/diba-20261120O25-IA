@@ -1,12 +1,12 @@
 # PROGRESS.md — Registre d'avanç incremental
 
-Última actualització: 2026-11-25 (Mòdul 1 completat al 100%)
+Última actualització: 2026-11-25 (Mòduls 1 i 2 completats al 100%)
 
 ## Estat actual per fases
 
 - **Fase 1. Planificació**: ✅ Completada
 - **Fase 2. Infraestructura**: ✅ Completada i compilada sense errors
-- **Fase 3. Contingut (Mòduls 1–8)**: 🟨 En curs — **Mòdul 1: 11 de 11 conceptes completats (100% del Mòdul 1; 15,7% del temari global)** — 110 preguntes test, 64 flashcards, 33 preguntes de desenvolupament, 11 exercicis amb solució oculta, 23 termes al glossari.
+- **Fase 3. Contingut (Mòduls 1–8)**: 🟨 En curs — **21 de 70 conceptes completats (30,0% del temari global; Mòdul 1: 11/11 ✅, Mòdul 2: 10/10 ✅)** — 210 preguntes test, 115 flashcards, 63 preguntes de desenvolupament, 21 exercicis amb solució oculta, 30 termes al glossari.
 - **Fase 4. Laboratoris (1–8)**: ⬜ Pendent
 - **Fase 5. Exàmens i simulacres**: ⬜ Pendent
 - **Fase 6. Projecte integrador**: ⬜ Pendent
@@ -16,62 +16,45 @@
 
 ## 1. Què s'ha completat
 
-### Fase 1 — Planificació i governança del repositori
-- `AGENTS.md`, `ROADMAP.md`, `COVERAGE.md`, `PROGRESS.md`, `docs/architecture.md`, `content/syllabus.json`, `docs/glossary.json` (23 termes), `README.md`, `.env.example`, `.gitignore`.
-
-### Fase 2 — Infraestructura completa de la plataforma educativa
-- Scripts `scripts/sync_content.mjs` i `scripts/validate_content.mjs`.
-- Backend opcional FastAPI + SQLite (`backend/`).
-- Frontend complet React 19 + TypeScript + Vite 6 + Tailwind CSS v4 + Mermaid + Recharts (`frontend/`).
-
-### Fase 3 — Mòdul 1 completat (11/11 conceptes amb apartats A–J, codi Python verificat, test ≥10 i flashcards ≥5)
-1. `m01-01-intelligencia-artificial` — 10 preg., 6 flashcards, exemple Python verificat.
-2. `m01-02-machine-learning` — 10 preg., 6 flashcards, exemple NumPy verificat.
-3. `m01-03-deep-learning` — 10 preg., 6 flashcards, xarxa amb backpropagation NumPy verificada.
-4. `m01-04-xarxes-neuronals` — 10 preg., 6 flashcards, comptador de paràmetres i Softmax/Sigmoid verificats.
-5. `m01-05-models-generatius` — 10 preg., 6 flashcards, mostreig temperatura + top-p verificat.
-6. `m01-06-sistemes-experts` — 10 preg., 6 flashcards, motor d'inferència *forward chaining* auditable verificat.
-7. `m01-07-classificacio` — 10 preg., 6 flashcards, regressió logística i ajust de llindar verificats.
-8. `m01-08-regressio` — 10 preg., 5 flashcards, OLS vs Ridge amb multicol·linealitat verificats.
-9. `m01-09-clustering` — 10 preg., 5 flashcards, K-Means estandarditzat + Silhouette verificats.
-10. `m01-10-deteccio-anomalies` — 10 preg., 6 flashcards, Z-score vs MAD (emmascarament) + arbres d'aïllament verificats.
-11. `m01-11-avaluacio-generalitzacio-hiperparametres` — 10 preg., 6 flashcards, validació creuada 5-fold (underfitting → òptim → overfitting) verificada.
+- **Mòdul 1 — Fonaments d'IA (11/11 ✅)**: 110 preguntes test, 64 flashcards, 11 exemples Python/NumPy verificats. Commit `ad6bd39`.
+- **Mòdul 2 — Processament del llenguatge natural (10/10 ✅)**:
+  1. `m02-01-fonaments-nlp` — 10 preg., 6 flashcards, TF-IDF conscient del català (`l·l`, apòstrofs) verificat.
+  2. `m02-02-tokenitzacio` — 10 preg., 5 flashcards, entrenador BPE en Python verificat.
+  3. `m02-03-embeddings-nlp` — 10 preg., 5 flashcards, equivalència cosinus/dot/L2 verificada.
+  4. `m02-04-classificacio-textos` — 10 preg., 5 flashcards, Multinomial Naive Bayes + zona gris verificat.
+  5. `m02-05-extraccio-informacio` — 10 preg., 5 flashcards, extractor híbrid amb validació DNI/Decimal/ISO verificat.
+  6. `m02-06-ner` — 10 preg., 5 flashcards, decodificador BIO + Strict Entity-Level F1 (`seqeval`) verificat.
+  7. `m02-07-resum-automatic` — 10 preg., 5 flashcards, TextRank extractiu + ROUGE-1 verificat.
+  8. `m02-08-traduccio-automatica` — 10 preg., 5 flashcards, BLEU (*clipped precision* + BP) + chrF verificat.
+  9. `m02-09-recuperacio-informacio` — 10 preg., 5 flashcards, Okapi BM25 + Recall@k/MRR/nDCG@k verificat.
+  10. `m02-10-cerca-semantica` — 10 preg., 5 flashcards, cerca híbrida amb Reciprocal Rank Fusion (RRF) verificada.
 
 ---
 
 ## 2. Què queda pendent
 
-- **Mòduls 2 a 8** (59 conceptes restants):
-  - **Mòdul 2** (NLP, 10 conceptes): començar per `m02-01-fonaments-nlp` fins a `m02-10-cerca-semantica`.
-  - **Mòdul 3** (Models generatius, 9 conceptes).
+- **Mòduls 3 a 8** (49 conceptes restants):
+  - **Mòdul 3** (Models generatius, 9 conceptes): `m03-01-llm` .. `m03-09-agents-ia`.
   - **Mòdul 4** (Processament intel·ligent de documents, 8 conceptes).
   - **Mòdul 5** (Assistents virtuals i IA conversacional, 8 conceptes).
   - **Mòdul 6** (Automatització intel·ligent, 6 conceptes).
   - **Mòdul 7** (MLOps i LLMOps, 10 conceptes).
   - **Mòdul 8** (Ús responsable i seguretat de la IA, 8 conceptes).
-- **Fase 4**: 8 laboratoris pràctics executables (Python / Jupyter Notebook + datasets sintètics + tests).
-- **Fase 5**: 8 exàmens de mòdul (40 preg.), 10 simulacres globals (50 preg.), 20 supòsits pràctics independents i 5 simulacres teoricopràctics complets.
-- **Fase 6**: Projecte pràctic final integrador (*Sistema intel·ligent de gestió d'expedients administratius*).
+- **Fase 4**: 8 laboratoris pràctics executables.
+- **Fase 5**: Exàmens de mòdul, simulacres globals, supòsits pràctics i simulacres complets.
+- **Fase 6**: Projecte pràctic final integrador.
 - **Fase 7**: Validació integral final.
 
 ---
 
 ## 3. Comprovacions executades i resultat
 
-- `node scripts/sync_content.mjs`: ✅ OK (11/70 lliçons, 110 preguntes, 64 flashcards, 23 termes glossari).
+- `node scripts/sync_content.mjs`: ✅ OK (21/70 lliçons, 210 preguntes, 115 flashcards, 30 termes glossari).
 - `node scripts/validate_content.mjs`: ✅ OK (0 errors, 0 avisos).
-- `(cd frontend && pnpm build)`: ✅ OK (`tsc -b && vite build` sense errors).
-- Execució directa amb `python3` dels exemples de codi de les 11 lliçons (`1.1` a `1.11`): ✅ Tots verificats i contrastats numèricament amb les interpretacions de cada lliçó.
+- Execució directa amb `python3` dels 10 exemples de codi del Mòdul 2 (`2.1` a `2.10`): ✅ Tots verificats i contrastats.
 
 ---
 
-## 4. Errors detectats / Limitacions conegudes
+## 4. Següent tasca exacta
 
-- `scikit-learn`, `fastapi` i `pytest` no estan instal·lats al Python global (sí `numpy 2.3.5` i `pandas 2.3.3`); s'instal·laran en un entorn virtual dedicat (`.venv`) en iniciar la Fase 4.
-- Els chunks de producció de Vite inclouen `mermaid` i `recharts` al bundle principal (avís informatiu de mida >500 kB); optimitzable amb `manualChunks` / importació dinàmica.
-
----
-
-## 5. Següent tasca exacta
-
-Iniciar el **Mòdul 2 — Processament del llenguatge natural (10 conceptes)** desenvolupant seqüencialment des de `m02-01-fonaments-nlp` fins a `m02-10-cerca-semantica` (lliçó A–J + 10 preguntes test + ≥5 flashcards per concepte), amb execució verificada dels exemples Python, actualització del glossari, `COVERAGE.md`, `PROGRESS.md` i validació automàtica.
+Iniciar el **Mòdul 3 — Models generatius (9 conceptes)** des de `m03-01-llm` fins a `m03-09-agents-ia`, validar-lo amb 0 errors i 0 avisos, actualitzar `COVERAGE.md`, `ROADMAP.md`, `PROGRESS.md` i `docs/glossary.json`, i fer-ne el commit.

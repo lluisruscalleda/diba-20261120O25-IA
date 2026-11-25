@@ -9,9 +9,9 @@ Llegenda d'estat:
 
 | Dimensió | Completats | Objectiu | Cobertura |
 |---|---:|---:|---:|
-| Lliçons (Teoria + Exemple + Exercici + Desenvolupament + Resum) | 11 | 70 | 15,7% |
-| Tests individuals (mín. 10 preguntes / concepte) | 11 (110 preg.) | 70 (≥700 preg.) | 15,7% |
-| Flashcards per concepte (mín. 5 / concepte) | 11 (64 fitxes) | 70 (≥350 fitxes) | 15,7% |
+| Lliçons (Teoria + Exemple + Exercici + Desenvolupament + Resum) | 21 | 70 | 30,0% |
+| Tests individuals (mín. 10 preguntes / concepte) | 21 (210 preg.) | 70 (≥700 preg.) | 30,0% |
+| Flashcards per concepte (mín. 5 / concepte) | 21 (115 fitxes) | 70 (≥350 fitxes) | 30,0% |
 | Laboratoris pràctics | 0 | 8 | 0% |
 | Exàmens de mòdul (40 preg.) | 0 | 8 | 0% |
 | Simulacres globals (50 preg.) | 0 | 10 | 0% |
@@ -41,16 +41,16 @@ Llegenda d'estat:
 
 | ID | Concepte oficial | Teoria (A-E) | Exemple (F) | Exercici (G) | Test ≥10 (H) | Desenv. ≥3 (I) | Resum+FC (J) | Estat |
 |---|---|---|---|---|---|---|---|---|
-| `m02-01-fonaments-nlp` | Fonaments del NLP (BoW, TF-IDF) | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m02-02-tokenitzacio` | Tokenització | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m02-03-embeddings-nlp` | Embeddings (perspectiva NLP, contextuals, similitud cosinus) | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m02-04-classificacio-textos` | Classificació de textos | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m02-05-extraccio-informacio` | Extracció d'informació | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m02-06-ner` | Reconeixement d'entitats (NER) | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m02-07-resum-automatic` | Resum automàtic | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m02-08-traduccio-automatica` | Traducció automàtica | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m02-09-recuperacio-informacio` | Recuperació d'informació (BM25, TF-IDF) | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m02-10-cerca-semantica` | Cerca semàntica (lèxica vs semàntica vs híbrida) | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
+| `m02-01-fonaments-nlp` | Fonaments del NLP (BoW, TF-IDF) | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (6) | ✅ |
+| `m02-02-tokenitzacio` | Tokenització | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m02-03-embeddings-nlp` | Embeddings (perspectiva NLP, contextuals, similitud cosinus) | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m02-04-classificacio-textos` | Classificació de textos | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m02-05-extraccio-informacio` | Extracció d'informació | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m02-06-ner` | Reconeixement d'entitats (NER) | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m02-07-resum-automatic` | Resum automàtic | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m02-08-traduccio-automatica` | Traducció automàtica | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m02-09-recuperacio-informacio` | Recuperació d'informació (BM25, TF-IDF) | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m02-10-cerca-semantica` | Cerca semàntica (lèxica vs semàntica vs híbrida) | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
 
 ## Mòdul 3. Models generatius
 

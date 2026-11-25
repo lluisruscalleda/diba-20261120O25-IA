@@ -1,0 +1,46 @@
+{
+  "conceptId": "m02-08-traduccio-automatica",
+  "module": 2,
+  "cards": [
+    {
+      "id": "m02-08-fc01",
+      "module": 2,
+      "conceptId": "m02-08-traduccio-automatica",
+      "front": "Quins són els 4 paradigmes històrics i actuals de Traducció Automàtica?",
+      "back": "RBMT (regles, p. ex. Apertium), SMT (estadística per frases), NMT (Transformer Encoder-Decoder: AINA, Softcatalà, NLLB-200) i LLM-MT (context documental + glossaris al prompt).",
+      "tags": ["traducció automàtica", "NMT"]
+    },
+    {
+      "id": "m02-08-fc02",
+      "module": 2,
+      "conceptId": "m02-08-traduccio-automatica",
+      "front": "Per què BLEU incorpora *clipped precision* i *Brevity Penalty*?",
+      "back": "Clipped precision evita inflar la nota repetint una mateixa paraula correcta; Brevity Penalty castiga traduccions massa curtes que ometen part del contingut.",
+      "tags": ["BLEU", "mètriques"]
+    },
+    {
+      "id": "m02-08-fc03",
+      "module": 2,
+      "conceptId": "m02-08-traduccio-automatica",
+      "front": "Per què chrF i COMET superen BLEU per avaluar traduccions al català?",
+      "back": "chrF treballa amb n-grames de caràcters (robust a la rica flexió morfològica catalana) i COMET és una mètrica neuronal que avalua equivalència semàntica amb alta correlació humana (COMET-QE fins i tot sense referència).",
+      "tags": ["chrF", "COMET"]
+    },
+    {
+      "id": "m02-08-fc04",
+      "module": 2,
+      "conceptId": "m02-08-traduccio-automatica",
+      "front": "Quina combinació garanteix qualitat, coherència i compliment RGPD en traducció administrativa?",
+      "back": "Motor NMT/LLM *on-premise* (mai traductors web públics amb dades personals!) + Memòria de Traducció (TMX) + glossari oficial TERMCAT + post-edició humana (MTPE) obligatòria en textos oficials.",
+      "tags": ["MTPE", "RGPD", "TERMCAT"]
+    },
+    {
+      "id": "m02-08-fc05",
+      "module": 2,
+      "conceptId": "m02-08-traduccio-automatica",
+      "front": "Quin perill específic comporta la gran fluïdesa de la traducció neuronal en documents jurídics?",
+      "back": "Camufla errors greus de sentit (falsos amics, omissions de negacions o xifres alterades) sota una redacció impecable, afavorint el biaix d'automatització si no es contrasta amb l'origen.",
+      "tags": ["riscos", "MTPE"]
+    }
+  ]
+}

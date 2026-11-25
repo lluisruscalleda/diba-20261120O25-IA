@@ -1,0 +1,46 @@
+{
+  "conceptId": "m02-04-classificacio-textos",
+  "module": 2,
+  "cards": [
+    {
+      "id": "m02-04-fc01",
+      "module": 2,
+      "conceptId": "m02-04-classificacio-textos",
+      "front": "Quina diferència d'activació i pèrdua hi ha entre classificació multiclasse i multietiqueta?",
+      "back": "Multiclasse: Softmax + Categorical Cross-Entropy (1 sola etiqueta). Multietiqueta: K Sigmoids independents + Binary Cross-Entropy (0..K etiquetes simultànies, amb llindar ajustable per etiqueta).",
+      "tags": ["multietiqueta", "arquitectura"]
+    },
+    {
+      "id": "m02-04-fc02",
+      "module": 2,
+      "conceptId": "m02-04-classificacio-textos",
+      "front": "Quan escolliries TF-IDF+Lineal, SetFit, Encoder fine-tuned o LLM zero-shot?",
+      "back": "TF-IDF: sempre com a baseline i producció simple. SetFit: molt poques etiquetes (10-200/classe). Encoder fine-tuned (RoBERTa-ca/XLM-R): producció d'alt volum i RGPD. LLM: cold start o destil·lació offline.",
+      "tags": ["selecció de models", "NLP"]
+    },
+    {
+      "id": "m02-04-fc03",
+      "module": 2,
+      "conceptId": "m02-04-classificacio-textos",
+      "front": "Com s'adapten documents administratius de >512 tokens a un encoder Transformer clàssic?",
+      "back": "Mitjançant truncament Head + Tail (primers 256 + últims 256 tokens per conservar assumpte i part dispositiva), sliding window amb agregació de logits, o encoders de context llarg.",
+      "tags": ["textos llargs", "Transformers"]
+    },
+    {
+      "id": "m02-04-fc04",
+      "module": 2,
+      "conceptId": "m02-04-classificacio-textos",
+      "front": "Què és la classificació selectiva (zona gris) i com es connecta amb Active Learning?",
+      "back": "Derivar a revisió humana els casos amb probabilitat calibrada per sota d'un llindar, garantint alta precisió en els automatitzats i reincorporant les correccions humanes (casos més informatius) al reentrenament.",
+      "tags": ["Active Learning", "HITL"]
+    },
+    {
+      "id": "m02-04-fc05",
+      "module": 2,
+      "conceptId": "m02-04-classificacio-textos",
+      "front": "Per què s'utilitza Macro-F1 en classificació d'instàncies amb àrees de volums molt desiguals?",
+      "back": "Perquè pondera per igual totes les categories, assegurant que el rendiment en àrees minoritàries no quedi amagat darrere les 2-3 àrees amb més volum.",
+      "tags": ["Macro-F1", "mètriques"]
+    }
+  ]
+}

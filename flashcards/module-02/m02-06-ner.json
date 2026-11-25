@@ -1,0 +1,46 @@
+{
+  "conceptId": "m02-06-ner",
+  "module": 2,
+  "cards": [
+    {
+      "id": "m02-06-fc01",
+      "module": 2,
+      "conceptId": "m02-06-ner",
+      "front": "Què signifiquen B-, I- i O en l'esquema BIO d'NER i per què cal B-?",
+      "back": "Begin (inici d'entitat), Inside (continuació) i Outside (fora d'entitat). B- és indispensable per separar dues entitats adjacents del mateix tipus sense fusionar-les.",
+      "tags": ["BIO", "NER"]
+    },
+    {
+      "id": "m02-06-fc02",
+      "module": 2,
+      "conceptId": "m02-06-ner",
+      "front": "Per què s'avalua NER amb Strict Entity-Level F1 (`seqeval`) i NO amb Token Accuracy?",
+      "back": "Perquè el 85-95% dels tokens són O (un model que sempre prediu O treu ~90% accuracy però 0% F1). seqeval exigeix coincidència exacta d'inici, fi i tipus d'entitat.",
+      "tags": ["seqeval", "mètriques"]
+    },
+    {
+      "id": "m02-06-fc03",
+      "module": 2,
+      "conceptId": "m02-06-ner",
+      "front": "Com s'alineen les etiquetes BIO quan un tokenitzador parteix una paraula en diversos subtokens?",
+      "back": "S'assigna l'etiqueta real (B-/I-) al primer subtoken i `-100` als subtokens de continuació (ignorats a CrossEntropyLoss) o `I-` consistentment; MAI repetir `B-` als subtokens interns.",
+      "tags": ["subwords", "Transformers"]
+    },
+    {
+      "id": "m02-06-fc04",
+      "module": 2,
+      "conceptId": "m02-06-ner",
+      "front": "Què aporta una capa CRF damunt d'un encoder en NER?",
+      "back": "Aprèn puntuacions de transició entre etiquetes consecutives i decodifica la seqüència global òptima (Viterbi), evitant transicions BIO impossibles com O → I-ORG.",
+      "tags": ["CRF", "arquitectura"]
+    },
+    {
+      "id": "m02-06-fc05",
+      "module": 2,
+      "conceptId": "m02-06-ner",
+      "front": "Per què en NER s'han d'utilitzar models *cased* i què és GLiNER?",
+      "back": "Els models *cased* conserven les majúscules (senyal fort de nom propi). GLiNER és un model compacte de Zero-Shot NER que detecta etiquetes noves de domini sense reentrenar.",
+      "tags": ["cased", "GLiNER"]
+    }
+  ]
+}

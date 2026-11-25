@@ -1,0 +1,236 @@
+{
+  "conceptId": "m02-04-classificacio-textos",
+  "module": 2,
+  "questions": [
+    {
+      "id": "m02-04-q01",
+      "module": 2,
+      "conceptId": "m02-04-classificacio-textos",
+      "lessonRef": "content/module-02/m02-04-classificacio-textos.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Una instància ciutadana pot pertànyer simultàniament a diverses etiquetes temàtiques (p. ex., `mobilitat`, `accessibilitat` i `via_publica`). Quin tipus de classificació és i quina activació de sortida correspon?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Classificació multietiqueta (multi-label), amb una funció Sigmoid independent per a cada etiqueta i Binary Cross-Entropy." },
+        { "key": "B", "text": "Classificació multiclasse excloent amb una única funció Softmax." },
+        { "key": "C", "text": "Regressió lineal amb MSE." },
+        { "key": "D", "text": "Clustering no supervisat amb K-Means." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "En multi-label les etiquetes no són mútuament excloents; K Sigmoids independents permeten que múltiples etiquetes tinguin probabilitats altes alhora sense obligar que sumin 1.",
+      "explanationsIncorrect": {
+        "B": "Softmax força que les probabilitats sumin 1, competint entre si i impedint múltiples etiquetes altes simultànies.",
+        "C": "És un problema de classificació d'etiquetes discretes, no de regressió contínua.",
+        "D": "Disposem d'etiquetes predefinides (supervisat)."
+      }
+    },
+    {
+      "id": "m02-04-q02",
+      "module": 2,
+      "conceptId": "m02-04-classificacio-textos",
+      "lessonRef": "content/module-02/m02-04-classificacio-textos.md",
+      "difficulty": "basic",
+      "questionType": "metrics",
+      "prompt": "En un classificador d'instàncies en 14 àrees municipals on 3 àrees concentren el 80% del volum i 5 àrees menors només tenen un 1% cadascuna, quina mètrica assegura que no ignorem el rendiment de les àrees petites?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Accuracy global." },
+        { "key": "B", "text": "Macro-F1 (mitjana aritmètica sense ponderar de l'F1 de cada classe)." },
+        { "key": "C", "text": "MSE." },
+        { "key": "D", "text": "Nombre total de tokens del corpus." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Macro-F1 dona el mateix pes a cadascuna de les 14 àrees, de manera que fallar sistemàticament en les 5 àrees minoritàries penalitza fortament la puntuació global.",
+      "explanationsIncorrect": {
+        "A": "L'Accuracy global podria ser del 85% fins i tot encertant el 0% en les 5 àrees petites.",
+        "C": "MSE és una mètrica de regressió.",
+        "D": "No és una mètrica de qualitat predictiva."
+      }
+    },
+    {
+      "id": "m02-04-q03",
+      "module": 2,
+      "conceptId": "m02-04-classificacio-textos",
+      "lessonRef": "content/module-02/m02-04-classificacio-textos.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Per a què serveix el **suavitzat de Laplace (α > 0)** en un classificador Multinomial Naive Bayes?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Per eliminar les stopwords del text." },
+        { "key": "B", "text": "Per reduir el nombre de classes a la meitat." },
+        { "key": "C", "text": "Per evitar que una paraula del vocabulari que no ha aparegut mai en una classe concreta assigni probabilitat 0 (o log(0) = −∞) anul·lant tota la resta d'evidència." },
+        { "key": "D", "text": "Per convertir Naive Bayes en un Transformer." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Afegir α (habitualment 1,0) a tots els recomptes assegura probabilitats condicionals estrictament positives, evitant el problema de probabilitat zero davant mots rars.",
+      "explanationsIncorrect": {
+        "A": "No elimina stopwords.",
+        "B": "Conserva totes les classes originals.",
+        "D": "Continua sent un model probabilístic lineal en espai logarítmic."
+      }
+    },
+    {
+      "id": "m02-04-q04",
+      "module": 2,
+      "conceptId": "m02-04-classificacio-textos",
+      "lessonRef": "content/module-02/m02-04-classificacio-textos.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Vols desplegar en producció un classificador que processa 200.000 documents administratius/any *on-premise* (amb dades personals sensibles) i disposes de 12.000 exemples històrics ben etiquetats. Quina arquitectura ofereix el millor equilibri entre precisió, cost, latència i privacitat?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Enviar tots els documents sense anonimitzar a una API LLM comercial de pagament per token." },
+        { "key": "B", "text": "Fer *fine-tuning* local d'un encoder Transformer compacte (p. ex., `RoBERTa-ca` o `XLM-RoBERTa-base`, comparat contra un baseline TF-IDF+Lineal) i servir-lo *on-premise*." },
+        { "key": "C", "text": "Entrenar des de zero un LLM generatiu de 70.000 milions de paràmetres." },
+        { "key": "D", "text": "Utilitzar un diccionari manual de 5 paraules per classe." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Amb 12.000 exemples etiquetats i requisits d'alt volum/RGPD, un encoder preentrenat *fine-tuned* local supera els LLMs zero-shot en precisió de domini, és ordres de magnitud més ràpid i barat, i manté les dades 100% dins la infraestructura pública.",
+      "explanationsIncorrect": {
+        "A": "Incompleix el principi de minimització/privacitat amb dades sensibles i multiplica costos i latència innecessàriament.",
+        "C": "Entrenar un 70B des de zero és inviable econòmicament i absurd per a una tasca de classificació amb 12k exemples.",
+        "D": "Regles manuals rígides no escalen a la variabilitat lingüística de 200.000 documents."
+      }
+    },
+    {
+      "id": "m02-04-q05",
+      "module": 2,
+      "conceptId": "m02-04-classificacio-textos",
+      "lessonRef": "content/module-02/m02-04-classificacio-textos.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Un ajuntament crea una taxonomia nova de 8 categories per a queixes ciutadanes i només disposa de **15 exemples etiquetats per categoria** (120 en total). Quina aproximació és la més adequada per obtenir un model funcional ràpidament?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Entrenar una xarxa neuronal profunda des de zero amb 12 capes." },
+        { "key": "B", "text": "Utilitzar embeddings multilingües amb un classificador regularitzat o **SetFit** (entrenament contrastiu *few-shot*), o bé un LLM *few-shot* per pre-etiquetar i destil·lar." },
+        { "key": "C", "text": "Esperar 5 anys fins tenir 100.000 registres sense fer cap prova." },
+        { "key": "D", "text": "Aplicar regressió polinòmica de grau 10." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "SetFit (Sentence Transformer Fine-Tuning) genera parells contrastius a partir de pocs exemples (8-32 per classe) i assoleix rendiments sorprenentment alts en règims few-shot.",
+      "explanationsIncorrect": {
+        "A": "Amb només 120 textos, una xarxa profunda des de zero patiria overfitting extrem.",
+        "C": "No aprofita les tècniques modernes de transfer learning i few-shot.",
+        "D": "La regressió polinòmica no aplica a classificació textual."
+      }
+    },
+    {
+      "id": "m02-04-q06",
+      "module": 2,
+      "conceptId": "m02-04-classificacio-textos",
+      "lessonRef": "content/module-02/m02-04-classificacio-textos.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Tens decrets administratius de 1.800 tokens on l'encapçalament (primers 200 tokens) descriu l'objecte i la part dispositiva final (últims 250 tokens) conté la resolució clau. Si uses un encoder amb límit de `512 tokens`, quina estratègia pràctica evita perdre la part dispositiva?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Truncar sempre conservant únicament els primers 512 tokens." },
+        { "key": "B", "text": "Eliminar totes les vocals per escurçar el text." },
+        { "key": "C", "text": "Aplicar truncament **Head + Tail** (p. ex., primers 256 tokens + últims 256 tokens) o *sliding window* amb agregació de logits per finestra." },
+        { "key": "D", "text": "Dividir la taxa d'aprenentatge per 4." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "En documents jurídics i administratius, la informació més discriminativa es concentra a l'inici (assumpte/antecedents) i al final (resolució/sol·licito); Head+Tail o sliding window la preserva dins el límit de 512 tokens.",
+      "explanationsIncorrect": {
+        "A": "Truncar només pel final descartaria sempre la part dispositiva del decret.",
+        "B": "Destruiria el text i trencaria el tokenitzador.",
+        "D": "La taxa d'aprenentatge no amplia la finestra de context."
+      }
+    },
+    {
+      "id": "m02-04-q07",
+      "module": 2,
+      "conceptId": "m02-04-classificacio-textos",
+      "lessonRef": "content/module-02/m02-04-classificacio-textos.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "En un sistema de classificació d'instàncies amb «zona gris» (abstenció), què fa el sistema quan la probabilitat màxima calibrada és `0,48` (per sota del llindar `0,75`)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Esborra la instància del registre electrònic." },
+        { "key": "B", "text": "La reenvia aleatòriament a qualsevol departament." },
+        { "key": "C", "text": "Redueix automàticament el llindar a 0,40." },
+        { "key": "D", "text": "S'absté d'enrutar-la automàticament i la deriva a la cua de revisió humana (mostrant les 2-3 classes candidates per agilitzar la decisió), aprofitant la correcció per a Active Learning." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "L'abstenció selectiva protegeix la qualitat del servei en casos ambigus, facilita la feina humana suggerint el top-k i alimenta amb exemples d'alt valor el reentrenament.",
+      "explanationsIncorrect": {
+        "A": "Mai es pot esborrar una instància registrada oficialment.",
+        "B": "L'enrutament aleatori genera retards i errors administratius.",
+        "C": "Abaixar el llindar ad hoc degradaria la precisió pactada."
+      }
+    },
+    {
+      "id": "m02-04-q08",
+      "module": 2,
+      "conceptId": "m02-04-classificacio-textos",
+      "lessonRef": "content/module-02/m02-04-classificacio-textos.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En el mètode `predict_proba` del classificador Naive Bayes de la lliçó, per què s'executa `log_post -= np.max(log_post)` abans de calcular `np.exp(log_post)`?",
+      "codeSnippet": "log_post -= np.max(log_post)\nprobs = np.exp(log_post)\nprobs /= np.sum(probs)",
+      "options": [
+        { "key": "A", "text": "És el truc d'estabilitat numèrica de Softmax (invariant per translació): evita que exponenciar log-probabilitats molt negatives (p. ex. -900 en documents llargs) produeixi underflow a 0.0 i divisió 0/0 (NaN)." },
+        { "key": "B", "text": "Per forçar que la classe guanyadora tingui sempre probabilitat exactament 1,0." },
+        { "key": "C", "text": "Per aplicar regularització L2 als logaritmes." },
+        { "key": "D", "text": "Per eliminar les classes amb probabilitat menor a 0,5." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "En documents llargs, la suma de log-probabilitats pot ser -800 o inferior, on `exp(-800)` en float64 fa underflow a `0.0`. Restar `max(log_post)` desplaça el màxim a `0.0` (`exp(0) = 1.0`) sense alterar el resultat matemàtic exacte de Softmax.",
+      "explanationsIncorrect": {
+        "B": "Restar una constant a tots els logits deixa inalterades les probabilitats relatives de Softmax.",
+        "C": "No és regularització sinó estabilitat en coma flotant.",
+        "D": "Conserva totes les classes amb les seves probabilitats reals."
+      }
+    },
+    {
+      "id": "m02-04-q09",
+      "module": 2,
+      "conceptId": "m02-04-classificacio-textos",
+      "lessonRef": "content/module-02/m02-04-classificacio-textos.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "En què consisteix el patró d'enginyeria **destil·lació de coneixement (LLM → Encoder)** aplicat a classificació de textos en l'Administració?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Substituir un classificador lineal per un LLM de 400B paràmetres en cada petició." },
+        { "key": "B", "text": "Utilitzar un LLM potent en fase offline (amb validació humana per mostreig) per generar etiquetes o distribucions suaus sobre un gran volum de textos no etiquetats, i entrenar-hi un encoder compacte (p. ex. RoBERTa-ca) que s'executa ràpid, barat i on-premise en producció." },
+        { "key": "C", "text": "Esborrar aleatòriament el 90% del dataset d'entrenament." },
+        { "key": "D", "text": "Traduir tots els textos a un sol idioma abans d'aplicar TF-IDF." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "La destil·lació combina la capacitat zero/few-shot d'un LLM en fase de preparació amb l'eficiència, predictibilitat i baix cost d'un encoder petit en producció.",
+      "explanationsIncorrect": {
+        "A": "Això seria exactament el contrari de la destil·lació.",
+        "C": "La destil·lació transfereix coneixement, no esborra dades aleatòriament.",
+        "D": "No consisteix en traducció."
+      }
+    },
+    {
+      "id": "m02-04-q10",
+      "module": 2,
+      "conceptId": "m02-04-classificacio-textos",
+      "lessonRef": "content/module-02/m02-04-classificacio-textos.md",
+      "difficulty": "advanced",
+      "questionType": "metrics",
+      "prompt": "En classificació multietiqueta, quin defecte té utilitzar **Subset Accuracy (Exact Match Ratio)** com a única mètrica d'avaluació quan cada expedient pot tenir fins a 18 etiquetes?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Dona sempre 1,0 encara que totes les prediccions siguin incorrectes." },
+        { "key": "B", "text": "Només es pot calcular en classificació binària." },
+        { "key": "C", "text": "Ignora els falsos positius." },
+        { "key": "D", "text": "És extremadament estricte: si el model encerta 17 de les 18 etiquetes d'un expedient i falla només 1, puntua el document complet amb 0, sense distingir-lo d'un model que les falla totes 18." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Exact Match exigeix coincidència absoluta en tot el vector binari de 18 posicions; per això s'ha de complementar sempre amb Macro-F1, Micro-F1 i Hamming Loss, que mesuren encerts parcials per etiqueta.",
+      "explanationsIncorrect": {
+        "A": "Al contrari, tendeix a ser molt baix i exigent.",
+        "B": "Es defineix específicament per a multietiqueta.",
+        "C": "Qualsevol fals positiu o fals negatiu fa caure la puntuació del document a 0."
+      }
+    }
+  ]
+}

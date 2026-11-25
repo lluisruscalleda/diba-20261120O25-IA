@@ -1,0 +1,236 @@
+{
+  "conceptId": "m02-05-extraccio-informacio",
+  "module": 2,
+  "questions": [
+    {
+      "id": "m02-05-q01",
+      "module": 2,
+      "conceptId": "m02-05-extraccio-informacio",
+      "lessonRef": "content/module-02/m02-05-extraccio-informacio.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quin és l'objectiu principal de l'**Extracció d'Informació (Information Extraction, IE)** en NLP?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Comprimir imatges escanejades en format JPEG." },
+        { "key": "B", "text": "Transformar text no estructurat en registres estructurats, tipats i normalitzats (entitats, camps, relacions o esdeveniments) aptes per a bases de dades o sistemes de gestió." },
+        { "key": "C", "text": "Traducir automàticament un document del català a l'alemany." },
+        { "key": "D", "text": "Agrupar documents sense etiquetes mitjançant K-Means." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "L'IE identifica i extreu camps concrets, relacions i esdeveniments dins de text lliure per poblar esquemes estructurats (JSON, taules SQL, gestors d'expedients).",
+      "explanationsIncorrect": {
+        "A": "Això és processament d'imatge, no IE.",
+        "C": "Això correspon a la traducció automàtica.",
+        "D": "Això és clustering no supervisat."
+      }
+    },
+    {
+      "id": "m02-05-q02",
+      "module": 2,
+      "conceptId": "m02-05-extraccio-informacio",
+      "lessonRef": "content/module-02/m02-05-extraccio-informacio.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "En quina situació les **expressions regulars (regex)** són especialment eficaces dins d'un pipeline d'extracció d'informació?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Per detectar patrons amb format rígid i ben definit (codis d'expedient, DNI/NIE, IBAN, matrícules), especialment si es combinen amb validadors algorítmics de dígit de control." },
+        { "key": "B", "text": "Per resumir en un paràgraf el contingut jurídic d'una sentència de 40 pàgines." },
+        { "key": "C", "text": "Per determinar l'opinió implícita o ironia d'una queixa ciutadana." },
+        { "key": "D", "text": "Per resoldre correferències complexes entre paràgrafs." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Regex brilla en patrons estructurats i sintàctics on ofereix velocitat instantània i determinisme 100%, però no substitueix models semàntics en llenguatge lliure o ambigu.",
+      "explanationsIncorrect": {
+        "B": "El resum abstractiu requereix comprensió semàntica (models generatius).",
+        "C": "La pragmàtica i ironia escapen completament a les expressions regulars.",
+        "D": "La resolució de correferències requereix comprensió discursiva i sintàctica."
+      }
+    },
+    {
+      "id": "m02-05-q03",
+      "module": 2,
+      "conceptId": "m02-05-extraccio-informacio",
+      "lessonRef": "content/module-02/m02-05-extraccio-informacio.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Per què en sistemes d'extracció d'imports monetaris de subvencions o factures s'ha d'emmagatzemar la xifra normalitzada com a `Decimal` (o cèntims enters) en lloc de `float`?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè Python no suporta nombres `float`." },
+        { "key": "B", "text": "Perquè `Decimal` ocupa menys memòria que un bit." },
+        { "key": "C", "text": "Per evitar errors d'arrodoniment en coma flotant binària (p. ex. `0.1 + 0.2 = 0.30000000000000004`) que trencarien comprovacions comptables exactes (`base + IVA == total`)." },
+        { "key": "D", "text": "Perquè els JSON Schema prohibeixen els nombres decimals." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "L'aritmètica binària IEEE 754 no representa exactament moltes fraccions decimals; `Decimal` (o enters en cèntims) garanteix exactitud comptable en verificacions d'imports públics.",
+      "explanationsIncorrect": {
+        "A": "Python suporta `float` nativament.",
+        "B": "`Decimal` és més precís, no ocupa menys que un bit.",
+        "D": "JSON Schema admet nombres, però en comptabilitat sovint es transmeten com a cadena decimal exacta o cèntims enters."
+      }
+    },
+    {
+      "id": "m02-05-q04",
+      "module": 2,
+      "conceptId": "m02-05-extraccio-informacio",
+      "lessonRef": "content/module-02/m02-05-extraccio-informacio.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Un LLM amb *Structured Outputs* (JSON Schema) extreu camps d'una resolució. Quina afirmació sobre el *constrained decoding* és CERTA?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Garanteix que totes les dades extretes són 100% certes i mai hi ha al·lucinacions." },
+        { "key": "B", "text": "Garanteix la validesa sintàctica i estructural del JSON respecte de l'esquema, però NO garanteix la veracitat semàntica dels valors; cal complementar-lo amb `null` permès, verificació de cita literal i regles deterministes." },
+        { "key": "C", "text": "Elimina la necessitat de passar el text del document al prompt." },
+        { "key": "D", "text": "Impedeix fer servir el model en català." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "La decodificació restringida assegura que el JSON parsegi i respecti tipus/claus, però l'LLM encara podria omplir un camp amb un valor erroni o inventat si no hi ha controls semàntics i de grounding.",
+      "explanationsIncorrect": {
+        "A": "Confondre validesa sintàctica amb veracitat semàntica és un error clàssic.",
+        "C": "Òbviament el document font continua sent l'entrada indispensable.",
+        "D": "Funciona perfectament en qualsevol idioma."
+      }
+    },
+    {
+      "id": "m02-05-q05",
+      "module": 2,
+      "conceptId": "m02-05-extraccio-informacio",
+      "lessonRef": "content/module-02/m02-05-extraccio-informacio.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "En una resolució apareixen tres dates diferents: la data d'entrada de la sol·licitud (`10/03/2026`), la data de l'informe tècnic (`22/04/2026`) i la data límit de justificació (`30/11/2026`). Per què una expressió regular simple `\\d{2}/\\d{2}/\\d{4}` és insuficient per omplir el camp `data_limit_justificacio`?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè el regex troba les tres dates però no entén el rol semàntic de cadascuna davant variacions en la redacció de cada decret." },
+        { "key": "B", "text": "Perquè les expressions regulars no poden detectar dígits." },
+        { "key": "C", "text": "Perquè les dates en format europeu no es poden convertir a ISO-8601." },
+        { "key": "D", "text": "Perquè una resolució administrativa només pot tenir una sola data." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Reconèixer quina de les múltiples dates del document correspon a un rol administratiu concret requereix comprensió contextual (model neuronal / LLM estructurat), mentre regex pot validar-ne el format.",
+      "explanationsIncorrect": {
+        "B": "Les regex detecten dígits trivialment.",
+        "C": "La conversió DD/MM/AAAA -> AAAA-MM-DD és directa.",
+        "D": "Els documents administratius contenen habitualment múltiples dates."
+      }
+    },
+    {
+      "id": "m02-05-q06",
+      "module": 2,
+      "conceptId": "m02-05-extraccio-informacio",
+      "lessonRef": "content/module-02/m02-05-extraccio-informacio.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Com redueix dràsticament les al·lucinacions exigir un camp `cita_literal` (*evidence span*) al costat de cada camp extret per un LLM?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Redueix el nombre de tokens generats a zero." },
+        { "key": "B", "text": "Elimina la necessitat de revisar cap document." },
+        { "key": "C", "text": "Permet verificar programàticament que la cita apareix literalment dins el document original i facilita que el personal revisor comprovi en segons la font exacta ressaltada." },
+        { "key": "D", "text": "Converteix l'LLM en un sistema expert determinista." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "La comprovació de subcadena (grounding check) detecta immediatament cites inventades i proporciona traçabilitat i auditabilitat directa per a la supervisió humana.",
+      "explanationsIncorrect": {
+        "A": "Al contrari, genera alguns tokens extra a canvi de moltíssima fiabilitat i traçabilitat.",
+        "B": "Facilita la revisió humana, no l'elimina en casos crítics.",
+        "D": "L'LLM continua sent probabilístic, però queda envoltat d'una capa de verificació determinista."
+      }
+    },
+    {
+      "id": "m02-05-q07",
+      "module": 2,
+      "conceptId": "m02-05-extraccio-informacio",
+      "lessonRef": "content/module-02/m02-05-extraccio-informacio.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "En un sistema automatitzat d'**anonimització de resolucions** prèvia a la publicació al portal de transparència (RGPD), quina mètrica cal prioritzar per sobre de tot?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Velocitat d'execució a costa de deixar escapar la meitat dels DNIs." },
+        { "key": "B", "text": "Precision al 100% encara que el Recall sigui del 60%." },
+        { "key": "C", "text": "Perplexitat del model de llenguatge." },
+        { "key": "D", "text": "Recall (sensibilitat) extremadament alt sobre totes les categories de PII, ja que un fals negatiu suposa exposar públicament dades personals (bretxa RGPD), complementat amb revisió humana final." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "En anonimització, els falsos negatius (deixar dades personals visibles públicament) tenen un impacte jurídic gravíssim; un fals positiu puntual (emmascarar un terme no personal) es corregeix fàcilment en la revisió humana.",
+      "explanationsIncorrect": {
+        "A": "Deixar escapar DNIs provocaria bretxes greus de protecció de dades.",
+        "B": "Un Recall del 60% deixaria el 40% de les dades personals sense anonimitzar.",
+        "C": "La perplexitat no mesura detecció de dades personals."
+      }
+    },
+    {
+      "id": "m02-05-q08",
+      "module": 2,
+      "conceptId": "m02-05-extraccio-informacio",
+      "lessonRef": "content/module-02/m02-05-extraccio-informacio.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En l'exemple Python de la lliçó, què aconsegueix la combinació de `re.search(r\"\\b(\\d{8}[A-Za-z])\\b\", text)` seguida de `validar_dni(dni)`?",
+      "codeSnippet": "def validar_dni(dni: str) -> bool:\n    ...\n    return LLETRES_DNI[int(dni[:8]) % 23] == dni[8]",
+      "options": [
+        { "key": "A", "text": "Permet detectar automàticament errors d'OCR (com confondre '8' per 'B' o 'Z' per 'A') o falsos positius que compleixen el format sintàctic de 8 dígits + 1 lletra però incompleixen el dígit de control oficial, derivant l'expedient a revisió humana." },
+        { "key": "B", "text": "Consulta en temps real la base de dades de la Policia Nacional." },
+        { "key": "C", "text": "Reemplaça el DNI per un número aleatori vàlid sense avisar." },
+        { "key": "D", "text": "Elimina la necessitat de comprovar la resta de camps del decret." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "La comprovació matemàtica mòdul 23 (i anàlogament el mòdul 97 de l'IBAN o el dígit del CIF) actua com a detector determinista gratuït d'errors d'OCR i de transcripció sense dependre de serveis externs.",
+      "explanationsIncorrect": {
+        "B": "És un càlcul algorítmic local (mòdul 23), no una consulta externa.",
+        "C": "Mai no s'ha d'inventar ni substituir un identificador; cal marcar-lo per a revisió humana.",
+        "D": "Cada camp requereix la seva pròpia validació de tipus i coherència."
+      }
+    },
+    {
+      "id": "m02-05-q09",
+      "module": 2,
+      "conceptId": "m02-05-extraccio-informacio",
+      "lessonRef": "content/module-02/m02-05-extraccio-informacio.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "En definir un esquema JSON per extreure un camp opcional com `penalitzacio_retard` que només apareix al 15% dels contractes, quin error de disseny provoca més al·lucinacions en un LLM?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Permetre `null` com a valor vàlid i instruir que retorni `null` si no figura al contracte." },
+        { "key": "B", "text": "Definir el camp com a obligatori i no nul·lable (`\"type\": \"string\"` sense `null`), forçant l'LLM a omplir-lo sempre amb text inventat o irrellevant en el 85% dels contractes on no existeix." },
+        { "key": "C", "text": "Fixar `temperature = 0` durant la decodificació." },
+        { "key": "D", "text": "Afegir una descripció clara del camp dins el JSON Schema." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Si el *constrained decoding* prohibeix `null`, l'LLM està matemàticament obligat a emetre una cadena de text fins i tot quan la dada no existeix, disparant falsos positius.",
+      "explanationsIncorrect": {
+        "A": "Permetre `null` és precisament la bona pràctica que evita al·lucinacions.",
+        "C": "`temperature = 0` redueix la variabilitat aleatòria i millora la consistència en IE.",
+        "D": "Les descripcions clares en l'esquema milloren la precisió semàntica."
+      }
+    },
+    {
+      "id": "m02-05-q10",
+      "module": 2,
+      "conceptId": "m02-05-extraccio-informacio",
+      "lessonRef": "content/module-02/m02-05-extraccio-informacio.md",
+      "difficulty": "advanced",
+      "questionType": "conceptual",
+      "prompt": "Quin problema d'Extracció d'Informació resol la **resolució de correferències** en un expedient administratiu llarg?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Convertir un PDF escanejat a imatge en escala de grisos." },
+        { "key": "B", "text": "Ordenar alfabèticament totes les paraules del document." },
+        { "key": "C", "text": "Vincular mencions diferents que es refereixen a la mateixa entitat real al llarg del text (p. ex., «Constructora del Besòs, SL», «l'empresa adjudicatària» i «aquesta societat») per consolidar tots els fets sota un únic registre." },
+        { "key": "D", "text": "Eliminar totes les sigles del document." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Sense resolució de correferències, la relació «l'adjudicatària ha dipositat una garantia de 12.000 €» no queda vinculada a «Constructora del Besòs, SL» esmentada dos paràgrafs abans.",
+      "explanationsIncorrect": {
+        "A": "Això és preprocessament d'imatge per a OCR.",
+        "B": "No té cap relació amb l'ordenació alfabètica.",
+        "D": "Les sigles s'han de resoldre cap a la seva entitat canònica, no eliminar-se."
+      }
+    }
+  ]
+}

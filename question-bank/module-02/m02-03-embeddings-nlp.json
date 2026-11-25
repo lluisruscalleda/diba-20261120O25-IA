@@ -1,0 +1,236 @@
+{
+  "conceptId": "m02-03-embeddings-nlp",
+  "module": 2,
+  "questions": [
+    {
+      "id": "m02-03-q01",
+      "module": 2,
+      "conceptId": "m02-03-embeddings-nlp",
+      "lessonRef": "content/module-02/m02-03-embeddings-nlp.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quin avantatge principal aporten els **embeddings densos** respecte de Bag of Words / TF-IDF?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Generen vectors molt més grans (més de 100.000 dimensions plenes de zeros)." },
+        { "key": "B", "text": "Representen paraules o textos en un espai continu de baixa dimensionalitat (p. ex., 384–1024) on la proximitat geomètrica captura similitud semàntica i sinonímia." },
+        { "key": "C", "text": "No necessiten mai dades per aprendre." },
+        { "key": "D", "text": "Només funcionen amb text en majúscules." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Els embeddings densos projecten significats propers (com 'ajut' i 'subvenció') a punts propers en un espai vectorial compacte, superant l'ortogonalitat lèxica de BoW/TF-IDF.",
+      "explanationsIncorrect": {
+        "A": "Els vectors d'alta dimensionalitat dispersa són propis de BoW/TF-IDF, no dels embeddings densos.",
+        "C": "Els models d'embeddings s'entrenen sobre grans corpus textuals.",
+        "D": "Operen sobre text natural en qualsevol combinació de majúscules i minúscules."
+      }
+    },
+    {
+      "id": "m02-03-q02",
+      "module": 2,
+      "conceptId": "m02-03-embeddings-nlp",
+      "lessonRef": "content/module-02/m02-03-embeddings-nlp.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Per què un model d'embeddings estàtics com **Word2Vec** té dificultats amb la paraula «recurs» en un corpus municipal on apareix tant «recurs de reposició» com «recurs hídric»?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè Word2Vec assigna un únic vector fix per a cada paraula del vocabulari, barrejant tots els seus significats sense dependre del context de la frase." },
+        { "key": "B", "text": "Perquè Word2Vec només suporta paraules de 3 lletres." },
+        { "key": "C", "text": "Perquè Word2Vec elimina tots els substantius." },
+        { "key": "D", "text": "Perquè Word2Vec utilitza només 1 dimensió escalar." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Els embeddings estàtics mantenen una única entrada per mot a la taula d'embeddings; només els embeddings contextuals (Transformers) generen vectors diferents per a cada accepció segons el context.",
+      "explanationsIncorrect": {
+        "B": "Word2Vec admet paraules de qualsevol longitud.",
+        "C": "No elimina substantius.",
+        "D": "Word2Vec utilitza habitualment vectors de 100 a 300 dimensions."
+      }
+    },
+    {
+      "id": "m02-03-q03",
+      "module": 2,
+      "conceptId": "m02-03-embeddings-nlp",
+      "lessonRef": "content/module-02/m02-03-embeddings-nlp.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quin model d'embeddings estàtics representa cada paraula com la suma dels seus **n-grames de caràcters**, fent-lo especialment útil per a la flexió morfològica del català i paraules no vistes?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Bag of Words." },
+        { "key": "B", "text": "K-Means." },
+        { "key": "C", "text": "FastText." },
+        { "key": "D", "text": "Word2Vec CBOW pur." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "FastText descompon cada mot en subcadenes de caràcters (p. ex. 3 a 6 caràcters) i suma els seus vectors, podent generar representacions raonables fins i tot per a mots OOV o amb faltes d'ortografia.",
+      "explanationsIncorrect": {
+        "A": "Bag of Words és un recompte dispers, no un model d'embeddings.",
+        "B": "K-Means és un algorisme de clustering.",
+        "D": "Word2Vec pur assigna un vector per paraula sencera i falla davant paraules OOV."
+      }
+    },
+    {
+      "id": "m02-03-q04",
+      "module": 2,
+      "conceptId": "m02-03-embeddings-nlp",
+      "lessonRef": "content/module-02/m02-03-embeddings-nlp.md",
+      "difficulty": "intermediate",
+      "questionType": "metrics",
+      "prompt": "Si dos vectors d'embeddings u i v estan normalitzats amb norma L2 unitària (||u||₂ = ||v||₂ = 1), quina afirmació matemàtica és CERTA?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "La seva similitud cosinus és sempre igual a 0." },
+        { "key": "B", "text": "El producte escalar u·v és idèntic a la similitud cosinus, i la distància euclidiana al quadrat satisfà ||u − v||₂² = 2(1 − cos(u, v)), produint exactament el mateix rànquing de veïns." },
+        { "key": "C", "text": "La distància euclidiana és sempre superior a 10." },
+        { "key": "D", "text": "No es pot calcular la similitud cosinus si la norma és 1." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "En vectors unitaris, el denominador ||u||₂·||v||₂ val 1 (cosinus = dot product), i expandir ||u−v||₂² dona ||u||² + ||v||² − 2u·v = 2(1 − cos), que és estrictament decreixent respecte del cosinus.",
+      "explanationsIncorrect": {
+        "A": "La similitud cosinus oscil·la entre -1 i +1 segons l'angle entre u i v.",
+        "C": "La distància euclidiana entre dos vectors unitaris és com a màxim 2 (quan són oposats).",
+        "D": "Al contrari, és el cas ideal i computacionalment més ràpid."
+      }
+    },
+    {
+      "id": "m02-03-q05",
+      "module": 2,
+      "conceptId": "m02-03-embeddings-nlp",
+      "lessonRef": "content/module-02/m02-03-embeddings-nlp.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Com s'entrenen els models moderns de *sentence embeddings* (com Sentence-BERT, E5 o BGE-M3) perquè les similituds cosinus entre frases siguin discriminatives?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Mitjançant aprenentatge contrastiu sobre parells positius (consulta-passatge o traduccions) i parells negatius (inclosos hard negatives), aproximant positius i allunyant negatius a l'espai vectorial." },
+        { "key": "B", "text": "Calculant únicament la matriu TF-IDF del corpus." },
+        { "key": "C", "text": "Assignant coordenades aleatòries fixes a cada frase nova." },
+        { "key": "D", "text": "Aplicant K-Means sobre el codi ASCII dels caràcters." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "L'entrenament contrastiu (p. ex., InfoNCE loss) corregeix l'anisotropia dels encoders BERT crus i alinea directament la geometria cosinus amb la rellevància semàntica.",
+      "explanationsIncorrect": {
+        "B": "TF-IDF no genera sentence embeddings neuronals.",
+        "C": "Vectors aleatoris no capturen cap similitud semàntica.",
+        "D": "No té relació amb els codis ASCII."
+      }
+    },
+    {
+      "id": "m02-03-q06",
+      "module": 2,
+      "conceptId": "m02-03-embeddings-nlp",
+      "lessonRef": "content/module-02/m02-03-embeddings-nlp.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Un equip ha indexat 50.000 resolucions amb el model d'embeddings `Model_A` (768 dimensions) i decideix consultar l'índex codificant les preguntes dels usuaris amb un model més nou `Model_B` (també de 768 dimensions) sense reindexar els documents. Què passarà?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Funcionarà encara millor perquè tots dos tenen 768 dimensions." },
+        { "key": "B", "text": "Només fallarà en frases en català." },
+        { "key": "C", "text": "Els resultats seran completament arbitraris (soroll), perquè dos models d'embeddings diferents construeixen espais vectorials incompatibles encara que comparteixin la mateixa dimensionalitat; canviar de model exigeix reindexar tot el corpus." },
+        { "key": "D", "text": "La base de dades vectorial alinearà automàticament els dos espais." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Les 768 coordenades de Model_A i Model_B no representen els mateixos eixos semàntics (són rotacions i espais latents diferents). Consulta i documents han de fer servir sempre exactament el mateix model (i versió) d'embeddings.",
+      "explanationsIncorrect": {
+        "A": "Compartir dimensionalitat (768) no implica compatibilitat d'espai latent.",
+        "B": "Fallarà en tots els idiomes per igual.",
+        "D": "Cap base de dades vectorial pot alinear dos espais latents desconeguts automàticament."
+      }
+    },
+    {
+      "id": "m02-03-q07",
+      "module": 2,
+      "conceptId": "m02-03-embeddings-nlp",
+      "lessonRef": "content/module-02/m02-03-embeddings-nlp.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Quin és un límit conegut dels *bi-encoders* d'embeddings textuals davant les frases «Està permès aparcar a la plaça» i «NO està permès aparcar a la plaça»?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "La seva similitud cosinus és exactament -1,0." },
+        { "key": "B", "text": "El model retorna un error de divisió per zero." },
+        { "key": "C", "text": "Els embeddings només poden codificar frases afirmatives." },
+        { "key": "D", "text": "Tendeixen a rebre una similitud cosinus molt elevada perquè comparteixen gairebé totes les paraules de contingut, tot i tenir significats lògicament oposats." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Els embeddings reflecteixen forta proximitat temàtica; una sola partícula de negació canvia molt poc l'angle del vector de frase, per la qual cosa sovint cal un cross-encoder o un LLM verificador en etapes posteriors.",
+      "explanationsIncorrect": {
+        "A": "Malauradament la negació no inverteix el vector a -v; sovint dona cos > 0,90.",
+        "B": "Els vectors tenen norma no nul·la i es calculen sense error.",
+        "C": "Poden codificar qualsevol frase, però amb poca sensibilitat a la negació."
+      }
+    },
+    {
+      "id": "m02-03-q08",
+      "module": 2,
+      "conceptId": "m02-03-embeddings-nlp",
+      "lessonRef": "content/module-02/m02-03-embeddings-nlp.md",
+      "difficulty": "advanced",
+      "questionType": "conceptual",
+      "prompt": "Què és un ***hard negative*** en l'entrenament contrastiu d'un model d'embeddings per a cerca documental administrativa?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Un document que comparteix moltes paraules o temàtica amb la consulta (p. ex., una altra subvenció del mateix departament), però que NO respon la pregunta concreta; obligar el model a separar-lo millora dràsticament la discriminació fina." },
+        { "key": "B", "text": "Un document seleccionat completament a l'atzar d'un tema totalment aliè." },
+        { "key": "C", "text": "Un document amb text buit." },
+        { "key": "D", "text": "Un vector amb totes les coordenades negatives." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Separar exemples fàcils (p. ex. urbanisme vs. música) és trivial; els hard negatives (p. ex. subvenció d'esports vs. subvenció de cultura del mateix ens) forcen el model a aprendre distincions semàntiques precises.",
+      "explanationsIncorrect": {
+        "B": "Això és un 'easy negative' o 'in-batch random negative', no un hard negative.",
+        "C": "Un document buit no aporta senyal d'entrenament.",
+        "D": "No té res a veure amb el signe de les coordenades."
+      }
+    },
+    {
+      "id": "m02-03-q09",
+      "module": 2,
+      "conceptId": "m02-03-embeddings-nlp",
+      "lessonRef": "content/module-02/m02-03-embeddings-nlp.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En la funció `normalitzar_l2` de la lliçó, quin error preveu l'expressió `np.maximum(normes, 1e-12)`?",
+      "codeSnippet": "def normalitzar_l2(M: np.ndarray) -> np.ndarray:\n    normes = np.linalg.norm(M, axis=1, keepdims=True)\n    return M / np.maximum(normes, 1e-12)",
+      "options": [
+        { "key": "A", "text": "Evita que les coordenades superin el valor 100." },
+        { "key": "B", "text": "Evita la divisió per zero (que generaria `NaN` i corrompria tot l'índex vectorial) en cas que arribi un vector nul." },
+        { "key": "C", "text": "Converteix els vectors de 4 dimensions en vectors de 12 dimensions." },
+        { "key": "D", "text": "Aplica regularització L1 automàticament." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Si una fila de la matriu és el vector zero (p. ex., un text buit o només amb tokens desconeguts en un model estàtic), dividir per `0.0` generaria `NaN` que propagaria errors en cerques posteriors.",
+      "explanationsIncorrect": {
+        "A": "La normalització L2 ja garanteix que cada coordenada estigui en [-1, 1].",
+        "C": "Manté intacta la forma de la matriu M.",
+        "D": "És una guarda numèrica de normalització L2, no regularització L1."
+      }
+    },
+    {
+      "id": "m02-03-q10",
+      "module": 2,
+      "conceptId": "m02-03-embeddings-nlp",
+      "lessonRef": "content/module-02/m02-03-embeddings-nlp.md",
+      "difficulty": "advanced",
+      "questionType": "metrics",
+      "prompt": "Un company fixa un llindar universal `similitud_cosinus >= 0,75` per decidir si un document és rellevant, i quan migra d'un model d'embeddings (`e5-multilingual`) a un altre (`bge-m3`), tots els documents deixen de superar el llindar. Quina n'és la causa?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "El nou model està trencat i només produeix zeros." },
+        { "key": "B", "text": "La similitud cosinus ja no està definida entre -1 i +1 en `bge-m3`." },
+        { "key": "C", "text": "Els vectors de `bge-m3` no es poden comparar amb cosinus." },
+        { "key": "D", "text": "Cada model d'embeddings té una distribució i calibratge propis de puntuacions cosinus (segons la temperatura usada en l'entrenament contrastiu); un 0,80 en un model pot equivaldre a un 0,55 en un altre, de manera que els llindars s'han de recalibrar sempre sobre un conjunt de validació propi." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Les distribucions de cosinus canvien dràsticament entre famílies de models (p. ex. E5 tendeix a puntuacions en [0.72, 0.92], mentre BGE-M3 reparteix més ampliament en [0.35, 0.80]). Mai s'ha de copiar un llindar absolut entre models sense recalibrar-lo.",
+      "explanationsIncorrect": {
+        "A": "El model funciona perfectament, simplement ocupa un rang diferent d'angles.",
+        "B": "La similitud cosinus sempre està dins [-1, +1].",
+        "C": "BGE-M3 està dissenyat precisament per a similitud cosinus / dot product."
+      }
+    }
+  ]
+}

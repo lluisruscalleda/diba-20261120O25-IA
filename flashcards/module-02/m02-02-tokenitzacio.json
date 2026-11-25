@@ -1,0 +1,46 @@
+{
+  "conceptId": "m02-02-tokenitzacio",
+  "module": 2,
+  "cards": [
+    {
+      "id": "m02-02-fc01",
+      "module": 2,
+      "conceptId": "m02-02-tokenitzacio",
+      "front": "Per què la tokenització per subparaules és l'estàndard en Transformers i LLMs?",
+      "back": "Equilibra la mida del vocabulari (32k-128k) amb seqüències curtes i resol el problema OOV (<UNK>) descomponent mots rars o nous en subparaules conegudes.",
+      "tags": ["tokenització", "subparaules"]
+    },
+    {
+      "id": "m02-02-fc02",
+      "module": 2,
+      "conceptId": "m02-02-tokenitzacio",
+      "front": "Com es diferencien BPE, WordPiece i Unigram/SentencePiece?",
+      "back": "BPE fusiona bottom-up el parell més freqüent; WordPiece fusiona maximitzant versemblança (##); Unigram poda top-down i SentencePiece representa l'espai com a ▁ (lossless i agnòstic d'idioma).",
+      "tags": ["BPE", "WordPiece", "SentencePiece"]
+    },
+    {
+      "id": "m02-02-fc03",
+      "module": 2,
+      "conceptId": "m02-02-tokenitzacio",
+      "front": "Què és la fertilitat d'un tokenitzador i com afecta el català?",
+      "back": "És la mitjana de tokens generats per paraula. Si un model centrat en anglès fragmenta massa el català (alta fertilitat), pugen el cost API i la latència i baixa la finestra efectiva de context.",
+      "tags": ["fertilitat", "català"]
+    },
+    {
+      "id": "m02-02-fc04",
+      "module": 2,
+      "conceptId": "m02-02-tokenitzacio",
+      "front": "Com garanteix Byte-Level BPE zero tokens desconeguts (<UNK>)?",
+      "back": "Operant sobre els 256 valors base d'un byte UTF-8, de manera que qualsevol caràcter Unicode, accent o emoji es descompon sense pèrdua en bytes sempre presents al vocabulari.",
+      "tags": ["Byte-Level BPE", "OOV"]
+    },
+    {
+      "id": "m02-02-fc05",
+      "module": 2,
+      "conceptId": "m02-02-tokenitzacio",
+      "front": "Per què el chunking d'un RAG s'ha de mesurar en tokens del model d'embeddings i no en caràcters?",
+      "back": "Per evitar truncaments silenciosos en superar el límit de context del model (p. ex. 512 tokens), especialment en textos catalans o amb molts codis i xifres.",
+      "tags": ["chunking", "RAG"]
+    }
+  ]
+}

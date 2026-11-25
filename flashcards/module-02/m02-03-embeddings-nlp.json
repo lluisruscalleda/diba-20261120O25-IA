@@ -1,0 +1,46 @@
+{
+  "conceptId": "m02-03-embeddings-nlp",
+  "module": 2,
+  "cards": [
+    {
+      "id": "m02-03-fc01",
+      "module": 2,
+      "conceptId": "m02-03-embeddings-nlp",
+      "front": "Quina diferència clau hi ha entre embeddings estàtics (Word2Vec/GloVe/FastText) i contextuals (BERT/E5/BGE-M3)?",
+      "back": "Els estàtics assignen 1 sol vector fix per paraula (no resolen la polisèmia); els contextuals generen un vector diferent segons el context de la frase, separant accepcions com 'recurs hídric' vs 'recurs administratiu'.",
+      "tags": ["embeddings", "polisèmia"]
+    },
+    {
+      "id": "m02-03-fc02",
+      "module": 2,
+      "conceptId": "m02-03-embeddings-nlp",
+      "front": "Quina relació exacta hi ha entre cosinus, producte escalar i distància L2 sobre vectors unitaris?",
+      "back": "Quan ||u||₂ = ||v||₂ = 1: cos(u,v) = u·v i ||u−v||₂² = 2(1 − cos(u,v)). Les tres mètriques produeixen exactament el mateix rànquing de veïns més propers.",
+      "tags": ["similitud cosinus", "matemàtiques"]
+    },
+    {
+      "id": "m02-03-fc03",
+      "module": 2,
+      "conceptId": "m02-03-embeddings-nlp",
+      "front": "Per què FastText és més robust que Word2Vec per al català?",
+      "back": "Perquè representa cada mot com la suma dels seus n-grames de caràcters, permetent construir embeddings per a paraules no vistes (OOV), flexions morfològiques i faltes tipogràfiques.",
+      "tags": ["FastText", "català"]
+    },
+    {
+      "id": "m02-03-fc04",
+      "module": 2,
+      "conceptId": "m02-03-embeddings-nlp",
+      "front": "Es poden comparar vectors generats per dos models d'embeddings diferents si tots dos tenen 768 dimensions?",
+      "back": "NO! Cada model construeix un espai latent incompatible. Canviar de model d'embeddings obliga a reindexar tots els documents i recalibrar els llindars de similitud.",
+      "tags": ["arquitectura", "errors freqüents"]
+    },
+    {
+      "id": "m02-03-fc05",
+      "module": 2,
+      "conceptId": "m02-03-embeddings-nlp",
+      "front": "Quines dues debilitats típiques tenen els bi-encoders d'embeddings en cerca administrativa?",
+      "back": "1) Baixa sensibilitat a negacions ('permès' vs 'NO permès' tenen cosinus alt); 2) Poca precisió en codis alfanumèrics exactes (NIF, número de decret), que requereixen cerca híbrida amb BM25.",
+      "tags": ["limitacions", "cerca híbrida"]
+    }
+  ]
+}

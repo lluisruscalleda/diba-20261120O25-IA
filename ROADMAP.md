@@ -27,7 +27,7 @@ Aquest full de ruta estructura la construcció incremental de l'**Acadèmia de P
 Cada concepte es completa íntegrament (apartats A–J + mínim 10 preguntes test + mínim 3 preguntes desenvolupament + exercici independent amb solució + flashcards) abans de passar al següent.
 
 - [x] **Mòdul 1**: Fonaments d'intel·ligència artificial (11/11 conceptes completats — 100%).
-- [ ] **Mòdul 2**: Processament del llenguatge natural (10 conceptes).
+- [x] **Mòdul 2**: Processament del llenguatge natural (10/10 conceptes completats — 100%).
 - [ ] **Mòdul 3**: Models generatius (9 conceptes).
 - [ ] **Mòdul 4**: Processament intel·ligent de documents (8 conceptes).
 - [ ] **Mòdul 5**: Assistents virtuals i IA conversacional (8 conceptes).

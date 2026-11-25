@@ -1,0 +1,46 @@
+{
+  "conceptId": "m02-05-extraccio-informacio",
+  "module": 2,
+  "cards": [
+    {
+      "id": "m02-05-fc01",
+      "module": 2,
+      "conceptId": "m02-05-extraccio-informacio",
+      "front": "Quina és l'arquitectura híbrida recomanada per a Extracció d'Informació en documents públics?",
+      "back": "Regex + validadors deterministes (NIF, IBAN, codis) + extractor semàntic (NER / LLM amb JSON Schema, null permès i cita literal) + validació Pydantic/invariants de negoci + revisió humana de casos fallits.",
+      "tags": ["IE", "arquitectura híbrida"]
+    },
+    {
+      "id": "m02-05-fc02",
+      "module": 2,
+      "conceptId": "m02-05-extraccio-informacio",
+      "front": "Què garanteix i què NO garanteix el Structured Output (JSON Schema) en un LLM?",
+      "back": "Garanteix validesa sintàctica i d'esquema (tipus i claus correctes), però NO garanteix veracitat semàntica: cal afegir null permès, cita literal verificada (grounding) i regles de coherència.",
+      "tags": ["Structured Outputs", "al·lucinacions"]
+    },
+    {
+      "id": "m02-05-fc03",
+      "module": 2,
+      "conceptId": "m02-05-extraccio-informacio",
+      "front": "Per què cal utilitzar `Decimal` (i no `float`) i ISO-8601 en normalitzar dades extretes?",
+      "back": "`Decimal` evita errors d'arrodoniment binari en imports comptables (base + IVA == total), i ISO-8601 (AAAA-MM-DD) elimina ambigüitats de format de dates entre sistemes.",
+      "tags": ["normalització", "comptabilitat"]
+    },
+    {
+      "id": "m02-05-fc04",
+      "module": 2,
+      "conceptId": "m02-05-extraccio-informacio",
+      "front": "Quina mètrica cal prioritzar en un sistema d'anonimització de resolucions (RGPD)?",
+      "back": "Recall molt elevat (~99%+), perquè un fals negatiu implica publicar dades personals sense emmascarar (bretxa RGPD), mentre que un fals positiu és corregible en la revisió humana final.",
+      "tags": ["anonimització", "RGPD"]
+    },
+    {
+      "id": "m02-05-fc05",
+      "module": 2,
+      "conceptId": "m02-05-extraccio-informacio",
+      "front": "Quin paper juga la resolució de correferències en IE?",
+      "back": "Vincula pronoms i àlies ('l'empresa adjudicatària', 'aquesta societat') amb l'entitat canònica esmentada anteriorment per consolidar relacions i fets al llarg de tot el document.",
+      "tags": ["correferència", "IE"]
+    }
+  ]
+}

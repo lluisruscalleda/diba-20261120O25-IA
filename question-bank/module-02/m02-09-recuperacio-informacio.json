@@ -1,0 +1,236 @@
+{
+  "conceptId": "m02-09-recuperacio-informacio",
+  "module": 2,
+  "questions": [
+    {
+      "id": "m02-09-q01",
+      "module": 2,
+      "conceptId": "m02-09-recuperacio-informacio",
+      "lessonRef": "content/module-02/m02-09-recuperacio-informacio.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina estructura de dades permet a un motor de cerca lèxic (com Elasticsearch o OpenSearch) trobar documents candidats en mil·lisegons sense escanejar linealment tot el corpus?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Un índex invertit (*inverted index*) que mapeja cada terme del vocabulari a la seva llista de documents (*postings list*)." },
+        { "key": "B", "text": "Una matriu de confusió binària." },
+        { "key": "C", "text": "Un arbre de decisió aleatori sense podar." },
+        { "key": "D", "text": "Un fitxer CSV ordenat per data." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "L'índex invertit accedeix directament als documents que contenen els termes de la consulta (com l'índex temàtic d'un llibre) en temps sublineal.",
+      "explanationsIncorrect": {
+        "B": "La matriu de confusió és una eina d'avaluació de classificadors.",
+        "C": "No és una estructura d'indexació de text complet.",
+        "D": "Un CSV requeriria escanejar linealment totes les files."
+      }
+    },
+    {
+      "id": "m02-09-q02",
+      "module": 2,
+      "conceptId": "m02-09-recuperacio-informacio",
+      "lessonRef": "content/module-02/m02-09-recuperacio-informacio.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quines dues millores principals introdueix **Okapi BM25** respecte d'un TF-IDF bàsic?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Elimina la necessitat de tokenitzar i tradueix automàticament les consultes." },
+        { "key": "B", "text": "Saturació sublineal de la freqüència de terme (paràmetre k₁) i normalització ajustable per longitud del document respecte de la mitjana del corpus (paràmetre b)." },
+        { "key": "C", "text": "Converteix les paraules en embeddings densos de 1.024 dimensions." },
+        { "key": "D", "text": "Genera resums abstractius automàtics." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "BM25 evita que la repetició excessiva d'un sol terme domini la puntuació (saturació k₁) i compensa documents molt llargs mitjançant la ràtio |d|/avgdl controlada per b.",
+      "explanationsIncorrect": {
+        "A": "BM25 necessita tokenització i no fa traducció.",
+        "C": "BM25 és un model probabilístic lèxic/dispers, no genera embeddings densos.",
+        "D": "BM25 fa rànquing de recuperació, no generació de resums."
+      }
+    },
+    {
+      "id": "m02-09-q03",
+      "module": 2,
+      "conceptId": "m02-09-recuperacio-informacio",
+      "lessonRef": "content/module-02/m02-09-recuperacio-informacio.md",
+      "difficulty": "basic",
+      "questionType": "metrics",
+      "prompt": "En un motor de cerca d'expedients, si el document exacte buscat apareix en la **4a posició** dels resultats, quin és el seu **Reciprocal Rank (RR)**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "4,0." },
+        { "key": "B", "text": "0,50." },
+        { "key": "C", "text": "0,25 (1 / 4)." },
+        { "key": "D", "text": "0,75." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "El Reciprocal Rank és l'invers de la posició (1-indexada) del primer resultat rellevant: 1 / 4 = 0,25.",
+      "explanationsIncorrect": {
+        "A": "RR sempre està dins [0, 1].",
+        "B": "0,50 correspon a la 2a posició (1/2).",
+        "D": "No correspon a 1/4."
+      }
+    },
+    {
+      "id": "m02-09-q04",
+      "module": 2,
+      "conceptId": "m02-09-recuperacio-informacio",
+      "lessonRef": "content/module-02/m02-09-recuperacio-informacio.md",
+      "difficulty": "intermediate",
+      "questionType": "metrics",
+      "prompt": "Quina mètrica d'avaluació d'IR és més crítica optimitzar en la **primera etapa de recuperació (top-20 candidats)** abans d'un *reranker* o dins d'un sistema RAG?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Recall@20, perquè si el document o article rellevant no entra dins els 20 candidats recuperats, ni el reranker ni l'LLM el podran veure ni respondre mai." },
+        { "key": "B", "text": "Precision@1 únicament, encara que es perdin la meitat dels documents necessaris." },
+        { "key": "C", "text": "BLEU-4." },
+        { "key": "D", "text": "Silhouette Score." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "La primera etapa (retrieval) té com a missió no deixar fora cap evidència necessària (maximitzar Recall@k), mentre el reranker posterior s'encarrega de pujar els millors a les primeres posicions (MRR/nDCG@5).",
+      "explanationsIncorrect": {
+        "B": "Optimitzar només Precision@1 en la primera etapa pot descartar fragments complementaris indispensables.",
+        "C": "BLEU és una mètrica de traducció automàtica.",
+        "D": "Silhouette Score és una mètrica de clustering."
+      }
+    },
+    {
+      "id": "m02-09-q05",
+      "module": 2,
+      "conceptId": "m02-09-recuperacio-informacio",
+      "lessonRef": "content/module-02/m02-09-recuperacio-informacio.md",
+      "difficulty": "intermediate",
+      "questionType": "metrics",
+      "prompt": "Quin avantatge té **nDCG@k** respecte de **Precision@k**, **Recall@k** i **MRR**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "No necessita cap judici de rellevància per calcular-se." },
+        { "key": "B", "text": "Permet avaluar **rellevància graduada** (p. ex., 0 = irrellevant, 1 = relacionat, 3 = resposta exacta) i pondera cada posició amb descompte logarítmic, normalitzat respecte del rànquing ideal (IDCG@k)." },
+        { "key": "C", "text": "Ignora l'ordre en què apareixen els documents dins el top-k." },
+        { "key": "D", "text": "Només té en compte el primer resultat." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "nDCG@k distingeix graus de rellevància i penalitza col·locar documents de rellevància 3 per sota de documents de rellevància 1, estant sempre acotada en [0, 1].",
+      "explanationsIncorrect": {
+        "A": "Com tota mètrica supervisada d'IR, requereix judicis de rellevància (qrels).",
+        "C": "Precisament el factor 1/log₂(pos+1) pondera fortament l'ordre dels resultats.",
+        "D": "Avalua tots els resultats fins a la posició k."
+      }
+    },
+    {
+      "id": "m02-09-q06",
+      "module": 2,
+      "conceptId": "m02-09-recuperacio-informacio",
+      "lessonRef": "content/module-02/m02-09-recuperacio-informacio.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "En BM25, què passa si configurem el paràmetre **b = 0**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "La puntuació BM25 es torna sempre zero per a tots els documents." },
+        { "key": "B", "text": "S'elimina el factor IDF de la fórmula." },
+        { "key": "C", "text": "Es desactiva completament la normalització per longitud del document (`1 - b + b·|d|/avgdl` esdevé 1), de manera que els documents molt llargs deixen de rebre penalització per longitud." },
+        { "key": "D", "text": "El motor passa a cercar només en els títols." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Quan b = 0, el terme (1 - 0 + 0·|d|/avgdl) = 1 i la longitud del document no influeix en el denominador de BM25.",
+      "explanationsIncorrect": {
+        "A": "El denominador passa a ser `f + k1`, donant puntuacions positives normals.",
+        "B": "IDF roman intacte a la fórmula.",
+        "D": "b no selecciona camps del document, només controla la normalització per longitud."
+      }
+    },
+    {
+      "id": "m02-09-q07",
+      "module": 2,
+      "conceptId": "m02-09-recuperacio-informacio",
+      "lessonRef": "content/module-02/m02-09-recuperacio-informacio.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Un cercador d'ordenances municipals utilitza BM25 sense filtres de metadades i, quan un ciutadà cerca «bonificació IBI família nombrosa», retorna en primera posició l'ordenança derogada del 2019 en lloc de la vigent del 2026. Quina solució arquitectònica ho evita de forma determinista?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Canviar `k1` de 1,5 a 1,6." },
+        { "key": "B", "text": "Augmentar la mida dels embeddings a 3.072 dimensions." },
+        { "key": "C", "text": "Eliminar les dates de tots els documents." },
+        { "key": "D", "text": "Indexar metadades estructurades (`estat_vigencia`, `data_inici`, `data_fi`, `municipi_id`, `permisos_acl`) i aplicar **pre-filtres deterministes** (`estat_vigencia = 'VIGENT'`) per defecte abans de la puntuació." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "La vigència jurídica i els permisos d'accés no s'han de deixar mai a la puntuació probabilística de similitud textual; s'han de fer complir mitjançant filtres deterministes sobre metadades.",
+      "explanationsIncorrect": {
+        "A": "Ajustar k1 no distingeix si una norma està vigent o derogada.",
+        "B": "Els embeddings tampoc coneixen l'estat de vigència administratiu si el text és gairebé idèntic.",
+        "C": "Eliminar dates empitjoraria encara més la traçabilitat normativa."
+      }
+    },
+    {
+      "id": "m02-09-q08",
+      "module": 2,
+      "conceptId": "m02-09-recuperacio-informacio",
+      "lessonRef": "content/module-02/m02-09-recuperacio-informacio.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En l'exemple BM25 de la lliçó, per què la fórmula de l'IDF inclou `+ 1.0` dins del logaritme (`math.log((N - n_t + 0.5)/(n_t + 0.5) + 1.0)`) en lloc de la fórmula original sense `+ 1.0`?",
+      "codeSnippet": "return math.log((self.n - n_t + 0.5) / (n_t + 0.5) + 1.0)",
+      "options": [
+        { "key": "A", "text": "Per garantir que l'IDF sigui sempre estrictament no negatiu (variant Lucene/Elasticsearch), fins i tot per a termes molt freqüents que apareixen en més del 50% dels documents del corpus (`n_t > N/2`), evitant penalitzar amb puntuacions negatives els documents que contenen paraules comunes de la consulta." },
+        { "key": "B", "text": "Perquè `math.log` en Python no admet nombres més grans que 1." },
+        { "key": "C", "text": "Per convertir BM25 en similitud cosinus." },
+        { "key": "D", "text": "Per multiplicar la longitud mitjana del corpus per 2." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "En la fórmula original de Robertson-Sparck Jones sense `+1`, quan `n_t > N/2` l'argument del logaritme és menor que 1 i l'IDF esdevé negatiu! Afegir `+1` dins del `log` garanteix `IDF >= 0` sempre.",
+      "explanationsIncorrect": {
+        "B": "`math.log` admet qualsevol nombre real positiu.",
+        "C": "No té relació amb el cosinus.",
+        "D": "No modifica `avgdl`."
+      }
+    },
+    {
+      "id": "m02-09-q09",
+      "module": 2,
+      "conceptId": "m02-09-recuperacio-informacio",
+      "lessonRef": "content/module-02/m02-09-recuperacio-informacio.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "En quina situació una cerca lèxica pura **BM25** tendeix a fallar (baix Recall) i requereix complementar-se amb cerca semàntica vectorial?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Quan l'usuari cerca el codi exacte d'un expedient `EXP-2026-0148`." },
+        { "key": "B", "text": "Quan l'usuari formula la consulta amb sinònims, llenguatge col·loquial o en un altre idioma cooficial («ayuda para poner placas solares» cercant un document en català sobre «subvenció d'eficiència energètica fotovoltaica»), produint desajust de vocabulari (*vocabulary mismatch*)." },
+        { "key": "C", "text": "Quan l'usuari cerca un article exacte `art. 41 LRJSP`." },
+        { "key": "D", "text": "Quan l'usuari filtra per `municipi = 'Badalona'`." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "BM25 exigeix coincidència de termes lèxics; davant sinònims, parafraseig col·loquial o consultes creuades català↔castellà pateix vocabulary mismatch, on brillen els embeddings multilingües.",
+      "explanationsIncorrect": {
+        "A": "En codis exactes BM25 és excepcionalment precís.",
+        "C": "En referències exactes d'articles BM25 supera els embeddings densos.",
+        "D": "Els filtres de metadades són deterministes i instantanis."
+      }
+    },
+    {
+      "id": "m02-09-q10",
+      "module": 2,
+      "conceptId": "m02-09-recuperacio-informacio",
+      "lessonRef": "content/module-02/m02-09-recuperacio-informacio.md",
+      "difficulty": "advanced",
+      "questionType": "metrics",
+      "prompt": "Per a una consulta amb un únic document rellevant (`rel = 3`), el Sistema A el col·loca en posició `#1` i el Sistema B el col·loca en posició `#2`. Quina diferència presenten en `Recall@5` i en `nDCG@5`?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Ambdós tenen `Recall@5 = 0,5`." },
+        { "key": "B", "text": "El Sistema B té major `nDCG@5` que el Sistema A." },
+        { "key": "C", "text": "Ambdós tenen exactament el mateix `nDCG@5 = 1,0`." },
+        { "key": "D", "text": "Ambdós empaten amb `Recall@5 = 1,000`, però el Sistema A obté `nDCG@5 = 1,000` mentre que el Sistema B baixa a `nDCG@5 = 1 / log₂(3) ≈ 0,631`, reflectint la pitjor posició." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Recall@5 no distingeix posició #1 de posició #2 dins el top-5, mentre nDCG@5 aplica el factor de descompte `1/log₂(pos+1)` (1,0 en posició #1 vs. 0,631 en posició #2).",
+      "explanationsIncorrect": {
+        "A": "Com que l'únic document rellevant és dins el top-5 en tots dos sistemes, Recall@5 = 1/1 = 1,0 per a ambdós.",
+        "B": "Col·locar el document rellevant més avall sempre redueix nDCG.",
+        "C": "nDCG@5 penalitza clarament baixar de la posició #1 a la #2."
+      }
+    }
+  ]
+}

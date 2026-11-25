@@ -1,0 +1,236 @@
+{
+  "conceptId": "m02-07-resum-automatic",
+  "module": 2,
+  "questions": [
+    {
+      "id": "m02-07-q01",
+      "module": 2,
+      "conceptId": "m02-07-resum-automatic",
+      "lessonRef": "content/module-02/m02-07-resum-automatic.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina diferència fonamental existeix entre el **resum extractiu** i el **resum abstractiu**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "El resum extractiu selecciona frases literals del document original, mentre que el resum abstractiu genera frases noves parafrasejant i sintetitzant el contingut." },
+        { "key": "B", "text": "El resum extractiu només funciona en anglès i l'abstractiu només en català." },
+        { "key": "C", "text": "El resum extractiu sempre inventa dades noves i l'abstractiu mai." },
+        { "key": "D", "text": "El resum extractiu genera una imatge i l'abstractiu un fitxer CSV." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "L'extractiu retalla i ordena oracions literals del text original (com subratllar), mentre l'abstractiu redacta una síntesi nova amb més fluïdesa però risc d'al·lucinació.",
+      "explanationsIncorrect": {
+        "B": "Ambdós enfocaments s'apliquen a qualsevol llengua.",
+        "C": "És exactament al revés: el risc d'invenció és propi del resum abstractiu.",
+        "D": "Ambdós generen sortida textual."
+      }
+    },
+    {
+      "id": "m02-07-q02",
+      "module": 2,
+      "conceptId": "m02-07-resum-automatic",
+      "lessonRef": "content/module-02/m02-07-resum-automatic.md",
+      "difficulty": "basic",
+      "questionType": "metrics",
+      "prompt": "Què mesura exactament la mètrica **ROUGE-L** en l'avaluació de resums automàtics?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "La latència en mil·lisegons de l'LLM." },
+        { "key": "B", "text": "La longitud de la subseqüència comuna més llarga (Longest Common Subsequence) entre el resum generat i el resum de referència." },
+        { "key": "C", "text": "El nombre de lleis citades al document." },
+        { "key": "D", "text": "La distància euclidiana entre dos vectors Word2Vec." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "ROUGE-L calcula Precision, Recall i F1 basats en la Longest Common Subsequence (paraules coincidents en el mateix ordre relatiu, no necessàriament contigües).",
+      "explanationsIncorrect": {
+        "A": "ROUGE és una família de mètriques de qualitat textual, no de latència.",
+        "C": "La 'L' prové de Longest Common Subsequence, no de 'Lleis'.",
+        "D": "ROUGE opera sobre solapament lèxic de tokens, no sobre embeddings."
+      }
+    },
+    {
+      "id": "m02-07-q03",
+      "module": 2,
+      "conceptId": "m02-07-resum-automatic",
+      "lessonRef": "content/module-02/m02-07-resum-automatic.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "En resum automàtic abstractiu, com s'anomena l'error consistent a incloure en el resum una referència a una llei o dada que NO apareix enlloc del document original?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Infraajustament (underfitting)." },
+        { "key": "B", "text": "Tokenització BPE." },
+        { "key": "C", "text": "Al·lucinació extrínseca." },
+        { "key": "D", "text": "Normalització L2." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Una al·lucinació extrínseca afegeix contingut no verificable ni present en el text font (sorgit de la memòria paramètrica o inventat), mentre una al·lucinació intrínseca contradiu o distorsiona fets sí presents al text font.",
+      "explanationsIncorrect": {
+        "A": "L'underfitting és un concepte d'entrenament de models predictius.",
+        "B": "BPE és un algorisme de tokenització.",
+        "D": "La normalització L2 escala la norma d'un vector."
+      }
+    },
+    {
+      "id": "m02-07-q04",
+      "module": 2,
+      "conceptId": "m02-07-resum-automatic",
+      "lessonRef": "content/module-02/m02-07-resum-automatic.md",
+      "difficulty": "intermediate",
+      "questionType": "metrics",
+      "prompt": "Un resum canvia la frase original «L'informe tècnic és desfavorable a la concessió de 50.000 €» per «L'informe tècnic és favorable a la concessió de 50.000 €». Com es comporta ROUGE-1?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Dona una puntuació ROUGE-1 molt alta (prop de 0,9) perquè gairebé totes les paraules coincideixen, demostrant que ROUGE és cega a contradiccions factuals crítiques." },
+        { "key": "B", "text": "Dona automàticament ROUGE-1 = 0,0 perquè detecta l'antònim." },
+        { "key": "C", "text": "Retorna un valor negatiu (-1,0)." },
+        { "key": "D", "text": "Bloqueja l'execució amb un error de contradicció jurídica." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "ROUGE només mesura coincidència superficial de paraules; una inversió semàntica completa que només canvia 1 mot obté una puntuació ROUGE altíssima.",
+      "explanationsIncorrect": {
+        "B": "ROUGE no té cap comprensió d'antònims ni de lògica.",
+        "C": "ROUGE sempre està dins l'interval [0, 1].",
+        "D": "Per detectar contradiccions cal NLI (Natural Language Inference) o verificació semàntica."
+      }
+    },
+    {
+      "id": "m02-07-q05",
+      "module": 2,
+      "conceptId": "m02-07-resum-automatic",
+      "lessonRef": "content/module-02/m02-07-resum-automatic.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Quin avantatge principal té l'estratègia **Map-Reduce** respecte de **Refine** en resumir un plec administratiu de 120 pàgines?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Map-Reduce no necessita dividir el document en seccions." },
+        { "key": "B", "text": "En Map-Reduce, els resums parcials de cada secció es poden executar en paral·lel (reduint dràsticament la latència total) i cada secció rep atenció equilibrada sense acumular biaix cap als últims blocs." },
+        { "key": "C", "text": "Map-Reduce garanteix zero al·lucinacions sense cap verificació posterior." },
+        { "key": "D", "text": "Refine només funciona amb algorismes de clustering." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Refine és estrictament seqüencial (cada bloc depèn del resum acumulat anterior), mentre Map-Reduce paral·lelitzà la fase Map de totes les seccions i després sintetitza en Reduce.",
+      "explanationsIncorrect": {
+        "A": "Map-Reduce divideix explícitament el document en seccions a la fase Map.",
+        "C": "Cap estratègia de resum abstractiu elimina per si sola la necessitat de verificar la fidelitat.",
+        "D": "Refine és una estratègia seqüencial de resum amb LLMs."
+      }
+    },
+    {
+      "id": "m02-07-q06",
+      "module": 2,
+      "conceptId": "m02-07-resum-automatic",
+      "lessonRef": "content/module-02/m02-07-resum-automatic.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Què descriu el fenomen ***Lost in the Middle*** quan es fa *stuffing* d'un expedient extens dins la finestra de context d'un LLM?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Que el model només pot generar paraules de longitud mitjana." },
+        { "key": "B", "text": "Que el servidor perd connexió a la meitat de la petició HTTP." },
+        { "key": "C", "text": "Que el rendiment de recuperació i síntesi d'un LLM cau significativament per a la informació situada al tram central d'un context molt llarg respecte de la situada a l'inici o al final." },
+        { "key": "D", "text": "Que el tokenitzador elimina els paràgrafs centrals abans d'enviar el prompt." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Liu et al. (2023) van mostrar una corba en forma d'U: els LLMs presten molta més atenció a l'inici i al final del context i sovint passen per alt clàusules clau situades al mig.",
+      "explanationsIncorrect": {
+        "A": "No té relació amb la longitud de les paraules.",
+        "B": "És un fenomen d'atenció del model, no un error de xarxa.",
+        "D": "El tokenitzador conserva tots els tokens; és el mecanisme d'atenció el que degrada la recuperació al tram central."
+      }
+    },
+    {
+      "id": "m02-07-q07",
+      "module": 2,
+      "conceptId": "m02-07-resum-automatic",
+      "lessonRef": "content/module-02/m02-07-resum-automatic.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Quina pràctica millora més la utilitat, l'auditabilitat i la seguretat d'un resumidor d'actes i plecs per a tècnics de la Diputació?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Utilitzar un prompt genèric «Resumeix això en 3 línies» sense cites ni estructura." },
+        { "key": "B", "text": "Augmentar la temperatura del model a 1,4 per fer el resum més creatiu." },
+        { "key": "C", "text": "Publicar directament el resum com a substitut oficial del text del BOPB." },
+        { "key": "D", "text": "Exigir un resum estructurat amb apartats predefinits (objecte, imports, terminis, condicions), cites obligatòries de pàgina/clàusula, comprovació automàtica de xifres/normes i avís explícit de suport sense valor jurídic substitutiu." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "L'estructura fixa evita omissions d'informació crítica, les cites de pàgina permeten verificació immediata i la comprovació determinista de xifres + avís legal protegeixen la seguretat jurídica.",
+      "explanationsIncorrect": {
+        "A": "Un resum massa curt i genèric omet dades crítiques (imports, terminis, excepcions).",
+        "B": "Una temperatura alta dispara les al·lucinacions i la variabilitat.",
+        "C": "Un resum automàtic mai no pot substituir el text oficial aprovat."
+      }
+    },
+    {
+      "id": "m02-07-q08",
+      "module": 2,
+      "conceptId": "m02-07-resum-automatic",
+      "lessonRef": "content/module-02/m02-07-resum-automatic.md",
+      "difficulty": "advanced",
+      "questionType": "conceptual",
+      "prompt": "Com funciona l'algorisme **TextRank** per realitzar resum extractiu no supervisat?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Construeix un graf on cada frase és un node i les arestes es ponderen per similitud entre frases, aplicant PageRank (iteració de potències) per seleccionar les frases més centrals i representatives del document." },
+        { "key": "B", "text": "Entrena una xarxa neuronal autoregressiva de 8B paràmetres sobre el document." },
+        { "key": "C", "text": "Tria sempre la primera i l'última frase aleatòriament." },
+        { "key": "D", "text": "Aplica K-Means amb K=1 sobre els caràcters ASCII." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "TextRank adapta PageRank a un graf de frases: les frases que comparteixen més contingut amb moltes altres frases importants acumulen major puntuació de centralitat.",
+      "explanationsIncorrect": {
+        "B": "TextRank és totalment no supervisat, lleuger i basat en grafs, sense xarxes autoregressives.",
+        "C": "Selecciona per puntuació de centralitat al graf (i després les reordena cronològicament).",
+        "D": "No usa K-Means sobre ASCII."
+      }
+    },
+    {
+      "id": "m02-07-q09",
+      "module": 2,
+      "conceptId": "m02-07-resum-automatic",
+      "lessonRef": "content/module-02/m02-07-resum-automatic.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En l'exemple TextRank de la lliçó, per què s'executa `sorted(np.argsort(-scores)[:top_k].tolist())` abans de concatenar les frases seleccionades?",
+      "codeSnippet": "top_idx = sorted(np.argsort(-scores)[:top_k].tolist())\nreturn top_idx",
+      "options": [
+        { "key": "A", "text": "Per ordenar les frases alfabèticament de la A a la Z." },
+        { "key": "B", "text": "Per restaurar l'ordre original de lectura dins del document (en lloc de concatenar-les per ordre de puntuació TextRank), preservant la coherència discursiva del resum extractiu." },
+        { "key": "C", "text": "Per eliminar les puntuacions negatives de `scores`." },
+        { "key": "D", "text": "Perquè `np.argsort` no retorna índexs enters." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Si la frase 8 té puntuació més alta que la frase 2, presentar primer la 8 i després la 2 trencaria el fil lògic; reordenar els índexs seleccionats preserva el flux natural del text.",
+      "explanationsIncorrect": {
+        "A": "`sorted` ordena els índexs numèrics de posició (0, 1, 2...), no el text alfabèticament.",
+        "C": "Totes les puntuacions de PageRank/TextRank són estrictament positives.",
+        "D": "`np.argsort` retorna índexs enters."
+      }
+    },
+    {
+      "id": "m02-07-q10",
+      "module": 2,
+      "conceptId": "m02-07-resum-automatic",
+      "lessonRef": "content/module-02/m02-07-resum-automatic.md",
+      "difficulty": "advanced",
+      "questionType": "metrics",
+      "prompt": "Quin mètode automàtic és el més adequat per detectar **al·lucinacions intrínseques** (contradiccions respecte del document font) en un resum abstractiu?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Calcular únicament la ràtio de compressió (paraules del resum / paraules originals)." },
+        { "key": "B", "text": "Calcular ROUGE-1 contra el document original." },
+        { "key": "C", "text": "Mesurar la fertilitat del tokenitzador." },
+        { "key": "D", "text": "Aplicar verificació basada en **NLI (Natural Language Inference, estil SummaC)** o descomposició en afirmacions atòmiques verificades (*entailment* vs. *contradiction*) contra els fragments del text font, combinada amb verificació determinista de xifres i entitats." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Els models NLI classifiquen explícitament si una afirmació del resum es dedueix del document (entailment), és neutra (possible al·lucinació extrínseca) o el contradiu (al·lucinació intrínseca).",
+      "explanationsIncorrect": {
+        "A": "La ràtio de compressió només mesura longitud, no veracitat.",
+        "B": "ROUGE-1 no distingeix contradiccions que comparteixen vocabulari.",
+        "C": "La fertilitat mesura tokens/paraula, no fidelitat factual."
+      }
+    }
+  ]
+}

@@ -1,0 +1,236 @@
+{
+  "conceptId": "m02-08-traduccio-automatica",
+  "module": 2,
+  "questions": [
+    {
+      "id": "m02-08-q01",
+      "module": 2,
+      "conceptId": "m02-08-traduccio-automatica",
+      "lessonRef": "content/module-02/m02-08-traduccio-automatica.md",
+      "difficulty": "basic",
+      "questionType": "metrics",
+      "prompt": "Per a què serveix la **Brevity Penalty (BP)** en la fórmula de la mètrica **BLEU**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Per premiar les traduccions com més curtes millor." },
+        { "key": "B", "text": "Per penalitzar traduccions artificialment curtes que altrament obtindrien una precisió d'n-grames del 100% ometent gran part de la frase original." },
+        { "key": "C", "text": "Per traduir automàticament les abreviatures del text." },
+        { "key": "D", "text": "Per eliminar les paraules amb més de 10 caràcters." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Com que BLEU es basa en precisió (i no en recall directe), sense Brevity Penalty una traducció d'una sola paraula correcta ('ajuntament') obtindria precisió 1,0; BP penalitza exponencialment les traduccions més curtes que la referència.",
+      "explanationsIncorrect": {
+        "A": "Al contrari, penalitza les traduccions massa curtes.",
+        "C": "No té res a veure amb abreviatures.",
+        "D": "No elimina paraules llargues."
+      }
+    },
+    {
+      "id": "m02-08-q02",
+      "module": 2,
+      "conceptId": "m02-08-traduccio-automatica",
+      "lessonRef": "content/module-02/m02-08-traduccio-automatica.md",
+      "difficulty": "basic",
+      "questionType": "metrics",
+      "prompt": "Quina mètrica de traducció automàtica opera sobre **n-grames de caràcters** i avalua millor que BLEU llengües amb rica flexió morfològica com el català?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "chrF / chrF++." },
+        { "key": "B", "text": "Silhouette Score." },
+        { "key": "C", "text": "MSE." },
+        { "key": "D", "text": "Inèrcia (WCSS)." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "chrF calcula l'F-score d'n-grames de caràcters, atorgant crèdit parcial quan coincideix l'arrel lèxica malgrat petites diferències de flexió (gènere, nombre o temps verbal).",
+      "explanationsIncorrect": {
+        "B": "Silhouette Score és una mètrica de clustering.",
+        "C": "MSE és una mètrica de regressió.",
+        "D": "WCSS és la inèrcia de K-Means."
+      }
+    },
+    {
+      "id": "m02-08-q03",
+      "module": 2,
+      "conceptId": "m02-08-traduccio-automatica",
+      "lessonRef": "content/module-02/m02-08-traduccio-automatica.md",
+      "difficulty": "basic",
+      "questionType": "normative",
+      "prompt": "Un tècnic necessita traduir un informe intern confidencial amb dades personals de salut (RGPD art. 9) del castellà al català. Quina opció és correcta?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Enganxar el text complet en un traductor web públic gratuït." },
+        { "key": "B", "text": "Publicar-lo en un fòrum obert perquè el tradueixi la comunitat." },
+        { "key": "C", "text": "Utilitzar un motor de traducció automàtica desplegat *on-premise* (infraestructura pròpia aïllada) o un servei corporatiu autoritzat amb contracte d'encàrrec del tractament (DPA), zero retenció i control d'accés ENS." },
+        { "key": "D", "text": "Enviar-lo per correu personal a una API externa sense xifrar." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Tractar categories especials de dades personals en traductors públics gratuïts vulnera el RGPD i l'ENS; cal desplegament *on-premise* (p. ex., models AINA/Softcatalà locals) o contracte corporatiu degudament auditat.",
+      "explanationsIncorrect": {
+        "A": "Els traductors públics gratuïts poden registrar i reutilitzar el text per entrenar models, provocant una bretxa greu de dades.",
+        "B": "Seria una divulgació il·lícita de dades sensibles.",
+        "D": "Incompleix radicalment RGPD i ENS."
+      }
+    },
+    {
+      "id": "m02-08-q04",
+      "module": 2,
+      "conceptId": "m02-08-traduccio-automatica",
+      "lessonRef": "content/module-02/m02-08-traduccio-automatica.md",
+      "difficulty": "intermediate",
+      "questionType": "metrics",
+      "prompt": "Quin avantatge diferencial aporta la mètrica neuronal **COMET** (i la seva variant **COMET-QE**) respecte de BLEU i TER?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "COMET utilitza encoders multilingües entrenats sobre judicis humans per avaluar l'equivalència semàntica comparant text origen, traducció i referència (i COMET-QE estima la qualitat en producció fins i tot sense referència humana)." },
+        { "key": "B", "text": "COMET només compta el nombre de comes de la frase." },
+        { "key": "C", "text": "COMET és un sistema de regles gramaticals dels anys 80." },
+        { "key": "D", "text": "COMET exigeix sempre que les paraules coincideixin lletra per lletra." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "COMET assoleix la correlació més alta amb avaluadors humans perquè avalua significat semàntic en context, i la variant QE (Quality Estimation) permet senyalitzar automàticament segments de baixa qualitat en producció.",
+      "explanationsIncorrect": {
+        "B": "No és un comptador de puntuació.",
+        "C": "És una mètrica neuronal moderna basada en Transformers multilingües.",
+        "D": "Precisament supera el requisit de coincidència lèxica exacta de BLEU."
+      }
+    },
+    {
+      "id": "m02-08-q05",
+      "module": 2,
+      "conceptId": "m02-08-traduccio-automatica",
+      "lessonRef": "content/module-02/m02-08-traduccio-automatica.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Què és la **post-edició humana (MTPE)** i quan és imprescindible en l'Administració pública?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "L'entrenament des de zero d'un tokenitzador." },
+        { "key": "B", "text": "La revisió i correcció per personal lingüístic/tècnic d'una traducció automàtica; és imprescindible per a documents oficials, ordenances, plecs i resolucions amb validesa jurídica o publicació pública." },
+        { "key": "C", "text": "La compressió automàtica d'un PDF després de traduir-lo." },
+        { "key": "D", "text": "L'eliminació de la puntuació abans d'enviar el text al motor NMT." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "La MT crua només serveix per a comprensió interna ràpida (gisting); qualsevol text oficial o normatiu exigeix MTPE humana per garantir rigor jurídic i terminològic.",
+      "explanationsIncorrect": {
+        "A": "No té relació amb l'entrenament de tokenitzadors.",
+        "C": "MTPE és revisió lingüística humana, no compressió de fitxers.",
+        "D": "No es tracta de preprocessament destructiu."
+      }
+    },
+    {
+      "id": "m02-08-q06",
+      "module": 2,
+      "conceptId": "m02-08-traduccio-automatica",
+      "lessonRef": "content/module-02/m02-08-traduccio-automatica.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Quin paper juga una **Memòria de Traducció (TMX)** combinada amb un motor NMT en un portal municipal amb milers de fitxes de tràmits repetitius?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Substitueix completament la base de dades SQL de l'ajuntament." },
+        { "key": "B", "text": "Augmenta la temperatura del model NMT." },
+        { "key": "C", "text": "Permet reutilitzar directament segments idèntics o molt similars ja traduïts i validats oficialment, garantint coherència terminològica absoluta i reduint costos de còmput i de post-edició." },
+        { "key": "D", "text": "Impedeix traduir textos nous que no siguin a la memòria." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "La TMX assegura que frases normatives recurrents es tradueixin sempre de forma idèntica i oficial, enviant al motor NMT només els segments nous o modificats.",
+      "explanationsIncorrect": {
+        "A": "La TMX emmagatzema parells de segments bilingües, no substitueix bases de dades corporatives.",
+        "B": "No modifica la temperatura del decodificador.",
+        "D": "Els segments nous passen normalment al motor NMT/LLM i, un cop validats, s'afegeixen a la TMX."
+      }
+    },
+    {
+      "id": "m02-08-q07",
+      "module": 2,
+      "conceptId": "m02-08-traduccio-automatica",
+      "lessonRef": "content/module-02/m02-08-traduccio-automatica.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Quin avantatge clau ofereix un **LLM instructiu multilingüe** (com Salamandra) enfront d'un motor NMT clàssic frase a frase en traduir una carta administrativa completa?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "És sempre 100 vegades més ràpid i consumeix menys memòria que un model NMT petit." },
+        { "key": "B", "text": "No pot cometre mai cap omissió ni paràfrasi." },
+        { "key": "C", "text": "No necessita tokenitzador." },
+        { "key": "D", "text": "Tradueix amb context de document complet (mantenint coherència de gènere, tractament formal de «vostè» i correferències) i admet injecció dinàmica de glossaris terminològics (TERMCAT) al prompt." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "L'atenció sobre tot el document i la capacitat de seguir instruccions d'estil i glossaris en temps d'inferència són els grans avantatges de l'LLM-MT, a canvi d'un cost computacional major.",
+      "explanationsIncorrect": {
+        "A": "Al contrari, els models NMT especialitzats (p. ex. MarianMT) són molt més lleugers i ràpids que un LLM generalista.",
+        "B": "Els LLMs poden parafrasejar massa o ometre frases si no es controlen.",
+        "C": "Tots els LLMs utilitzen tokenitzador de subparaules."
+      }
+    },
+    {
+      "id": "m02-08-q08",
+      "module": 2,
+      "conceptId": "m02-08-traduccio-automatica",
+      "lessonRef": "content/module-02/m02-08-traduccio-automatica.md",
+      "difficulty": "advanced",
+      "questionType": "metrics",
+      "prompt": "En la fórmula de BLEU, quin truc fraudulenta evita la **precisió retallada (*clipped n-gram precision*)**?",
+      "codeSnippet": "clipped = sum(min(cnt, r_ng[ng]) for ng, cnt in c_ng.items())",
+      "options": [
+        { "key": "A", "text": "Evita que un candidat degenerat que repeteix moltes vegades una única paraula present a la referència (p. ex. «de de de de de de») obtingui una precisió d'unigrames del 100%, limitant cada n-grama al màxim d'ocurrències reals a la referència." },
+        { "key": "B", "text": "Evita que la traducció tingui més de 4 paraules." },
+        { "key": "C", "text": "Penalitza l'ús de majúscules en noms propis." },
+        { "key": "D", "text": "Converteix BLEU en una mètrica de distància euclidiana." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Sense clipping, si 'de' apareix 1 vegada a la referència i el candidat és 'de de de de de', els 5 tokens hi 'coincidirien' donant p1 = 5/5 = 1,0! Amb clipping es limita a min(5, 1) = 1 → p1 = 1/5 = 0,20.",
+      "explanationsIncorrect": {
+        "B": "No limita la longitud màxima de la traducció.",
+        "C": "No penalitza majúscules específicament.",
+        "D": "Continua sent una mètrica de precisió d'n-grames."
+      }
+    },
+    {
+      "id": "m02-08-q09",
+      "module": 2,
+      "conceptId": "m02-08-traduccio-automatica",
+      "lessonRef": "content/module-02/m02-08-traduccio-automatica.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "Per què la **fluïdesa gramatical impecable** dels motors NMT i LLMs moderns pot resultar més arriscada que els errors evidents de motors antics en revisar textos jurídics traduïts?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè els motors antics no tenien errors." },
+        { "key": "B", "text": "Perquè una redacció natural i ben construïda camufla fàcilment errors greus de significat (omissions de negacions, falsos amics jurídics o xifres canviades), afavorint el biaix d'automatització si el revisor no contrasta atentament amb el text origen." },
+        { "key": "C", "text": "Perquè la fluïdesa augmenta el nombre de tokens OOV." },
+        { "key": "D", "text": "Perquè un text fluid no es pot imprimir en PDF." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "En MTPE, els errors 'silenciosos' en frases fluides són els més difícils de detectar; per això la revisió jurídica ha de ser sempre bilingüe (contrastant origen i destí) i recolzada amb controls automàtics de xifres/entitats.",
+      "explanationsIncorrect": {
+        "A": "Els motors antics cometien molts més errors, però eren fàcilment visibles per la mala gramàtica.",
+        "C": "No té relació amb OOV.",
+        "D": "Òbviament no té res a veure amb la impressió."
+      }
+    },
+    {
+      "id": "m02-08-q10",
+      "module": 2,
+      "conceptId": "m02-08-traduccio-automatica",
+      "lessonRef": "content/module-02/m02-08-traduccio-automatica.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "En traduir del català a una llengua amb pocs recursos paral·lels directes (p. ex., català → urdú) fent servir l'anglès com a **llengua pivot** (`ca → en → ur`), quin risc tècnic cal monitorar específicament?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Que el fitxer ocupi menys espai en disc." },
+        { "key": "B", "text": "Que la traducció esdevingui determinista." },
+        { "key": "C", "text": "L'acumulació d'errors en cascada i la pèrdua de trets gramaticals (com el gènere gramatical o el tractament formal) que desapareixen en passar per l'anglès, obligant a validar la qualitat final amb parlants nadius o models multilingües directes (com NLLB-200)." },
+        { "key": "D", "text": "Que el tokenitzador deixi d'acceptar UTF-8." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "El pivotatge per l'anglès perd distincions com 'vostè/tu' o gènere en adjectius/professions i multiplica errors en dos passos; els models multilingües directes (NLLB-200) o la revisió nativa mitiguen aquest efecte.",
+      "explanationsIncorrect": {
+        "A": "No és un risc lingüístic ni de qualitat.",
+        "B": "El pivotatge no fa el sistema determinista.",
+        "D": "UTF-8 suporta totes aquestes llengües sense problema."
+      }
+    }
+  ]
+}

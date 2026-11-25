@@ -1,0 +1,236 @@
+{
+  "conceptId": "m02-06-ner",
+  "module": 2,
+  "questions": [
+    {
+      "id": "m02-06-q01",
+      "module": 2,
+      "conceptId": "m02-06-ner",
+      "lessonRef": "content/module-02/m02-06-ner.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "En l'esquema d'etiquetatge **BIO (IOB2)** per a NER, com s'etiqueten correctament els tres tokens de l'entitat «Diputació de Barcelona»?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "`B-ORG`, `B-ORG`, `B-ORG`." },
+        { "key": "B", "text": "`B-ORG`, `I-ORG`, `I-ORG`." },
+        { "key": "C", "text": "`O`, `O`, `B-ORG`." },
+        { "key": "D", "text": "`I-ORG`, `I-ORG`, `B-ORG`." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "El primer token de l'entitat rep `B-ORG` (Begin) i els tokens següents dins de la mateixa entitat reben `I-ORG` (Inside).",
+      "explanationsIncorrect": {
+        "A": "Repetir `B-ORG` tres vegades marcaria tres organitzacions separades d'una sola paraula.",
+        "C": "Deixaria fora 'Diputació de'.",
+        "D": "Una entitat no comença per `I-` ni acaba amb `B-`."
+      }
+    },
+    {
+      "id": "m02-06-q02",
+      "module": 2,
+      "conceptId": "m02-06-ner",
+      "lessonRef": "content/module-02/m02-06-ner.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Per què en NER amb models Transformer és molt recomanable utilitzar versions ***cased*** (conservant majúscules) i NO aplicar *lowercasing* al text d'entrada?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè les majúscules inicials són un senyal molt informatiu per distingir noms propis (persones, organismes, municipis, lleis) de substantius comuns." },
+        { "key": "B", "text": "Perquè els Transformers no poden processar lletres minúscules." },
+        { "key": "C", "text": "Per reduir el nombre de tokens a la meitat." },
+        { "key": "D", "text": "Perquè l'esquema BIO prohibeix etiquetar paraules en minúscules." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Mantenir les majúscules ajuda dràsticament a separar 'Marta Serra' (PER) de 'serra' (O) o 'Consell Comarcal' (ORG) de 'consell' (O).",
+      "explanationsIncorrect": {
+        "B": "Els Transformers processen majúscules i minúscules sense cap problema.",
+        "C": "Conservar majúscules no redueix a la meitat els tokens.",
+        "D": "L'esquema BIO etiqueta qualsevol token (inclosos connectors en minúscules com 'de' dins 'Diputació de Barcelona')."
+      }
+    },
+    {
+      "id": "m02-06-q03",
+      "module": 2,
+      "conceptId": "m02-06-ner",
+      "lessonRef": "content/module-02/m02-06-ner.md",
+      "difficulty": "basic",
+      "questionType": "metrics",
+      "prompt": "Per què la **Token-level Accuracy** és una mètrica molt enganyosa per avaluar un sistema NER sobre decrets administratius?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè només pot prendre valors negatius." },
+        { "key": "B", "text": "Perquè requereix un LLM per calcular-se." },
+        { "key": "C", "text": "Perquè el 85%–95% dels tokens són `O` (no entitat), de manera que un model trivial que no detecta cap entitat pot obtenir una accuracy del 90% mentre el seu F1 d'entitats és 0%." },
+        { "key": "D", "text": "Perquè ignora completament els tokens etiquetats com `O`." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "El fort desequilibri dominat per la classe `O` fa que la token accuracy amagui fallades completes en la detecció d'entitats; cal avaluar sempre amb Strict Entity-Level F1 (`seqeval`).",
+      "explanationsIncorrect": {
+        "A": "L'Accuracy és sempre entre 0 i 1.",
+        "B": "És una simple proporció aritmètica.",
+        "D": "Al contrari, el problema és precisament que compta massivament els encerts trivials en `O`."
+      }
+    },
+    {
+      "id": "m02-06-q04",
+      "module": 2,
+      "conceptId": "m02-06-ner",
+      "lessonRef": "content/module-02/m02-06-ner.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Quin avantatge aporta l'esquema **BIO** enfront d'un esquema simplificat **IO** (només `I-TIPUS` i `O`, sense `B-`)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Elimina la classe `O`." },
+        { "key": "B", "text": "Permet delimitar correctament dues entitats adjacents del mateix tipus sense separador entremig (p. ex., dos noms de persona consecutius en un llistat), que l'esquema IO fusionaria en una sola entitat." },
+        { "key": "C", "text": "Duplica automàticament la velocitat del Transformer." },
+        { "key": "D", "text": "Evita haver de tokenitzar el text." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Amb `B-`, `B-PER I-PER B-PER I-PER` distingeix sense ambigüitat dues entitats `PER` contigües, impossible en `IO`.",
+      "explanationsIncorrect": {
+        "A": "BIO conserva la classe `O`.",
+        "C": "No afecta la velocitat del Transformer (de fet augmenta lleugerament el nombre de classes de sortida).",
+        "D": "Continua requerint tokenització."
+      }
+    },
+    {
+      "id": "m02-06-q05",
+      "module": 2,
+      "conceptId": "m02-06-ner",
+      "lessonRef": "content/module-02/m02-06-ner.md",
+      "difficulty": "intermediate",
+      "questionType": "metrics",
+      "prompt": "En l'avaluació estricta a nivell d'entitat (**`seqeval`**), una frase conté 1 sola entitat real `[Ajuntament de Vic]ORG`, i el model prediu únicament `[Ajuntament]ORG` (ometent `de Vic`). Quins són els recomptes de TP, FP i FN?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "TP = 1, FP = 0, FN = 0 (F1 = 1,0)." },
+        { "key": "B", "text": "TP = 0,5, FP = 0,5, FN = 0." },
+        { "key": "C", "text": "TP = 0, FP = 1, FN = 1 (F1 = 0,0), perquè el span predit no coincideix exactament amb les fronteres del span real." },
+        { "key": "D", "text": "TP = 0, FP = 0, FN = 1." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "En strict entity-level evaluation, una predicció amb fronteres parcials genera alhora 1 fals positiu (el span incorrecte '[Ajuntament]') i 1 fals negatiu (el span real '[Ajuntament de Vic]' no trobat).",
+      "explanationsIncorrect": {
+        "A": "No hi ha coincidència exacta de fronteres.",
+        "B": "L'avaluació estricta de seqeval no dona mig punt; els recomptes són enters.",
+        "D": "També existeix 1 FP perquè el model va emetre una entitat errònia."
+      }
+    },
+    {
+      "id": "m02-06-q06",
+      "module": 2,
+      "conceptId": "m02-06-ner",
+      "lessonRef": "content/module-02/m02-06-ner.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Quina funció compleix una capa **CRF (*Conditional Random Field*)** col·locada damunt d'un encoder (BiLSTM o Transformer) en NER?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Aprendre una matriu de transicions entre etiquetes consecutives i decodificar la seqüència globalment òptima (Viterbi), impedint transicions BIO il·legals com `O → I-PER` o `B-ORG → I-LOC`." },
+        { "key": "B", "text": "Substituir el tokenitzador de subparaules." },
+        { "key": "C", "text": "Anonimitzar automàticament les imatges PDF." },
+        { "key": "D", "text": "Convertir el problema d'NER en regressió contínua." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Sense CRF, una capa Softmax independent per token pot predir seqüències il·legals; el CRF imposa coherència global de seqüència mitjançant puntuacions de transició.",
+      "explanationsIncorrect": {
+        "B": "El CRF actua a la capa de sortida, no substitueix el tokenitzador.",
+        "C": "Opera sobre seqüències de tokens textuals.",
+        "D": "Continua sent classificació estructurada de seqüències discretes."
+      }
+    },
+    {
+      "id": "m02-06-q07",
+      "module": 2,
+      "conceptId": "m02-06-ner",
+      "lessonRef": "content/module-02/m02-06-ner.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Una àrea municipal necessita detectar 3 entitats molt específiques (`PARCEL·LA_CADASTRAL`, `ORDENANCA`, `IMPORT_SANCIO`) i no disposa encara de cap corpus anotat en BIO. Quina tecnologia moderna permet provar un prototip ràpid local sense reentrenar?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "K-Means clustering." },
+        { "key": "B", "text": "Word2Vec CBOW pur." },
+        { "key": "C", "text": "Un model **Zero-Shot NER** com **GLiNER** (que emparella descripcions d'etiquetes amb spans del text localment) o un LLM local amb sortida estructurada, combinat amb regex per als codis cadastrals." },
+        { "key": "D", "text": "Regressió lineal Ridge." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "GLiNER és un encoder bidireccional compacte dissenyat específicament per a NER zero-shot amb qualsevol llista d'etiquetes noves en temps d'inferència, corrent ràpidament *on-premise*.",
+      "explanationsIncorrect": {
+        "A": "K-Means agrupa documents, no extreu spans d'entitats.",
+        "B": "Word2Vec genera embeddings de paraula, no fa etiquetatge de seqüències.",
+        "D": "La regressió Ridge prediu escalars continus."
+      }
+    },
+    {
+      "id": "m02-06-q08",
+      "module": 2,
+      "conceptId": "m02-06-ner",
+      "lessonRef": "content/module-02/m02-06-ner.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "En fer *fine-tuning* de `RoBERTa-ca` per a NER, la paraula «Vilafranca» (etiquetada `B-LOC`) queda dividida pel tokenitzador en `['Vila', 'franca']`. Quina estratègia d'alineació d'etiquetes és INCORRECTA i malmetrà l'entrenament?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Assignar `[B-LOC, -100]` perquè la funció de pèrdua ignori el subtoken de continuació." },
+        { "key": "B", "text": "Assignar `[B-LOC, I-LOC]` i reagrupar per paraula en postprocés." },
+        { "key": "C", "text": "Ignorar els tokens especials `<s>` i `</s>` amb etiqueta `-100`." },
+        { "key": "D", "text": "Assignar `[B-LOC, B-LOC]` a tots dos subtokens, cosa que ensenya el model a partir una única paraula en dues entitats independents." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Repetir `B-` en subtokens interns trenca la semàntica de l'esquema BIO (inici d'entitat) i provoca fragmentació d'entitats en inferència.",
+      "explanationsIncorrect": {
+        "A": "Assignar `-100` als subtokens de continuació és la pràctica estàndard de Hugging Face.",
+        "B": "Propagar `I-LOC` als subtokens interns també és una estratègia vàlida si es reconstrueix coherentment.",
+        "C": "Assignar `-100` als tokens especials és obligatori."
+      }
+    },
+    {
+      "id": "m02-06-q09",
+      "module": 2,
+      "conceptId": "m02-06-ner",
+      "lessonRef": "content/module-02/m02-06-ner.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En la funció `bio_a_spans` de la lliçó, què fa la branca `if tipus_act != tipus:` quan troba un tag `I-ORG` precedit directament per `O` (transició il·legal `O → I-ORG`)?",
+      "codeSnippet": "elif tag.startswith(\"I-\"):\n    tipus = tag[2:]\n    if tipus_act != tipus:\n        if tipus_act is not None:\n            spans.add((tipus_act, inici_act, i))\n        tipus_act = tipus\n        inici_act = i",
+      "options": [
+        { "key": "A", "text": "Tracta defensivament l'`I-ORG` orfe com l'inici d'un nou span `ORG` (en lloc de descartar-lo silenciosament o llançar una excepció), tancant prèviament qualsevol span anterior d'un altre tipus." },
+        { "key": "B", "text": "Esborra totes les entitats detectades prèviament a la frase." },
+        { "key": "C", "text": "Converteix l'etiqueta `I-ORG` en `O`." },
+        { "key": "D", "text": "Atura el bucle immediatament amb un `break`." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "En models sense capa CRF poden aparèixer etiquetes `I-` sense `B-` previ; aquesta gestió defensiva (estàndard en decodificadors BIO com `seqeval`) recupera l'entitat de forma consistent sense trencar el flux.",
+      "explanationsIncorrect": {
+        "B": "Conserva totes les entitats ja afegides al conjunt `spans`.",
+        "C": "No la descarta com a `O`, sinó que n'inicia un span de tipus `ORG`.",
+        "D": "Continua processant la resta de tokens de la frase."
+      }
+    },
+    {
+      "id": "m02-06-q10",
+      "module": 2,
+      "conceptId": "m02-06-ner",
+      "lessonRef": "content/module-02/m02-06-ner.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "En un corpus d'actes municipals, per què una llista estàtica (gazetteer) dels 311 municipis de la província de Barcelona NO pot substituir per si sola un model NER contextual?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè els noms dels municipis canvien cada setmana." },
+        { "key": "B", "text": "Perquè els gazetteers no funcionen en Python." },
+        { "key": "C", "text": "Perquè el gazetteer només ocupa 10 KB." },
+        { "key": "D", "text": "Perquè no resol l'ambigüitat contextual ni les entitats niuades: marcaria falsament «Mataró» com a `LOC` independent dins d'«Ajuntament de Mataró» (`ORG`) o «Carrer de Girona» (`ADRECA`), i confondria municipis que coincideixen amb cognoms o paraules comunes (p. ex., «Vic», «Prats», «Roda»)." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Els noms de municipis sovint formen part d'organitzacions, noms de carrers o cognoms de persones; el gazetteer és excel·lent per a normalització i enllaç d'entitats (Entity Linking) DESPRÉS o en combinació amb un NER contextual, no com a substitut cec.",
+      "explanationsIncorrect": {
+        "A": "El catàleg de municipis és molt estable.",
+        "B": "Són trivials d'implementar en Python.",
+        "C": "La mida petita és un avantatge, no un problema."
+      }
+    }
+  ]
+}

@@ -1,0 +1,236 @@
+{
+  "conceptId": "m02-01-fonaments-nlp",
+  "module": 2,
+  "questions": [
+    {
+      "id": "m02-01-q01",
+      "module": 2,
+      "conceptId": "m02-01-fonaments-nlp",
+      "lessonRef": "content/module-02/m02-01-fonaments-nlp.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quin nivell d'anàlisi lingüística en NLP s'ocupa de determinar la intenció comunicativa real i resoldre referències que depenen del context del discurs (com «aquest import» referit a un paràgraf anterior)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Nivell lèxic/morfològic." },
+        { "key": "B", "text": "Nivell pragmàtic i discursiu." },
+        { "key": "C", "text": "Nivell fonètic." },
+        { "key": "D", "text": "Nivell de codificació ASCII." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "El nivell pragmàtic i discursiu estudia el significat en context, la intenció del parlant/ciutadà i la cohesió entre frases (com la resolució de correferències).",
+      "explanationsIncorrect": {
+        "A": "El nivell morfològic analitza l'estructura interna de cada paraula (lemes, flexió).",
+        "C": "El nivell fonètic tracta sons de la parla, no referències discursives escrites.",
+        "D": "La codificació de caràcters és infraestructura informàtica, no un nivell d'anàlisi lingüística."
+      }
+    },
+    {
+      "id": "m02-01-q02",
+      "module": 2,
+      "conceptId": "m02-01-fonaments-nlp",
+      "lessonRef": "content/module-02/m02-01-fonaments-nlp.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "En la representació TF-IDF d'un corpus de 10.000 expedients municipals, què passa amb el pes IDF d'una paraula com «ajuntament» que apareix en 9.950 dels 10.000 documents?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "El seu IDF és molt alt perquè apareix moltes vegades." },
+        { "key": "B", "text": "El seu IDF és negatiu i elimina el document." },
+        { "key": "C", "text": "El seu IDF és molt baix (proper al mínim), ja que un terme omnipresent aporta molt poc poder discriminatiu per distingir un expedient d'un altre." },
+        { "key": "D", "text": "Es converteix automàticament en un embedding dens de 768 dimensions." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "IDF penalitza logarítmicament els termes que apareixen a gairebé tots els documents (df ≈ N → ln((1+N)/(1+df)) ≈ 0), donant més pes als termes específics que discriminen temàtiques.",
+      "explanationsIncorrect": {
+        "A": "És exactament al contrari: IDF és inversament proporcional a la freqüència documental.",
+        "B": "Amb la fórmula estàndard suavitzada (ln((1+N)/(1+df)) + 1), IDF és sempre ≥ 1 (mai negatiu).",
+        "D": "TF-IDF genera vectors dispersos, no embeddings neuronals densos."
+      }
+    },
+    {
+      "id": "m02-01-q03",
+      "module": 2,
+      "conceptId": "m02-01-fonaments-nlp",
+      "lessonRef": "content/module-02/m02-01-fonaments-nlp.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina diferència fonamental hi ha entre el *stemming* i la lematització?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "El stemming retalla sufixos de forma heurística (podent generar arrels inexistents), mentre que la lematització utilitza anàlisi morfològica i diccionari per retornar la forma canònica real (lema)." },
+        { "key": "B", "text": "El stemming només funciona en català i la lematització només en anglès." },
+        { "key": "C", "text": "La lematització elimina totes les vocals i el stemming elimina els números." },
+        { "key": "D", "text": "Són exactament el mateix algorisme amb noms diferents." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "El stemming aplica regles mecàniques de truncament de sufixos, mentre que la lematització obté el lema real de diccionari (p. ex., 'van tramitar' → 'tramitar').",
+      "explanationsIncorrect": {
+        "B": "Existeixen stemmers i lematitzadors per a múltiples idiomes.",
+        "C": "Cap dels dos elimina vocals ni números arbitràriament.",
+        "D": "Tenen mecanismes, cost i precisió molt diferents."
+      }
+    },
+    {
+      "id": "m02-01-q04",
+      "module": 2,
+      "conceptId": "m02-01-fonaments-nlp",
+      "lessonRef": "content/module-02/m02-01-fonaments-nlp.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Quin problema greu provoca eliminar paraules de negació («no», «sense», «ni») dins d'una llista genèrica de *stopwords* en un classificador d'instàncies o de sentiment?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Augmenta excessivament la mida del vocabulari." },
+        { "key": "B", "text": "Impedeix aplicar la normalització L2." },
+        { "key": "C", "text": "Inverteix o destrueix el significat de frases crítiques (fent idèntics «no conforme» i «conforme», o «sense llicència» i «amb llicència»)." },
+        { "key": "D", "text": "Converteix el model TF-IDF en un model no supervisat." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Les partícules de negació modifiquen radicalment el significat i la polaritat jurídica o semàntica d'una frase; per això s'han d'excloure de la llista de stopwords (i combinar-se amb bigrames en TF-IDF).",
+      "explanationsIncorrect": {
+        "A": "Eliminar paraules redueix la mida del vocabulari, no l'augmenta.",
+        "B": "La normalització L2 continua funcionant igualment.",
+        "D": "El preprocessament no canvia el paradigma d'aprenentatge."
+      }
+    },
+    {
+      "id": "m02-01-q05",
+      "module": 2,
+      "conceptId": "m02-01-fonaments-nlp",
+      "lessonRef": "content/module-02/m02-01-fonaments-nlp.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Estàs preparant textos administratius per fer *fine-tuning* d'un model RoBERTa-ca (Transformer). Quin preprocessament és el més adequat?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Aplicar stemming agressiu, passar tot a minúscules, eliminar puntuació i eliminar totes les stopwords." },
+        { "key": "B", "text": "Aplicar només neteja estructural (normalització Unicode NFC, eliminació d'artefactes OCR o capçaleres repetides i anonimització de PII) i conservar el text natural intacte per al seu tokenitzador." },
+        { "key": "C", "text": "Convertir prèviament el text en una matriu Bag of Words ordenada alfabèticament." },
+        { "key": "D", "text": "Traduir prèviament tots els textos a llatí." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Els models Transformer han estat preentrenats sobre text natural intacte; conservar majúscules, puntuació, flexió i paraules funcionals preserva tot el senyal sintàctic i semàntic.",
+      "explanationsIncorrect": {
+        "A": "El preprocés destructiu degrada severament els models Transformer preentrenats.",
+        "C": "BoW destrueix l'ordre seqüencial que necessita el Transformer.",
+        "D": "No té cap sentit tècnic ni lingüístic."
+      }
+    },
+    {
+      "id": "m02-01-q06",
+      "module": 2,
+      "conceptId": "m02-01-fonaments-nlp",
+      "lessonRef": "content/module-02/m02-01-fonaments-nlp.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Per què en una representació Bag of Words o TF-IDF d'unigrames les frases «subvenció d'obres» i «ajut per a rehabilitació» tenen similitud cosinus igual a 0?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè TF-IDF no accepta caràcters accentuats." },
+        { "key": "B", "text": "Perquè les dues frases són massa curtes per tenir norma no nul·la." },
+        { "key": "C", "text": "Perquè en models dispersos basats en coincidència lèxica exacta cada mot és una dimensió ortogonal independent, sense coneixement de sinonímia semàntica." },
+        { "key": "D", "text": "Perquè la similitud cosinus és sempre 0 entre textos en català." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "En BoW/TF-IDF, dos textos que no comparteixen exactament els mateixos termes lèxics tenen producte escalar nul encara que siguin semànticament quasi sinònims (problema de desajust de vocabulari / vocabulary mismatch).",
+      "explanationsIncorrect": {
+        "A": "TF-IDF treballa perfectament amb UTF-8 i caràcters accentuats.",
+        "B": "Ambdues frases tenen vectors no nuls.",
+        "D": "La similitud cosinus funciona igual en qualsevol idioma."
+      }
+    },
+    {
+      "id": "m02-01-q07",
+      "module": 2,
+      "conceptId": "m02-01-fonaments-nlp",
+      "lessonRef": "content/module-02/m02-01-fonaments-nlp.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "En un projecte de classificació d'instàncies ciutadanes en 15 categories, per què és una bona pràctica d'enginyeria construir primer un baseline amb TF-IDF (unigrames + bigrames) i Regressió Logística abans d'entrenar un model Deep Learning?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè TF-IDF sempre supera qualsevol Transformer en totes les tasques d'NLP." },
+        { "key": "B", "text": "Perquè és obligatori per l'AI Act utilitzar TF-IDF." },
+        { "key": "C", "text": "Perquè els Transformers no poden classificar textos en català." },
+        { "key": "D", "text": "Perquè proporciona en segons i sobre CPU un referent ràpid, interpretable i sovint molt competitiu que permet validar la qualitat de les etiquetes i justificar objectivament si el cost extra d'un model neuronal aporta guany real." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Un baseline TF-IDF + lineal valida el pipeline, detecta problemes d'etiquetatge ràpidament i estableix una marca objectiva contra la qual mesurar si la complexitat i cost d'un Transformer compensen.",
+      "explanationsIncorrect": {
+        "A": "Els Transformers solen superar TF-IDF en matisos semàntics, polisèmia i bilingüisme, però a un cost més alt.",
+        "B": "L'AI Act no imposa algorismes concrets com TF-IDF.",
+        "C": "Hi ha excel·lents Transformers per a català (RoBERTa-ca, XLM-R, Salamandra)."
+      }
+    },
+    {
+      "id": "m02-01-q08",
+      "module": 2,
+      "conceptId": "m02-01-fonaments-nlp",
+      "lessonRef": "content/module-02/m02-01-fonaments-nlp.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En l'exemple Python de la lliçó, per què s'utilitza el patró `[a-zàèéíïòóúüç]+(?:·[a-zàèéíïòóúüç]+)*` en lloc d'un simple `\\w+`?",
+      "codeSnippet": "tokens = re.findall(r\"[a-zàèéíïòóúüç]+(?:·[a-zàèéíïòóúüç]+)*\", text)",
+      "options": [
+        { "key": "A", "text": "Perquè en Python `\\w+` no inclou el punt volat (`·`) de l'ela geminada catalana, de manera que partiria paraules com «sol·licitud» o «parcel·la» en dos fragments artificials («sol» i «licitud»)." },
+        { "key": "B", "text": "Perquè `\\w+` només detecta nombres enters." },
+        { "key": "C", "text": "Per convertir les majúscules en minúscules automàticament." },
+        { "key": "D", "text": "Per eliminar tots els accents del català." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "El punt volat (U+00B7) és un signe de puntuació i no pertany a `\\w`; sense contemplar-lo explícitament, termes fonamentals de l'Administració catalana com 'sol·licitud', 'instal·lació' o 'parcel·la' queden partits en dos tokens erronis.",
+      "explanationsIncorrect": {
+        "B": "`\\w+` captura lletres Unicode, dígits i guió baix, no només números.",
+        "C": "La conversió a minúscules es fa prèviament amb `text.lower()`.",
+        "D": "Al contrari, la classe de caràcters preserva explícitament tots els accents i dièresis del català."
+      }
+    },
+    {
+      "id": "m02-01-q09",
+      "module": 2,
+      "conceptId": "m02-01-fonaments-nlp",
+      "lessonRef": "content/module-02/m02-01-fonaments-nlp.md",
+      "difficulty": "advanced",
+      "questionType": "metrics",
+      "prompt": "Per què en el càlcul de TF-IDF sovint s'aplica normalització L2 a cada fila (document) i, opcionalment, `sublinear_tf=True` (`1 + log(tf)`)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Per fer que tots els documents tinguin exactament les mateixes paraules." },
+        { "key": "B", "text": "La normalització L2 compensa les diferències de longitud entre documents curts i llargs (fent que el producte escalar equivalgui a la similitud cosinus), i `sublinear_tf` atenua l'impacte lineal que un terme repetit 20 vegades domini excessivament sobre un terme que apareix 2 vegades." },
+        { "key": "C", "text": "Per reduir el nombre de documents del corpus a la meitat." },
+        { "key": "D", "text": "Per convertir els vectors dispersos en un arbre de decisió." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Sense normalització L2, un plec de 80 pàgines tindria normes molt superiors a una instància de 4 línies; i `sublinear_tf` aplica rendiments decreixents logarítmics a la repetició d'un mateix terme.",
+      "explanationsIncorrect": {
+        "A": "No modifica les paraules presents, només escala els pesos numèrics.",
+        "C": "Conserva tots els documents del corpus.",
+        "D": "Les matrius continuen sent representacions vectorials disperses."
+      }
+    },
+    {
+      "id": "m02-01-q10",
+      "module": 2,
+      "conceptId": "m02-01-fonaments-nlp",
+      "lessonRef": "content/module-02/m02-01-fonaments-nlp.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "Un ens local desplega un sistema d'anàlisi d'instàncies ciutadanes on el 68% dels textos entren en català, el 27% en castellà i el 5% barregen ambdós idiomes. Quina pràctica d'avaluació és imprescindible per garantir equitat i qualitat lingüística?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Reportar únicament l'Accuracy global combinada de tot el conjunt de test." },
+        { "key": "B", "text": "Descartar del conjunt de prova tots els textos mixtos i en català." },
+        { "key": "C", "text": "Entrenar només amb textos en anglès traduïts automàticament sense validar en català." },
+        { "key": "D", "text": "Mesurar i reportar les mètriques (p. ex. Macro-F1) desagregades per idioma (català, castellà i bilingüe/mixt) per detectar si el model degrada el rendiment en català o en casos de code-switching." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Una mètrica agregada pot amagar una caiguda significativa en un dels idiomes cooficials o en expedients bilingües; l'avaluació estratificada per idioma és essencial en administracions catalanes.",
+      "explanationsIncorrect": {
+        "A": "L'Accuracy global pot ocultar degradacions importants en un subgrup lingüístic.",
+        "B": "Excluir textos reals distorsiona completament la realitat del servei públic.",
+        "C": "No validar sobre textos reals en català impedeix garantir-ne la qualitat."
+      }
+    }
+  ]
+}

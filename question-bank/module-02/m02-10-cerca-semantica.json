@@ -1,0 +1,236 @@
+{
+  "conceptId": "m02-10-cerca-semantica",
+  "module": 2,
+  "questions": [
+    {
+      "id": "m02-10-q01",
+      "module": 2,
+      "conceptId": "m02-10-cerca-semantica",
+      "lessonRef": "content/module-02/m02-10-cerca-semantica.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quin problema fonamental de la cerca lèxica tradicional (BM25) resol la **cerca semàntica** basada en embeddings?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "El desajust de vocabulari (*vocabulary mismatch*), permetent trobar documents rellevants escrits amb sinònims, llenguatge jurídic formal o un altre idioma cooficial encara que no comparteixin paraules exactes amb la consulta." },
+        { "key": "B", "text": "La necessitat d'aplicar permisos d'accés (ACL) als documents." },
+        { "key": "C", "text": "L'eliminació de la puntuació en documents PDF." },
+        { "key": "D", "text": "La conversió d'imatges escanejades a text." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "La cerca semàntica projecta consultes i documents en un espai vectorial compartit on 'rebaixar contribució' i 'bonificació IBI' queden molt a prop malgrat no compartir paraules.",
+      "explanationsIncorrect": {
+        "B": "Els permisos ACL continuen sent obligatoris en cerca semàntica.",
+        "C": "No té relació amb puntuació de PDFs.",
+        "D": "Això correspon a l'OCR (Mòdul 4)."
+      }
+    },
+    {
+      "id": "m02-10-q02",
+      "module": 2,
+      "conceptId": "m02-10-cerca-semantica",
+      "lessonRef": "content/module-02/m02-10-cerca-semantica.md",
+      "difficulty": "basic",
+      "questionType": "architecture",
+      "prompt": "Per què la **cerca híbrida** (BM25 + cerca vectorial densa) és l'arquitectura de referència en cercadors de l'Administració pública?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè els embeddings densos no funcionen en català." },
+        { "key": "B", "text": "Perquè combina la precisió exacta de BM25 en codis d'expedient, NIF, CPV i números d'article amb la capacitat semàntica i multilingüe dels embeddings per al llenguatge natural ciutadà." },
+        { "key": "C", "text": "Perquè elimina completament la necessitat d'indexar els documents." },
+        { "key": "D", "text": "Perquè garanteix latència de 0 mil·lisegons." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Cada branca cobreix exactament el punt feble de l'altra: BM25 encerta codis i termes exactes, mentre els embeddings resolen sinònims, parafraseig i bilingüisme català/castellà.",
+      "explanationsIncorrect": {
+        "A": "Hi ha excel·lents encoders multilingües amb suport fort en català (BGE-M3, E5).",
+        "C": "Requereix mantenir tant l'índex invertit com l'índex vectorial.",
+        "D": "Afegeix un cost lleugerament superior a una sola branca, però molt assumible (<150 ms)."
+      }
+    },
+    {
+      "id": "m02-10-q03",
+      "module": 2,
+      "conceptId": "m02-10-cerca-semantica",
+      "lessonRef": "content/module-02/m02-10-cerca-semantica.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "En el patró ***Retrieve & Re-rank***, quina funció té el ***Cross-Encoder***?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Pre-calcular els embeddings de tots els documents del corpus una vegada al mes." },
+        { "key": "B", "text": "Traducir automàticament els documents al francès." },
+        { "key": "C", "text": "Reordenar amb alta precisió un conjunt petit de candidats (p. ex. top-30) processant conjuntament consulta i document mitjançant atenció creuada." },
+        { "key": "D", "text": "Generar el resum final en format PDF." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "El Cross-Encoder aplica self-attention completa entre tots els tokens de la consulta i de cada candidat del top-30, millorant notablement nDCG@5 i MRR.",
+      "explanationsIncorrect": {
+        "A": "Pre-calcular vectors per separat és propi del Bi-Encoder, no del Cross-Encoder.",
+        "B": "No fa traducció.",
+        "D": "El Cross-Encoder retorna una puntuació escalar de rellevància, no genera text ni PDFs."
+      }
+    },
+    {
+      "id": "m02-10-q04",
+      "module": 2,
+      "conceptId": "m02-10-cerca-semantica",
+      "lessonRef": "content/module-02/m02-10-cerca-semantica.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Per què NO es pot utilitzar un ***Cross-Encoder*** directament sobre 500.000 documents en temps real sense una etapa prèvia de recuperació?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè el Cross-Encoder concatena consulta i document abans de l'atenció, de manera que no es poden pre-indexar els documents; requeriria 500.000 passades completes del Transformer per a cada consulta." },
+        { "key": "B", "text": "Perquè el Cross-Encoder té menys precisió que un Bi-Encoder." },
+        { "key": "C", "text": "Perquè el Cross-Encoder només accepta documents de menys de 10 paraules." },
+        { "key": "D", "text": "Perquè els Cross-Encoders no es poden executar en GPU." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "La impossibilitat de pre-calcular representacions independents fa que el Cross-Encoder tingui cost O(N) passades Transformer per consulta, viable només sobre els top-20/50 candidats de l'Etapa 1.",
+      "explanationsIncorrect": {
+        "B": "Al contrari, el Cross-Encoder és més precís que el Bi-Encoder.",
+        "C": "Admet finestres de 512 a 8.192 tokens segons el model.",
+        "D": "S'executen precisament molt eficientment en batches petits sobre GPU."
+      }
+    },
+    {
+      "id": "m02-10-q05",
+      "module": 2,
+      "conceptId": "m02-10-cerca-semantica",
+      "lessonRef": "content/module-02/m02-10-cerca-semantica.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Per què **Reciprocal Rank Fusion (RRF)** és preferible a sumar directament `puntuacio_BM25 + similitud_cosinus` en una cerca híbrida?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè BM25 sempre dona nombres negatius." },
+        { "key": "B", "text": "Perquè BM25 (no acotat, p. ex. 0..30) i la similitud cosinus (acotada, p. ex. 0,4..0,9) tenen escales i distribucions incompatibles; RRF combina només les posicions (`1 / (k + rank)`), eliminant la dependència d'escales." },
+        { "key": "C", "text": "Perquè RRF entrena una xarxa neuronal nova en cada consulta." },
+        { "key": "D", "text": "Perquè la suma directa no es pot programar en Python." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Sumar puntuacions d'escales tan dispars fa que BM25 eclipsi totalment el cosinus; RRF utilitza únicament els rànquings ordinals de manera robusta i sense entrenament addicional.",
+      "explanationsIncorrect": {
+        "A": "BM25 (variant Lucene) dona valors ≥ 0.",
+        "C": "RRF és una fórmula determinista en microsegons, no entrena cap model.",
+        "D": "És trivial de programar, però matemàticament defectuosa sense normalització."
+      }
+    },
+    {
+      "id": "m02-10-q06",
+      "module": 2,
+      "conceptId": "m02-10-cerca-semantica",
+      "lessonRef": "content/module-02/m02-10-cerca-semantica.md",
+      "difficulty": "intermediate",
+      "questionType": "metrics",
+      "prompt": "Quin efecte té la constant suavitzadora `k = 60` en la fórmula d'RRF `1 / (k + rank)`?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Limita el resultat màxim a 60 documents." },
+        { "key": "B", "text": "Elimina els primers 60 resultats del rànquing." },
+        { "key": "C", "text": "Atenua la diferència extrema entre la posició `#1` i la `#2` en un únic cercador (`1/61` vs `1/62`), premiant més els documents que apareixen consistentment amunt en múltiples cercadors alhora." },
+        { "key": "D", "text": "Multiplica totes les puntuacions BM25 per 60." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Si `k=0`, un `#1` en un sol cercador (`1/1 = 1,0`) venceria sempre un `#2` en ambdós cercadors (`1/2 + 1/2 = 1,0`); amb `k=60`, un `#2` en ambdós (`2/62 = 0,0323`) supera clarament un `#1` aïllat (`1/61 = 0,0164`).",
+      "explanationsIncorrect": {
+        "A": "k és una constant de suavitzat, no un límit de nombre de documents.",
+        "B": "No descarta cap resultat.",
+        "D": "RRF no fa servir les puntuacions crues de BM25."
+      }
+    },
+    {
+      "id": "m02-10-q07",
+      "module": 2,
+      "conceptId": "m02-10-cerca-semantica",
+      "lessonRef": "content/module-02/m02-10-cerca-semantica.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Un ciutadà consulta en castellà «subvención para instalar placas solares en casa» sobre un repositori d'ordenances escrites únicament en català («ajuts per a energies renovables fotovoltaiques en habitatges»). Quina peça del pipeline garanteix recuperar el document correcte?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Un índex invertit BM25 monolingüe." },
+        { "key": "B", "text": "Un regex que busqui la paraula exacta `placas`." },
+        { "key": "C", "text": "Un algorisme K-Means sobre la longitud dels documents." },
+        { "key": "D", "text": "La branca semàntica amb un **Bi-Encoder multilingüe** (com `BGE-M3` o `multilingual-e5`) que projecta català i castellà en el mateix espai semàntic compartit." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Els encoders multilingües alineen frases equivalents en català i castellà molt a prop en el mateix espai vectorial, resolent la cerca cross-lingual sense traducció prèvia.",
+      "explanationsIncorrect": {
+        "A": "BM25 monolingüe no emparella 'subvención/placas/casa' amb 'ajuts/fotovoltaiques/habitatges'.",
+        "B": "'placas' no apareix al document català.",
+        "C": "La longitud dels documents no té cap relació amb la rellevància temàtica."
+      }
+    },
+    {
+      "id": "m02-10-q08",
+      "module": 2,
+      "conceptId": "m02-10-cerca-semantica",
+      "lessonRef": "content/module-02/m02-10-cerca-semantica.md",
+      "difficulty": "advanced",
+      "questionType": "metrics",
+      "prompt": "Amb `RRF (k=60, pesos iguals = 1)`: el `Doc_X` surt `#1` en BM25 i no apareix al top del cercador dens; el `Doc_Y` surt `#3` en BM25 i `#4` en el cercador dens. Quin queda per davant després d'RRF?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "`Doc_Y` (`1/63 + 1/64 = 0,03150`) supera clarament `Doc_X` (`1/61 = 0,01639`), perquè RRF premia el consens entre ambdues branques." },
+        { "key": "B", "text": "`Doc_X` supera `Doc_Y` perquè ser `#1` en una branca sempre guanya." },
+        { "key": "C", "text": "Empaten exactament amb 0,50." },
+        { "key": "D", "text": "Ambdós obtenen puntuació 0." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "1/63 (0,01587) + 1/64 (0,01563) = 0,03150 > 1/61 (0,01639). Aquesta propietat de consens és la raó principal de l'èxit d'RRF en cerca híbrida.",
+      "explanationsIncorrect": {
+        "B": "Amb k=60, aparèixer ben situat en dues branques suma gairebé el doble que un #1 en una sola branca.",
+        "C": "No empaten; Doc_Y gairebé duplica Doc_X.",
+        "D": "Tots dos tenen puntuacions estrictament positives."
+      }
+    },
+    {
+      "id": "m02-10-q09",
+      "module": 2,
+      "conceptId": "m02-10-cerca-semantica",
+      "lessonRef": "content/module-02/m02-10-cerca-semantica.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Per què un *Cross-Encoder Reranker* sol millorar dràsticament els resultats d'un *Bi-Encoder* en consultes administratives amb **negacions o requisits condicional** (p. ex. «subvencions que NO requereixin garantia prèvia»)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè el Cross-Encoder utilitza menys paràmetres que BM25." },
+        { "key": "B", "text": "Perquè en concatenar consulta i document dins el mateix Transformer, les capes de self-attention poden comparar directament la paraula «NO» i la condició de la consulta amb la clàusula exacta del document abans d'emetre la puntuació." },
+        { "key": "C", "text": "Perquè el Cross-Encoder elimina totes les negacions del text." },
+        { "key": "D", "text": "Perquè utilitza distància euclidiana sobre vectors estàtics Word2Vec." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "A diferència del Bi-Encoder (que comprimeix tota la consulta en un sol vector i perd interaccions fines), el Cross-Encoder té atenció creuada directa entre cada token de la consulta i cada token del passatge.",
+      "explanationsIncorrect": {
+        "A": "Un Cross-Encoder neuronal té centenars de milions de paràmetres.",
+        "C": "Al contrari, preserva i atén explícitament les negacions.",
+        "D": "És una arquitectura Transformer profunda, no Word2Vec."
+      }
+    },
+    {
+      "id": "m02-10-q10",
+      "module": 2,
+      "conceptId": "m02-10-cerca-semantica",
+      "lessonRef": "content/module-02/m02-10-cerca-semantica.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "En desplegar una cerca híbrida + reranker sobre un repositori d'expedients amb nivells de confidencialitat diferents per departament, en quin punt del pipeline s'han d'aplicar els **filtres de permisos d'usuari (ACL)**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Només a la interfície visual del navegador (CSS `display: none`)." },
+        { "key": "B", "text": "Només després de passar els 50 documents a l'LLM perquè els resumeixi." },
+        { "key": "C", "text": "Com a **pre-filtre determinista a l'Etapa 1** (tant en l'índex BM25 com en l'índex vectorial) abans de fusionar o passar res al reranker o a l'LLM, evitant qualsevol fuga d'informació i evitant que el top-k quedi ple de documents no autoritzats." },
+        { "key": "D", "text": "No cal aplicar permisos si s'utilitzen embeddings." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "El pre-filtratge ACL en recuperació garanteix seguretat per disseny (cap dada prohibida entra al reranker ni a l'LLM) i evita el problema del post-filtratge (on filtrar després del top-5 pot deixar l'usuari amb 0 resultats).",
+      "explanationsIncorrect": {
+        "A": "Amagar dades només al client seria una vulnerabilitat crítica de seguretat.",
+        "B": "Passar documents no autoritzats a l'LLM pot filtrar informació confidencial a la resposta generada.",
+        "D": "Els embeddings representen el contingut del document; el control d'accés és obligatori per RGPD i ENS."
+      }
+    }
+  ]
+}

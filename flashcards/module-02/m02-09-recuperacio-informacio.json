@@ -1,0 +1,46 @@
+{
+  "conceptId": "m02-09-recuperacio-informacio",
+  "module": 2,
+  "cards": [
+    {
+      "id": "m02-09-fc01",
+      "module": 2,
+      "conceptId": "m02-09-recuperacio-informacio",
+      "front": "Què és un índex invertit i per què és la base de la recuperació lèxica?",
+      "back": "Estructura que mapeja cada terme del vocabulari a una llista de documents (postings list) amb freqüències i posicions, permetent cercar entre milions de documents en mil·lisegons.",
+      "tags": ["índex invertit", "IR"]
+    },
+    {
+      "id": "m02-09-fc02",
+      "module": 2,
+      "conceptId": "m02-09-recuperacio-informacio",
+      "front": "Què controlen els paràmetres k₁ i b en Okapi BM25?",
+      "back": "k₁ (≈1,2–1,5) controla la saturació sublineal de la freqüència de terme (tf); b (≈0,75) controla la normalització per longitud del document respecte de la longitud mitjana (avgdl).",
+      "tags": ["BM25", "hiperparàmetres"]
+    },
+    {
+      "id": "m02-09-fc03",
+      "module": 2,
+      "conceptId": "m02-09-recuperacio-informacio",
+      "front": "Quina diferència pràctica hi ha entre Recall@k, MRR i nDCG@k?",
+      "back": "Recall@k mesura quants rellevants entren al top-k (clau en 1a etapa RAG); MRR mesura 1/posició del 1r encert (resposta única); nDCG@k suporta rellevància graduada i premia posicions superiors.",
+      "tags": ["mètriques IR", "nDCG", "MRR"]
+    },
+    {
+      "id": "m02-09-fc04",
+      "module": 2,
+      "conceptId": "m02-09-recuperacio-informacio",
+      "front": "En quins casos BM25 supera els embeddings densos en l'Administració pública?",
+      "back": "En cerques de codis exactes (números d'expedient, NIF, codis CPV), referències d'articles de llei ('art. 41 LRJSP', 'Llei 39/2015') i terminologia tècnica molt específica.",
+      "tags": ["BM25", "administració"]
+    },
+    {
+      "id": "m02-09-fc05",
+      "module": 2,
+      "conceptId": "m02-09-recuperacio-informacio",
+      "front": "Per què calen pre-filtres deterministes de metadades en cercadors normatius?",
+      "back": "Perquè la puntuació textual no distingeix una ordenança derogada d'una de vigent ni coneix els permisos d'accés (ACL/RGPD/ENS) de l'usuari que consulta.",
+      "tags": ["metadades", "ACL", "vigència"]
+    }
+  ]
+}

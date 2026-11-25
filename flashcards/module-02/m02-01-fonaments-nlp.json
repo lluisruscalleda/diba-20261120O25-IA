@@ -1,0 +1,54 @@
+{
+  "conceptId": "m02-01-fonaments-nlp",
+  "module": 2,
+  "cards": [
+    {
+      "id": "m02-01-fc01",
+      "module": 2,
+      "conceptId": "m02-01-fonaments-nlp",
+      "front": "Quins són els 4 nivells clàssics d'anàlisi lingüística en NLP?",
+      "back": "Lèxic/morfològic (mots i flexió), sintàctic (estructura gramatical), semàntic (significat literal i entitats) i pragmàtic/discursiu (intenció i context entre frases).",
+      "tags": ["NLP", "fonaments"]
+    },
+    {
+      "id": "m02-01-fc02",
+      "module": 2,
+      "conceptId": "m02-01-fonaments-nlp",
+      "front": "Què mesura TF-IDF i què penalitza el factor IDF?",
+      "back": "TF-IDF = TF(t,d) × IDF(t). El factor IDF penalitza logarítmicament els termes que apareixen en gairebé tots els documents del corpus (poc discriminatius) i premia els termes específics.",
+      "tags": ["TF-IDF", "vectors"]
+    },
+    {
+      "id": "m02-01-fc03",
+      "module": 2,
+      "conceptId": "m02-01-fonaments-nlp",
+      "front": "Quina diferència hi ha entre stemming i lematització?",
+      "back": "El stemming retalla sufixos heurísticament (ràpid però imprecís); la lematització usa anàlisi morfosintàctica i diccionari per retornar el lema canònic real (p. ex. 'resolucions' → 'resolució').",
+      "tags": ["preprocés", "morfologia"]
+    },
+    {
+      "id": "m02-01-fc04",
+      "module": 2,
+      "conceptId": "m02-01-fonaments-nlp",
+      "front": "Per què NO s'ha d'aplicar stemming ni eliminar stopwords abans d'un Transformer?",
+      "back": "Perquè els Transformers estan preentrenats sobre text natural intacte; el seu tokenitzador de subparaules i l'atenció necessiten majúscules, puntuació, negacions i flexió intactes.",
+      "tags": ["preprocés", "Transformers"]
+    },
+    {
+      "id": "m02-01-fc05",
+      "module": 2,
+      "conceptId": "m02-01-fonaments-nlp",
+      "front": "Quines particularitats cal vigilar en NLP aplicat al català administratiu?",
+      "back": "L'ela geminada (l·l) que trenca regex \\w+, els apòstrofs (l', d'), pronoms febles, alternança català/castellà (code-switching) i avaluació desagregada per idioma.",
+      "tags": ["català", "administració"]
+    },
+    {
+      "id": "m02-01-fc06",
+      "module": 2,
+      "conceptId": "m02-01-fonaments-nlp",
+      "front": "Quin risc comporta eliminar negacions com a stopwords en TF-IDF?",
+      "back": "Inverteix el significat de la frase ('no conforme' passa a ser idèntic a 'conforme'). Cal conservar les negacions i combinar-les amb bigrames (ngram_range=(1,2)).",
+      "tags": ["stopwords", "errors freqüents"]
+    }
+  ]
+}

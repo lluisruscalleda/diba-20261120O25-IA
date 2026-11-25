@@ -1,0 +1,236 @@
+{
+  "conceptId": "m02-02-tokenitzacio",
+  "module": 2,
+  "questions": [
+    {
+      "id": "m02-02-q01",
+      "module": 2,
+      "conceptId": "m02-02-tokenitzacio",
+      "lessonRef": "content/module-02/m02-02-tokenitzacio.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quin problema fonamental de la tokenització per paraules completes resol la tokenització per subparaules (BPE, WordPiece, Unigram)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "El problema de les paraules fora de vocabulari (OOV / <UNK>) i l'explosió de la mida del vocabulari en llengües amb rica flexió morfològica." },
+        { "key": "B", "text": "La necessitat d'utilitzar una funció de pèrdua durant l'entrenament." },
+        { "key": "C", "text": "L'eliminació total de les al·lucinacions dels LLMs." },
+        { "key": "D", "text": "La substitució del mecanisme de self-attention per regressions lineals." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Dividir mots rars o nous en subparaules conegudes permet representar qualsevol paraula amb un vocabulari compacte (32k-128k) eliminant o minimitzant els tokens desconeguts (<UNK>).",
+      "explanationsIncorrect": {
+        "B": "El model continua necessitant una funció de pèrdua per entrenar-se.",
+        "C": "La tokenització no elimina per si sola les al·lucinacions.",
+        "D": "La tokenització és l'etapa d'entrada, no substitueix l'arquitectura Transformer."
+      }
+    },
+    {
+      "id": "m02-02-q02",
+      "module": 2,
+      "conceptId": "m02-02-tokenitzacio",
+      "lessonRef": "content/module-02/m02-02-tokenitzacio.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quin criteri utilitza l'algorisme Byte-Pair Encoding (BPE) a cada iteració d'entrenament del tokenitzador?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Elimina aleatòriament la meitat de les paraules del diccionari." },
+        { "key": "B", "text": "Fusiona en un nou token el parell de símbols adjacents més freqüent al corpus." },
+        { "key": "C", "text": "Assigna un únic token a cada paràgraf complet." },
+        { "key": "D", "text": "Tradueix cada paraula a l'anglès abans d'assignar-li un identificador." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "BPE parteix de caràcters o bytes individuals i fusiona iterativament el parell adjacent amb major freqüència fins assolir la mida de vocabulari desitjada.",
+      "explanationsIncorrect": {
+        "A": "BPE és un algorisme determinista de fusions bottom-up, no d'eliminació aleatòria.",
+        "C": "Assignar un token per paràgraf crearia un vocabulari infinit i inutilitzable.",
+        "D": "BPE no fa traducció; opera sobre les seqüències de símbols del corpus."
+      }
+    },
+    {
+      "id": "m02-02-q03",
+      "module": 2,
+      "conceptId": "m02-02-tokenitzacio",
+      "lessonRef": "content/module-02/m02-02-tokenitzacio.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Què mesura la «fertilitat» d'un tokenitzador en un idioma concret com el català?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "El nombre de capes ocultes del model Transformer." },
+        { "key": "B", "text": "El percentatge de respostes correctes en un examen." },
+        { "key": "C", "text": "El nombre mitjà de tokens generats per cada paraula d'aquell idioma." },
+        { "key": "D", "text": "La temperatura màxima del mostreig." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "La fertilitat (tokens/paraula) indica quant fragmenta el tokenitzador un idioma; com més propera a 1,0, més eficient és el vocabulari per a aquella llengua.",
+      "explanationsIncorrect": {
+        "A": "El nombre de capes és un paràmetre arquitectònic del model.",
+        "B": "Això és Accuracy, no fertilitat del tokenitzador.",
+        "D": "La temperatura és un hiperparàmetre de decodificació."
+      }
+    },
+    {
+      "id": "m02-02-q04",
+      "module": 2,
+      "conceptId": "m02-02-tokenitzacio",
+      "lessonRef": "content/module-02/m02-02-tokenitzacio.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "En què es diferencia principalment el model **Unigram** (usat sovint amb SentencePiece) respecte de **BPE**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "BPE construeix el vocabulari bottom-up fusionant parells freqüents, mentre que Unigram treballa top-down podant un vocabulari inicial gran per minimitzar la pèrdua de versemblança." },
+        { "key": "B", "text": "Unigram només pot tokenitzar paraules d'una sola lletra." },
+        { "key": "C", "text": "BPE només funciona amb imatges i Unigram només amb àudio." },
+        { "key": "D", "text": "Unigram no admet idiomes amb accents com el català." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "BPE creix des de caràcters/bytes cap amunt per fusions, mentre que Unigram comença amb un conjunt molt gran de subparaules candidates i elimina iterativament les que menys afecten la probabilitat del corpus.",
+      "explanationsIncorrect": {
+        "B": "Unigram produeix subparaules de longitud variable, incloses paraules completes.",
+        "C": "Ambdós són algorismes de tokenització textual.",
+        "D": "SentencePiece + Unigram funciona sobre UTF-8 i suporta perfectament el català (com en XLM-RoBERTa o Salamandra)."
+      }
+    },
+    {
+      "id": "m02-02-q05",
+      "module": 2,
+      "conceptId": "m02-02-tokenitzacio",
+      "lessonRef": "content/module-02/m02-02-tokenitzacio.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Per què la tokenització per caràcters purs NO s'utilitza habitualment com a entrada directa dels Transformers estàndard malgrat tenir zero tokens OOV?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè genera vocabularis de més d'un milió de símbols." },
+        { "key": "B", "text": "Perquè fa que les seqüències siguin 5–7 vegades més llargues, multiplicant el cost quadràtic O(L²) de la self-attention i reduint dràsticament el text que cap a la finestra de context." },
+        { "key": "C", "text": "Perquè no pot representar nombres ni signes de puntuació." },
+        { "key": "D", "text": "Perquè impedeix utilitzar GPU." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Multiplicar la longitud L per 5 augmenta el cost d'atenció L² per ~25x i obliga el model a aprendre des de zero agrupacions bàsiques de lletres.",
+      "explanationsIncorrect": {
+        "A": "Al contrari, el vocabulari de caràcters és molt petit (~100-256).",
+        "C": "Els caràcters inclouen dígits i puntuació sense problema.",
+        "D": "Funciona en GPU, però és molt ineficient en memòria i còmput."
+      }
+    },
+    {
+      "id": "m02-02-q06",
+      "module": 2,
+      "conceptId": "m02-02-tokenitzacio",
+      "lessonRef": "content/module-02/m02-02-tokenitzacio.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Un LLM A cobra 1,00 €/M tokens amb una fertilitat en català de 2,2 tokens/paraula, i un LLM B cobra 1,20 €/M tokens amb una fertilitat en català de 1,3 tokens/paraula. Per processar 10 milions de paraules en català, quin surt més barat?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "L'LLM A (costa 10,00 € enfront de 12,00 €)." },
+        { "key": "B", "text": "Costen exactament el mateix." },
+        { "key": "C", "text": "L'LLM B (13M tokens × 1,20 € = 15,60 €) enfront de l'LLM A (22M tokens × 1,00 € = 22,00 €)." },
+        { "key": "D", "text": "No es pot calcular sense saber el nombre de capes del model." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "10M paraules × 2,2 = 22M tokens (22,00 €) en A; 10M paraules × 1,3 = 13M tokens (15,60 €) en B. La menor fertilitat fa B gairebé un 30% més econòmic malgrat tenir un preu per token més alt.",
+      "explanationsIncorrect": {
+        "A": "Aquest càlcul oblida multiplicar les paraules per la fertilitat de cada tokenitzador.",
+        "B": "Hi ha una diferència real de 6,40 € cada 10M de paraules.",
+        "D": "El cost d'API depèn dels tokens facturats, no del nombre de capes."
+      }
+    },
+    {
+      "id": "m02-02-q07",
+      "module": 2,
+      "conceptId": "m02-02-tokenitzacio",
+      "lessonRef": "content/module-02/m02-02-tokenitzacio.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Com aconsegueix **Byte-Level BPE** (usat per GPT-2/4 o Llama 3) no produir MAI un token desconegut `<UNK>` davant de caràcters rars, emojis o alfabet grec/ciríl·lic?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Eliminant del text qualsevol caràcter que no sigui ASCII." },
+        { "key": "B", "text": "Traduïnt tots els símbols especials a espais en blanc." },
+        { "key": "C", "text": "Rebutjant qualsevol petició que contingui caràcters no anglesos." },
+        { "key": "D", "text": "Partint del vocabulari base dels 256 valors possibles d'un byte UTF-8, de manera que qualsevol cadena Unicode es pot descompondre sense pèrdua com a seqüència de bytes coneguts." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Qualsevol caràcter Unicode es codifica en 1 a 4 bytes UTF-8; com que els 256 bytes base són sempre al vocabulari, mai cal recórrer a `<UNK>`.",
+      "explanationsIncorrect": {
+        "A": "Byte-Level BPE preserva íntegrament tots els caràcters UTF-8 sense eliminar-los.",
+        "B": "No substitueix símbols per espais.",
+        "C": "Suporta qualsevol idioma codificable en UTF-8."
+      }
+    },
+    {
+      "id": "m02-02-q08",
+      "module": 2,
+      "conceptId": "m02-02-tokenitzacio",
+      "lessonRef": "content/module-02/m02-02-tokenitzacio.md",
+      "difficulty": "advanced",
+      "questionType": "conceptual",
+      "prompt": "Per què els LLMs sovint cometen errors sorprenents en tasques aparentment trivials com «quantes lletres 'r' té la paraula 'ferrocarril'?» o en invertir una paraula lletra per lletra?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè els LLMs no processen caràcters individuals sinó identificadors enters de subparaules (tokens), de manera que l'ortografia interna d'un token no està explícitament exposada lletra a lletra a la xarxa." },
+        { "key": "B", "text": "Perquè el tokenitzador elimina sempre les consonants dobles." },
+        { "key": "C", "text": "Perquè els Transformers no disposen de codificació posicional." },
+        { "key": "D", "text": "Perquè la funció Softmax no pot retornar nombres enters." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "El model només rep enters corresponents a blocs de caràcters (p. ex., `[4821, 913]`); per comptar lletres ha d'haver memoritzat l'ortografia interna de cada ID de token durant el preentrenament.",
+      "explanationsIncorrect": {
+        "B": "El tokenitzador conserva exactament tots els caràcters (decodificació lossless).",
+        "C": "Els Transformers sí que tenen codificació posicional, però a nivell de token, no de caràcter.",
+        "D": "El model pot generar dígits com a tokens sense problema; la limitació és la visibilitat intracaràcter."
+      }
+    },
+    {
+      "id": "m02-02-q09",
+      "module": 2,
+      "conceptId": "m02-02-tokenitzacio",
+      "lessonRef": "content/module-02/m02-02-tokenitzacio.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En l'exemple BPE de la lliçó, per què s'afegeix el símbol especial `</w>` al final de cada paraula (`tuple(list(mot) + ['</w>'])`) abans d'executar les fusions?",
+      "codeSnippet": "vocab = {tuple(list(mot) + [\"</w>\"]): freq for mot, freq in corpus_freqs.items()}",
+      "options": [
+        { "key": "A", "text": "Per impedir que Python ordeni el diccionari alfabèticament." },
+        { "key": "B", "text": "Per eliminar automàticament les paraules que acaben en vocal." },
+        { "key": "C", "text": "Per indicar el límit de final de paraula, distingint un sufix de final de mot (com `cio</w>`) de la mateixa seqüència de lletres a l'interior d'una paraula, i permetre reconstruir els espais en decodificar." },
+        { "key": "D", "text": "Per indicar que la paraula s'ha d'emmascarar com a `[PAD]`." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Marcar els límits de paraula (amb `</w>` en BPE clàssic o `▁` a l'inici en SentencePiece) permet distingir prefixos/sufixos de subcadenes internes i reconstruir sense ambigüitat les separacions entre mots.",
+      "explanationsIncorrect": {
+        "A": "No té relació amb l'ordenació del diccionari.",
+        "B": "S'afegeix a totes les paraules del corpus sense eliminar-ne cap.",
+        "D": "`</w>` marca final de paraula, no té res a veure amb el padding de batch."
+      }
+    },
+    {
+      "id": "m02-02-q10",
+      "module": 2,
+      "conceptId": "m02-02-tokenitzacio",
+      "lessonRef": "content/module-02/m02-02-tokenitzacio.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "En un pipeline RAG amb un model d'embeddings que admet màxim `512 tokens`, quin error silenciós es produeix si configures el *chunking* a «2.200 caràcters» sense comptar tokens reals?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "El model d'embeddings amplia automàticament la seva finestra a 4.096 tokens." },
+        { "key": "B", "text": "Els fragments en català o plens de codis/xifres poden superar els 512 tokens i quedar truncats silenciosament al final, perdent precisament els últims apartats o imports de cada chunk abans d'indexar-los." },
+        { "key": "C", "text": "Els vectors generats passen a tenir norma zero." },
+        { "key": "D", "text": "El tokenitzador passa automàticament a usar Bag of Words." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Especialment en català o en taules numèriques on cada 2-3 caràcters pot generar un token, 2.200 caràcters superen fàcilment els 512 tokens; el model trunca el final silenciosament i aquella informació mai es recupera.",
+      "explanationsIncorrect": {
+        "A": "Els models d'embeddings amb finestra fixa de 512 tokens trunquen l'excedent, no amplien la finestra.",
+        "C": "El vector es genera normalment sobre els primers 512 tokens, ocultant el truncament.",
+        "D": "El tokenitzador no canvia d'algorisme."
+      }
+    }
+  ]
+}

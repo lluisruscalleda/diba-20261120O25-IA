@@ -1,0 +1,46 @@
+{
+  "conceptId": "m02-10-cerca-semantica",
+  "module": 2,
+  "cards": [
+    {
+      "id": "m02-10-fc01",
+      "module": 2,
+      "conceptId": "m02-10-cerca-semantica",
+      "front": "Quina diferència clau hi ha entre un Bi-Encoder i un Cross-Encoder en cerca semàntica?",
+      "back": "Bi-Encoder codifica consulta i document per separat (pre-indexable, ràpid en ms sobre milions de docs). Cross-Encoder concatena consulta+document amb atenció creuada (molt més precís, però no pre-indexable: s'usa per reordenar el top-30).",
+      "tags": ["Bi-Encoder", "Cross-Encoder"]
+    },
+    {
+      "id": "m02-10-fc02",
+      "module": 2,
+      "conceptId": "m02-10-cerca-semantica",
+      "front": "Com funciona Reciprocal Rank Fusion (RRF) i per què és ideal en cerca híbrida?",
+      "back": "RRF(d) = Σ w_s / (k + rank_s(d)) amb k=60. Combina rànquings de BM25 i cerca vectorial usant només les posicions (evitant escales incompatibles) i premiant documents forts en ambdues branques.",
+      "tags": ["RRF", "cerca híbrida"]
+    },
+    {
+      "id": "m02-10-fc03",
+      "module": 2,
+      "conceptId": "m02-10-cerca-semantica",
+      "front": "Quin és el flux complet de l'arquitectura *Retrieve & Re-rank* per a l'Administració?",
+      "back": "Pre-filtres ACL/vigència → Etapa 1 (BM25 + Bi-Encoder HNSW en paral·lel) → Fusió RRF (top-30, màxim Recall) → Etapa 2 (Cross-Encoder Reranker → top-5, màxim nDCG/MRR).",
+      "tags": ["Retrieve and Rerank", "arquitectura"]
+    },
+    {
+      "id": "m02-10-fc04",
+      "module": 2,
+      "conceptId": "m02-10-cerca-semantica",
+      "front": "Per què la cerca híbrida supera tant BM25 sol com embeddings sols?",
+      "back": "BM25 encerta codis exactes (EXP, NIF, articles de llei) però falla en sinònims/bilingüisme; els embeddings encerten semàntica i català↔castellà però fallen en codis exactes. Junts cobreixen tots dos perfils d'usuari.",
+      "tags": ["cerca híbrida", "BM25"]
+    },
+    {
+      "id": "m02-10-fc05",
+      "module": 2,
+      "conceptId": "m02-10-cerca-semantica",
+      "front": "En quin punt del pipeline de cerca híbrida s'han d'aplicar els permisos d'accés (ACL)?",
+      "back": "Com a pre-filtre determinista a l'Etapa 1 (tant en BM25 com en l'índex vectorial), abans del reranker i de l'LLM, per evitar fuites d'informació i evitar que el top-k quedi buit després de filtrar.",
+      "tags": ["seguretat", "ACL"]
+    }
+  ]
+}
