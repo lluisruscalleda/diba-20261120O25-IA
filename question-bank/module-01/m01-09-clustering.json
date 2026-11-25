@@ -1,0 +1,236 @@
+{
+  "conceptId": "m01-09-clustering",
+  "module": 1,
+  "questions": [
+    {
+      "id": "m01-09-q01",
+      "module": 1,
+      "conceptId": "m01-09-clustering",
+      "lessonRef": "content/module-01/m01-09-clustering.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quin dels algoritmes de clustering següents NO requereix fixar el nombre de clústers K per endavant i identifica explícitament els punts aïllats com a soroll?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "K-Means." },
+        { "key": "B", "text": "DBSCAN." },
+        { "key": "C", "text": "Regressió Logística." },
+        { "key": "D", "text": "Gaussian Mixture Model (GMM) amb K fix." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "DBSCAN agrupa regions d'alta densitat mitjançant els hiperparàmetres ε i min_samples sense necessitar especificar K, i etiqueta automàticament els punts de baixa densitat com a soroll (-1).",
+      "explanationsIncorrect": {
+        "A": "K-Means exigeix especificar K abans d'entrenar i assigna tots els punts (inclosos outliers) a algun clúster.",
+        "C": "La Regressió Logística és un algoritme supervisat de classificació, no de clustering.",
+        "D": "GMM requereix fixar el nombre de components K."
+      }
+    },
+    {
+      "id": "m01-09-q02",
+      "module": 1,
+      "conceptId": "m01-09-clustering",
+      "lessonRef": "content/module-01/m01-09-clustering.md",
+      "difficulty": "basic",
+      "questionType": "metrics",
+      "prompt": "Quin significat té un Silhouette Score proper a -0,4 per a un conjunt de punts d'un clúster?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Que els punts estan perfectament separats de la resta de clústers." },
+        { "key": "B", "text": "Que els punts estan més a prop del clúster veí que del seu propi clúster, indicant una assignació probablement errònia." },
+        { "key": "C", "text": "Que el nombre K és exactament l'òptim." },
+        { "key": "D", "text": "Que el dataset té valors negatius en les columnes d'entrada." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Com que s(i) = (b_i − a_i) / max(a_i, b_i), un valor negatiu implica que la distància mitjana al propi clúster (a_i) és més gran que la distància al clúster veí (b_i), evidenciant mala assignació.",
+      "explanationsIncorrect": {
+        "A": "Una separació excel·lent correspon a valors propers a +1.",
+        "C": "Un valor negatiu indica una mala partició o un K inadequat.",
+        "D": "Les distàncies a_i i b_i són sempre no negatives encara que les coordenades siguin negatives."
+      }
+    },
+    {
+      "id": "m01-09-q03",
+      "module": 1,
+      "conceptId": "m01-09-clustering",
+      "lessonRef": "content/module-01/m01-09-clustering.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Per què és imprescindible estandarditzar les variables numèriques abans d'executar K-Means sobre indicadors municipals com «població (500..1.600.000)» i «percentatge de tràmits digitals (0..100)»?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè K-Means utilitza distància euclidiana; sense escalat, la variable amb rang més gran (població) dominaria completament la distància i anul·laria l'efecte de la resta." },
+        { "key": "B", "text": "Perquè K-Means només accepta nombres enters entre 0 i 1." },
+        { "key": "C", "text": "Per convertir el problema no supervisat en supervisat." },
+        { "key": "D", "text": "Per reduir el nombre de files del dataset." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "La distància euclidiana suma diferències al quadrat en les unitats originals; diferències de 100.000 habitants eclipsen completament diferències de 50 punts percentuals si no s'estandarditza.",
+      "explanationsIncorrect": {
+        "B": "K-Means accepta qualsevol nombre real; el problema és la distorsió de les distàncies.",
+        "C": "Escalar les dades no introdueix etiquetes.",
+        "D": "L'escalat conserva totes les files del dataset."
+      }
+    },
+    {
+      "id": "m01-09-q04",
+      "module": 1,
+      "conceptId": "m01-09-clustering",
+      "lessonRef": "content/module-01/m01-09-clustering.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Per què NO podem escollir el nombre òptim de clústers K en K-Means seleccionant simplement el valor de K que produeix la inèrcia (WCSS) més baixa?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "La inèrcia augmenta sempre que augmenta K." },
+        { "key": "B", "text": "La inèrcia només es pot calcular quan K = 2." },
+        { "key": "C", "text": "La inèrcia disminueix sempre en augmentar K fins arribar a 0 quan K = n (un clúster per cada punt), cosa que no té cap valor d'agrupament." },
+        { "key": "D", "text": "K-Means maximitza la inèrcia en lloc de minimitzar-la." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Afegir més centroides sempre redueix la distància quadràtica dels punts al seu centroide més proper; per això s'utilitza el mètode del colze (guany marginal) combinat amb Silhouette Score i criteri de domini.",
+      "explanationsIncorrect": {
+        "A": "És exactament al revés: la inèrcia és monòtonament decreixent amb K.",
+        "B": "La inèrcia es defineix per a qualsevol K entre 1 i n.",
+        "D": "L'objectiu de K-Means és minimitzar la inèrcia (WCSS)."
+      }
+    },
+    {
+      "id": "m01-09-q05",
+      "module": 1,
+      "conceptId": "m01-09-clustering",
+      "lessonRef": "content/module-01/m01-09-clustering.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Quin problema pràctic de K-Means millora l'estratègia d'inicialització `k-means++`?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Permet a K-Means detectar clústers en forma d'anells concèntrics." },
+        { "key": "B", "text": "Redueix la probabilitat de convergir a òptims locals dolents seleccionant centroides inicials ben separats amb probabilitat proporcional a D(x)²." },
+        { "key": "C", "text": "Elimina la necessitat d'escalar les variables d'entrada." },
+        { "key": "D", "text": "Determina automàticament el valor òptim de K sense intervenció humana." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "k-means++ escull el primer centroide a l'atzar i els següents prioritzant punts llunyans als centroides ja escollits (proporcional a la distància al quadrat), accelerant la convergència i evitant solucions subòptimes.",
+      "explanationsIncorrect": {
+        "A": "K-Means continua formant particions convexes (Voronoi) fins i tot amb k-means++.",
+        "C": "L'escalat continua sent imprescindible.",
+        "D": "Continua requerint que l'usuari indiqui K."
+      }
+    },
+    {
+      "id": "m01-09-q06",
+      "module": 1,
+      "conceptId": "m01-09-clustering",
+      "lessonRef": "content/module-01/m01-09-clustering.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Vols analitzar 150.000 registres d'incidències urbanes geolocalitzades per trobar zones allargades al llarg de rieres i carrers descartant punts aïllats. Quina opció és tècnicament més adequada?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Clustering jeràrquic aglomeratiu calculant la matriu de distàncies completa 150.000 × 150.000." },
+        { "key": "B", "text": "K-Means amb K = 5." },
+        { "key": "C", "text": "DBSCAN o HDBSCAN sobre coordenades projectades en metres (UTM) o distància Haversine indexada amb BallTree." },
+        { "key": "D", "text": "Regressió lineal Ridge." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "DBSCAN/HDBSCAN detecta formes allargades no convexes, separa el soroll aïllat (-1), no imposa un K arbitrari i escala eficientment amb índexs espacials com BallTree/KDTree.",
+      "explanationsIncorrect": {
+        "A": "Una matriu 150.000 × 150.000 en float64 ocuparia ~180 GB de RAM i seria computacionalment intractable.",
+        "B": "K-Means assumeix clústers esfèrics i no descarta el soroll aïllat.",
+        "D": "La regressió Ridge és un mètode supervisat de regressió, no de clustering."
+      }
+    },
+    {
+      "id": "m01-09-q07",
+      "module": 1,
+      "conceptId": "m01-09-clustering",
+      "lessonRef": "content/module-01/m01-09-clustering.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Quina diferència aporta un Gaussian Mixture Model (GMM) respecte de K-Means?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "GMM realitza clustering tou (soft clustering) assignant probabilitats de pertinença a cada clúster i pot modelar clústers el·líptics amb covariàncies diferents." },
+        { "key": "B", "text": "GMM només funciona amb una única variable d'entrada." },
+        { "key": "C", "text": "GMM no necessita especificar el nombre de components K." },
+        { "key": "D", "text": "GMM produeix un dendrograma jeràrquic complet." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "GMM modela les dades com una barreja de K distribucions gaussianes multivariants ajustades via algoritme EM, oferint pertinença probabilística i formes el·líptiques (covariància completa).",
+      "explanationsIncorrect": {
+        "B": "GMM treballa amb dades multivariants.",
+        "C": "GMM requereix fixar K (sovint seleccionat amb BIC/AIC).",
+        "D": "El dendrograma és propi del clustering jeràrquic."
+      }
+    },
+    {
+      "id": "m01-09-q08",
+      "module": 1,
+      "conceptId": "m01-09-clustering",
+      "lessonRef": "content/module-01/m01-09-clustering.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Quina és la principal limitació de DBSCAN clàssic que motiva l'ús de la seva evolució HDBSCAN en dades reals (p. ex., incidències que cobreixen alhora centres urbans molt densos i zones rurals disperses)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "DBSCAN només pot detectar clústers esfèrics." },
+        { "key": "B", "text": "DBSCAN no pot marcar punts com a soroll." },
+        { "key": "C", "text": "DBSCAN exigeix etiquetes supervisades per funcionar." },
+        { "key": "D", "text": "DBSCAN empra un únic radi ε global, de manera que té dificultats per trobar simultàniament clústers amb densitats molt diferents; HDBSCAN construeix una jerarquia de densitats variables." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "En DBSCAN, un ε petit fragmenta els clústers dispersos en soroll, mentre que un ε gran fusiona els clústers densos propers. HDBSCAN elimina la dependència d'un ε fix cercant clústers estables a diferents escales de densitat.",
+      "explanationsIncorrect": {
+        "A": "Precisament una fortalesa de DBSCAN és detectar formes arbitràries no esfèriques.",
+        "B": "DBSCAN marca explícitament el soroll amb etiqueta -1.",
+        "C": "DBSCAN és 100% no supervisat."
+      }
+    },
+    {
+      "id": "m01-09-q09",
+      "module": 1,
+      "conceptId": "m01-09-clustering",
+      "lessonRef": "content/module-01/m01-09-clustering.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En el càlcul del Silhouette Score de la lliçó, per què s'executa `mateix[i] = False` abans de calcular `a_i = np.mean(dists[i, mateix])`?",
+      "codeSnippet": "mateix = (etiquetes == c_i)\nmateix[i] = False\na_i = float(np.mean(dists[i, mateix])) if np.any(mateix) else 0.0",
+      "options": [
+        { "key": "A", "text": "Per excloure la distància del punt i respecte de si mateix (0,0), que altrament reduiria artificialment a_i i inflaria el Silhouette Score." },
+        { "key": "B", "text": "Per eliminar el punt i del dataset de manera permanent." },
+        { "key": "C", "text": "Per calcular b_i en lloc d'a_i." },
+        { "key": "D", "text": "Perquè `dists[i, i]` conté `NaN`." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Per definició, a_i és la distància mitjana entre el punt i i la RESTA de punts del seu propi clúster. Incloure d(i, i) = 0 esbiaixaria a_i a la baixa (especialment en clústers petits).",
+      "explanationsIncorrect": {
+        "B": "Només exclou l'índex i de la màscara booleana temporal per calcular la mitjana.",
+        "C": "b_i es calcula en la línia següent sobre els clústers diferents de c_i.",
+        "D": "La norma euclidiana de (x_i − x_i) és 0.0, no NaN."
+      }
+    },
+    {
+      "id": "m01-09-q10",
+      "module": 1,
+      "conceptId": "m01-09-clustering",
+      "lessonRef": "content/module-01/m01-09-clustering.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "Vols descobrir automàticament temàtiques emergents en 40.000 suggeriments ciutadans sense etiquetar representats per embeddings de 768 dimensions. Quina estratègia de clustering és més robusta davant la maledicció de la dimensionalitat?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Aplicar DBSCAN amb distància euclidiana directament en les 768 dimensions crues sense reducció ni normalització." },
+        { "key": "B", "text": "Convertir cada embedding en un únic número sumant les seves 768 coordenades." },
+        { "key": "C", "text": "Aplicar regressió lineal OLS." },
+        { "key": "D", "text": "Reduir dimensionalitat amb UMAP (o PCA sobre vectors normalitzats L2 / mètrica cosinus) i aplicar HDBSCAN per obtenir clústers temàtics coherents i aïllar consultes atípiques." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Reduir dimensionalitat preservant veïnatges locals (UMAP) amb mètrica cosinus i agrupar amb HDBSCAN (esquema estàndard de BERTopic) evita el col·lapse de distàncies en 768D i separa temàtiques netes del soroll.",
+      "explanationsIncorrect": {
+        "A": "En 768 dimensions, les distàncies euclidianes perden contrast i DBSCAN tendeix a marcar gairebé tot com a soroll o fusionar-ho en un sol bloc.",
+        "B": "Sumar les 768 coordenades destrueix gairebé tota la informació direccional i semàntica de l'embedding.",
+        "C": "OLS és regressió supervisada i no descobreix temes sense etiquetes."
+      }
+    }
+  ]
+}

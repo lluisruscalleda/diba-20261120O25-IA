@@ -1,0 +1,236 @@
+{
+  "conceptId": "m01-08-regressio",
+  "module": 1,
+  "questions": [
+    {
+      "id": "m01-08-q01",
+      "module": 1,
+      "conceptId": "m01-08-regressio",
+      "lessonRef": "content/module-01/m01-08-regressio.md",
+      "difficulty": "basic",
+      "questionType": "metrics",
+      "prompt": "Quina mètrica de regressió s'expressa en les mateixes unitats que la variable objectiu y i penalitza més severament els errors grans (outliers)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "MAE (Mean Absolute Error)." },
+        { "key": "B", "text": "RMSE (Root Mean Squared Error)." },
+        { "key": "C", "text": "F1-score." },
+        { "key": "D", "text": "Coeficient R²." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "L'RMSE eleva els errors al quadrat abans de promitjar-los (penalitzant molt els errors grans) i n'extreu l'arrel quadrada final, retornant el valor en les mateixes unitats que y.",
+      "explanationsIncorrect": {
+        "A": "L'MAE també té les unitats de y, però pondera tots els errors linealment i és més robusta (menys sensible) als errors grans.",
+        "C": "L'F1-score és una mètrica de classificació, no de regressió.",
+        "D": "R² és adimensional (no té les unitats de y)."
+      }
+    },
+    {
+      "id": "m01-08-q02",
+      "module": 1,
+      "conceptId": "m01-08-regressio",
+      "lessonRef": "content/module-01/m01-08-regressio.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quin efecte distintiu té la regularització Lasso (norma L1) sobre els coeficients d'una regressió lineal en comparació amb Ridge (norma L2)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Lasso força coeficients de variables poc rellevants a ser exactament zero, fent selecció automàtica de variables." },
+        { "key": "B", "text": "Lasso sempre produeix coeficients més grans que OLS." },
+        { "key": "C", "text": "Ridge elimina exactament la meitat de les variables del model." },
+        { "key": "D", "text": "Lasso només funciona quan no hi ha variables numèriques." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "La penalització L1 (Σ|β_j|) produeix solucions disperses (sparse) on molts coeficients s'anul·len exactament a 0, mentre que Ridge (L2) els encongeix suaument sense fer-los zero.",
+      "explanationsIncorrect": {
+        "B": "Tant Lasso com Ridge penalitzen la magnitud dels coeficients, reduint-los respecte d'OLS.",
+        "C": "Ridge no força coeficients a zero exacte ni elimina la meitat de les variables.",
+        "D": "La regressió Lasso s'aplica precisament sobre característiques numèriques escalades."
+      }
+    },
+    {
+      "id": "m01-08-q03",
+      "module": 1,
+      "conceptId": "m01-08-regressio",
+      "lessonRef": "content/module-01/m01-08-regressio.md",
+      "difficulty": "basic",
+      "questionType": "metrics",
+      "prompt": "Quina relació matemàtica es compleix SEMPRE entre l'RMSE i l'MAE calculats sobre el mateix conjunt de prediccions?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "RMSE ≤ MAE sempre." },
+        { "key": "B", "text": "RMSE = MAE² sempre." },
+        { "key": "C", "text": "RMSE ≥ MAE sempre (iguals només quan tots els errors absoluts tenen exactament la mateixa magnitud)." },
+        { "key": "D", "text": "No existeix cap relació d'ordre entre RMSE i MAE." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Per la desigualtat de Cauchy-Schwarz / Jensen, la mitjana quadràtica (RMSE) és sempre major o igual que la mitjana aritmètica dels valors absoluts (MAE). Com més gran és la diferència RMSE − MAE, més variància o errors extrems hi ha.",
+      "explanationsIncorrect": {
+        "A": "És exactament la desigualtat inversa.",
+        "B": "MSE (no RMSE) té unitats al quadrat, i ni tan sols MSE = MAE² en general.",
+        "D": "Sí que existeix la relació garantida MAE ≤ RMSE ≤ √n · MAE."
+      }
+    },
+    {
+      "id": "m01-08-q04",
+      "module": 1,
+      "conceptId": "m01-08-regressio",
+      "lessonRef": "content/module-01/m01-08-regressio.md",
+      "difficulty": "intermediate",
+      "questionType": "metrics",
+      "prompt": "Un model de regressió obté un coeficient de determinació R² = -0,25 sobre el conjunt de test. Com s'ha d'interpretar aquest resultat?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Hi ha necessàriament un bug a la llibreria perquè R² no pot ser mai negatiu." },
+        { "key": "B", "text": "Indica una correlació negativa forta però un model molt precís." },
+        { "key": "C", "text": "El model comet més error quadràtic en test que un baseline trivial que predigui constantment la mitjana de y_test." },
+        { "key": "D", "text": "El model explica el 25% de la variància amb signe invertit." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Com que R² = 1 − (SS_res / SS_tot), quan la suma de quadrats dels residus del model (SS_res) supera la variància total respecte de la mitjana (SS_tot), R² esdevé negatiu: el model rendeix pitjor que predir sempre la mitjana.",
+      "explanationsIncorrect": {
+        "A": "En un conjunt de test (o en models no lineals/regularitzats), R² pot ser perfectament negatiu.",
+        "B": "R² no és el coeficient de correlació de Pearson r (que va de -1 a +1); un R² negatiu indica molt mal ajust.",
+        "D": "No explica un 25% de variància; significa que els residus superen en un 25% la variància total."
+      }
+    },
+    {
+      "id": "m01-08-q05",
+      "module": 1,
+      "conceptId": "m01-08-regressio",
+      "lessonRef": "content/module-01/m01-08-regressio.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Per què és obligatori escalar (estandarditzar) les característiques numèriques abans d'entrenar una regressió Ridge, Lasso o ElasticNet?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè la penalització depèn de la magnitud dels coeficients β_j; sense escalat, una variable expressada en unitats grans (p. ex. milions d'euros vs. euros) rep una penalització completament diferent." },
+        { "key": "B", "text": "Perquè scikit-learn no pot multiplicar matrius amb números majors que 1." },
+        { "key": "C", "text": "Per evitar que el model pugui calcular el terme independent β_0." },
+        { "key": "D", "text": "Per convertir el problema de regressió en classificació binària." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Les normes L1 i L2 penalitzen directament la mida dels coeficients β_j. Com que l'escala d'una variable determina inversament la magnitud del seu coeficient, sense estandardització la regularització penalitzaria arbitràriament segons les unitats de mesura.",
+      "explanationsIncorrect": {
+        "B": "L'àlgebra lineal en punt flotant opera sense cap problema amb valors majors que 1.",
+        "C": "El terme independent β_0 normalment no es penalitza en Ridge/Lasso i no requereix escalat per existir.",
+        "D": "L'escalat no canvia la naturalesa del problema."
+      }
+    },
+    {
+      "id": "m01-08-q06",
+      "module": 1,
+      "conceptId": "m01-08-regressio",
+      "lessonRef": "content/module-01/m01-08-regressio.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Un equip vol predir el nombre de visites mensuals a una oficina municipal que creix un 10% cada any, entrenant un Random Forest Regressor amb dades de 2019–2025 per predir 2026–2027. Quin risc específic presenta aquest algoritme?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Que produeixi prediccions negatives per defecte." },
+        { "key": "B", "text": "Que no pugui extrapolar per sobre del màxim històric de visites observat a train, quedant estancat en el sostre de 2025." },
+        { "key": "C", "text": "Que requereixi escalar totes les variables amb StandardScaler per poder fer splits." },
+        { "key": "D", "text": "Que no accepti més de dues variables d'entrada." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Els arbres de decisió (i Random Forest / Gradient Boosting) prediuen mitjanes de fulles de les dades d'entrenament, de manera que són incapaços d'extrapolar tendències fora del rang de y_train.",
+      "explanationsIncorrect": {
+        "A": "Si totes les visites en train són positives, la mitjana de qualsevol fulla serà positiva, mai negativa.",
+        "C": "Random Forest és invariant a l'escalat monotònic de les variables.",
+        "D": "Random Forest gestiona desenes o centenars de variables sense problema."
+      }
+    },
+    {
+      "id": "m01-08-q07",
+      "module": 1,
+      "conceptId": "m01-08-regressio",
+      "lessonRef": "content/module-01/m01-08-regressio.md",
+      "difficulty": "intermediate",
+      "questionType": "metrics",
+      "prompt": "Quin problema greu presenta la mètrica MAPE (Mean Absolute Percentage Error) quan s'aplica a sèries de demanda o imports municipals que contenen valors reals iguals a 0?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Retorna sempre 0% encara que el model s'equivoqui molt." },
+        { "key": "B", "text": "Esdevé indefinida o tendeix a infinit en dividir per y_i = 0 (i penalitza asimètricament les sobreestimacions respecte de les subestimacions)." },
+        { "key": "C", "text": "Només es pot calcular sobre variables categòriques." },
+        { "key": "D", "text": "Substitueix automàticament els zeros per la mitjana global." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Com que MAPE = (1/n) Σ |(y_i − ŷ_i) / y_i|, qualsevol observació amb y_i = 0 provoca divisió per zero (inf/NaN). En aquests casos es prefereix WAPE, MAE o RMSE.",
+      "explanationsIncorrect": {
+        "A": "No retorna 0%, sinó infinit o error de divisió per zero.",
+        "C": "MAPE és una mètrica de regressió per a valors numèrics positius.",
+        "D": "La fórmula matemàtica de MAPE no fa cap substitució automàtica."
+      }
+    },
+    {
+      "id": "m01-08-q08",
+      "module": 1,
+      "conceptId": "m01-08-regressio",
+      "lessonRef": "content/module-01/m01-08-regressio.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "Observa la funció de forma tancada de Ridge següent. Per què s'ha centrat `y - y_mean` i s'ha resolt `beta` sobre `X_std` sense afegir una columna de 1s dins `A = X_std.T @ X_std + alpha * np.eye(n_feat)`?",
+      "codeSnippet": "y_mean = float(np.mean(y))\nA = X_std.T @ X_std + alpha * np.eye(n_feat)\nbeta = np.linalg.solve(A, X_std.T @ (y - y_mean))",
+      "options": [
+        { "key": "A", "text": "Per evitar penalitzar el terme independent (intercept β_0), ja que regularitzar l'intercept introduiria un biaix artificial cap a zero dependent de l'origen de y." },
+        { "key": "B", "text": "Perquè `np.linalg.solve` no admet matrius de mida superior a 3×3." },
+        { "key": "C", "text": "Per convertir Ridge (L2) en Lasso (L1)." },
+        { "key": "D", "text": "Perquè en regressió lineal el terme independent ha de valer sempre 0." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "En regressió regularitzada (Ridge/Lasso), l'intercept β_0 mai no s'ha de penalitzar perquè només fixa el nivell mitjà de y. En centrar X i y, β_0 queda desacoplat i igual a mean(y), i la matriu alpha·I penalitza només els pendents β_1..β_p.",
+      "explanationsIncorrect": {
+        "B": "`np.linalg.solve` resol sistemes lineals de qualsevol dimensió quadrada invertible.",
+        "C": "La solució tancada amb `alpha * I` és pròpia exclusivament de Ridge (L2); Lasso no té forma tancada general.",
+        "D": "L'intercept no val 0; val `y_mean`, que se suma en predir (`X_te_std @ beta + intercept`)."
+      }
+    },
+    {
+      "id": "m01-08-q09",
+      "module": 1,
+      "conceptId": "m01-08-regressio",
+      "lessonRef": "content/module-01/m01-08-regressio.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "En analitzar el gràfic de residus (e_i = y_i − ŷ_i) d'un model que prediu imports de contractes públics, observes que la dispersió dels residus creix en forma d'embut a mesura que augmenta l'import predit. Com s'anomena aquest fenomen i quina transformació sol millorar-lo?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Multicol·linealitat perfecta; es resol duplicant les files més grans." },
+        { "key": "B", "text": "Heteroscedasticitat (variància no constant dels residus); sovint es mitiga aplicant una transformació logarítmica log(1 + y) o utilitzant un GLM Gamma." },
+        { "key": "C", "text": "Col·lapse de mode; es resol afegint un discriminador GAN." },
+        { "key": "D", "text": "Dying ReLU; es resol canviant a Softmax." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Quan la variància de l'error és proporcional a la magnitud de la variable (molt típic en imports econòmics), parlem d'heteroscedasticitat. Modelar log(1 + y) o utilitzar un GLM Gamma estabilitza la variància i equilibra els errors relatius.",
+      "explanationsIncorrect": {
+        "A": "La multicol·linealitat afecta la correlació entre variables predictores X, no la forma en embut dels residus respecte de ŷ.",
+        "C": "El col·lapse de mode és un fenomen de les GAN.",
+        "D": "Dying ReLU és un fenomen d'activacions neuronals."
+      }
+    },
+    {
+      "id": "m01-08-q10",
+      "module": 1,
+      "conceptId": "m01-08-regressio",
+      "lessonRef": "content/module-01/m01-08-regressio.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "Quin avantatge ofereix la regressió quantílica (o la predicció conformal) enfront d'una regressió puntual clàssica per estimar el termini de resolució d'un expedient administratiu?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Garanteix un error absolut igual a zero en tots els expedients." },
+        { "key": "B", "text": "Permet proporcionar intervals de predicció (p. ex., P10–P90) que quantifiquen la incertesa real de cada expedient, evitant generar falses expectatives ciutadanes amb una única xifra puntual." },
+        { "key": "C", "text": "Elimina la necessitat de separar train i test." },
+        { "key": "D", "text": "Converteix automàticament la predicció en una resolució administrativa vinculant." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Estimar quantils condicionals o intervals conformals permet informar «entre 18 i 32 dies (90% de confiança)» i detectar expedients amb alta incertesa que requereixen atenció humana, millorant la transparència pública.",
+      "explanationsIncorrect": {
+        "A": "Cap mètode estadístic elimina l'error irreducible del món real.",
+        "C": "La predicció conformal precisament necessita un conjunt de calibració/validació separat.",
+        "D": "Una estimació estadística és informativa/de suport, mai un acte administratiu vinculant."
+      }
+    }
+  ]
+}

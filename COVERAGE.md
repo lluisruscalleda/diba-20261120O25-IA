@@ -9,9 +9,9 @@ Llegenda d'estat:
 
 | Dimensió | Completats | Objectiu | Cobertura |
 |---|---:|---:|---:|
-| Lliçons (Teoria + Exemple + Exercici + Desenvolupament + Resum) | 4 | 70 | 5,7% |
-| Tests individuals (mín. 10 preguntes / concepte) | 4 (40 preg.) | 70 (≥700 preg.) | 5,7% |
-| Flashcards per concepte (mín. 5 / concepte) | 4 (24 fitxes) | 70 (≥350 fitxes) | 5,7% |
+| Lliçons (Teoria + Exemple + Exercici + Desenvolupament + Resum) | 11 | 70 | 15,7% |
+| Tests individuals (mín. 10 preguntes / concepte) | 11 (110 preg.) | 70 (≥700 preg.) | 15,7% |
+| Flashcards per concepte (mín. 5 / concepte) | 11 (64 fitxes) | 70 (≥350 fitxes) | 15,7% |
 | Laboratoris pràctics | 0 | 8 | 0% |
 | Exàmens de mòdul (40 preg.) | 0 | 8 | 0% |
 | Simulacres globals (50 preg.) | 0 | 10 | 0% |
@@ -29,13 +29,13 @@ Llegenda d'estat:
 | `m01-02-machine-learning` | Aprenentatge automàtic (Machine Learning) + supervisat/no supervisat/reforç | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (6) | ✅ |
 | `m01-03-deep-learning` | Aprenentatge profund (Deep Learning) | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (6) | ✅ |
 | `m01-04-xarxes-neuronals` | Xarxes neuronals | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (6) | ✅ |
-| `m01-05-models-generatius` | Models generatius | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m01-06-sistemes-experts` | Sistemes experts | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m01-07-classificacio` | Classificació | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m01-08-regressio` | Regressió | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m01-09-clustering` | Clustering | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m01-10-deteccio-anomalies` | Detecció d'anomalies | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m01-11-avaluacio-generalitzacio-hiperparametres` | Complementaris M1: sobreajustament, infraajustament, generalització, funcions de pèrdua, hiperparàmetres, mètriques i validació creuada | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
+| `m01-05-models-generatius` | Models generatius | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (6) | ✅ |
+| `m01-06-sistemes-experts` | Sistemes experts | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (6) | ✅ |
+| `m01-07-classificacio` | Classificació | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (6) | ✅ |
+| `m01-08-regressio` | Regressió | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m01-09-clustering` | Clustering | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m01-10-deteccio-anomalies` | Detecció d'anomalies | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (6) | ✅ |
+| `m01-11-avaluacio-generalitzacio-hiperparametres` | Complementaris M1: sobreajustament, infraajustament, generalització, funcions de pèrdua, hiperparàmetres, mètriques i validació creuada | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (6) | ✅ |
 
 ## Mòdul 2. Processament del llenguatge natural
 

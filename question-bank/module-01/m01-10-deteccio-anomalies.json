@@ -1,0 +1,236 @@
+{
+  "conceptId": "m01-10-deteccio-anomalies",
+  "module": 1,
+  "questions": [
+    {
+      "id": "m01-10-q01",
+      "module": 1,
+      "conceptId": "m01-10-deteccio-anomalies",
+      "lessonRef": "content/module-01/m01-10-deteccio-anomalies.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Un consum d'aigua de 3.500 litres/hora en un equipament municipal és habitual en horari d'obertura, però indica una possible fuita greu si es produeix un diumenge a les 4:00 h de la matinada. Quin tipus d'anomalia és?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Anomalia contextual." },
+        { "key": "B", "text": "Anomalia puntual pura sense dependència de cap variable." },
+        { "key": "C", "text": "Anomalia d'etiquetatge supervisat." },
+        { "key": "D", "text": "Infraajustament del sensor." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Una anomalia contextual és un valor que dins del rang global és normal, però esdevé atípic quan s'analitza condicionat al seu context (dia de la setmana, hora, ocupació).",
+      "explanationsIncorrect": {
+        "B": "No és una anomalia puntual global perquè 3.500 L/h és un valor normal en hores d'obertura.",
+        "C": "No és un error d'etiquetatge sinó un comportament físic condicionat al context temporal.",
+        "D": "L'infraajustament (underfitting) és una propietat d'un model, no un tipus d'anomalia en les dades."
+      }
+    },
+    {
+      "id": "m01-10-q02",
+      "module": 1,
+      "conceptId": "m01-10-deteccio-anomalies",
+      "lessonRef": "content/module-01/m01-10-deteccio-anomalies.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Com identifica les anomalies l'algoritme Isolation Forest?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Calculant la matriu de distàncies entre tots els parells de punts del dataset." },
+        { "key": "B", "text": "Realitzant particions aleatòries en arbres: les anomalies són poques i diferents i queden aïllades amb una profunditat mitjana molt menor que els punts normals." },
+        { "key": "C", "text": "Entrenant una xarxa adversarial amb generador i discriminador." },
+        { "key": "D", "text": "Aplicant únicament el Z-score clàssic sobre la primera columna." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Isolation Forest aïlla observacions mitjançant talls aleatoris recursius; com més curta és la longitud mitjana del camí des de l'arrel fins a aïllar un punt, més alta és la seva puntuació d'anomalia.",
+      "explanationsIncorrect": {
+        "A": "Això és propi de mètodes basats en distància/densitat com LOF o k-NN, no d'Isolation Forest.",
+        "C": "Això descriu una GAN, no un Isolation Forest.",
+        "D": "Isolation Forest és multivariant i basat en arbres aleatoris, no un Z-score univariant."
+      }
+    },
+    {
+      "id": "m01-10-q03",
+      "module": 1,
+      "conceptId": "m01-10-deteccio-anomalies",
+      "lessonRef": "content/module-01/m01-10-deteccio-anomalies.md",
+      "difficulty": "basic",
+      "questionType": "case-study",
+      "prompt": "Quin tipus d'anomalia descriu un conjunt de 12 factures individuals de 14.800 € (cadascuna dins del límit legal de contracte menor) emeses pel mateix proveïdor per al mateix servei en un sol trimestre?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Anomalia puntual." },
+        { "key": "B", "text": "Anomalia de reconstrucció d'imatge." },
+        { "key": "C", "text": "Anomalia col·lectiva." },
+        { "key": "D", "text": "Error de calibració Softmax." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Cada factura individual sembla normal aïlladament, però el conjunt agregat de 12 factures repetides forma una anomalia col·lectiva que suggereix possible fraccionament contractual.",
+      "explanationsIncorrect": {
+        "A": "Individualment cada factura (14.800 €) no és un valor extrem aïllat.",
+        "B": "No té relació amb imatges.",
+        "D": "No té relació amb Softmax."
+      }
+    },
+    {
+      "id": "m01-10-q04",
+      "module": 1,
+      "conceptId": "m01-10-deteccio-anomalies",
+      "lessonRef": "content/module-01/m01-10-deteccio-anomalies.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Per què el Modified Z-score basat en la mediana i la MAD (Median Absolute Deviation) és més fiable que el Z-score clàssic per detectar anomalies univariants?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè la mitjana i la desviació estàndard es veuen fortament distorsionades per un sol outlier extrem (efecte masking), mentre que la mediana i la MAD són estadístics robustos." },
+        { "key": "B", "text": "Perquè el Z-score clàssic no es pot calcular en Python." },
+        { "key": "C", "text": "Perquè la MAD detecta automàticament anomalies col·lectives i multivariants sense fer agregacions." },
+        { "key": "D", "text": "Perquè el Modified Z-score sempre marca exactament el 50% de les dades com a anomalies." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Un outlier molt extrem infla la desviació estàndard σ i emmascara altres anomalies reals menys extremes; la mediana i la MAD tenen un punt de ruptura del 50% i mantenen estable l'escala de referència.",
+      "explanationsIncorrect": {
+        "B": "El Z-score clàssic és trivial de calcular; la seva limitació és estadística, no computacional.",
+        "C": "La MAD continua sent un mètode univariant.",
+        "D": "Un punt de ruptura del 50% significa que resisteix fins a gairebé un 50% de contaminació, no que marqui el 50% com a anomalies."
+      }
+    },
+    {
+      "id": "m01-10-q05",
+      "module": 1,
+      "conceptId": "m01-10-deteccio-anomalies",
+      "lessonRef": "content/module-01/m01-10-deteccio-anomalies.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "En quin escenari l'algoritme Local Outlier Factor (LOF) té un avantatge específic sobre mètodes globals de distància?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Quan les dades formen diversos grups amb densitats molt diferents i cal detectar punts que són anòmals respecte al seu veïnatge local (anomalies locals)." },
+        { "key": "B", "text": "Quan es disposa de 100 milions de files i només es pot fer una passada lineal O(n)." },
+        { "key": "C", "text": "Quan es vol generar text normatiu en català." },
+        { "key": "D", "text": "Quan les variables d'entrada tenen escales molt diferents i no volem escalar-les." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "LOF compara la densitat local de cada punt amb la dels seus k veïns més propers; així pot detectar un punt relativament proper a un clúster molt dens que seria invisible per a un llindar global.",
+      "explanationsIncorrect": {
+        "B": "LOF cerca veïns més propers i escala pitjor (fins a O(n²)) que Isolation Forest en grans volums.",
+        "C": "LOF és un detector d'anomalies numèric, no un model generatiu de llenguatge.",
+        "D": "Com que LOF es basa en distàncies als k veïns, requereix escalat previ obligatori."
+      }
+    },
+    {
+      "id": "m01-10-q06",
+      "module": 1,
+      "conceptId": "m01-10-deteccio-anomalies",
+      "lessonRef": "content/module-01/m01-10-deteccio-anomalies.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Quina diferència hi ha entre «detecció d'outliers» (outlier detection) i «detecció de novetat» (novelty detection)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "No hi ha cap diferència; són sinònims estrictes." },
+        { "key": "B", "text": "En outlier detection les dades d'entrenament ja poden contenir anomalies barrejades (no supervisat); en novelty detection el model s'entrena exclusivament amb dades normals netes per detectar desviacions futures (semisupervisat)." },
+        { "key": "C", "text": "La detecció de novetat només s'aplica a imatges i la d'outliers només a text." },
+        { "key": "D", "text": "La detecció d'outliers requereix sempre que el 50% de les dades siguin anomalies etiquetades." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "En outlier detection s'assumeix contaminació present al propi conjunt d'entrenament; en novelty detection (com One-Class SVM o Autoencoders sobre operació normal verificada) el dataset d'entrenament és net de comportaments anòmals.",
+      "explanationsIncorrect": {
+        "A": "La distinció afecta directament com es prepara el conjunt d'entrenament i els hiperparàmetres (p. ex., contamination).",
+        "C": "Ambdós enfocaments s'apliquen a qualsevol modalitat de dades.",
+        "D": "Les anomalies són per definició una fracció petita i sovint no etiquetada."
+      }
+    },
+    {
+      "id": "m01-10-q07",
+      "module": 1,
+      "conceptId": "m01-10-deteccio-anomalies",
+      "lessonRef": "content/module-01/m01-10-deteccio-anomalies.md",
+      "difficulty": "intermediate",
+      "questionType": "metrics",
+      "prompt": "L'equip d'Intervenció d'una diputació només pot auditar 25 factures al mes. Quina mètrica reflecteix millor la utilitat operativa real d'un detector d'anomalies en aquest context?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Accuracy global sobre les 5.000 factures del mes." },
+        { "key": "B", "text": "Coeficient R²." },
+        { "key": "C", "text": "Precision@25 (fracció d'anomalies reals entre les 25 alertes més prioritàries) complementada amb PR-AUC." },
+        { "key": "D", "text": "Silhouette Score." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Precision@k (aquí k = 25) mesura directament quantes de les 25 revisions que l'equip pot assumir mensualment descobreixen incidències reals, controlant la fatiga d'alertes.",
+      "explanationsIncorrect": {
+        "A": "L'Accuracy sobre 5.000 factures queda dominada per les ~4.970 factures normals.",
+        "B": "R² és una mètrica de regressió.",
+        "D": "Silhouette Score avalua particions de clustering."
+      }
+    },
+    {
+      "id": "m01-10-q08",
+      "module": 1,
+      "conceptId": "m01-10-deteccio-anomalies",
+      "lessonRef": "content/module-01/m01-10-deteccio-anomalies.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En la funció `modified_zscore_mad` de la lliçó, què passa si més del 50% de les factures d'una partida tenen exactament el mateix import fix (p. ex., quota mensual idèntica de 100,00 €)?",
+      "codeSnippet": "mediana = np.median(x)\nmad = np.median(np.abs(x - mediana))\nif mad == 0:\n    return np.zeros_like(x)",
+      "options": [
+        { "key": "A", "text": "La MAD resulta igual a 0 i la guarda retorna zeros per a totes les factures, deixant de detectar fins i tot una factura anòmala de 50.000 €; en aquest cas límit cal recórrer a la desviació absoluta mitjana (MeanAD) o a una regla explícita." },
+        { "key": "B", "text": "La MAD s'ajusta automàticament a 1,0 i detecta totes les anomalies sense problemes." },
+        { "key": "C", "text": "La funció llança un ZeroDivisionError." },
+        { "key": "D", "text": "El valor 0,6745 impedeix que `mad` pugui ser mai zero." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Quan ≥50% dels valors són idèntics a la mediana, la mediana de les desviacions absolutes (MAD) és exactament 0! La guarda evita la divisió per zero però anul·la la detecció; en producció s'utilitza MeanAD (1,253314 · mean(|x − med|)) com a fallback quan MAD == 0.",
+      "explanationsIncorrect": {
+        "B": "El codi mostrat retorna `np.zeros_like(x)`, no substitueix MAD per 1,0.",
+        "C": "La guarda `if mad == 0:` precisament evita el ZeroDivisionError.",
+        "D": "0,6745 és el factor de consistència normal al numerador i no afecta el càlcul de `mad`."
+      }
+    },
+    {
+      "id": "m01-10-q09",
+      "module": 1,
+      "conceptId": "m01-10-deteccio-anomalies",
+      "lessonRef": "content/module-01/m01-10-deteccio-anomalies.md",
+      "difficulty": "advanced",
+      "questionType": "normative",
+      "prompt": "Un ajuntament desplega un Isolation Forest sobre sol·licituds d'ajuts socials i proposa denegar automàticament qualsevol sol·licitud que superi un score d'anomalia de 0,85. Per què aquesta pràctica és inacceptable?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè Isolation Forest només admet scores entre 0 i 0,5." },
+        { "key": "B", "text": "Perquè una anomalia estadística no equival a frau ni incompliment legal (pot ser una família en situació singular extremadament vulnerable); denegar automàticament vulnera el dret a no patir decisions automatitzades sense garanties (art. 22 RGPD), la motivació administrativa i el principi de supervisió humana." },
+        { "key": "C", "text": "Perquè l'AI Act prohibeix qualsevol ús d'algoritmes basats en arbres." },
+        { "key": "D", "text": "Només seria inacceptable si no s'ha aplicat StandardScaler prèviament." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Les situacions de màxima vulnerabilitat sovint són estadísticament atípiques (outliers). Convertir una desviació estadística en una denegació automàtica genera discriminació greu i incompleix el RGPD (art. 22), la Llei 39/2015 (motivació) i l'AI Act (alt risc / supervisió humana).",
+      "explanationsIncorrect": {
+        "A": "El rang del score no és el motiu pel qual és inacceptable.",
+        "C": "L'AI Act regula riscos i garanties, no prohibeix algoritmes d'arbres.",
+        "D": "Isolation Forest ni tan sols requereix StandardScaler, i el problema és jurídic i ètic, no d'escalat."
+      }
+    },
+    {
+      "id": "m01-10-q10",
+      "module": 1,
+      "conceptId": "m01-10-deteccio-anomalies",
+      "lessonRef": "content/module-01/m01-10-deteccio-anomalies.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "Quina estratègia d'enginyeria resol millor la detecció simultània d'errors de facturació puntuals, possibles fraccionaments de contractes menors i pautes multivariants desconegudes?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Un únic model d'Isolation Forest sobre les factures individuals sense variables agregades." },
+        { "key": "B", "text": "Una arquitectura híbrida: regles deterministes sobre agregacions temporals (fraccionaments i duplicats) + enginyeria de features de context/històric + Isolation Forest explicable amb cua acotada Top-k i feedback humà d'Intervenció." },
+        { "key": "C", "text": "Enviar totes les factures sense filtrar a un LLM públic al núvol preguntant si hi ha frau." },
+        { "key": "D", "text": "Substituir totes les auditories humanes per un One-Class SVM sense revisió." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Separar els incompliments normatius coneguts (regles deterministes sobre agregacions) dels patrons multivariants nous (Isolation Forest amb features de context i explicació per variables) i acotar les alertes a la capacitat humana maximitza l'eficàcia i la seguretat jurídica.",
+      "explanationsIncorrect": {
+        "A": "Sense agregacions temporals per proveïdor, un model de factures individuals no detecta anomalies col·lectives com el fraccionament.",
+        "C": "Enviar dades financeres/personals a un LLM públic vulnera protecció de dades i seguretat (ENS/RGPD) i pateix al·lucinacions.",
+        "D": "Substituir la supervisió humana d'auditoria és contrari als principis de control intern i governança de la IA."
+      }
+    }
+  ]
+}

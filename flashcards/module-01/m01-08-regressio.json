@@ -1,0 +1,54 @@
+{
+  "conceptId": "m01-08-regressio",
+  "module": 1,
+  "cards": [
+    {
+      "id": "m01-08-fc01",
+      "module": 1,
+      "conceptId": "m01-08-regressio",
+      "front": "Diferencia Ridge (L2), Lasso (L1) i ElasticNet.",
+      "back": "Ridge (L2) encongeix coeficients sense anul·lar-los (ideal amb multicol·linealitat). Lasso (L1) porta coeficients irrellevants exactament a 0 (selecció de variables). ElasticNet combina L1 + L2. Tots tres exigeixen escalat previ.",
+      "tags": ["regularització", "Ridge", "Lasso"]
+    },
+    {
+      "id": "m01-08-fc02",
+      "module": 1,
+      "conceptId": "m01-08-regressio",
+      "front": "Quina diferència hi ha entre MAE i RMSE, i què indica RMSE >> MAE?",
+      "back": "Ambdues tenen les unitats de y; MAE pondera errors linealment (més robusta a outliers), RMSE eleva errors al quadrat abans de promitjar (penalitza molt errors grans). RMSE >> MAE indica presència d'errors puntuals extrems.",
+      "tags": ["mètriques", "MAE", "RMSE"]
+    },
+    {
+      "id": "m01-08-fc03",
+      "module": 1,
+      "conceptId": "m01-08-regressio",
+      "front": "Pot el coeficient de determinació R² ser negatiu en el conjunt de test? Què vol dir?",
+      "back": "Sí! R² = 1 − SS_res/SS_tot < 0 significa que el model comet més error quadràtic que predir sempre la mitjana de y_test (senyal d'overfitting sever, drift o error greu).",
+      "tags": ["R2", "avaluació"]
+    },
+    {
+      "id": "m01-08-fc04",
+      "module": 1,
+      "conceptId": "m01-08-regressio",
+      "front": "Quina limitació crítica tenen els arbres de decisió (Random Forest, XGBoost) en regressió?",
+      "back": "No poden extrapolar fora del rang [min(y_train), max(y_train)] perquè cada fulla prediu mitjanes de les dades d'entrenament.",
+      "tags": ["extrapolació", "arbres"]
+    },
+    {
+      "id": "m01-08-fc05",
+      "module": 1,
+      "conceptId": "m01-08-regressio",
+      "front": "Què és la heteroscedasticitat en anàlisi de residus i com sol tractar-se en imports econòmics?",
+      "back": "Variància no constant dels residus (sovint en forma d'embut creixent amb ŷ). En imports asimètrics sol mitigar-se transformant la variable amb log(1 + y) o usant un GLM Gamma.",
+      "tags": ["residus", "diagnòstic"]
+    },
+    {
+      "id": "m01-08-fc06",
+      "module": 1,
+      "conceptId": "m01-08-regressio",
+      "front": "Per què falla la mètrica MAPE amb valors reals iguals a zero i quina alternativa s'utilitza?",
+      "back": "Perquè divideix per y_i = 0 produint infinit/NaN. L'alternativa robusta per a errors percentuals agregats és WAPE = Σ|y_i − ŷ_i| / Σ|y_i|.",
+      "tags": ["MAPE", "WAPE"]
+    }
+  ]
+}

@@ -111,6 +111,78 @@
       "module": 8,
       "conceptId": "m08-05-seguretat-ia",
       "definition": "Atac a sistemes basats en LLM en què un text maliciós (introduït directament per l'usuari o incrustat en un document recuperat) aconsegueix sobreescriure o desviar les instruccions del sistema."
+    },
+    {
+      "id": "backpropagation",
+      "term": "Retropropagació",
+      "english": "Backpropagation",
+      "module": 1,
+      "conceptId": "m01-03-deep-learning",
+      "definition": "Algoritme que aplica la regla de la cadena des de la capa de sortida cap enrere per calcular el gradient de la funció de pèrdua respecte a cada pes d'una xarxa neuronal."
+    },
+    {
+      "id": "generative-model",
+      "term": "Model generatiu",
+      "english": "Generative Model",
+      "module": 1,
+      "conceptId": "m01-05-models-generatius",
+      "definition": "Model que aprèn la distribució de dades P(x) o P(x, y) per generar nous exemplars sintètics coherents (text, imatge, àudio o dades tabulars), a diferència dels models discriminatius que estimen P(y|x)."
+    },
+    {
+      "id": "expert-system",
+      "term": "Sistema expert",
+      "english": "Expert System",
+      "module": 1,
+      "conceptId": "m01-06-sistemes-experts",
+      "definition": "Sistema simbòlic compost per una base de coneixement (fets i regles), un motor d'inferència (forward/backward chaining) i un mòdul d'explicació capaç de justificar cada decisió de manera determinista i auditable."
+    },
+    {
+      "id": "pr-auc",
+      "term": "PR-AUC (Àrea sota la corba Precision-Recall)",
+      "english": "Precision-Recall Area Under Curve",
+      "module": 1,
+      "conceptId": "m01-07-classificacio",
+      "definition": "Mètrica d'avaluació preferent en classificació amb classes molt desequilibrades, ja que no es deixa inflar pels veritables negatius (TN) com pot passar amb ROC-AUC o Accuracy."
+    },
+    {
+      "id": "regularization-l1-l2",
+      "term": "Regularització L1 (Lasso) i L2 (Ridge)",
+      "english": "L1 / L2 Regularization",
+      "module": 1,
+      "conceptId": "m01-08-regressio",
+      "definition": "Tècniques que afegeixen una penalització sobre la norma dels pesos a la funció de pèrdua per reduir sobreajustament: L2 estabilitza variables col·lineals reduint pesos, mentre que L1 pot anul·lar pesos seleccionant variables."
+    },
+    {
+      "id": "silhouette-score",
+      "term": "Coeficient Silhouette",
+      "english": "Silhouette Score",
+      "module": 1,
+      "conceptId": "m01-09-clustering",
+      "definition": "Mètrica interna de qualitat de clustering compresa entre -1 i +1 que combina cohesió intra-clúster i separació respecte al clúster veí més proper."
+    },
+    {
+      "id": "isolation-forest",
+      "term": "Isolation Forest",
+      "english": "Isolation Forest",
+      "module": 1,
+      "conceptId": "m01-10-deteccio-anomalies",
+      "definition": "Algoritme de detecció d'anomalies basat en arbres de particions aleatòries que identifica punts anòmals perquè requereixen moltes menys divisions (profunditat mitjana més curta) per quedar aïllats."
+    },
+    {
+      "id": "bias-variance",
+      "term": "Compromís biaix-variància",
+      "english": "Bias-Variance Tradeoff",
+      "module": 1,
+      "conceptId": "m01-11-avaluacio-generalitzacio-hiperparametres",
+      "definition": "Descomposició de l'error esperat de generalització en Bias² (infraajustament), Variància (sobreajustament) i soroll irreducible σ², que guia l'ajust de complexitat i regularització."
+    },
+    {
+      "id": "nested-cv",
+      "term": "Validació creuada niuada",
+      "english": "Nested Cross-Validation",
+      "module": 1,
+      "conceptId": "m01-11-avaluacio-generalitzacio-hiperparametres",
+      "definition": "Procediment de validació en dos bucles (intern per seleccionar hiperparàmetres, extern per avaluar el guanyador) que evita el biaix optimista de selecció en conjunts de dades reduïts."
     }
   ]
 }

@@ -1,0 +1,236 @@
+{
+  "conceptId": "m01-06-sistemes-experts",
+  "module": 1,
+  "questions": [
+    {
+      "id": "m01-06-q01",
+      "module": 1,
+      "conceptId": "m01-06-sistemes-experts",
+      "lessonRef": "content/module-01/m01-06-sistemes-experts.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quin és el principi arquitectònic fonamental d'un sistema expert clàssic?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Separar explícitament la base de coneixement declarativa (regles del domini) del motor d'inferència que executa el raonament." },
+        { "key": "B", "text": "Entrenar milions de pesos neuronals mitjançant retropropagació sobre dades no etiquetades." },
+        { "key": "C", "text": "Substituir totes les regles legals per clustering no supervisat." },
+        { "key": "D", "text": "Integrar les regles dins del codi compilat perquè no es puguin auditar." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "La separació entre base de coneixement (què sabem) i motor d'inferència (com raonem) permet actualitzar regles, auditar-les i generar explicacions sense reescriure l'algoritme de raonament.",
+      "explanationsIncorrect": {
+        "B": "Això descriu el Deep Learning, no els sistemes experts simbòlics.",
+        "C": "El clustering és aprenentatge no supervisat i no aplica regles normatives.",
+        "D": "És exactament el contrari: els sistemes experts busquen representació declarativa, mantenible i explicable."
+      }
+    },
+    {
+      "id": "m01-06-q02",
+      "module": 1,
+      "conceptId": "m01-06-sistemes-experts",
+      "lessonRef": "content/module-01/m01-06-sistemes-experts.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quin component d'un sistema expert emmagatzema els fets concrets de l'expedient que s'està avaluant i els nous fets inferits durant l'execució?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "El mòdul d'explicació." },
+        { "key": "B", "text": "La memòria de treball (working memory / base de fets)." },
+        { "key": "C", "text": "L'optimitzador AdamW." },
+        { "key": "D", "text": "La capa de pooling." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "La memòria de treball manté l'estat dinàmic dels fets inicials i dels fets que el motor d'inferència va deduint per a un cas concret.",
+      "explanationsIncorrect": {
+        "A": "El mòdul d'explicació construeix la justificació per a l'usuari a partir de la traça d'inferència.",
+        "C": "AdamW és un optimitzador de xarxes neuronals.",
+        "D": "El pooling és una operació de xarxes convolucionals (CNN)."
+      }
+    },
+    {
+      "id": "m01-06-q03",
+      "module": 1,
+      "conceptId": "m01-06-sistemes-experts",
+      "lessonRef": "content/module-01/m01-06-sistemes-experts.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Com opera l'estratègia d'encadenament endavant (forward chaining) en un motor d'inferència?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Parteix d'una hipòtesi final i busca cap enrere quines regles la podrien demostrar." },
+        { "key": "B", "text": "Calcula el gradient de l'error des de la sortida cap a l'entrada." },
+        { "key": "C", "text": "És dirigida per les dades (data-driven): parteix dels fets coneguts i dispara regles aplicables per inferir noves conclusions." },
+        { "key": "D", "text": "Genera text token a token segons la temperatura." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "El forward chaining és un raonament dirigit per les dades que encadena les premisses satisfetes amb els seus conseqüents fins a esgotar les inferències possibles o assolir una conclusió.",
+      "explanationsIncorrect": {
+        "A": "Aquesta és la definició d'encadenament enrere (backward chaining).",
+        "B": "Això descriu la retropropagació (backpropagation) en xarxes neuronals.",
+        "D": "Això descriu la generació autoregressiva d'un LLM."
+      }
+    },
+    {
+      "id": "m01-06-q04",
+      "module": 1,
+      "conceptId": "m01-06-sistemes-experts",
+      "lessonRef": "content/module-01/m01-06-sistemes-experts.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Una seu electrònica vol oferir un assistent interactiu on el ciutadà tria un ajut concret (p. ex., «Bonificació IBI família nombrosa») i el sistema li fa únicament les preguntes mínimes necessàries per comprovar si compleix els requisits. Quina estratègia d'inferència és més adequada?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Encadenament enrere (backward chaining / goal-driven)." },
+        { "key": "B", "text": "Clustering K-Means." },
+        { "key": "C", "text": "Encadenament endavant exhaustiu demanant primer totes les dades de tots els tributs del municipi." },
+        { "key": "D", "text": "Aprenentatge per reforç en línia." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "En conèixer l'objectiu concret que vol verificar el ciutadà, el backward chaining navega cap enrere només per les premisses d'aquest objectiu, minimitzant les preguntes i aturant-se tan bon punt un requisit obligatori falla.",
+      "explanationsIncorrect": {
+        "B": "K-Means agrupa dades sense etiquetes i no comprova requisits normatius.",
+        "C": "Demanar totes les dades abans d'inferir és ineficient i empitjora l'experiència ciutadana.",
+        "D": "L'RL no s'utilitza per verificar requisits legals deterministes."
+      }
+    },
+    {
+      "id": "m01-06-q05",
+      "module": 1,
+      "conceptId": "m01-06-sistemes-experts",
+      "lessonRef": "content/module-01/m01-06-sistemes-experts.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Què és el «coll d'ampolla de l'adquisició de coneixement» (knowledge acquisition bottleneck) en el desenvolupament de sistemes experts?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "La limitació d'amplada de banda de la memòria GPU en carregar embeddings." },
+        { "key": "B", "text": "La dificultat, el temps i el cost d'extreure el coneixement tàcit dels experts humans i formalitzar-lo en regles completes, coherents i actualitzades." },
+        { "key": "C", "text": "La capa intermèdia de baixa dimensió d'un Autoencoder." },
+        { "key": "D", "text": "La velocitat màxima d'un escàner OCR." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Els experts humans sovint apliquen intuïcions i excepcions tàcites molt difícils d'explicitar en regles formals sense contradiccions; aquest procés manual ha estat històricament el gran fre dels sistemes experts.",
+      "explanationsIncorrect": {
+        "A": "És un problema d'enginyeria del coneixement humà, no de maquinari GPU.",
+        "C": "Això es coneix com a bottleneck latent d'un Autoencoder, no knowledge acquisition bottleneck.",
+        "D": "No té relació amb el maquinari d'escaneig."
+      }
+    },
+    {
+      "id": "m01-06-q06",
+      "module": 1,
+      "conceptId": "m01-06-sistemes-experts",
+      "lessonRef": "content/module-01/m01-06-sistemes-experts.md",
+      "difficulty": "intermediate",
+      "questionType": "code",
+      "prompt": "Observa el bucle del motor de forward chaining de la lliçó. Per què s'utilitza un conjunt `disparades: set[str]` dins del `while canvi`?",
+      "codeSnippet": "while canvi:\n    canvi = False\n    for r in regles:\n        if r.id in disparades:\n            continue\n        if r.condicio(memoria):\n            memoria[r.accio_clau] = r.accio_valor\n            disparades.add(r.id)\n            canvi = True",
+      "options": [
+        { "key": "A", "text": "Per impedir que la mateixa regla es dispari infinitament a cada iteració del bucle (refracció) un cop les seves premisses ja s'han satisfet." },
+        { "key": "B", "text": "Per entrenar els pesos de les regles mitjançant descens del gradient." },
+        { "key": "C", "text": "Per assegurar que només es pugui disparar una única regla en tota l'execució." },
+        { "key": "D", "text": "Per eliminar les regles de la base de coneixement permanentment entre expedients diferents." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Aquest mecanisme es coneix en motors de regles com a «refracció»: evita que una regla la condició de la qual segueix sent certa torni a disparar-se en bucle infinit, garantint la terminació del procés.",
+      "explanationsIncorrect": {
+        "B": "Un motor de regles simbòlic no fa descens del gradient.",
+        "C": "Es poden disparar totes les regles diferents les condicions de les quals es compleixin (p. ex., R1, R2 i després R3).",
+        "D": "`disparades` és una variable local de cada crida; no modifica `BASE_CONEIXEMENT`."
+      }
+    },
+    {
+      "id": "m01-06-q07",
+      "module": 1,
+      "conceptId": "m01-06-sistemes-experts",
+      "lessonRef": "content/module-01/m01-06-sistemes-experts.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Quin paper té l'algoritme Rete en els motors de regles moderns (com Drools)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Tradueix regles escrites en català a vectors d'embedding." },
+        { "key": "B", "text": "Optimitza l'emparellament de patrons entre fets i milers de regles mantenint una xarxa de memòria intermèdia per evitar reavaluar-ho tot des de zero a cada canvi." },
+        { "key": "C", "text": "Substitueix el mòdul d'explicació per una caixa negra probabilística." },
+        { "key": "D", "text": "Comprimeix imatges escanejades abans de passar-les a OCR." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "L'algoritme Rete (Charles Forgy) construeix un graf acíclic de condicions compartides i memoritza coincidències parcials, reduint dràsticament el cost d'avaluació quan hi ha moltes regles i fets.",
+      "explanationsIncorrect": {
+        "A": "Rete és un algoritme simbòlic d'emparellament de patrons, no un model d'embeddings.",
+        "C": "No elimina l'explicabilitat; accelera l'execució del motor d'inferència.",
+        "D": "No té relació amb processament d'imatges."
+      }
+    },
+    {
+      "id": "m01-06-q08",
+      "module": 1,
+      "conceptId": "m01-06-sistemes-experts",
+      "lessonRef": "content/module-01/m01-06-sistemes-experts.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "En un motor de regles corporatiu on dues regles aplicables produeixen conseqüents incompatibles (una regla general de bonificació i una excepció específica d'una ordenança local), quin criteri de resolució de conflictes és el més habitual?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Escollir aleatòriament una de les dues regles en cada execució." },
+        { "key": "B", "text": "Prioritzar per especificitat (la regla amb condicions més específiques preval sobre la general) i/o per prioritat explícita declarada (salience), validat amb proves de consistència." },
+        { "key": "C", "text": "Aplicar la mitjana aritmètica dels noms de les dues regles." },
+        { "key": "D", "text": "Ignorar ambdues regles i aprovar sempre la sol·licitud automàticament." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Les estratègies estàndard de resolució de conflictes inclouen especificitat (lex specialis derogat legi generali), prioritat explícita (salience) i ordre/recència, acompanyades d'anàlisi estàtica per detectar conflictes no previstos.",
+      "explanationsIncorrect": {
+        "A": "L'aleatorietat violaria el principi de seguretat jurídica i igualtat davant la llei.",
+        "C": "No té sentit matemàtic ni funcional.",
+        "D": "Aprovar automàticament davant un conflicte normatiu pot concedir drets contra legem; si hi ha conflicte no resolt, cal escalar a revisió jurídica."
+      }
+    },
+    {
+      "id": "m01-06-q09",
+      "module": 1,
+      "conceptId": "m01-06-sistemes-experts",
+      "lessonRef": "content/module-01/m01-06-sistemes-experts.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "Quin avantatge específic té combinar un model d'extracció documental (OCR + NLP/LLM) amb un motor de regles DMN/BRMS en la tramitació d'ajuts públics respecte de resoldre tot el flux únicament amb un LLM?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "El motor de regles garanteix l'aplicació determinista, reproduïble, versionada per exercici i 100% explicable dels requisits legals, mentre que la IA perceptiva només s'ocupa de convertir documents heterogenis en fets estructurats verificables." },
+        { "key": "B", "text": "Permet prescindir completament de la verificació humana dels camps extrets amb baixa confiança." },
+        { "key": "C", "text": "Garanteix que l'OCR mai no cometi errors de lectura." },
+        { "key": "D", "text": "Evita haver d'actualitzar les regles quan es modifiquen les bases de la subvenció." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "L'arquitectura híbrida situa cada tecnologia allà on excel·leix: DL/NLP per interpretar dades no estructurades i motor de regles determinista per aplicar el dret objectiu amb traça jurídica exacta.",
+      "explanationsIncorrect": {
+        "B": "Els camps extrets amb baixa confiança continuen requerint validació humana abans d'alimentar les regles.",
+        "C": "Un motor de regles no millora la precisió òptica de l'OCR, tot i que pot detectar inconsistències formals.",
+        "D": "Les bases de regles sempre s'han d'actualitzar i versionar quan canvia la normativa."
+      }
+    },
+    {
+      "id": "m01-06-q10",
+      "module": 1,
+      "conceptId": "m01-06-sistemes-experts",
+      "lessonRef": "content/module-01/m01-06-sistemes-experts.md",
+      "difficulty": "advanced",
+      "questionType": "conceptual",
+      "prompt": "En quina situació resulta especialment útil estendre un sistema basat en regles amb lògica difusa (fuzzy logic) en lloc de regles booleanes estrictes?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "En el càlcul exacte d'un recàrrec legal fixat per llei al 5% a partir del dia següent al venciment." },
+        { "key": "B", "text": "Quan es volen modelar magnituds contínues amb transicions graduals i etiquetes lingüístiques imprecises (p. ex., control de climatització o indicadors de confort/congestió) sense salts bruscos en un llindar." },
+        { "key": "C", "text": "En la validació del dígit de control d'un NIF o d'un compte IBAN." },
+        { "key": "D", "text": "Per entrenar un Transformer de 70.000 milions de paràmetres." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "La lògica difusa permet graus de pertinença continus entre 0 i 1 per evitar discontinuïtats artificials en variables físiques o qualitatives graduals (p. ex., temperatura «alta», trànsit «moderat»).",
+      "explanationsIncorrect": {
+        "A": "Els terminis i recàrrecs legals tenen llindars jurídics exactes i han de ser estrictament deterministes, no difusos.",
+        "C": "La validació de NIF/IBAN és una operació aritmètica binària exacta (vàlid/invàlid).",
+        "D": "Els Transformers no s'entrenen amb lògica difusa."
+      }
+    }
+  ]
+}

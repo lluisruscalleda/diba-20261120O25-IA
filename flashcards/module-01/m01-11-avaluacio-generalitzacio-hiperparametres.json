@@ -1,0 +1,54 @@
+{
+  "conceptId": "m01-11-avaluacio-generalitzacio-hiperparametres",
+  "module": 1,
+  "cards": [
+    {
+      "id": "m01-11-fc01",
+      "module": 1,
+      "conceptId": "m01-11-avaluacio-generalitzacio-hiperparametres",
+      "front": "Quina és la descomposició biaix-variància de l'error esperat?",
+      "back": "Error esperat = Bias² (infraajustament) + Variància (sobreajustament) + σ² (soroll irreducible).",
+      "tags": ["biaix-variància", "generalització"]
+    },
+    {
+      "id": "m01-11-fc02",
+      "module": 1,
+      "conceptId": "m01-11-avaluacio-generalitzacio-hiperparametres",
+      "front": "Com diagnostiques Underfitting vs. Overfitting mirant Train i Validation, i com actues en cada cas?",
+      "back": "Underfitting: error alt en Train i Val → model més complex, millors features, menys regularització. Overfitting: error baix en Train i alt en Val → més dades, més regularització, early stopping, Bagging.",
+      "tags": ["underfitting", "overfitting"]
+    },
+    {
+      "id": "m01-11-fc03",
+      "module": 1,
+      "conceptId": "m01-11-avaluacio-generalitzacio-hiperparametres",
+      "front": "Quan utilitzaries StratifiedKFold, GroupKFold i TimeSeriesSplit?",
+      "back": "StratifiedKFold: classificació desequilibrada. GroupKFold: entitats repetides (municipis, ciutadans) per evitar entity leakage. TimeSeriesSplit: sèries temporals o convocatòries anuals per evitar fuga del futur al passat.",
+      "tags": ["validació creuada", "metodologia"]
+    },
+    {
+      "id": "m01-11-fc04",
+      "module": 1,
+      "conceptId": "m01-11-avaluacio-generalitzacio-hiperparametres",
+      "front": "Què és la Nested Cross-Validation i quin biaix elimina?",
+      "back": "Validació creuada en dos nivells: bucle intern per ajustar hiperparàmetres i bucle extern per avaluar el guanyador en dades no vistes. Elimina el biaix optimista de selecció (selection bias).",
+      "tags": ["Nested CV", "hiperparàmetres"]
+    },
+    {
+      "id": "m01-11-fc05",
+      "module": 1,
+      "conceptId": "m01-11-avaluacio-generalitzacio-hiperparametres",
+      "front": "Per què Random Search i l'Optimització Bayesiana (Optuna) solen superar Grid Search?",
+      "back": "Perquè eviten l'explosió combinatòria de la graella i exploren molts més valors diferents dels hiperparàmetres realment influents amb el mateix pressupost de còmput.",
+      "tags": ["tuning", "hiperparàmetres"]
+    },
+    {
+      "id": "m01-11-fc06",
+      "module": 1,
+      "conceptId": "m01-11-avaluacio-generalitzacio-hiperparametres",
+      "front": "Quina diferència hi ha entre funció de pèrdua (loss) i mètrica d'avaluació?",
+      "back": "La funció de pèrdua (MSE, Cross-Entropy, Huber) és diferenciable i guia l'optimització durant l'entrenament. La mètrica (F1, PR-AUC, Precision@k) mesura l'objectiu real de negoci i sovint no és diferenciable.",
+      "tags": ["loss", "mètriques"]
+    }
+  ]
+}

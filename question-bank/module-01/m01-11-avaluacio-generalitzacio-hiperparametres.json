@@ -1,0 +1,236 @@
+{
+  "conceptId": "m01-11-avaluacio-generalitzacio-hiperparametres",
+  "module": 1,
+  "questions": [
+    {
+      "id": "m01-11-q01",
+      "module": 1,
+      "conceptId": "m01-11-avaluacio-generalitzacio-hiperparametres",
+      "lessonRef": "content/module-01/m01-11-avaluacio-generalitzacio-hiperparametres.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quins són els tres components de la descomposició clàssica de l'error esperat de generalització en regressió?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Precision, Recall i F1-score." },
+        { "key": "B", "text": "Biaix al quadrat (Bias²), Variància (Variance) i soroll irreducible (σ²)." },
+        { "key": "C", "text": "Train, Validation i Test." },
+        { "key": "D", "text": "Learning rate, Batch size i Epochs." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "L'error quadràtic esperat en dades no vistes es descompon exactament en Bias² (error per simplicitat excessiva), Variància (sensibilitat a les dades d'entrenament) i σ² (soroll intrínsec irreducible).",
+      "explanationsIncorrect": {
+        "A": "Són mètriques d'avaluació de classificació, no la descomposició de l'error esperat.",
+        "C": "Són les particions del conjunt de dades, no els termes de la descomposició.",
+        "D": "Són hiperparàmetres d'entrenament."
+      }
+    },
+    {
+      "id": "m01-11-q02",
+      "module": 1,
+      "conceptId": "m01-11-avaluacio-generalitzacio-hiperparametres",
+      "lessonRef": "content/module-01/m01-11-avaluacio-generalitzacio-hiperparametres.md",
+      "difficulty": "basic",
+      "questionType": "metrics",
+      "prompt": "Un model presenta un error elevat tant en el conjunt d'entrenament (38%) com en el conjunt de validació (40%). Quin diagnòstic correspon?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Sobreajustament sever (overfitting / alta variància)." },
+        { "key": "B", "text": "Infraajustament (underfitting / alt biaix)." },
+        { "key": "C", "text": "Data leakage perfecte." },
+        { "key": "D", "text": "Generalització òptima sense marge de millora." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Un error alt ja en entrenament i molt similar en validació indica que el model no té prou capacitat o característiques per capturar els patrons reals (infraajustament / alt biaix).",
+      "explanationsIncorrect": {
+        "A": "L'overfitting mostraria un error molt baix en entrenament i molt més alt en validació.",
+        "C": "El data leakage sol provocar errors artificialment baixíssims en validació, no del 40%.",
+        "D": "Un error del 38-40% (llevat que el soroll irreducible sigui del 38%) indica un model deficient."
+      }
+    },
+    {
+      "id": "m01-11-q03",
+      "module": 1,
+      "conceptId": "m01-11-avaluacio-generalitzacio-hiperparametres",
+      "lessonRef": "content/module-01/m01-11-avaluacio-generalitzacio-hiperparametres.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina variant de validació creuada manté exacta la proporció de classes en cada partició (fold) i és l'opció estàndard en classificació desequilibrada?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "GridSearchCV sense estratificació." },
+        { "key": "B", "text": "K-Means." },
+        { "key": "C", "text": "StratifiedKFold." },
+        { "key": "D", "text": "Dropout." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "StratifiedKFold garanteix que cada fold contingui la mateixa distribució percentual de classes que el dataset original, evitant folds sense exemples de la classe minoritària.",
+      "explanationsIncorrect": {
+        "A": "GridSearchCV és una eina de cerca d'hiperparàmetres, no una estratègia d'estratificació per si sola.",
+        "B": "K-Means és un algoritme de clustering.",
+        "D": "Dropout és una tècnica de regularització de xarxes neuronals."
+      }
+    },
+    {
+      "id": "m01-11-q04",
+      "module": 1,
+      "conceptId": "m01-11-avaluacio-generalitzacio-hiperparametres",
+      "lessonRef": "content/module-01/m01-11-avaluacio-generalitzacio-hiperparametres.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Un model d'infraajustament (error alt en train i en validació) s'ha entrenat amb 50.000 expedients. Quina acció té MENYS probabilitats de resoldre el problema?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Augmentar la força de la regularització L2 (pujar λ) o incrementar el Dropout." },
+        { "key": "B", "text": "Dissenyar noves característiques (feature engineering) més informatives." },
+        { "key": "C", "text": "Provar una arquitectura més expressiva capaç de capturar no-linealitats." },
+        { "key": "D", "text": "Entrenar durant més iteracions si el model no havia convergit." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Augmentar la regularització restringeix encara més la capacitat del model, cosa que combat l'overfitting però EMPITJORA l'underfitting.",
+      "explanationsIncorrect": {
+        "B": "Millorar les features aporta senyal nova i ajuda directament a reduir el biaix.",
+        "C": "Augmentar la capacitat del model redueix el biaix i combat l'underfitting.",
+        "D": "Si l'optimització es va aturar massa aviat, entrenar fins a convergència redueix l'underfitting."
+      }
+    },
+    {
+      "id": "m01-11-q05",
+      "module": 1,
+      "conceptId": "m01-11-avaluacio-generalitzacio-hiperparametres",
+      "lessonRef": "content/module-01/m01-11-avaluacio-generalitzacio-hiperparametres.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Estàs entrenant un model amb 20.000 expedients procedents de 100 ajuntaments (200 expedients per ajuntament) i vols saber com rendirà quan es desplegui a 50 ajuntaments nous que mai no han participat en l'entrenament. Quina estratègia de CV has d'aplicar?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "KFold aleatori barrejant expedients de tots els ajuntaments." },
+        { "key": "B", "text": "GroupKFold (o StratifiedGroupKFold) agrupat per `codi_municipi` perquè cap municipi aparegui alhora a train i a validació." },
+        { "key": "C", "text": "Leave-One-Out sobre files individuals." },
+        { "key": "D", "text": "Avaluar directament sobre el conjunt d'entrenament." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "GroupKFold / StratifiedGroupKFold garanteix que tots els expedients d'un mateix municipi quedin o bé a train o bé a validació, mesurant realment la generalització a ajuntaments no vistos.",
+      "explanationsIncorrect": {
+        "A": "Permetria que expedients del mateix ajuntament apareguin a train i a validació, inflant artificialment la mètrica.",
+        "C": "Leave-One-Out sobre files individuals deixaria 199 expedients del mateix ajuntament a train, patint el mateix entity leakage.",
+        "D": "Avaluar sobre train no mesura mai la generalització."
+      }
+    },
+    {
+      "id": "m01-11-q06",
+      "module": 1,
+      "conceptId": "m01-11-avaluacio-generalitzacio-hiperparametres",
+      "lessonRef": "content/module-01/m01-11-avaluacio-generalitzacio-hiperparametres.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Per què en problemes amb 5 o 6 hiperparàmetres i un pressupost fix de 50 proves, Random Search acostuma a trobar millors configuracions que Grid Search?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè Random Search no necessita conjunt de validació." },
+        { "key": "B", "text": "Perquè Grid Search només funciona amb models lineals." },
+        { "key": "C", "text": "Perquè quan només 1 o 2 hiperparàmetres dominen el rendiment, Grid Search malgasta avaluacions repetint els mateixos valors dels hiperparàmetres importants, mentre que Random Search prova 50 valors diferents en cada dimensió." },
+        { "key": "D", "text": "Perquè Random Search garanteix trobar sempre l'òptim global matemàtic exacte." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Com van demostrar Bergstra i Bengio (2012), en espais multidimensionals on la funció objectiu té baixa dimensionalitat efectiva, Random Search cobreix molt més densament els hiperparàmetres rellevants amb el mateix pressupost.",
+      "explanationsIncorrect": {
+        "A": "Tant Random Search com Grid Search avaluen les configuracions sobre validació creuada o conjunt de validació.",
+        "B": "Grid Search funciona amb qualsevol algoritme, però escala malament en dimensions.",
+        "D": "Cap cerca mostral finita garanteix trobar l'òptim global exacte."
+      }
+    },
+    {
+      "id": "m01-11-q07",
+      "module": 1,
+      "conceptId": "m01-11-avaluacio-generalitzacio-hiperparametres",
+      "lessonRef": "content/module-01/m01-11-avaluacio-generalitzacio-hiperparametres.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Quin avantatge combina la funció de pèrdua Huber Loss en problemes de regressió?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "És quadràtica (suau i diferenciable) per a errors petits i lineal (robusta davant outliers) per a errors grans que superen un llindar δ." },
+        { "key": "B", "text": "Converteix qualsevol problema de regressió en classificació multiclasse." },
+        { "key": "C", "text": "Assegura sempre R² = 1,0 en validació." },
+        { "key": "D", "text": "Elimina la necessitat de calcular gradients." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Huber Loss combina el millor d'MSE (gradient suau i estable prop de zero) i d'MAE (creixement lineal per a residus grans, evitant que uns pocs outliers dominin l'entrenament).",
+      "explanationsIncorrect": {
+        "B": "Huber Loss és una funció de pèrdua específica de regressió.",
+        "C": "Cap funció de pèrdua pot garantir R² = 1,0.",
+        "D": "Precisament es dissenya perquè sigui diferenciable arreu per a l'optimització basada en gradients."
+      }
+    },
+    {
+      "id": "m01-11-q08",
+      "module": 1,
+      "conceptId": "m01-11-avaluacio-generalitzacio-hiperparametres",
+      "lessonRef": "content/module-01/m01-11-avaluacio-generalitzacio-hiperparametres.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Per què la validació creuada niuada (Nested Cross-Validation) ofereix una estimació més imparcial del rendiment que reportar la puntuació màxima obtinguda per `GridSearchCV` / `RandomizedSearchCV` sobre una única CV?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè Nested CV s'executa més ràpidament que una sola validació creuada." },
+        { "key": "B", "text": "Perquè Nested CV no requereix utilitzar un Pipeline per al preprocessament." },
+        { "key": "C", "text": "Perquè Nested CV elimina el soroll irreducible σ² del dataset." },
+        { "key": "D", "text": "Perquè en seleccionar el màxim entre moltes combinacions d'hiperparàmetres sobre els mateixos folds de validació s'introdueix un biaix optimista de selecció; Nested CV separa el bucle intern (selecció d'hiperparàmetres) del bucle extern (avaluació imparcial)." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Si probes 100 configuracions sobre la mateixa CV i informes el score de la millor, part d'aquella millora és atzar favorable sobre aquells folds (selection bias). Nested CV avalua cada guanyador del bucle intern sobre un fold extern no vist.",
+      "explanationsIncorrect": {
+        "A": "Nested CV és computacionalment més costosa (k_ext × k_int × configuracions), no més ràpida.",
+        "B": "El preprocessament continua havent d'anar encapsulat dins d'un Pipeline per evitar data leakage.",
+        "C": "Cap tècnica de validació pot eliminar el soroll irreducible σ²."
+      }
+    },
+    {
+      "id": "m01-11-q09",
+      "module": 1,
+      "conceptId": "m01-11-avaluacio-generalitzacio-hiperparametres",
+      "lessonRef": "content/module-01/m01-11-avaluacio-generalitzacio-hiperparametres.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En l'exemple de validació creuada polinòmica de la lliçó, si les dades d'entrada `(x, y)` estiguessin prèviament ordenades de menor a major valor de `x`, quin problema introduiria el tall seqüencial `inici, fi = f * fold_size, (f + 1) * fold_size`?",
+      "codeSnippet": "for f in range(k_folds):\n    inici, fi = f * fold_size, (f + 1) * fold_size\n    mask_val[inici:fi] = True",
+      "options": [
+        { "key": "A", "text": "Cap problema, perquè KFold sempre exigeix que x estigui ordenat." },
+        { "key": "B", "text": "Cada fold de validació cauria en una regió contigua extrema o forat de x on el model hauria d'extrapolar en lloc d'interpolar, distorsionant greument l'error CV; en dades i.i.d. cal barrejar aleatòriament (shuffle=True) abans de tallar els folds." },
+        { "key": "C", "text": "Provocaria un error de sintaxi en `np.linalg.lstsq`." },
+        { "key": "D", "text": "Reduiria el grau polinòmic automàticament a 1." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Si el dataset i.i.d. ve ordenat per una variable (o per classe!), tallar folds contigus sense `shuffle=True` crea distribucions completament diferents entre train i validació (en l'exemple de la lliçó `x` es va generar aleatòriament amb `rng.uniform`, però en dades reals sempre cal `shuffle=True` en KFold/StratifiedKFold no temporals).",
+      "explanationsIncorrect": {
+        "A": "Al contrari, en dades i.i.d. ordenar abans de KFold sense shuffle és un error clàssic.",
+        "C": "`np.linalg.lstsq` s'executa igualment sense error de sintaxi.",
+        "D": "No modifica el grau del polinomi."
+      }
+    },
+    {
+      "id": "m01-11-q10",
+      "module": 1,
+      "conceptId": "m01-11-avaluacio-generalitzacio-hiperparametres",
+      "lessonRef": "content/module-01/m01-11-avaluacio-generalitzacio-hiperparametres.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Com redueixen dràsticament el cost computacional de la cerca d'hiperparàmetres els mètodes de poda primerenca com Successive Halving o Hyperband?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Entrenant totes les configuracions candidates fins al 100% de les èpoques abans de comparar-les." },
+        { "key": "B", "text": "Substituint els hiperparàmetres per paràmetres fixos iguals a zero." },
+        { "key": "C", "text": "Eliminant el conjunt de validació i mesurant només la velocitat d'execució." },
+        { "key": "D", "text": "Assignant inicialment pocs recursos (poques èpoques o submostra) a moltes configuracions, descartant les pitjors a cada ronda i multiplicant els recursos només per a les supervivents." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Successive Halving i Hyperband (multi-fidelity optimization) avaluen ràpidament moltes candidates amb baix pressupost i descarten aviat les menys prometedores, concentrant el còmput en les millors configuracions.",
+      "explanationsIncorrect": {
+        "A": "Entrenar-les totes al 100% és precisament el que eviten aquests algoritmes.",
+        "B": "No fixen hiperparàmetres a zero.",
+        "C": "Les decisions de poda es basen sempre en la mètrica de validació, no només en velocitat."
+      }
+    }
+  ]
+}

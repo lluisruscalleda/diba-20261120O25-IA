@@ -1,0 +1,54 @@
+{
+  "conceptId": "m01-07-classificacio",
+  "module": 1,
+  "cards": [
+    {
+      "id": "m01-07-fc01",
+      "module": 1,
+      "conceptId": "m01-07-classificacio",
+      "front": "Fórmules de Precision, Recall i F1-score.",
+      "back": "Precision = TP / (TP + FP). Recall = TP / (TP + FN). F1 = 2 · (Precision · Recall) / (Precision + Recall).",
+      "tags": ["mètriques", "fórmules"]
+    },
+    {
+      "id": "m01-07-fc02",
+      "module": 1,
+      "conceptId": "m01-07-classificacio",
+      "front": "Com afecta baixar el llindar de decisió (p. ex., de 0,50 a 0,25) a Precision i Recall?",
+      "back": "Augmenta el Recall (es detecten més positius reals, menys FN) i normalment disminueix la Precision (més falsos positius / falses alarmes).",
+      "tags": ["llindar", "trade-off"]
+    },
+    {
+      "id": "m01-07-fc03",
+      "module": 1,
+      "conceptId": "m01-07-classificacio",
+      "front": "Per què PR-AUC és preferible a ROC-AUC amb classes molt desequilibrades?",
+      "back": "Perquè ROC-AUC usa FPR = FP/(FP+TN) i l'enorme quantitat de TN dilueix l'impacte dels falsos positius; PR-AUC ignora TN i mostra fidelment la qualitat sobre la classe minoritària.",
+      "tags": ["PR-AUC", "desequilibri"]
+    },
+    {
+      "id": "m01-07-fc04",
+      "module": 1,
+      "conceptId": "m01-07-classificacio",
+      "front": "Diferencia Bagging (Random Forest) vs. Boosting (XGBoost / LightGBM).",
+      "back": "Bagging entrena arbres profunds en paral·lel sobre mostres bootstrap per reduir variància. Boosting entrena arbres febles seqüencialment sobre els errors residuals per reduir biaix.",
+      "tags": ["ensembles", "algoritmes"]
+    },
+    {
+      "id": "m01-07-fc05",
+      "module": 1,
+      "conceptId": "m01-07-classificacio",
+      "front": "Diferencia Macro-F1, Weighted-F1 i Micro-F1 en multiclasse.",
+      "back": "Macro-F1: mitjana simple per classe (totes pesen igual). Weighted-F1: ponderada pel volum de cada classe. Micro-F1: agrega TP/FP/FN globalment (en multiclasse excloent = Accuracy).",
+      "tags": ["multiclasse", "mètriques"]
+    },
+    {
+      "id": "m01-07-fc06",
+      "module": 1,
+      "conceptId": "m01-07-classificacio",
+      "front": "On s'ha d'aplicar SMOTE per evitar data leakage?",
+      "back": "Exclusivament sobre el conjunt d'entrenament dins de cada fold de validació creuada (p. ex., dins d'un imblearn Pipeline), mai abans de dividir train i validació/test.",
+      "tags": ["SMOTE", "data leakage"]
+    }
+  ]
+}

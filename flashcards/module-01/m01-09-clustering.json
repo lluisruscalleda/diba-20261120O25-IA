@@ -1,0 +1,46 @@
+{
+  "conceptId": "m01-09-clustering",
+  "module": 1,
+  "cards": [
+    {
+      "id": "m01-09-fc01",
+      "module": 1,
+      "conceptId": "m01-09-clustering",
+      "front": "Compara K-Means vs. DBSCAN en 3 propietats clau.",
+      "back": "K-Means: requereix K, només clústers esfèrics, assigna tots els punts (sensible a outliers). DBSCAN: no requereix K (usa ε i min_samples), detecta formes arbitràries i etiqueta soroll com a -1.",
+      "tags": ["K-Means", "DBSCAN"]
+    },
+    {
+      "id": "m01-09-fc02",
+      "module": 1,
+      "conceptId": "m01-09-clustering",
+      "front": "Què mesura el Silhouette Score i quin és el seu rang?",
+      "back": "s(i) = (b_i − a_i) / max(a_i, b_i), en [-1, +1]. Compara cohesió interna (a_i) vs separació al clúster veí més proper (b_i). +1 = òptim, 0 = frontera, negatiu = mala assignació.",
+      "tags": ["Silhouette", "mètriques"]
+    },
+    {
+      "id": "m01-09-fc03",
+      "module": 1,
+      "conceptId": "m01-09-clustering",
+      "front": "Per què la inèrcia (WCSS) sola no serveix per triar K buscant el seu mínim absolut?",
+      "back": "Perquè la inèrcia disminueix sempre en augmentar K fins arribar a 0 quan K = n. Cal buscar el punt d'inflexió (mètode del colze) combinat amb Silhouette i sentit de domini.",
+      "tags": ["colze", "inèrcia"]
+    },
+    {
+      "id": "m01-09-fc04",
+      "module": 1,
+      "conceptId": "m01-09-clustering",
+      "front": "Quin problema de DBSCAN resol HDBSCAN?",
+      "back": "DBSCAN usa un únic radi ε global i falla quan els clústers tenen densitats molt diferents. HDBSCAN construeix una jerarquia de densitats i troba clústers estables de densitat variable.",
+      "tags": ["HDBSCAN", "densitat"]
+    },
+    {
+      "id": "m01-09-fc05",
+      "module": 1,
+      "conceptId": "m01-09-clustering",
+      "front": "Per què s'ha d'escalar sempre abans de K-Means o DBSCAN, i què es fa amb embeddings de 768D?",
+      "back": "Sense escalat, la variable amb rang més gran domina la distància euclidiana. En embeddings d'alta dimensió (768D) s'utilitza normalització L2 / mètrica cosinus i reducció dimensional (PCA/UMAP) per evitar la maledicció de la dimensionalitat.",
+      "tags": ["escalat", "dimensionalitat"]
+    }
+  ]
+}

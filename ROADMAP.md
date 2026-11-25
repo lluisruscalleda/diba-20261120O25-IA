@@ -26,7 +26,7 @@ Aquest full de ruta estructura la construcció incremental de l'**Acadèmia de P
 ## Fase 3. Desenvolupament exhaustiu del contingut (8 mòduls, 70 conceptes)
 Cada concepte es completa íntegrament (apartats A–J + mínim 10 preguntes test + mínim 3 preguntes desenvolupament + exercici independent amb solució + flashcards) abans de passar al següent.
 
-- [ ] **Mòdul 1**: Fonaments d'intel·ligència artificial (4/11 conceptes completats).
+- [x] **Mòdul 1**: Fonaments d'intel·ligència artificial (11/11 conceptes completats — 100%).
 - [ ] **Mòdul 2**: Processament del llenguatge natural (10 conceptes).
 - [ ] **Mòdul 3**: Models generatius (9 conceptes).
 - [ ] **Mòdul 4**: Processament intel·ligent de documents (8 conceptes).

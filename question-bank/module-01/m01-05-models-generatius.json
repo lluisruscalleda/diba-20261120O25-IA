@@ -1,0 +1,236 @@
+{
+  "conceptId": "m01-05-models-generatius",
+  "module": 1,
+  "questions": [
+    {
+      "id": "m01-05-q01",
+      "module": 1,
+      "conceptId": "m01-05-models-generatius",
+      "lessonRef": "content/module-01/m01-05-models-generatius.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina diferència probabilística distingeix un model discriminatiu d'un model generatiu?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "El model discriminatiu estima P(y | x) per separar classes o predir etiquetes, mentre que el generatiu modela P(x) o P(x, y) per poder generar noves mostres." },
+        { "key": "B", "text": "El model discriminatiu només funciona sense etiquetes i el generatiu només amb etiquetes binàries." },
+        { "key": "C", "text": "El model generatiu mai no utilitza xarxes neuronals." },
+        { "key": "D", "text": "El model discriminatiu sempre té més paràmetres que qualsevol model generatiu." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Els models discriminatius aprenen directament la probabilitat condicional P(y|x) o fronteres de decisió; els generatius modelen la distribució de les dades P(x) o conjunta P(x,y) (o P(x|c)), permetent mostrejar contingut nou.",
+      "explanationsIncorrect": {
+        "B": "Al contrari, els discriminatius solen ser supervisats (amb etiquetes), mentre que molts generatius s'entrenen de manera no supervisada o autosupervisada.",
+        "C": "Les principals famílies generatives modernes (LLM, VAE, GAN, Difusió) són precisament xarxes neuronals profundes.",
+        "D": "Sovint passa el contrari: els models generatius fundacionals (LLM, difusió) tenen ordres de magnitud més paràmetres que classificadors discriminatius especialitzats."
+      }
+    },
+    {
+      "id": "m01-05-q02",
+      "module": 1,
+      "conceptId": "m01-05-models-generatius",
+      "lessonRef": "content/module-01/m01-05-models-generatius.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Com generen nou contingut els models generatius autoregressius (com els LLM basats en Transformer decoder-only)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Enfrontant un generador i un discriminador en un joc minimax." },
+        { "key": "B", "text": "Eliminant soroll gaussià en paral·lel sobre tota una imatge." },
+        { "key": "C", "text": "Factoritzant la probabilitat conjunta seqüencialment i predient cada nou token condicionat als tokens anteriors: P(x_t | x_<t)." },
+        { "key": "D", "text": "Agrupant paraules mitjançant K-Means." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Els models autoregressius apliquen la regla del producte de la probabilitat P(x_1..x_T) = Π P(x_t | x_<t), generant la seqüència pas a pas un token darrere l'altre.",
+      "explanationsIncorrect": {
+        "A": "Aquest és el mecanisme de les GAN, no dels models autoregressius.",
+        "B": "Aquest és el mecanisme dels models de difusió.",
+        "D": "K-Means és un algoritme de clustering no supervisat, no un model generatiu autoregressiu."
+      }
+    },
+    {
+      "id": "m01-05-q03",
+      "module": 1,
+      "conceptId": "m01-05-models-generatius",
+      "lessonRef": "content/module-01/m01-05-models-generatius.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina família de models generatius consisteix en dues xarxes que competeixen entre si —un Generador i un Discriminador— durant l'entrenament?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Autoencoders Variacionals (VAE)." },
+        { "key": "B", "text": "Xarxes Generatives Antagòniques (GAN)." },
+        { "key": "C", "text": "Models de Difusió." },
+        { "key": "D", "text": "Sistemes experts basats en regles." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Les GAN (Generative Adversarial Networks) entrenen un Generador per crear mostres indistingibles de les reals i un Discriminador per detectar quines són sintètiques en un joc minimax.",
+      "explanationsIncorrect": {
+        "A": "Els VAE tenen un Encoder i un Decoder que optimitzen conjuntament reconstrucció i divergència KL (ELBO), sense joc antagònic.",
+        "C": "Els models de difusió entrenen una xarxa de denoising per revertir un procés d'addició de soroll.",
+        "D": "Els sistemes experts són IA simbòlica determinista."
+      }
+    },
+    {
+      "id": "m01-05-q04",
+      "module": 1,
+      "conceptId": "m01-05-models-generatius",
+      "lessonRef": "content/module-01/m01-05-models-generatius.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Quin efecte té augmentar la temperatura T (p. ex., de T = 0.1 a T = 2.0) en el mostreig Softmax d'un model generatiu autoregressiu?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Concentra tota la probabilitat en el token més probable, fent la sortida completament determinista." },
+        { "key": "B", "text": "Redueix la mida de la finestra de context del model." },
+        { "key": "C", "text": "Elimina completament les al·lucinacions factuals." },
+        { "key": "D", "text": "Aplana la distribució de probabilitat sobre el vocabulari, augmentant la diversitat però també el risc d'incoherència i errors." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Dividir els logits per una temperatura T > 1 redueix les diferències relatives entre ells, aplanant la distribució Softmax i donant més probabilitat a tokens menys freqüents (més diversitat, menys precisió).",
+      "explanationsIncorrect": {
+        "A": "Aquest és precisament l'efecte oposat (quan T tendeix a 0).",
+        "B": "La temperatura només afecta la distribució de mostreig del token següent, no la finestra de context.",
+        "C": "Al contrari, una temperatura alta augmenta el risc d'incoherències i al·lucinacions."
+      }
+    },
+    {
+      "id": "m01-05-q05",
+      "module": 1,
+      "conceptId": "m01-05-models-generatius",
+      "lessonRef": "content/module-01/m01-05-models-generatius.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Què és el «col·lapse de mode» (mode collapse) associat clàssicament a l'entrenament de les GAN?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "La pèrdua de connexió amb la GPU durant la inferència." },
+        { "key": "B", "text": "La fallada on el Generador aprèn a produir només un subconjunt molt limitat i repetitiu de mostres que enganyen el Discriminador, ignorant la diversitat real del dataset." },
+        { "key": "C", "text": "L'augment excessiu de la perplexitat en una regressió lineal." },
+        { "key": "D", "text": "La incapacitat d'un VAE per calcular la mitjana de les dades d'entrada." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "En el col·lapse de mode, el Generador descobreix unes poques sortides plausibles que enganyen el Discriminador i es limita a repetir-les amb variacions mínimes en lloc de cobrir tots els modes de la distribució real.",
+      "explanationsIncorrect": {
+        "A": "És un fenomen d'optimització matemàtica del joc minimax, no un error de maquinari.",
+        "C": "No té relació amb la regressió lineal ni la perplexitat.",
+        "D": "És un problema característic de les GAN, no del càlcul de mitjanes en VAE."
+      }
+    },
+    {
+      "id": "m01-05-q06",
+      "module": 1,
+      "conceptId": "m01-05-models-generatius",
+      "lessonRef": "content/module-01/m01-05-models-generatius.md",
+      "difficulty": "intermediate",
+      "questionType": "metrics",
+      "prompt": "Un model de llenguatge obté una perplexitat (Perplexity) molt baixa sobre un corpus de textos jurídics. Què podem concloure rigorosament d'aquesta mètrica?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Que el model assigna probabilitats altes a les seqüències d'aquest estil de text, però això per si sol NO garanteix que les seves respostes siguin factualment ni jurídicament veritables." },
+        { "key": "B", "text": "Que el model té una taxa d'al·lucinacions del 0%." },
+        { "key": "C", "text": "Que el model compleix automàticament tots els requisits de l'AI Act." },
+        { "key": "D", "text": "Que el model ha estat entrenat amb aprenentatge per reforç." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "La perplexitat mesura l'ajust estadístic a la distribució lingüística (fluïdesa/versemblança), no la veracitat factual, l'actualització normativa ni l'absència d'al·lucinacions.",
+      "explanationsIncorrect": {
+        "B": "Un model pot tenir perplexitat molt baixa i tot i així inventar articles de lleis inexistents amb un estil jurídic impecable.",
+        "C": "El compliment de l'AI Act implica governança, transparència, gestió de riscos i supervisió, no una mètrica de perplexitat.",
+        "D": "La perplexitat és l'exponencial de la cross-entropy i es calcula sobre qualsevol model de llenguatge probabilístic."
+      }
+    },
+    {
+      "id": "m01-05-q07",
+      "module": 1,
+      "conceptId": "m01-05-models-generatius",
+      "lessonRef": "content/module-01/m01-05-models-generatius.md",
+      "difficulty": "intermediate",
+      "questionType": "code",
+      "prompt": "Observa la funció de mostreig per temperatura de la lliçó. Què passaria si eliminéssim la protecció `max(temperatura, 1e-4)` i un usuari passés `temperatura = 0.0`?",
+      "codeSnippet": "logits = [math.log(comptes[w] / total) / max(temperatura, 1e-4) for w in paraules]",
+      "options": [
+        { "key": "A", "text": "El codi seleccionaria aleatòriament totes les paraules amb la mateixa probabilitat." },
+        { "key": "B", "text": "Es produiria un `ZeroDivisionError` en dividir el logaritme per 0.0 (en la pràctica, T=0 s'implementa directament com a argmax/greedy)." },
+        { "key": "C", "text": "Retornaria una cadena buida sense error." },
+        { "key": "D", "text": "Convertiria el model de bigrames en un model de difusió." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Dividir per `temperatura = 0.0` provoca `ZeroDivisionError`. Per això les implementacions reals tracten `T == 0` com un cas especial de decodificació greedy (argmax) o apliquen un mínim epsilon.",
+      "explanationsIncorrect": {
+        "A": "La distribució uniforme correspondria al límit T → +∞, no a T = 0.",
+        "C": "Python llança una excepció en dividir per zero; no retorna una cadena buida.",
+        "D": "La temperatura no canvia l'arquitectura del model."
+      }
+    },
+    {
+      "id": "m01-05-q08",
+      "module": 1,
+      "conceptId": "m01-05-models-generatius",
+      "lessonRef": "content/module-01/m01-05-models-generatius.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "Un ens local entrena un model generatiu tabular sobre 5.000 expedients reals d'ajuts socials per compartir un dataset «sintètic» amb un proveïdor extern. Quin risc de protecció de dades persisteix si no s'apliquen verificacions addicionals?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Cap risc, perquè les dades sintètiques són sempre legalment anònimes per definició." },
+        { "key": "B", "text": "Només risc d'error ortogràfic en els noms de les columnes." },
+        { "key": "C", "text": "El model generatiu pot memoritzar registres reals o casos singulars (outliers), permetent reidentificació o atacs d'inferència de pertinença (membership inference)." },
+        { "key": "D", "text": "El dataset sintètic deixa de ser compatible amb formats CSV o JSON." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Els models generatius poden sobreajustar-se i reproduir combinacions quasi idèntiques d'individus reals (especialment casos extrems). Sense proves empíriques de proximitat (DCR, membership inference) o privacitat diferencial, no es pot garantir l'anonimització efectiva sota el RGPD.",
+      "explanationsIncorrect": {
+        "A": "L'AEPD i l'APDCAT adverteixen que la generació sintètica sense avaluació de risc de reidentificació no garanteix l'anonimització.",
+        "B": "El risc crític és de privacitat i reidentificació de persones vulnerables, no tipogràfic.",
+        "D": "El format de serialització (CSV/JSON) no té res a veure amb el risc de memorització."
+      }
+    },
+    {
+      "id": "m01-05-q09",
+      "module": 1,
+      "conceptId": "m01-05-models-generatius",
+      "lessonRef": "content/module-01/m01-05-models-generatius.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Quin paper juga el terme de divergència KL (Kullback-Leibler) dins la funció objectiu ELBO d'un Autoencoder Variacional (VAE)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Regularitza l'espai latent acostant la distribució posterior aproximada a una distribució a priori (habitualment gaussiana estàndard), permetent mostrejar noves dades coherents." },
+        { "key": "B", "text": "Substitueix el Discriminador d'una GAN per detectar deepfakes." },
+        { "key": "C", "text": "Elimina la capa decoder per reduir el temps d'inferència." },
+        { "key": "D", "text": "Força tots els pesos de la xarxa a ser nombres enters positius." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Sense el terme de divergència KL, un autoencoder es limitaria a memoritzar codis aïllats sense continuïtat; la KL organitza l'espai latent entorn d'una gaussiana contínua N(0,I) que permet mostrejar i interpolar noves dades.",
+      "explanationsIncorrect": {
+        "B": "Els VAE no tenen discriminador ni estan dissenyats per detectar deepfakes.",
+        "C": "El decoder és imprescindible en el VAE per reconstruir i generar mostres des de l'espai latent.",
+        "D": "La divergència KL regularitza distribucions latents, no restringeix pesos a enters positius."
+      }
+    },
+    {
+      "id": "m01-05-q10",
+      "module": 1,
+      "conceptId": "m01-05-models-generatius",
+      "lessonRef": "content/module-01/m01-05-models-generatius.md",
+      "difficulty": "advanced",
+      "questionType": "normative",
+      "prompt": "Quina obligació específica estableix l'article 50 del Reglament europeu d'IA (AI Act) respecte als continguts sintètics (àudio, imatge, vídeo o text d'interès públic) generats o manipulats per sistemes d'IA generativa?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Prohibeix absolutament que les administracions públiques utilitzin IA generativa en qualsevol circumstància." },
+        { "key": "B", "text": "Exigeix obligacions de transparència, com ara el marcatge llegible per màquina que el contingut ha estat generat artificialment i la divulgació clara en casos de deepfakes o textos d'interès públic (llevat d'excepcions previstes amb revisió editorial i responsabilitat humana)." },
+        { "key": "C", "text": "Obliga a publicar els pesos complets del model generatiu al BOE abans del desplegament." },
+        { "key": "D", "text": "Eximeix les entitats públiques de qualsevol obligació de transparència si el model és de codi obert." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "L'article 50 de l'AI Act imposa obligacions de transparència als proveïdors (marcatge tècnic llegible per màquina) i als desplegadors (divulgació de deepfakes i de textos generats per informar sobre assumptes d'interès públic, excepte si han passat revisió humana/editorial amb responsabilitat assumida).",
+      "explanationsIncorrect": {
+        "A": "L'AI Act no prohibeix l'ús de la IA generativa a l'Administració pública; el regula sota principis de risc i transparència.",
+        "C": "L'AI Act no exigeix publicar pesos de models al BOE.",
+        "D": "Les obligacions de transparència de l'art. 50 apliquen als sistemes que interactuen amb persones o generen contingut sintètic amb independència que el model sigui open-source."
+      }
+    }
+  ]
+}

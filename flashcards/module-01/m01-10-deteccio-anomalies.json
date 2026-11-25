@@ -1,0 +1,46 @@
+{
+  "conceptId": "m01-10-deteccio-anomalies",
+  "module": 1,
+  "cards": [
+    {
+      "id": "m01-10-fc01",
+      "module": 1,
+      "conceptId": "m01-10-deteccio-anomalies",
+      "front": "Quins són els 3 tipus d'anomalies (amb un exemple cadascun)?",
+      "back": "1) Puntual (factura individual de 150.000 € en una partida de 1.500 €), 2) Contextual (consum alt d'aigua un diumenge a les 3:00 h), 3) Col·lectiva (12 contractes menors seguits al mateix proveïdor per 14.800 €).",
+      "tags": ["taxonomia", "anomalies"]
+    },
+    {
+      "id": "m01-10-fc02",
+      "module": 1,
+      "conceptId": "m01-10-deteccio-anomalies",
+      "front": "Com funciona Isolation Forest per detectar anomalies?",
+      "back": "Fa particions aleatòries en arbres binaris: les anomalies són escasses i diferents, de manera que queden aïllades a poca profunditat mitjana des de l'arrel (camí curt = anomalia).",
+      "tags": ["Isolation Forest", "algoritmes"]
+    },
+    {
+      "id": "m01-10-fc03",
+      "module": 1,
+      "conceptId": "m01-10-deteccio-anomalies",
+      "front": "Què és l'efecte masking del Z-score clàssic i com ho resol la MAD?",
+      "back": "Un outlier molt extrem infla la mitjana i desviació estàndard, ocultant (emmascarant) altres anomalies moderades. El Modified Z-score usa mediana i MAD (robustos fins al 50% de contaminació).",
+      "tags": ["MAD", "Z-score"]
+    },
+    {
+      "id": "m01-10-fc04",
+      "module": 1,
+      "conceptId": "m01-10-deteccio-anomalies",
+      "front": "Quina diferència hi ha entre Outlier Detection i Novelty Detection?",
+      "back": "Outlier detection (no supervisat): les dades d'entrenament poden contenir anomalies. Novelty detection (semisupervisat): s'entrena només amb dades normals netes per detectar desviacions futures.",
+      "tags": ["regims", "anomalies"]
+    },
+    {
+      "id": "m01-10-fc05",
+      "module": 1,
+      "conceptId": "m01-10-deteccio-anomalies",
+      "front": "Per què una anomalia estadística mai no pot desencadenar una denegació o sanció administrativa automàtica?",
+      "back": "Perquè anomalia estadística ≠ frau ni il·legalitat (sovint coincideix amb situacions singulars o de vulnerabilitat). Ha de funcionar només com a priorització per a revisió humana motivada.",
+      "tags": ["administració", "supervisió humana"]
+    }
+  ]
+}

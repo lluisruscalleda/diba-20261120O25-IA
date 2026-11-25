@@ -1,0 +1,236 @@
+{
+  "conceptId": "m01-07-classificacio",
+  "module": 1,
+  "questions": [
+    {
+      "id": "m01-07-q01",
+      "module": 1,
+      "conceptId": "m01-07-classificacio",
+      "lessonRef": "content/module-01/m01-07-classificacio.md",
+      "difficulty": "basic",
+      "questionType": "metrics",
+      "prompt": "Un classificador binari obté TP = 30, FP = 10, FN = 20 i TN = 140. Quins són els seus valors de Precision i Recall?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Precision = 0,60 i Recall = 0,75." },
+        { "key": "B", "text": "Precision = 0,75 i Recall = 0,60." },
+        { "key": "C", "text": "Precision = 0,85 i Recall = 0,85." },
+        { "key": "D", "text": "Precision = 0,30 i Recall = 0,20." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Precision = TP / (TP + FP) = 30 / (30 + 10) = 30/40 = 0,75. Recall = TP / (TP + FN) = 30 / (30 + 20) = 30/50 = 0,60.",
+      "explanationsIncorrect": {
+        "A": "Intercanvia les fórmules de Precision i Recall.",
+        "C": "0,85 és l'Accuracy: (30 + 140) / 200 = 170/200 = 0,85.",
+        "D": "Pren directament TP/100 i FN/100 sense aplicar les fórmules correctes."
+      }
+    },
+    {
+      "id": "m01-07-q02",
+      "module": 1,
+      "conceptId": "m01-07-classificacio",
+      "lessonRef": "content/module-01/m01-07-classificacio.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Per què la mètrica Accuracy pot resultar profundament enganyosa en un problema de classificació on el 98% dels expedients són normals i només el 2% són irregulars?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè l'Accuracy no es pot calcular en problemes binaris." },
+        { "key": "B", "text": "Perquè un model trivial que predigui sempre «normal» ja aconsegueix un 98% d'Accuracy amb un 0% de Recall sobre la classe d'interès." },
+        { "key": "C", "text": "Perquè l'Accuracy només té en compte els falsos positius." },
+        { "key": "D", "text": "Perquè l'Accuracy sempre val 0,50 quan les classes estan desequilibrades." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Quan una classe representa el 98% de les dades, un model inútil que sempre predigui la classe majoritària obté un 98% d'Accuracy sense detectar cap cas irregular.",
+      "explanationsIncorrect": {
+        "A": "L'Accuracy és perfectament definible en classificació binària, però no és adequada per a dades molt desequilibrades.",
+        "C": "L'Accuracy té en compte TP, TN, FP i FN, però queda dominada pel gran nombre de TN.",
+        "D": "0,50 seria l'expectativa d'atzar en classes equilibrades (50/50), no el resultat en 98/2."
+      }
+    },
+    {
+      "id": "m01-07-q03",
+      "module": 1,
+      "conceptId": "m01-07-classificacio",
+      "lessonRef": "content/module-01/m01-07-classificacio.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Com es defineix l'F1-score en classificació binària?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "La mitjana aritmètica simple de Accuracy i Specificity." },
+        { "key": "B", "text": "La diferència absoluta entre Precision i Recall." },
+        { "key": "C", "text": "La mitjana harmònica de Precision i Recall: 2 · (P · R) / (P + R)." },
+        { "key": "D", "text": "L'àrea sota la corba ROC." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "L'F1-score és la mitjana harmònica de Precision i Recall; penalitza severament si una de les dues mètriques és molt baixa.",
+      "explanationsIncorrect": {
+        "A": "No utilitza Accuracy ni Specificity, ni és una mitjana aritmètica.",
+        "B": "Una diferència baixa entre P i R podria ocórrer fins i tot quan ambdues valen 0,10.",
+        "D": "Això és el ROC-AUC, no l'F1-score."
+      }
+    },
+    {
+      "id": "m01-07-q04",
+      "module": 1,
+      "conceptId": "m01-07-classificacio",
+      "lessonRef": "content/module-01/m01-07-classificacio.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "En un sistema de detecció de risc estructural en ponts i equipaments municipals, deixar passar un risc real (Fals Negatiu) és molt més greu que fer una inspecció preventiva innecessària (Fals Positiu). Com ajustaries el llindar de decisió τ d'un classificador probabilístic?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Baixant el llindar τ (p. ex., de 0,50 a 0,20) per maximitzar el Recall, assumint una menor Precision." },
+        { "key": "B", "text": "Pujant el llindar τ a 0,95 per assegurar que mai no hi hagi cap fals positiu." },
+        { "key": "C", "text": "Mantenint obligatòriament τ = 0,50 perquè és l'únic valor matemàticament vàlid." },
+        { "key": "D", "text": "Eliminant les probabilitats i substituint el model per K-Means." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Reduir el llindar classifica més casos com a alerta positiva, incrementant el Recall (reduint els FN crítics) a costa d'acceptar més inspeccions preventives (més FP).",
+      "explanationsIncorrect": {
+        "B": "Pujar el llindar a 0,95 augmentaria dràsticament els falsos negatius (riscos estructurals no detectats).",
+        "C": "El llindar 0,50 només és un valor per defecte que assumeix costos simètrics i classes equilibrades.",
+        "D": "K-Means és clustering no supervisat i no resol una classificació supervisada de riscos."
+      }
+    },
+    {
+      "id": "m01-07-q05",
+      "module": 1,
+      "conceptId": "m01-07-classificacio",
+      "lessonRef": "content/module-01/m01-07-classificacio.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Quina diferència estructural hi ha entre Random Forest (Bagging) i Gradient Boosting (XGBoost / LightGBM)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Random Forest entrena arbres independents en paral·lel sobre mostres bootstrap per reduir principalment la variància; Gradient Boosting entrena arbres seqüencialment corregint els errors dels anteriors per reduir principalment el biaix." },
+        { "key": "B", "text": "Random Forest només serveix per regressió i Gradient Boosting només per classificació." },
+        { "key": "C", "text": "Gradient Boosting no pot gestionar relacions no lineals." },
+        { "key": "D", "text": "Random Forest requereix obligatòriament escalat StandardScaler mentre que Gradient Boosting no." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "El Bagging (Random Forest) redueix variància promitjant arbres profunds paral·lels; el Boosting (XGBoost/LightGBM) redueix biaix encadenant seqüencialment arbres poc profunds sobre els gradients residuals.",
+      "explanationsIncorrect": {
+        "B": "Tant Random Forest com Gradient Boosting serveixen tant per a classificació com per a regressió.",
+        "C": "Els arbres de decisió en Gradient Boosting capturen excel·lentment relacions no lineals i interaccions.",
+        "D": "Cap dels dos mètodes basats en arbres requereix escalat de variables numèriques (a diferència de SVM, k-NN o regressió regularitzada)."
+      }
+    },
+    {
+      "id": "m01-07-q06",
+      "module": 1,
+      "conceptId": "m01-07-classificacio",
+      "lessonRef": "content/module-01/m01-07-classificacio.md",
+      "difficulty": "intermediate",
+      "questionType": "metrics",
+      "prompt": "En un problema de classificació multiclasse amb 10 departaments municipals molt desequilibrats en volum d'instàncies, quina mètrica penalitza igualment un mal rendiment en un departament petit que en un de gran?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Micro-F1." },
+        { "key": "B", "text": "Accuracy global." },
+        { "key": "C", "text": "Weighted-F1." },
+        { "key": "D", "text": "Macro-F1." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Macro-F1 calcula la mitjana aritmètica simple de l'F1 de cada classe, atorgant el mateix pes (1/10) a cada departament independentment del seu volum d'expedients.",
+      "explanationsIncorrect": {
+        "A": "Micro-F1 agrega globalment i queda dominada pels departaments més grans.",
+        "B": "L'Accuracy global també queda dominada per les classes majoritàries.",
+        "C": "Weighted-F1 pondera pel suport de cada classe, reduint el pes de les minoritàries."
+      }
+    },
+    {
+      "id": "m01-07-q07",
+      "module": 1,
+      "conceptId": "m01-07-classificacio",
+      "lessonRef": "content/module-01/m01-07-classificacio.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Quin dels algoritmes de classificació següents és més sensible a escales dispars entre variables d'entrada (p. ex., edat [18..90] vs. pressupost [1.000..5.000.000]) i requereix escalat previ?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Arbre de decisió (Decision Tree)." },
+        { "key": "B", "text": "Random Forest." },
+        { "key": "C", "text": "SVM amb kernel RBF i k-NN." },
+        { "key": "D", "text": "LightGBM." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Tant k-NN com SVM amb kernel RBF depenen directament de distàncies euclidianes (o productes escalars) en l'espai de característiques; sense escalat, la variable amb rang més gran domina completament la distància.",
+      "explanationsIncorrect": {
+        "A": "Els arbres de decisió fan talls monotònics per llindar sobre cada variable individual i són invariants a l'escalat lineal.",
+        "B": "Random Forest es compon d'arbres de decisió i no necessita escalat.",
+        "D": "LightGBM es basa en arbres per histogrames i és invariant a l'escalat monotònic."
+      }
+    },
+    {
+      "id": "m01-07-q08",
+      "module": 1,
+      "conceptId": "m01-07-classificacio",
+      "lessonRef": "content/module-01/m01-07-classificacio.md",
+      "difficulty": "advanced",
+      "questionType": "metrics",
+      "prompt": "Per què en detecció de frau (0,5% casos positius) un model pot mostrar un ROC-AUC de 0,94 i, al mateix temps, un PR-AUC baix (0,28)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè la corba ROC fa servir FPR = FP / (FP + TN), on el nombre massiu de TN dilueix l'impacte dels falsos positius, mentre que la corba PR penalitza directament els FP a través de la Precision = TP / (TP + FP)." },
+        { "key": "B", "text": "Perquè hi ha un error de programació: matemàticament el PR-AUC sempre ha de ser igual al ROC-AUC." },
+        { "key": "C", "text": "Perquè el ROC-AUC només avalua el conjunt d'entrenament i el PR-AUC només el de test." },
+        { "key": "D", "text": "Perquè el ROC-AUC no depèn dels falsos negatius." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Amb moltíssims negatius reals (99,5%), tenir 500 FP només fa pujar l'FPR un 0,5%, mantenint el ROC-AUC molt alt, però destrueix la Precision (50 TP / 550 alertes = 9%). PR-AUC captura fidelment aquesta degradació.",
+      "explanationsIncorrect": {
+        "B": "ROC-AUC i PR-AUC poden divergir enormement quan hi ha fort desequilibri de classes.",
+        "C": "Ambdues mètriques s'avaluen sobre el mateix conjunt de validació o test.",
+        "D": "El ROC-AUC sí que depèn dels FN a través de l'eix Y (TPR = Recall = TP/(TP+FN))."
+      }
+    },
+    {
+      "id": "m01-07-q09",
+      "module": 1,
+      "conceptId": "m01-07-classificacio",
+      "lessonRef": "content/module-01/m01-07-classificacio.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "Quin error metodològic comet un analista que aplica SMOTE (oversampling sintètic de la classe minoritària) abans d'executar `StratifiedKFold` en validació creuada?",
+      "codeSnippet": "X_res, y_res = SMOTE().fit_resample(X, y)\nscores = cross_val_score(clf, X_res, y_res, cv=5, scoring='f1')",
+      "options": [
+        { "key": "A", "text": "Cap error: SMOTE s'ha d'aplicar sempre sobre tot el dataset abans de la validació creuada." },
+        { "key": "B", "text": "Data leakage greu: les mostres sintètiques generades per interpolació de veïns es reparteixen entre train i validació en cada fold, inflant artificialment l'F1." },
+        { "key": "C", "text": "SMOTE només funciona en problemes de regressió contínua." },
+        { "key": "D", "text": "cross_val_score no admet `scoring='f1'`." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "SMOTE interpola entre punts existents; si s'aplica abans del split de CV, còpies gairebé idèntiques acaben a train i a validació. SMOTE s'ha d'aplicar únicament dins d'un Pipeline (`imblearn.pipeline.Pipeline`) sobre la partició d'entrenament de cada fold.",
+      "explanationsIncorrect": {
+        "A": "Aplicar-lo abans del split invalida l'estimació de validació creuada.",
+        "C": "SMOTE és precisament una tècnica per a classificació desequilibrada.",
+        "D": "`scoring='f1'` és un paràmetre estàndard i vàlid en scikit-learn."
+      }
+    },
+    {
+      "id": "m01-07-q10",
+      "module": 1,
+      "conceptId": "m01-07-classificacio",
+      "lessonRef": "content/module-01/m01-07-classificacio.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "Un classificador de risc d'impagament té un bon ROC-AUC (0,88), però quan prediu probabilitat 0,85, només el 45% dels casos acaben sent positius reals. Quin problema pateix i com es corregeix?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Pateix mala calibració de probabilitats (tot i ordenar bé els casos); es corregeix aplicant calibració post-hoc (Platt Scaling / Isotonic Regression) sobre un conjunt de validació i avaluant amb Brier Score." },
+        { "key": "B", "text": "El model no té cap capacitat discriminativa i cal descartar-lo completament." },
+        { "key": "C", "text": "És impossible que un model tingui ROC-AUC alt i probabilitats mal calibrades alhora." },
+        { "key": "D", "text": "Es resol simplement duplicant el nombre d'arbres sense tocar la calibració." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "El ROC-AUC només avalua l'ordenació relativa (rànquing) de les puntuacions, no si els valors numèrics són probabilitats reals calibrades. Models com SVM, Naive Bayes o alguns Boosted Trees/xarxes necessiten calibració (Platt/Isotonic) quan s'usen les probabilitats per prendre decisions o calcular riscos esperats.",
+      "explanationsIncorrect": {
+        "B": "Un ROC-AUC de 0,88 indica molt bona capacitat d'ordenació; el defecte és la calibració de l'escala probabilística.",
+        "C": "És molt freqüent tenir bon rànquing (ROC-AUC alt) però probabilitats sobreconfiades o subestimades.",
+        "D": "Afegir arbres no garanteix la calibració si la funció de sortida o el mètode estan esbiaixats."
+      }
+    }
+  ]
+}

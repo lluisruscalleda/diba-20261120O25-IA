@@ -1,0 +1,54 @@
+{
+  "conceptId": "m01-06-sistemes-experts",
+  "module": 1,
+  "cards": [
+    {
+      "id": "m01-06-fc01",
+      "module": 1,
+      "conceptId": "m01-06-sistemes-experts",
+      "front": "Quins són els 5 components clàssics d'un sistema expert?",
+      "back": "1) Base de coneixement (regles), 2) Memòria de treball (fets del cas), 3) Motor d'inferència, 4) Mòdul d'explicació (traça Com/Per què), 5) Mòdul d'adquisició de coneixement i interfície.",
+      "tags": ["arquitectura", "sistemes experts"]
+    },
+    {
+      "id": "m01-06-fc02",
+      "module": 1,
+      "conceptId": "m01-06-sistemes-experts",
+      "front": "Diferencia forward chaining vs. backward chaining.",
+      "back": "Forward chaining (data-driven): parteix dels fets coneguts per deduir conclusions (ideal per validar lots d'expedients). Backward chaining (goal-driven): parteix d'un objectiu i busca només els fets necessaris per demostrar-lo (ideal per assistents guiats).",
+      "tags": ["inferència", "chaining"]
+    },
+    {
+      "id": "m01-06-fc03",
+      "module": 1,
+      "conceptId": "m01-06-sistemes-experts",
+      "front": "Què és el coll d'ampolla de l'adquisició de coneixement?",
+      "back": "La dificultat i el cost de traduir el coneixement tàcit dels experts humans en regles formals completes, coherents i actualitzades.",
+      "tags": ["limitacions", "IA simbòlica"]
+    },
+    {
+      "id": "m01-06-fc04",
+      "module": 1,
+      "conceptId": "m01-06-sistemes-experts",
+      "front": "Per a què serveix l'algoritme Rete en motors de regles?",
+      "back": "Optimitza l'emparellament de patrons entre fets i grans bases de regles emmagatzemant coincidències parcials per evitar reavaluar totes les regles des de zero a cada canvi.",
+      "tags": ["Rete", "BRMS"]
+    },
+    {
+      "id": "m01-06-fc05",
+      "module": 1,
+      "conceptId": "m01-06-sistemes-experts",
+      "front": "Què és la refracció en un motor d'inferència?",
+      "back": "Mecanisme que impedeix que una mateixa regla torni a disparar-se indefinidament amb els mateixos fets, evitant bucles infinits.",
+      "tags": ["inferència", "control"]
+    },
+    {
+      "id": "m01-06-fc06",
+      "module": 1,
+      "conceptId": "m01-06-sistemes-experts",
+      "front": "Quina és l'evolució moderna dels sistemes experts a l'Administració pública?",
+      "back": "Motors de regles de negoci (BRMS / estàndard DMN) versionats per exercici fiscal i integrats en arquitectures híbrides on ML/OCR extreu dades i les regles apliquen la normativa de forma determinista i explicable.",
+      "tags": ["DMN", "híbrid"]
+    }
+  ]
+}

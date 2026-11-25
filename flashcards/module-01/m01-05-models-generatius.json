@@ -1,0 +1,54 @@
+{
+  "conceptId": "m01-05-models-generatius",
+  "module": 1,
+  "cards": [
+    {
+      "id": "m01-05-fc01",
+      "module": 1,
+      "conceptId": "m01-05-models-generatius",
+      "front": "Quina diferència probabilística hi ha entre un model discriminatiu i un model generatiu?",
+      "back": "El discriminatiu aprèn P(y | x) (fronteres per classificar o predir). El generatiu aprèn P(x) o P(x, y) (o P(x | c)) per poder mostrejar i crear noves dades sintètiques.",
+      "tags": ["discriminatiu", "generatiu"]
+    },
+    {
+      "id": "m01-05-fc02",
+      "module": 1,
+      "conceptId": "m01-05-models-generatius",
+      "front": "Quines són les quatre grans famílies modernes de models generatius profunds?",
+      "back": "1) Autoregressius (LLM, P(x_t | x_<t)), 2) VAE (espai latent + ELBO), 3) GAN (Generador vs Discriminador), 4) Models de difusió (eliminació iterativa de soroll).",
+      "tags": ["famílies", "arquitectures"]
+    },
+    {
+      "id": "m01-05-fc03",
+      "module": 1,
+      "conceptId": "m01-05-models-generatius",
+      "front": "Què és el col·lapse de mode (mode collapse) en una GAN?",
+      "back": "Una fallada d'entrenament en què el Generador només produeix un conjunt molt reduït i repetitiu de sortides que enganyen el Discriminador, perdent la diversitat de les dades reals.",
+      "tags": ["GAN", "limitacions"]
+    },
+    {
+      "id": "m01-05-fc04",
+      "module": 1,
+      "conceptId": "m01-05-models-generatius",
+      "front": "Com afecta el paràmetre de temperatura T a la generació autoregressiva?",
+      "back": "T baixa (→0) concentra la probabilitat en el token més probable (determinista, conservador). T alta (>1) aplana la distribució, augmentant diversitat però també incoherència i risc d'al·lucinació.",
+      "tags": ["temperatura", "mostreig"]
+    },
+    {
+      "id": "m01-05-fc05",
+      "module": 1,
+      "conceptId": "m01-05-models-generatius",
+      "front": "Per què la generació de dades tabulars sintètiques no garanteix automàticament l'anonimització RGPD?",
+      "back": "Perquè els models generatius poden memoritzar registres reals o casos extrems; cal verificar el risc de reidentificació (p. ex., distància al registre més proper / membership inference) o aplicar privacitat diferencial.",
+      "tags": ["dades sintètiques", "RGPD"]
+    },
+    {
+      "id": "m01-05-fc06",
+      "module": 1,
+      "conceptId": "m01-05-models-generatius",
+      "front": "Què mesura la perplexitat (Perplexity) i què NO mesura?",
+      "back": "Mesura exp(Cross-Entropy), és a dir, com de bé s'ajusta un model de llenguatge estadísticament a un corpus (més baixa = millor ajust). NO mesura veracitat factual ni absència d'al·lucinacions.",
+      "tags": ["mètriques", "perplexitat"]
+    }
+  ]
+}
