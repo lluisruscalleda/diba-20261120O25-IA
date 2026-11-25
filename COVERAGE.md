@@ -9,9 +9,9 @@ Llegenda d'estat:
 
 | Dimensió | Completats | Objectiu | Cobertura |
 |---|---:|---:|---:|
-| Lliçons (Teoria + Exemple + Exercici + Desenvolupament + Resum) | 21 | 70 | 30,0% |
-| Tests individuals (mín. 10 preguntes / concepte) | 21 (210 preg.) | 70 (≥700 preg.) | 30,0% |
-| Flashcards per concepte (mín. 5 / concepte) | 21 (115 fitxes) | 70 (≥350 fitxes) | 30,0% |
+| Lliçons (Teoria + Exemple + Exercici + Desenvolupament + Resum) | 30 | 70 | 42,9% |
+| Tests individuals (mín. 10 preguntes / concepte) | 30 (300 preg.) | 70 (≥700 preg.) | 42,9% |
+| Flashcards per concepte (mín. 5 / concepte) | 30 (160 fitxes) | 70 (≥350 fitxes) | 42,9% |
 | Laboratoris pràctics | 0 | 8 | 0% |
 | Exàmens de mòdul (40 preg.) | 0 | 8 | 0% |
 | Simulacres globals (50 preg.) | 0 | 10 | 0% |
@@ -56,15 +56,15 @@ Llegenda d'estat:
 
 | ID | Concepte oficial | Teoria (A-E) | Exemple (F) | Exercici (G) | Test ≥10 (H) | Desenv. ≥3 (I) | Resum+FC (J) | Estat |
 |---|---|---|---|---|---|---|---|---|
-| `m03-01-llm` | Large Language Models (finestres context, tokens, temperatura, top-p, al·lucinacions) | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m03-02-arquitectura-transformer` | Arquitectura Transformer | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m03-03-atencio-self-attention` | Mecanismes d'atenció i self-attention | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m03-04-prompt-engineering` | Prompt engineering (zero-shot, few-shot, sortides estructurades) | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m03-05-fine-tuning` | Fine-tuning (LoRA, quantització) | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m03-06-embeddings-rag` | Embeddings (perspectiva generativa / RAG) | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m03-07-bases-dades-vectorials` | Bases de dades vectorials | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m03-08-rag` | Retrieval-Augmented Generation (chunking, reranking, avaluació RAG) | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m03-09-agents-ia` | Agents d'intel·ligència artificial (tool calling) | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
+| `m03-01-llm` | Large Language Models (finestres context, tokens, temperatura, top-p, al·lucinacions) | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m03-02-arquitectura-transformer` | Arquitectura Transformer | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m03-03-atencio-self-attention` | Mecanismes d'atenció i self-attention | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m03-04-prompt-engineering` | Prompt engineering (zero-shot, few-shot, sortides estructurades) | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m03-05-fine-tuning` | Fine-tuning (LoRA, quantització) | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m03-06-embeddings-rag` | Embeddings (perspectiva generativa / RAG) | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m03-07-bases-dades-vectorials` | Bases de dades vectorials | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m03-08-rag` | Retrieval-Augmented Generation (chunking, reranking, avaluació RAG) | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m03-09-agents-ia` | Agents d'intel·ligència artificial (tool calling) | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
 
 ## Mòdul 4. Processament intel·ligent de documents
 

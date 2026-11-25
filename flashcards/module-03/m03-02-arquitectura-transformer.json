@@ -1,0 +1,46 @@
+{
+  "conceptId": "m03-02-arquitectura-transformer",
+  "module": 3,
+  "cards": [
+    {
+      "id": "m03-02-fc01",
+      "module": 3,
+      "conceptId": "m03-02-arquitectura-transformer",
+      "front": "Quines són les 3 famílies Transformer i per a què s'utilitza cadascuna?",
+      "back": "Encoder-only (bidireccional → classificació, NER, embeddings, rerankers); Decoder-only (causal → LLMs generatius, RAG, agents); Encoder-Decoder (seq2seq → traducció NMT, Whisper).",
+      "tags": ["Transformer", "famílies"]
+    },
+    {
+      "id": "m03-02-fc02",
+      "module": 3,
+      "conceptId": "m03-02-arquitectura-transformer",
+      "front": "Per què el Transformer necessita codificació posicional i què aporta RoPE?",
+      "back": "La self-attention és invariant a permutacions (sense ordre). RoPE rota Q i K segons la posició fent que l'atenció depengui de la distància relativa (m−n) i facilitant l'extensió a contextos llargs.",
+      "tags": ["RoPE", "posicional"]
+    },
+    {
+      "id": "m03-02-fc03",
+      "module": 3,
+      "conceptId": "m03-02-arquitectura-transformer",
+      "front": "Quins components formen un bloc Decoder-only modern (estil Llama/Mistral/Salamandra)?",
+      "back": "Pre-RMSNorm + Masked Multi-Head Self-Attention (amb RoPE) + Connexió Residual + Pre-RMSNorm + FFN SwiGLU (o MoE) + Connexió Residual.",
+      "tags": ["RMSNorm", "SwiGLU", "Pre-Norm"]
+    },
+    {
+      "id": "m03-02-fc04",
+      "module": 3,
+      "conceptId": "m03-02-arquitectura-transformer",
+      "front": "En Mixture of Experts (MoE), què determinen els paràmetres totals vs. els paràmetres actius?",
+      "back": "Els paràmetres totals determinen la capacitat i la VRAM necessària (tots els experts han de carregar-se en VRAM); els paràmetres actius determinen els FLOPs i la velocitat de generació per token.",
+      "tags": ["MoE", "VRAM"]
+    },
+    {
+      "id": "m03-02-fc05",
+      "module": 3,
+      "conceptId": "m03-02-arquitectura-transformer",
+      "front": "Per què Pre-Norm estabilitza l'entrenament de Transformers molt profunds?",
+      "back": "Perquè manté una autopista neta i ininterrompuda de gradients a través de les connexions residuals (`x + sublayer(norm(x))`), mitigant l'explosió i esvaïment de gradients.",
+      "tags": ["Pre-Norm", "gradients"]
+    }
+  ]
+}

@@ -1,0 +1,236 @@
+{
+  "conceptId": "m03-09-agents-ia",
+  "module": 3,
+  "questions": [
+    {
+      "id": "m03-09-q01",
+      "module": 3,
+      "conceptId": "m03-09-agents-ia",
+      "lessonRef": "content/module-03/m03-09-agents-ia.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina diferència essencial hi ha entre un ***workflow* orquestrat amb LLMs** i un **agent autònom d'IA**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "En un workflow el codi defineix deterministament els passos i crida l'LLM en punts concrets; en un agent autònom l'LLM decideix dinàmicament dins un bucle quines eines invocar i en quin ordre fins completar l'objectiu." },
+        { "key": "B", "text": "Els workflows no poden utilitzar LLMs." },
+        { "key": "C", "text": "Els agents no utilitzen eines externes." },
+        { "key": "D", "text": "Són exactament el mateix concepte sense diferències." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "La diferència clau és qui té el control del flux d'execució: el codi determinista (workflow) o el propi LLM en bucle (agent).",
+      "explanationsIncorrect": {
+        "B": "Els workflows moderns criden LLMs en passos concrets (extracció, resum, classificació).",
+        "C": "Precisament l'ús dinàmic d'eines és el tret definitori d'un agent.",
+        "D": "Tenen perfils de previsibilitat, cost i risc molt diferents."
+      }
+    },
+    {
+      "id": "m03-09-q02",
+      "module": 3,
+      "conceptId": "m03-09-agents-ia",
+      "lessonRef": "content/module-03/m03-09-agents-ia.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Durant el ***Tool Calling (Function Calling)*** d'un agent, qui executa realment la funció o consulta a la base de dades?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "L'LLM directament des de la GPU." },
+        { "key": "B", "text": "L'aplicació **host** (codi sota control de l'equip d'enginyeria), que rep la proposta JSON de l'LLM, valida llista blanca, permisos ACL i paràmetres, executa la funció i torna l'observació a l'LLM." },
+        { "key": "C", "text": "El navegador web del ciutadà." },
+        { "key": "D", "text": "El tokenitzador BPE." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "L'LLM només emet text estructurat proposant nom d'eina i arguments; la capa host és sempre el guardià determinista que valida i executa (o bloqueja) l'acció.",
+      "explanationsIncorrect": {
+        "A": "Un LLM només genera tokens; no té accés directe al sistema operatiu ni a xarxes.",
+        "C": "L'execució segura es fa al backend host, no al client.",
+        "D": "El tokenitzador només converteix text i IDs."
+      }
+    },
+    {
+      "id": "m03-09-q03",
+      "module": 3,
+      "conceptId": "m03-09-agents-ia",
+      "lessonRef": "content/module-03/m03-09-agents-ia.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quins són els tres passos que alterna el patró d'agent **ReAct (*Reason + Act*)**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Train → Validate → Test." },
+        { "key": "B", "text": "Tokenize → Embed → Cluster." },
+        { "key": "C", "text": "`Thought` (raonament) → `Action` (proposta d'invocació d'eina) → `Observation` (resultat retornat pel host)." },
+        { "key": "D", "text": "Map → Shuffle → Reduce." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "ReAct combina traça de raonament explícit amb execució d'accions i lectura de les observacions del món real fins assolir la resposta final o el límit de passos.",
+      "explanationsIncorrect": {
+        "A": "Això són les particions d'avaluació d'ML.",
+        "B": "Això és un flux de clustering textual.",
+        "D": "Això és el paradigma distribuït MapReduce."
+      }
+    },
+    {
+      "id": "m03-09-q04",
+      "module": 3,
+      "conceptId": "m03-09-agents-ia",
+      "lessonRef": "content/module-03/m03-09-agents-ia.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Quin problema d'integració resol l'estàndard obert **MCP (*Model Context Protocol*)** en arquitectures d'agents corporatius?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Estandarditza el protocol de comunicació entre clients/agents LLM i servidors d'eines/fonts de dades, evitant reescriure connectors ad hoc per a cada model i centralitzant esquemes i control d'accés." },
+        { "key": "B", "text": "Substitueix les GPUs per CPUs en l'entrenament d'LLMs." },
+        { "key": "C", "text": "Elimina la necessitat de supervisió humana en resolucions administratives." },
+        { "key": "D", "text": "Converteix automàticament tots els PDFs escanejats a SQL." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "MCP actua com una interfície uniforme ('USB-C per a eines d'IA') entre aplicacions LLM i sistemes/eines corporatives.",
+      "explanationsIncorrect": {
+        "B": "No substitueix maquinari d'entrenament.",
+        "C": "La supervisió humana (HITL) continua sent obligatòria.",
+        "D": "No és un motor OCR."
+      }
+    },
+    {
+      "id": "m03-09-q05",
+      "module": 3,
+      "conceptId": "m03-09-agents-ia",
+      "lessonRef": "content/module-03/m03-09-agents-ia.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Un agent de la Diputació ajuda a revisar expedients de subvencions. Quina regla s'ha d'aplicar deterministament al codi host per a qualsevol acció d'escriptura, notificació oficial o ordre de pagament?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Deixar que l'agent executi directament el pagament si la seva confiança és alta." },
+        { "key": "B", "text": "Bloquejar l'acció a la capa host i exigir **aprovació humana explícita (Human-in-the-Loop)** per personal autoritzat abans d'executar cap efecte jurídic o irreversible, deixant traça completa d'auditoria." },
+        { "key": "C", "text": "Afegir només «Comprova-ho bé abans de pagar» al *system prompt*." },
+        { "key": "D", "text": "Assignar permisos d'administrador global a l'agent perquè no falli mai." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "El bloqueig determinista al host amb confirmació humana explícita protegeix contra errors de l'LLM, injeccions indirectes i incompliments normatius (art. 22 RGPD, art. 41 LRJSP, control de despesa).",
+      "explanationsIncorrect": {
+        "A": "Executar pagaments o resolucions autònomament vulnera controls legals i financers públics.",
+        "C": "Una instrucció textual al prompt no és un tallafocs segur.",
+        "D": "Viola el principi de mínim privilegi de l'ENS."
+      }
+    },
+    {
+      "id": "m03-09-q06",
+      "module": 3,
+      "conceptId": "m03-09-agents-ia",
+      "lessonRef": "content/module-03/m03-09-agents-ia.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Quins tres ingredients formen la **«trifecta letal»** que exposa un agent a robatori de dades per ***Indirect Prompt Injection***?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Tokenització BPE + RoPE + RMSNorm." },
+        { "key": "B", "text": "BM25 + HNSW + RRF." },
+        { "key": "C", "text": "(1) Lectura de contingut extern no fiable (p. ex., PDFs o correus ciutadans), (2) accés a dades privades o eines privilegiades i (3) capacitat de comunicació externa o escriptura sense control." },
+        { "key": "D", "text": "Python + FastAPI + SQLite." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Quan coincideixen aquests tres factors, una ordre oculta dins d'un PDF pujat per un tercer pot fer que l'agent llegeixi dades internes confidencials i les exfiltri a l'exterior.",
+      "explanationsIncorrect": {
+        "A": "Són components estàndard d'un Transformer.",
+        "B": "Són components de cerca híbrida.",
+        "D": "Són tecnologies habituals de desenvolupament backend."
+      }
+    },
+    {
+      "id": "m03-09-q07",
+      "module": 3,
+      "conceptId": "m03-09-agents-ia",
+      "lessonRef": "content/module-03/m03-09-agents-ia.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Per què en un bucle d'agent en producció és obligatori configurar ***circuit breakers*** (`max_steps`, *timeout* global i límit de cost/tokens)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Per obligar l'agent a cridar totes les eines com a mínim 20 vegades." },
+        { "key": "B", "text": "Per desactivar el registre d'auditoria." },
+        { "key": "C", "text": "Per reduir la dimensió dels embeddings." },
+        { "key": "D", "text": "Per aturar deterministament bucles infinits d'intents fallits d'eines, evitar degradació del servei (DoS intern) i acotar estrictament el cost i la latència per petició." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Els agents poden entrar en bucles repetitius quan una eina retorna un error o manca d'informació; els circuit breakers garanteixen terminació segura i costos controlats.",
+      "explanationsIncorrect": {
+        "A": "Precisament limiten el nombre màxim d'iteracions (p. ex. 5–8).",
+        "B": "La traça d'auditoria es manté sempre activa.",
+        "C": "No té relació amb embeddings."
+      }
+    },
+    {
+      "id": "m03-09-q08",
+      "module": 3,
+      "conceptId": "m03-09-agents-ia",
+      "lessonRef": "content/module-03/m03-09-agents-ia.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Quin principi de seguretat s'ha d'aplicar quan un agent invoca eines de consulta contra bases de dades corporatives de la Diputació?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "**Mínim privilegi i propagació d'identitat (OBO / On-Behalf-Of)**: exposar només eines de lectura estrictament parametritzades (mai SQL lliure ni usuari `db_admin`) que s'executen exactament amb els permisos ACL de l'empleat autenticat que fa la consulta." },
+        { "key": "B", "text": "Assignar un compte superadministrador compartit a l'agent perquè mai rebi errors de permisos." },
+        { "key": "C", "text": "Permetre que l'LLM escrigui directament sentències SQL arbitràries contra producció." },
+        { "key": "D", "text": "Compartir la memòria a llarg termini de l'agent entre tots els empleats de tots els departaments." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "L'agent mai ha de tenir més permisos que la persona que el fa servir; les funcions parametritzades i l'execució OBO prevenen escalada de privilegis i SQL injection.",
+      "explanationsIncorrect": {
+        "B": "Crea un risc gravíssim d'escalada de privilegis (Confused Deputy).",
+        "C": "Permetria filtracions massives o modificacions destructives via SQLi/prompt injection.",
+        "D": "Compartir memòria entre usuaris amb permisos diferents provoca fuites creuades de dades confidencials."
+      }
+    },
+    {
+      "id": "m03-09-q09",
+      "module": 3,
+      "conceptId": "m03-09-agents-ia",
+      "lessonRef": "content/module-03/m03-09-agents-ia.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En la classe `AgentRuntimeSegur` de la lliçó, què garanteix l'ordre de comprovacions dins `executar_accio` abans de cridar `spec.funcio(args)`?",
+      "codeSnippet": "if len(self.traca_auditoria) >= self.max_passos: ...\nelif nom_eina not in self.registre: ...\nelse:\n    spec = self.registre[nom_eina]\n    if spec.nivell == \"escriptura_critica\" and not aprovacio_humana: ...",
+      "options": [
+        { "key": "A", "text": "Que qualsevol eina no registrada s'executi igualment en mode prova." },
+        { "key": "B", "text": "Que cap proposta generada per l'LLM pot saltar-se el límit de passos (*circuit breaker*), executar funcions fora de la llista blanca ni disparar una acció `escriptura_critica` sense `aprovacio_humana=True`, quedant a més cada intent (fins i tot els bloquejats!) registrat a `traca_auditoria`." },
+        { "key": "C", "text": "Que els intents bloquejats no s'enregistrin al log d'auditoria." },
+        { "key": "D", "text": "Que l'LLM pugui modificar `self.registre` dinàmicament." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Validar circuit breaker + llista blanca + HITL en codi determinista al host i registrar també els intents bloquejats (clau per detectar intents d'atac/injecció en SIEM/ENS!) és la base d'un runtime d'agent segur.",
+      "explanationsIncorrect": {
+        "A": "Les eines fora de llista blanca són denegades immediatament.",
+        "C": "Precisament registrar els intents denegats o bloquejats és fonamental per a monitoratge de seguretat.",
+        "D": "L'LLM no té accés a modificar el registre intern del host."
+      }
+    },
+    {
+      "id": "m03-09-q10",
+      "module": 3,
+      "conceptId": "m03-09-agents-ia",
+      "lessonRef": "content/module-03/m03-09-agents-ia.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "Vols automatitzar el processament d'instàncies ciutadanes seguint sempre exactament 4 passos fixos: (1) OCR del PDF, (2) classificació del servei, (3) extracció JSON de 6 camps amb validació Pydantic i (4) desar esborrany per al tècnic. Quin disseny és superior?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Un equip de 5 agents autònoms conversant lliurement entre ells sense graf d'estats." },
+        { "key": "B", "text": "Un agent ReAct sense límit de passos que decideixi cada vegada si fa OCR o no." },
+        { "key": "C", "text": "Un ***workflow* determinista orquestrat** (p. ex., pipeline o graf d'estats fix) que crida cada model/validador en l'ordre exacte, oferint màxima fiabilitat, mínima latència, cost previsible i auditabilitat total." },
+        { "key": "D", "text": "Un únic prompt zero-shot sense OCR ni validació Pydantic." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Quan la seqüència de passos és coneguda i reglada, introduir autonomia d'agent innecessària només afegeix variabilitat, latència, cost i risc d'errors.",
+      "explanationsIncorrect": {
+        "A": "Sobre-enginyeria multi-agent innecessària per a un flux determinista de 4 passos.",
+        "B": "Podria saltar-se passos obligatoris o entrar en bucles.",
+        "D": "Sense OCR ni validació determinista fallaria en PDFs escanejats i dades numèriques."
+      }
+    }
+  ]
+}

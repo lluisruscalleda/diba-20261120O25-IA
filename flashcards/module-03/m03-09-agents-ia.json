@@ -1,0 +1,46 @@
+{
+  "conceptId": "m03-09-agents-ia",
+  "module": 3,
+  "cards": [
+    {
+      "id": "m03-09-fc01",
+      "module": 3,
+      "conceptId": "m03-09-agents-ia",
+      "front": "Quina diferència hi ha entre un *workflow* orquestrat i un agent autònom, i quin predomina en procediments públics?",
+      "back": "En un workflow el codi controla deterministament el flux (cridant LLMs en passos acotats); en un agent, l'LLM decideix el flux i les eines en bucle. En el 80–90% de processos reglats públics guanya el workflow per previsibilitat i auditabilitat.",
+      "tags": ["agents", "workflows"]
+    },
+    {
+      "id": "m03-09-fc02",
+      "module": 3,
+      "conceptId": "m03-09-agents-ia",
+      "front": "Durant el Tool Calling (ReAct), qui executa realment les eines?",
+      "back": "MAI l'LLM! L'LLM només proposa un JSON (`tool_name`, `args`); l'aplicació HOST valida llista blanca, permisos ACL i arguments, executa en sandbox i torna l'Observation.",
+      "tags": ["Tool Calling", "ReAct"]
+    },
+    {
+      "id": "m03-09-fc03",
+      "module": 3,
+      "conceptId": "m03-09-agents-ia",
+      "front": "Què és la «trifecta letal» dels agents davant *Indirect Prompt Injection*?",
+      "back": "Combinar: (1) lectura de dades externes no fiables (PDFs/correus), (2) accés a dades privades/eines privilegiades, i (3) canal extern de sortida o escriptura sense control → risc crític d'exfiltració.",
+      "tags": ["seguretat", "Indirect Prompt Injection"]
+    },
+    {
+      "id": "m03-09-fc04",
+      "module": 3,
+      "conceptId": "m03-09-agents-ia",
+      "front": "Quins 5 tallafocs deterministes són obligatoris en un runtime d'agent públic?",
+      "back": "1) Mínim privilegi i propagació d'identitat OBO/ACL (eines parametritzades, mai SQL lliure/admin); 2) Bloqueig HITL en accions d'escriptura/irreversibles; 3) Llista blanca + validació Pydantic; 4) Circuit breakers (`max_steps`, timeout); 5) Traça completa d'auditoria.",
+      "tags": ["HITL", "mínim privilegi", "ENS"]
+    },
+    {
+      "id": "m03-09-fc05",
+      "module": 3,
+      "conceptId": "m03-09-agents-ia",
+      "front": "Què és MCP (*Model Context Protocol*)?",
+      "back": "Protocol obert que estandarditza la connexió entre clients/agents LLM i servidors d'eines o dades corporatives, eliminant integracions ad hoc per model.",
+      "tags": ["MCP", "estàndards"]
+    }
+  ]
+}

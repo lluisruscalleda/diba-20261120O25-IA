@@ -1,0 +1,46 @@
+{
+  "conceptId": "m03-08-rag",
+  "module": 3,
+  "cards": [
+    {
+      "id": "m03-08-fc01",
+      "module": 3,
+      "conceptId": "m03-08-rag",
+      "front": "Quines són les 4 mètriques del marc RAGAS i què diagnostica cadascuna?",
+      "back": "Context Recall (entra tota l'evidència? → Retriever), Context Precision (els bons estan amunt sense soroll? → Retriever+Reranker), Faithfulness (zero al·lucinacions sobre el context? → Generator), Answer Relevance (contesta la pregunta? → End-to-end).",
+      "tags": ["RAGAS", "avaluació"]
+    },
+    {
+      "id": "m03-08-fc02",
+      "module": 3,
+      "conceptId": "m03-08-rag",
+      "front": "Què és l'estratègia *Parent-Document* (*Small-to-Big*) en RAG jurídic?",
+      "back": "Indexar i cercar sobre fragments petits (~200 tokens) per màxima precisió, però lliurar a l'LLM l'article o secció pare completa perquè tingui totes les excepcions i taules intactes.",
+      "tags": ["chunking", "Parent-Document"]
+    },
+    {
+      "id": "m03-08-fc03",
+      "module": 3,
+      "conceptId": "m03-08-rag",
+      "front": "Quin paper té el *Query Rewriting* en un RAG multi-torn?",
+      "back": "Reescriu preguntes dependents del torn anterior ('I quin termini té?') en consultes autònomes completes abans d'invocar BM25 i els embeddings.",
+      "tags": ["Query Rewriting", "RAG"]
+    },
+    {
+      "id": "m03-08-fc04",
+      "module": 3,
+      "conceptId": "m03-08-rag",
+      "front": "Si un RAG té `Faithfulness = 0,94` però `Context Recall = 0,58`, s'ha de canviar l'LLM per un de més gran?",
+      "back": "NO! L'LLM és fidel al que rep; el coll d'ampolla és a la ingestió i recuperació (parseig de taules, chunking estructural/Parent-Document, cerca híbrida i reranker).",
+      "tags": ["diagnòstic", "RAG"]
+    },
+    {
+      "id": "m03-08-fc05",
+      "module": 3,
+      "conceptId": "m03-08-rag",
+      "front": "Com s'han de protegir els permisos ACL i la vigència normativa en un RAG corporatiu?",
+      "back": "Mitjançant pre-filtres deterministes de metadades (`vigent=true`, rols OIDC/LDAP) tant en BM25 com en la base vectorial ABANS de recuperar res, combinats amb abstenció segura i verificació automàtica de cites.",
+      "tags": ["ACL", "vigència", "seguretat"]
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "conceptId": "m03-07-bases-dades-vectorials",
+  "module": 3,
+  "cards": [
+    {
+      "id": "m03-07-fc01",
+      "module": 3,
+      "conceptId": "m03-07-bases-dades-vectorials",
+      "front": "Quina diferència hi ha entre Flat, HNSW i IVF-PQ en bases de dades vectorials?",
+      "back": "Flat: exacte O(N), Recall 100% (<50k). HNSW: graf multicapa O(log N), alt Recall i insercions incrementals, més RAM. IVF-PQ: clústers (nprobe) + compressió PQ (8×-32× menys RAM) per a escales gegants.",
+      "tags": ["ANN", "HNSW", "IVF-PQ"]
+    },
+    {
+      "id": "m03-07-fc02",
+      "module": 3,
+      "conceptId": "m03-07-bases-dades-vectorials",
+      "front": "Què controlen `M`, `efConstruction` i `efSearch` en HNSW?",
+      "back": "`M`: connexions màximes per node (RAM vs connectivitat). `efConstruction`: qualitat del graf en construir-lo. `efSearch`: amplitud de cerca ajustable per consulta (Recall vs latència).",
+      "tags": ["HNSW", "hiperparàmetres"]
+    },
+    {
+      "id": "m03-07-fc03",
+      "module": 3,
+      "conceptId": "m03-07-bases-dades-vectorials",
+      "front": "Per què el *post-filtering* falla en filtres selectius (com ACL o un municipi petit)?",
+      "back": "Perquè recuperar el top-k global abans de filtrar fa que gairebé tots els candidats quedin descartats després, retornant 0 resultats. Cal filtratge integrat (*single-stage* / `iterative_scan`) + fallback a Flat.",
+      "tags": ["pre-filtering", "post-filtering", "ACL"]
+    },
+    {
+      "id": "m03-07-fc04",
+      "module": 3,
+      "conceptId": "m03-07-bases-dades-vectorials",
+      "front": "Quan recomanaries `PostgreSQL + pgvector` vs. Qdrant/Milvus en l'Administració pública?",
+      "back": "`pgvector`: 1a opció pragmàtica fins a pocs milions de vectors (transaccions ACID, esborrats RGPD, seguretat ENS i operació ja existent). Qdrant/Milvus: desenes de milions, alta concurrència i multi-tenancy vectorial avançat.",
+      "tags": ["pgvector", "Qdrant", "arquitectura"]
+    },
+    {
+      "id": "m03-07-fc05",
+      "module": 3,
+      "conceptId": "m03-07-bases-dades-vectorials",
+      "front": "Com s'avalua si un índex ANN no està perdent massa qualitat?",
+      "back": "Executant consultes reals (incloent filtres ACL) contra una cerca exacta *Flat* de referència i mesurant `ANN Recall@k`, ajustant `efSearch` o `nprobe` fins assolir ≥0,97 dins la latència objectiu.",
+      "tags": ["avaluació", "Recall"]
+    }
+  ]
+}

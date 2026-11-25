@@ -1,0 +1,236 @@
+{
+  "conceptId": "m03-06-embeddings-rag",
+  "module": 3,
+  "questions": [
+    {
+      "id": "m03-06-q01",
+      "module": 3,
+      "conceptId": "m03-06-embeddings-rag",
+      "lessonRef": "content/module-03/m03-06-embeddings-rag.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Per què la cerca dins d'un sistema RAG s'anomena **recuperació asimètrica**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè la consulta de l'usuari (curta, col·loquial i interrogativa) i els fragments indexats (llargs, jurídics i declaratius) tenen longituds, estils i rols diferents." },
+        { "key": "B", "text": "Perquè els vectors de consulta tenen 128 dimensions i els de document 1.024 dimensions." },
+        { "key": "C", "text": "Perquè només funciona en una direcció d'idioma." },
+        { "key": "D", "text": "Perquè la similitud cosinus no és simètrica." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Tot i compartir exactament la mateixa dimensionalitat, pregunta i resposta tenen estructura i llenguatge diferents; per això models com E5 empren prefixos asimètrics ('query: ' vs 'passage: ').",
+      "explanationsIncorrect": {
+        "B": "Consulta i document sempre tenen la mateixa dimensionalitat dins del mateix model.",
+        "C": "Funciona en qualsevol parell d'idiomes suportats.",
+        "D": "La similitud cosinus sí que és matemàticament simètrica (`cos(u,v) == cos(v,u)`)."
+      }
+    },
+    {
+      "id": "m03-06-q02",
+      "module": 3,
+      "conceptId": "m03-06-embeddings-rag",
+      "lessonRef": "content/module-03/m03-06-embeddings-rag.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Què permet fer un model d'embeddings entrenat amb **Matryoshka Representation Learning (MRL)**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Traducir automàticament del rus al català." },
+        { "key": "B", "text": "Truncar les últimes coordenades del vector (p. ex. de 1.024 a 256 dimensions) i re-normalitzar L2 sense reentrenar el model, estalviant 4× memòria i còmput amb una pèrdua mínima de qualitat." },
+        { "key": "C", "text": "Eliminar la necessitat de tenir un índex vectorial." },
+        { "key": "D", "text": "Convertir qualsevol LLM en un classificador Naive Bayes." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "MRL concentra la informació semàntica més important a les primeres dimensions del vector (com nines russes niuades), permetent adaptar la dimensionalitat al pressupost de RAM.",
+      "explanationsIncorrect": {
+        "A": "El nom prové de les nines niuades, no de la traducció.",
+        "C": "Els vectors truncats se segueixen indexant a la base vectorial.",
+        "D": "No té relació amb Naive Bayes."
+      }
+    },
+    {
+      "id": "m03-06-q03",
+      "module": 3,
+      "conceptId": "m03-06-embeddings-rag",
+      "lessonRef": "content/module-03/m03-06-embeddings-rag.md",
+      "difficulty": "basic",
+      "questionType": "case-study",
+      "prompt": "En indexar un corpus d'ordenances municipals per a RAG, per què és molt recomanable anteposar a cada *chunk* la seva **capçalera jeràrquica** (nom de l'ordenança, any de vigència, títol del capítol) abans de generar-ne l'embedding?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Per fer el document més llarg i ocupar més disc." },
+        { "key": "B", "text": "Perquè els models d'embeddings no poden llegir números d'article." },
+        { "key": "C", "text": "Per evitar fragments orfes descontextualitzats (com «Article 8. La bonificació serà del 50%») que altrament es confondrien entre ordenances diferents (IBI vs. Vehicles vs. Residus)." },
+        { "key": "D", "text": "Per eliminar la necessitat d'aplicar permisos ACL." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "El Contextual Chunking dota cada vector de la seva identitat normativa completa, millorant dràsticament tant el Recall vectorial com el de BM25.",
+      "explanationsIncorrect": {
+        "A": "S'afegeixen només unes poques paraules d'altíssim valor informatiu.",
+        "B": "Poden llegir números d'article, però sense la capçalera no saben de quina ordenança és l'article.",
+        "D": "Els permisos ACL continuen gestionant-se com a metadades deterministes."
+      }
+    },
+    {
+      "id": "m03-06-q04",
+      "module": 3,
+      "conceptId": "m03-06-embeddings-rag",
+      "lessonRef": "content/module-03/m03-06-embeddings-rag.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Un equip utilitza `intfloat/multilingual-e5-large` en un RAG però obté un `Recall@10` molt per sota de l'esperat. En revisar el codi, passen les frases directament a `model.encode(text)` sense prefixos. Quina és la causa i la correcció?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "La família `E5` exigeix explícitament anteposar `\"query: \"` a les consultes i `\"passage: \"` als documents indexats; afegir els prefixos asimètrics i reindexar restaura el rendiment nominal." },
+        { "key": "B", "text": "Cal passar tots els documents a majúscules i aplicar stemming Porter." },
+        { "key": "C", "text": "Cal dividir tots els vectors per 100." },
+        { "key": "D", "text": "`multilingual-e5-large` no admet català ni castellà." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Els models E5 van ser entrenats contrastivament amb aquests tokens prefix; ometre'ls genera un desajust fort entre entrenament i inferència.",
+      "explanationsIncorrect": {
+        "B": "Mai aplicar stemming destructiu abans d'un model d'embeddings Transformer.",
+        "C": "Escalar un vector per una constant positiva no canvia la similitud cosinus.",
+        "D": "Suporta més de 100 idiomes inclosos català i castellà."
+      }
+    },
+    {
+      "id": "m03-06-q05",
+      "module": 3,
+      "conceptId": "m03-06-embeddings-rag",
+      "lessonRef": "content/module-03/m03-06-embeddings-rag.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Quant redueix aproximadament la memòria dels vectors aplicar **quantització escalar `FP32 → INT8`** enfront de **quantització binària (`1 bit/dim`)**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "`INT8` redueix 2× i binària 4×." },
+        { "key": "B", "text": "`INT8` redueix **~4×** (d'4 bytes a 1 byte per dimensió, amb pèrdua mínima de Recall) i la **quantització binària** redueix **~32×** (de 32 bits a 1 bit per dimensió, ideal amb *oversampling + rescoring*)." },
+        { "key": "C", "text": "Ambdues augmenten la memòria al doble." },
+        { "key": "D", "text": "Només funcionen amb 100 documents o menys." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "FP32 = 32 bits (4 bytes), INT8 = 8 bits (1 byte → 4×), binari = 1 bit (→ 32×). A gran escala estalvien desenes de GB de RAM en servidors vectorials.",
+      "explanationsIncorrect": {
+        "A": "2× correspondria a FP32 → FP16, no a INT8.",
+        "C": "Redueixen dràsticament la memòria, no l'augmenten.",
+        "D": "Són especialment útils precisament a gran escala (centenars de milers o milions de vectors)."
+      }
+    },
+    {
+      "id": "m03-06-q06",
+      "module": 3,
+      "conceptId": "m03-06-embeddings-rag",
+      "lessonRef": "content/module-03/m03-06-embeddings-rag.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Com funciona el patró ***oversampling + rescoring*** quan s'emmagatzemen vectors comprimits (binaris o Matryoshka curts) en memòria RAM?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Duplica tots els documents a la base de dades SQL." },
+        { "key": "B", "text": "Elimina la meitat de les consultes dels usuaris." },
+        { "key": "C", "text": "Recupera un conjunt ampli de candidats (p. ex., `top-100`) molt ràpidament des de l'índex comprimit en RAM, i després llegeix de disc els vectors `FP32` complets d'aquests 100 candidats per recalcular el rànquing exacte dels `top-10`." },
+        { "key": "D", "text": "Substitueix el model d'embeddings per BM25." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Combina l'estalvi extrem de RAM i velocitat de la cerca comprimida amb l'exactitud dels vectors FP32 complets sobre un conjunt reduït de candidats.",
+      "explanationsIncorrect": {
+        "A": "No duplica documents.",
+        "B": "Atén totes les consultes normalment.",
+        "D": "Opera sobre la cerca vectorial (tot i ser complementari a BM25)."
+      }
+    },
+    {
+      "id": "m03-06-q07",
+      "module": 3,
+      "conceptId": "m03-06-embeddings-rag",
+      "lessonRef": "content/module-03/m03-06-embeddings-rag.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Quina estratègia operativa garanteix substituir un model d'embeddings en producció **sense caigudes de servei (*zero-downtime*)** i amb capacitat de *rollback*?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Sobrescriure els vectors un per un dins del mateix índex actiu mentre els usuaris consulten." },
+        { "key": "B", "text": "Canviar el model de consulta i anar reindexant documents al llarg d'un mes." },
+        { "key": "C", "text": "Esborrar l'índex vell abans de començar a calcular els nous embeddings." },
+        { "key": "D", "text": "Migració **Blue/Green amb àlies**: crear un índex paral·lel `index_v2` amb el nou model, validar-lo sobre el *golden set*, recalibrar llindars, commutar atòmicament l'àlies de producció i conservar `index_v1` temporalment per a *rollback*." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Blue/Green impedeix barrejar espais vectorials incompatibles, assegura zero interrupció i ofereix retorn immediat en segons davant qualsevol regressió.",
+      "explanationsIncorrect": {
+        "A": "Barrejar vectors de dos models al mateix índex corromp els resultats.",
+        "B": "Durant un mes les consultes retornarien soroll pur sobre els documents encara no reindexats.",
+        "C": "Deixaria el servei caigut durant tota la reindexació."
+      }
+    },
+    {
+      "id": "m03-06-q08",
+      "module": 3,
+      "conceptId": "m03-06-embeddings-rag",
+      "lessonRef": "content/module-03/m03-06-embeddings-rag.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Per què un model com **`BAAI/bge-m3`** resulta especialment interessant per a un desplegament RAG *on-premise* en una administració catalana?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Suporta més de 100 idiomes (amb fort rendiment en català i castellà), admet fins a **8.192 tokens** de context (evitant truncaments a 512) i genera en un sol model representacions denses, disperses (lèxiques) i multi-vector." },
+        { "key": "B", "text": "És un LLM generatiu de 405B paràmetres que no necessita índex vectorial." },
+        { "key": "C", "text": "Només té 2 dimensions vectorials." },
+        { "key": "D", "text": "Està entrenat exclusivament en anglès." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "BGE-M3 combina multilingüisme, context llarg (8.192 tokens), multi-funcionalitat (dens + dispers + ColBERT) i mida compacta (~568M paràmetres) 100% desplegable *on-premise*.",
+      "explanationsIncorrect": {
+        "B": "És un encoder d'embeddings compacte (~568M), no un LLM generatiu gegant.",
+        "C": "Té 1.024 dimensions denses.",
+        "D": "La 'M' de M3 significa precisament Multi-Linguality, Multi-Functionality, Multi-Granularity."
+      }
+    },
+    {
+      "id": "m03-06-q09",
+      "module": 3,
+      "conceptId": "m03-06-embeddings-rag",
+      "lessonRef": "content/module-03/m03-06-embeddings-rag.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En l'exemple de truncament Matryoshka de la lliçó, per què cal executar `normalitzar_l2(docs_fp32[:, :128])` **després** de retallar les primeres 128 dimensions?",
+      "codeSnippet": "docs_mrl = normalitzar_l2(docs_fp32[:, :128])\nq_mrl = normalitzar_l2(q_fp32[:128])",
+      "options": [
+        { "key": "A", "text": "Per convertir els nombres en enters de 8 bits." },
+        { "key": "B", "text": "Perquè tot i que el vector original de 512 dimensions tenia norma L2 igual a 1, el subvector truncat de 128 dimensions ja NO té norma 1 (la seva norma és ≤ 1 i varia d'un document a un altre); re-normalitzar restaura l'equivalència exacta entre producte escalar i similitud cosinus." },
+        { "key": "C", "text": "Per omplir amb zeros les 384 dimensions eliminades." },
+        { "key": "D", "text": "Perquè NumPy no permet multiplicar matrius de 128 columnes sense normalitzar." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "La norma d'un subvector és sempre inferior o igual a la del vector complet i difereix per document; sense re-normalitzar L2, el producte escalar `docs_mrl @ q_mrl` deixaria de ser similitud cosinus i afavoriria vectors amb més energia dins les primeres 128 dims.",
+      "explanationsIncorrect": {
+        "A": "Manté el tipus float32.",
+        "C": "El subvector té exactament 128 dimensions, no 512.",
+        "D": "NumPy multiplica matrius de qualsevol norma; és una exigència geomètrica de la similitud cosinus."
+      }
+    },
+    {
+      "id": "m03-06-q10",
+      "module": 3,
+      "conceptId": "m03-06-embeddings-rag",
+      "lessonRef": "content/module-03/m03-06-embeddings-rag.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "Quan pot resultar molt rendible fer ***fine-tuning* contrastiu** del model d'embeddings (en lloc de fer *fine-tuning* de l'LLM generador) dins d'un sistema RAG corporatiu?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Quan el *retriever* ja té un `Recall@10` del 99% però l'LLM redacta amb faltes d'ortografia." },
+        { "key": "B", "text": "Mai: els models d'embeddings no es poden ajustar." },
+        { "key": "C", "text": "Quan l'avaluació revela que el coll d'ampolla és el *retriever* (baix `Recall@10` en argot administratiu català, sigles internes o normativa pròpia) i disposem de 500–2.000 parells anonimitzats `(consulta, fragment correcte)` + *hard negatives*." },
+        { "key": "D", "text": "Només quan volem eliminar el motor BM25." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Ajustar el bi-encoder (~300M–560M paràmetres) sobre terminologia i consultes pròpies de la institució és molt econòmic (minuts en 1 GPU) i sol elevar dràsticament el Recall de tot el sistema RAG.",
+      "explanationsIncorrect": {
+        "A": "Si el Recall ja és 99%, el problema està en la generació (prompt/LLM), no en l'embedding.",
+        "B": "S'ajusten fàcilment amb Sentence-Transformers / InfoNCE loss.",
+        "D": "Fins i tot amb embeddings ajustats, la cerca híbrida amb BM25 continua aportant valor en codis exactes."
+      }
+    }
+  ]
+}

@@ -1,0 +1,236 @@
+{
+  "conceptId": "m03-07-bases-dades-vectorials",
+  "module": 3,
+  "questions": [
+    {
+      "id": "m03-07-q01",
+      "module": 3,
+      "conceptId": "m03-07-bases-dades-vectorials",
+      "lessonRef": "content/module-03/m03-07-bases-dades-vectorials.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quin compromís fonamental introdueixen els índexs **ANN (*Approximate Nearest Neighbors*)** respecte de la cerca exacta lineal (*Flat / k-NN*)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Sacrifiquen una fracció molt petita de Recall (p. ex., 97%–99% en lloc del 100%) per reduir la latència de cerca en ordres de magnitud sobre milions de vectors." },
+        { "key": "B", "text": "Garanteixen sempre 100% de Recall a canvi de ser 100 vegades més lents." },
+        { "key": "C", "text": "Converteixen els embeddings en text pla." },
+        { "key": "D", "text": "Només funcionen amb 10 vectors com a màxim." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Els algorismes ANN (HNSW, IVF, PQ) eviten comparar contra el 100% dels vectors, aconseguint cerques en mil·lisegons amb un Recall molt proper a la cerca exacta.",
+      "explanationsIncorrect": {
+        "B": "És exactament al revés: són molt més ràpids a canvi d'aproximació controlada.",
+        "C": "Operen sobre vectors numèrics.",
+        "D": "Són precisament pensats per a centenars de milers o milions de vectors."
+      }
+    },
+    {
+      "id": "m03-07-q02",
+      "module": 3,
+      "conceptId": "m03-07-bases-dades-vectorials",
+      "lessonRef": "content/module-03/m03-07-bases-dades-vectorials.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Com estructura les dades l'índex **HNSW (*Hierarchical Navigable Small World*)**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Com una taula hash sense distàncies." },
+        { "key": "B", "text": "Com un graf multicapa navegable on les capes superiors permeten salts llargs ràpids i la capa base (capa 0) conté connexions locals precises per trobar veïns en temps O(log N)." },
+        { "key": "C", "text": "Com una llista enllaçada lineal ordenada alfabèticament." },
+        { "key": "D", "text": "Com un arbre de decisió supervisat." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "HNSW combina la jerarquia de capes (com una skip list) amb grafs de món petit, oferint cerques logarítmiques amb altíssim Recall i insercions incrementals.",
+      "explanationsIncorrect": {
+        "A": "HNSW preserva distàncies geomètriques en un graf de proximitat.",
+        "C": "Una llista lineal seria O(N), no O(log N).",
+        "D": "És una estructura no supervisada d'indexació espacial."
+      }
+    },
+    {
+      "id": "m03-07-q03",
+      "module": 3,
+      "conceptId": "m03-07-bases-dades-vectorials",
+      "lessonRef": "content/module-03/m03-07-bases-dades-vectorials.md",
+      "difficulty": "basic",
+      "questionType": "architecture",
+      "prompt": "En un índex **HNSW**, quin hiperparàmetre es pot ajustar dinàmicament **en temps de consulta** per intercanviar major Recall per uns mil·lisegons addicionals de latència sense reconstruir l'índex?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "`M`." },
+        { "key": "B", "text": "`efConstruction`." },
+        { "key": "C", "text": "`efSearch`." },
+        { "key": "D", "text": "La dimensió de l'embedding." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "`efSearch` controla l'amplada de la llista de candidats explorats en cada consulta i es pot variar per petició sense tocar l'índex, mentre `M` i `efConstruction` només s'apliquen en construir el graf.",
+      "explanationsIncorrect": {
+        "A": "`M` defineix l'estructura d'arestes del graf en temps de construcció.",
+        "B": "`efConstruction` només s'utilitza en construir/inserir nodes a l'índex.",
+        "D": "Canviar la dimensionalitat requereix reconstruir completament l'índex."
+      }
+    },
+    {
+      "id": "m03-07-q04",
+      "module": 3,
+      "conceptId": "m03-07-bases-dades-vectorials",
+      "lessonRef": "content/module-03/m03-07-bases-dades-vectorials.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Una base vectorial compartida pels 311 municipis aplica ***post-filtering*** (`top-10` global d'HNSW i després `WHERE municipi_id = '08250'`). Quina fallada greu produeix per als municipis petits que només aporten el 0,1% dels documents?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Retorna sovint 0 o molt pocs resultats malgrat existir ordenances rellevants del municipi, perquè gairebé cap dels 10 candidats globals recuperats abans del filtre pertany al municipi petit." },
+        { "key": "B", "text": "Duplica automàticament la velocitat del servidor." },
+        { "key": "C", "text": "Augmenta el Recall al 100% per als municipis petits." },
+        { "key": "D", "text": "Esborra els documents del municipi de la base de dades." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "El post-filtering col·lapsa davant filtres selectius (ACL, municipi petit, vigència); cal usar filtratge integrat (*single-stage filtered HNSW* / `iterative_scan` / *tenant index*) amb fallback a Flat.",
+      "explanationsIncorrect": {
+        "B": "No millora la qualitat ni la velocitat útil.",
+        "C": "Al contrari, enfonsa el Recall gairebé a 0%.",
+        "D": "Només els omet del resultat de la consulta."
+      }
+    },
+    {
+      "id": "m03-07-q05",
+      "module": 3,
+      "conceptId": "m03-07-bases-dades-vectorials",
+      "lessonRef": "content/module-03/m03-07-bases-dades-vectorials.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Quin avantatge principal ofereix **`PostgreSQL + pgvector`** respecte d'afegir una base vectorial separada en un projecte RAG de 400.000 fragments d'una diputació que ja opera PostgreSQL?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "No necessita calcular embeddings." },
+        { "key": "B", "text": "Consistència transaccional ACID entre metadades, permisos ACL i vectors (facilitant actualitzacions i esborrats RGPD), menor complexitat operativa i reutilització de còpies de seguretat, HA i seguretat ENS existents." },
+        { "key": "C", "text": "Elimina la necessitat de tenir un LLM al RAG." },
+        { "key": "D", "text": "Garanteix sempre menor consum de CPU que un índex en memòria dedicat amb 100 milions de vectors." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Evitar la doble escriptura distribuïda entre SQL i una BD vectorial externa redueix bugs de sincronització, simplifica operació ENS i cobreix amb escreix escales de centenars de milers o pocs milions de vectors.",
+      "explanationsIncorrect": {
+        "A": "Continua indexant els embeddings generats pel model.",
+        "C": "És només la capa d'emmagatzematge i recuperació.",
+        "D": "A escales massives (desenes de milions i alta concurrència), una BD dedicada distribuïda com Qdrant/Milvus pot escalar millor."
+      }
+    },
+    {
+      "id": "m03-07-q06",
+      "module": 3,
+      "conceptId": "m03-07-bases-dades-vectorials",
+      "lessonRef": "content/module-03/m03-07-bases-dades-vectorials.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Quin problema pràctic té utilitzar la llibreria **FAISS** crua (un índex en fitxer local) directament com a «base de dades» d'un RAG en producció amb actualitzacions diàries i esborrats RGPD?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "FAISS no sap calcular similitud cosinus." },
+        { "key": "B", "text": "FAISS només funciona en JavaScript." },
+        { "key": "C", "text": "FAISS és una llibreria d'indexació en memòria, no una base de dades completa: manca de gestió nativa transaccional CRUD/esborrats concorrents, filtratge integrat ric de metadades, replicació i control d'accés." },
+        { "key": "D", "text": "FAISS no admet índexs IVF ni HNSW." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "FAISS és excel·lent per a recerca, prototips i motors incrustats estàtics, però en producció amb esborrats RGPD, filtres ACL i concurrència cal una BD vectorial (pgvector, Qdrant, Milvus, OpenSearch).",
+      "explanationsIncorrect": {
+        "A": "FAISS suporta producte escalar/cosinus i L2.",
+        "B": "FAISS està escrit en C++ amb bindings per a Python.",
+        "D": "FAISS implementa Flat, IVF, PQ i HNSW."
+      }
+    },
+    {
+      "id": "m03-07-q07",
+      "module": 3,
+      "conceptId": "m03-07-bases-dades-vectorials",
+      "lessonRef": "content/module-03/m03-07-bases-dades-vectorials.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Què aconsegueix combinar **IVF** amb **PQ (*Product Quantization*)** en una col·lecció de 50 milions de vectors?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Augmenta la precisió dels vectors de FP32 a FP64." },
+        { "key": "B", "text": "Elimina la fase d'entrenament de l'índex." },
+        { "key": "C", "text": "Converteix els vectors en un índex invertit de paraules BM25." },
+        { "key": "D", "text": "IVF redueix el percentatge del corpus visitat explorant només `nprobe` clústers, mentre PQ comprimeix cada vector en codis curts de subvectors reduint 8×–32× el consum de memòria RAM." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "IVF accelera la cerca reduint candidats i PQ comprimeix dràsticament la memòria (sovint seguit de rescoring FP32 des de disc per recuperar el Recall perdut).",
+      "explanationsIncorrect": {
+        "A": "PQ comprimeix els vectors amb pèrdua controlada, no augmenta a FP64.",
+        "B": "Tant IVF com PQ requereixen una fase d'entrenament (K-Means dels centroides i sub-codebooks).",
+        "C": "Opera sobre vectors densos, no sobre paraules BM25."
+      }
+    },
+    {
+      "id": "m03-07-q08",
+      "module": 3,
+      "conceptId": "m03-07-bases-dades-vectorials",
+      "lessonRef": "content/module-03/m03-07-bases-dades-vectorials.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En l'índex `IndexIVF` de la lliçó, si tenim `nlist = 40` clústers aproximadament equilibrats sobre 4.000 documents i fixem `nprobe = 4`, quin percentatge aproximat del corpus s'avalua en cada consulta i com afecta pujar `nprobe` a `40`?",
+      "codeSnippet": "top_clusters = np.argsort(-(self.centroides @ q))[:nprobe]\ncandidats = np.concatenate([self.llistes[int(c)] for c in top_clusters ...])",
+      "options": [
+        { "key": "A", "text": "Amb `nprobe = 4` s'avalua ~10% del corpus (`4/40`); pujar `nprobe = 40` (`== nlist`) avalua el 100% dels vectors i fa l'índex equivalent a una cerca exacta *Flat* (`Recall = 1,000`, però perdent l'acceleració ANN)." },
+        { "key": "B", "text": "Amb `nprobe = 4` s'avalua el 40% del corpus; pujar `nprobe = 40` redueix el Recall a 0." },
+        { "key": "C", "text": "`nprobe` només determina el nombre de resultats `k` retornats." },
+        { "key": "D", "text": "L'índex sempre avalua exactament 4 vectors en total." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Explorar `nprobe` dels `nlist` clústers escaneja aproximadament `nprobe / nlist` del corpus; quan `nprobe == nlist` es visiten tots els clústers i el resultat és idèntic a Flat.",
+      "explanationsIncorrect": {
+        "B": "4/40 = 10% (no 40%), i augmentar `nprobe` sempre augmenta o manté el Recall.",
+        "C": "`k` controla els resultats retornats; `nprobe` controla quants clústers s'exploren.",
+        "D": "Avalua tots els vectors continguts dins els 4 clústers seleccionats (~400 vectors)."
+      }
+    },
+    {
+      "id": "m03-07-q09",
+      "module": 3,
+      "conceptId": "m03-07-bases-dades-vectorials",
+      "lessonRef": "content/module-03/m03-07-bases-dades-vectorials.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Per què un índex **HNSW** sol consumir **entre 1,5× i 2× més memòria RAM** que la mida bruta dels vectors emmagatzemats?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè duplica tots els documents en format PDF dins la RAM." },
+        { "key": "B", "text": "Perquè a més dels vectors numèrics, ha de mantenir en memòria les llistes d'adjacència (arestes del graf de mida proporcional a `M` a les capes superiors i `2·M` a la capa 0) i els identificadors per a cada node." },
+        { "key": "C", "text": "Perquè converteix automàticament `float32` a `float128`." },
+        { "key": "D", "text": "Perquè emmagatzema una còpia sencera de l'LLM dins cada node." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "El graf navegable d'HNSW afegeix un overhead estructural d'arestes proporcional a `M`; per això combinar HNSW amb quantització `INT8` (o *mmap* en SSD ràpid) és clau per reduir costos de RAM.",
+      "explanationsIncorrect": {
+        "A": "Els PDFs originals no resideixen a l'índex HNSW.",
+        "C": "No amplia la precisió a float128.",
+        "D": "No emmagatzema els pesos de l'LLM."
+      }
+    },
+    {
+      "id": "m03-07-q10",
+      "module": 3,
+      "conceptId": "m03-07-bases-dades-vectorials",
+      "lessonRef": "content/module-03/m03-07-bases-dades-vectorials.md",
+      "difficulty": "advanced",
+      "questionType": "metrics",
+      "prompt": "Com comproves rigorosament que la configuració triada d'HNSW (`M=16, efConstruction=128, efSearch=64`) NO està degradant el `Recall@20` del teu RAG en producció?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Mesurant únicament la latència en mil·lisegons." },
+        { "key": "B", "text": "Suposant que HNSW sempre retorna exactament el 100% dels mateixos resultats que una cerca exacta." },
+        { "key": "C", "text": "Executant una mostra representativa de consultes reals (incloses consultes amb filtres ACL/municipi!) contra una **cerca exacta *Flat*** com a referència i calculant el solapament (`ANN Recall@20`), ajustant `efSearch` fins assolir ≥ 0,97 dins el pressupost de latència." },
+        { "key": "D", "text": "Canviant la temperatura de l'LLM a 0,0." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "L'única forma empírica de validar l'aproximació d'un índex ANN (especialment sota filtres!) és contrastar-lo contra força bruta *Flat* sobre consultes reals.",
+      "explanationsIncorrect": {
+        "A": "Una latència baixíssima pot amagar un Recall molt degradat si `efSearch` és massa petit.",
+        "B": "HNSW és aproximat, no exacte al 100%.",
+        "D": "La temperatura de l'LLM no afecta l'índex vectorial."
+      }
+    }
+  ]
+}

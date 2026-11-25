@@ -1,0 +1,236 @@
+{
+  "conceptId": "m03-04-prompt-engineering",
+  "module": 3,
+  "questions": [
+    {
+      "id": "m03-04-q01",
+      "module": 3,
+      "conceptId": "m03-04-prompt-engineering",
+      "lessonRef": "content/module-03/m03-04-prompt-engineering.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina diferència hi ha entre el *prompting* **zero-shot** i el **few-shot**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "En zero-shot es donen només les instruccions de la tasca sense exemples; en few-shot s'inclouen uns quants parells d'exemple (entrada → sortida esperada) dins el prompt per guiar format, criteri i casos límit." },
+        { "key": "B", "text": "Zero-shot només funciona amb temperatura 0 i few-shot només amb temperatura 2." },
+        { "key": "C", "text": "Few-shot modifica permanentment els pesos neuronals del model." },
+        { "key": "D", "text": "Zero-shot elimina la necessitat de tokenitzar el prompt." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Few-shot (in-context learning) proporciona demostracions concretes dins la finestra de context sense alterar els pesos del model, millorant molt el format i els criteris de domini.",
+      "explanationsIncorrect": {
+        "B": "La temperatura és independent de si el prompt inclou exemples o no.",
+        "C": "L'in-context learning no actualitza els pesos (això ho fa el fine-tuning).",
+        "D": "Tota entrada d'un LLM es tokenitza."
+      }
+    },
+    {
+      "id": "m03-04-q02",
+      "module": 3,
+      "conceptId": "m03-04-prompt-engineering",
+      "lessonRef": "content/module-03/m03-04-prompt-engineering.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina és la finalitat principal d'incloure una **regla explícita d'abstenció** dins d'un prompt d'extracció o RAG administratiu?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Accelerar la GPU multiplicant per 4 els tokens per segon." },
+        { "key": "B", "text": "Indicar explícitament al model que retorni `null` o declari «no consta a la documentació» quan falti evidència, reduint la tendència a inventar respostes plausibles." },
+        { "key": "C", "text": "Permetre que el model contesti sobre qualsevol tema aliè a l'Administració." },
+        { "key": "D", "text": "Augmentar la creativitat de la redacció." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Els LLMs alineats per ser 'útils' tendeixen a respondre sempre alguna cosa; autoritzar-los explícitament a abstenir-se redueix les al·lucinacions.",
+      "explanationsIncorrect": {
+        "A": "No afecta la velocitat de maquinari.",
+        "C": "Al contrari, restringeix el model a l'evidència disponible.",
+        "D": "Cerca rigor factual, no creativitat."
+      }
+    },
+    {
+      "id": "m03-04-q03",
+      "module": 3,
+      "conceptId": "m03-04-prompt-engineering",
+      "lessonRef": "content/module-03/m03-04-prompt-engineering.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Com s'han de tractar els **prompts** en un sistema d'IA en producció dins una administració pública?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Com a notes informals editables directament en producció sense proves." },
+        { "key": "B", "text": "No cal guardar-los un cop desplegat el sistema." },
+        { "key": "C", "text": "Com a codi font versionat en Git (juntament amb model_id, hiperparàmetres i esquema JSON) i verificat mitjançant bateries d'avaluació automàtica sobre un conjunt *golden* abans de cada desplegament." },
+        { "key": "D", "text": "S'han de reescriure aleatòriament en cada petició." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "El versionat i les proves de regressió automàtiques (PromptOps) garanteixen traçabilitat, auditabilitat i eviten degradacions silencioses en modificar una instrucció.",
+      "explanationsIncorrect": {
+        "A": "Editar en producció sense proves provoca regressions silencioses.",
+        "B": "Sense registre del prompt exacte és impossible auditar o reproduir resultats.",
+        "D": "Destruiria la consistència i auditabilitat del servei."
+      }
+    },
+    {
+      "id": "m03-04-q04",
+      "module": 3,
+      "conceptId": "m03-04-prompt-engineering",
+      "lessonRef": "content/module-03/m03-04-prompt-engineering.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "En dissenyar un JSON Schema perquè un LLM autoregressiu verifiqui 4 requisits d'una subvenció i emeti un veredicte (`compleix: true/false`), per què convé posar el camp **`analisi_requisits` ABANS que `compleix`**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè els LLMs generen seqüencialment d'esquerra a dreta; generar primer l'anàlisi pas a pas (Chain-of-Thought) condiciona positivament el veredicte final, mentre que posar el veredicte primer força el model a decidir en fred i després pot racionalitzar o contradir-se." },
+        { "key": "B", "text": "Perquè l'estàndard JSON prohibeix començar un objecte per un valor booleà." },
+        { "key": "C", "text": "Per reduir el nombre de tokens generats a la meitat." },
+        { "key": "D", "text": "Perquè `temperature` només afecta el segon camp d'un JSON." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "La generació causal fa que el token del booleà només pugui atendre als tokens generats prèviament; situar el raonament abans millora empíricament la precisió en decisions multicriteri.",
+      "explanationsIncorrect": {
+        "B": "JSON admet qualsevol ordre de claus.",
+        "C": "Generar el raonament consumeix els mateixos tokens (o més), però millora la qualitat de la decisió.",
+        "D": "La temperatura s'aplica a tots els tokens generats."
+      }
+    },
+    {
+      "id": "m03-04-q05",
+      "module": 3,
+      "conceptId": "m03-04-prompt-engineering",
+      "lessonRef": "content/module-03/m03-04-prompt-engineering.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "En un prompt *few-shot* d'extracció de camps d'expedients, els 4 exemples inclosos tenen tots els camps complets (cap valor `null`). Quin efecte negatiu sol provocar aquest desequilibri?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "El model retornarà sempre `null` en tots els documents." },
+        { "key": "B", "text": "Indueix un biaix cap a omplir sempre tots els camps, augmentant les al·lucinacions quan arriba un expedient real al qual li falta alguna dada; cal incloure exemples *few-shot* que mostrin també `null` i casos límit." },
+        { "key": "C", "text": "El model deixarà de generar JSON vàlid." },
+        { "key": "D", "text": "Redueix la fertilitat del tokenitzador." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Els exemples few-shot actuen com a distribució a priori dins el context; si el model només veu camps plens, aprèn que 'mai no s'ha de deixar res en null'.",
+      "explanationsIncorrect": {
+        "A": "Provoca exactament l'efecte oposat (excés d'ompliment / falsos positius).",
+        "C": "El format JSON continuarà sent vàlid.",
+        "D": "No canvia el tokenitzador."
+      }
+    },
+    {
+      "id": "m03-04-q06",
+      "module": 3,
+      "conceptId": "m03-04-prompt-engineering",
+      "lessonRef": "content/module-03/m03-04-prompt-engineering.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Quin avantatge arquitectònic principal té el ***Prompt Chaining*** (dividir un procés en 3 prompts especialitzats amb validació determinista entremig) respecte d'un únic «mega-prompt» de 1.500 paraules?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Elimina completament l'ús de tokens." },
+        { "key": "B", "text": "Permet ignorar el RGPD." },
+        { "key": "C", "text": "Aïlla responsabilitats, evita regressions creuades en editar un pas, permet escollir model/temperatura òptims per etapa, facilita intercalar regles deterministes Python i millora l'auditabilitat pas a pas." },
+        { "key": "D", "text": "Fa que la latència sigui sempre inferior a 1 mil·lisegon." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Modularitzar en etapes petites amb validacions deterministes intermèdies fa el sistema molt més fiable, testable i mantenible que un prompt gegant monolític.",
+      "explanationsIncorrect": {
+        "A": "Utilitza tokens en cada crida, sovint amb millor eficiència global en usar models més petits per a etapes simples.",
+        "B": "El RGPD s'aplica igualment.",
+        "D": "Encadenar crides afegeix latència respecte d'1 ms, però guanya fiabilitat i control."
+      }
+    },
+    {
+      "id": "m03-04-q07",
+      "module": 3,
+      "conceptId": "m03-04-prompt-engineering",
+      "lessonRef": "content/module-03/m03-04-prompt-engineering.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Envoltar el text d'un document extern amb delimitadors XML (`<document_font>...</document_font>`) i instruir al `system prompt` d'ignorar ordres dins d'aquest bloc garanteix una protecció del 100% contra *prompt injection*?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Sí, perquè els LLMs no llegeixen res que estigui dins etiquetes XML." },
+        { "key": "B", "text": "Sí, sempre que el text estigui en català." },
+        { "key": "C", "text": "Només si s'utilitza `top_p = 0.9`." },
+        { "key": "D", "text": "No: és una bona pràctica que redueix el risc, però com que instruccions i dades comparteixen la mateixa seqüència de tokens, cal sempre **defensa en profunditat** amb validacions deterministes externes, mínim privilegi en eines i supervisió humana." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Cap instrucció en llenguatge natural és una frontera criptogràfica infal·lible; els delimitadors s'han de combinar sempre amb controls deterministes fora del model.",
+      "explanationsIncorrect": {
+        "A": "L'LLM llegeix tots els tokens dins les etiquetes XML (precisament per poder processar el document).",
+        "B": "El prompt injection funciona en qualsevol idioma.",
+        "C": "Els paràmetres de mostreig no bloquegen injeccions."
+      }
+    },
+    {
+      "id": "m03-04-q08",
+      "module": 3,
+      "conceptId": "m03-04-prompt-engineering",
+      "lessonRef": "content/module-03/m03-04-prompt-engineering.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En la funció `sanititzar_delimitadors` de la lliçó, quin atac específic neutralitza reemplaçar `</document_font>` dins del text enviat per l'usuari?",
+      "codeSnippet": "return text_usuari.replace(f\"</{etiqueta}>\", f\"[ETIQUETA_BLOQUEJADA:/{etiqueta}]\")",
+      "options": [
+        { "key": "A", "text": "Neutralitza un atac de **trencament/escapament de delimitador (*delimiter breakout*)**, en què un atacant tanca prematurament `</document_font>` dins del seu text per fer creure a l'LLM que les frases següents tornen a ser instruccions privilegiades." },
+        { "key": "B", "text": "Neutralitza un atac DDoS de xarxa TCP." },
+        { "key": "C", "text": "Evita la divisió per zero en Softmax." },
+        { "key": "D", "text": "Anonimitza automàticament tots els DNIs del document." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Si no s'escapen les etiquetes de tancament en dades no fiables, l'atacant pot tancar el bloc XML i injectar instruccions fora del delimitador.",
+      "explanationsIncorrect": {
+        "B": "Un DDoS es mitiga a nivell de xarxa/WAF, no escapant etiquetes XML.",
+        "C": "No té relació amb Softmax.",
+        "D": "Només escapa delimitadors XML, no detecta ni anonimitza PII."
+      }
+    },
+    {
+      "id": "m03-04-q09",
+      "module": 3,
+      "conceptId": "m03-04-prompt-engineering",
+      "lessonRef": "content/module-03/m03-04-prompt-engineering.md",
+      "difficulty": "advanced",
+      "questionType": "conceptual",
+      "prompt": "En què consisteix la tècnica ***Self-Consistency*** sobre *Chain-of-Thought* i quin n'és el principal inconvenient operatiu?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Executa el model una sola vegada amb `temperature = 0`." },
+        { "key": "B", "text": "Mostreja `k` cadenes de raonament independents (`temperature > 0`) per a la mateixa entrada i selecciona la resposta final per votació majoritària; millora la fiabilitat en raonament complex però multiplica el cost i/o la latència per `k`." },
+        { "key": "C", "text": "Entrena el model sobre les seves pròpies respostes sense supervisió." },
+        { "key": "D", "text": "Elimina el `system prompt` per estalviar tokens." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Self-Consistency (Wang et al., 2022) redueix errors accidentals d'una única trajectòria de raonament agregant múltiples camins independents, però amb un cost multiplicatiu `k×`.",
+      "explanationsIncorrect": {
+        "A": "Amb `T=0`, les `k` execucions produirien el mateix camí sense diversitat.",
+        "C": "És una tècnica en temps d'inferència, no d'entrenament.",
+        "D": "No elimina el system prompt."
+      }
+    },
+    {
+      "id": "m03-04-q10",
+      "module": 3,
+      "conceptId": "m03-04-prompt-engineering",
+      "lessonRef": "content/module-03/m03-04-prompt-engineering.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "La Diputació migra un assistent intern d'un model LLM `Model_A` a un nou model `Model_B` (*open-weights* més recent). Per què és arriscat copiar exactament el mateix prompt sense re-avaluar-lo?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè els prompts no es poden copiar entre fitxers de text." },
+        { "key": "B", "text": "Perquè `Model_B` no suporta el català." },
+        { "key": "C", "text": "Perquè cada família de models respon de forma diferent a l'estil d'instruccions, delimitadors, *chat templates* i *few-shot*; un prompt afinat per a `Model_A` pot patir regressions en `Model_B` si no s'executa la bateria d'avaluació *golden* i s'adapta." },
+        { "key": "D", "text": "Perquè els JSON Schema són incompatibles entre models." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Els prompts són sensibles al model i a la seva alineació SFT/DPO específica; migrar de model exigeix sempre re-executar l'eval suite completa i recalibrar el prompt.",
+      "explanationsIncorrect": {
+        "A": "Són text pla versionable.",
+        "B": "No té per què (p. ex. Salamandra o Qwen suporten molt bé el català).",
+        "D": "JSON Schema és un estàndard interoperable."
+      }
+    }
+  ]
+}

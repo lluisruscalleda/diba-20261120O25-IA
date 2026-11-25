@@ -1,0 +1,236 @@
+{
+  "conceptId": "m03-02-arquitectura-transformer",
+  "module": 3,
+  "questions": [
+    {
+      "id": "m03-02-q01",
+      "module": 3,
+      "conceptId": "m03-02-arquitectura-transformer",
+      "lessonRef": "content/module-03/m03-02-arquitectura-transformer.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quin avantatge arquitectònic decisiu va permetre que el **Transformer** substituís les RNN/LSTM en NLP i IA generativa?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Elimina la recurrència seqüencial i processa tots els tokens de la seqüència en paral·lel durant l'entrenament, capturant directament dependències a llarga distància mitjançant atenció." },
+        { "key": "B", "text": "No utilitza multiplicacions de matrius ni GPUs." },
+        { "key": "C", "text": "No requereix cap funció d'activació no lineal." },
+        { "key": "D", "text": "Només té una sola capa oculta." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "En eliminar la dependència pas-a-pas de les RNN, el Transformer aprofita plenament el paral·lelisme massiu de les GPUs i connecta tokens distants en un sol salt d'atenció.",
+      "explanationsIncorrect": {
+        "B": "Al contrari, el Transformer és intensiu en multiplicacions matricials en GPU.",
+        "C": "Utilitza no-linealitats com GELU/SiLU/SwiGLU i Softmax.",
+        "D": "Els Transformers moderns apilen entre 12 i més de 80 capes."
+      }
+    },
+    {
+      "id": "m03-02-q02",
+      "module": 3,
+      "conceptId": "m03-02-arquitectura-transformer",
+      "lessonRef": "content/module-03/m03-02-arquitectura-transformer.md",
+      "difficulty": "basic",
+      "questionType": "architecture",
+      "prompt": "Quina família de l'arquitectura Transformer utilitza **atenció bidireccional completa** i és l'opció òptima per a classificació de textos, NER, embeddings i *Cross-Encoder rerankers*?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Decoder-only causal." },
+        { "key": "B", "text": "Encoder-only (p. ex., BERT, RoBERTa-ca, XLM-RoBERTa, BGE-M3)." },
+        { "key": "C", "text": "Xarxa generativa antagònica (GAN)." },
+        { "key": "D", "text": "Perceptró d'una sola capa." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Els encoders bidireccionals permeten que cada token atengui tant el context previ com el posterior, maximitzant la qualitat de representacions per a NER, classificació i recuperació.",
+      "explanationsIncorrect": {
+        "A": "Els Decoder-only tenen màscara causal (només veuen el passat) i estan pensats per a generació autoregressiva.",
+        "C": "Les GAN són una altra família generativa (principalment imatge).",
+        "D": "Un perceptró simple no té mecanisme d'atenció."
+      }
+    },
+    {
+      "id": "m03-02-q03",
+      "module": 3,
+      "conceptId": "m03-02-arquitectura-transformer",
+      "lessonRef": "content/module-03/m03-02-arquitectura-transformer.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Per què un Transformer necessita explícitament **codificació posicional** (sinusoïdal o RoPE)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Per comprimir el fitxer de pesos en disc." },
+        { "key": "B", "text": "Per traduir els nombres enters a text català." },
+        { "key": "C", "text": "Perquè el mecanisme de self-attention és inherentment invariant a permutacions i, sense informació de posició, tractaria una frase com una bossa desordenada de paraules." },
+        { "key": "D", "text": "Per reduir el nombre de capes del model." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Sense senyal posicional, intercanviar el subjecte i l'objecte d'una frase produiria exactament els mateixos vectors de sortida permutats.",
+      "explanationsIncorrect": {
+        "A": "No té relació amb la compressió en disc.",
+        "B": "Això ho fa el decodificador del tokenitzador.",
+        "D": "No canvia el nombre de capes."
+      }
+    },
+    {
+      "id": "m03-02-q04",
+      "module": 3,
+      "conceptId": "m03-02-arquitectura-transformer",
+      "lessonRef": "content/module-03/m03-02-arquitectura-transformer.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Quin avantatge clau ofereix **RoPE (*Rotary Position Embedding*)** respecte dels embeddings posicionals absoluts sumats a l'entrada?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Rota els vectors Q i K segons la posició de manera que el producte escalar d'atenció depèn directament de la distància relativa (m − n) i facilita l'extensió a finestres de context llargues." },
+        { "key": "B", "text": "Elimina la necessitat de calcular matrius Q i K." },
+        { "key": "C", "text": "Només funciona en seqüències d'un màxim de 10 tokens." },
+        { "key": "D", "text": "Substitueix les connexions residuals." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "RoPE injecta la posició relativa directament dins l'angle de Q i K en cada capa, millorant la generalització a longituds majors i l'extensió de context (YaRN / NTK scaling).",
+      "explanationsIncorrect": {
+        "B": "S'aplica precisament damunt dels vectors Q i K.",
+        "C": "Està dissenyat especialment per escalar a contextos de desenes o centenars de milers de tokens.",
+        "D": "Les connexions residuals continuen sent essencials."
+      }
+    },
+    {
+      "id": "m03-02-q05",
+      "module": 3,
+      "conceptId": "m03-02-arquitectura-transformer",
+      "lessonRef": "content/module-03/m03-02-arquitectura-transformer.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Per què la majoria dels LLMs moderns (Llama, Mistral, Salamandra) utilitzen **Pre-Norm amb RMSNorm** en lloc de Post-Norm amb LayerNorm?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè Pre-Norm elimina la necessitat de retropropagació." },
+        { "key": "B", "text": "Perquè Pre-Norm preserva una autopista directa de gradients a través de les connexions residuals (estabilitzant models molt profunds) i RMSNorm evita calcular la mitjana sent més ràpid amb qualitat equivalent." },
+        { "key": "C", "text": "Perquè RMSNorm redueix la dimensió d'embedding a la meitat." },
+        { "key": "D", "text": "Perquè Post-Norm només funciona en CPU." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "En Pre-Norm (`x + sublayer(norm(x))`), el camí residual no queda interromput per capes de normalització, reduint dràsticament problemes d'explosió/esvaïment de gradients, i RMSNorm estalvia operacions de càlcul de mitjana.",
+      "explanationsIncorrect": {
+        "A": "Continua entrenant-se amb retropropagació estàndard.",
+        "C": "RMSNorm conserva exactament la dimensió `d_model`.",
+        "D": "Ambdós funcionen en GPU."
+      }
+    },
+    {
+      "id": "m03-02-q06",
+      "module": 3,
+      "conceptId": "m03-02-arquitectura-transformer",
+      "lessonRef": "content/module-03/m03-02-arquitectura-transformer.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "En quina tasca administrativa destacaria tradicionalment un Transformer **Encoder-Decoder** (com MarianMT, NLLB-200 o mT5) per sobre d'un Encoder-only?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Assignar 1 etiqueta de departament a una instància." },
+        { "key": "B", "text": "Generar embeddings per a una base de dades vectorial." },
+        { "key": "C", "text": "Traducció automàtica massiva català↔castellà/anglès, on l'encoder llegeix bidireccionalment tota la frase origen i el decoder genera la frase destí atenent-hi via *cross-attention*." },
+        { "key": "D", "text": "Detecció d'anomalies en imports numèrics." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Els encoders sols no generen seqüències autoregressivament; l'arquitectura Encoder-Decoder és natural per a transformacions seq2seq com la traducció automàtica.",
+      "explanationsIncorrect": {
+        "A": "Per a classificació, Encoder-only és més senzill i eficient.",
+        "B": "Per a embeddings, Encoder-only és l'estàndard.",
+        "D": "Això correspon a ML tabular (Isolation Forest / MAD)."
+      }
+    },
+    {
+      "id": "m03-02-q07",
+      "module": 3,
+      "conceptId": "m03-02-arquitectura-transformer",
+      "lessonRef": "content/module-03/m03-02-arquitectura-transformer.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Quina és la característica definitòria d'una arquitectura **Mixture of Experts (MoE)** dins d'un Transformer?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Activa el 100% de totes les subxarxes expertes per a cada token." },
+        { "key": "B", "text": "Elimina la capa d'atenció completament." },
+        { "key": "C", "text": "Utilitza una base de regles simbòliques com a router." },
+        { "key": "D", "text": "Substitueix la FFN densa per múltiples experts i un *router* après que activa només un petit subconjunt (p. ex., 2 de 8) per a cada token, desacoblant la capacitat total dels FLOPs per token." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "MoE permet tenir desenes o centenars de milers de milions de paràmetres totals mantenint una velocitat d'inferència pròpia d'un model molt més petit (només es computen els paràmetres actius).",
+      "explanationsIncorrect": {
+        "A": "Això seria un model dens; MoE fa activació dispersa (sparse routing).",
+        "B": "La capa d'atenció es manté intacta; MoE substitueix normalment la FFN.",
+        "C": "El router és una capa lineal entrenable seguida de Softmax/Top-K."
+      }
+    },
+    {
+      "id": "m03-02-q08",
+      "module": 3,
+      "conceptId": "m03-02-arquitectura-transformer",
+      "lessonRef": "content/module-03/m03-02-arquitectura-transformer.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Vols desplegar *on-premise* un model MoE amb `47B` paràmetres totals i `13B` paràmetres actius en FP16 (2 bytes/pes). Quanta memòria VRAM mínima necessiten els pesos del model?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "~87,5 GB (tots els 47B paràmetres han d'estar carregats en VRAM perquè el router pot seleccionar qualsevol expert en cada token; els 13B actius només redueixen el temps de càlcul, no la VRAM dels pesos)." },
+        { "key": "B", "text": "~24,2 GB (només els 13B paràmetres actius)." },
+        { "key": "C", "text": "~4,0 GB." },
+        { "key": "D", "text": "0 GB perquè els experts resideixen sempre a la CPU." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "47e9 × 2 / 1024³ ≈ 87,5 GiB! Confondre paràmetres actius (còmput) amb paràmetres totals (memòria VRAM) és un dels errors més freqüents en dimensionament de MoE.",
+      "explanationsIncorrect": {
+        "B": "Si només carreguessis 13B, faltarien 6 dels 8 experts necessaris per als tokens següents.",
+        "C": "Impossible en FP16 per a 47B paràmetres.",
+        "D": "Descarregar experts de CPU a GPU per cada token arruïnaria la latència."
+      }
+    },
+    {
+      "id": "m03-02-q09",
+      "module": 3,
+      "conceptId": "m03-02-arquitectura-transformer",
+      "lessonRef": "content/module-03/m03-02-arquitectura-transformer.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En la funció `swiglu_ffn` de la lliçó (`(silu(x @ W1) * (x @ W3)) @ W2`), quin paper fa la multiplicació element a element `* (x @ W3)` respecte d'una FFN clàssica `ReLU(x @ W1) @ W2`?",
+      "codeSnippet": "def swiglu_ffn(x, W1, W3, W2):\n    return (silu(x @ W1) * (x @ W3)) @ W2",
+      "options": [
+        { "key": "A", "text": "Normalitza el vector perquè sumi 1." },
+        { "key": "B", "text": "Actua com una **porta multiplicativa (*Gated Linear Unit*)** que modula dinàmicament quines característiques ocultes passen cap a la projecció de sortida `W2`, millorant empíricament l'expressivitat i la perplexitat dels LLMs moderns." },
+        { "key": "C", "text": "Aplica la màscara causal sobre els tokens futurs." },
+        { "key": "D", "text": "Calcula la similitud cosinus entre dos documents." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "SwiGLU (Shazeer, 2020) combina una branca amb activació suau SiLU que actua de porta sobre la projecció lineal `x @ W3`, superant consistentment ReLU/GELU estàndards (per això s'usa en Llama, Mistral, Qwen i Salamandra).",
+      "explanationsIncorrect": {
+        "A": "No normalitza a suma 1 (això ho fa Softmax).",
+        "C": "La FFN opera de manera independent sobre cada token; la màscara causal és a la self-attention.",
+        "D": "No calcula similitud entre documents."
+      }
+    },
+    {
+      "id": "m03-02-q10",
+      "module": 3,
+      "conceptId": "m03-02-arquitectura-transformer",
+      "lessonRef": "content/module-03/m03-02-arquitectura-transformer.md",
+      "difficulty": "advanced",
+      "questionType": "conceptual",
+      "prompt": "En un bloc Transformer (`out = h + sublayer(rms_norm(h))`), quina restricció dimensional imposa directament la **connexió residual** (`h + ...`)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Que la longitud de seqüència `L` sigui sempre potència de 2." },
+        { "key": "B", "text": "Que la dimensió interna `d_ff` sigui igual a 1." },
+        { "key": "C", "text": "Que tant la subcapa d'atenció com la subcapa FFN projectin la seva sortida exactament a la mateixa dimensió `d_model` que l'entrada `h` per poder-se sumar element a element al llarg de tot el flux residual." },
+        { "key": "D", "text": "Que no es puguin apilar més de 4 capes." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "El 'residual stream' té amplada constant `d_model`: totes les subcapes llegeixen d'aquest corrent i hi sumen la seva actualització en la mateixa forma `(L, d_model)`.",
+      "explanationsIncorrect": {
+        "A": "L pot ser qualsevol enter positiu fins a la finestra màxima.",
+        "B": "d_ff sol ser entre 2,6× i 4× d_model, i després W2 torna a projectar a d_model.",
+        "D": "Precisament les connexions residuals permeten apilar desenes o més de 100 capes."
+      }
+    }
+  ]
+}

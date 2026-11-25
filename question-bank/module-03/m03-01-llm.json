@@ -1,0 +1,236 @@
+{
+  "conceptId": "m03-01-llm",
+  "module": 3,
+  "questions": [
+    {
+      "id": "m03-01-q01",
+      "module": 3,
+      "conceptId": "m03-01-llm",
+      "lessonRef": "content/module-03/m03-01-llm.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quin és l'ordre correcte de les tres fases habituals de construcció d'un LLM instructiu modern?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "RLHF → Preentrenament → Tokenització." },
+        { "key": "B", "text": "Preentrenament autosupervisat (next-token prediction) → SFT (Supervised Fine-Tuning d'instruccions) → Alineació de preferències (RLHF / DPO)." },
+        { "key": "C", "text": "SFT → Preentrenament → K-Means." },
+        { "key": "D", "text": "Alineació DPO → Extracció TF-IDF → Preentrenament." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Primer s'adquireix coneixement general via preentrenament autosupervisat, després s'ensenya a seguir instruccions amb SFT i finalment s'alinea amb preferències humanes de qualitat i seguretat via RLHF o DPO.",
+      "explanationsIncorrect": {
+        "A": "No es pot aplicar RLHF abans del preentrenament.",
+        "C": "El preentrenament sempre precedeix l'SFT.",
+        "D": "L'ordre està completament invertit i barreja TF-IDF."
+      }
+    },
+    {
+      "id": "m03-01-q02",
+      "module": 3,
+      "conceptId": "m03-01-llm",
+      "lessonRef": "content/module-03/m03-01-llm.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Per a una tasca d'extracció de camps JSON o RAG normatiu on busquem màxima consistència i mínima inventiva, quin rang de **`temperature`** és el més recomanable?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "`0.0 – 0.2` (baixa temperatura, prioritzant els tokens de màxima probabilitat)." },
+        { "key": "B", "text": "`1.5 – 2.0` (alta aleatorietat)." },
+        { "key": "C", "text": "`-1.0` (temperatura negativa)." },
+        { "key": "D", "text": "La temperatura no influeix gens en la generació d'un LLM." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Una temperatura molt baixa (`0.0–0.2`) concentra la massa de probabilitat en les opcions més probables, maximitzant la coherència i reduint desviacions en tasques factuals o estructurades.",
+      "explanationsIncorrect": {
+        "B": "Temperatures >1 aplanen la distribució i disparen errors sintàctics i al·lucinacions.",
+        "C": "La temperatura ha de ser no negativa (T ≥ 0).",
+        "D": "Escala directament els logits abans de Softmax."
+      }
+    },
+    {
+      "id": "m03-01-q03",
+      "module": 3,
+      "conceptId": "m03-01-llm",
+      "lessonRef": "content/module-03/m03-01-llm.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quin problema d'un LLM fa que NO pugui respondre de forma fiable sobre una ordenança municipal aprovada fa dos mesos sense connexió a fonts externes?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "L'ús de la funció d'activació ReLU." },
+        { "key": "B", "text": "La normalització L2." },
+        { "key": "C", "text": "El tall de coneixement (*knowledge cutoff*) i el caràcter estàtic dels seus pesos un cop acabat l'entrenament, fet que obliga a utilitzar RAG per a normativa vigent." },
+        { "key": "D", "text": "La manca de suavitzat de Laplace." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Els pesos d'un LLM congelen el coneixement fins a la data de tall del seu entrenament (i tampoc inclouen normativa interna privada); RAG injecta en temps real els documents vigents.",
+      "explanationsIncorrect": {
+        "A": "No té relació amb la funció d'activació.",
+        "B": "No té relació amb la normalització L2.",
+        "D": "El suavitzat de Laplace és propi de Naive Bayes."
+      }
+    },
+    {
+      "id": "m03-01-q04",
+      "module": 3,
+      "conceptId": "m03-01-llm",
+      "lessonRef": "content/module-03/m03-01-llm.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Quin avantatge principal aporta **DPO (*Direct Preference Optimization*)** respecte del **RLHF clàssic amb PPO**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Elimina la necessitat d'entrenar un *Reward Model* separat i d'executar un bucle d'aprenentatge per reforç (PPO) inestable, optimitzant directament l'LLM sobre parells `(resposta preferida, rebutjada)` amb una funció de pèrdua supervisada." },
+        { "key": "B", "text": "Permet entrenar l'LLM sense necessitar cap dada de preferències humanes." },
+        { "key": "C", "text": "Substitueix el Transformer per un sistema expert de regles." },
+        { "key": "D", "text": "Garanteix que el model no cometi mai cap al·lucinació." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "DPO reparametritza l'objectiu de RLHF en una pèrdua binària directa sobre parells de preferències, estalviant memòria GPU, simplificant hiperparàmetres i augmentant l'estabilitat.",
+      "explanationsIncorrect": {
+        "B": "DPO continua necessitant parells anotats de preferències (preferida vs. rebutjada).",
+        "C": "Continua entrenant pesos del Transformer.",
+        "D": "Millora l'alineació però no elimina completament les al·lucinacions."
+      }
+    },
+    {
+      "id": "m03-01-q05",
+      "module": 3,
+      "conceptId": "m03-01-llm",
+      "lessonRef": "content/module-03/m03-01-llm.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Quina és la funció de la **KV Cache** durant la fase de *Decode* d'un LLM?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Desar a disc els prompts dels usuaris per reentrenar el model cada nit." },
+        { "key": "B", "text": "Emmagatzemar en VRAM els tensors Key (K) i Value (V) dels tokens ja processats per no haver de recalcular-los a cada nou token generat, accelerant dràsticament la generació autoregressiva." },
+        { "key": "C", "text": "Xifrar les comunicacions HTTPS entre client i servidor." },
+        { "key": "D", "text": "Esborrar els tokens més antics de la finestra de context cada 5 paraules." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Sense KV Cache, generar cada nou token requeriria tornar a processar tota la seqüència prèvia des de zero (cost quadràtic acumulat); desar K i V en VRAM redueix cada pas a calcular només el nou token.",
+      "explanationsIncorrect": {
+        "A": "La KV Cache és memòria volàtil d'inferència en VRAM, no registre a disc.",
+        "C": "No té relació amb xifratge de xarxa.",
+        "D": "Conserva els vectors K i V dins la finestra activa."
+      }
+    },
+    {
+      "id": "m03-01-q06",
+      "module": 3,
+      "conceptId": "m03-01-llm",
+      "lessonRef": "content/module-03/m03-01-llm.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "En la inferència d'un LLM, quina afirmació diferencia correctament la fase de ***Prefill*** de la fase de ***Decode***?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Prefill és seqüencial token a token i Decode processa tots els tokens futurs en paral·lel." },
+        { "key": "B", "text": "Prefill i Decode tenen exactament el mateix coll d'ampolla." },
+        { "key": "C", "text": "Prefill processa tot el prompt d'entrada en paral·lel (*compute-bound*, determinant el TTFT), mentre que Decode genera els tokens de sortida seqüencialment un per un (*memory-bandwidth bound*, determinant els tokens/segon)." },
+        { "key": "D", "text": "Prefill només s'executa en CPU i Decode només en disc SSD." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Durant el Prefill es multipliquen matrius grans amb alta utilització de càlcul GPU; durant el Decode cada pas llegeix tots els pesos i la KV Cache per produir un sol token, quedant limitat per l'amplada de banda de VRAM.",
+      "explanationsIncorrect": {
+        "A": "És exactament a l'inrevés.",
+        "B": "Tenen perfils de maquinari oposats (compute-bound vs memory-bandwidth bound).",
+        "D": "Ambdós s'executen habitualment a la GPU."
+      }
+    },
+    {
+      "id": "m03-01-q07",
+      "module": 3,
+      "conceptId": "m03-01-llm",
+      "lessonRef": "content/module-03/m03-01-llm.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Fixar **`temperature = 0`** en un LLM garanteix que el model deixarà de produir al·lucinacions?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Sí, perquè `temperature = 0` activa un verificador factual automàtic." },
+        { "key": "B", "text": "Sí, sempre que també fixem `top_p = 1.0`." },
+        { "key": "C", "text": "Només si el model s'executa en anglès." },
+        { "key": "D", "text": "No: `temperature = 0` només aplica decodificació *greedy* (triar sempre el token més probable), reduint variabilitat aleatòria, però si el token més probable segons els pesos és una dada falsa o inventada, el model al·lucinarà de manera totalment consistent." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Les al·lucinacions provenen de la manca de fonamentació factual o d'incertesa en els pesos, no només de la temperatura; per mitigar-les cal RAG, verificació i instruccions d'abstenció.",
+      "explanationsIncorrect": {
+        "A": "La temperatura no verifica fets, només controla l'aleatorietat del mostreig.",
+        "B": "Combinar amb top_p=1 no afegeix verificació factual.",
+        "C": "L'idioma no elimina el fenomen."
+      }
+    },
+    {
+      "id": "m03-01-q08",
+      "module": 3,
+      "conceptId": "m03-01-llm",
+      "lessonRef": "content/module-03/m03-01-llm.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "Segons la fórmula de dimensionament de la lliçó, si un model 8B quantitzat a INT4 ocupa només `~4,1 GB` en pesos, per què pot quedar-se sense memòria en una GPU de `48 GB` quan serveix **16 usuaris concurrents amb contextos de 32.768 tokens**?",
+      "codeSnippet": "kv_bytes = 2 * n_capes * n_kv_heads * head_dim * context_tokens * batch_size * bytes_kv",
+      "options": [
+        { "key": "A", "text": "Perquè la KV Cache escala linealment amb `batch_size × context_tokens` i en aquest escenari arriba a ocupar `64 GB` per si sola (més de 15 vegades la mida dels pesos!), desbordant la GPU de 48 GB." },
+        { "key": "B", "text": "Perquè quantitzar a INT4 multiplica la mida dels pesos per 16." },
+        { "key": "C", "text": "Perquè els contextos de 32.768 tokens només es poden processar en disc dur." },
+        { "key": "D", "text": "Perquè Python duplica automàticament els pesos per cada usuari." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "2 × 32 capes × 8 kv_heads × 128 dim × 32768 tokens × 16 batch × 2 bytes = 64 GiB només de KV Cache! Per això cal dimensionar la VRAM considerant sempre concurrència i longitud de context, i usar vLLM / FP8 KV Cache.",
+      "explanationsIncorrect": {
+        "B": "Quantitzar a INT4 redueix els pesos gairebé 4× respecte de FP16.",
+        "C": "Es processen en VRAM, simplement requereixen prou capacitat o menys concurrència/quantització KV.",
+        "D": "Els pesos del model es comparteixen en memòria entre tots els usuaris del batch; el que es multiplica per usuari és la KV Cache."
+      }
+    },
+    {
+      "id": "m03-01-q09",
+      "module": 3,
+      "conceptId": "m03-01-llm",
+      "lessonRef": "content/module-03/m03-01-llm.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Quin problema d'eficiència resol **PagedAttention** en motors d'inferència com **vLLM**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Substitueix el tokenitzador BPE per TF-IDF." },
+        { "key": "B", "text": "Elimina la fragmentació de memòria VRAM de la KV Cache gestionant-la en blocs no contigus (com la memòria virtual paginada d'un sistema operatiu) i permetent compartir prefixos comuns (*system prompt*) entre peticions, augmentant enormement el throughput." },
+        { "key": "C", "text": "Converteix automàticament un model 70B en un model 1B sense pèrdua de qualitat." },
+        { "key": "D", "text": "Bloqueja totes les peticions que superin 512 tokens." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Sense paginació, reservar blocs contigus per la longitud màxima de cada petició malbarata >60% de la VRAM de KV Cache; PagedAttention assigna pàgines sota demanda i maximitza el batch concurrent.",
+      "explanationsIncorrect": {
+        "A": "No modifica el tokenitzador.",
+        "C": "No comprimeix paràmetres del model, optimitza la gestió de memòria de la KV Cache.",
+        "D": "Suporta finestres molt llargues amb molta més eficiència."
+      }
+    },
+    {
+      "id": "m03-01-q10",
+      "module": 3,
+      "conceptId": "m03-01-llm",
+      "lessonRef": "content/module-03/m03-01-llm.md",
+      "difficulty": "advanced",
+      "questionType": "normative",
+      "prompt": "Per què un desplegament ***open-weights* *on-premise*** (p. ex. Salamandra-7B o Qwen/Mistral local) facilita l'auditoria i la governança pública en comparació amb una API comercial de caixa negra?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè un model *open-weights* mai no pot tenir biaixos ni cometre errors." },
+        { "key": "B", "text": "Perquè els models *open-weights* estan exempts de complir el RGPD i l'AI Act." },
+        { "key": "C", "text": "Perquè permet congelar exactament la versió dels pesos (evitant canvis silenciosos del proveïdor), mantenir el 100% de les dades personals dins el perímetre ENS de la institució i auditar/reproduir el comportament del sistema de forma controlada." },
+        { "key": "D", "text": "Perquè no requereix cap maquinari ni manteniment informàtic." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Sobirania de dades, congelació determinista de versions i control complet d'infraestructura/logs són avantatges clau de governança; però el model continua subjecte a avaluació de biaixos, RGPD, ENS i AI Act.",
+      "explanationsIncorrect": {
+        "A": "Tots els LLMs (oberts o comercials) poden tenir biaixos i al·lucinar.",
+        "B": "L'ús d'un model *open-weights* en un servei públic continua obligat a complir RGPD, ENS i AI Act.",
+        "D": "Al contrari, exigeix gestionar GPUs, seguretat i operació MLOps/LLMOps."
+      }
+    }
+  ]
+}

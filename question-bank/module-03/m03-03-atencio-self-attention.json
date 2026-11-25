@@ -1,0 +1,236 @@
+{
+  "conceptId": "m03-03-atencio-self-attention",
+  "module": 3,
+  "questions": [
+    {
+      "id": "m03-03-q01",
+      "module": 3,
+      "conceptId": "m03-03-atencio-self-attention",
+      "lessonRef": "content/module-03/m03-03-atencio-self-attention.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "En el mecanisme de *Scaled Dot-Product Attention*, quins són els tres tensors projectats linealment a partir de cada token?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Precision (P), Recall (R) i F1 (F)." },
+        { "key": "B", "text": "Query (Q), Key (K) i Value (V)." },
+        { "key": "C", "text": "Train (T), Validation (V) i Test (E)." },
+        { "key": "D", "text": "Bias (B), Variance (V) i Noise (N)." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Cada token es projecta en una Query (què busca), una Key (què indexa/representa) i un Value (la informació vectorial que aporta ponderada pels pesos d'atenció).",
+      "explanationsIncorrect": {
+        "A": "Són mètriques de classificació.",
+        "C": "Són particions del dataset.",
+        "D": "Són els termes de la descomposició biaix-variància."
+      }
+    },
+    {
+      "id": "m03-03-q02",
+      "module": 3,
+      "conceptId": "m03-03-atencio-self-attention",
+      "lessonRef": "content/module-03/m03-03-atencio-self-attention.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Per què en la fórmula `softmax(Q Kᵀ / √d_k) V` es divideix el producte escalar per **`√d_k`**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Per mantenir controlada la variància dels productes escalars (~1) quan `d_k` és gran, evitant que Softmax es saturi amb gradients gairebé nuls." },
+        { "key": "B", "text": "Per convertir els nombres negatius en positius." },
+        { "key": "C", "text": "Per reduir la longitud de la frase a la meitat." },
+        { "key": "D", "text": "Per aplicar la màscara causal sobre els tokens futurs." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Sense escalar, la variància de `q·k` creix proporcionalment a `d_k`, empenyent Softmax a extrems saturats on els gradients desapareixen.",
+      "explanationsIncorrect": {
+        "B": "Dividir per un nombre positiu conserva els signes.",
+        "C": "No altera la longitud de seqüència L.",
+        "D": "La màscara causal s'aplica sumant `-∞` per sobre de la diagonal."
+      }
+    },
+    {
+      "id": "m03-03-q03",
+      "module": 3,
+      "conceptId": "m03-03-atencio-self-attention",
+      "lessonRef": "content/module-03/m03-03-atencio-self-attention.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Per què en una arquitectura Transformer s'utilitza **Multi-Head Attention** (múltiples capçals en paral·lel) en lloc d'un únic capçal d'atenció?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè Softmax no funciona amb matrius grans." },
+        { "key": "B", "text": "Per reduir el nombre total de capes a 1." },
+        { "key": "C", "text": "Per permetre que el model atengui simultàniament a diferents subespais i relacions lingüístiques (sintaxi, correferència, negacions, proximitat posicional) des de cada posició." },
+        { "key": "D", "text": "Per eliminar la necessitat d'embeddings d'entrada." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Un sol capçal promitja tots els senyals en una única distribució d'atenció; múltiples capçals especialitzats capturen en paral·lel dependències sintàctiques, semàntiques i posicionals complementàries.",
+      "explanationsIncorrect": {
+        "A": "Softmax funciona perfectament en matrius grans.",
+        "B": "Els Transformers continuen apilant moltes capes.",
+        "D": "Els embeddings d'entrada són sempre necessaris."
+      }
+    },
+    {
+      "id": "m03-03-q04",
+      "module": 3,
+      "conceptId": "m03-03-atencio-self-attention",
+      "lessonRef": "content/module-03/m03-03-atencio-self-attention.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "En la **màscara causal** d'un Decoder Transformer, per què es col·loca **`-∞`** (o `-1e9`) a les posicions futures (`j > i`) **abans** de Softmax, i NO `0`?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè `exp(-∞) = 0`, anul·lant exactament el pes dels tokens futurs; si poséssim `0` abans de Softmax, `exp(0) = 1` assignaria pes positiu als tokens futurs i provocaria fuga d'informació del futur!" },
+        { "key": "B", "text": "Perquè `exp(0) = 0` i `exp(-∞) = 1`." },
+        { "key": "C", "text": "Perquè NumPy no permet posar zeros en matrius triangulars." },
+        { "key": "D", "text": "Per augmentar la temperatura de generació." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Com que Softmax exponencia els logits, només `-∞` produeix probabilitat 0 (`e^(-∞) = 0`), mentre `0` produeix `e^0 = 1`, filtrant informació del futur.",
+      "explanationsIncorrect": {
+        "B": "És exactament a l'inrevés: `exp(0) = 1` i `exp(-∞) = 0`.",
+        "C": "NumPy permet zeros sense cap problema; és una raó estrictament matemàtica de Softmax.",
+        "D": "No té relació amb la temperatura."
+      }
+    },
+    {
+      "id": "m03-03-q05",
+      "module": 3,
+      "conceptId": "m03-03-atencio-self-attention",
+      "lessonRef": "content/module-03/m03-03-atencio-self-attention.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Quin problema pràctic resol **Grouped-Query Attention (GQA)** (usat en Llama 3, Mistral, Qwen i Salamandra) respecte de la Multi-Head Attention (MHA) clàssica?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Elimina la complexitat quadràtica O(L²) en FLOPs." },
+        { "key": "B", "text": "Comparteix un nombre reduït de capçals K i V entre grups de capçals Q, reduint 4×–8× la memòria VRAM i l'amplada de banda de la KV Cache amb qualitat pràcticament equivalent a MHA." },
+        { "key": "C", "text": "Permet prescindir completament de la codificació posicional." },
+        { "key": "D", "text": "Converteix el Decoder en un Encoder bidireccional." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "GQA troba el punt òptim entre MHA (KV Cache enorme) i MQA (un sol parell KV amb lleugera pèrdua de qualitat), permetent contextos més llargs i major concurrència en GPU.",
+      "explanationsIncorrect": {
+        "A": "El producte QKᵀ continua sent O(L²) en FLOPs.",
+        "C": "Continua usant RoPE sobre Q i K.",
+        "D": "Manté l'atenció causal del Decoder."
+      }
+    },
+    {
+      "id": "m03-03-q06",
+      "module": 3,
+      "conceptId": "m03-03-atencio-self-attention",
+      "lessonRef": "content/module-03/m03-03-atencio-self-attention.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Si la longitud del text d'entrada `L` es multiplica per **4** (p. ex., de 4.000 a 16.000 tokens), per quant es multiplica aproximadament el nombre d'operacions de la matriu d'atenció `Q Kᵀ`?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Per 2×." },
+        { "key": "B", "text": "Per 4×." },
+        { "key": "C", "text": "Per 16× (creixement quadràtic O(L²): 4² = 16)." },
+        { "key": "D", "text": "No augmenta gens (O(1))." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Cada token atén a tots els altres tokens de la seqüència, generant una matriu de mida L × L; quadruplicar L multiplica per 4² = 16 el còmput d'atenció.",
+      "explanationsIncorrect": {
+        "A": "Subestima severament el cost quadràtic.",
+        "B": "4× seria el creixement lineal de les projeccions FFN, no de la matriu QKᵀ.",
+        "D": "El cost creix quadràticament amb L."
+      }
+    },
+    {
+      "id": "m03-03-q07",
+      "module": 3,
+      "conceptId": "m03-03-atencio-self-attention",
+      "lessonRef": "content/module-03/m03-03-atencio-self-attention.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "En un Transformer Encoder-Decoder (com en traducció automàtica), d'on provenen `Q`, `K` i `V` dins la capa de ***Cross-Attention*** del Decoder?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Tots tres (Q, K i V) provenen exclusivament del Decoder." },
+        { "key": "B", "text": "Tots tres (Q, K i V) provenen exclusivament de l'Encoder." },
+        { "key": "C", "text": "K prové del Decoder i Q, V provenen de l'Encoder." },
+        { "key": "D", "text": "Les Queries (Q) provenen de la seqüència generada pel Decoder, mentre que les Keys (K) i Values (V) provenen de la sortida de l'Encoder (text origen)." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "En cross-attention, el Decoder 'pregunta' (Q) quines parts de la frase original codificada per l'Encoder (K, V) són més rellevants per generar la següent paraula traduïda.",
+      "explanationsIncorrect": {
+        "A": "Això és la self-attention del Decoder, no la cross-attention.",
+        "B": "Això és la self-attention de l'Encoder.",
+        "C": "És al revés: qui busca informació (Q) és el Decoder, i la font consultada (K, V) és l'Encoder."
+      }
+    },
+    {
+      "id": "m03-03-q08",
+      "module": 3,
+      "conceptId": "m03-03-atencio-self-attention",
+      "lessonRef": "content/module-03/m03-03-atencio-self-attention.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Quina afirmació descriu amb exactitud **FlashAttention**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "És un algorisme *IO-aware* **matemàticament exacte** que calcula l'atenció per blocs dins la SRAM de la GPU amb *online softmax*, reduint la memòria en HBM d'O(L²) a O(L) i accelerant molt l'execució, tot mantenint O(L²) en FLOPs." },
+        { "key": "B", "text": "És una atenció aproximada que descarta aleatòriament el 90% dels tokens per fer els FLOPs lineals." },
+        { "key": "C", "text": "Només serveix per a models Bag of Words en CPU." },
+        { "key": "D", "text": "Substitueix Softmax per la funció ReLU." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "FlashAttention produeix exactament el mateix resultat matemàtic que l'atenció estàndard però sense materialitzar mai la matriu L×L a la memòria HBM lenta de la GPU.",
+      "explanationsIncorrect": {
+        "B": "No descarta tokens ni fa aproximacions (a diferència d'atencions disperses com Longformer).",
+        "C": "Està dissenyat específicament per a la jerarquia de memòria SRAM/HBM de GPUs modernes.",
+        "D": "Calcula exactament Softmax mitjançant l'algorisme d'online softmax."
+      }
+    },
+    {
+      "id": "m03-03-q09",
+      "module": 3,
+      "conceptId": "m03-03-atencio-self-attention",
+      "lessonRef": "content/module-03/m03-03-atencio-self-attention.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En l'exemple Python de la lliçó, què fa la línia `mask = np.triu(np.full((L, L), -1e9), k=1)`?",
+      "codeSnippet": "mask = np.triu(np.full((L, L), -1e9), k=1)\nweights = softmax(scores + mask)",
+      "options": [
+        { "key": "A", "text": "Posa `-1e9` també a la diagonal principal impedint que cada token s'atengui a si mateix." },
+        { "key": "B", "text": "Construeix una matriu triangular superior estricta (`k=1`: zeros a la diagonal i per sota, `-1e9` per sobre de la diagonal), bloquejant l'atenció cap a tokens futurs (`j > i`) mentre permet que cada token s'atengui a si mateix i als anteriors." },
+        { "key": "C", "text": "Multiplica tota la matriu `scores` per `-1e9`." },
+        { "key": "D", "text": "Normalitza les files perquè sumin `L`." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "`k=1` en `np.triu` manté la diagonal principal (j == i) i el triangle inferior (j < i) a `0.0`, i només posa `-1e9` al triangle superior estricte (j > i), que Softmax converteix en `0.0`.",
+      "explanationsIncorrect": {
+        "A": "`k=0` inclouria la diagonal; `k=1` la deixa intacta a `0.0`.",
+        "C": "Se suma (`scores + mask`), no es multiplica, i només afecta j > i.",
+        "D": "Softmax normalitza les files perquè sumin `1.0`."
+      }
+    },
+    {
+      "id": "m03-03-q10",
+      "module": 3,
+      "conceptId": "m03-03-atencio-self-attention",
+      "lessonRef": "content/module-03/m03-03-atencio-self-attention.md",
+      "difficulty": "advanced",
+      "questionType": "normative",
+      "prompt": "Un proveïdor assegura que mostrar el mapa de calor dels pesos d'atenció d'un Transformer compleix automàticament les exigències d'explicabilitat i transparència en decisions administratives. Quina valoració tècnica és correcta?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "És totalment cert: els pesos d'atenció demostren causalment al 100% la raó jurídica d'una predicció." },
+        { "key": "B", "text": "Els pesos d'atenció només existeixen en arbres de decisió." },
+        { "key": "C", "text": "És insuficient: la literatura científica mostra que els pesos d'atenció no equivalen a una explicació causal fiable (diferents distribucions d'atenció poden produir la mateixa sortida); en entorns públics calen cites verificables, proves d'atribució/auditoria i supervisió humana." },
+        { "key": "D", "text": "Els mapes d'atenció estan prohibits pel RGPD." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Tal com van evidenciar Jain & Wallace (2019), l'atenció és un mecanisme intern d'enrutament que passa per múltiples capes i projeccions no lineals, no una explicació causal directa per a un expedient administratiu.",
+      "explanationsIncorrect": {
+        "A": "Sobrestimar l'atenció com a explicació causal és un error tècnic conegut.",
+        "B": "Són propis dels Transformers, no dels arbres.",
+        "D": "No estan prohibits, simplement no basten com a motivació o explicabilitat rigorosa."
+      }
+    }
+  ]
+}

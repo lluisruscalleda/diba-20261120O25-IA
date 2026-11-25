@@ -1,0 +1,46 @@
+{
+  "conceptId": "m03-01-llm",
+  "module": 3,
+  "cards": [
+    {
+      "id": "m03-01-fc01",
+      "module": 3,
+      "conceptId": "m03-01-llm",
+      "front": "Quines són les 3 fases de construcció d'un LLM instructiu?",
+      "back": "1) Preentrenament autosupervisat (next-token prediction); 2) SFT (Supervised Fine-Tuning sobre parells instrucció-resposta); 3) Alineació de preferències (RLHF o DPO).",
+      "tags": ["LLM", "SFT", "DPO"]
+    },
+    {
+      "id": "m03-01-fc02",
+      "module": 3,
+      "conceptId": "m03-01-llm",
+      "front": "Quina diferència hi ha entre Prefill i Decode en la inferència d'un LLM?",
+      "back": "Prefill processa tot el prompt en paral·lel (compute-bound, marca el TTFT). Decode genera tokens un a un autoregressivament (memory-bandwidth bound, marca els tokens/segon).",
+      "tags": ["Prefill", "Decode", "inferència"]
+    },
+    {
+      "id": "m03-01-fc03",
+      "module": 3,
+      "conceptId": "m03-01-llm",
+      "front": "Per què la KV Cache pot superar en VRAM la mida dels pesos d'un LLM?",
+      "back": "Perquè emmagatzema K i V de totes les capes per a cada token actiu i cada usuari concurrent (escala amb batch × context). Es mitiga amb GQA, FP8 KV Cache i PagedAttention (vLLM).",
+      "tags": ["KV Cache", "VRAM", "vLLM"]
+    },
+    {
+      "id": "m03-01-fc04",
+      "module": 3,
+      "conceptId": "m03-01-llm",
+      "front": "Elimina `temperature = 0` les al·lucinacions d'un LLM?",
+      "back": "No! Només elimina l'aleatorietat del mostreig (decodificació greedy). Si el token més probable segons els pesos és incorrecte o inventat, el model al·lucinarà de forma consistent.",
+      "tags": ["temperatura", "al·lucinacions"]
+    },
+    {
+      "id": "m03-01-fc05",
+      "module": 3,
+      "conceptId": "m03-01-llm",
+      "front": "Quin avantatge té DPO sobre RLHF clàssic?",
+      "back": "Optimitza directament l'LLM sobre parells (resposta preferida, rebutjada) amb una pèrdua supervisada, eliminant el Reward Model separat i la inestabilitat de PPO.",
+      "tags": ["DPO", "RLHF"]
+    }
+  ]
+}

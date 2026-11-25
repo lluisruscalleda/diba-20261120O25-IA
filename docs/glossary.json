@@ -239,6 +239,70 @@
       "module": 2,
       "conceptId": "m02-10-cerca-semantica",
       "definition": "Arquitectura Transformer que concatena consulta i document en una única seqüència amb atenció creuada completa per reordenar amb alta precisió els top-K candidats d'una etapa prèvia."
+    },
+    {
+      "id": "kv-cache",
+      "term": "KV Cache (Memòria cau Clau-Valor)",
+      "english": "Key-Value Cache",
+      "module": 3,
+      "conceptId": "m03-01-llm",
+      "definition": "Memòria VRAM en inferència autoregressiva que emmagatzema les projeccions K i V dels tokens previs per evitar recalcular-les a cada pas, creixent linealment amb la longitud de context i el batch size."
+    },
+    {
+      "id": "self-attention",
+      "term": "Autoatenció escalada (Scaled Dot-Product Self-Attention)",
+      "english": "Scaled Dot-Product Self-Attention",
+      "module": 3,
+      "conceptId": "m03-03-atencio-self-attention",
+      "definition": "Mecanisme central del Transformer que relaciona cada token amb tots els altres mitjançant softmax((Q·K^T)/√d_k)·V, on l'escalat 1/√d_k evita la saturació de softmax."
+    },
+    {
+      "id": "rope",
+      "term": "RoPE (Rotary Position Embeddings)",
+      "english": "Rotary Position Embeddings",
+      "module": 3,
+      "conceptId": "m03-02-arquitectura-transformer",
+      "definition": "Tècnica de codificació posicional moderna que aplica rotacions en parells de dimensions sobre Q i K de manera que el seu producte escalar depèn exclusivament de la distància relativa entre tokens."
+    },
+    {
+      "id": "lora",
+      "term": "LoRA (Low-Rank Adaptation)",
+      "english": "Low-Rank Adaptation",
+      "module": 3,
+      "conceptId": "m03-05-fine-tuning",
+      "definition": "Tècnica PEFT de fine-tuning que congela els pesos base W0 i entrena dues matrius de baix rang B·A (r << d), reduint >98% els paràmetres entrenables i permetent fusió sense latència extra."
+    },
+    {
+      "id": "matryoshka-embeddings",
+      "term": "Embeddings Matryoshka (MRL)",
+      "english": "Matryoshka Representation Learning",
+      "module": 3,
+      "conceptId": "m03-06-embeddings-rag",
+      "definition": "Models d'embeddings entrenats perquè els primers prefixos de dimensions (p. ex. 256 o 512 sobre 1024) concentrin la màxima informació semàntica, permetent truncar vectors per estalviar RAM i latència."
+    },
+    {
+      "id": "hnsw",
+      "term": "HNSW (Índex vectorial en graf multicapa)",
+      "english": "Hierarchical Navigable Small World",
+      "module": 3,
+      "conceptId": "m03-07-bases-dades-vectorials",
+      "definition": "Índex aproximat ANN basat en un graf jeràrquic navegable en O(log N) que ofereix alt Recall i insercions incrementals, controlat pels hiperparàmetres M, efConstruction i efSearch."
+    },
+    {
+      "id": "ragas",
+      "term": "Marc RAGAS (Avaluació de RAG)",
+      "english": "Retrieval-Augmented Generation Assessment",
+      "module": 3,
+      "conceptId": "m03-08-rag",
+      "definition": "Conjunt de mètriques per diagnosticar un RAG per separat: Context Recall i Context Precision (Retriever) enfront de Faithfulness i Answer Relevance (Generator)."
+    },
+    {
+      "id": "react-agent",
+      "term": "Patró ReAct (Agents d'IA)",
+      "english": "Reason + Act Agent Pattern",
+      "module": 3,
+      "conceptId": "m03-09-agents-ia",
+      "definition": "Bucle d'agent que alterna passos de raonament (Thought), proposta d'eina (Action / Tool Calling) i lectura del resultat retornat pel host (Observation), subjecte a mínim privilegi i HITL."
     }
   ]
 }

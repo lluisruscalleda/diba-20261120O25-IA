@@ -1,0 +1,236 @@
+{
+  "conceptId": "m03-08-rag",
+  "module": 3,
+  "questions": [
+    {
+      "id": "m03-08-q01",
+      "module": 3,
+      "conceptId": "m03-08-rag",
+      "lessonRef": "content/module-03/m03-08-rag.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quin problema fonamental dels LLMs resol l'arquitectura **RAG (*Retrieval-Augmented Generation*)** en una administració pública?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Permet actualitzar la normativa vigent sense reentrenar l'LLM, fonamentar les respostes en documents verificables amb cites i fer complir permisos d'accés (ACL) per document." },
+        { "key": "B", "text": "Elimina la necessitat de tenir un tokenitzador." },
+        { "key": "C", "text": "Converteix l'LLM en un model de clustering no supervisat." },
+        { "key": "D", "text": "Redueix automàticament la mida dels pesos del model a 1 MB." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "RAG separa el coneixement dinàmic/privat (a la base documental indexada) de la capacitat lingüística (a l'LLM), aportant actualització instantània, cites auditables i seguretat ACL.",
+      "explanationsIncorrect": {
+        "B": "Tant el model d'embeddings com l'LLM continuen utilitzant tokenitzadors.",
+        "C": "RAG és un sistema de recuperació i generació, no clustering.",
+        "D": "No modifica els pesos de l'LLM."
+      }
+    },
+    {
+      "id": "m03-08-q02",
+      "module": 3,
+      "conceptId": "m03-08-rag",
+      "lessonRef": "content/module-03/m03-08-rag.md",
+      "difficulty": "basic",
+      "questionType": "metrics",
+      "prompt": "En el marc d'avaluació **RAGAS**, què mesura exactament la mètrica ***Faithfulness* (Fidelitat)**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "La velocitat de l'índex HNSW en mil·lisegons." },
+        { "key": "B", "text": "El grau en què totes les afirmacions de la resposta generada per l'LLM es dedueixen exclusivament dels fragments recuperats (sense inventar ni contradir el context)." },
+        { "key": "C", "text": "El percentatge de documents derogats presents al disc." },
+        { "key": "D", "text": "El nombre de tokens del *system prompt*." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Faithfulness avalua el *Generator* mesurant si la resposta és fidel al context lliurat (detectant al·lucinacions extrínseques o intrínseques).",
+      "explanationsIncorrect": {
+        "A": "Això és una mètrica de latència d'infraestructura.",
+        "C": "No mesura l'estat del corpus a disc.",
+        "D": "No mesura la longitud del prompt."
+      }
+    },
+    {
+      "id": "m03-08-q03",
+      "module": 3,
+      "conceptId": "m03-08-rag",
+      "lessonRef": "content/module-03/m03-08-rag.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina estratègia de ***chunking*** sol donar els millors resultats en documents jurídics i normatius (ordenances, lleis, plecs de contractació)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Tallar estrictament cada 100 caràcters encara que es trenquin paraules i xifres." },
+        { "key": "B", "text": "Posar tot el BOPB sencer d'un any en un únic chunk." },
+        { "key": "C", "text": "Chunking estructural respectant les fronteres naturals (Títols, Capítols, Articles, Taules) mesurat en tokens, enriquit amb capçalera contextual i opcionalment amb el patró *Parent-Document*." },
+        { "key": "D", "text": "Eliminar totes les taules i números d'article abans d'indexar." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Respectar la jerarquia normativa (articles sencers i taules íntegres) evita perdre excepcions, condicions o xifres crítiques.",
+      "explanationsIncorrect": {
+        "A": "Talls massa petits destrueixen el significat jurídic i trenquen xifres/articles.",
+        "B": "Superaria la finestra de l'encoder i diluiria completament el vector.",
+        "D": "Les taules i números d'article contenen sovint les dades més crítiques (barems, imports, terminis)."
+      }
+    },
+    {
+      "id": "m03-08-q04",
+      "module": 3,
+      "conceptId": "m03-08-rag",
+      "lessonRef": "content/module-03/m03-08-rag.md",
+      "difficulty": "intermediate",
+      "questionType": "metrics",
+      "prompt": "Un sistema RAG obté en l'avaluació RAGAS: `Context Recall = 0,55`, `Context Precision = 0,60` i `Faithfulness = 0,95`. On és el coll d'ampolla principal?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "En el pipeline d'ingestió i el **Retriever** (parseig, chunking, cerca híbrida/reranker), ja que gairebé la meitat de les vegades la evidència no arriba a l'LLM; en canvi, el Generator és molt fidel (`0,95`)." },
+        { "key": "B", "text": "Exclusivament en la temperatura de l'LLM." },
+        { "key": "C", "text": "L'LLM al·lucina constantment i cal substituir-lo immediatament per un model 10 vegades més gran." },
+        { "key": "D", "text": "El sistema ja funciona perfectament perquè Faithfulness supera 0,90." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Faithfulness = 0,95 indica que el generador és fiable respecte del que rep; el problema real és que Context Recall (0,55) demostra que el retriever no troba els fragments adequats.",
+      "explanationsIncorrect": {
+        "B": "Ajustar la temperatura de l'LLM no arregla una recuperació deficient.",
+        "C": "Un Faithfulness de 0,95 descarta que les al·lucinacions del generador siguin el problema principal.",
+        "D": "Amb Context Recall = 0,55, gairebé la meitat de consultes queden sense evidència o incompletes."
+      }
+    },
+    {
+      "id": "m03-08-q05",
+      "module": 3,
+      "conceptId": "m03-08-rag",
+      "lessonRef": "content/module-03/m03-08-rag.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "En què consisteix el patró de *chunking* ***Parent-Document* (*Small-to-Big*)** en un RAG jurídic?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Indexar només el títol del PDF i descartar el cos del text." },
+        { "key": "B", "text": "Indexar i cercar sobre fragments petits i precisos (fills de ~150–250 tokens), però passar a l'LLM el bloc pare complet (p. ex., l'article sencer o la secció completa) perquè tingui totes les excepcions i condicions." },
+        { "key": "C", "text": "Passar sempre tots els documents de la base de dades a l'LLM." },
+        { "key": "D", "text": "Convertir el text en imatges abans de cercar." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Small-to-Big desacobla la unitat òptima de recuperació (petita i focalitzada) de la unitat òptima de generació (prou àmplia per no tallar excepcions ni apartats d'un article).",
+      "explanationsIncorrect": {
+        "A": "El cos del text és indispensable per respondre.",
+        "C": "Això no és RAG i saturaria la finestra de context.",
+        "D": "No converteix el text a imatges."
+      }
+    },
+    {
+      "id": "m03-08-q06",
+      "module": 3,
+      "conceptId": "m03-08-rag",
+      "lessonRef": "content/module-03/m03-08-rag.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "En un assistent RAG conversacional multi-torn, l'usuari pregunta primer «Quina bonificació d'IBI tenen les famílies nombroses?» i al segon torn escriu «I fins quan es pot demanar?». Quina etapa del RAG evita que el *retriever* busqui només «fins quan es pot demanar» sense saber que parla de l'IBI?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "La quantització INT4 dels pesos." },
+        { "key": "B", "text": "El suavitzat de Laplace." },
+        { "key": "C", "text": "***Query Rewriting* (reescriptura contextual de la consulta)**, que transforma la pregunta dependent de l'historial en una consulta autònoma («Fins quan es pot demanar la bonificació de l'IBI per família nombrosa?») abans d'invocar BM25 i els embeddings." },
+        { "key": "D", "text": "La normalització L2 del vector." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Sense query rewriting, cercar una frase anafòrica com 'I fins quan es pot demanar?' retorna terminis de qualsevol tràmit aleatori en lloc de l'IBI.",
+      "explanationsIncorrect": {
+        "A": "La quantització no resol referències conversacionals.",
+        "B": "El suavitzat de Laplace és propi de Naive Bayes.",
+        "D": "Normalitzar el vector no hi afegeix les paraules absents de la consulta."
+      }
+    },
+    {
+      "id": "m03-08-q07",
+      "module": 3,
+      "conceptId": "m03-08-rag",
+      "lessonRef": "content/module-03/m03-08-rag.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Quin avantatge té aplicar un **llindar mínim d'evidència calibrat a la sortida del *reranker*** (abstenció primerenca) abans d'invocar l'LLM generador?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Obliga l'LLM a inventar una resposta amb la seva memòria interna." },
+        { "key": "B", "text": "Augmenta la latència i el cost de tokens." },
+        { "key": "C", "text": "Elimina la necessitat de tenir un índex BM25." },
+        { "key": "D", "text": "Quan cap document recuperat supera el llindar de rellevància (p. ex. consultes fora de domini o sense normativa vigent), retorna immediatament una abstenció segura («No consta evidència»), estalviant còmput d'LLM i reduint dràsticament el risc d'al·lucinació." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Evitar passar fragments irrellevants a l'LLM talla d'arrel les al·lucinacions forçades en consultes sense resposta i redueix cost i latència.",
+      "explanationsIncorrect": {
+        "A": "Al contrari, impedeix que l'LLM especuli sense evidència.",
+        "B": "Redueix cost i latència en evitar crides inútils a l'LLM.",
+        "C": "BM25 continua formant part de la cerca híbrida prèvia al reranker."
+      }
+    },
+    {
+      "id": "m03-08-q08",
+      "module": 3,
+      "conceptId": "m03-08-rag",
+      "lessonRef": "content/module-03/m03-08-rag.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En l'exemple Python de la lliçó, quin risc específic detecta la funció `verificar_cites(resposta, chunks_recuperats)`?",
+      "codeSnippet": "valids = {str(c[\"chunk_id\"]) for c in chunks_recuperats}\ncitats = re.findall(r\"\\[([A-Z0-9_-]+#c\\d+)\\]\", resposta)\ninvalids = [cid for cid in citats if cid not in valids]",
+      "options": [
+        { "key": "A", "text": "Detecta tant la **manca total de cites obligatòries** com les **cites al·lucinades o fora de context** (quan l'LLM inventa un codi `[OF99-2026#c9]` que no figurava entre els fragments realment recuperats), permetent bloquejar o reintentar la resposta abans de mostrar-la." },
+        { "key": "B", "text": "Comprova la velocitat de la connexió a Internet." },
+        { "key": "C", "text": "Verifica l'ortografia catalana de tota la frase." },
+        { "key": "D", "text": "Comprova si l'usuari té permís per iniciar sessió." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Una validació determinista post-generació de cites intercepta immediatament citacions inventades o respostes sense font abans que arribin a l'usuari final.",
+      "explanationsIncorrect": {
+        "B": "És una verificació textual local sobre els chunk_ids.",
+        "C": "No fa correcció ortogràfica.",
+        "D": "El control d'autenticació i ACL es fa abans (en pre-filtratge)."
+      }
+    },
+    {
+      "id": "m03-08-q09",
+      "module": 3,
+      "conceptId": "m03-08-rag",
+      "lessonRef": "content/module-03/m03-08-rag.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "Per què un **parseig deficient de PDFs amb taules** (p. ex., taules de barems de subvencions o tarifes tributàries convertides en línies soltes sense separadors de columna) destrueix la qualitat d'un sistema RAG fins i tot amb el millor LLM del mercat?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè els LLMs no poden llegir caràcters numèrics." },
+        { "key": "B", "text": "Perquè perd la correspondència fila-columna (associant un tram d'ingressos amb un percentatge erroni), corromp tant l'embedding com el context passat a l'LLM i indueix respostes numèriques falses amb aparença d'autoritat (*garbage in, garbage out*)." },
+        { "key": "C", "text": "Perquè els PDFs amb taules no es poden emmagatzemar a PostgreSQL." },
+        { "key": "D", "text": "Perquè BM25 ignora totes les taules en Markdown." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "En documents públics, la informació més crítica (tarifes, barems, terminis, lots) viu sovint dins taules; preservar l'estructura tabular (Markdown/HTML) a la fase d'ingestió és un dels factors d'impacte més grans d'un RAG.",
+      "explanationsIncorrect": {
+        "A": "Els LLMs llegeixen perfectament nombres dins taules Markdown ben estructurades.",
+        "C": "PostgreSQL emmagatzema qualsevol text/JSON/Markdown.",
+        "D": "BM25 indexa perfectament el text dins taules Markdown."
+      }
+    },
+    {
+      "id": "m03-08-q10",
+      "module": 3,
+      "conceptId": "m03-08-rag",
+      "lessonRef": "content/module-03/m03-08-rag.md",
+      "difficulty": "advanced",
+      "questionType": "normative",
+      "prompt": "En un RAG corporatiu que indexa expedients interns de diversos serveis (Serveis Socials, Recursos Humans, Urbanisme), com s'evita que un empleat d'Urbanisme obtingui dades d'un expedient confidencial de Serveis Socials a través d'una consulta a l'assistent?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Afegint al system prompt «Si us plau, no diguis coses secretes a gent d'Urbanisme»." },
+        { "key": "B", "text": "Baixant la temperatura de l'LLM a 0,0." },
+        { "key": "C", "text": "Propagant la identitat autenticada i els rols/grups de l'usuari (OIDC/LDAP) com a **pre-filtre determinista d'ACL** obligatori sobre l'índex BM25 i l'índex vectorial abans de recuperar cap fragment, impedint físicament que cap document no autoritzat entri al context de l'LLM." },
+        { "key": "D", "text": "Demanant als usuaris que no preguntin sobre altres departaments." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "La seguretat d'accés (ENS / RGPD) s'ha d'aplicar deterministament a la capa de dades i recuperació (pre-filtre ACL), mai delegada a instruccions en llenguatge natural dins el prompt (vulnerables a prompt injection).",
+      "explanationsIncorrect": {
+        "A": "Si el fragment confidencial entra al context de l'LLM, un prompt injection el pot exfiltrar fàcilment.",
+        "B": "La temperatura no aplica control d'accés.",
+        "D": "La seguretat no pot dependre de la bona voluntat de l'usuari."
+      }
+    }
+  ]
+}

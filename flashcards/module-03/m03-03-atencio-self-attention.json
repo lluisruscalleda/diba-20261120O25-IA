@@ -1,0 +1,46 @@
+{
+  "conceptId": "m03-03-atencio-self-attention",
+  "module": 3,
+  "cards": [
+    {
+      "id": "m03-03-fc01",
+      "module": 3,
+      "conceptId": "m03-03-atencio-self-attention",
+      "front": "Quina és la fórmula de Scaled Dot-Product Attention i per què es divideix per √d_k?",
+      "back": "Attention(Q,K,V) = softmax(Q·Kᵀ / √d_k + M)·V. Dividir per √d_k manté la variància dels logits ~1, evitant la saturació de Softmax i l'esvaïment de gradients quan d_k és gran.",
+      "tags": ["self-attention", "matemàtiques"]
+    },
+    {
+      "id": "m03-03-fc02",
+      "module": 3,
+      "conceptId": "m03-03-atencio-self-attention",
+      "front": "Per què la màscara causal posa −∞ (i no 0) sobre la diagonal abans de Softmax?",
+      "back": "Perquè exp(−∞) = 0 (pes nul per als tokens futurs), mentre que exp(0) = 1 assignaria pes positiu al futur provocant fuga d'informació.",
+      "tags": ["màscara causal", "Decoder"]
+    },
+    {
+      "id": "m03-03-fc03",
+      "module": 3,
+      "conceptId": "m03-03-atencio-self-attention",
+      "front": "Quina diferència hi ha entre MHA, GQA i MQA?",
+      "back": "MHA: 1 parell KV per cada Q. MQA: 1 sol parell KV compartit per tots els Q (mínima VRAM, menor qualitat). GQA: grups de Q comparteixen parells KV → 4×–8× menys KV Cache amb qualitat d'MHA.",
+      "tags": ["GQA", "MHA", "KV Cache"]
+    },
+    {
+      "id": "m03-03-fc04",
+      "module": 3,
+      "conceptId": "m03-03-atencio-self-attention",
+      "front": "Què redueix FlashAttention i què NO redueix?",
+      "back": "És exacte i IO-aware (blocs en SRAM + online softmax): redueix la memòria HBM d'O(L²) a O(L) i accelera 2–4×, però els FLOPs continuen sent O(L²).",
+      "tags": ["FlashAttention", "complexitat"]
+    },
+    {
+      "id": "m03-03-fc05",
+      "module": 3,
+      "conceptId": "m03-03-atencio-self-attention",
+      "front": "Són els pesos d'atenció una explicació causal fiable d'una decisió d'un Transformer?",
+      "back": "No per si sols: diferents patrons d'atenció poden produir la mateixa sortida. En l'Administració calen cites verificables (RAG), avaluacions d'auditoria i supervisió humana.",
+      "tags": ["explicabilitat", "atenció"]
+    }
+  ]
+}

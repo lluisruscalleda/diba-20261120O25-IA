@@ -1,0 +1,46 @@
+{
+  "conceptId": "m03-05-fine-tuning",
+  "module": 3,
+  "cards": [
+    {
+      "id": "m03-05-fc01",
+      "module": 3,
+      "conceptId": "m03-05-fine-tuning",
+      "front": "Quina és la fórmula de LoRA, per què B s'inicialitza a 0 i com s'aconsegueix zero-latency?",
+      "back": "W = W₀ + (α/r)·B·A amb W₀ congelat i r << d,k (<1-2% paràmetres). B=0 garanteix ΔW=0 al pas 0 sense pertorbar el model base. En producció es fusiona W_merged = W₀ + (α/r)BA sense latència extra.",
+      "tags": ["LoRA", "PEFT"]
+    },
+    {
+      "id": "m03-05-fc02",
+      "module": 3,
+      "conceptId": "m03-05-fine-tuning",
+      "front": "Què afegeix QLoRA sobre LoRA?",
+      "back": "Quantitza els pesos base congelats W₀ a 4-bit NormalFloat (NF4) amb doble quantització i paged optimizers, entrenant els adaptadors LoRA en BF16 (permet entrenar un 7B–8B en 1 GPU de 16 GB).",
+      "tags": ["QLoRA", "quantització"]
+    },
+    {
+      "id": "m03-05-fc03",
+      "module": 3,
+      "conceptId": "m03-05-fine-tuning",
+      "front": "Quan escollir RAG vs. Fine-Tuning?",
+      "back": "RAG: coneixement vigent/canviant, cites verificables i control d'accés ACL. Fine-Tuning: estil administratiu català, lectura fàcil, formats complexos i destil·lació per reduir cost/latència.",
+      "tags": ["RAG vs Fine-Tuning", "arquitectura"]
+    },
+    {
+      "id": "m03-05-fc04",
+      "module": 3,
+      "conceptId": "m03-05-fine-tuning",
+      "front": "Per què la quantització INT4 (AWQ/GGUF) accelera també el Decode d'un LLM?",
+      "back": "Perquè el Decode és memory-bandwidth bound: llegir pesos de 4 bits en lloc de 16 bits transfereix ~4× menys bytes des de VRAM per cada token generat.",
+      "tags": ["quantització", "AWQ", "GGUF"]
+    },
+    {
+      "id": "m03-05-fc05",
+      "module": 3,
+      "conceptId": "m03-05-fine-tuning",
+      "front": "Quin risc RGPD prohibeix fer fine-tuning amb expedients reals sense anonimitzar?",
+      "back": "La memorització i filtració de dades personals dins els pesos neuronals, que fa pràcticament inviable atendre el dret de supressió (art. 17 RGPD) sense reentrenar el model complet.",
+      "tags": ["RGPD", "oblit catastròfic"]
+    }
+  ]
+}

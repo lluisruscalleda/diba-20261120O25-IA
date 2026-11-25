@@ -1,0 +1,236 @@
+{
+  "conceptId": "m03-05-fine-tuning",
+  "module": 3,
+  "questions": [
+    {
+      "id": "m03-05-q01",
+      "module": 3,
+      "conceptId": "m03-05-fine-tuning",
+      "lessonRef": "content/module-03/m03-05-fine-tuning.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Com redueix **LoRA (*Low-Rank Adaptation*)** dràsticament el nombre de paràmetres entrenables durant el *fine-tuning* d'un LLM?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Elimina el 95% de les capes del Transformer permanentment." },
+        { "key": "B", "text": "Congela els pesos preentrenats `W₀` i aprèn únicament dues matrius petites `A` i `B` de rang baix `r` (`ΔW = (α/r)·B·A`), entrenant normalment menys del 2% dels paràmetres." },
+        { "key": "C", "text": "Substitueix el Transformer per un classificador Naive Bayes." },
+        { "key": "D", "text": "Entrena el model sense funció de pèrdua." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "La descomposició de rang baix `d×r` + `r×k` (amb r << d, k) ocupa una fracció minúscula de `d×k` i manté congelada la matriu original `W₀`.",
+      "explanationsIncorrect": {
+        "A": "Conserva totes les capes originals intactes.",
+        "C": "Continua sent un Transformer complet.",
+        "D": "S'entrena amb la pèrdua estàndard (Cross-Entropy / DPO) via retropropagació cap a A i B."
+      }
+    },
+    {
+      "id": "m03-05-q02",
+      "module": 3,
+      "conceptId": "m03-05-fine-tuning",
+      "lessonRef": "content/module-03/m03-05-fine-tuning.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina és la regla d'or per decidir entre **RAG** i **Fine-Tuning** en un projecte d'IA de l'Administració pública?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "RAG per a coneixement factual dinàmic, normativa vigent, cites verificables i permisos ACL; Fine-Tuning per a estil, format, comportament, domini lingüístic i destil·lació de cost/latència." },
+        { "key": "B", "text": "Fine-Tuning per a ordenances que canvien cada mes i RAG només per a canviar el to de redacció." },
+        { "key": "C", "text": "Sempre fer Full Fine-Tuning des del primer dia abans de provar un prompt." },
+        { "key": "D", "text": "RAG i Fine-Tuning són mútuament incompatibles i mai no es poden combinar." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "RAG gestiona coneixement actualitzable, citable i subjecte a ACL; Fine-Tuning modelitza hàbits, estil institucional, formats i eficiència. A més, es poden combinar.",
+      "explanationsIncorrect": {
+        "B": "És exactament al revés.",
+        "C": "Sempre s'ha de començar per Prompting i RAG com a baseline.",
+        "D": "Es combinen sovint amb excel·lents resultats (p. ex. LoRA per citar i abstenir-se millor dins d'un RAG)."
+      }
+    },
+    {
+      "id": "m03-05-q03",
+      "module": 3,
+      "conceptId": "m03-05-fine-tuning",
+      "lessonRef": "content/module-03/m03-05-fine-tuning.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Què és l'**oblit catastròfic (*catastrophic forgetting*)** durant un procés de *fine-tuning*?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "L'esborrat accidental del fitxer del dataset al disc dur." },
+        { "key": "B", "text": "Que la GPU s'apagui per sobreescalfament." },
+        { "key": "C", "text": "La degradació o pèrdua de capacitats generals, coneixement lingüístic o alineació de seguretat del model preentrenat en sobreajustar-lo massa a un dataset especialitzat." },
+        { "key": "D", "text": "El límit de la finestra de context de 512 tokens." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Actualitzar excessivament els pesos sobre un domini estret sobrescriu representacions generals; es mitiga amb LoRA, taxa d'aprenentatge baixa, poques èpoques i barreja de dades generals (replay).",
+      "explanationsIncorrect": {
+        "A": "No és un error del sistema de fitxers.",
+        "B": "No és un problema de maquinari.",
+        "D": "No té relació amb la finestra de context."
+      }
+    },
+    {
+      "id": "m03-05-q04",
+      "module": 3,
+      "conceptId": "m03-05-fine-tuning",
+      "lessonRef": "content/module-03/m03-05-fine-tuning.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "En **LoRA**, per què la matriu **`B` s'inicialitza a zeros** (mentre `A` s'inicialitza amb soroll gaussià petit)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Per garantir que a l'inici de l'entrenament `ΔW = B·A = 0` i el model comenci comportant-se exactament igual que el model base preentrenat sense pertorbacions aleatòries, mentre `A ≠ 0` permet que el gradient actualitzi `B` des del primer pas." },
+        { "key": "B", "text": "Perquè si `B = 0`, l'adaptador queda permanentment igual a zero i no aprèn mai res." },
+        { "key": "C", "text": "Per reduir el rang `r` a 0." },
+        { "key": "D", "text": "Per quantitzar automàticament `W₀` a 4 bits." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Inicialitzar B=0 i A~N(0, σ²) manté intacte el punt de partida del model preentrenat (ΔW=0) i evita el bloqueig simètric que passaria si tant A com B fossin zero.",
+      "explanationsIncorrect": {
+        "B": "Com que A ≠ 0, el gradient ∂L/∂B = (∂L/∂h)·(Ax)ᵀ és no nul des de la primera iteració!",
+        "C": "El rang `r` continua sent el configurat (p. ex. 16).",
+        "D": "No té relació amb la quantització NF4."
+      }
+    },
+    {
+      "id": "m03-05-q05",
+      "module": 3,
+      "conceptId": "m03-05-fine-tuning",
+      "lessonRef": "content/module-03/m03-05-fine-tuning.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Quina innovació clau afegeix **QLoRA** respecte de LoRA estàndard per fer viable el *fine-tuning* d'un LLM 7B–8B en una sola GPU de 16 GB?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Elimina el mecanisme d'atenció durant l'entrenament." },
+        { "key": "B", "text": "Emmagatzema els pesos base congelats `W₀` quantitzats en **4-bit NormalFloat (NF4)** amb doble quantització i *paged optimizers*, mentre entrena els adaptadors LoRA en BF16." },
+        { "key": "C", "text": "Entrena el model únicament amb 1 exemple." },
+        { "key": "D", "text": "Substitueix Python per expressions regulars." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Quantitzar la base congelada a 4 bits redueix ~4× la VRAM base, i els paged optimizers gestionen pics de memòria d'activacions permetent entrenar models grans en maquinari modest.",
+      "explanationsIncorrect": {
+        "A": "L'arquitectura Transformer i l'atenció es mantenen completes.",
+        "C": "Pot entrenar sobre milers d'exemples normalment.",
+        "D": "És un mètode de Deep Learning sobre PyTorch/bitsandbytes."
+      }
+    },
+    {
+      "id": "m03-05-q06",
+      "module": 3,
+      "conceptId": "m03-05-fine-tuning",
+      "lessonRef": "content/module-03/m03-05-fine-tuning.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Com aconsegueix un adaptador **LoRA** tenir **zero sobrecàrrega de latència en inferència** un cop finalitzat l'entrenament?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Descartant les matrius `A` i `B` abans de desplegar." },
+        { "key": "B", "text": "Executant `A` i `B` en un servidor separat per HTTP." },
+        { "key": "C", "text": "Fusionant linealment l'adaptador dins els pesos base abans del desplegament (`W_merged = W₀ + (α/r)·B·A`), de manera que la inferència executa exactament la mateixa única multiplicació matricial que el model original." },
+        { "key": "D", "text": "Convertint el model a TF-IDF." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Per linealitat, `W₀x + (α/r)BAx = (W₀ + (α/r)BA)x`; precomputar `W_merged` elimina completament la branca paral·lela en producció.",
+      "explanationsIncorrect": {
+        "A": "Descartar A i B eliminaria tot el que s'ha après.",
+        "B": "Afegiria latència de xarxa en lloc d'eliminar-la.",
+        "D": "Continua sent un Transformer."
+      }
+    },
+    {
+      "id": "m03-05-q07",
+      "module": 3,
+      "conceptId": "m03-05-fine-tuning",
+      "lessonRef": "content/module-03/m03-05-fine-tuning.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Per què **MAI no s'ha de fer *fine-tuning* d'un LLM amb expedients reals que continguin dades personals sense anonimitzar**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè els noms propis provoquen errors de sintaxi en PyTorch." },
+        { "key": "B", "text": "Perquè els LLMs no saben llegir números de DNI." },
+        { "key": "C", "text": "Perquè augmenta la mida del fitxer de pesos en 100 GB." },
+        { "key": "D", "text": "Perquè el model pot memoritzar i reproduir (filtrar) dades personals del conjunt d'entrenament, i un cop incrustades en els pesos neuronals resulta pràcticament inviable exercir el dret de supressió (art. 17 RGPD) sense reentrenar." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "A diferència d'una base de dades o índex RAG on es pot suprimir un document puntualment, les dades memoritzades en pesos neuronals no es poden esborrar selectivament de forma fiable.",
+      "explanationsIncorrect": {
+        "A": "PyTorch processa qualsevol cadena de tokens sense error.",
+        "B": "Els LLMs llegeixen i memoritzen fàcilment seqüències alfanumèriques com DNIs.",
+        "C": "El nombre de pesos del model és fix independentment del dataset."
+      }
+    },
+    {
+      "id": "m03-05-q08",
+      "module": 3,
+      "conceptId": "m03-05-fine-tuning",
+      "lessonRef": "content/module-03/m03-05-fine-tuning.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En una capa lineal de dimensió `4096 × 4096`, quants paràmetres entrenables introdueix un adaptador **LoRA amb rang `r = 16`**?",
+      "codeSnippet": "W0: (4096, 4096) -> 16.777.216 params\nA : (16, 4096), B : (4096, 16)",
+      "options": [
+        { "key": "A", "text": "`131.072` paràmetres (`16×4096 + 4096×16`), equivalent a només el `0,78%` dels paràmetres originals." },
+        { "key": "B", "text": "`16.777.216` paràmetres (100% del total)." },
+        { "key": "C", "text": "`256` paràmetres (`16 × 16`)." },
+        { "key": "D", "text": "`8.388.608` paràmetres (50% del total)." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "A té 16 × 4096 = 65.536 paràmetres i B té 4096 × 16 = 65.536 paràmetres → total 131.072 / 16.777.216 = 0,78125% (reducció 128×!).",
+      "explanationsIncorrect": {
+        "B": "Això seria Full Fine-Tuning sense LoRA.",
+        "C": "Omet la dimensió 4096 de les dues matrius.",
+        "D": "50% correspondria a un rang gegant `r = 1024`."
+      }
+    },
+    {
+      "id": "m03-05-q09",
+      "module": 3,
+      "conceptId": "m03-05-fine-tuning",
+      "lessonRef": "content/module-03/m03-05-fine-tuning.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Per què quantitzar els pesos d'un LLM de `FP16` a `INT4` (p. ex. AWQ o GGUF `Q4_K_M`) no només redueix ~3,5–4× la VRAM, sinó que també **accelera la velocitat de generació (tokens/segon)** durant el *Decode*?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè redueix la longitud de les respostes a la quarta part." },
+        { "key": "B", "text": "Perquè la fase de *Decode* autoregressiva està limitada per l'amplada de banda de memòria VRAM (*memory-bandwidth bound*): llegir pesos de 4 bits en lloc de 16 bits transfereix ~4× menys bytes des de VRAM als nuclis de càlcul per cada token generat." },
+        { "key": "C", "text": "Perquè elimina la KV Cache completament." },
+        { "key": "D", "text": "Perquè converteix el model en un Encoder bidireccional." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "En Decode, cada nou token exigeix llegir tots els pesos actius des de la memòria HBM de la GPU; reduir la mida en bytes dels pesos incrementa directament els tokens/segon.",
+      "explanationsIncorrect": {
+        "A": "Genera respostes de longitud equivalent, simplement més ràpid.",
+        "C": "La KV Cache continua existint (tot i que també es pot quantitzar a FP8).",
+        "D": "Conserva la mateixa arquitectura Decoder-only."
+      }
+    },
+    {
+      "id": "m03-05-q10",
+      "module": 3,
+      "conceptId": "m03-05-fine-tuning",
+      "lessonRef": "content/module-03/m03-05-fine-tuning.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Quin avantatge operatiu ofereix el servei ***Multi-LoRA*** (p. ex. en vLLM) per a una administració amb múltiples casos d'ús especialitzats (lectura fàcil, extracció JSON, redacció administrativa)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Requereix comprar una GPU dedicada per a cada cas d'ús." },
+        { "key": "B", "text": "Impedeix fer servir RAG conjuntament." },
+        { "key": "C", "text": "Permet carregar en VRAM **un únic model base** i intercanviar dinàmicament per petició múltiples adaptadors LoRA lleugers (~20–100 MB cadascun), maximitzant l'aprofitament del maquinari GPU públic." },
+        { "key": "D", "text": "Augmenta el consum elèctric multiplicant-lo pel nombre d'adaptadors." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "En lloc de mantenir 4 còpies completes de 15 GB en VRAM (60 GB), Multi-LoRA carrega 1 sola base de 15 GB + 4 adaptadors de ~50 MB, servint peticions de tots 4 casos d'ús dins el mateix servidor.",
+      "explanationsIncorrect": {
+        "A": "Precisament evita comprar una GPU separada per cada model especialitzat.",
+        "B": "És 100% compatible amb RAG.",
+        "D": "Al contrari, consolida càrregues en menys GPUs reduint consum i cost."
+      }
+    }
+  ]
+}

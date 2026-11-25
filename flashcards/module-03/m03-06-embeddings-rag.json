@@ -1,0 +1,46 @@
+{
+  "conceptId": "m03-06-embeddings-rag",
+  "module": 3,
+  "cards": [
+    {
+      "id": "m03-06-fc01",
+      "module": 3,
+      "conceptId": "m03-06-embeddings-rag",
+      "front": "Per què són obligatoris els prefixos `\"query: \"` i `\"passage: \"` en models com `multilingual-e5`?",
+      "back": "Perquè s'entrenen per a recuperació asimètrica (consulta curta vs. passatge llarg); ometre els prefixos desajusta l'espai vectorial i fa caure silenciosament el Recall@k.",
+      "tags": ["recuperació asimètrica", "E5"]
+    },
+    {
+      "id": "m03-06-fc02",
+      "module": 3,
+      "conceptId": "m03-06-embeddings-rag",
+      "front": "Què és Matryoshka Representation Learning (MRL) i què cal fer després de truncar un vector?",
+      "back": "Tècnica d'entrenament que concentra el màxim senyal a les primeres dimensions, permetent truncar (ex. 1024 → 256) sense reentrenar. Després de truncar, cal RE-NORMALITZAR L2 el subvector!",
+      "tags": ["Matryoshka", "compressió"]
+    },
+    {
+      "id": "m03-06-fc03",
+      "module": 3,
+      "conceptId": "m03-06-embeddings-rag",
+      "front": "Què és el Contextual Chunking (enriquiment de capçalera) abans d'embeure documents?",
+      "back": "Anteposar a cada fragment la seva ruta jeràrquica (nom de l'ordenança, any de vigència, capítol) abans de generar l'embedding, evitant confondre fragments orfes ('Article 8...') entre normes diferents.",
+      "tags": ["Contextual Chunking", "RAG"]
+    },
+    {
+      "id": "m03-06-fc04",
+      "module": 3,
+      "conceptId": "m03-06-embeddings-rag",
+      "front": "Com funciona la quantització vectorial INT8 / binària amb *oversampling + rescoring*?",
+      "back": "Redueix 4× (INT8) o 32× (binària) la RAM de l'índex ANN, recupera un top-100 ampli ràpidament i recalcula la similitud exacta en FP32 des de disc sobre aquells 100 candidats.",
+      "tags": ["quantització vectorial", "rescoring"]
+    },
+    {
+      "id": "m03-06-fc05",
+      "module": 3,
+      "conceptId": "m03-06-embeddings-rag",
+      "front": "Com es migra de model d'embeddings en producció sense tallar el servei?",
+      "back": "Estratègia Blue/Green: crear un índex paral·lel `index_v2` amb tots els documents re-embeguts, validar sobre golden set, recalibrar llindars, commutar l'àlies atòmicament i mantenir `index_v1` per a rollback.",
+      "tags": ["Blue-Green", "MLOps"]
+    }
+  ]
+}

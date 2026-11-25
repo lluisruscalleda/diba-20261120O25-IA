@@ -1,0 +1,46 @@
+{
+  "conceptId": "m03-04-prompt-engineering",
+  "module": 3,
+  "cards": [
+    {
+      "id": "m03-04-fc01",
+      "module": 3,
+      "conceptId": "m03-04-prompt-engineering",
+      "front": "Per què en sortida JSON amb CoT s'ha de posar `raonament` ABANS que `decisio`?",
+      "back": "Perquè un LLM genera tokens d'esquerra a dreta: generar primer l'anàlisi pas a pas condiciona el veredicte final, mentre posar la decisió primer provoca racionalitzacions post-hoc o contradiccions.",
+      "tags": ["Chain-of-Thought", "JSON"]
+    },
+    {
+      "id": "m03-04-fc02",
+      "module": 3,
+      "conceptId": "m03-04-prompt-engineering",
+      "front": "Quins avantatges té el Prompt Chaining respecte d'un únic mega-prompt?",
+      "back": "Aïlla responsabilitats, evita regressions creuades en editar un pas, permet triar model/temperatura òptims per etapa, intercala validacions deterministes Python i facilita l'auditoria.",
+      "tags": ["Prompt Chaining", "arquitectura"]
+    },
+    {
+      "id": "m03-04-fc03",
+      "module": 3,
+      "conceptId": "m03-04-prompt-engineering",
+      "front": "Què ha d'incloure un conjunt d'exemples *few-shot* ben equilibrat en extracció d'informació?",
+      "back": "Exemples positius, negatius, casos límit i explícitament casos on algun camp sigui `null` (abstenció), per evitar esbiaixar el model a inventar valors sempre.",
+      "tags": ["few-shot", "al·lucinacions"]
+    },
+    {
+      "id": "m03-04-fc04",
+      "module": 3,
+      "conceptId": "m03-04-prompt-engineering",
+      "front": "Què significa tractar els prompts amb disciplina de PromptOps?",
+      "back": "Versionar-los en Git amb `model_id`, hiperparàmetres i esquema, registrar `prompt_version` en cada execució i passar una bateria automàtica d'avaluació (golden set + injeccions) abans de producció.",
+      "tags": ["PromptOps", "avaluació"]
+    },
+    {
+      "id": "m03-04-fc05",
+      "module": 3,
+      "conceptId": "m03-04-prompt-engineering",
+      "front": "Bastaria posar delimitadors XML (`<document>`) per aturar completament el prompt injection?",
+      "back": "No! Cal sanititzar etiquetes de tancament (delimiter breakout) i combinar sempre amb defensa en profunditat fora de l'LLM: validació determinista, mínim privilegi en eines i supervisió humana.",
+      "tags": ["seguretat", "delimitadors"]
+    }
+  ]
+}
