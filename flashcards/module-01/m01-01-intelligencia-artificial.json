@@ -1,0 +1,54 @@
+{
+  "conceptId": "m01-01-intelligencia-artificial",
+  "module": 1,
+  "cards": [
+    {
+      "id": "m01-01-fc01",
+      "module": 1,
+      "conceptId": "m01-01-intelligencia-artificial",
+      "front": "Quina és la relació jeràrquica entre IA, IA simbòlica, Machine Learning i Deep Learning?",
+      "back": "La IA és el camp general que conté tant la IA simbòlica (regles/lògica) com el Machine Learning (aprenentatge a partir de dades). El Deep Learning és un subconjunt del ML basat en xarxes neuronals profundes, i la IA generativa moderna es construeix principalment sobre Deep Learning.",
+      "tags": ["taxonomia", "fonaments"]
+    },
+    {
+      "id": "m01-01-fc02",
+      "module": 1,
+      "conceptId": "m01-01-intelligencia-artificial",
+      "front": "Què significa el marc PEAS en l'enginyeria d'agents racionals?",
+      "back": "Performance measure (mesura de rendiment), Environment (entorn), Actuators (actuadors) i Sensors (sensors). Serveix per formalitzar el problema abans de triar algoritmes.",
+      "tags": ["agents", "PEAS"]
+    },
+    {
+      "id": "m01-01-fc03",
+      "module": 1,
+      "conceptId": "m01-01-intelligencia-artificial",
+      "front": "Quina diferència hi ha entre ANI (IA estreta) i AGI (IA general)? On se situen els LLM actuals?",
+      "back": "L'ANI resol tasques delimitades sense comprensió general humana; l'AGI (teòrica, no existent) igualaria la flexibilitat cognitiva humana en qualsevol domini. Els LLM actuals són ANI / models d'ús general (GPAI), no AGI.",
+      "tags": ["ANI", "AGI", "LLM"]
+    },
+    {
+      "id": "m01-01-fc04",
+      "module": 1,
+      "conceptId": "m01-01-intelligencia-artificial",
+      "front": "Quin element clau defineix un sistema d'IA segons l'art. 3.1 del Reglament europeu d'IA (AI Act)?",
+      "back": "La capacitat d'inferir, operant amb diferents nivells d'autonomia i possible adaptació postdesplegament, com generar prediccions, continguts, recomanacions o decisions a partir de dades d'entrada (distingint-se del programari determinista tradicional).",
+      "tags": ["AI Act", "normativa"]
+    },
+    {
+      "id": "m01-01-fc05",
+      "module": 1,
+      "conceptId": "m01-01-intelligencia-artificial",
+      "front": "Què és el biaix d'automatització (automation bias) i per què preocupa a l'Administració pública?",
+      "back": "És la tendència de les persones a acceptar acríticament les recomanacions d'un sistema automatitzat. Pot convertir la supervisió humana (HITL) en un tràmit formal ineficaç i propagar errors amb efectes jurídics.",
+      "tags": ["supervisió humana", "riscos"]
+    },
+    {
+      "id": "m01-01-fc06",
+      "module": 1,
+      "conceptId": "m01-01-intelligencia-artificial",
+      "front": "Quan NO s'ha d'utilitzar IA probabilística en un procés administratiu?",
+      "back": "Quan les regles del procés són explícites, estables i exigeixen exactitud del 100% i determinisme absolut (com el càlcul de liquidacions tributàries o la comprovació aritmètica de terminis legals).",
+      "tags": ["criteri tècnic", "administració"]
+    }
+  ]
+}

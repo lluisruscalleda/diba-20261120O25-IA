@@ -1,0 +1,54 @@
+{
+  "conceptId": "m01-04-xarxes-neuronals",
+  "module": 1,
+  "cards": [
+    {
+      "id": "m01-04-fc01",
+      "module": 1,
+      "conceptId": "m01-04-xarxes-neuronals",
+      "front": "Quina fórmula calcula el nombre de paràmetres entrenables d'una capa densa de n_in entrades a n_out sortides?",
+      "back": "(n_in × n_out) + n_out, és a dir, la matriu de pesos més un terme de biaix (bias) per cada neurona de sortida.",
+      "tags": ["MLP", "paràmetres"]
+    },
+    {
+      "id": "m01-04-fc02",
+      "module": 1,
+      "conceptId": "m01-04-xarxes-neuronals",
+      "front": "Quan utilitzem Softmax vs. Sigmoid a la capa de sortida d'una xarxa neuronal?",
+      "back": "Softmax + Categorical Cross-Entropy per a classificació multiclasse mútuament excloent (probabilitats sumen 1). Sigmoid + Binary Cross-Entropy per a classificació binària o multietiqueta (múltiples etiquetes independents actives alhora).",
+      "tags": ["activacions", "sortida"]
+    },
+    {
+      "id": "m01-04-fc03",
+      "module": 1,
+      "conceptId": "m01-04-xarxes-neuronals",
+      "front": "Quina diferència hi ha entre Batch Normalization i Layer Normalization?",
+      "back": "BatchNorm normalitza cada canal al llarg del mini-batch (sensible a batch sizes petits). LayerNorm normalitza totes les característiques dins de cada mostra individual (independent del batch size; estàndard en Transformers).",
+      "tags": ["normalització", "arquitectura"]
+    },
+    {
+      "id": "m01-04-fc04",
+      "module": 1,
+      "conceptId": "m01-04-xarxes-neuronals",
+      "front": "Què és el Dropout i com actua en entrenament vs. inferència?",
+      "back": "Tècnica de regularització que apaga aleatòriament una fracció de neurones en cada pas d'entrenament per reduir l'overfitting. En inferència es desactiva completament (model.eval()).",
+      "tags": ["regularització", "Dropout"]
+    },
+    {
+      "id": "m01-04-fc05",
+      "module": 1,
+      "conceptId": "m01-04-xarxes-neuronals",
+      "front": "Quin és el biaix inductiu d'una CNN i per què té molts menys paràmetres que un MLP en imatges?",
+      "back": "Localitat espacial i invariància a translacions: fa lliscar petits filtres (kernels) amb pesos compartits sobre tota la imatge en lloc de connectar cada píxel amb cada neurona.",
+      "tags": ["CNN", "visió"]
+    },
+    {
+      "id": "m01-04-fc06",
+      "module": 1,
+      "conceptId": "m01-04-xarxes-neuronals",
+      "front": "Com s'utilitza un Autoencoder per detectar anomalies sense etiquetes?",
+      "back": "S'entrena amb dades normals per comprimir i reconstruir l'entrada; en producció, les observacions que generen un error de reconstrucció superior a un llindar es marquen com a anomalies.",
+      "tags": ["Autoencoder", "anomalies"]
+    }
+  ]
+}

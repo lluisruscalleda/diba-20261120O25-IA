@@ -1,0 +1,54 @@
+{
+  "conceptId": "m01-03-deep-learning",
+  "module": 1,
+  "cards": [
+    {
+      "id": "m01-03-fc01",
+      "module": 1,
+      "conceptId": "m01-03-deep-learning",
+      "front": "Quina és la diferència clau entre Machine Learning clàssic i Deep Learning respecte a les característiques (features)?",
+      "back": "El ML clàssic depèn d'enginyeria manual de característiques dissenyada per humans; el Deep Learning aprèn automàticament representacions jeràrquiques a partir de dades crues mitjançant múltiples capes no lineals.",
+      "tags": ["Deep Learning", "representacions"]
+    },
+    {
+      "id": "m01-03-fc02",
+      "module": 1,
+      "conceptId": "m01-03-deep-learning",
+      "front": "Quins són els 4 passos del bucle d'entrenament d'una xarxa neuronal profunda?",
+      "back": "1) Forward pass (predicció), 2) Càlcul de la funció de pèrdua (Loss), 3) Backpropagation (gradients via regla de la cadena), 4) Actualització dels pesos amb l'optimitzador (SGD, AdamW).",
+      "tags": ["entrenament", "backpropagation"]
+    },
+    {
+      "id": "m01-03-fc03",
+      "module": 1,
+      "conceptId": "m01-03-deep-learning",
+      "front": "Per què són imprescindibles les funcions d'activació no lineals (ReLU, GELU) entre capes?",
+      "back": "Perquè sense no-linealitats, la composició de múltiples capes lineals col·lapsa algebraicament en una única transformació lineal, incapaç d'aprendre patrons no lineals.",
+      "tags": ["activacions", "matemàtiques"]
+    },
+    {
+      "id": "m01-03-fc04",
+      "module": 1,
+      "conceptId": "m01-03-deep-learning",
+      "front": "Com resolen el vanishing gradient les xarxes profundes modernes?",
+      "back": "Principalment mitjançant activacions no saturants en positiu (ReLU/GELU), connexions residuals (skip connections), normalització interna (LayerNorm/BatchNorm) i inicialització adequada (He/Xavier).",
+      "tags": ["vanishing gradient", "arquitectura"]
+    },
+    {
+      "id": "m01-03-fc05",
+      "module": 1,
+      "conceptId": "m01-03-deep-learning",
+      "front": "Quina diferència hi ha entre Adam i AdamW?",
+      "back": "AdamW desacobla el weight decay (regularització) de l'escalat adaptatiu dels gradients d'Adam, aconseguint una regularització més efectiva i estable; és l'optimitzador estàndard en Transformers.",
+      "tags": ["optimització", "AdamW"]
+    },
+    {
+      "id": "m01-03-fc06",
+      "module": 1,
+      "conceptId": "m01-03-deep-learning",
+      "front": "Quan és preferible el transfer learning en lloc d'entrenar una xarxa profunda des de zero?",
+      "back": "Gairebé sempre en visió i NLP quan disposem de conjunts etiquetats petits o mitjans: reutilitza representacions preentrenades, evita overfitting i redueix dràsticament el cost de GPU.",
+      "tags": ["transfer learning", "pràctica"]
+    }
+  ]
+}

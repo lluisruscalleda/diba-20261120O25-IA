@@ -1,0 +1,236 @@
+{
+  "conceptId": "m01-03-deep-learning",
+  "module": 1,
+  "questions": [
+    {
+      "id": "m01-03-q01",
+      "module": 1,
+      "conceptId": "m01-03-deep-learning",
+      "lessonRef": "content/module-01/m01-03-deep-learning.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quin avantatge diferencial aporta el Deep Learning respecte del Machine Learning clàssic en dades no estructurades com imatges o text?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "No necessita dades per entrenar-se perquè utilitza regles lògiques preprogramades." },
+        { "key": "B", "text": "Aprèn automàticament representacions jeràrquiques directament a partir de les dades crues, reduint la necessitat d'enginyeria manual de característiques." },
+        { "key": "C", "text": "Garanteix sempre una interpretabilitat superior a la d'una regressió lineal o un arbre de decisió." },
+        { "key": "D", "text": "Requereix sempre menys memòria i menys càlcul que els algoritmes lineals." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "El tret definitori del Deep Learning és l'aprenentatge jeràrquic de representacions (representation learning) a través de múltiples capes no lineals, evitant haver de dissenyar manualment descriptors visuals o lingüístics.",
+      "explanationsIncorrect": {
+        "A": "Això correspon a la IA simbòlica/sistemes experts; el Deep Learning depèn molt de les dades (o de models preentrenats sobre grans volums de dades).",
+        "C": "Les xarxes profundes són molt menys interpretables de manera nativa que els models lineals o arbres poc profunds.",
+        "D": "Habitualment el Deep Learning té requeriments computacionals i de memòria molt més elevats."
+      }
+    },
+    {
+      "id": "m01-03-q02",
+      "module": 1,
+      "conceptId": "m01-03-deep-learning",
+      "lessonRef": "content/module-01/m01-03-deep-learning.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina és la funció principal de l'algoritme de retropropagació (backpropagation) en l'entrenament d'una xarxa neuronal profunda?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Generar dades sintètiques noves quan el conjunt d'entrenament és petit." },
+        { "key": "B", "text": "Eliminar automàticament les files amb valors nuls del dataset." },
+        { "key": "C", "text": "Calcular de manera eficient el gradient de la funció de pèrdua respecte de cada paràmetre de la xarxa aplicant la regla de la cadena." },
+        { "key": "D", "text": "Convertir una classificació multiclasse en un problema de clustering." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Backpropagation propaga l'error des de la capa de sortida cap enrere mitjançant la regla de la cadena per calcular les derivades parcials ∂L/∂θ que després utilitza l'optimitzador per actualitzar els pesos.",
+      "explanationsIncorrect": {
+        "A": "Això correspon a data augmentation o models generatius, no a backpropagation.",
+        "B": "El tractament de valors nuls es fa en el preprocessament de dades.",
+        "D": "Backpropagation és un mecanisme de diferenciació automàtica per optimitzar pesos, no canvia el tipus de tasca."
+      }
+    },
+    {
+      "id": "m01-03-q03",
+      "module": 1,
+      "conceptId": "m01-03-deep-learning",
+      "lessonRef": "content/module-01/m01-03-deep-learning.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina funció de pèrdua (loss function) és l'estàndard per entrenar una xarxa neuronal en una tasca de classificació multiclasse mútuament excloent (p. ex., classificar una instància en 1 de 8 departaments)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Categorical Cross-Entropy (entropia creuada categòrica) combinada amb Softmax." },
+        { "key": "B", "text": "Silhouette Score." },
+        { "key": "C", "text": "Mean Squared Error (MSE) sense activació de sortida." },
+        { "key": "D", "text": "Coeficient de determinació R²." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Softmax converteix els logits en una distribució de probabilitat sobre les classes i la Categorical Cross-Entropy penalitza logarítmicament la baixa probabilitat assignada a la classe correcta, oferint gradients ben comportats.",
+      "explanationsIncorrect": {
+        "B": "El Silhouette Score és una mètrica d'avaluació per a clustering no supervisat, no una funció de pèrdua diferenciable de classificació.",
+        "C": "L'MSE és la pèrdua pròpia de regressió; en classificació multiclasse produeix gradients deficients i no modela distribucions categòriques.",
+        "D": "R² és una mètrica d'avaluació de regressió."
+      }
+    },
+    {
+      "id": "m01-03-q04",
+      "module": 1,
+      "conceptId": "m01-03-deep-learning",
+      "lessonRef": "content/module-01/m01-03-deep-learning.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Què succeeix si construïm una xarxa neuronal amb 8 capes denses però no incloem cap funció d'activació no lineal entre capes?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "La xarxa aprèn vuit vegades més ràpidament i captura relacions no lineals més complexes." },
+        { "key": "B", "text": "La composició de les 8 capes col·lapsa matemàticament en una única transformació lineal equivalent a una xarxa d'una sola capa." },
+        { "key": "C", "text": "La retropropagació deixa de ser matemàticament definible perquè les funcions lineals no són derivables." },
+        { "key": "D", "text": "La xarxa es converteix automàticament en una xarxa convolucional." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "La composició de funcions afins/lineals és sempre una altra funció afí/lineal. Sense no-linealitats (ReLU, GELU, etc.), afegir capes no incrementa la capacitat expressiva del model.",
+      "explanationsIncorrect": {
+        "A": "No pot capturar relacions no lineals sense activacions no lineals.",
+        "C": "Les funcions lineals sí que són derivables; el problema és de capacitat expressiva, no de derivabilitat.",
+        "D": "Una CNN es defineix per operacions de convolució amb filtres espacials compartits, no per absència d'activacions."
+      }
+    },
+    {
+      "id": "m01-03-q05",
+      "module": 1,
+      "conceptId": "m01-03-deep-learning",
+      "lessonRef": "content/module-01/m01-03-deep-learning.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Quin problema d'entrenament en xarxes molt profundes ajuden a mitigar conjuntament les connexions residuals (skip connections) i l'activació ReLU?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "La fuga de dades (data leakage) entre train i test." },
+        { "key": "B", "text": "El desequilibri de classes en el conjunt d'etiquetes." },
+        { "key": "C", "text": "El biaix d'automatització dels operadors humans." },
+        { "key": "D", "text": "La desaparició del gradient (vanishing gradient) en capes inicials." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Les connexions residuals creen un camí directe amb derivada 1 per al flux del gradient, i ReLU evita la saturació en valors positius (derivada = 1 en lloc del màxim 0,25 de la sigmoide), mitigant el vanishing gradient.",
+      "explanationsIncorrect": {
+        "A": "El data leakage depèn del disseny del pipeline de dades, no de les connexions internes de la xarxa.",
+        "B": "El desequilibri de classes es tracta amb pesos de pèrdua, mostreig o llindars, no amb connexions residuals.",
+        "C": "El biaix d'automatització és un fenomen humà en la interfície de supervisió."
+      }
+    },
+    {
+      "id": "m01-03-q06",
+      "module": 1,
+      "conceptId": "m01-03-deep-learning",
+      "lessonRef": "content/module-01/m01-03-deep-learning.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Una diputació disposa de 1.800 fotografies etiquetades de desperfectes en mobiliari urbà i vol construir un classificador d'imatges amb 1 GPU local. Quina estratègia és la més recomanable?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Entrenar una xarxa ResNet-101 completament des de zero amb pesos aleatoris." },
+        { "key": "B", "text": "Aplicar transfer learning sobre una xarxa visual preentrenada oberta, combinat amb data augmentation i fine-tuning controlat." },
+        { "key": "C", "text": "Substituir totes les imatges per una regressió lineal sobre els píxels crus sense preprocessament." },
+        { "key": "D", "text": "Aplicar un sistema expert de regles manuals sobre els valors RGB de cada píxel." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Amb només 1.800 imatges, el transfer learning aprofita les característiques visuals ja apreses en milions d'imatges, redueix dramàticament el risc d'overfitting i entrena ràpidament en una sola GPU.",
+      "explanationsIncorrect": {
+        "A": "Entrenar des de zero desenes de milions de paràmetres amb 1.800 imatges provocarà sobreajustament sever.",
+        "C": "Una regressió lineal directa sobre píxels crus no és invariant a translacions, llum ni escala i té un rendiment molt pobre.",
+        "D": "Codificar regles RGB manuals per a desperfectes urbans reals és inviable per la variabilitat visual."
+      }
+    },
+    {
+      "id": "m01-03-q07",
+      "module": 1,
+      "conceptId": "m01-03-deep-learning",
+      "lessonRef": "content/module-01/m01-03-deep-learning.md",
+      "difficulty": "intermediate",
+      "questionType": "code",
+      "prompt": "En el fragment següent de retropropagació amb una capa oculta ReLU, què calcula exactament l'expressió `(Z1 > 0).astype(float)`?",
+      "codeSnippet": "dA1 = dZ2 @ W2.T\ndZ1 = dA1 * (Z1 > 0).astype(float)\ndW1 = X_train.T @ dZ1",
+      "options": [
+        { "key": "A", "text": "La normalització L2 dels pesos de la primera capa." },
+        { "key": "B", "text": "La probabilitat softmax de la capa oculta." },
+        { "key": "C", "text": "La derivada local de la funció ReLU: 1 on la preactivació Z1 és positiva i 0 on és negativa o zero." },
+        { "key": "D", "text": "L'eliminació aleatòria del 50% de les neurones (dropout)." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Com que ReLU(z) = max(0, z), la seva derivada és 1 per a z > 0 i 0 per a z ≤ 0. Multiplicar dA1 per aquesta màscara aplica la regla de la cadena a través de l'activació ReLU.",
+      "explanationsIncorrect": {
+        "A": "No calcula cap norma sobre els pesos W1.",
+        "B": "No hi ha cap exponencial ni divisió pròpia del softmax.",
+        "D": "La màscara no és aleatòria: depèn determinísticament del signe de Z1."
+      }
+    },
+    {
+      "id": "m01-03-q08",
+      "module": 1,
+      "conceptId": "m01-03-deep-learning",
+      "lessonRef": "content/module-01/m01-03-deep-learning.md",
+      "difficulty": "advanced",
+      "questionType": "metrics",
+      "prompt": "Durant l'entrenament d'una xarxa profunda, observes que la pèrdua (loss) creix ràpidament fins a convertir-se en `NaN` a les primeres 15 iteracions. Quina combinació de diagnòstic i solució és més pertinent?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Explosió del gradient o taxa d'aprenentatge (learning rate) massa alta; reduir el learning rate, afegir warmup i aplicar gradient clipping." },
+        { "key": "B", "text": "Sobreajustament extrem; augmentar el learning rate un factor de 10 i eliminar la regularització." },
+        { "key": "C", "text": "Desaparició del gradient; substituir ReLU per sigmoide per fer els gradients més grans." },
+        { "key": "D", "text": "Falta d'etiquetes al conjunt de test; augmentar la mida del test del 20% al 50%." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Una divergència immediata cap a NaN sol indicar exploding gradients o un learning rate excessiu que fa saltar l'optimitzador fora de la zona estable. Reduir el lr, usar warmup i gradient clipping estabilitza l'entrenament.",
+      "explanationsIncorrect": {
+        "B": "Augmentar encara més el learning rate empitjoraria la divergència; l'overfitting no fa explotar la pèrdua d'entrenament a NaN.",
+        "C": "La sigmoide té derivades més petites (≤ 0,25) i provoca desaparició del gradient, no resol l'explosió a NaN.",
+        "D": "El conjunt de test no intervé en les actualitzacions de pesos durant l'entrenament."
+      }
+    },
+    {
+      "id": "m01-03-q09",
+      "module": 1,
+      "conceptId": "m01-03-deep-learning",
+      "lessonRef": "content/module-01/m01-03-deep-learning.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Per què en l'entrenament de models Transformers i Deep Learning modern es prefereix sovint `AdamW` en lloc d'`Adam` amb regularització L2 clàssica acoblada al gradient?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè AdamW no necessita calcular gradients mitjançant backpropagation." },
+        { "key": "B", "text": "Perquè AdamW desacobla la caiguda de pesos (weight decay) de l'escalat adaptatiu dels gradients, proporcionant una regularització més efectiva i estable." },
+        { "key": "C", "text": "Perquè AdamW garanteix zero errors en qualsevol conjunt de validació." },
+        { "key": "D", "text": "Perquè AdamW només funciona en CPU i evita l'ús de memòria GPU." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "En Adam estàndard, afegir L2 a la pèrdua fa que el terme de regularització quedi reescalat per l'estimador adaptatiu de variància del gradient, debilitant la regularització en pesos amb gradients grans. AdamW aplica el weight decay directament als pesos de forma desacoblada.",
+      "explanationsIncorrect": {
+        "A": "AdamW continua requerint els gradients obtinguts via backpropagation.",
+        "C": "Cap optimitzador pot garantir zero errors en validació.",
+        "D": "AdamW s'executa habitualment en GPU/TPU, igual que Adam."
+      }
+    },
+    {
+      "id": "m01-03-q10",
+      "module": 1,
+      "conceptId": "m01-03-deep-learning",
+      "lessonRef": "content/module-01/m01-03-deep-learning.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "En un projecte de la Diputació sobre una taula SQL de 15.000 expedients amb 30 variables numèriques i categòriques on cal explicar cada predicció al personal auditor, quin argument justifica millor NO escollir una xarxa neuronal profunda com a primera opció?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Les xarxes neuronals no poden rebre variables numèriques com a entrada." },
+        { "key": "B", "text": "En dades tabulars de mida moderada, els ensembles d'arbres (Gradient Boosting / Random Forest) solen oferir rendiment igual o superior amb menor cost computacional, menys sensibilitat a hiperparàmetres i explicabilitat directa (TreeSHAP)." },
+        { "key": "C", "text": "El Reglament europeu d'IA prohibeix completament l'ús de xarxes neuronals al sector públic." },
+        { "key": "D", "text": "Les xarxes neuronals només funcionen en aprenentatge no supervisat." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "L'evidència empírica mostra que en dades tabulars estructurades de mida petita/mitjana, els models basats en arbres (XGBoost, LightGBM, CatBoost, Random Forest) són molt competitius, més econòmics en CPU i ofereixen explicabilitat ràpida i exacta mitjançant TreeSHAP.",
+      "explanationsIncorrect": {
+        "A": "Les xarxes neuronals reben perfectament vectors numèrics; simplement no solen ser la millor relació cost/benefici en tabular moderat.",
+        "C": "L'AI Act regula per nivells de risc i casos d'ús, no prohibeix les xarxes neuronals com a tecnologia.",
+        "D": "Les xarxes neuronals s'utilitzen àmpliament en aprenentatge supervisat, autosupervisat, no supervisat i per reforç."
+      }
+    }
+  ]
+}

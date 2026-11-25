@@ -1,0 +1,159 @@
+{
+  "title": "Acadèmia de Preparació — Prova Teoricopràctica d'Intel·ligència Artificial",
+  "institution": "Diputació de Barcelona (Borsa de treball tècnica d'IA)",
+  "version": "1.0.0",
+  "modules": [
+    {
+      "id": 1,
+      "slug": "module-01",
+      "title": "Fonaments d'intel·ligència artificial",
+      "shortTitle": "Fonaments d'IA",
+      "description": "Paradigmes d'IA, Machine Learning, Deep Learning, xarxes neuronals, models generatius, sistemes experts, tasques supervisades i no supervisades, i fonaments d'avaluació i generalització.",
+      "concepts": [
+        { "id": "m01-01-intelligencia-artificial", "order": 1, "title": "Intel·ligència artificial", "estimatedMinutes": 45, "difficulty": "basic" },
+        { "id": "m01-02-machine-learning", "order": 2, "title": "Aprenentatge automàtic (Machine Learning)", "estimatedMinutes": 55, "difficulty": "basic" },
+        { "id": "m01-03-deep-learning", "order": 3, "title": "Aprenentatge profund (Deep Learning)", "estimatedMinutes": 50, "difficulty": "intermediate" },
+        { "id": "m01-04-xarxes-neuronals", "order": 4, "title": "Xarxes neuronals", "estimatedMinutes": 55, "difficulty": "intermediate" },
+        { "id": "m01-05-models-generatius", "order": 5, "title": "Models generatius", "estimatedMinutes": 50, "difficulty": "intermediate" },
+        { "id": "m01-06-sistemes-experts", "order": 6, "title": "Sistemes experts", "estimatedMinutes": 45, "difficulty": "basic" },
+        { "id": "m01-07-classificacio", "order": 7, "title": "Classificació", "estimatedMinutes": 60, "difficulty": "intermediate" },
+        { "id": "m01-08-regressio", "order": 8, "title": "Regressió", "estimatedMinutes": 55, "difficulty": "intermediate" },
+        { "id": "m01-09-clustering", "order": 9, "title": "Clustering", "estimatedMinutes": 50, "difficulty": "intermediate" },
+        { "id": "m01-10-deteccio-anomalies", "order": 10, "title": "Detecció d'anomalies", "estimatedMinutes": 55, "difficulty": "advanced" },
+        { "id": "m01-11-avaluacio-generalitzacio-hiperparametres", "order": 11, "title": "Generalització, sobreajustament, funcions de pèrdua, hiperparàmetres i validació creuada", "estimatedMinutes": 60, "difficulty": "intermediate" }
+      ]
+    },
+    {
+      "id": 2,
+      "slug": "module-02",
+      "title": "Processament del llenguatge natural",
+      "shortTitle": "NLP",
+      "description": "Fonaments del NLP, tokenització, embeddings, classificació de textos, extracció d'informació, NER, resum, traducció, recuperació d'informació i cerca semàntica.",
+      "concepts": [
+        { "id": "m02-01-fonaments-nlp", "order": 1, "title": "Fonaments del processament del llenguatge natural (NLP)", "estimatedMinutes": 50, "difficulty": "basic" },
+        { "id": "m02-02-tokenitzacio", "order": 2, "title": "Tokenització", "estimatedMinutes": 45, "difficulty": "basic" },
+        { "id": "m02-03-embeddings-nlp", "order": 3, "title": "Embeddings (perspectiva NLP)", "estimatedMinutes": 55, "difficulty": "intermediate" },
+        { "id": "m02-04-classificacio-textos", "order": 4, "title": "Classificació de textos", "estimatedMinutes": 55, "difficulty": "intermediate" },
+        { "id": "m02-05-extraccio-informacio", "order": 5, "title": "Extracció d'informació", "estimatedMinutes": 50, "difficulty": "intermediate" },
+        { "id": "m02-06-ner", "order": 6, "title": "Reconeixement d'entitats (NER)", "estimatedMinutes": 55, "difficulty": "intermediate" },
+        { "id": "m02-07-resum-automatic", "order": 7, "title": "Resum automàtic", "estimatedMinutes": 45, "difficulty": "intermediate" },
+        { "id": "m02-08-traduccio-automatica", "order": 8, "title": "Traducció automàtica", "estimatedMinutes": 45, "difficulty": "intermediate" },
+        { "id": "m02-09-recuperacio-informacio", "order": 9, "title": "Recuperació d'informació", "estimatedMinutes": 55, "difficulty": "intermediate" },
+        { "id": "m02-10-cerca-semantica", "order": 10, "title": "Cerca semàntica", "estimatedMinutes": 55, "difficulty": "advanced" }
+      ]
+    },
+    {
+      "id": 3,
+      "slug": "module-03",
+      "title": "Models generatius",
+      "shortTitle": "Models generatius",
+      "description": "Large Language Models, arquitectura Transformer, self-attention, prompt engineering, fine-tuning, embeddings en RAG, bases de dades vectorials, RAG i agents d'IA.",
+      "concepts": [
+        { "id": "m03-01-llm", "order": 1, "title": "Large Language Models (LLM)", "estimatedMinutes": 60, "difficulty": "intermediate" },
+        { "id": "m03-02-arquitectura-transformer", "order": 2, "title": "Arquitectura Transformer", "estimatedMinutes": 60, "difficulty": "advanced" },
+        { "id": "m03-03-atencio-self-attention", "order": 3, "title": "Mecanismes d'atenció i self-attention", "estimatedMinutes": 60, "difficulty": "advanced" },
+        { "id": "m03-04-prompt-engineering", "order": 4, "title": "Prompt engineering", "estimatedMinutes": 55, "difficulty": "intermediate" },
+        { "id": "m03-05-fine-tuning", "order": 5, "title": "Fine-tuning", "estimatedMinutes": 60, "difficulty": "advanced" },
+        { "id": "m03-06-embeddings-rag", "order": 6, "title": "Embeddings (perspectiva generativa i RAG)", "estimatedMinutes": 50, "difficulty": "intermediate" },
+        { "id": "m03-07-bases-dades-vectorials", "order": 7, "title": "Bases de dades vectorials", "estimatedMinutes": 55, "difficulty": "intermediate" },
+        { "id": "m03-08-rag", "order": 8, "title": "Retrieval-Augmented Generation (RAG)", "estimatedMinutes": 65, "difficulty": "advanced" },
+        { "id": "m03-09-agents-ia", "order": 9, "title": "Agents d'intel·ligència artificial", "estimatedMinutes": 60, "difficulty": "advanced" }
+      ]
+    },
+    {
+      "id": 4,
+      "slug": "module-04",
+      "title": "Processament intel·ligent de documents",
+      "shortTitle": "IDP i documents",
+      "description": "OCR tradicional i multimodal, classificació documental, extracció de camps i taules, NER documental, validació automàtica, formularis i documents administratius i tributaris.",
+      "concepts": [
+        { "id": "m04-01-ocr", "order": 1, "title": "OCR", "estimatedMinutes": 55, "difficulty": "intermediate" },
+        { "id": "m04-02-classificacio-documental", "order": 2, "title": "Classificació documental", "estimatedMinutes": 50, "difficulty": "intermediate" },
+        { "id": "m04-03-extraccio-camps", "order": 3, "title": "Extracció de camps", "estimatedMinutes": 55, "difficulty": "intermediate" },
+        { "id": "m04-04-reconeixement-entitats-documents", "order": 4, "title": "Reconeixement d'entitats en documents", "estimatedMinutes": 50, "difficulty": "intermediate" },
+        { "id": "m04-05-validacio-automatica-documental", "order": 5, "title": "Validació automàtica documental", "estimatedMinutes": 55, "difficulty": "intermediate" },
+        { "id": "m04-06-tractament-formularis", "order": 6, "title": "Tractament de formularis", "estimatedMinutes": 50, "difficulty": "intermediate" },
+        { "id": "m04-07-documents-administratius", "order": 7, "title": "Processament de documents administratius", "estimatedMinutes": 55, "difficulty": "advanced" },
+        { "id": "m04-08-documents-tributaris", "order": 8, "title": "Processament de documents tributaris", "estimatedMinutes": 60, "difficulty": "advanced" }
+      ]
+    },
+    {
+      "id": 5,
+      "slug": "module-05",
+      "title": "Assistents virtuals i IA conversacional",
+      "shortTitle": "IA conversacional",
+      "description": "Chatbots, assistents corporatius, fluxos conversacionals, bases de coneixement, canals digitals, traçabilitat, supervisió i escalada a intervenció humana.",
+      "concepts": [
+        { "id": "m05-01-chatbots", "order": 1, "title": "Chatbots", "estimatedMinutes": 50, "difficulty": "basic" },
+        { "id": "m05-02-assistents-corporatius", "order": 2, "title": "Assistents corporatius", "estimatedMinutes": 55, "difficulty": "intermediate" },
+        { "id": "m05-03-fluxos-conversacionals", "order": 3, "title": "Fluxos conversacionals", "estimatedMinutes": 55, "difficulty": "intermediate" },
+        { "id": "m05-04-integracio-bases-coneixement", "order": 4, "title": "Integració amb bases de coneixement", "estimatedMinutes": 50, "difficulty": "intermediate" },
+        { "id": "m05-05-canals-digitals", "order": 5, "title": "Canals digitals", "estimatedMinutes": 45, "difficulty": "basic" },
+        { "id": "m05-06-tracabilitat-conversacional", "order": 6, "title": "Traçabilitat", "estimatedMinutes": 50, "difficulty": "intermediate" },
+        { "id": "m05-07-supervisio-conversacional", "order": 7, "title": "Supervisió", "estimatedMinutes": 55, "difficulty": "advanced" },
+        { "id": "m05-08-escalada-humana", "order": 8, "title": "Escalada a intervenció humana", "estimatedMinutes": 50, "difficulty": "intermediate" }
+      ]
+    },
+    {
+      "id": 6,
+      "slug": "module-06",
+      "title": "Automatització intel·ligent",
+      "shortTitle": "Automatització",
+      "description": "RPA, regles de negoci, classificadors automàtics, sistemes de recomanació, priorització de casos, validació automàtica i combinació de determinisme i probabilisme.",
+      "concepts": [
+        { "id": "m06-01-rpa", "order": 1, "title": "Robotic Process Automation (RPA)", "estimatedMinutes": 55, "difficulty": "basic" },
+        { "id": "m06-02-regles-negoci", "order": 2, "title": "Regles de negoci", "estimatedMinutes": 55, "difficulty": "intermediate" },
+        { "id": "m06-03-classificadors-automatics", "order": 3, "title": "Classificadors automàtics", "estimatedMinutes": 50, "difficulty": "intermediate" },
+        { "id": "m06-04-sistemes-recomanacio", "order": 4, "title": "Sistemes de recomanació", "estimatedMinutes": 55, "difficulty": "intermediate" },
+        { "id": "m06-05-prioritzacio-casos", "order": 5, "title": "Priorització de casos", "estimatedMinutes": 55, "difficulty": "advanced" },
+        { "id": "m06-06-validacio-automatica-processos", "order": 6, "title": "Validació automàtica en processos", "estimatedMinutes": 55, "difficulty": "intermediate" }
+      ]
+    },
+    {
+      "id": 7,
+      "slug": "module-07",
+      "title": "MLOps i LLMOps",
+      "shortTitle": "MLOps / LLMOps",
+      "description": "Cicle de vida operatiu de models: preparació de dades, etiquetatge, entrenament, validació, desplegament, monitoratge, versionat, avaluació, actualització i integració.",
+      "concepts": [
+        { "id": "m07-01-preparacio-dades", "order": 1, "title": "Preparació de dades", "estimatedMinutes": 55, "difficulty": "intermediate" },
+        { "id": "m07-02-etiquetatge", "order": 2, "title": "Etiquetatge", "estimatedMinutes": 50, "difficulty": "intermediate" },
+        { "id": "m07-03-entrenament", "order": 3, "title": "Entrenament", "estimatedMinutes": 55, "difficulty": "intermediate" },
+        { "id": "m07-04-validacio-models", "order": 4, "title": "Validació", "estimatedMinutes": 55, "difficulty": "intermediate" },
+        { "id": "m07-05-desplegament", "order": 5, "title": "Desplegament", "estimatedMinutes": 60, "difficulty": "advanced" },
+        { "id": "m07-06-monitoratge", "order": 6, "title": "Monitoratge", "estimatedMinutes": 60, "difficulty": "advanced" },
+        { "id": "m07-07-versionat", "order": 7, "title": "Versionat", "estimatedMinutes": 50, "difficulty": "intermediate" },
+        { "id": "m07-08-avaluacio-continua", "order": 8, "title": "Avaluació", "estimatedMinutes": 55, "difficulty": "advanced" },
+        { "id": "m07-09-actualitzacio-models", "order": 9, "title": "Actualització de models", "estimatedMinutes": 55, "difficulty": "advanced" },
+        { "id": "m07-10-integracio-sistemes", "order": 10, "title": "Integració amb sistemes d'informació", "estimatedMinutes": 55, "difficulty": "advanced" }
+      ]
+    },
+    {
+      "id": 8,
+      "slug": "module-08",
+      "title": "Ús responsable i seguretat de la IA",
+      "shortTitle": "Seguretat i governança",
+      "description": "Transparència, biaixos, supervisió humana, protecció de dades (RGPD/LOPDGDD), seguretat (ENS, amenaces LLM), auditoria, governança i compliment normatiu (AI Act).",
+      "concepts": [
+        { "id": "m08-01-transparencia", "order": 1, "title": "Transparència", "estimatedMinutes": 55, "difficulty": "intermediate" },
+        { "id": "m08-02-biaixos", "order": 2, "title": "Biaixos", "estimatedMinutes": 55, "difficulty": "intermediate" },
+        { "id": "m08-03-supervisio-humana", "order": 3, "title": "Supervisió humana", "estimatedMinutes": 55, "difficulty": "intermediate" },
+        { "id": "m08-04-proteccio-dades", "order": 4, "title": "Protecció de dades (RGPD i LOPDGDD)", "estimatedMinutes": 65, "difficulty": "advanced" },
+        { "id": "m08-05-seguretat-ia", "order": 5, "title": "Seguretat (ENS i amenaces en IA/LLM)", "estimatedMinutes": 65, "difficulty": "advanced" },
+        { "id": "m08-06-auditoria", "order": 6, "title": "Auditoria", "estimatedMinutes": 55, "difficulty": "advanced" },
+        { "id": "m08-07-governanca-models", "order": 7, "title": "Governança de models", "estimatedMinutes": 55, "difficulty": "advanced" },
+        { "id": "m08-08-compliment-normatiu", "order": 8, "title": "Compliment normatiu (AI Act i Administració pública)", "estimatedMinutes": 70, "difficulty": "advanced" }
+      ]
+    }
+  ],
+  "labs": [
+    { "id": "lab-01", "module": 1, "title": "Laboratori 1: Machine Learning", "path": "labs/lab-01-machine-learning", "description": "Classificació de sol·licituds administratives, regressió, clustering i detecció d'anomalies amb scikit-learn, pandas i NumPy." },
+    { "id": "lab-02", "module": 2, "title": "Laboratori 2: NLP", "path": "labs/lab-02-nlp", "description": "Classificació d'instàncies ciutadanes, extracció d'entitats (NER), cerca semàntica i comparativa TF-IDF vs embeddings contextuals." },
+    { "id": "lab-03", "module": 3, "title": "Laboratori 3: RAG i models generatius", "path": "labs/lab-03-rag-generatius", "description": "Assistent normatiu RAG amb cites i detecció de manca d'evidència, agent amb eines i comparativa RAG vs fine-tuning." },
+    { "id": "lab-04", "module": 4, "title": "Laboratori 4: Processament documental", "path": "labs/lab-04-processament-documental", "description": "Generació de PDFs sintètics, OCR, classificació, extracció de camps, validació i derivació a revisió humana." },
+    { "id": "lab-05", "module": 5, "title": "Laboratori 5: Assistent virtual ciutadà", "path": "labs/lab-05-assistent-virtual", "description": "Assistent conversacional amb gestió de context, intencions, base de coneixement, registres, permisos i escalada humana." },
+    { "id": "lab-06", "module": 6, "title": "Laboratori 6: Automatització intel·ligent", "path": "labs/lab-06-automatitzacio-intelligent", "description": "Recepció, classificació, validació i priorització d'expedients combinant regles deterministes i Machine Learning." },
+    { "id": "lab-07", "module": 7, "title": "Laboratori 7: MLOps i LLMOps", "path": "labs/lab-07-mlops-llmops", "description": "Desplegament FastAPI + Docker, pytest, versionat, MLflow, monitoratge, simulació de data drift, rollback i CI/CD." },
+    { "id": "lab-08", "module": 8, "title": "Laboratori 8: Seguretat i governança", "path": "labs/lab-08-seguretat-governanca", "description": "Inventari de riscos, classificació normativa, anàlisi de biaixos, fitxa de governança i proves defensives locals contra prompt injection." }
+  ]
+}

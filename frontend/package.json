@@ -1,0 +1,35 @@
+{
+  "name": "ai-academy-frontend",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "sync": "node ../scripts/sync_content.mjs",
+    "validate": "node ../scripts/validate_content.mjs",
+    "dev": "node ../scripts/sync_content.mjs && vite",
+    "build": "node ../scripts/sync_content.mjs && tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "highlight.js": "^11.11.1",
+    "lucide-react": "^0.475.0",
+    "mermaid": "^11.4.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-markdown": "^9.0.3",
+    "react-router-dom": "^7.1.5",
+    "recharts": "^2.15.1",
+    "rehype-highlight": "^7.0.2",
+    "remark-gfm": "^4.0.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.16",
+    "@tailwindcss/vite": "^4.0.6",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "tailwindcss": "^4.0.6",
+    "typescript": "~5.7.3",
+    "vite": "^6.1.0",
+    "@vitejs/plugin-react": "^4.3.4"
+  }
+}

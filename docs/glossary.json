@@ -1,0 +1,116 @@
+{
+  "terms": [
+    {
+      "id": "ai-narrow-general",
+      "term": "IA feble (Narrow AI / ANI)",
+      "english": "Artificial Narrow Intelligence",
+      "module": 1,
+      "conceptId": "m01-01-intelligencia-artificial",
+      "definition": "Sistema d'intel·ligència artificial dissenyat i optimitzat per realitzar una tasca concreta o un conjunt acotat de tasques (p. ex., classificar expedients o reconèixer text), sense comprensió general del món."
+    },
+    {
+      "id": "machine-learning",
+      "term": "Aprenentatge automàtic",
+      "english": "Machine Learning (ML)",
+      "module": 1,
+      "conceptId": "m01-02-machine-learning",
+      "definition": "Subcamp de la IA en què els algoritmes indueixen patrons i funcions de predicció directament a partir de dades empíriques en lloc de programar regles explícites."
+    },
+    {
+      "id": "overfitting",
+      "term": "Sobreajustament",
+      "english": "Overfitting",
+      "module": 1,
+      "conceptId": "m01-11-avaluacio-generalitzacio-hiperparametres",
+      "definition": "Fenomen que es produeix quan un model memoritza el soroll i les particularitats del conjunt d'entrenament, obtenint un error molt baix en entrenament però deficient en dades noves (baixa generalització)."
+    },
+    {
+      "id": "underfitting",
+      "term": "Infraajustament",
+      "english": "Underfitting",
+      "module": 1,
+      "conceptId": "m01-11-avaluacio-generalitzacio-hiperparametres",
+      "definition": "Situació en què un model és massa simple o no s'ha entrenat prou per capturar els patrons reals de les dades, presentant un error elevat tant en entrenament com en validació (alt biaix)."
+    },
+    {
+      "id": "cross-validation",
+      "term": "Validació creuada",
+      "english": "Cross-Validation (k-fold)",
+      "module": 1,
+      "conceptId": "m01-11-avaluacio-generalitzacio-hiperparametres",
+      "definition": "Tècnica d'avaluació que divideix el conjunt de dades en k particions, entrenant k vegades el model amb k-1 particions i avaluant-lo sobre la restant per obtenir una estimació robusta de la generalització."
+    },
+    {
+      "id": "loss-function",
+      "term": "Funció de pèrdua",
+      "english": "Loss Function",
+      "module": 1,
+      "conceptId": "m01-03-deep-learning",
+      "definition": "Funció matemàtica diferenciable que quantifica la discrepància entre la predicció del model i el valor real; durant l'entrenament, l'optimitzador ajusta els paràmetres per minimitzar-la."
+    },
+    {
+      "id": "hyperparameter",
+      "term": "Hiperparàmetre",
+      "english": "Hyperparameter",
+      "module": 1,
+      "conceptId": "m01-11-avaluacio-generalitzacio-hiperparametres",
+      "definition": "Paràmetre extern de configuració d'un algoritme o arquitectura (com la taxa d'aprenentatge, el nombre d'arbres o la profunditat màxima) que es fixa abans de l'entrenament i s'ajusta mitjançant validació."
+    },
+    {
+      "id": "tokenization",
+      "term": "Tokenització",
+      "english": "Tokenization",
+      "module": 2,
+      "conceptId": "m02-02-tokenitzacio",
+      "definition": "Procés de segmentar un text en unitats discretes anomenades tokens (paraules, subparaules o caràcters) que posteriorment es mapegen a identificadors numèrics."
+    },
+    {
+      "id": "embedding",
+      "term": "Embedding",
+      "english": "Vector Embedding",
+      "module": 2,
+      "conceptId": "m02-03-embeddings-nlp",
+      "definition": "Representació numèrica densa en un espai vectorial continu d'un text, paraula o document, on la proximitat geomètrica reflecteix similitud semàntica."
+    },
+    {
+      "id": "rag",
+      "term": "Generació augmentada per recuperació",
+      "english": "Retrieval-Augmented Generation (RAG)",
+      "module": 3,
+      "conceptId": "m03-08-rag",
+      "definition": "Arquitectura que combina un sistema de recuperació d'informació sobre una base documental externa amb un LLM perquè les respostes es fonamentin en fonts verificables i actualitzades."
+    },
+    {
+      "id": "ocr",
+      "term": "Reconeixement òptic de caràcters",
+      "english": "Optical Character Recognition (OCR)",
+      "module": 4,
+      "conceptId": "m04-01-ocr",
+      "definition": "Tecnologia que converteix imatges de text (documents escanejats o fotografies) en text digital cercable i processable automàticament."
+    },
+    {
+      "id": "hitl",
+      "term": "Humà dins del bucle",
+      "english": "Human-in-the-Loop (HITL)",
+      "module": 8,
+      "conceptId": "m08-03-supervisio-humana",
+      "definition": "Model de supervisió en què una persona revisa, valida, corregeix o aprova les propostes del sistema d'IA abans que tinguin efectes jurídics o operatius."
+    },
+    {
+      "id": "data-drift",
+      "term": "Deriva de dades",
+      "english": "Data Drift (Covariate Shift)",
+      "module": 7,
+      "conceptId": "m07-06-monitoratge",
+      "definition": "Canvi en la distribució estadística de les variables d'entrada en producció respecte a les dades amb què es va entrenar el model, que pot degradar-ne el rendiment."
+    },
+    {
+      "id": "prompt-injection",
+      "term": "Injecció d'instruccions",
+      "english": "Prompt Injection",
+      "module": 8,
+      "conceptId": "m08-05-seguretat-ia",
+      "definition": "Atac a sistemes basats en LLM en què un text maliciós (introduït directament per l'usuari o incrustat en un document recuperat) aconsegueix sobreescriure o desviar les instruccions del sistema."
+    }
+  ]
+}

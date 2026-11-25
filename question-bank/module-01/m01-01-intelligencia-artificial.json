@@ -1,0 +1,236 @@
+{
+  "conceptId": "m01-01-intelligencia-artificial",
+  "module": 1,
+  "questions": [
+    {
+      "id": "m01-01-q01",
+      "module": 1,
+      "conceptId": "m01-01-intelligencia-artificial",
+      "lessonRef": "content/module-01/m01-01-intelligencia-artificial.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina relació jeràrquica descriu correctament els conceptes d'intel·ligència artificial (IA), Machine Learning (ML), Deep Learning (DL) i IA simbòlica?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "El Machine Learning engloba la IA, i la IA simbòlica és un subconjunt del Deep Learning." },
+        { "key": "B", "text": "La IA és el camp general que inclou tant la IA simbòlica com el ML; el DL és un subconjunt del ML." },
+        { "key": "C", "text": "IA, ML i DL són termes estrictament equivalents que s'utilitzen indistintament segons l'època." },
+        { "key": "D", "text": "El Deep Learning engloba tots els mètodes de ML, inclosos els arbres de decisió i els sistemes experts." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "La intel·ligència artificial és la disciplina paraigua que abraça paradigmes simbòlics (sistemes experts, lògica, cerca heurística) i paradigmes d'aprenentatge a partir de dades (Machine Learning). Dins del ML, el Deep Learning n'és el subcamp basat en xarxes neuronals profundes.",
+      "explanationsIncorrect": {
+        "A": "Inverteix la relació: el ML és dins la IA, i la IA simbòlica no forma part del Deep Learning.",
+        "C": "No són sinònims: un sistema expert basat en regles és IA però no utilitza ML ni DL.",
+        "D": "El DL és un subconjunt del ML, no al revés; els arbres de decisió clàssics i els sistemes experts no són xarxes neuronals profundes."
+      }
+    },
+    {
+      "id": "m01-01-q02",
+      "module": 1,
+      "conceptId": "m01-01-intelligencia-artificial",
+      "lessonRef": "content/module-01/m01-01-intelligencia-artificial.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Segons la taxonomia de capacitats de la IA, en quina categoria se situen els sistemes actuals desplegats en producció, inclosos els Large Language Models (LLM)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "IA feble o estreta (ANI), tot i que els LLM poden ser models d'ús general (GPAI) dins d'aquesta categoria." },
+        { "key": "B", "text": "IA general (AGI), perquè poden redactar textos, programar i traduir en múltiples idiomes." },
+        { "key": "C", "text": "Superintel·ligència artificial (ASI), atès que processen text més ràpidament que qualsevol humà." },
+        { "key": "D", "text": "IA simbòlica pura, perquè operen exclusivament amb regles gramaticals explícites." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Tots els sistemes en producció actualment són IA feble/estreta (ANI): operen dins d'objectius i patrons apresos sense comprensió general humana ni consciència. Els LLM s'etiqueten normativament com a models d'IA d'ús general (GPAI), no com a AGI.",
+      "explanationsIncorrect": {
+        "B": "Ser versàtil en tasques lingüístiques no equival a AGI; els LLM no tenen comprensió causal general ni autonomia cognitiva humana.",
+        "C": "La velocitat de càlcul en una tasca acotada no defineix la superintel·ligència.",
+        "D": "Els LLM pertanyen al paradigma conexionista/Deep Learning (Transformers), no a la IA simbòlica pura."
+      }
+    },
+    {
+      "id": "m01-01-q03",
+      "module": 1,
+      "conceptId": "m01-01-intelligencia-artificial",
+      "lessonRef": "content/module-01/m01-01-intelligencia-artificial.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "En el marc PEAS per especificar un agent racional, què representen les quatre sigles?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Parameters, Epochs, Accuracy, Softmax." },
+        { "key": "B", "text": "Prediction, Evaluation, Automation, Security." },
+        { "key": "C", "text": "Performance measure, Environment, Actuators, Sensors." },
+        { "key": "D", "text": "Prompt, Embedding, Agent, Storage." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "PEAS correspon a Performance measure (mesura de rendiment), Environment (entorn), Actuators (actuadors) i Sensors (sensors), el marc estàndard de Russell i Norvig per dissenyar agents racionals.",
+      "explanationsIncorrect": {
+        "A": "Són termes d'entrenament de xarxes neuronals, no el marc PEAS.",
+        "B": "No correspon a l'acrònim estàndard de l'enginyeria d'agents.",
+        "D": "Són components típics d'una arquitectura RAG/LLM, no del marc PEAS."
+      }
+    },
+    {
+      "id": "m01-01-q04",
+      "module": 1,
+      "conceptId": "m01-01-intelligencia-artificial",
+      "lessonRef": "content/module-01/m01-01-intelligencia-artificial.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Un ajuntament vol automatitzar el càlcul exacte de la quota de l'IBI aplicant el valor cadastral, el tipus de gravamen vigent i les bonificacions establertes a l'ordenança fiscal. Quina aproximació tècnica és la més adequada?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Entrenar una xarxa neuronal profunda amb rebuts d'anys anteriors per estimar la quota." },
+        { "key": "B", "text": "Utilitzar un LLM amb prompt engineering perquè llegeixi l'ordenança i calculi cada rebut." },
+        { "key": "C", "text": "Aplicar clustering no supervisat per agrupar contribuents amb quotes similars." },
+        { "key": "D", "text": "Programari determinista o un motor de regles exactes versionat segons l'ordenança vigent." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "El càlcul tributari exigeix exactitud al cèntim, determinisme, seguretat jurídica i auditabilitat completa. Com que les regles són explícites i conegudes, el programari determinista (o un motor de regles determinista) és la solució correcta.",
+      "explanationsIncorrect": {
+        "A": "Una xarxa neuronal produiria aproximacions probabilístiques i podria cometre errors de càlcul inacceptables en liquidacions tributàries.",
+        "B": "Els LLM tenen risc d'error aritmètic i al·lucinació, alt cost computacional i manca de determinisme absolut.",
+        "C": "El clustering agrupa dades sense etiqueta però no calcula fórmules fiscals exactes."
+      }
+    },
+    {
+      "id": "m01-01-q05",
+      "module": 1,
+      "conceptId": "m01-01-intelligencia-artificial",
+      "lessonRef": "content/module-01/m01-01-intelligencia-artificial.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Quin element central utilitza la definició de sistema d'IA del Reglament (UE) 2024/1689 (AI Act, art. 3.1) per distingir un sistema d'IA del programari tradicional?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "L'ús obligatori de targetes gràfiques (GPU) durant l'execució en producció." },
+        { "key": "B", "text": "La capacitat d'inferir, a partir de les dades d'entrada i amb certs nivells d'autonomia, com generar sortides com prediccions, continguts, recomanacions o decisions." },
+        { "key": "C", "text": "El fet que el sistema estigui desenvolupat en llenguatge Python o utilitzi una API al núvol." },
+        { "key": "D", "text": "La presència d'una interfície conversacional tipus xat amb la ciutadania." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "L'article 3.1 de l'AI Act defineix el sistema d'IA al voltant de l'autonomia, la possible adaptació postdesplegament i la capacitat d'inferència per generar prediccions, continguts, recomanacions o decisions que influeixin en entorns físics o virtuals.",
+      "explanationsIncorrect": {
+        "A": "El maquinari utilitzat (CPU o GPU) no determina si un programari és un sistema d'IA.",
+        "C": "El llenguatge de programació o l'allotjament al núvol són irrellevants per a la definició jurídica.",
+        "D": "Un sistema d'IA pot no tenir cap xat (p. ex., un detector de frau o un classificador de documents) i un xat de regles fixes sense inferència no és necessàriament un sistema d'IA."
+      }
+    },
+    {
+      "id": "m01-01-q06",
+      "module": 1,
+      "conceptId": "m01-01-intelligencia-artificial",
+      "lessonRef": "content/module-01/m01-01-intelligencia-artificial.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Com es caracteritza habitualment l'entorn d'un agent d'IA que classifica i respon consultes ciutadanes en una seu electrònica municipal?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Completament observable, determinista i estàtic." },
+        { "key": "B", "text": "Parcialment observable, estocàstic i dinàmic." },
+        { "key": "C", "text": "Completament observable, estocàstic i estàtic." },
+        { "key": "D", "text": "Parcialment observable, determinista i estàtic." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "L'entorn és parcialment observable (els ciutadans sovint ometen detalls del seu expedient), estocàstic (hi ha ambigüitat i variabilitat en el comportament humà) i dinàmic (normatives, convocatòries i tràmits canvien al llarg del temps).",
+      "explanationsIncorrect": {
+        "A": "Aquestes propietats corresponen a un joc com els escacs o a un càlcul tancat, no a l'atenció ciutadana real.",
+        "C": "L'agent no observa tot el context del ciutadà ni la normativa roman congelada indefinidament.",
+        "D": "Ni les interaccions humanes són deterministes ni l'entorn administratiu és estàtic."
+      }
+    },
+    {
+      "id": "m01-01-q07",
+      "module": 1,
+      "conceptId": "m01-01-intelligencia-artificial",
+      "lessonRef": "content/module-01/m01-01-intelligencia-artificial.md",
+      "difficulty": "intermediate",
+      "questionType": "code",
+      "prompt": "Observa la funció següent de política de decisió d'un agent d'encaminament d'expedients. Què passa si arriba una instància d'un tema nou sense cap coincidència de paraules (`scores = {'TRIBUTS': 0, 'URBANISME': 0}`)?",
+      "codeSnippet": "def decidir(scores: dict[str, float], llindar: float = 0.65) -> str:\n    if max(scores.values()) == 0:\n        return 'DERIVAR_REVISIO_HUMANA'\n    # softmax ...\n    return 'PROPOSAR_AREA' if max_prob >= llindar else 'DERIVAR_REVISIO_HUMANA'",
+      "options": [
+        { "key": "A", "text": "Llança una excepció ZeroDivisionError en calcular la funció softmax." },
+        { "key": "B", "text": "Assigna aleatòriament TRIBUTS amb probabilitat 1.0." },
+        { "key": "C", "text": "Retorna 'DERIVAR_REVISIO_HUMANA' abans del softmax, evitant una assignació arbitrària sense evidència." },
+        { "key": "D", "text": "Retorna 'PROPOSAR_AREA' perquè el softmax de zeros dóna 0.5 per a cada classe." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "La guarda explícita `if max(scores.values()) == 0` intercepta els casos fora de domini abans d'aplicar `softmax` i deriva la instància a revisió humana, evitant decisions arbitràries.",
+      "explanationsIncorrect": {
+        "A": "No arriba a executar `softmax`, i fins i tot en `softmax`, exp(0) = 1, de manera que el denominador seria 2 i no 0.",
+        "B": "No fa cap selecció aleatòria; la condició inicial retorna directament la derivació humana.",
+        "D": "Encara que no existís la guarda inicial, 0.5 seria inferior al llindar 0.65 i tampoc retornaria 'PROPOSAR_AREA'."
+      }
+    },
+    {
+      "id": "m01-01-q08",
+      "module": 1,
+      "conceptId": "m01-01-intelligencia-artificial",
+      "lessonRef": "content/module-01/m01-01-intelligencia-artificial.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Per què les arquitectures neuro-simbòliques o híbrides resulten especialment atractives per a sistemes d'IA en l'Administració pública respecte d'una aproximació exclusivament basada en Deep Learning?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè eliminen completament la necessitat de supervisió humana i d'auditoria." },
+        { "key": "B", "text": "Perquè combinen la capacitat dels models neuronals per processar dades no estructurades amb el determinisme i la traçabilitat de regles normatives i validadors explícits." },
+        { "key": "C", "text": "Perquè garanteixen una exactitud del 100% en qualsevol tasca de processament del llenguatge natural." },
+        { "key": "D", "text": "Perquè no necessiten integració amb els sistemes d'informació corporatius." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "L'enfocament híbrid permet aprofitar el Deep Learning/NLP allà on hi ha ambigüitat (llegir textos o imatges) i acotar el resultat amb regles deterministes verificables (càlculs, validació de formats, requisits legals), millorant la seguretat i l'explicabilitat.",
+      "explanationsIncorrect": {
+        "A": "Cap arquitectura elimina les obligacions de supervisió humana i auditoria quan hi ha impacte sobre la ciutadania.",
+        "C": "Cap sistema probabilístic garanteix un 100% d'exactitud en llenguatge natural.",
+        "D": "Al contrari, sovint requereixen una integració més acurada amb registres, bases de dades i motors de regles corporatius."
+      }
+    },
+    {
+      "id": "m01-01-q09",
+      "module": 1,
+      "conceptId": "m01-01-intelligencia-artificial",
+      "lessonRef": "content/module-01/m01-01-intelligencia-artificial.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "En un pilot de classificació assistida d'expedients amb supervisió humana (HITL), els auditors detecten que els operadors accepten el 99,4% de les recomanacions del sistema en menys de 2 segons, inclosos errors evidents. Quin risc específic s'està manifestant?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Biaix d'automatització (automation bias), que buida de contingut real la supervisió humana." },
+        { "key": "B", "text": "Infraajustament (underfitting) del conjunt de validació." },
+        { "key": "C", "text": "Coll d'ampolla del coneixement propi dels sistemes experts simbòlics." },
+        { "key": "D", "text": "Fuga de dades (data leakage) entre entrenament i test." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "El biaix d'automatització és la tendència humana a confiar excessivament en les propostes d'un sistema automatitzat i aprovar-les acríticament («rubber-stamping»). Requereix dissenyar interfícies que mostrin evidències, incertesa i fricció deliberada en casos crítics.",
+      "explanationsIncorrect": {
+        "B": "L'underfitting és una propietat del model respecte a les dades, no un comportament dels revisors humans.",
+        "C": "El coll d'ampolla del coneixement fa referència a la dificultat d'extreure regles d'experts humans per codificar un sistema expert.",
+        "D": "El data leakage és un error metodològic en la partició de dades d'entrenament i avaluació."
+      }
+    },
+    {
+      "id": "m01-01-q10",
+      "module": 1,
+      "conceptId": "m01-01-intelligencia-artificial",
+      "lessonRef": "content/module-01/m01-01-intelligencia-artificial.md",
+      "difficulty": "advanced",
+      "questionType": "conceptual",
+      "prompt": "En la teoria d'agents racionals (Russell i Norvig), per què es distingeix entre «racionalitat» i «omnisciència»?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè un agent racional només pot operar en entorns deterministes i sense soroll." },
+        { "key": "B", "text": "Perquè la racionalitat maximitza el rendiment real futur amb certesa absoluta, mentre que l'omnisciència utilitza probabilitats." },
+        { "key": "C", "text": "Perquè un agent racional maximitza el rendiment esperat donades les percepcions disponibles fins al moment, sense conèixer el resultat real futur ni la informació no observada." },
+        { "key": "D", "text": "Perquè la racionalitat exigeix imitar fidelment les emocions humanes, mentre que l'omnisciència no." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Un agent omniscient coneixeria el resultat real de les seves accions (impossible en la pràctica). Un agent racional pren la millor decisió possible per maximitzar el rendiment esperat a partir de la seva seqüència de percepcions i coneixement previ, i pot equivocar-se davant fets imprevistos.",
+      "explanationsIncorrect": {
+        "A": "Els agents racionals estan especialment formulats per actuar en entorns estocàstics i parcialment observables.",
+        "B": "És exactament al revés: l'omnisciència coneixeria el resultat real, mentre que la racionalitat optimitza l'esperança matemàtica.",
+        "D": "Imitar processos o emocions humanes correspon a l'enfocament cognitiu/humà, no al de racionalitat."
+      }
+    }
+  ]
+}

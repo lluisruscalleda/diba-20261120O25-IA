@@ -1,0 +1,54 @@
+{
+  "conceptId": "m01-02-machine-learning",
+  "module": 1,
+  "cards": [
+    {
+      "id": "m01-02-fc01",
+      "module": 1,
+      "conceptId": "m01-02-machine-learning",
+      "front": "Quina és la definició formal de Machine Learning de Tom Mitchell (T, E, P)?",
+      "back": "Un programa aprèn a partir de l'experiència E respecte d'una tasca T i una mesura de rendiment P si el seu rendiment en T, mesurat per P, millora amb l'experiència E.",
+      "tags": ["definició", "ML"]
+    },
+    {
+      "id": "m01-02-fc02",
+      "module": 1,
+      "conceptId": "m01-02-machine-learning",
+      "front": "Diferencia paràmetres vs. hiperparàmetres en Machine Learning.",
+      "back": "Els paràmetres (p. ex., pesos w, bias b) s'aprenen automàticament en entrenar sobre Train. Els hiperparàmetres (p. ex., max_depth, learning_rate, λ) es fixen abans d'entrenar i s'ajusten mitjançant Validation.",
+      "tags": ["hiperparàmetres", "entrenament"]
+    },
+    {
+      "id": "m01-02-fc03",
+      "module": 1,
+      "conceptId": "m01-02-machine-learning",
+      "front": "Què és el data leakage (fuga de dades) i quins dos tipus principals existeixen?",
+      "back": "És la contaminació de l'entrenament amb informació no disponible en producció o provinent del conjunt de test. Tipus principals: target leakage (variables futures) i preprocessing/split leakage (escalat o imputació abans del split, o split aleatori en sèries temporals).",
+      "tags": ["data leakage", "metodologia"]
+    },
+    {
+      "id": "m01-02-fc04",
+      "module": 1,
+      "conceptId": "m01-02-machine-learning",
+      "front": "Quina diferència hi ha entre aprenentatge supervisat, no supervisat, per reforç i autosupervisat?",
+      "back": "Supervisat: parells etiquetats (x, y). No supervisat: només x (clustering, anomalies). Per reforç: accions sobre un entorn amb recompenses retardades. Autosupervisat: genera etiquetes de les pròpies dades no etiquetades (base dels LLM).",
+      "tags": ["paradigmes", "ML"]
+    },
+    {
+      "id": "m01-02-fc05",
+      "module": 1,
+      "conceptId": "m01-02-machine-learning",
+      "front": "Què estableix el principi 'No Free Lunch' en Machine Learning?",
+      "back": "Cap algoritme és universalment el millor per a tots els problemes; el rendiment depèn de les dades i restriccions del domini. Cal partir sempre d'un baseline simple i validar empíricament.",
+      "tags": ["teoria", "selecció models"]
+    },
+    {
+      "id": "m01-02-fc06",
+      "module": 1,
+      "conceptId": "m01-02-machine-learning",
+      "front": "Per què mai no s'han d'ajustar hiperparàmetres mirant el conjunt de Test?",
+      "back": "Perquè s'introdueix sobreajustament implícit sobre el conjunt de test (test-set contamination) i l'estimació final de generalització deixa de ser imparcial.",
+      "tags": ["validació", "generalització"]
+    }
+  ]
+}

@@ -1,0 +1,236 @@
+{
+  "conceptId": "m01-02-machine-learning",
+  "module": 1,
+  "questions": [
+    {
+      "id": "m01-02-q01",
+      "module": 1,
+      "conceptId": "m01-02-machine-learning",
+      "lessonRef": "content/module-01/m01-02-machine-learning.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina característica distingeix essencialment l'aprenentatge supervisat de l'aprenentatge no supervisat?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "L'aprenentatge supervisat utilitza dades d'entrenament amb etiquetes o valors objectiu coneguts (y), mentre que el no supervisat descobreix estructures només a partir de les entrades (X)." },
+        { "key": "B", "text": "L'aprenentatge supervisat exigeix que una persona aprovi cada predicció en temps real, mentre que el no supervisat és totalment autònom." },
+        { "key": "C", "text": "L'aprenentatge supervisat només serveix per a imatges i el no supervisat només per a dades tabulars." },
+        { "key": "D", "text": "L'aprenentatge no supervisat sempre utilitza funcions de recompensa per assaig i error." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "En aprenentatge supervisat el conjunt d'entrenament inclou parells (x_i, y_i) amb la resposta esperada; en no supervisat només disposem d'observacions x_i i l'algoritme cerca patrons com grups (clustering) o anomalies.",
+      "explanationsIncorrect": {
+        "B": "Confon el paradigma d'entrenament «supervisat» amb la supervisió humana operativa (HITL) en producció.",
+        "C": "Ambdós paradigmes s'apliquen tant a dades tabulars com a text, imatges o sèries temporals.",
+        "D": "Les recompenses per assaig i error defineixen l'aprenentatge per reforç (RL), no el no supervisat."
+      }
+    },
+    {
+      "id": "m01-02-q02",
+      "module": 1,
+      "conceptId": "m01-02-machine-learning",
+      "lessonRef": "content/module-01/m01-02-machine-learning.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina de les opcions següents és un exemple d'HIPERPARÀMETRE (i no d'un paràmetre après pel model)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Els pesos w apresos en una regressió lineal després d'executar fit()." },
+        { "key": "B", "text": "El terme independent (bias b) optimitzat mitjançant descens del gradient." },
+        { "key": "C", "text": "La profunditat màxima (max_depth) d'un arbre de decisió fixada abans de l'entrenament." },
+        { "key": "D", "text": "Els pesos de les connexions sinàptiques d'una xarxa neuronal un cop entrenada." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "max_depth és un hiperparàmetre: es configura externament abans d'entrenar i s'ajusta mitjançant validació per controlar la complexitat del model.",
+      "explanationsIncorrect": {
+        "A": "Els pesos w són paràmetres interns estimats automàticament a partir de les dades d'entrenament.",
+        "B": "El biaix b també és un paràmetre après durant l'optimització.",
+        "D": "Els pesos sinàptics d'una xarxa neuronal són paràmetres apresos mitjançant backpropagation."
+      }
+    },
+    {
+      "id": "m01-02-q03",
+      "module": 1,
+      "conceptId": "m01-02-machine-learning",
+      "lessonRef": "content/module-01/m01-02-machine-learning.md",
+      "difficulty": "basic",
+      "questionType": "case-study",
+      "prompt": "Una diputació vol agrupar els seus 311 municipis en perfils homogenis segons indicadors demogràfics, pressupostaris i de digitalització, sense disposar de cap etiqueta prèvia de grup. Quin paradigma de ML correspon?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Aprenentatge supervisat de regressió." },
+        { "key": "B", "text": "Aprenentatge per reforç." },
+        { "key": "C", "text": "Aprenentatge supervisat de classificació multiclasse." },
+        { "key": "D", "text": "Aprenentatge no supervisat (clustering)." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Com que no existeixen etiquetes predefinides i l'objectiu és descobrir grups naturals a partir de la similitud entre municipis, es tracta d'una tasca de clustering (aprenentatge no supervisat).",
+      "explanationsIncorrect": {
+        "A": "La regressió prediu un valor numèric etiquetat, no descobreix grups sense etiqueta.",
+        "B": "L'aprenentatge per reforç requereix un agent que interactuï seqüencialment amb un entorn rebent recompenses.",
+        "C": "La classificació multiclasse exigeix conèixer prèviament les classes i disposar d'exemples etiquetats."
+      }
+    },
+    {
+      "id": "m01-02-q04",
+      "module": 1,
+      "conceptId": "m01-02-machine-learning",
+      "lessonRef": "content/module-01/m01-02-machine-learning.md",
+      "difficulty": "intermediate",
+      "questionType": "code",
+      "prompt": "Quin error metodològic greu conté el fragment de codi següent?",
+      "codeSnippet": "from sklearn.preprocessing import StandardScaler\nfrom sklearn.model_selection import train_test_split\n\nscaler = StandardScaler()\nX_scaled = scaler.fit_transform(X)\nX_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2)",
+      "options": [
+        { "key": "A", "text": "Preprocessing data leakage: s'ajusta l'escalador (mitjana i desviació) sobre tot el dataset abans de separar train i test." },
+        { "key": "B", "text": "Utilitzar test_size=0.2 és sempre invàlid en scikit-learn." },
+        { "key": "C", "text": "StandardScaler només es pot aplicar sobre la variable objectiu y, mai sobre X." },
+        { "key": "D", "text": "train_test_split no pot rebre matrius NumPy escalades." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "En cridar scaler.fit_transform(X) abans del split, les estadístiques del conjunt de test (mitjana i variància) contaminen l'entrenament. Cal fer primer el split, després scaler.fit_transform(X_train) i finalment scaler.transform(X_test) (idealment dins d'un Pipeline).",
+      "explanationsIncorrect": {
+        "B": "Reservar un 20% per a test és una pràctica estàndard i vàlida en molts problemes.",
+        "C": "StandardScaler s'aplica precisament a les característiques d'entrada X.",
+        "D": "train_test_split funciona perfectament amb matrius NumPy; el problema no és sintàctic sinó metodològic."
+      }
+    },
+    {
+      "id": "m01-02-q05",
+      "module": 1,
+      "conceptId": "m01-02-machine-learning",
+      "lessonRef": "content/module-01/m01-02-machine-learning.md",
+      "difficulty": "intermediate",
+      "questionType": "metrics",
+      "prompt": "Un model de classificació d'instàncies obté un F1-score del 99% en entrenament (train) però només del 61% en validació (validation). Quin diagnòstic és més probable?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Infraajustament (underfitting) per excés de regularització." },
+        { "key": "B", "text": "Sobreajustament (overfitting): el model ha memoritzat patrons particulars i soroll del conjunt d'entrenament i no generalitza." },
+        { "key": "C", "text": "Generalització òptima perquè la mètrica d'entrenament s'acosta al 100%." },
+        { "key": "D", "text": "Error de càlcul perquè l'F1 de validació sempre ha de ser superior al d'entrenament." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Una bretxa molt gran entre un rendiment excel·lent en train (99%) i un rendiment pobre en validation (61%) és el símptoma clàssic de sobreajustament (alta variància).",
+      "explanationsIncorrect": {
+        "A": "L'infraajustament es manifesta amb un rendiment baix tant en train com en validation.",
+        "C": "Un 99% en train no indica bona generalització si el rendiment s'ensorra en dades no vistes.",
+        "D": "En general, el rendiment en train sol ser igual o lleugerament superior al de validació, no a l'inrevés."
+      }
+    },
+    {
+      "id": "m01-02-q06",
+      "module": 1,
+      "conceptId": "m01-02-machine-learning",
+      "lessonRef": "content/module-01/m01-02-machine-learning.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Quin paper té la partició de VALIDACIÓ (o la validació creuada) dins la divisió clàssica Train / Validation / Test?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Actualitzar directament els pesos del model mitjançant descens del gradient." },
+        { "key": "B", "text": "Substituir el conjunt d'entrenament quan hi ha poques dades." },
+        { "key": "C", "text": "Comparar arquitectures i seleccionar hiperparàmetres sense contaminar l'estimació final del conjunt de test." },
+        { "key": "D", "text": "Emmagatzemar les dades brutes abans de netejar-les." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "La validació permet prendre decisions de modelatge (quin algoritme triar, quins hiperparàmetres o quin llindar) mantenint el conjunt de test intacte per a l'avaluació imparcial final.",
+      "explanationsIncorrect": {
+        "A": "Els pesos s'actualitzen només sobre train; fer-ho sobre validació eliminaria la seva utilitat.",
+        "B": "No substitueix train; en validació creuada s'utilitzen rotativament les particions dins del bloc de desenvolupament.",
+        "D": "La partició de validació no és un magatzem de dades brutes sinó una partició d'avaluació intermèdia."
+      }
+    },
+    {
+      "id": "m01-02-q07",
+      "module": 1,
+      "conceptId": "m01-02-machine-learning",
+      "lessonRef": "content/module-01/m01-02-machine-learning.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "En quin paradigma s'enquadra el preentrenament d'un Large Language Model (LLM) que aprèn a predir el següent token sobre bilions de paraules sense anotació manual humana?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Aprenentatge autosupervisat (Self-Supervised Learning)." },
+        { "key": "B", "text": "Clustering jeràrquic." },
+        { "key": "C", "text": "Sistema expert basat en regles." },
+        { "key": "D", "text": "Aprenentatge per reforç sense dades." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "L'aprenentatge autosupervisat genera automàticament les etiquetes a partir de l'estructura de les pròpies dades no etiquetades (el següent token del text fa d'objectiu supervisat).",
+      "explanationsIncorrect": {
+        "B": "El clustering agrupa instàncies similars però no prediu seqüències de tokens.",
+        "C": "Un sistema expert empra regles redactades manualment, no preentrenament massiu sobre text.",
+        "D": "El preentrenament base d'un LLM és autosupervisat (l'RL com RLHF o DPO s'aplica només en fases posteriors d'alineament)."
+      }
+    },
+    {
+      "id": "m01-02-q08",
+      "module": 1,
+      "conceptId": "m01-02-machine-learning",
+      "lessonRef": "content/module-01/m01-02-machine-learning.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "Vols predir el volum mensual de sol·licituds de subvenció per a l'any 2027 a partir de l'històric 2019–2026. Quina estratègia de validació és metodològicament correcta?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Barrejar aleatòriament tots els mesos de 2019–2026 i aplicar 10-fold cross-validation estàndard." },
+        { "key": "B", "text": "Aplicar una partició cronològica o validació creuada temporal expansiva (TimeSeriesSplit) perquè el model sempre s'entreni amb el passat i s'avaluï sobre el futur." },
+        { "key": "C", "text": "Entrenar amb 2025–2026 i avaluar sobre 2019–2020 perquè són anys més estables." },
+        { "key": "D", "text": "Avaluar sobre les mateixes dades d'entrenament perquè les sèries temporals no pateixen overfitting." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "En dades temporals existeix autocorrelació i evolució temporal (estacionalitat, canvis normatius). Una partició aleatòria filtraria informació del futur al passat; cal respectar estrictament l'ordre cronològic amb TimeSeriesSplit o hold-out temporal.",
+      "explanationsIncorrect": {
+        "A": "Barrejar mesos aleatòriament permetria utilitzar dades d'abril i juny de 2025 per predir maig de 2025 (leakage temporal).",
+        "C": "Entrenar amb el futur per predir el passat no reprodueix les condicions reals de desplegament.",
+        "D": "Les sèries temporals són especialment propenses a l'overfitting i al drift; avaluar sobre train invalida qualsevol conclusió."
+      }
+    },
+    {
+      "id": "m01-02-q09",
+      "module": 1,
+      "conceptId": "m01-02-machine-learning",
+      "lessonRef": "content/module-01/m01-02-machine-learning.md",
+      "difficulty": "advanced",
+      "questionType": "conceptual",
+      "prompt": "Quina implicació pràctica té el teorema «No Free Lunch» (Wolpert) per a un enginyer de Machine Learning en una administració pública?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Que les xarxes neuronals profundes sempre superen qualsevol algoritme tabular si s'entrenen prou temps." },
+        { "key": "B", "text": "Que cap algoritme de ML és universalment superior a tots els altres en tots els problemes possibles; cal començar amb baselines simples i comparar empíricament segons les dades i restriccions del domini." },
+        { "key": "C", "text": "Que els models de codi obert mai no poden competir amb les API comercials de pagament." },
+        { "key": "D", "text": "Que no és possible mesurar la generalització d'un model fora del conjunt d'entrenament." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "El teorema No Free Lunch demostra que, promitjat sobre totes les distribucions possibles de problemes, cap algoritme supera un altre. Per això el rendiment depèn de l'adequació entre els biaixos inductius del model i les dades concretes, fet que exigeix experimentació rigorosa des de baselines simples.",
+      "explanationsIncorrect": {
+        "A": "A la pràctica, sobre dades tabulars estructurades de mida moderada, models com Gradient Boosting o Random Forest sovint superen les xarxes profundes.",
+        "C": "El teorema tracta sobre optimització i aprenentatge estadístic, no sobre llicències ni costos comercials.",
+        "D": "Sí que es pot estimar la generalització empíricament mitjançant particions de test i validació ben dissenyades."
+      }
+    },
+    {
+      "id": "m01-02-q10",
+      "module": 1,
+      "conceptId": "m01-02-machine-learning",
+      "lessonRef": "content/module-01/m01-02-machine-learning.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "En la formulació de minimització del risc empíric regularitzat: min_θ [ (1/N) Σ L(f_θ(x_i), y_i) + λ Ω(θ) ], quin efecte té incrementar excessivament l'hiperparàmetre λ?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Augmenta la variància del model i provoca sobreajustament extrem." },
+        { "key": "B", "text": "Penalitza tant la complexitat dels paràmetres θ que el model esdevé massa rígid, augmentant el biaix i provocant infraajustament (underfitting)." },
+        { "key": "C", "text": "Elimina la necessitat de tenir un conjunt de prova (test)." },
+        { "key": "D", "text": "Transforma el problema supervisat en un problema d'aprenentatge per reforç." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Un λ massa alt fa dominar el terme de penalització λ Ω(θ) per sobre de la funció de pèrdua, empenyent els paràmetres cap a zero i impedint que el model capturi patrons reals (alt biaix / underfitting).",
+      "explanationsIncorrect": {
+        "A": "Augmentar λ redueix la variància i frena l'overfitting, no l'augmenta.",
+        "C": "La regularització mai no substitueix l'avaluació independent sobre un conjunt de test.",
+        "D": "La regularització modifica la funció objectiu dins del mateix paradigma supervisat."
+      }
+    }
+  ]
+}
