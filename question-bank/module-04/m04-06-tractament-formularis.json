@@ -1,0 +1,236 @@
+{
+  "conceptId": "m04-06-tractament-formularis",
+  "module": 4,
+  "questions": [
+    {
+      "id": "m04-06-q01",
+      "module": 4,
+      "conceptId": "m04-06-tractament-formularis",
+      "lessonRef": "content/module-04/m04-06-tractament-formularis.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina tecnologia s'utilitza específicament per detectar si les **caselles de selecció (*checkboxes* / *radio buttons*)** d'un formulari escanejat estan marcades o buides?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "**OMR (*Optical Mark Recognition*)**." },
+        { "key": "B", "text": "BM25." },
+        { "key": "C", "text": "K-Means." },
+        { "key": "D", "text": "LoRA." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "OMR analitza la presència de marques dins de caselles (mitjançant densitat interior de tinta o classificadors visuals), una tasca que l'OCR de text tradicional no resol.",
+      "explanationsIncorrect": {
+        "B": "BM25 és un algorisme de recuperació lèxica.",
+        "C": "K-Means és un algorisme de clustering.",
+        "D": "LoRA és una tècnica de fine-tuning d'LLMs."
+      }
+    },
+    {
+      "id": "m04-06-q02",
+      "module": 4,
+      "conceptId": "m04-06-tractament-formularis",
+      "lessonRef": "content/module-04/m04-06-tractament-formularis.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quin avantatge té llegir directament els camps d'un **PDF AcroForm** no aplanat en lloc d'executar-hi OCR i OMR?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Augmenta la taxa d'error al 10%." },
+        { "key": "B", "text": "Extrau els valors de text i l'estat de les caselles directament de l'estructura digital del PDF amb ~100% de precisió i en pocs mil·lisegons." },
+        { "key": "C", "text": "Requereix una GPU de 80 GB." },
+        { "key": "D", "text": "Només funciona si el PDF està girat 90 graus." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Com en els PDFs natius, aprofitar els camps estructurats AcroForm evita qualsevol error de reconeixement òptic i estalvia còmput.",
+      "explanationsIncorrect": {
+        "A": "Al contrari, l'error d'extracció és pràcticament 0%.",
+        "C": "S'executa en mil·lisegons sobre CPU pura.",
+        "D": "Llegeix el diccionari intern del PDF independentment de la visualització."
+      }
+    },
+    {
+      "id": "m04-06-q03",
+      "module": 4,
+      "conceptId": "m04-06-tractament-formularis",
+      "lessonRef": "content/module-04/m04-06-tractament-formularis.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Què significa **HTR (*Handwritten Text Recognition*)**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Traducció automàtica del català al francès." },
+        { "key": "B", "text": "Compressió d'imatges TIFF." },
+        { "key": "C", "text": "Reconeixement automàtic de **text manuscrit** mitjançant models neuronals especialitzats (com TrOCR o VLMs)." },
+        { "key": "D", "text": "Validació criptogràfica de certificats digitals." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "HTR aborda la variabilitat de la cal·ligrafia humana (cursiva o majúscules a mà), molt més complexa que la tipografia impresa.",
+      "explanationsIncorrect": {
+        "A": "No és traducció.",
+        "B": "No és compressió d'imatge.",
+        "D": "No és validació criptogràfica."
+      }
+    },
+    {
+      "id": "m04-06-q04",
+      "module": 4,
+      "conceptId": "m04-06-tractament-formularis",
+      "lessonRef": "content/module-04/m04-06-tractament-formularis.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "En un formulari escanejat, el ciutadà ha marcat per error `SÍ` en una casella d'oposició a consulta de dades, l'ha ratllat i després ha marcat `NO`. Si el sistema OMR detecta **totes dues caselles com a `MARCADA`**, què ha de fer?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Triar automàticament `NO` per defecte." },
+        { "key": "B", "text": "Bloquejar l'acció automàtica (no consultar dades a tercers) i derivar el camp a **revisió humana**, perquè s'ha violat la regla de consistència d'un grup mútuament excloent." },
+        { "key": "C", "text": "Triar la casella amb més píxels negres sense avisar ningú." },
+        { "key": "D", "text": "Ignorar la secció i arxivar el formulari." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "En un grup excloent, la casella ratllada té fins i tot MÉS píxels negres que la correcta! Per tant, mai es pot triar «la més fosca» automàticament: qualsevol doble marca ha d'anar a revisió humana.",
+      "explanationsIncorrect": {
+        "A": "Endevinar el consentiment/oposició ciutadana vulnera el RGPD i l'art. 28.2 LPACAP.",
+        "C": "Precisament la casella ratllada per esborrar-la sol tenir més tinta que la marcada correctament!",
+        "D": "Incompliria la tramitació del procediment."
+      }
+    },
+    {
+      "id": "m04-06-q05",
+      "module": 4,
+      "conceptId": "m04-06-tractament-formularis",
+      "lessonRef": "content/module-04/m04-06-tractament-formularis.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Què passa tècnicament quan un ciutadà emplena un **PDF AcroForm** al seu ordinador però després prem **«Imprimir a PDF»** abans de pujar-lo a la seu electrònica?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "El PDF s'**aplana (*flattened*)**, perdent el diccionari de camps estructurats AcroForm; el pipeline ha de detectar automàticament l'absència de camps i activar el *fallback* a extracció de text + OMR/visió." },
+        { "key": "B", "text": "El fitxer es converteix en JSON automàticament." },
+        { "key": "C", "text": "Els camps AcroForm es dupliquen per seguretat." },
+        { "key": "D", "text": "El PDF queda corrupte i il·legible per als humans." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "L'aplanament de PDFs és extremadament freqüent en ciutadans reals; un sistema robust comprova si `get_fields()` retorna dades i commuta suaument a la branca visual/OMR si és buit.",
+      "explanationsIncorrect": {
+        "B": "Continua sent un PDF, però sense estructura de formulari editable.",
+        "C": "No es dupliquen, s'eliminen com a camps estructurats.",
+        "D": "Visualment es veu perfecte, però digitalment ja no té camps AcroForm."
+      }
+    },
+    {
+      "id": "m04-06-q06",
+      "module": 4,
+      "conceptId": "m04-06-tractament-formularis",
+      "lessonRef": "content/module-04/m04-06-tractament-formularis.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Per què en una oficina pública **NO** s'ha d'utilitzar un model d'IA per fer **verificació biomètrica d'autenticitat de signatures manuscrites** en formularis, però sí que és útil detectar simplement la **presència de traç**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè els ordinadors no poden veure traços negres." },
+        { "key": "B", "text": "Perquè detectar presència de traç és il·legal." },
+        { "key": "C", "text": "Perquè la detecció de presència només avisa si el requadre està en blanc (control formal de baix risc), mentre la verificació biomètrica implica dades biomètriques sensibles (art. 9 RGPD), alt risc d'error/AI Act i és substituïda jurídicament per signatura electrònica o identificació presencial en OAC." },
+        { "key": "D", "text": "Perquè la signatura electrònica està prohibida a la Llei 39/2015." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Controlar si un formulari ha quedat sense signar evita devolucions tardanes sense incórrer en els riscos legals i tècnics de la biometria de signatures.",
+      "explanationsIncorrect": {
+        "A": "Detectar traços és trivial tècnicament.",
+        "B": "Comprovar si el camp de signatura és buit és un control formal estàndard totalment legítim.",
+        "D": "La Llei 39/2015 precisament impulsa i regula la signatura electrònica."
+      }
+    },
+    {
+      "id": "m04-06-q07",
+      "module": 4,
+      "conceptId": "m04-06-tractament-formularis",
+      "lessonRef": "content/module-04/m04-06-tractament-formularis.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Si la Diputació migra un formulari d'ajuts escolars a un **formulari web estructurat** per eliminar errors d'OCR/OMR, pot **prohibir** a les famílies (persones físiques) presentar la sol·licitud presencialment en paper?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Sí, totes les persones físiques estan obligades sempre a usar la seu electrònica." },
+        { "key": "B", "text": "Sí, si l'ajuntament té un chatbot actiu." },
+        { "key": "C", "text": "Només si el formulari té més de 3 caselles." },
+        { "key": "D", "text": "**No**: l'article 14.1 de la Llei 39/2015 (LPACAP) garanteix a les persones físiques el dret a escollir si es relacionen electrònicament o presencialment/en paper (llevat supòsits reglamentaris específics), per la qual cosa cal combinar seu electrònica fàcil amb assistència OAC i suport documental." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "La transformació digital pública ha de reduir la bretxa digital i fomentar el canal web amb bon disseny, respectant sempre el dret de les persones físiques (art. 14.1 LPACAP).",
+      "explanationsIncorrect": {
+        "A": "L'obligació electrònica general (art. 14.2 LPACAP) aplica a persones jurídiques, entitats sense personalitat i certs col·lectius professionals, no a ciutadans en general.",
+        "B": "Tenir un chatbot no suprimeix el dret legal d'atenció presencial.",
+        "C": "No depèn del nombre de caselles."
+      }
+    },
+    {
+      "id": "m04-06-q08",
+      "module": 4,
+      "conceptId": "m04-06-tractament-formularis",
+      "lessonRef": "content/module-04/m04-06-tractament-formularis.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En la funció `classificar_casella_omr` de la lliçó, per què és indispensable la línia `interior = patch_gris[marge_vora:-marge_vora, marge_vora:-marge_vora]` abans de calcular `densitat_tinta`?",
+      "codeSnippet": "interior = patch_gris[marge_vora:-marge_vora, marge_vora:-marge_vora]\ndensitat_tinta = float(np.mean(interior < 128))",
+      "options": [
+        { "key": "A", "text": "Per excloure els píxels negres del **marc imprès del propi requadre**, evitant que una casella completament buida superi el llindar i generi falsos positius de «MARCADA» o «AMBIGUA»." },
+        { "key": "B", "text": "Per convertir la imatge a format PDF." },
+        { "key": "C", "text": "Per augmentar el nombre de píxels foscos." },
+        { "key": "D", "text": "Per esborrar la creu dibuixada al centre de la casella." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "El perímetre negre d'una casella petita de 16×16 representa ja el ~23% dels píxels! Sense retallar el marge de vora, fins i tot una casella buida es classificaria erròniament com a marcada.",
+      "explanationsIncorrect": {
+        "B": "És un slicing d'un array NumPy, no una conversió a PDF.",
+        "C": "Al contrari, elimina els píxels foscos del marc exterior.",
+        "D": "Només retalla els `marge_vora` píxels exteriors, conservant intacte el centre."
+      }
+    },
+    {
+      "id": "m04-06-q09",
+      "module": 4,
+      "conceptId": "m04-06-tractament-formularis",
+      "lessonRef": "content/module-04/m04-06-tractament-formularis.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Per què abans d'aplicar **OMR per coordenades** sobre un formulari escanejat de plantilla fixa és imprescindible una etapa prèvia d'**alineació geomètrica (*image registration*)**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Per canviar els colors del formulari a escala RGB." },
+        { "key": "B", "text": "Perquè un desplaçament de només 3 mm, un petit gir o un canvi d'escala en escanejar desplaçaria les coordenades de retall fora de la casella real (fent llegir el text veí com si fos una marca!); l'alineació per punts d'ancoratge o codi QR recalibra les coordenades exactes." },
+        { "key": "C", "text": "Perquè NumPy no pot llegir matrius sense girar-les." },
+        { "key": "D", "text": "Per eliminar els accents del text manuscrit." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Les caselles OMR solen mesurar només 4×4 mm; sense *registration* (alineació afí/homogràfica sobre marques fiducials o cantonades), petites variacions d'escàner destrueixen la precisió.",
+      "explanationsIncorrect": {
+        "A": "Es treballa normalment en escala de grisos.",
+        "C": "NumPy processa qualsevol matriu 2D.",
+        "D": "L'alineació és geomètrica, no lingüística."
+      }
+    },
+    {
+      "id": "m04-06-q10",
+      "module": 4,
+      "conceptId": "m04-06-tractament-formularis",
+      "lessonRef": "content/module-04/m04-06-tractament-formularis.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "Un formulari escanejat inclou un camp d'**adreça de correu electrònic escrita a mà** i un camp d'**IBAN escrit a mà**. Quin dels dos té una xarxa de seguretat determinista més forta després de l'HTR?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "El correu electrònic, perquè té un dígit de control MOD 97." },
+        { "key": "B", "text": "Tots dos tenen exactament la mateixa validació matemàtica." },
+        { "key": "C", "text": "L'**IBAN**, perquè disposa de **dígit de control matemàtic ISO 7064 (MOD 97-10)** que intercepta gairebé qualsevol error d'1 dígit d'HTR; en canvi, un error d'una lletra en un correu (`joan.puig` vs `joan.pulg`) continua sent sintàcticament vàlid i requereix revisió humana o confirmació amb doble entrada/web!" },
+        { "key": "D", "text": "Cap dels dos no es pot validar de cap manera." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "En camps manuscrits sense dígit de control (correus electrònics, noms propis, telèfons), un error d'HTR passa desapercebut als validadors sintàctics; per això la captura web/assistida OAC és molt superior.",
+      "explanationsIncorrect": {
+        "A": "Les adreces de correu electrònic no tenen dígit de control matemàtic.",
+        "B": "L'IBAN té checksum criptogràfic/aritmètic fort (MOD 97-10); el correu només format regex.",
+        "D": "L'IBAN sí que disposa de validació determinista forta."
+      }
+    }
+  ]
+}

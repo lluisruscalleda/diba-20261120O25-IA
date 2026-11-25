@@ -1,0 +1,236 @@
+{
+  "conceptId": "m04-04-reconeixement-entitats-documents",
+  "module": 4,
+  "questions": [
+    {
+      "id": "m04-04-q01",
+      "module": 4,
+      "conceptId": "m04-04-reconeixement-entitats-documents",
+      "lessonRef": "content/module-04/m04-04-reconeixement-entitats-documents.md",
+      "difficulty": "basic",
+      "questionType": "normative",
+      "prompt": "Per què dibuixar un **rectangle negre superficial** damunt d'un NIF en un PDF NO constitueix una anonimització segura?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè només amaga visualment el text però deixa intacta la capa de text vectorial subjacent, permetent copiar/enganxar o extreure el NIF íntegre amb qualsevol lector o eina com `pdftotext`." },
+        { "key": "B", "text": "Perquè els rectangles negres no es poden imprimir." },
+        { "key": "C", "text": "Perquè augmenta massa el contrast de la imatge." },
+        { "key": "D", "text": "Perquè converteix automàticament el PDF en un fitxer JSON." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Una redacció real (*True Redaction*) ha d'esborrar físicament els caràcters del flux de text del PDF, sobreescriure els píxels en imatges i netejar metadades/historial.",
+      "explanationsIncorrect": {
+        "B": "El problema és de seguretat digital, no d'impressió.",
+        "C": "No és una qüestió de contrast visual.",
+        "D": "No canvia el format del fitxer."
+      }
+    },
+    {
+      "id": "m04-04-q02",
+      "module": 4,
+      "conceptId": "m04-04-reconeixement-entitats-documents",
+      "lessonRef": "content/module-04/m04-04-reconeixement-entitats-documents.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Què aporta l'***Entity Linking*** en el processament de documents de la Diputació de Barcelona?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Tradueix el document a altres idiomes." },
+        { "key": "B", "text": "Vincula mencions textuals variables («Aj. de Mataró», «Excm. Ajuntament de Mataró») a un identificador canònic oficial (codi **INE** o **DIR3**), permetent creuar expedients sense duplicats." },
+        { "key": "C", "text": "Esborra totes les entitats del document." },
+        { "key": "D", "text": "Millora la resolució DPI d'una imatge." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "L'Entity Linking normalitza les variants lingüístiques contra catàlegs oficials (INE, DIR3, NIF), clau per a interoperabilitat i integració corporativa.",
+      "explanationsIncorrect": {
+        "A": "No fa traducció automàtica.",
+        "C": "Les normalitza i enllaça, no les esborra.",
+        "D": "No modifica la resolució d'imatges."
+      }
+    },
+    {
+      "id": "m04-04-q03",
+      "module": 4,
+      "conceptId": "m04-04-reconeixement-entitats-documents",
+      "lessonRef": "content/module-04/m04-04-reconeixement-entitats-documents.md",
+      "difficulty": "basic",
+      "questionType": "normative",
+      "prompt": "Segons el **RGPD (art. 4.5)**, les dades **pseudonimitzades** (substituint noms per `[CIUTADA_01]` amb una taula de correspondència separada) continuen sent dades personals?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "No, queden automàticament fora de l'àmbit del RGPD." },
+        { "key": "B", "text": "Només si el fitxer té més de 10 pàgines." },
+        { "key": "C", "text": "**Sí**, continuen sent dades personals subjectes al RGPD perquè es poden atribuir a una persona física mitjançant informació addicional separada; només les dades realment anonimitzades de forma irreversible (Cons. 26) queden fora." },
+        { "key": "D", "text": "Només quan inclouen fotografies." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "La pseudonimització és una excel·lent mesura de seguretat i minimització (art. 25 i 32 RGPD), però no elimina l'aplicabilitat del RGPD.",
+      "explanationsIncorrect": {
+        "A": "Confondre pseudonimització amb anonimització irreversible és un error normatiu greu molt preguntat a exàmens.",
+        "B": "No depèn del nombre de pàgines.",
+        "D": "S'aplica a qualsevol informació textual o numèrica atribuïble a una persona."
+      }
+    },
+    {
+      "id": "m04-04-q04",
+      "module": 4,
+      "conceptId": "m04-04-reconeixement-entitats-documents",
+      "lessonRef": "content/module-04/m04-04-reconeixement-entitats-documents.md",
+      "difficulty": "intermediate",
+      "questionType": "metrics",
+      "prompt": "En un sistema automàtic de detecció de **PII (*Personally Identifiable Information*)** per anonimitzar decrets abans de publicar-los al portal de transparència, quina mètrica s'ha de prioritzar?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "El **Recall (i F2-score)**, perquè un Fals Negatiu (deixar un NIF o domicili real exposat públicament) provoca una bretxa RGPD greu, mentre que un Fals Positiu es pot corregir fàcilment en la revisió humana prèvia." },
+        { "key": "B", "text": "La *Precision* pura a costa d'un Recall del 60%." },
+        { "key": "C", "text": "La velocitat d'impressió en pàgines per minut." },
+        { "key": "D", "text": "BLEU." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "L'asimetria de risc en privacitat és extrema: perdre una dada personal en una publicació oberta és irreversible; per això es maximitza Recall combinant regles deterministes + NER + revisió humana.",
+      "explanationsIncorrect": {
+        "B": "Un Recall del 60% deixaria el 40% de dades personals exposades públicament!",
+        "C": "No té relació amb privacitat.",
+        "D": "BLEU avalua traducció automàtica."
+      }
+    },
+    {
+      "id": "m04-04-q05",
+      "module": 4,
+      "conceptId": "m04-04-reconeixement-entitats-documents",
+      "lessonRef": "content/module-04/m04-04-reconeixement-entitats-documents.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Per què en un document administratiu (com una factura o una instància amb representant) un NER tradicional de text pla no és suficient i cal **desambiguació de rols basada en *layout*/seccions**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè el NER pla no sap llegir majúscules." },
+        { "key": "B", "text": "Perquè al mateix document conviuen múltiples entitats del mateix tipus (`PERSONA`, `NIF`, `ORG`) amb **rols jurídics diferents** (emissor vs. receptor, sol·licitant vs. representant, ciutadà vs. càrrec públic signant)." },
+        { "key": "C", "text": "Perquè el NER pla només funciona en PDFs escanejats." },
+        { "key": "D", "text": "Perquè els documents públics no contenen mai noms propis." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Saber que `B12345678` i `P0800000B` són dos NIFs no serveix de res si no distingim quin és el proveïdor emissor i quin és la Diputació receptora.",
+      "explanationsIncorrect": {
+        "A": "El NER modern processa majúscules i minúscules.",
+        "C": "El NER pla opera sobre qualsevol text.",
+        "D": "Al contrari, contenen multitud d'entitats personals i institucionals."
+      }
+    },
+    {
+      "id": "m04-04-q06",
+      "module": 4,
+      "conceptId": "m04-04-reconeixement-entitats-documents",
+      "lessonRef": "content/module-04/m04-04-reconeixement-entitats-documents.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "En preparar un decret municipal per publicar-lo al portal de transparència, com ha de tractar el sistema el nom de l'**alcaldessa o secretari que signen el decret** enfront del nom i domicili del **ciutadà beneficiari d'un ajut social**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Redactar el nom del secretari i publicar íntegrament el domicili i NIF del ciutadà." },
+        { "key": "B", "text": "Publicar tots dos sense cap protecció." },
+        { "key": "C", "text": "**Preservar** el nom i càrrec de les autoritats/funcionaris signants (transparència institucional) i **protegir/redactar** les dades personals i quasi-identificadors del ciutadà beneficiari." },
+        { "key": "D", "text": "Redactar el 100% de totes les paraules del decret." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "La transparència pública exigeix identificar qui signa l'acte en exercici de potestat pública, mentre la protecció de dades obliga a preservar la privacitat dels ciutadans (especialment en ajuts socials).",
+      "explanationsIncorrect": {
+        "A": "És exactament al revés i causaria una bretxa RGPD.",
+        "B": "Publicar domicili i NIF complet d'un beneficiari social vulnera el RGPD i la LOPDGDD.",
+        "D": "Faríem el decret completament inintel·ligible i inútil per a transparència."
+      }
+    },
+    {
+      "id": "m04-04-q07",
+      "module": 4,
+      "conceptId": "m04-04-reconeixement-entitats-documents",
+      "lessonRef": "content/module-04/m04-04-reconeixement-entitats-documents.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "En anonimitzar un document d'ajuts socials, fins i tot després d'esborrar el nom i el NIF del beneficiari, quin risc ocult continua existint si es deixen intactes la seva **adreça exacta, data de naixement i nombre de fills menors**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Cap risc, perquè sense el nom ningú no pot identificar una persona." },
+        { "key": "B", "text": "Només un risc estètic de maquetació." },
+        { "key": "C", "text": "Que el PDF pesi massa megabytes." },
+        { "key": "D", "text": "Risc de **reidentificació indirecta mitjançant quasi-identificadors** (especialment en municipis petits!), de manera que el document NO estaria realment anonimitzat segons el RGPD." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Una combinació de quasi-identificadors (adreça, data de naixement, composició familiar) singularitza fàcilment una persona en un municipi, invalidant l'anonimització.",
+      "explanationsIncorrect": {
+        "A": "El RGPD protegeix qualsevol persona identificable directament O indirectament.",
+        "B": "És un risc jurídic de privacitat, no estètic.",
+        "C": "No té relació amb la mida del fitxer."
+      }
+    },
+    {
+      "id": "m04-04-q08",
+      "module": 4,
+      "conceptId": "m04-04-reconeixement-entitats-documents",
+      "lessonRef": "content/module-04/m04-04-reconeixement-entitats-documents.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En la funció `pseudonimitzar_document` de la lliçó, quin avantatge aporta reutilitzar el mateix token `[CIUTADA_01]` per a totes les mencions de «Marta Roca» dins del decret, i què comprova l'última línia (`fuites`)?",
+      "codeSnippet": "fuites = [tipus for tipus, regex in PATRONS_PII if regex.search(resultat)]",
+      "options": [
+        { "key": "A", "text": "La pseudonimització consistent preserva la **correferència narrativa** (es continua entenent que la persona sol·licitant i la notificada són la mateixa) i la línia `fuites` executa una **auditoria determinista post-redacció** per verificar que no ha quedat cap IBAN/NIF/email sense protegir." },
+        { "key": "B", "text": "Permet publicar el decret sense revisar-lo mai." },
+        { "key": "C", "text": "Garanteix que no ha quedat cap nom propi no estructurat sense necessitat de NER." },
+        { "key": "D", "text": "Elimina la taula de correspondència del servidor." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Mantenir consistència de pseudònims preserva la comprensibilitat jurídica del document, i l'auditoria post-redacció actua com a última línia de defensa automatitzada contra fuites de patrons estructurats.",
+      "explanationsIncorrect": {
+        "B": "Abans de publicar documents públics cal igualment supervisió humana (especialment per noms o quasi-identificadors no estructurats).",
+        "C": "`PATRONS_PII` només comprova patrons estructurats (IBAN/NIF/EMAIL); els noms propis requereixen NER i revisió.",
+        "D": "La funció retorna la taula separada per emmagatzemar-la de forma segura si cal reversibilitat controlada."
+      }
+    },
+    {
+      "id": "m04-04-q09",
+      "module": 4,
+      "conceptId": "m04-04-reconeixement-entitats-documents",
+      "lessonRef": "content/module-04/m04-04-reconeixement-entitats-documents.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "A més d'esborrar el text vectorial i pintar els píxels en imatges incrustades, quin altre element ocult dins d'un fitxer PDF pot provocar una fuita de dades personals si no es purga durant la **redacció real**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "La resolució del monitor de l'usuari." },
+        { "key": "B", "text": "Les **metadades internes del PDF** (`Author`, `Title`, `Subject`), els comentaris/anotacions, les miniatures incrustades i l'**historial incremental d'edicions** del fitxer PDF." },
+        { "key": "C", "text": "El color de fons de la pàgina web." },
+        { "key": "D", "text": "La mida de la font tipogràfica." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Els PDFs sovint conserven metadades d'autoria, miniatures pre-redacció o revisions incrementals que contenen les dades originals si no es reescriu i purga completament el fitxer.",
+      "explanationsIncorrect": {
+        "A": "El monitor del client no modifica el fitxer PDF.",
+        "C": "No afecta el contingut del PDF.",
+        "D": "La mida de font no conté dades ocultes."
+      }
+    },
+    {
+      "id": "m04-04-q10",
+      "module": 4,
+      "conceptId": "m04-04-reconeixement-entitats-documents",
+      "lessonRef": "content/module-04/m04-04-reconeixement-entitats-documents.md",
+      "difficulty": "advanced",
+      "questionType": "normative",
+      "prompt": "Si en una publicació oficial d'un ajuntament (p. ex., resolució de concurrència competitiva) la llei exigeix identificar parcialment els beneficiaris mitjançant el DNI, quina regla de la **LOPDGDD** (Disposició Addicional 7a) regula quins dígits del DNI s'han de publicar?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Publicar el DNI sencer de 9 caràcters juntament amb l'adreça i el telèfon." },
+        { "key": "B", "text": "Publicar només la lletra final del DNI." },
+        { "key": "C", "text": "Publicar únicament **quatre xifres numèriques aleatòries (segons orientació AEPD/DA 7a LOPDGDD, xifres en posicions 4a, 5a, 6a i 7a del DNI, ex. `***4567**`)**, sense publicar mai el DNI complet juntament amb nom i cognoms quan no hi hagi habilitació legal específica." },
+        { "key": "D", "text": "Publicar l'IBAN bancari en lloc del DNI." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "La DA 7a de la LOPDGDD (i l'orientació oficial de l'AEPD/APDCAT) estableix la identificació parcial amb 4 xifres (posicions 4a–7a del DNI: `***4567**`) per minimitzar exposició de dades personals en actes administratius publicats.",
+      "explanationsIncorrect": {
+        "A": "Vulnera directament el principi de minimització (RGPD) i la DA 7a LOPDGDD.",
+        "B": "Una sola lletra no compleix el criteri de 4 xifres establert per la DA 7a.",
+        "D": "L'IBAN bancari és encara més sensible i mai s'ha de publicar."
+      }
+    }
+  ]
+}

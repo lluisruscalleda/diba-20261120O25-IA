@@ -1,0 +1,46 @@
+{
+  "conceptId": "m04-08-documents-tributaris",
+  "module": 4,
+  "cards": [
+    {
+      "id": "m04-08-fc01",
+      "module": 4,
+      "conceptId": "m04-08-documents-tributaris",
+      "front": "Quina és la regla d'or arquitectònica per processar documents tributaris amb IA?",
+      "back": "IDP on-premise per extreure dades amb cites visuals (pàgina + bbox) + Validació determinista (ref. cadastral, quotes 100%) + Motor Fiscal 100% determinista en `Decimal` (un LLM MAI calcula impostos!) + HITL.",
+      "tags": ["tributs", "ORGT", "Decimal"]
+    },
+    {
+      "id": "m04-08-fc02",
+      "module": 4,
+      "conceptId": "m04-08-documents-tributaris",
+      "front": "Què exigeix l'article 95 de la Llei General Tributària (LGT) sobre les dades fiscals en projectes d'IA?",
+      "back": "Caràcter estrictament reservat: ús exclusiu per a aplicació dels tributs, prohibició de cessió fora de supòsits legals → entorn on-premise/ENS Alt, zero APIs externes no autoritzades, ACL estricte i auditoria d'accessos.",
+      "tags": ["art. 95 LGT", "seguretat", "ENS"]
+    },
+    {
+      "id": "m04-08-fc03",
+      "module": 4,
+      "conceptId": "m04-08-documents-tributaris",
+      "front": "Com es valida deterministament una referència cadastral espanyola després de l'OCR?",
+      "back": "Té exactament 20 caràcters alfanumèrics; les posicions 19 i 20 són 2 caràcters de control verificables amb l'algorisme oficial de pesos i mòdul 23 de la Direcció General del Cadastre.",
+      "tags": ["referència cadastral", "validació"]
+    },
+    {
+      "id": "m04-08-fc04",
+      "module": 4,
+      "conceptId": "m04-08-documents-tributaris",
+      "front": "Quins casos en escriptures notarials han de disparar automàticament derivació a tècnic tributari especialista?",
+      "back": "Usdefruit vitalici / nua propietat, extinció de condomini, herències múltiples complexes, suma de quotes != 100%, o discrepàncies de valor / pèrdua patrimonial.",
+      "tags": ["escriptures", "IIVTNU", "HITL"]
+    },
+    {
+      "id": "m04-08-fc05",
+      "module": 4,
+      "conceptId": "m04-08-documents-tributaris",
+      "front": "Quines fonts estructurades s'han de prioritzar abans d'aplicar IDP/OCR a documents tributaris?",
+      "back": "Les remissions telemàtiques de l'Índex Únic Notarial, Cadastre, Via Oberta/Padró i DGT (0% error OCR), reservant l'IDP als PDFs aportats pel contribuent i escriptures antigues d'adquisició.",
+      "tags": ["Índex Únic Notarial", "interoperabilitat"]
+    }
+  ]
+}

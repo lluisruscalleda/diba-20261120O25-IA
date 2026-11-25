@@ -1,0 +1,46 @@
+{
+  "conceptId": "m04-05-validacio-automatica-documental",
+  "module": 4,
+  "cards": [
+    {
+      "id": "m04-05-fc01",
+      "module": 4,
+      "conceptId": "m04-05-validacio-automatica-documental",
+      "front": "Quines són les 5 capes de la piràmide de validació documental?",
+      "back": "1) Sintàctica/Format; 2) Algorítmica (dígits control DNI/NIE/CIF/IBAN); 3) Coherència interna (sumes Decimal, PAdES/CSV); 4) Coherència creuada d'expedient (NIFs, dates elegibles, checklist); 5) Contrast extern (Via Oberta/AOC, AEAT, TGSS, BDNS).",
+      "tags": ["validació", "5 capes"]
+    },
+    {
+      "id": "m04-05-fc02",
+      "module": 4,
+      "conceptId": "m04-05-validacio-automatica-documental",
+      "front": "Com es valida un NIE i un IBAN espanyol a la Capa 2?",
+      "back": "NIE: substituir `X→0, Y→1, Z→2` i comprovar `num % 23` a `TRWAGMYFPDXBNJZSQVHLCKE`. IBAN: moure els 4 primers caràcters al final, convertir lletres (`A=10..Z=35`) i comprovar `num % 97 == 1` (ISO 7064).",
+      "tags": ["DNI", "NIE", "IBAN"]
+    },
+    {
+      "id": "m04-05-fc03",
+      "module": 4,
+      "conceptId": "m04-05-validacio-automatica-documental",
+      "front": "Què exigeix l'art. 68 LPACAP (Llei 39/2015) quan falta un document en una sol·licitud?",
+      "back": "MAI denegar automàticament: cal requerir l'esmena amb un termini de 10 dies hàbils. El sistema IA només genera l'esborrany de requeriment per a revisió i emissió humana.",
+      "tags": ["LPACAP", "art. 68", "esmena"]
+    },
+    {
+      "id": "m04-05-fc04",
+      "module": 4,
+      "conceptId": "m04-05-validacio-automatica-documental",
+      "front": "Què ha de fer el sistema si un IBAN falla MOD 97-10 però té `C_OCR = 0,62`?",
+      "back": "Enviar-lo primer a la cua INTERNA de revisió de captura (amb bbox ressaltat sobre el PDF), perquè l'error és probablement del nostre OCR i no del ciutadà.",
+      "tags": ["OCR", "HITL", "qualitat"]
+    },
+    {
+      "id": "m04-05-fc05",
+      "module": 4,
+      "conceptId": "m04-05-validacio-automatica-documental",
+      "front": "Com redueix Via Oberta (art. 28.2 LPACAP — Once-Only) els errors documentals?",
+      "back": "Permet consultar d'ofici dades autèntiques i estructurades via API (padró, identitat, AEAT, TGSS) sense obligar el ciutadà a aportar PDFs escanejats ni fer-hi OCR.",
+      "tags": ["Via Oberta", "AOC", "art. 28.2"]
+    }
+  ]
+}

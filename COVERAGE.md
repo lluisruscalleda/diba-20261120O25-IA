@@ -9,9 +9,9 @@ Llegenda d'estat:
 
 | Dimensió | Completats | Objectiu | Cobertura |
 |---|---:|---:|---:|
-| Lliçons (Teoria + Exemple + Exercici + Desenvolupament + Resum) | 30 | 70 | 42,9% |
-| Tests individuals (mín. 10 preguntes / concepte) | 30 (300 preg.) | 70 (≥700 preg.) | 42,9% |
-| Flashcards per concepte (mín. 5 / concepte) | 30 (160 fitxes) | 70 (≥350 fitxes) | 42,9% |
+| Lliçons (Teoria + Exemple + Exercici + Desenvolupament + Resum) | 38 | 70 | 54,3% |
+| Tests individuals (mín. 10 preguntes / concepte) | 38 (380 preg.) | 70 (≥700 preg.) | 54,3% |
+| Flashcards per concepte (mín. 5 / concepte) | 38 (200 fitxes) | 70 (≥350 fitxes) | 54,3% |
 | Laboratoris pràctics | 0 | 8 | 0% |
 | Exàmens de mòdul (40 preg.) | 0 | 8 | 0% |
 | Simulacres globals (50 preg.) | 0 | 10 | 0% |
@@ -70,14 +70,14 @@ Llegenda d'estat:
 
 | ID | Concepte oficial | Teoria (A-E) | Exemple (F) | Exercici (G) | Test ≥10 (H) | Desenv. ≥3 (I) | Resum+FC (J) | Estat |
 |---|---|---|---|---|---|---|---|---|
-| `m04-01-ocr` | OCR (preprocessament, PDF, OCR tradicional i multimodal) | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m04-02-classificacio-documental` | Classificació documental | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m04-03-extraccio-camps` | Extracció de camps (taules, nivells de confiança) | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m04-04-reconeixement-entitats-documents` | Reconeixement d'entitats (perspectiva documental) | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m04-05-validacio-automatica-documental` | Validació automàtica (formats, intervenció humana) | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m04-06-tractament-formularis` | Tractament de formularis | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m04-07-documents-administratius` | Processament de documents administratius | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
-| `m04-08-documents-tributaris` | Processament de documents tributaris | ⬜ | ⬜ | ⬜ | ⬜ (0) | ⬜ (0) | ⬜ (0) | ⬜ |
+| `m04-01-ocr` | OCR (preprocessament, PDF, OCR tradicional i multimodal) | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m04-02-classificacio-documental` | Classificació documental | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m04-03-extraccio-camps` | Extracció de camps (taules, nivells de confiança) | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m04-04-reconeixement-entitats-documents` | Reconeixement d'entitats (perspectiva documental) | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m04-05-validacio-automatica-documental` | Validació automàtica (formats, intervenció humana) | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m04-06-tractament-formularis` | Tractament de formularis | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m04-07-documents-administratius` | Processament de documents administratius | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
+| `m04-08-documents-tributaris` | Processament de documents tributaris | ✅ | ✅ | ✅ | ✅ (10) | ✅ (3) | ✅ (5) | ✅ |
 
 ## Mòdul 5. Assistents virtuals i IA conversacional
 

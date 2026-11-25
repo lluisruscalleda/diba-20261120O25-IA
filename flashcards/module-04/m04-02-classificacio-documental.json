@@ -1,0 +1,46 @@
+{
+  "conceptId": "m04-02-classificacio-documental",
+  "module": 4,
+  "cards": [
+    {
+      "id": "m04-02-fc01",
+      "module": 4,
+      "conceptId": "m04-02-classificacio-documental",
+      "front": "Què és *Split & Classify* en Processament Intel·ligent de Documents?",
+      "back": "Segmentar un paquet PDF multipàgina en els seus subdocuments individuals predient fronteres (`B-DOC`/`I-DOC`) i assignant la tipologia documental de cadascun pàgina a pàgina.",
+      "tags": ["Split & Classify", "IDP"]
+    },
+    {
+      "id": "m04-02-fc02",
+      "module": 4,
+      "conceptId": "m04-02-classificacio-documental",
+      "front": "Per què un canvi de tipologia no basta per separar documents dins d'un PDF?",
+      "back": "Perquè diversos documents consecutius de la MATEIXA classe (ex. 5 factures seguides) es fusionarien en un sol document; cal detectar explícitament les fronteres `B-DOC` (nou número, capçalera, Pàg. 1/N).",
+      "tags": ["splitting", "fronteres"]
+    },
+    {
+      "id": "m04-02-fc03",
+      "module": 4,
+      "conceptId": "m04-02-classificacio-documental",
+      "front": "Quan és imprescindible afegir modalitat visual/multimodal (LayoutLMv3 / ViT) a la classificació documental?",
+      "back": "En documents amb poc text o OCR dolent però signatura visual clara (fotocòpies de DNI/NIE, plànols tècnics, rebuts bancaris), combinant-ho amb text per distingir plantilles idèntiques.",
+      "tags": ["LayoutLMv3", "multimodal"]
+    },
+    {
+      "id": "m04-02-fc04",
+      "module": 4,
+      "conceptId": "m04-02-classificacio-documental",
+      "front": "Com s'evita que documents no previstos trenquin els extractors posteriors?",
+      "back": "Incloent la classe explícita `ALTRES_DESCONEGUT`, calibrant probabilitats i aplicant un llindar d'abstenció (ex. conf < 0,85 → revisió humana).",
+      "tags": ["abstenció", "calibració"]
+    },
+    {
+      "id": "m04-02-fc05",
+      "module": 4,
+      "conceptId": "m04-02-classificacio-documental",
+      "front": "Quins dos avantatges normatius aporta la classificació primerenca alineada amb l'ENI?",
+      "back": "1) Mapeig directe a tipologies ENI (`TD01`, `TD07`, `TD14`, `TD19`...) per a l'arxiu electrònic interoperable; 2) Detecció immediata de documents sensibles (`DNI`, informes mèdics) per restringir ACL i protegir dades (RGPD).",
+      "tags": ["ENI", "RGPD"]
+    }
+  ]
+}

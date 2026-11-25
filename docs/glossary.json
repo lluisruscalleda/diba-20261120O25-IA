@@ -303,6 +303,54 @@
       "module": 3,
       "conceptId": "m03-09-agents-ia",
       "definition": "Bucle d'agent que alterna passos de raonament (Thought), proposta d'eina (Action / Tool Calling) i lectura del resultat retornat pel host (Observation), subjecte a mínim privilegi i HITL."
+    },
+    {
+      "id": "cer-wer",
+      "term": "CER i WER (Taxes d'error OCR)",
+      "english": "Character Error Rate / Word Error Rate",
+      "module": 4,
+      "conceptId": "m04-01-ocr",
+      "definition": "Mètriques de qualitat d'OCR basades en la distància de Levenshtein normalitzada per caràcters (CER) o paraules (WER); en codis crítics (NIF, IBAN) cal complementar-les amb Exact Match per camp."
+    },
+    {
+      "id": "document-splitting",
+      "term": "Segmentació documental (Split & Classify)",
+      "english": "Document Splitting",
+      "module": 4,
+      "conceptId": "m04-02-classificacio-documental",
+      "definition": "Procés de separar automàticament un PDF multipàgina escanejat en bloc en els seus subdocuments lògics predient fronteres (B-DOC/I-DOC) i tipologia ENI pàgina a pàgina."
+    },
+    {
+      "id": "stp",
+      "term": "Processament directe (STP)",
+      "english": "Straight-Through Processing (STP)",
+      "module": 4,
+      "conceptId": "m04-03-extraccio-camps",
+      "definition": "Captura documental automatitzada sense intervenció manual quan tots els camps superen el llindar de confiança composta i el 100% de les validacions deterministes (sumes Decimal, dígits de control)."
+    },
+    {
+      "id": "true-redaction",
+      "term": "Redacció real de PDF (Anonimització segura)",
+      "english": "True PDF Redaction",
+      "module": 4,
+      "conceptId": "m04-04-reconeixement-entitats-documents",
+      "definition": "Eliminació física irreversible del text vectorial subjacent, sobreescriptura de píxels en imatges i purga de metadades/historial del PDF (a diferència d'un rectangle negre superficial)."
+    },
+    {
+      "id": "omr",
+      "term": "Reconeixement òptic de marques (OMR)",
+      "english": "Optical Mark Recognition (OMR)",
+      "module": 4,
+      "conceptId": "m04-06-tractament-formularis",
+      "definition": "Tècnica de visió per detectar l'estat de caselles de selecció (MARCADA, BUIDA o AMBIGUA) en formularis escanejats, aplicant regles de consistència sobre grups mútuament excloents."
+    },
+    {
+      "id": "eni-expedient",
+      "term": "ENI i Expedient Electrònic",
+      "english": "National Interoperability Framework (ENI)",
+      "module": 4,
+      "conceptId": "m04-07-documents-administratius",
+      "definition": "Marc normatiu espanyol que fixa metadades mínimes (DIR3, tipologies TDxx), format PDF/A i índex electrònic signat amb petjada hash (art. 70 LPACAP), exigint immutabilitat dels documents originals."
     }
   ]
 }

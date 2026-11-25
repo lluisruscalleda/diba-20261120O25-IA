@@ -29,7 +29,7 @@ Cada concepte es completa íntegrament (apartats A–J + mínim 10 preguntes tes
 - [x] **Mòdul 1**: Fonaments d'intel·ligència artificial (11/11 conceptes completats — 100%).
 - [x] **Mòdul 2**: Processament del llenguatge natural (10/10 conceptes completats — 100%).
 - [x] **Mòdul 3**: Models generatius (9/9 conceptes completats — 100%).
-- [ ] **Mòdul 4**: Processament intel·ligent de documents (8 conceptes).
+- [x] **Mòdul 4**: Processament intel·ligent de documents (8/8 conceptes completats — 100%).
 - [ ] **Mòdul 5**: Assistents virtuals i IA conversacional (8 conceptes).
 - [ ] **Mòdul 6**: Automatització intel·ligent (6 conceptes).
 - [ ] **Mòdul 7**: MLOps i LLMOps (10 conceptes).

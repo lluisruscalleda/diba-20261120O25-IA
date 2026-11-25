@@ -1,0 +1,236 @@
+{
+  "conceptId": "m04-03-extraccio-camps",
+  "module": 4,
+  "questions": [
+    {
+      "id": "m04-03-q01",
+      "module": 4,
+      "conceptId": "m04-03-extraccio-camps",
+      "lessonRef": "content/module-04/m04-03-extraccio-camps.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina és la principal limitació d'utilitzar **plantilles per coordenades fixes** per extreure camps de factures de proveïdors externs?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Cada proveïdor utilitza un disseny diferent i el mínim desplaçament d'escaneig o canvi de plantilla trenca l'extracció." },
+        { "key": "B", "text": "Són massa lentes en CPU." },
+        { "key": "C", "text": "Requereixen entrenament en un clúster de 100 GPUs." },
+        { "key": "D", "text": "No poden llegir números." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Les coordenades fixes només són útils en formularis interns 100% rígids; davant la diversitat de proveïdors i documents externs cal KIE basat en layout/LLM/VLM.",
+      "explanationsIncorrect": {
+        "B": "Les coordenades fixes són instantànies; el seu problema és la fragilitat, no la velocitat.",
+        "C": "No requereixen cap entrenament neuronal.",
+        "D": "Llegeixen qualsevol caràcter situat exactament dins la caixa rígida."
+      }
+    },
+    {
+      "id": "m04-03-q02",
+      "module": 4,
+      "conceptId": "m04-03-extraccio-camps",
+      "lessonRef": "content/module-04/m04-03-extraccio-camps.md",
+      "difficulty": "basic",
+      "questionType": "metrics",
+      "prompt": "Quina mètrica s'utilitza específicament per avaluar la fidelitat estructural i de contingut en l'**extracció de taules**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "RMSE." },
+        { "key": "B", "text": "**TEDS (*Tree-Edit-Distance-based Similarity*)**, basada en la distància d'edició entre l'arbre HTML de la taula predita i la de referència." },
+        { "key": "C", "text": "Silhouette Score." },
+        { "key": "D", "text": "MRR." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "TEDS avalua simultàniament l'estructura (files, columnes, cel·les combinades) i el text dins de cada cel·la.",
+      "explanationsIncorrect": {
+        "A": "RMSE avalua regressió numèrica.",
+        "C": "Silhouette Score avalua clustering.",
+        "D": "MRR avalua rànquing de recuperació d'informació."
+      }
+    },
+    {
+      "id": "m04-03-q03",
+      "module": 4,
+      "conceptId": "m04-03-extraccio-camps",
+      "lessonRef": "content/module-04/m04-03-extraccio-camps.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Què significa **STP (*Straight-Through Processing*)** en la captura documental d'un expedient?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Imprimir el document en paper." },
+        { "key": "B", "text": "Entrenar un model sense conjunt de validació." },
+        { "key": "C", "text": "Processament automatitzat de captura de dades sense intervenció manual quan **tots** els camps superen el seu llindar de confiança composta i passen el 100% de les validacions deterministes." },
+        { "key": "D", "text": "Enviar el document directament a la paperera." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "STP automatitza la captura de dades netes i validades, reservant el temps del personal públic als casos amb incertesa o descuadres (i sense substituir mai la decisió jurídica humana).",
+      "explanationsIncorrect": {
+        "A": "Precisament busca automatització digital.",
+        "B": "No té relació amb l'entrenament de models.",
+        "D": "No descarta documents."
+      }
+    },
+    {
+      "id": "m04-03-q04",
+      "module": 4,
+      "conceptId": "m04-03-extraccio-camps",
+      "lessonRef": "content/module-04/m04-03-extraccio-camps.md",
+      "difficulty": "intermediate",
+      "questionType": "metrics",
+      "prompt": "Un extractor de factures té una precisió independent del **96% per camp** sobre **12 camps obligatoris**. Quin és aproximadament el **Document-Level Exact Match** (factures amb tots 12 camps exactes alhora)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Aproximadament **`61,3%`** (`0,96^12`), cosa que significa que gairebé 4 de cada 10 factures tindran almenys un camp erroni." },
+        { "key": "B", "text": "Exactament `96,0%`." },
+        { "key": "C", "text": "Aproximadament `99,5%`." },
+        { "key": "D", "text": "Exactament `12,0%`." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Els errors s'acumulen multiplicativament a nivell de document (`0,96^12 ≈ 0,6127`); per això cal combinar validació determinista amb revisió humana selectiva per camp.",
+      "explanationsIncorrect": {
+        "B": "96% és la precisió d'un sol camp, no de 12 camps simultanis.",
+        "C": "La probabilitat conjunta sempre és menor o igual que la del camp individual.",
+        "D": "12 és el nombre de camps, no el percentatge."
+      }
+    },
+    {
+      "id": "m04-03-q05",
+      "module": 4,
+      "conceptId": "m04-03-extraccio-camps",
+      "lessonRef": "content/module-04/m04-03-extraccio-camps.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Com s'ha de calcular conservadorament la **confiança composta** d'un camp crític (com `import_total` o `nif_emissor`) que passa per OCR i després per un extractor?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Prendre sempre el màxim `max(C_OCR, C_extractor)`." },
+        { "key": "B", "text": "Combinar totes dues etapes amb **`min(C_OCR, C_extractor)`** (o el producte `C_OCR × C_extractor`), perquè una alta confiança de l'extractor no pot compensar un OCR molt borrós ni a l'inrevés." },
+        { "key": "C", "text": "Ignorar completament `C_OCR`." },
+        { "key": "D", "text": "Fixar sempre la confiança a `1,0`." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "La cadena és tan forta com la seva baula més feble: tant un OCR incert com un extractor dubtós han de disparar la revisió del camp.",
+      "explanationsIncorrect": {
+        "A": "`max` amagaria una baixa confiança d'una de les dues etapes.",
+        "C": "Si l'OCR va llegir malament un dígit, l'extractor només copia l'error amb confiança alta.",
+        "D": "Eliminaria qualsevol control de risc."
+      }
+    },
+    {
+      "id": "m04-03-q06",
+      "module": 4,
+      "conceptId": "m04-03-extraccio-camps",
+      "lessonRef": "content/module-04/m04-03-extraccio-camps.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "En quina situació un model KIE basat en layout entrenat (com **LayoutLMv3**) supera clarament un **LLM/VLM *zero-shot*** en producció?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Quan només tenim 3 exemples i l'esquema canvia cada setmana." },
+        { "key": "B", "text": "Quan necessitem redactar un informe jurídic llarg." },
+        { "key": "C", "text": "Quan processem un **alt volum estable** (>50.000 docs/mes) d'una tipologia fixa amb dades etiquetades, ja que és molt més ràpid i econòmic en inferència, entrega *bounding boxes* nadius i només selecciona tokens realment presents a l'OCR (zero text inventat)." },
+        { "key": "D", "text": "Quan el document és un fitxer d'àudio MP3." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Els models d'etiquetatge de tokens amb layout (LayoutLMv3/LiLT) són extremadament ràpids, econòmics i no generen tokens al·lucinats, ideals per a grans volums estables.",
+      "explanationsIncorrect": {
+        "A": "Amb 3 exemples i esquemes canviants guanya clarament l'LLM/VLM few-shot.",
+        "B": "LayoutLMv3 no és un model generatiu de redacció.",
+        "D": "És un model documental visual/textual, no d'àudio."
+      }
+    },
+    {
+      "id": "m04-03-q07",
+      "module": 4,
+      "conceptId": "m04-03-extraccio-camps",
+      "lessonRef": "content/module-04/m04-03-extraccio-camps.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Una administració vol automatitzar la recepció de factures dels seus proveïdors habituals. Quina és la primera recomanació arquitectònica abans de desplegar OCR + extracció IA sobre factures PDF?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Demanar als proveïdors que imprimeixin les factures i les enviïn per correu postal." },
+        { "key": "B", "text": "Entrenar un VLM de 70B paràmetres només per a factures." },
+        { "key": "C", "text": "Desactivar la validació aritmètica de l'IVA." },
+        { "key": "D", "text": "Prioritzar l'entrada estructurada per **factura electrònica (`e-FACT / Facturae XML`)** (0% d'error d'extracció) i reservar el pipeline IDP sobre PDF per a justificants de subvencions, despeses menors o documents sense canal XML." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "La millor extracció IA és la que no cal fer perquè la dada ja arriba estructurada oficialment en XML (e-FACT / Llei 25/2013).",
+      "explanationsIncorrect": {
+        "A": "Retrocediria al paper i empitjoraria tot el procés.",
+        "B": "Sobre-enginyeria innecessària quan existeix factura electrònica estructurada.",
+        "C": "La validació comptable és sempre obligatòria."
+      }
+    },
+    {
+      "id": "m04-03-q08",
+      "module": 4,
+      "conceptId": "m04-03-extraccio-camps",
+      "lessonRef": "content/module-04/m04-03-extraccio-camps.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En la funció `avaluar_extraccio` de la lliçó, per què el **Cas 2** dispara `REVISIO_HUMANA_SELECTIVA` malgrat que tots els camps tenen confiançes entre `0,94` i `0,99`?",
+      "codeSnippet": "suma_linies = sum((Decimal(l[\"quantitat\"]) * Decimal(l[\"preu_unitari\"]) for l in linies), Decimal(\"0.00\"))\nif abs(suma_linies - Decimal(valors[\"base_imposable\"])) > Decimal(\"0.01\"): ...",
+      "options": [
+        { "key": "A", "text": "Perquè la **validació aritmètica creuada** (`Σ quantitat × preu_unitari = 1150,00 ≠ 1250,00`) intercepta una fila mal extreta fins i tot quan el model estava molt segur de si mateix, demostrant que les regles deterministes són la xarxa de seguretat imprescindible de la confiança probabilística." },
+        { "key": "B", "text": "Perquè `Decimal` sempre dona un error d'arrodoniment binari." },
+        { "key": "C", "text": "Perquè `llindars` era buit." },
+        { "key": "D", "text": "Perquè el NIF tenia 9 caràcters." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Els models neuronals poden cometre errors amb alta confiança (p. ex. llegir `3` en lloc de `4` o ometre una fila d'una taula multipàgina); el quadre aritmètic en `Decimal` ho detecta al 100%.",
+      "explanationsIncorrect": {
+        "B": "Al contrari, `Decimal` evita els errors d'arrodoniment binari de `float`.",
+        "C": "`llindars` contenia tots tres camps.",
+        "D": "Un NIF espanyol vàlid té precisament 9 caràcters."
+      }
+    },
+    {
+      "id": "m04-03-q09",
+      "module": 4,
+      "conceptId": "m04-03-extraccio-camps",
+      "lessonRef": "content/module-04/m04-03-extraccio-camps.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Com millora la productivitat i la qualitat la **revisió humana selectiva (per camp)** respecte de la revisió de documents sencers?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Eliminant tota revisió humana encara que hi hagi descuadres." },
+        { "key": "B", "text": "Mostrant al funcionari només els **1 o 2 camps que han quedat per sota del llindar o han fallat una validació**, saltant directament al seu ***bounding box* ressaltat sobre el PDF original** i enregistrant les correccions com a dades d'or per millorar el model." },
+        { "key": "C", "text": "Ocultant el PDF original al funcionari perquè només vegi el JSON." },
+        { "key": "D", "text": "Fent que tres funcionaris reescriuen manualment tots els 15 camps cada vegada." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "La revisió focalitzada per camp amb *Click-to-Highlight* redueix el temps de validació en >75% i evita la fatiga d'automatització, mantenint altíssima fiabilitat.",
+      "explanationsIncorrect": {
+        "A": "Deixar passar descuadres corrompria la comptabilitat i expedients.",
+        "C": "Ocultar el PDF original impedeix contrastar la font primària.",
+        "D": "Duplicaria la càrrega manual anul·lant l'estalvi de la IA."
+      }
+    },
+    {
+      "id": "m04-03-q10",
+      "module": 4,
+      "conceptId": "m04-03-extraccio-camps",
+      "lessonRef": "content/module-04/m04-03-extraccio-camps.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "Una taula de pressupost comença a la pàgina 2 i continua a la pàgina 3 **sense repetir la fila de capçaleres de columna**. Quin error provoca un extractor que processa cada pàgina de manera completament aïllada?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Cap, perquè totes les pàgines tenen capçalera implícita." },
+        { "key": "B", "text": "Només canvia l'idioma de la pàgina 3." },
+        { "key": "C", "text": "Perd la correspondència de columnes de la pàgina 3 (o descarta les files de continuació), provocant descuadre de la suma total; cal **reconstrucció de taules multipàgina** propagant l'esquema de capçaleres de la pàgina anterior i verificant la suma global." },
+        { "key": "D", "text": "Duplica automàticament el NIF de l'emissor." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Les taules multipàgina sense capçaleres repetides són una de les causes principals de fallada en factures i pressupostos llargs; propagar l'esquema de columnes entre pàgines i validar la suma global ho resol.",
+      "explanationsIncorrect": {
+        "A": "Sense context de la pàgina 2, l'extractor sovint confon quantitat, preu unitari i descompte a la pàgina 3.",
+        "B": "No altera l'idioma.",
+        "D": "No duplica el NIF."
+      }
+    }
+  ]
+}

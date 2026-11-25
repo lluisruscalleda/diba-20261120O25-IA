@@ -1,0 +1,46 @@
+{
+  "conceptId": "m04-03-extraccio-camps",
+  "module": 4,
+  "cards": [
+    {
+      "id": "m04-03-fc01",
+      "module": 4,
+      "conceptId": "m04-03-extraccio-camps",
+      "front": "Com es calcula el *Document-Level Exact Match* a partir de la precisió per camp `p` i `k` camps?",
+      "back": "Amb errors independents, `p^k` (ex. 12 camps al 96% → `0,96^12 ≈ 61,3%` de documents complets sense errors!). Per això cal validació determinista + revisió selectiva.",
+      "tags": ["Exact Match", "mètriques"]
+    },
+    {
+      "id": "m04-03-fc02",
+      "module": 4,
+      "conceptId": "m04-03-extraccio-camps",
+      "front": "Com es calcula la confiança composta d'un camp extret en IDP?",
+      "back": "`min(C_OCR, C_extractor)` (conservadora) o `C_OCR × C_extractor`, aplicant llindars estrictes (≥0,95) en NIF/IBAN/imports i més flexibles (≥0,82) en descriptius.",
+      "tags": ["confiança composta", "STP"]
+    },
+    {
+      "id": "m04-03-fc03",
+      "module": 4,
+      "conceptId": "m04-03-extraccio-camps",
+      "front": "Quina és la comprovació d'or per validar una taula econòmica extreta i amb quin tipus de dada?",
+      "back": "Validació aritmètica creuada amb `Decimal` (MAI `float`!): `quantitat × preu_unitari == subtotal_fila` i `Σ subtotal_fila == base_imposable` i `base + IVA - IRPF == total`.",
+      "tags": ["taules", "Decimal", "validació"]
+    },
+    {
+      "id": "m04-03-fc04",
+      "module": 4,
+      "conceptId": "m04-03-extraccio-camps",
+      "front": "Què és la mètrica TEDS en extracció documental?",
+      "back": "Tree-Edit-Distance-based Similarity: mesura la similitud estructural (files, columnes, cel·les combinades) i textual entre l'arbre HTML de la taula predita i la de referència.",
+      "tags": ["TEDS", "taules"]
+    },
+    {
+      "id": "m04-03-fc05",
+      "module": 4,
+      "conceptId": "m04-03-extraccio-camps",
+      "front": "Quan triar LayoutLMv3 vs. LLM/VLM estructurat per extreure camps?",
+      "back": "LayoutLMv3: alt volum estable amb dades etiquetades (molt ràpid, barat, bboxes nadius, zero al·lucinació). LLM/VLM: molta varietat de plantilles o canvis freqüents d'esquema (few-shot), sempre amb validació determinista.",
+      "tags": ["LayoutLMv3", "LLM", "VLM"]
+    }
+  ]
+}

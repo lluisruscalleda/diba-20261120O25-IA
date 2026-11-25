@@ -1,0 +1,46 @@
+{
+  "conceptId": "m04-01-ocr",
+  "module": 4,
+  "cards": [
+    {
+      "id": "m04-01-fc01",
+      "module": 4,
+      "conceptId": "m04-01-ocr",
+      "front": "Quina és la diferència entre PDF natiu, PDF escanejat i PDF híbrid?",
+      "back": "Natiu: text vectorial incrustat (extracció directa, CER=0%). Escanejat: només imatges ràster (cal OCR). Híbrid: barreja pàgines/zones natives i imatges escanejades → cal inspeccionar SEMPRE pàgina a pàgina!",
+      "tags": ["PDF", "OCR", "IDP"]
+    },
+    {
+      "id": "m04-01-fc02",
+      "module": 4,
+      "conceptId": "m04-01-ocr",
+      "front": "Quins passos inclou un bon preprocessament d'imatge per a OCR?",
+      "back": "Resolució 300 DPI, detecció d'orientació (0/90/180/270°), deskewing (redreçament), binarització adaptativa local (Sauvola per a ombres) i Layout Analysis (columnes, taules, ordre de lectura).",
+      "tags": ["preprocessament", "Layout Analysis"]
+    },
+    {
+      "id": "m04-01-fc03",
+      "module": 4,
+      "conceptId": "m04-01-ocr",
+      "front": "Quin risc específic tenen els VLMs (*OCR-free*) en camps crítics com NIF o IBAN?",
+      "back": "L'al·lucinació visual: davant un dígit borrós o tapat per un segell, poden generar un valor plausible en lloc de marcar baixa confiança. Cal validació determinista (dígits de control, sumes) i HITL.",
+      "tags": ["VLM", "al·lucinació visual"]
+    },
+    {
+      "id": "m04-01-fc04",
+      "module": 4,
+      "conceptId": "m04-01-ocr",
+      "front": "Com es defineixen CER i WER i per què un CER baix no garanteix camps crítics exactes?",
+      "back": "CER = (S+D+I)/N_caràcters i WER = (S+D+I)/N_paraules (Levenshtein). Un sol dígit erroni (CER 1-3%) invalida un NIF, IBAN o import sencer (WER alt); cal mesurar Exact Match per camp crític.",
+      "tags": ["CER", "WER", "mètriques"]
+    },
+    {
+      "id": "m04-01-fc05",
+      "module": 4,
+      "conceptId": "m04-01-ocr",
+      "front": "Per què conservar les coordenades (*bounding boxes*) de l'OCR en un gestor documental?",
+      "back": "Permet ressaltar visualment sobre la imatge del PDF original d'on prové cada camp extret (*Click-to-Highlight*), agilitzant la revisió humana i garantint la traçabilitat.",
+      "tags": ["bounding boxes", "HITL"]
+    }
+  ]
+}

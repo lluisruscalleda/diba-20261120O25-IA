@@ -1,0 +1,236 @@
+{
+  "conceptId": "m04-05-validacio-automatica-documental",
+  "module": 4,
+  "questions": [
+    {
+      "id": "m04-05-q01",
+      "module": 4,
+      "conceptId": "m04-05-validacio-automatica-documental",
+      "lessonRef": "content/module-04/m04-05-validacio-automatica-documental.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "A quina capa de la piràmide de validació documental pertany comprovar la lletra d'un **DNI/NIE (mòdul 23)** i el dígit de control d'un **IBAN (MOD 97-10)**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Capa 2: **Validació algorítmica (dígits de control)**." },
+        { "key": "B", "text": "Capa 5: Contrast extern via API." },
+        { "key": "C", "text": "Capa 4: Coherència entre documents." },
+        { "key": "D", "text": "No forma part de la validació documental." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Els dígits de control (DNI mod 23, CIF, IBAN MOD 97-10) són comprovacions matemàtiques locals (< 1 ms) pròpies de la Capa 2 que detecten immediatament errors d'OCR o transcripció.",
+      "explanationsIncorrect": {
+        "B": "No cal cap crida a API externa per calcular el mòdul 23 o el mòdul 97.",
+        "C": "Avalua un sol camp dins del mateix document.",
+        "D": "És una de les defenses més efectives i barates de tot pipeline IDP."
+      }
+    },
+    {
+      "id": "m04-05-q02",
+      "module": 4,
+      "conceptId": "m04-05-validacio-automatica-documental",
+      "lessonRef": "content/module-04/m04-05-validacio-automatica-documental.md",
+      "difficulty": "basic",
+      "questionType": "normative",
+      "prompt": "Si la validació automàtica detecta que a una sol·licitud ciutadana li falta un document obligatori, què estableix l'**article 68 de la Llei 39/2015 (LPACAP)**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "El sistema d'IA ha d'emetre automàticament una resolució de denegació definitiva." },
+        { "key": "B", "text": "Cal requerir la persona interessada perquè **esmeni la falta o aporti els documents preceptius en un termini de 10 dies hàbils** (el sistema només prepara l'esborrany de requeriment per a revisió i emissió humana)." },
+        { "key": "C", "text": "S'ha d'esborrar la sol·licitud del registre electrònic." },
+        { "key": "D", "text": "S'ha d'imposar una multa automàtica al ciutadà." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "L'art. 68 LPACAP protegeix el ciutadà garantint el tràmit d'esmena abans de tenir per desistida una sol·licitud; mai es denega automàticament.",
+      "explanationsIncorrect": {
+        "A": "Vulnera directament l'art. 68 LPACAP i els principis del procediment administratiu.",
+        "C": "Mai es pot destruir un assentament registral.",
+        "D": "Un defecte formal d'una sol·licitud no és una infracció sancionable."
+      }
+    },
+    {
+      "id": "m04-05-q03",
+      "module": 4,
+      "conceptId": "m04-05-validacio-automatica-documental",
+      "lessonRef": "content/module-04/m04-05-validacio-automatica-documental.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Què verifica la **Capa 4 (Coherència creuada d'expedient)**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Només que el fitxer tingui extensió `.pdf`." },
+        { "key": "B", "text": "Només la resolució DPI de l'escàner." },
+        { "key": "C", "text": "La consistència entre **múltiples documents del mateix expedient**: coincidència de NIF entre instància/factures/certificat bancari, factures dins el període elegible i completitud del checklist obligatori." },
+        { "key": "D", "text": "La temperatura de la GPU del servidor." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Cada document pot ser internament perfecte però incongruent amb la resta de l'expedient (p. ex. factura d'un altre exercici o emesa a nom d'una altra persona).",
+      "explanationsIncorrect": {
+        "A": "Això és Capa 1 (sintàctica/format).",
+        "B": "Això és preprocessament OCR.",
+        "D": "Això és monitoratge d'infraestructura."
+      }
+    },
+    {
+      "id": "m04-05-q04",
+      "module": 4,
+      "conceptId": "m04-05-validacio-automatica-documental",
+      "lessonRef": "content/module-04/m04-05-validacio-automatica-documental.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Un IBAN extret d'un PDF escanejat falla la validació `MOD 97-10`, però la seva confiança OCR (`C_OCR`) és molt baixa (`0,62`). Quina és l'acció correcta del sistema?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Enviar l'expedient primer a la **cua interna de revisió de captura** (ressaltant el *bounding box* de l'IBAN sobre el PDF original) perquè probablement ha fallat el nostre OCR i no el ciutadà." },
+        { "key": "B", "text": "Enviar immediatament un requeriment d'esmena al ciutadà acusant-lo d'haver escrit malament l'IBAN." },
+        { "key": "C", "text": "Denegar la subvenció automàticament." },
+        { "key": "D", "text": "Canviar l'últim dígit de l'IBAN a l'atzar fins que doni mòdul 97 igual a 1." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Cal separar sempre errors probables de la nostra captura OCR (baixa `C_OCR`) dels defectes reals del sol·licitant; mai s'ha d'inventar o «corregir a cegues» un IBAN!",
+      "explanationsIncorrect": {
+        "B": "Generaria molèsties injustificades i retards administratius al ciutadà per un error nostre.",
+        "C": "Il·legal (art. 68 LPACAP) i injust.",
+        "D": "Modificar aleatòriament un IBAN podria transferir diner públic a un compte erroni!"
+      }
+    },
+    {
+      "id": "m04-05-q05",
+      "module": 4,
+      "conceptId": "m04-05-validacio-automatica-documental",
+      "lessonRef": "content/module-04/m04-05-validacio-automatica-documental.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Com redueix l'**article 28.2 de la Llei 39/2015 (LPACAP)** —implementat a Catalunya mitjançant **Via Oberta (Consorci AOC)**— els errors de validació documental?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Obligant els ciutadans a aportar fotocòpies compulsades en paper." },
+        { "key": "B", "text": "Permetent que l'Administració consulti d'ofici dades estructurades directament a la font autèntica (identitat, padró, AEAT, Seguretat Social), eliminant la necessitat d'escanejar i fer OCR sobre aquests certificats." },
+        { "key": "C", "text": "Prohibint l'ús de bases de dades relacionals." },
+        { "key": "D", "text": "Permetent saltar-se la validació d'imports." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "El principi *Once-Only* (art. 28.2 LPACAP) millora alhora el servei ciutadà i la qualitat tècnica de les dades (0% error OCR, dades vigents i autèntiques via API).",
+      "explanationsIncorrect": {
+        "A": "Precisament busca eliminar l'aportació redundant de documents en paper/PDF.",
+        "C": "No té res a veure amb bases de dades relacionals.",
+        "D": "La validació comptable continua sent imprescindible."
+      }
+    },
+    {
+      "id": "m04-05-q06",
+      "module": 4,
+      "conceptId": "m04-05-validacio-automatica-documental",
+      "lessonRef": "content/module-04/m04-05-validacio-automatica-documental.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Quina diferència operativa hi ha entre una incidència de severitat **`BLOQUEJANT`** i una incidència de severitat **`AVÍS` (*Warning*)** en un motor de regles de validació?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Cap, totes dues cancel·len l'expedient." },
+        { "key": "B", "text": "`AVÍS` bloqueja el sistema i `BLOQUEJANT` només escriu un log." },
+        { "key": "C", "text": "`BLOQUEJANT` impedeix l'avanç automàtic i exigeix resolució/revisió humana (p. ex., IBAN invàlid o falta document obligatori); `AVÍS` permet continuar el flux però marca una alerta visible per al tècnic (p. ex., import atípicament alt)." },
+        { "key": "D", "text": "`AVÍS` s'envia directament a la policia." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Graduar la severitat evita saturar les cues de bloqueig amb senyals informatius mentre manté una barrera estricta davant errors crítics.",
+      "explanationsIncorrect": {
+        "A": "Els avisos no paralitzen el flux ni cancel·len expedients.",
+        "B": "És exactament al revés.",
+        "D": "És una alerta interna per al tècnic tramitador."
+      }
+    },
+    {
+      "id": "m04-05-q07",
+      "module": 4,
+      "conceptId": "m04-05-validacio-automatica-documental",
+      "lessonRef": "content/module-04/m04-05-validacio-automatica-documental.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Abans d'acceptar un certificat oficial aportat en format PDF pel ciutadà, quina comprovació de seguretat (Capa 3) preveu falsificacions o alteracions del PDF?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Mirar si el logotip de la capçalera té bon aspecte." },
+        { "key": "B", "text": "Comprovar només que el nom del fitxer comenci per `certificat_`." },
+        { "key": "C", "text": "Comptar quantes pàgines té el fitxer." },
+        { "key": "D", "text": "Verificar criptogràficament la **signatura electrònica (PAdES / Validador AOC / @firma)** o contrastar el **CSV (Codi Segur de Verificació)** contra la seu emissora." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Una imatge de logotip o segell es falsifica en segons; només la validació criptogràfica de signatura o del CSV certifica integritat i autenticitat.",
+      "explanationsIncorrect": {
+        "A": "L'aparença visual es pot manipular fàcilment amb qualsevol editor de PDF.",
+        "B": "El nom del fitxer no ofereix cap garantia d'autenticitat.",
+        "C": "El nombre de pàgines no valida integritat."
+      }
+    },
+    {
+      "id": "m04-05-q08",
+      "module": 4,
+      "conceptId": "m04-05-validacio-automatica-documental",
+      "lessonRef": "content/module-04/m04-05-validacio-automatica-documental.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En la funció `validar_iban` de la lliçó, què fa la línia `reordenat = clean[4:] + clean[:4]` seguida de substituir lletres (`A=10..Z=35`) i comprovar `int(numeric) % 97 == 1`?",
+      "codeSnippet": "reordenat = clean[4:] + clean[:4]\nnumeric = \"\".join(str(ord(ch) - 55) if ch.isalpha() else ch for ch in reordenat)\nreturn int(numeric) % 97 == 1",
+      "options": [
+        { "key": "A", "text": "Implementa l'estàndard internacional **ISO 7064 (MOD 97-10)** per verificar els dígits de control de l'IBAN, detectant de forma determinista gairebé qualsevol error d'1 o 2 dígits o transposició produïts per l'OCR o el ciutadà." },
+        { "key": "B", "text": "Consulta el saldo real del compte bancari." },
+        { "key": "C", "text": "Xifra l'IBAN amb AES-256." },
+        { "key": "D", "text": "Comprova si la persona titular del compte coincideix amb el sol·licitant." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "MOD 97-10 valida la integritat matemàtica del número IBAN localment; per confirmar la titularitat real caldrà la Capa 5 (certificat bancari o servei de verificació bancària).",
+      "explanationsIncorrect": {
+        "B": "És una comprovació matemàtica local sense accés bancari.",
+        "C": "No és un algorisme de xifratge.",
+        "D": "Un IBAN matemàticament vàlid pot pertànyer a una altra persona; la titularitat es verifica a la Capa 5."
+      }
+    },
+    {
+      "id": "m04-05-q09",
+      "module": 4,
+      "conceptId": "m04-05-validacio-automatica-documental",
+      "lessonRef": "content/module-04/m04-05-validacio-automatica-documental.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En `validar_dni_nie`, com tracta l'algorisme un **NIE** que comença per `X`, `Y` o `Z` abans d'aplicar `num % 23`?",
+      "codeSnippet": "prefix = {\"X\": \"0\", \"Y\": \"1\", \"Z\": \"2\"}.get(c[0], c[0])\nnum = int(prefix + c[1:8])\nreturn LLETRES_DNI[num % 23] == c[8]",
+      "options": [
+        { "key": "A", "text": "El rebutja sempre com a invàlid." },
+        { "key": "B", "text": "Substitueix el prefix `X→0`, `Y→1`, `Z→2`, construeix l'enter de 8 dígits i comprova que el residu mòdul 23 coincideix amb la lletra de control a la taula oficial `TRWAGMYFPDXBNJZSQVHLCKE`." },
+        { "key": "C", "text": "Converteix `X→10`, `Y→20`, `Z→30`." },
+        { "key": "D", "text": "Ignora el primer caràcter i calcula el mòdul sobre 7 dígits." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "És l'especificació oficial del Ministeri de l'Interior per al càlcul de la lletra de control del NIE (`X=0, Y=1, Z=2`), que evita falsos rebutjos de ciutadans estrangers residents!",
+      "explanationsIncorrect": {
+        "A": "Rebutjar NIEs seria un error greu de discriminació i qualitat de software públic!",
+        "C": "El mapatge oficial és 0, 1 i 2.",
+        "D": "Ometre el prefix `Y` o `Z` donaria una lletra de control incorrecta."
+      }
+    },
+    {
+      "id": "m04-05-q10",
+      "module": 4,
+      "conceptId": "m04-05-validacio-automatica-documental",
+      "lessonRef": "content/module-04/m04-05-validacio-automatica-documental.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "Un expedient passa satisfactòriament les Capes 1, 2 i 3 en cada document individual, però la **Capa 4** detecta que la factura justificativa té data `2025-11-20` mentre les bases de la subvenció només admeten despeses del `2026-01-01` al `2026-12-31`. Què demostra això?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Que les Capes 1–3 no serveixen per a res." },
+        { "key": "B", "text": "Que la factura té un error d'IBAN." },
+        { "key": "C", "text": "Que validar documents aïlladament no basta: la **coherència creuada contra les regles de la convocatòria i la resta de l'expedient (Capa 4)** és indispensable per detectar despeses no elegibles abans d'aprovar pagaments." },
+        { "key": "D", "text": "Que cal canviar automàticament la data de la factura a `2026-01-01`." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Una factura pot ser fiscalment impecable (Capes 1–3 OK) però no elegible per a aquella convocatòria concreta (Capa 4).",
+      "explanationsIncorrect": {
+        "A": "Les Capes 1–3 són necessàries però no suficients; cada capa captura una classe d'errors diferent.",
+        "B": "L'error és temporal (fora del període elegible), no d'IBAN.",
+        "D": "Alterar una data real d'una factura seria falsedat documental!"
+      }
+    }
+  ]
+}

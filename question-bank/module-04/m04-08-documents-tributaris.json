@@ -1,0 +1,236 @@
+{
+  "conceptId": "m04-08-documents-tributaris",
+  "module": 4,
+  "questions": [
+    {
+      "id": "m04-08-q01",
+      "module": 4,
+      "conceptId": "m04-08-documents-tributaris",
+      "lessonRef": "content/module-04/m04-08-documents-tributaris.md",
+      "difficulty": "basic",
+      "questionType": "architecture",
+      "prompt": "Quina és la regla d'arquitectura fonamental quan s'aplica IA a documents tributaris (com escriptures notarials per a plusvàlua o bonificacions d'IBI)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "**IDP per extreure** dades brutes del document (amb cites a pàgina i *bounding boxes*) + **Motor fiscal 100% determinista en `Decimal`** per calcular bases, bonificacions i quotes + supervisió humana." },
+        { "key": "B", "text": "Demanar directament a un LLM que calculi la quota a pagar i emeti la carta de pagament automàticament." },
+        { "key": "C", "text": "Utilitzar `float` de 32 bits per a totes les quotes tributàries." },
+        { "key": "D", "text": "Substituir les ordenances fiscals municipals per prompts informals." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "La IA aporta valor llegint prosa notarial complexa, però el càlcul tributari ha de ser 100% determinista, exacte (`Decimal`), versionat segons l'ordenança municipal vigent i validat per personal tributari.",
+      "explanationsIncorrect": {
+        "B": "Els LLMs cometen errors aritmètics i no garanteixen aplicació exacta de 311 ordenances fiscals.",
+        "C": "El punt flotant binari introdueix errors d'arrodoniment inacceptables en imports fiscals.",
+        "D": "Les ordenances fiscals són normes jurídiques vinculants que s'han de codificar deterministament."
+      }
+    },
+    {
+      "id": "m04-08-q02",
+      "module": 4,
+      "conceptId": "m04-08-documents-tributaris",
+      "lessonRef": "content/module-04/m04-08-documents-tributaris.md",
+      "difficulty": "basic",
+      "questionType": "normative",
+      "prompt": "Què estableix l'**article 95 de la Llei 58/2003 (Llei General Tributària — LGT)** sobre les dades obtingudes per l'Administració tributària?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Que totes les escriptures i declaracions fiscals són públiques i es poden pujar a qualsevol API comercial d'IA." },
+        { "key": "B", "text": "Que tenen **caràcter estrictament reservat**, només es poden utilitzar per a l'aplicació efectiva dels tributs i no es poden cedir a tercers fora dels supòsits taxats legalment (exigint execució *on-premise*/ENS Alt, ACL estricte i auditoria)." },
+        { "key": "C", "text": "Que es poden usar lliurement per entrenar models generatius públics." },
+        { "key": "D", "text": "Que només aplica a empreses de més de 500 treballadors." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "El secret tributari de l'art. 95 LGT reforça encara més el RGPD i l'ENS, prohibint exposar documents fiscals a proveïdors externs no habilitats o entrenaments sense base legal.",
+      "explanationsIncorrect": {
+        "A": "Vulneraria frontalment l'art. 95 LGT i el RGPD.",
+        "C": "Està estrictament prohibit utilitzar dades tributàries reservades per entrenar models públics.",
+        "D": "Aplica a tots els contribuents (persones físiques i jurídiques)."
+      }
+    },
+    {
+      "id": "m04-08-q03",
+      "module": 4,
+      "conceptId": "m04-08-documents-tributaris",
+      "lessonRef": "content/module-04/m04-08-documents-tributaris.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quants caràcters té una **referència cadastral** oficial a Espanya i com podem validar-ne automàticament la integritat després de l'OCR?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "9 caràcters sense cap dígit de control." },
+        { "key": "B", "text": "24 caràcters validats amb MOD 97-10." },
+        { "key": "C", "text": "**20 caràcters alfanumèrics**, dels quals els **2 darrers (posicions 19 i 20) són caràcters de control** verificables mitjançant l'algorisme oficial de pesos i mòdul 23 de la Direcció General del Cadastre." },
+        { "key": "D", "text": "Longitud variable entre 5 i 50 caràcters." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Validar els 2 caràcters de control oficials de la referència cadastral intercepta gairebé el 100% dels errors d'OCR abans de consultar Cadastre o liquidar IBI/IIVTNU.",
+      "explanationsIncorrect": {
+        "A": "9 caràcters correspon a un DNI/NIE, no a una referència cadastral.",
+        "B": "24 caràcters i MOD 97-10 correspon a un IBAN espanyol.",
+        "D": "Una referència cadastral d'immoble urbà/rústic té sempre exactament 20 caràcters."
+      }
+    },
+    {
+      "id": "m04-08-q04",
+      "module": 4,
+      "conceptId": "m04-08-documents-tributaris",
+      "lessonRef": "content/module-04/m04-08-documents-tributaris.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "En processar una escriptura notarial de 45 pàgines per a la **plusvàlua (IIVTNU)**, l'extractor troba mencions d'**«usdefruit vitalici»**, **«nua propietat»** o **«extinció de condomini»**. Quina ha de ser la conducta del sistema?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Activar una **bandera automàtica de complexitat jurídica** i derivar l'expedient a revisió per un tècnic tributari especialista (sense calcular ni emetre proposta automàtica estàndard)." },
+        { "key": "B", "text": "Ignorar l'usdefruit i liquidar com si fos el 100% de plena propietat." },
+        { "key": "C", "text": "Esborrar l'escriptura perquè és massa llarga." },
+        { "key": "D", "text": "Demanar a l'LLM que s'inventi un percentatge d'usdefruit." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Figures jurídiques com l'usdefruit (càlcul segons edat de l'usufructuari), l'extinció de condomini (sovint no subjecta) o herències complexes exigeixen valoració jurídica tributària experta.",
+      "explanationsIncorrect": {
+        "B": "Generaria una liquidació tributària il·legal i errònia.",
+        "C": "Mai es destrueix documentació aportada pel contribuent.",
+        "D": "L'usdefruit té regles legals exactes (regla del 89 menys edat, mínim 10% màxim 70%), mai estimacions aleatòries."
+      }
+    },
+    {
+      "id": "m04-08-q05",
+      "module": 4,
+      "conceptId": "m04-08-documents-tributaris",
+      "lessonRef": "content/module-04/m04-08-documents-tributaris.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Abans d'aplicar OCR i extracció IA sobre escriptures notarials de compravenda per actualitzar l'IBI i gestionar la plusvàlua, quina font de dades estructurades ha de prioritzar un organisme tributari com l'ORGT?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Fotografies fetes amb mòbil pels compradors." },
+        { "key": "B", "text": "Les remissions telemàtiques estructurades de l'**Índex Únic Notarial** i la informació oficial del **Cadastre**, reservant l'IDP per als PDFs aportats directament pel contribuent, escriptures antigues d'adquisició i annexos." },
+        { "key": "C", "text": "Anuncis de portals immobiliaris privats." },
+        { "key": "D", "text": "Correus electrònics en text lliure." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Igual que e-FACT en factures o Via Oberta en certificats, aprofitar dades estructurades de l'Índex Únic Notarial i Cadastre aporta 0% d'error OCR i màxima fiabilitat.",
+      "explanationsIncorrect": {
+        "A": "Les fotos de mòbil tenen la pitjor qualitat d'entrada possible.",
+        "C": "No tenen cap validesa jurídica ni registral.",
+        "D": "No substitueixen el document notarial ni les dades registrals."
+      }
+    },
+    {
+      "id": "m04-08-q06",
+      "module": 4,
+      "conceptId": "m04-08-documents-tributaris",
+      "lessonRef": "content/module-04/m04-08-documents-tributaris.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "En una sol·licitud de **bonificació d'IBI per família nombrosa**, quina validació creuada (Capa 4–5) ha de realitzar el sistema abans de proposar la concessió?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Només comprovar que el PDF tingui més de 2 pàgines." },
+        { "key": "B", "text": "Només mirar si apareix la paraula «família» al text." },
+        { "key": "C", "text": "Comprovar la **coherència creuada** entre: títol de família nombrosa **vigent** a data de meritació (1 de gener), titularitat de l'immoble (**referència cadastral**), **empadronament** com a habitatge habitual (Via Oberta / Padró) i requisits de l'ordenança municipal vigent." },
+        { "key": "D", "text": "Aprovar totes les sol·licituds sense revisar el padró ni la vigència del títol." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Una bonificació d'IBI depèn simultàniament de la vigència del títol, el valor/titularitat cadastral, l'habitatge habitual (padró) i l'ordenança concreta del municipi.",
+      "explanationsIncorrect": {
+        "A": "El nombre de pàgines no valida requisits legals.",
+        "B": "Una paraula clau no acredita vigència ni residència habitual.",
+        "D": "Vulneraria el principi de legalitat tributària."
+      }
+    },
+    {
+      "id": "m04-08-q07",
+      "module": 4,
+      "conceptId": "m04-08-documents-tributaris",
+      "lessonRef": "content/module-04/m04-08-documents-tributaris.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "En el càlcul determinista de la **plusvàlua municipal (IIVTNU)** després de la reforma del RDL 26/2021, què ha de comprovar el motor fiscal quan el `valor_transmissio` és inferior o igual al `valor_adquisicio`?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Aplicar igualment una multa del 20%." },
+        { "key": "B", "text": "Multiplicar per 2 el valor cadastral." },
+        { "key": "C", "text": "Ignorar el valor d'adquisició i cobrar sempre el mètode objectiu." },
+        { "key": "D", "text": "Marcar el supòsit com a **NO SUBJECTE** (quota `0,00 €`) per inexistència d'increment de valor del terreny (pèrdua patrimonial), i en cas d'haver-hi guany, aplicar la base **més favorable** entre el mètode objectiu i la plusvàlua real." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "La normativa vigent (STC 182/2021 i RDL 26/2021) declara no subjectes les transmissions sense increment de valor i permet aplicar el càlcul real quan resulti inferior al mètode objectiu.",
+      "explanationsIncorrect": {
+        "A": "No existeix cap sanció per vendre amb pèrdues.",
+        "B": "No té base legal.",
+        "C": "Cobraria indegudament un impost sense fet imposable."
+      }
+    },
+    {
+      "id": "m04-08-q08",
+      "module": 4,
+      "conceptId": "m04-08-documents-tributaris",
+      "lessonRef": "content/module-04/m04-08-documents-tributaris.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En la funció `calcular_base_iivtnu_determinista` de la lliçó, què garanteix la comprovació `if sum(quotes_adquirents, Decimal('0')) != Decimal('100'): return {'estat': 'BLOQUEJAT', ...}`?",
+      "codeSnippet": "if sum(quotes_adquirents, Decimal(\"0\")) != Decimal(\"100\"):\n    return {\"estat\": \"BLOQUEJAT\", \"motiu\": ...}",
+      "options": [
+        { "key": "A", "text": "Detecta deterministament si l'extractor IDP s'ha deixat un dels compradors/hereus o ha llegit malament un percentatge de participació (p. ex., `50%` i `30%` sumant `80%`) abans de calcular cap quota, enviant el cas a revisió humana." },
+        { "key": "B", "text": "Assegura que sempre hi ha un únic comprador." },
+        { "key": "C", "text": "Converteix automàticament qualsevol suma a `100%`." },
+        { "key": "D", "text": "Valida la lletra del DNI del notari." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "En compravendes i herències múltiples és freqüent ometre una pàgina o confondre una fracció (`1/3`, `50%`); la regla determinista `Σ quotes == 100%` actua com una potent comprovació de completitud!",
+      "explanationsIncorrect": {
+        "B": "Permet 1, 2 o N adquirents (p. ex. `[50, 50]` o `[25, 25, 50]`), sempre que sumin exactament 100%.",
+        "C": "Bloqueja l'operació perquè la revisi un humà; mai altera percentatges automàticament.",
+        "D": "Comprova la suma de quotes de propietat, no el DNI del notari."
+      }
+    },
+    {
+      "id": "m04-08-q09",
+      "module": 4,
+      "conceptId": "m04-08-documents-tributaris",
+      "lessonRef": "content/module-04/m04-08-documents-tributaris.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En l'exemple 4.8, amb `valor_adquisicio = 180.000`, `valor_transmissio = 195.000`, `percentatge_sol = 0,40`, `valor_cadastral_sol = 60.000`, `coeficient_anys = 0,17` i `tipus_impositiu = 0,30`, per què la quota resultant és **`1.800,00 €`** i no **`3.060,00 €`**?",
+      "codeSnippet": "base_real = (guany_total * percentatge_sol)... # 15000 * 0.40 = 6000.00\nbase_objectiva = (valor_cadastral_sol * coeficient_anys)... # 60000 * 0.17 = 10200.00\nbase_aplicada = min(base_real, base_objectiva)",
+      "options": [
+        { "key": "A", "text": "Per un error d'arrodoniment de `Decimal`." },
+        { "key": "B", "text": "Perquè la base pel mètode real (`6.000,00 €`) és inferior a la base pel mètode objectiu (`10.200,00 €`), i el motor determinista aplica la regla legal favorable al contribuent (`min(6000, 10200) × 0,30 = 1.800,00 €`)." },
+        { "key": "C", "text": "Perquè el tipus impositiu s'ha dividit per 2." },
+        { "key": "D", "text": "Perquè l'operació ha estat declarada no subjecta." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "El motor determinista avalua exactament totes dues fórmules legals en `Decimal` i tria automàticament la menor (`6.000,00 € × 30% = 1.800,00 €`), garantint exactitud i seguretat jurídica.",
+      "explanationsIncorrect": {
+        "A": "`Decimal` executa aritmètica exacta sense errors binaris.",
+        "C": "El tipus impositiu és exactament `0,30` (30%).",
+        "D": "Hi ha un guany positiu de 15.000 €, per tant sí que està subjecta."
+      }
+    },
+    {
+      "id": "m04-08-q10",
+      "module": 4,
+      "conceptId": "m04-08-documents-tributaris",
+      "lessonRef": "content/module-04/m04-08-documents-tributaris.md",
+      "difficulty": "advanced",
+      "questionType": "normative",
+      "prompt": "Un equip de ciència de dades vol agafar 5.000 escriptures notarials i recursos tributaris reals de l'ORGT per fer *fine-tuning* d'un model d'extracció en un entorn de proves compartit amb una consultora externa. Quina decisió és conforme a **art. 95 LGT + RGPD + ENS**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Enviar directament les 5.000 escriptures sense anonimitzar perquè la consultora treballi més ràpid." },
+        { "key": "B", "text": "Pujar les 5.000 escriptures a un repositori GitHub privat." },
+        { "key": "C", "text": "**Denegar l'entrega de dades tributàries reals a entorns externs**: utilitzar **documents sintètics realistes** per a desenvolupament/proves i, si es fa entrenament en entorn propi certificat **ENS Alt**, requerir base jurídica explícita, EIPD, redacció/anonimització verificada o encàrrec estricte dins infraestructura controlada per l'ens." },
+        { "key": "D", "text": "Substituir només els noms per rectangles negres superficials en el PDF." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Les dades fiscals reals estan protegides pel secret tributari (art. 95 LGT) i el RGPD; desenvolupar amb datasets sintètics i operar l'entrenament sota governança estricta ENS Alt evita bretxes legals greus.",
+      "explanationsIncorrect": {
+        "A": "Constitueix una infracció molt greu de l'art. 95 LGT i del RGPD.",
+        "B": "Un repositori extern de codi mai és un entorn adequat per a dades tributàries reservades.",
+        "D": "Els rectangles negres superficials deixen el text intacte a sota."
+      }
+    }
+  ]
+}

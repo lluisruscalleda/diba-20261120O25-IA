@@ -1,0 +1,46 @@
+{
+  "conceptId": "m04-04-reconeixement-entitats-documents",
+  "module": 4,
+  "cards": [
+    {
+      "id": "m04-04-fc01",
+      "module": 4,
+      "conceptId": "m04-04-reconeixement-entitats-documents",
+      "front": "Per què un rectangle negre dibuixat damunt d'un PDF NO és anonimització segura?",
+      "back": "Deixa intacta la capa de text vectorial subjacent (copiable amb Ctrl+C o `pdftotext`). La redacció real (*True Redaction*) esborra físicament el text vectorial, sobreescriu píxels en imatges i purga metadades/historial del PDF.",
+      "tags": ["True Redaction", "PDF", "RGPD"]
+    },
+    {
+      "id": "m04-04-fc02",
+      "module": 4,
+      "conceptId": "m04-04-reconeixement-entitats-documents",
+      "front": "Quina diferència jurídica hi ha entre pseudonimització i anonimització irreversible sota el RGPD?",
+      "back": "Pseudonimització (art. 4.5): reversible amb taula separada → CONTINUA sent dada personal RGPD. Anonimització irreversible (Cons. 26): elimina identificadors directes i quasi-identificadors sense reversió possible → fora del RGPD.",
+      "tags": ["pseudonimització", "anonimització", "RGPD"]
+    },
+    {
+      "id": "m04-04-fc03",
+      "module": 4,
+      "conceptId": "m04-04-reconeixement-entitats-documents",
+      "front": "Per què en detecció de PII per a transparència s'optimitza Recall (F2-score) i es distingeixen càrrecs públics?",
+      "back": "Un Fals Negatiu exposa dades personals públicament (bretxa RGPD irreversible), mentre un FP es corregeix en revisió. I els càrrecs públics signants (alcalde, secretari) s'han de preservar per transparència institucional.",
+      "tags": ["PII", "Recall", "transparència"]
+    },
+    {
+      "id": "m04-04-fc04",
+      "module": 4,
+      "conceptId": "m04-04-reconeixement-entitats-documents",
+      "front": "Què és l'*Entity Linking* en documents públics?",
+      "back": "Enllaçar variants textuals ('Aj. de Mataró', 'Excm. Ajuntament de Mataró') al seu identificador oficial canònic (codi INE o DIR3) per integrar i creuar expedients sense duplicats.",
+      "tags": ["Entity Linking", "INE", "DIR3"]
+    },
+    {
+      "id": "m04-04-fc05",
+      "module": 4,
+      "conceptId": "m04-04-reconeixement-entitats-documents",
+      "front": "Com regula la DA 7a de la LOPDGDD la publicació parcial del DNI en actes administratius?",
+      "back": "Publicant només quatre xifres numèriques (posicions 4a, 5a, 6a i 7a segons criteri AEPD/APDCAT, p. ex. `***4567**`), sense difondre el DNI complet.",
+      "tags": ["LOPDGDD", "DA 7a", "DNI"]
+    }
+  ]
+}

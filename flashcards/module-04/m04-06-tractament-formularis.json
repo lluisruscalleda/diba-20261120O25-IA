@@ -1,0 +1,46 @@
+{
+  "conceptId": "m04-06-tractament-formularis",
+  "module": 4,
+  "cards": [
+    {
+      "id": "m04-06-fc01",
+      "module": 4,
+      "conceptId": "m04-06-tractament-formularis",
+      "front": "Quina és la jerarquia òptima per tractar formularis administratius?",
+      "back": "1) Formulari web estruturat (JSON, 100% precisió); 2) PDF AcroForm no aplanat (lectura directa); 3) Paper/aplanat plantilla fixa (Alineació + OMR + OCR/HTR); 4) Heterogeni/manuscrit (VLM on-premise + HITL).",
+      "tags": ["formularis", "AcroForm"]
+    },
+    {
+      "id": "m04-06-fc02",
+      "module": 4,
+      "conceptId": "m04-06-tractament-formularis",
+      "front": "Com ha d'actuar un sistema OMR davant una doble marca (tatxada) o marca ambigua en un grup excloent?",
+      "back": "Classificar cada casella en `BUIDA`, `MARCADA` o `AMBÍGUA` (retallant les vores del marc!). Només acceptar si exactament 1 és `MARCADA` i 0 són `AMBÍGUES`; altrament derivar SEMPRE a revisió humana!",
+      "tags": ["OMR", "grups excloents"]
+    },
+    {
+      "id": "m04-06-fc03",
+      "module": 4,
+      "conceptId": "m04-06-tractament-formularis",
+      "front": "Què és un PDF «aplanat» (*flattened*) i com s'ha de gestionar?",
+      "back": "Un PDF AcroForm que el ciutadà ha 'Imprès a PDF', destruint el diccionari de camps digitals. El pipeline comprova si `get_fields()` és buit i commuta automàticament al flux visual/OMR.",
+      "tags": ["AcroForm", "flattened"]
+    },
+    {
+      "id": "m04-06-fc04",
+      "module": 4,
+      "conceptId": "m04-06-tractament-formularis",
+      "front": "Quina diferència hi ha entre detectar presència de signatura i verificació biomètrica de signatura?",
+      "back": "Detectar presència només avisa si el requadre està en blanc (baix risc). La verificació biomètrica implica dades biomètriques sensibles (art. 9 RGPD), alt risc AI Act i és innecessària davant signatura electrònica o identificació OAC.",
+      "tags": ["signatura", "RGPD", "biometria"]
+    },
+    {
+      "id": "m04-06-fc05",
+      "module": 4,
+      "conceptId": "m04-06-tractament-formularis",
+      "front": "Què estableix l'art. 14.1 LPACAP respecte a l'eliminació dels formularis en paper?",
+      "back": "Les persones físiques tenen dret a escollir si es relacionen electrònicament o presencialment/en paper; cal impulsar formularis web intuïtius però mantenint sempre atenció presencial OAC i suport al paper.",
+      "tags": ["LPACAP", "art. 14.1", "bretxa digital"]
+    }
+  ]
+}

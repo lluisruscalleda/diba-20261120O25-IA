@@ -1,0 +1,236 @@
+{
+  "conceptId": "m04-07-documents-administratius",
+  "module": 4,
+  "questions": [
+    {
+      "id": "m04-07-q01",
+      "module": 4,
+      "conceptId": "m04-07-documents-administratius",
+      "lessonRef": "content/module-04/m04-07-documents-administratius.md",
+      "difficulty": "basic",
+      "questionType": "normative",
+      "prompt": "Què passa si un pipeline d'IA modifica directament un **PDF original signat electrònicament** d'una acta o decret per inserir-hi un resum a la primera pàgina?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "**Trenca criptogràficament la signatura electrònica (PAdES)** i altera la petjada (*hash*) registrada a l'índex electrònic (art. 70 LPACAP / ENI), invalidant la integritat del document oficial." },
+        { "key": "B", "text": "Reforça automàticament la validesa jurídica de la signatura." },
+        { "key": "C", "text": "No passa res si el resum ocupa menys d'una pàgina." },
+        { "key": "D", "text": "El PDF es converteix automàticament en un certificat de la FNMT." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Els documents originals d'un expedient electrònic són immutables; totes les sortides d'IA (resums, extraccions, versions anonimitzades) s'han de desar com a artefactes derivats separats.",
+      "explanationsIncorrect": {
+        "B": "Al contrari, la invalida completament.",
+        "C": "Modificar un sol byte ja invalida el hash criptogràfic de la signatura.",
+        "D": "No genera cap certificat."
+      }
+    },
+    {
+      "id": "m04-07-q02",
+      "module": 4,
+      "conceptId": "m04-07-documents-administratius",
+      "lessonRef": "content/module-04/m04-07-documents-administratius.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quines són les seccions jurídiques canòniques habituals d'un **decret o resolució administrativa (`TD01`)**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Abstract, Methodology i References." },
+        { "key": "B", "text": "**Antecedents de fet**, **Fonaments de dret**, **Part dispositiva (*Resolc*)** i **Règim/Peu de recursos** (més signatura/CSV)." },
+        { "key": "C", "text": "Base imposable, IVA i Total." },
+        { "key": "D", "text": "Capçalera HTTP, Body i Footer." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Reconèixer aquesta estructura formal permet segmentar amb alta precisió els acords dispositius, els fets i les cites normatives d'un decret.",
+      "explanationsIncorrect": {
+        "A": "Aquesta és l'estructura d'un article científic.",
+        "C": "Aquesta és l'estructura d'una factura.",
+        "D": "Aquesta és l'estructura d'un missatge HTTP."
+      }
+    },
+    {
+      "id": "m04-07-q03",
+      "module": 4,
+      "conceptId": "m04-07-documents-administratius",
+      "lessonRef": "content/module-04/m04-07-documents-administratius.md",
+      "difficulty": "basic",
+      "questionType": "normative",
+      "prompt": "Quin format de preservació a llarg termini s'utilitza com a estàndard per a documents textuals dins l'**expedient electrònic (ENI)**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "`.docx` amb macros actives." },
+        { "key": "B", "text": "`.bmp` sense comprimir." },
+        { "key": "C", "text": "**PDF/A** (format estandarditzat d'arxivament a llarg termini que incrusta fonts i garanteix reproducció fidel independentment del programari)." },
+        { "key": "D", "text": "`.zip` xifrat amb contrasenya." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "La Norma Tècnica d'Interoperabilitat (NTI) de Catàleg d'Estàndards estableix PDF/A com a format de referència per a l'arxiu electrònic permanent.",
+      "explanationsIncorrect": {
+        "A": "Les macros actives són un risc de seguretat i no garanteixen preservació estable.",
+        "B": "BMP no admet capa de text ni metadades estructurades d'arxiu.",
+        "D": "Un ZIP amb contrasenya impedeix preservació i auditoria."
+      }
+    },
+    {
+      "id": "m04-07-q04",
+      "module": 4,
+      "conceptId": "m04-07-documents-administratius",
+      "lessonRef": "content/module-04/m04-07-documents-administratius.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Per què el càlcul de la data exacta de venciment d'un termini de **10 o 15 dies hàbils (art. 30 LPACAP)** NO s'ha de delegar a un LLM?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè els dies hàbils exclouen dissabtes, diumenges i festius estatals, autonòmics i **festius locals de cadascun dels 311 municipis**; un LLM pot al·lucinar el calendari, mentre que una **eina determinista amb calendari laboral oficial** ho calcula amb 100% d'exactitud." },
+        { "key": "B", "text": "Perquè la Llei 39/2015 només utilitza dies naturals." },
+        { "key": "C", "text": "Perquè els LLMs no poden llegir números." },
+        { "key": "D", "text": "Perquè els terminis administratius no tenen conseqüències jurídiques." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "El còmput de terminis administratius requereix precisió absoluta i coneixement exacte del calendari de dies inhàbils de cada municipi: sempre ha de ser determinista.",
+      "explanationsIncorrect": {
+        "B": "Al contrari, per defecte l'art. 30.2 LPACAP estableix dies hàbils quan s'assenyalen per dies.",
+        "C": "Poden llegir números però no operen com un motor fiable de calendaris oficials locals.",
+        "D": "Un error d'un sol dia pot fer caducar un procediment o deixar fora un licitador."
+      }
+    },
+    {
+      "id": "m04-07-q05",
+      "module": 4,
+      "conceptId": "m04-07-documents-administratius",
+      "lessonRef": "content/module-04/m04-07-documents-administratius.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "En un assistent d'anàlisi de **plecs de contractació pública (PCAP/PPT)**, quina combinació de validacions deterministes aporta valor immediat als tècnics de contractació i Intervenció?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Traducció del plec al llatí." },
+        { "key": "B", "text": "Verificar aritmèticament `PBL amb IVA == PBL sense IVA × (1 + IVA)`, `VEC >= PBL sense IVA`, que la **suma de punts dels criteris d'adjudicació sigui exactament 100** i detectar l'absència de clàusules obligatòries (com RGPD o condicions especials d'execució)." },
+        { "key": "C", "text": "Adjudicar automàticament el contracte a l'empresa amb el PDF més llarg." },
+        { "key": "D", "text": "Eliminar totes les taules de criteris de puntuació." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Combinar extracció estructurada amb comprovacions deterministes (PBL, VEC, suma 100 punts, checklist LCSP) detecta incoherències freqüents abans de publicar la licitació.",
+      "explanationsIncorrect": {
+        "A": "No aporta valor operatiu.",
+        "C": "L'adjudicació requereix Mesa de Contractació i aplicació estricta de la LCSP.",
+        "D": "Les taules de criteris són el cor de la valoració d'ofertes."
+      }
+    },
+    {
+      "id": "m04-07-q06",
+      "module": 4,
+      "conceptId": "m04-07-documents-administratius",
+      "lessonRef": "content/module-04/m04-07-documents-administratius.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Quan una IA genera automàticament un extracte d'acords a partir d'una **acta de Ple municipal**, quin límit jurídic fonamental cal respectar?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "L'extracte de la IA substitueix legalment l'acta oficial." },
+        { "key": "B", "text": "Es pot publicar directament sense revisar dades personals." },
+        { "key": "C", "text": "La **fe pública** correspon exclusivament a la **Secretaria**: l'extracte IA és només un esborrany auxiliar que requereix revisió humana (i anonimització RGPD) abans de qualsevol publicació o certificació." },
+        { "key": "D", "text": "L'acta original s'ha d'esborrar un cop resumida." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "La IA pot assistir en la preparació d'extractes i indexació, però mai ostenta fe pública ni substitueix la validació de Secretaria.",
+      "explanationsIncorrect": {
+        "A": "Un resum estadístic mai substitueix un document públic fefaent.",
+        "B": "Pot contenir errors d'interpretació o dades personals (RGPD).",
+        "D": "L'original s'ha de conservar íntegrament a l'arxiu electrònic."
+      }
+    },
+    {
+      "id": "m04-07-q07",
+      "module": 4,
+      "conceptId": "m04-07-documents-administratius",
+      "lessonRef": "content/module-04/m04-07-documents-administratius.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Com s'ha de generar el **peu de recurs** (indicació del recurs pertinent, òrgan i termini) dins un esborrany de resolució administrativa?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Deixant que l'LLM el redacti lliurement amb temperatura `0,9`." },
+        { "key": "B", "text": "Ometent-lo sempre per estalviar tokens." },
+        { "key": "C", "text": "Copiant el peu de recurs d'un altre expedient aleatori." },
+        { "key": "D", "text": "Mitjançant **plantilles deterministes aprovades per Serveis Jurídics** seleccionades segons el tipus d'acte (`esgota` o `no esgota` la via administrativa) i revisades pel tècnic responsable." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Un peu de recurs erroni pot viciar la notificació (art. 40 LPACAP); mai no s'ha de deixar a la generació probabilística lliure.",
+      "explanationsIncorrect": {
+        "A": "Alta temperatura generaria terminis o òrgans judicials inventats.",
+        "B": "L'art. 40.2 LPACAP exigeix incloure'l obligatòriament en tota notificació.",
+        "C": "Pot no correspondre's amb si l'acte esgota o no la via administrativa."
+      }
+    },
+    {
+      "id": "m04-07-q08",
+      "module": 4,
+      "conceptId": "m04-07-documents-administratius",
+      "lessonRef": "content/module-04/m04-07-documents-administratius.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En la funció `analitzar_decret` de la lliçó, quin propòsit compleix calcular `hash_sha256_original = hashlib.sha256(text_original.encode('utf-8')).hexdigest()` i retornar-lo al costat dels `acords_dispositius`?",
+      "codeSnippet": "hash_orig = hashlib.sha256(text_original.encode(\"utf-8\")).hexdigest()",
+      "options": [
+        { "key": "A", "text": "Permet **vincular criptogràficament** l'artefacte derivat (metadades ENI i acords extrets) amb la versió exacta i immutable del document original, detectant immediatament qualsevol alteració posterior i alineant-se amb la traçabilitat de l'índex electrònic (art. 70 LPACAP)." },
+        { "key": "B", "text": "Xifra el text del decret perquè ningú no el pugui llegir." },
+        { "key": "C", "text": "Comprimeix el decret per ocupar menys espai en disc." },
+        { "key": "D", "text": "Valida automàticament l'IBAN del beneficiari." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "SHA-256 és una funció resum criptogràfica unidireccional (no xifratge!) que certifica la integritat exacta del document sobre el qual s'ha fet l'extracció.",
+      "explanationsIncorrect": {
+        "B": "Un hash no és xifratge reversible; serveix per verificar integritat.",
+        "C": "No comprimeix el document (és irreversible).",
+        "D": "No comprova IBANs."
+      }
+    },
+    {
+      "id": "m04-07-q09",
+      "module": 4,
+      "conceptId": "m04-07-documents-administratius",
+      "lessonRef": "content/module-04/m04-07-documents-administratius.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "La Diputació de Barcelona vol indexar i analitzar tots els edictes del **BOPB** dels 311 municipis. Quina combinació de tècniques garanteix màxima utilitat per als ajuntaments?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Guardar tots els BOPB d'un mes en un únic bloc de text sense metadades." },
+        { "key": "B", "text": "**Segmentació per edicte** + ***Entity Linking*** de l'ens emissor a codis **INE/DIR3** + classificació per matèria/tipologia + extracció de dates amb **còmput determinista de terminis d'exposició pública** + marcatge de vigència per a cerca híbrida/RAG." },
+        { "key": "C", "text": "Passar els PDFs natius del BOPB per Tesseract en anglès a 100 DPI." },
+        { "key": "D", "text": "Resumir cada BOPB en una sola frase i esborrar els edictes originals." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Segmentar per edicte, normalitzar ens a INE/DIR3, controlar terminis deterministament i mantenir metadades de vigència converteix el BOPB en una font d'intel·ligència jurídica de primer nivell.",
+      "explanationsIncorrect": {
+        "A": "Barrejar municipis i edictes destrueix la recuperació i el filtratge.",
+        "C": "El BOPB és PDF natiu en català/castellà; passar-lo per OCR anglès a 100 DPI seria catastròfic.",
+        "D": "Mai es destrueixen textos normatius oficials."
+      }
+    },
+    {
+      "id": "m04-07-q10",
+      "module": 4,
+      "conceptId": "m04-07-documents-administratius",
+      "lessonRef": "content/module-04/m04-07-documents-administratius.md",
+      "difficulty": "advanced",
+      "questionType": "normative",
+      "prompt": "Quin camp de les metadades mínimes obligatòries de l'**ENI** identifica de manera normalitzada i interoperable l'òrgan o entitat local que emet el document?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "El nom abreujat escrit lliurement pel tècnic." },
+        { "key": "B", "text": "La mida del fitxer en bytes." },
+        { "key": "C", "text": "El codi oficial **DIR3** (Directori Comú d'Unitats Orgàniques i Oficines), que permet interoperabilitat inequívoca entre totes les administracions públiques espanyoles." },
+        { "key": "D", "text": "L'adreça IP del servidor d'OCR." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "DIR3 és el codi estandarditzat oficial de l'ENI per identificar òrgans i unitats orgàniques en expedients, registres (SIR) i factures electròniques (e-FACT).",
+      "explanationsIncorrect": {
+        "A": "Els noms lliures generen inconsistències i trenquen la interoperabilitat.",
+        "B": "No identifica l'òrgan emissor.",
+        "D": "L'IP no identifica l'òrgan administratiu."
+      }
+    }
+  ]
+}

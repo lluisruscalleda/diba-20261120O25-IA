@@ -1,0 +1,46 @@
+{
+  "conceptId": "m04-07-documents-administratius",
+  "module": 4,
+  "cards": [
+    {
+      "id": "m04-07-fc01",
+      "module": 4,
+      "conceptId": "m04-07-documents-administratius",
+      "front": "Per què un sistema d'IA MAI no ha de modificar un PDF original signat d'un expedient electrònic?",
+      "back": "Modificar un sol byte trenca criptogràficament la signatura PAdES i altera el hash de l'índex electrònic (art. 70 LPACAP / ENI). Els resums i metadades IA s'han de desar com a artefactes derivats separats.",
+      "tags": ["LPACAP", "art. 70", "ENI", "immutabilitat"]
+    },
+    {
+      "id": "m04-07-fc02",
+      "module": 4,
+      "conceptId": "m04-07-documents-administratius",
+      "front": "Com s'han de calcular els terminis administratius en dies hàbils (art. 30 LPACAP) en un sistema amb IA?",
+      "back": "MAI amb un LLM: l'IDP extreu la data d'inici i el municipi (INE), però el càlcul exacte es delega a un servei determinista carregat amb el calendari oficial de festius estatals, autonòmics i locals.",
+      "tags": ["art. 30 LPACAP", "terminis", "determinisme"]
+    },
+    {
+      "id": "m04-07-fc03",
+      "module": 4,
+      "conceptId": "m04-07-documents-administratius",
+      "front": "Quines metadades mínimes ENI s'extreuen o suggereixen en processar documents administratius?",
+      "back": "Identificador, codi d'òrgan DIR3, data de captura, origen (ciutadà/administració), estat d'elaboració, format (PDF/A), tipologia documental (TD01..TD99) i petjada SHA-256.",
+      "tags": ["ENI", "DIR3", "PDF/A"]
+    },
+    {
+      "id": "m04-07-fc04",
+      "module": 4,
+      "conceptId": "m04-07-documents-administratius",
+      "front": "Quines comprovacions deterministes d'alt valor es poden automatitzar sobre plecs de contractació (PCAP/PPT)?",
+      "back": "`PBL amb IVA == PBL sense IVA × (1 + IVA)`, `VEC >= PBL sense IVA`, `suma de criteris d'adjudicació == 100 punts` i checklist de clàusules obligatòries (RGPD, condicions especials d'execució).",
+      "tags": ["plecs", "LCSP", "validació"]
+    },
+    {
+      "id": "m04-07-fc05",
+      "module": 4,
+      "conceptId": "m04-07-documents-administratius",
+      "front": "Pot un resum o extracte d'acords generat per IA substituir una acta de Ple o un peu de recurs?",
+      "back": "NO: la fe pública correspon exclusivament a Secretaria (cal revisió humana + anonimització RGPD), i els peus de recurs s'han de generar amb plantilles deterministes validades jurídicament.",
+      "tags": ["fe pública", "peu de recurs", "HITL"]
+    }
+  ]
+}

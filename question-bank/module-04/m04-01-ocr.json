@@ -1,0 +1,236 @@
+{
+  "conceptId": "m04-01-ocr",
+  "module": 4,
+  "questions": [
+    {
+      "id": "m04-01-q01",
+      "module": 4,
+      "conceptId": "m04-01-ocr",
+      "lessonRef": "content/module-04/m04-01-ocr.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina és la primera comprovació obligatòria abans d'executar un motor OCR sobre un fitxer PDF entrant?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Verificar pàgina a pàgina si és un **PDF natiu** amb capa de text vectorial vàlida per extreure el text directament (0% d'error OCR i molt més ràpid), reservant l'OCR només per a pàgines o zones escanejades." },
+        { "key": "B", "text": "Imprimir el PDF en paper i tornar-lo a escanejar." },
+        { "key": "C", "text": "Reduir sempre la resolució a 72 DPI." },
+        { "key": "D", "text": "Eliminar totes les taules del document." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Executar OCR sobre PDFs natius introdueix errors innecessaris (0↔O, 1↔l) i malgasta CPU/GPU; l'extracció nativa directa és exacta i instantània.",
+      "explanationsIncorrect": {
+        "B": "Empitjoraria dràsticament la qualitat visual i la velocitat.",
+        "C": "72 DPI és massa baix per a OCR; l'estàndard recomanat és 300 DPI.",
+        "D": "Les taules sovint contenen les dades econòmiques i jurídiques clau."
+      }
+    },
+    {
+      "id": "m04-01-q02",
+      "module": 4,
+      "conceptId": "m04-01-ocr",
+      "lessonRef": "content/module-04/m04-01-ocr.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Per a què serveix l'etapa de ***Layout Analysis* (anàlisi de maquetació)** abans o durant l'OCR?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Per encriptar el fitxer PDF amb AES-256." },
+        { "key": "B", "text": "Per detectar columnes, taules, capçaleres, peus de pàgina i segells, preservant l'ordre de lectura correcte i evitant que el text de dues columnes es barregi horitzontalment." },
+        { "key": "C", "text": "Per traduir el document del català a l'anglès." },
+        { "key": "D", "text": "Per calcular la similitud cosinus entre embeddings." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Sense Layout Analysis, un OCR línia a línia barreja les dues columnes d'un decret o destrueix l'estructura de files i columnes d'una factura.",
+      "explanationsIncorrect": {
+        "A": "No té relació amb criptografia.",
+        "C": "La traducció és una tasca NLP posterior.",
+        "D": "No calcula similitud vectorial."
+      }
+    },
+    {
+      "id": "m04-01-q03",
+      "module": 4,
+      "conceptId": "m04-01-ocr",
+      "lessonRef": "content/module-04/m04-01-ocr.md",
+      "difficulty": "basic",
+      "questionType": "metrics",
+      "prompt": "Quina mètrica mesura la fracció mínima de substitucions, esborrats i insercions de **caràcters** necessària per transformar la sortida OCR en el text de referència?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "ROUGE-L." },
+        { "key": "B", "text": "Silhouette Score." },
+        { "key": "C", "text": "**CER (*Character Error Rate*)** basat en la distància de Levenshtein." },
+        { "key": "D", "text": "Perplexitat." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "CER = (S + D + I) / N_caràcters mesura la fidelitat caràcter a caràcter d'un sistema OCR (i WER fa l'anàleg a nivell de paraula).",
+      "explanationsIncorrect": {
+        "A": "ROUGE-L s'utilitza en avaluació de resum automàtic.",
+        "B": "Silhouette Score avalua clustering.",
+        "D": "La perplexitat avalua models de llenguatge."
+      }
+    },
+    {
+      "id": "m04-01-q04",
+      "module": 4,
+      "conceptId": "m04-01-ocr",
+      "lessonRef": "content/module-04/m04-01-ocr.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Quina tècnica de preprocessament és especialment efectiva quan un ciutadà envia una **fotografia feta amb mòbil** d'un document amb ombres desiguals i lleugerament inclinat?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Correcció de perspectiva/*deskewing* combinada amb **binarització adaptativa local (com Sauvola)**, que ajusta el llindar de blanc/negre a cada veïnat local en lloc d'un llindar global únic." },
+        { "key": "B", "text": "Aplicar un únic llindar global fix a 128 que converteix tota la zona ombrívola en un bloc negre." },
+        { "key": "C", "text": "Reduir la imatge a 50×50 píxels." },
+        { "key": "D", "text": "Aplicar desenfocament gaussià intens sobre tot el text." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "La binarització adaptativa local (Sauvola/Niblack) compensa canvis d'il·luminació i ombres on un llindar global destruiria el text.",
+      "explanationsIncorrect": {
+        "B": "Un llindar global enfosqueix totalment les zones amb ombra i esborra les zones sobreexposades.",
+        "C": "Destruiria completament la llegibilitat dels caràcters.",
+        "D": "El desenfocament intens empitjora la nitidesa de les lletres."
+      }
+    },
+    {
+      "id": "m04-01-q05",
+      "module": 4,
+      "conceptId": "m04-01-ocr",
+      "lessonRef": "content/module-04/m04-01-ocr.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Quin risc específic introdueixen els **models multimodals VLM (*Vision-Language Models*)** quan s'utilitzen directament com a substituts de l'OCR en camps crítics com NIF, IBAN o imports?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "No poden processar taules." },
+        { "key": "B", "text": "Risc d'**al·lucinació visual**: davant un dígit borrós o tapat per un segell, el VLM pot generar un dígit estadísticament plausible en lloc d'indicar incertesa, fet que exigeix validació determinista (dígits de control, sumes) i revisió humana." },
+        { "key": "C", "text": "Només funcionen amb imatges en blanc i negre de 1 bit." },
+        { "key": "D", "text": "Són més ràpids que l'extracció de text d'un PDF natiu." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "La fortalesa lingüística dels VLMs és també el seu perill en OCR crític: poden «endevinar» un número il·legible amb to segur; per això cal validar matemàticament els camps i contrastar amb coordenades.",
+      "explanationsIncorrect": {
+        "A": "Precisament les taules complexes són un dels punts forts dels VLMs.",
+        "C": "Treballen directament amb imatges RGB d'alta resolució.",
+        "D": "Són ordres de magnitud més lents i costosos que l'extracció nativa."
+      }
+    },
+    {
+      "id": "m04-01-q06",
+      "module": 4,
+      "conceptId": "m04-01-ocr",
+      "lessonRef": "content/module-04/m04-01-ocr.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Per què convé conservar sempre les **coordenades espacials (*bounding boxes*)** de cada paraula extreta per l'OCR dins del sistema documental corporatiu?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè sense bounding boxes no es pot guardar un fitxer en disc." },
+        { "key": "B", "text": "Per augmentar artificialment la mida de la base de dades." },
+        { "key": "C", "text": "Per permetre la **verificació visual instantània (*Click-to-Highlight*)** sobre la imatge original del PDF a la pantalla del funcionari, a més d'ajudar els models d'extracció sensibles al layout." },
+        { "key": "D", "text": "Per eliminar els accents catalans automàticament." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Ressaltar directament sobre el PDF la zona exacta d'on surt cada dada extreta redueix dràsticament el temps de revisió humana i incrementa la traçabilitat.",
+      "explanationsIncorrect": {
+        "A": "El text pla es pot guardar igualment, però es perd la referència visual.",
+        "B": "Aporten un gran valor funcional i d'auditoria.",
+        "D": "Les coordenades no modifiquen l'ortografia."
+      }
+    },
+    {
+      "id": "m04-01-q07",
+      "module": 4,
+      "conceptId": "m04-01-ocr",
+      "lessonRef": "content/module-04/m04-01-ocr.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Un motor OCR desplegat a la Diputació de Barcelona està configurat només amb el paquet d'idioma anglès (`eng`). Quin error sistemàtic provocarà sobre documents municipals?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Cap, perquè els caràcters catalans i anglesos són idèntics." },
+        { "key": "B", "text": "Accelerarà el reconeixement de la ela geminada (`l·l`)." },
+        { "key": "C", "text": "Només afectarà els nombres decimals." },
+        { "key": "D", "text": "Corromprà sistemàticament caràcters propis del català i castellà (`ç`, `l·l`, `ñ`, accents oberts/tancats i dièresi `ï/ü`), degradant toponímia, cognoms i la posterior indexació BM25 i NER." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Els motors OCR depenen dels conjunts de caràcters i models lingüístics configurats (`cat+spa`); ometre el català corromp `l·l`, `ç` i accents.",
+      "explanationsIncorrect": {
+        "A": "L'anglès no inclou accents, dièresis, `ç`, `ñ` ni `l·l`.",
+        "B": "Al contrari, convertirà `l·l` en `l.l`, `ll` o caràcters escombraries.",
+        "C": "Afecta principalment el vocabulari i caràcters alfabètics diacrítics."
+      }
+    },
+    {
+      "id": "m04-01-q08",
+      "module": 4,
+      "conceptId": "m04-01-ocr",
+      "lessonRef": "content/module-04/m04-01-ocr.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En l'exemple Python de la lliçó, el text real té 58 caràcters i 7 paraules. L'OCR comet només 2 substitucions (`·`→`.` i `Z`→`2` al NIF), obtenint `CER = 0,034` però `WER = 0,286` (28,6%). Quina conclusió tècnica clau se'n deriva?",
+      "codeSnippet": "ref = \"Sol·licitud SUB-2026-0148 NIF 12345678Z Import 1.250,00 EUR\"\nocr = \"Sol.licitud SUB-2026-0148 NIF 123456782 Import 1.250,00 EUR\"",
+      "options": [
+        { "key": "A", "text": "Un CER aparentment molt baix (~3%) pot amagar una taxa d'error alta a nivell de paraula (WER ~29%) i corrompre completament camps crítics com un NIF; per tant, en producció cal avaluar **Exact Match per camp** i aplicar **validadors deterministes** (dígit de control)." },
+        { "key": "B", "text": "Si el CER és inferior al 5%, es pot garantir que tots els NIFs i imports són exactes." },
+        { "key": "C", "text": "El WER és sempre igual al CER." },
+        { "key": "D", "text": "La distància de Levenshtein no detecta substitucions de lletres per dígits." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Un sol caràcter erroni dins un token crític (NIF/IBAN/import) fa fallar tota la paraula (WER) i invalida la dada administrativa malgrat un CER global baix.",
+      "explanationsIncorrect": {
+        "B": "L'exemple demostra exactament el contrari: amb CER 3,4% el NIF ja és erroni.",
+        "C": "WER sol ser diversos cops superior al CER.",
+        "D": "Levenshtein compta `Z`→`2` com a 1 substitució exacta."
+      }
+    },
+    {
+      "id": "m04-01-q09",
+      "module": 4,
+      "conceptId": "m04-01-ocr",
+      "lessonRef": "content/module-04/m04-01-ocr.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Quina és l'arquitectura d'OCR més eficient, econòmica i conforme a RGPD/ENS per processar 40.000 expedients mensuals (65% PDFs natius, 30% escanejats estàndard, 5% taules complexes/manuscrits)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Enviar tots els 40.000 documents a una API VLM externa fora de la UE." },
+        { "key": "B", "text": "**Arquitectura en cascada *on-premise***: (1) extracció nativa directa per al 65% de PDFs natius, (2) OCR neuronal + Layout Analysis local (PaddleOCR/Docling, 300 DPI, `cat+spa`) per al 30%, i (3) VLM *open-weights* local només per al 5% complex o de baixa confiança + revisió humana amb *bounding boxes*." },
+        { "key": "C", "text": "Passar els 40.000 documents a 72 DPI per Tesseract en anglès." },
+        { "key": "D", "text": "Transcriure manualment els 40.000 documents sense automatització." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "La cascada *on-premise* minimitza cost computacional, elimina errors en PDFs natius, manté sobirania de dades (RGPD/ENS) i concentra la GPU de VLM només en el 5% que realment ho necessita.",
+      "explanationsIncorrect": {
+        "A": "Risc greu RGPD/ENS i cost desproporcionat processant PDFs natius com a imatges.",
+        "C": "Destruiria qualitat en PDFs natius, taules i català.",
+        "D": "Inviable operativament a 40.000 expedients/mes."
+      }
+    },
+    {
+      "id": "m04-01-q10",
+      "module": 4,
+      "conceptId": "m04-01-ocr",
+      "lessonRef": "content/module-04/m04-01-ocr.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "Rebeu un **PDF híbrid** de 6 pàgines: les pàgines 1–4 són una sol·licitud generada digitalment (text natiu) i les pàgines 5–6 són un pressupost escanejat incrustat com a imatges JPEG. Si el detector només mira si la pàgina 1 té text, què passarà?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Extraurà correctament el pressupost de les pàgines 5–6 igualment." },
+        { "key": "B", "text": "Totes 6 pàgines passaran per OCR." },
+        { "key": "C", "text": "Classificarà tot el fitxer com a «PDF natiu» i **ometrà silenciosament el 100% del text del pressupost** de les pàgines 5–6; per evitar-ho, la detecció natiu vs. imatge s'ha de fer sempre **pàgina a pàgina** (i zona a zona si hi ha imatges incrustades)." },
+        { "key": "D", "text": "El fitxer PDF es corromprà al disc." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Els PDFs híbrids són extremadament habituals en expedients electrònics (instància digital + annexos escanejats); comprovar només la pàgina 1 provoca pèrdua silenciosa dels annexos.",
+      "explanationsIncorrect": {
+        "A": "L'extractor natiu no pot llegir píxels dins les imatges JPEG de les pàgines 5–6.",
+        "B": "Si assumeix que tot el fitxer és natiu, no invocarà l'OCR en cap pàgina.",
+        "D": "El fitxer no es corromp, simplement es perd la informació dels annexos."
+      }
+    }
+  ]
+}

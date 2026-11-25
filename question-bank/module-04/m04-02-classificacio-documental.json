@@ -1,0 +1,236 @@
+{
+  "conceptId": "m04-02-classificacio-documental",
+  "module": 4,
+  "questions": [
+    {
+      "id": "m04-02-q01",
+      "module": 4,
+      "conceptId": "m04-02-classificacio-documental",
+      "lessonRef": "content/module-04/m04-02-classificacio-documental.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Què és el ***Document Splitting* (*Split & Classify*)** en un sistema de processament intel·ligent de documents?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Dividir automàticament un únic fitxer PDF multipàgina escanejat en bloc en els seus documents individuals lògics i assignar a cadascun la seva tipologia documental." },
+        { "key": "B", "text": "Tallar un text llarg en tokens BPE." },
+        { "key": "C", "text": "Dividir el conjunt de dades en Train i Test." },
+        { "key": "D", "text": "Comprimir les imatges del PDF en format ZIP." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Al registre electrònic és habitual rebre un sol PDF amb instància + DNI + factures enganxats; Split & Classify detecta les fronteres (B-DOC/I-DOC) i classifica cada subdocument.",
+      "explanationsIncorrect": {
+        "B": "Això és tokenització (Mòdul 2).",
+        "C": "Això és partició de dades ML (Mòdul 1).",
+        "D": "No és compressió de fitxers."
+      }
+    },
+    {
+      "id": "m04-02-q02",
+      "module": 4,
+      "conceptId": "m04-02-classificacio-documental",
+      "lessonRef": "content/module-04/m04-02-classificacio-documental.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Per a quin tipus de documents municipals falla sovint un classificador basat **únicament en text OCR**, fent imprescindible el senyal visual o multimodal?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Ordenances municipals en PDF natiu de 20 pàgines." },
+        { "key": "B", "text": "Fotocòpies de DNI/NIE, plànols tècnics d'urbanisme i rebuts molt visuals amb poc text o OCR molt degradat." },
+        { "key": "C", "text": "Actes de ple en format Word." },
+        { "key": "D", "text": "Correus electrònics en text pla." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Documents dominats per la seva estructura gràfica (DNI, plànols, croquis) aporten poc text útil però una signatura visual molt clara per a un model visual o multimodal.",
+      "explanationsIncorrect": {
+        "A": "Les ordenances natives tenen text ric i net.",
+        "C": "Les actes en Word tenen text natiu abundant.",
+        "D": "Els correus són text pur sense layout gràfic complex."
+      }
+    },
+    {
+      "id": "m04-02-q03",
+      "module": 4,
+      "conceptId": "m04-02-classificacio-documental",
+      "lessonRef": "content/module-04/m04-02-classificacio-documental.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quines tres modalitats combina una arquitectura documental com **LayoutLMv3**?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Àudio, vídeo i codi binari." },
+        { "key": "B", "text": "Només n-grams de caràcters." },
+        { "key": "C", "text": "**Text** (tokens), **geometria/*layout*** (coordenades 2D de les caixes) i **imatge visual** (pedaços de la pàgina)." },
+        { "key": "D", "text": "SQL, HTML i CSS." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "LayoutLMv3 integra representacions textuals, posicionals 2D i visuals dins un Transformer unificat, maximitzant precisió tant en classificació com en extracció.",
+      "explanationsIncorrect": {
+        "A": "No treballa amb àudio ni vídeo.",
+        "B": "Utilitza molt més que n-grams de text.",
+        "D": "No són modalitats d'entrada del model."
+      }
+    },
+    {
+      "id": "m04-02-q04",
+      "module": 4,
+      "conceptId": "m04-02-classificacio-documental",
+      "lessonRef": "content/module-04/m04-02-classificacio-documental.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Què passa si un classificador documental *softmax* tancat sobre 8 classes NO té classe `ALTRES_DESCONEGUT` ni llindar d'abstenció i arriba un document no previst (p. ex., una captura de pantalla d'una app)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Forçarà la seva assignació a una de les 8 classes (p. ex. `FACTURA`) i l'enviarà a un extractor incorrecte, provocant errors en cascada o registres espuris." },
+        { "key": "B", "text": "El model crearà automàticament una 9a classe ENI oficial." },
+        { "key": "C", "text": "L'API retornarà sempre un error 404 automàtic sense configuració." },
+        { "key": "D", "text": "El model esborrarà el fitxer del registre oficial." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Una sortida softmax suma 1 sobre les classes conegudes i sempre tria una guanyadora; sense classe `ALTRES` i llindar de confiança calibrat, documents fora de distribució contaminen els pipelines posteriors.",
+      "explanationsIncorrect": {
+        "B": "Un classificador supervisat tancat no inventa classes noves.",
+        "C": "Retornarà la classe amb màxima probabilitat si no s'ha programat l'abstenció.",
+        "D": "Mai no s'ha d'esborrar un document registrat per un ciutadà."
+      }
+    },
+    {
+      "id": "m04-02-q05",
+      "module": 4,
+      "conceptId": "m04-02-classificacio-documental",
+      "lessonRef": "content/module-04/m04-02-classificacio-documental.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Per què convé alinear la taxonomia del classificador documental amb les tipologies oficials de l'**Esquema Nacional d'Interoperabilitat (ENI)** (`TD01`, `TD07`, `TD14`, `TD19`...)?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè l'ENI prohibeix utilitzar models de Deep Learning." },
+        { "key": "B", "text": "Per integrar directament la classificació automàtica amb els metadades obligatoris de l'expedient electrònic, l'arxiu electrònic únic i l'intercanvi interoperable entre administracions." },
+        { "key": "C", "text": "Per reduir el nombre de DPI dels escàners." },
+        { "key": "D", "text": "Per evitar haver de validar les factures." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Mapar directament a les tipologies normalitzades de l'ENI elimina traduccions manuals i assegura el compliment dels metadades mínims obligatoris d'expedient electrònic.",
+      "explanationsIncorrect": {
+        "A": "L'ENI regula interoperabilitat de documents i metadades, no prohibeix el Deep Learning.",
+        "C": "No té relació amb reduir DPI.",
+        "D": "La validació comptable i administrativa continua sent necessària."
+      }
+    },
+    {
+      "id": "m04-02-q06",
+      "module": 4,
+      "conceptId": "m04-02-classificacio-documental",
+      "lessonRef": "content/module-04/m04-02-classificacio-documental.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Quin benefici de **privacitat (RGPD)** aporta detectar automàticament en l'etapa de classificació que una pàgina és un `DNI_PASSAPORT` o un `INFORME_MEDIC`?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Permet publicar-la immediatament al portal de transparència." },
+        { "key": "B", "text": "Permet indexar-la al RAG públic de tots els empleats." },
+        { "key": "C", "text": "Permet aplicar des del segon zero polítiques reforçades de seguretat: restringir permisos ACL, excloure-la de la indexació general/RAG i disparar fluxos de minimització o pseudonimització." },
+        { "key": "D", "text": "Permet enviar-la per correu electrònic sense xifratge." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "La classificació primerenca de documents sensibles és una mesura proactiva excel·lent de privacitat des del disseny (art. 25 RGPD).",
+      "explanationsIncorrect": {
+        "A": "Mai es publiquen DNI ni informes mèdics al portal de transparència.",
+        "B": "Precisament s'han d'excloure d'índexs generals per evitar exposició indeguda.",
+        "D": "Requereix màxima protecció i xifratge, no enviament obert."
+      }
+    },
+    {
+      "id": "m04-02-q07",
+      "module": 4,
+      "conceptId": "m04-02-classificacio-documental",
+      "lessonRef": "content/module-04/m04-02-classificacio-documental.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Quina limitació té un classificador basat **exclusivament en imatge (ViT/CNN sobre miniatura)** respecte d'un model multimodal?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "No pot reconèixer plànols ni DNI." },
+        { "key": "B", "text": "Requereix sempre un OCR previ molt lent." },
+        { "key": "C", "text": "No pot treballar amb PDFs convertits a PNG." },
+        { "key": "D", "text": "Pot confondre documents amb **plantilla visual idèntica** però sentit jurídic oposat (p. ex., resolució d'atorgament vs. resolució de denegació que usen el mateix paper timbrat)." }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Quan dos tipus documentals comparteixen exactament el mateix format visual institucional, el contingut textual és imprescindible per distingir-los.",
+      "explanationsIncorrect": {
+        "A": "Precisament DNI i plànols són punts forts d'un classificador visual.",
+        "B": "Un classificador visual funciona directament sobre la imatge sense OCR.",
+        "C": "Treballa nativament sobre imatges PNG/JPEG."
+      }
+    },
+    {
+      "id": "m04-02-q08",
+      "module": 4,
+      "conceptId": "m04-02-classificacio-documental",
+      "lessonRef": "content/module-04/m04-02-classificacio-documental.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En la funció `split_and_classify` de la lliçó, què provocaria si dues factures diferents d'1 pàgina estiguessin enganxades consecutivament al mateix PDF i **no** tinguéssim el detector `inici_explicit`?",
+      "codeSnippet": "if not documents or inici_explicit or documents[-1][\"tipologia\"] != cls or estat == \"REVISIO_HUMANA\":",
+      "options": [
+        { "key": "A", "text": "Es fusionarien erròniament en un únic document `TD19_FACTURA` de 2 pàgines perquè totes dues tenen la mateixa tipologia `cls`; per això el *Document Splitting* real prediu **frontera (`B-DOC`/`I-DOC`) independentment del canvi de classe**!" },
+        { "key": "B", "text": "La segona factura s'esborraria automàticament." },
+        { "key": "C", "text": "Totes dues es classificarien com a `TD07_CERTIFICAT`." },
+        { "key": "D", "text": "El programa llançaria un error de sintaxi." }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Un cas clàssic d'examen i de producció: 5 factures consecutives al mateix PDF tenen totes la mateixa classe `FACTURA`, per tant un canvi de classe no basta per separar-les; cal detectar explícitament les fronteres `B-DOC` (nou número de factura, capçalera, Pàgina 1/N).",
+      "explanationsIncorrect": {
+        "B": "No s'esborra, sinó que s'annexa erròniament al document anterior.",
+        "C": "La tipologia continuaria sent `TD19_FACTURA`.",
+        "D": "És un error lògic de segmentació, no de sintaxi."
+      }
+    },
+    {
+      "id": "m04-02-q09",
+      "module": 4,
+      "conceptId": "m04-02-classificacio-documental",
+      "lessonRef": "content/module-04/m04-02-classificacio-documental.md",
+      "difficulty": "advanced",
+      "questionType": "metrics",
+      "prompt": "En un pipeline *Split & Classify* en producció, quines **dues mètriques** has de monitorar per separat per assegurar que el sistema funciona bé?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Només l'Accuracy global de pàgines." },
+        { "key": "B", "text": "(1) **F1 de detecció de fronteres (`B-DOC`)** (o *Split Accuracy* a nivell de paquet) per assegurar que no s'uneixen ni es parteixen documents erròniament, i (2) **Macro-F1 / F1 per tipologia + taxa d'abstenció** per garantir precisió també en tipologies minoritàries." },
+        { "key": "C", "text": "Només el temps de descàrrega del PDF." },
+        { "key": "D", "text": "BLEU i ROUGE-2." }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Es pot tenir un bon F1 de tipologia per pàgina però un pèssim F1 de fronteres (fusionant factures seguides), o viceversa; cal mesurar totes dues tasques per separat.",
+      "explanationsIncorrect": {
+        "A": "L'Accuracy per pàgina amaga errors de frontera i classes minoritàries.",
+        "C": "La latència no mesura qualitat de segmentació ni classificació.",
+        "D": "BLEU i ROUGE són per a traducció i resum."
+      }
+    },
+    {
+      "id": "m04-02-q10",
+      "module": 4,
+      "conceptId": "m04-02-classificacio-documental",
+      "lessonRef": "content/module-04/m04-02-classificacio-documental.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Per què la classificació documental actua com un **component crític d'amplificació d'errors** dins un pipeline IDP complet?",
+      "codeSnippet": null,
+      "options": [
+        { "key": "A", "text": "Perquè executa l'OCR dues vegades." },
+        { "key": "B", "text": "Perquè canvia el format del PDF a Word." },
+        { "key": "C", "text": "Perquè decideix **quin extractor d'esquema JSON, quines regles de validació i quin flux de tramitació/ACL** s'aplicaran al document; un error de classificació (p. ex., etiquetar un recurs administratiu com a consulta general) pot fer perdre terminis legals o enviar el document al departament equivocat." },
+        { "key": "D", "text": "Perquè sempre s'executa al final del tot, després de resoldre l'expedient." }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Com que és l'enrutador mestre del pipeline IDP, qualsevol error no detectat en classificació es propaga a tota la cadena d'extracció, validació i tramitació; per això cal alta precisió, calibració i revisió humana de dubtes.",
+      "explanationsIncorrect": {
+        "A": "No reexecuta l'OCR.",
+        "B": "No converteix formats ofimàtics.",
+        "D": "S'executa al principi del pipeline, just després de la ingestió/OCR."
+      }
+    }
+  ]
+}
