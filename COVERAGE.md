@@ -12,7 +12,7 @@ Llegenda d'estat:
 | Lliçons (Teoria + Exemple + Exercici + Desenvolupament + Resum) | 70 | 70 | 100,0% |
 | Tests individuals (mín. 10 preguntes / concepte) | 70 (700 preg.) | 70 (≥700 preg.) | 100,0% |
 | Flashcards per concepte (mín. 5 / concepte) | 70 (360 fitxes) | 70 (≥350 fitxes) | 100,0% |
-| Laboratoris pràctics | 0 | 8 | 0% |
+| Laboratoris pràctics | 8 | 8 | 100,0% |
 | Exàmens de mòdul (40 preg.) | 0 | 8 | 0% |
 | Simulacres globals (50 preg.) | 0 | 10 | 0% |
 | Supòsits pràctics independents | 0 | 20 | 0% |
@@ -137,14 +137,14 @@ Llegenda d'estat:
 
 | Lab | Títol | Codi/Notebooks | Dataset sintètic | Instruccions | Tests | Estat |
 |---|---|---|---|---|---|---|
-| Lab 1 | Machine Learning | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| Lab 2 | NLP | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| Lab 3 | RAG i models generatius | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| Lab 4 | Processament documental | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| Lab 5 | Assistent virtual ciutadà | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| Lab 6 | Automatització intel·ligent | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| Lab 7 | MLOps i LLMOps | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| Lab 8 | Seguretat i governança | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
+| Lab 1 | Machine Learning | ✅ | ✅ | ✅ | ✅ (5) | ✅ |
+| Lab 2 | NLP | ✅ | ✅ | ✅ | ✅ (3) | ✅ |
+| Lab 3 | RAG i models generatius | ✅ | ✅ | ✅ | ✅ (4) | ✅ |
+| Lab 4 | Processament documental | ✅ | ✅ | ✅ | ✅ (3) | ✅ |
+| Lab 5 | Assistent virtual ciutadà | ✅ | ✅ | ✅ | ✅ (3) | ✅ |
+| Lab 6 | Automatització intel·ligent | ✅ | ✅ | ✅ | ✅ (3) | ✅ |
+| Lab 7 | MLOps i LLMOps | ✅ | ✅ | ✅ | ✅ (2) | ✅ |
+| Lab 8 | Seguretat i governança | ✅ | ✅ | ✅ | ✅ (3) | ✅ |
 
 ## Exàmens i simulacres
 

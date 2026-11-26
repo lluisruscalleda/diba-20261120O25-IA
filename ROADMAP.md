@@ -36,14 +36,14 @@ Cada concepte es completa íntegrament (apartats A–J + mínim 10 preguntes tes
 - [x] **Mòdul 8**: Ús responsable i seguretat de la IA (8/8 conceptes completats — 100%, amb verificació normativa oficial EUR-Lex/BOE/AEPD/APDCAT/CCN-CERT).
 
 ## Fase 4. Laboratoris pràctics (8 laboratoris executables)
-- [ ] **Lab 1**: Machine Learning (classificació, regressió, clustering, detecció d'anomalies amb scikit-learn, pandas, NumPy).
-- [ ] **Lab 2**: NLP (classificació d'instàncies, NER, cerca semàntica, comparativa TF-IDF vs embeddings contextuals).
-- [ ] **Lab 3**: RAG i models generatius (assistent normatiu RAG complet + agent amb eines + comparativa RAG vs fine-tuning).
-- [ ] **Lab 4**: Processament documental (generació PDFs ficticis, OCR, classificació, extracció, validació i derivació humana).
-- [ ] **Lab 5**: Assistent virtual ciutadà (context, intencions, base de coneixement, traçabilitat, incertesa, permisos, escalada).
-- [ ] **Lab 6**: Automatització intel·ligent (recepció, classificació, validació, priorització combinant regles + ML).
-- [ ] **Lab 7**: MLOps i LLMOps (FastAPI, Docker, pytest, versionat, MLflow, monitoratge, data drift, rollback, CI/CD).
-- [ ] **Lab 8**: Seguretat i governança (anàlisi de riscos, AI Act/RGPD/ENS, biaixos, Model Card, proves defensives locals de prompt injection).
+- [x] **Lab 1**: Machine Learning (classificació, regressió, clustering, detecció d'anomalies amb scikit-learn, pandas, NumPy).
+- [x] **Lab 2**: NLP (classificació d'instàncies, NER, cerca semàntica, comparativa TF-IDF vs embeddings contextuals).
+- [x] **Lab 3**: RAG i models generatius (assistent normatiu RAG complet + agent amb eines + comparativa RAG vs fine-tuning).
+- [x] **Lab 4**: Processament documental (generació PDFs ficticis, OCR, classificació, extracció, validació i derivació humana).
+- [x] **Lab 5**: Assistent virtual ciutadà (context, intencions, base de coneixement, traçabilitat, incertesa, permisos, escalada).
+- [x] **Lab 6**: Automatització intel·ligent (recepció, classificació, validació, priorització combinant regles + ML).
+- [x] **Lab 7**: MLOps i LLMOps (FastAPI, Docker, pytest, versionat, MLflow, monitoratge, data drift, rollback, CI/CD).
+- [x] **Lab 8**: Seguretat i governança (anàlisi de riscos, AI Act/RGPD/ENS, biaixos, Model Card, proves defensives locals de prompt injection).
 
 ## Fase 5. Banc d'exàmens i simulacres
 - [ ] 8 exàmens acumulatius de mòdul (40 preguntes cadascun = 320 preguntes).

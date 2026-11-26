@@ -1,0 +1,42 @@
+[
+  {
+    "doc_id": "OF-IBI-2024",
+    "article": "art. 9",
+    "titol": "Bonificació IBI plaques solars (DEROGADA)",
+    "vigent": false,
+    "any": 2024,
+    "text": "Les finques amb instal·lació d'energia solar gaudeixen d'una bonificació del 30% de la quota íntegra de l'IBI durant 2 anys."
+  },
+  {
+    "doc_id": "OF-IBI-2026",
+    "article": "art. 9",
+    "titol": "Bonificació IBI plaques solars i família nombrosa (VIGENT)",
+    "vigent": true,
+    "any": 2026,
+    "text": "Les finques residencials que instal·lin plaques solars fotovoltaiques homologades gaudeixen d'una bonificació del 50% de la quota íntegra de l'IBI durant 3 exercicis fiscals, amb un límit màxim de 400 EUR anuals."
+  },
+  {
+    "doc_id": "OF-OBRES-2026",
+    "article": "art. 14",
+    "titol": "Llicència d'obres menors i comunicació prèvia",
+    "vigent": true,
+    "any": 2026,
+    "text": "Les obres menors interiors sense afectació estructural ni modificació de façana es tramiten mitjançant comunicació prèvia a la Seu Electrònica amb autoliquidació de l'ICIO del 4%."
+  },
+  {
+    "doc_id": "BASES-LLOGUER-2026",
+    "article": "base 5",
+    "titol": "Termini de sol·licitud d'ajuts al lloguer jove",
+    "vigent": true,
+    "any": 2026,
+    "text": "El termini de presentació de sol·licituds d'ajuts al lloguer per a joves d'entre 18 i 35 anys és de 20 dies hàbils a comptar des de l'endemà de la publicació al BOPB."
+  },
+  {
+    "doc_id": "ORD-RESIDUS-2026",
+    "article": "art. 6",
+    "titol": "Reducció de taxa de residus per ús de deixalleria",
+    "vigent": true,
+    "any": 2026,
+    "text": "Els domicilis que acreditin un mínim de 6 aportacions anuals a la deixalleria municipal reben una reducció del 15% a la taxa de residus de l'exercici següent."
+  }
+]

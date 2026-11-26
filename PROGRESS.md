@@ -1,57 +1,50 @@
 # PROGRESS.md — Registre d'avanç incremental
 
-Última actualització: 2026-11-25 (FITA COMPLETADA: Mòduls 1 a 8 — 70/70 conceptes = 100% del temari oficial!)
+Última actualització: 2026-11-26 (Fases 1, 2, 3 i 4 completades al 100%: 70/70 conceptes + 8/8 laboratoris executables i testats!)
 
 ## Estat actual per fases
 
 - **Fase 1. Planificació**: ✅ Completada
 - **Fase 2. Infraestructura**: ✅ Completada i compilada sense errors
-- **Fase 3. Contingut (Mòduls 1–8)**: ✅ **COMPLETADA AL 100% — 70 de 70 conceptes oficials!** (M1: 11/11 ✅, M2: 10/10 ✅, M3: 9/9 ✅, M4: 8/8 ✅, M5: 8/8 ✅, M6: 6/6 ✅, M7: 10/10 ✅, M8: 8/8 ✅) — **700 preguntes test**, **360 flashcards**, **210 preguntes de desenvolupament**, **70 exercicis pràctics amb solució oculta**, **71 termes al glossari**.
-- **Fase 4. Laboratoris (1–8)**: ⬜ Pendent
+- **Fase 3. Contingut (Mòduls 1–8)**: ✅ **100% (70/70 conceptes, 700 preguntes, 360 flashcards, 71 termes glossari)** — publicat a `origin/main`.
+- **Fase 4. Laboratoris (1–8)**: ✅ **100% (8/8 laboratoris executables amb datasets 100% sintètics, notebooks Jupyter, documentació i 26 tests automatitzats en verd!)**.
 - **Fase 5. Exàmens i simulacres**: ⬜ Pendent
 - **Fase 6. Projecte integrador**: ⬜ Pendent
 - **Fase 7. Validació final**: ⬜ Pendent
 
 ---
 
-## 1. Què s'ha completat (Mòduls 1–8 al 100%)
+## 1. Què s'ha completat en aquesta sessió
 
-- **Mòdul 1 — Fonaments d'IA (11/11 ✅)**: 110 preguntes, 64 flashcards. Commit `ad6bd39`.
-- **Mòdul 2 — Processament del llenguatge natural (10/10 ✅)**: 100 preguntes, 51 flashcards. Commit `111dc4f`.
-- **Mòdul 3 — Models generatius (9/9 ✅)**: 90 preguntes, 45 flashcards. Commit `4e7f2e1`.
-- **Mòdul 4 — Processament intel·ligent de documents (8/8 ✅)**: 80 preguntes, 40 flashcards. Commit `b8990e2`.
-- **Mòdul 5 — Assistents virtuals i IA conversacional (8/8 ✅)**: 80 preguntes, 40 flashcards. Commit `661bd39`.
-- **Mòdul 6 — Automatització intel·ligent (6/6 ✅)**: 60 preguntes, 30 flashcards. Commit `47bb62a`.
-- **Mòdul 7 — MLOps i LLMOps (10/10 ✅)**: 100 preguntes, 50 flashcards. Commit `c94e303`.
-- **Mòdul 8 — Ús responsable i seguretat de la IA (8/8 ✅)**:
-  1. `m08-01-transparencia` — 10 preg., 5 flashcards, atribució additiva (SHAP lineal) + contrafactual accionable bloquejant variables immutables verificat (AI Act art. 13 i 50, RGPD art. 13–15, LPACAP art. 35).
-  2. `m08-02-biaixos` — 10 preg., 5 flashcards, auditor d'equitat (*Disparate Impact 4/5*, *Equal Opportunity*, *Equalized Odds*, *proxies* i AI Act art. 10) verificat.
-  3. `m08-03-supervisio-humana` — 10 preg., 5 flashcards, supervisor HITL amb detector de *rubber-stamping* i quatre ulls verificat (RGPD art. 22, AI Act art. 14 i 26.2, LRJSP art. 41).
-  4. `m08-04-proteccio-dades` — 10 preg., 5 flashcards, cribratge automàtic EIPD (art. 35 RGPD) + porta de minimització/transferències EEE verificat (RGPD, LOPDGDD, DPD, APDCAT/AEPD).
-  5. `m08-05-seguretat-ia` — 10 preg., 5 flashcards, calculador categoria ENS (RD 311/2022) + tallafoc d'agents RBAC/HITL contra *Indirect Prompt Injection* verificat (ENS, CCN-CERT, OWASP LLM, AI Act art. 15).
-  6. `m08-06-auditoria` — 10 preg., 5 flashcards, verificador automatitzat d'expedient FRIA (6 blocs art. 27.1 AI Act), retenció logs >= 6 mesos (art. 26.6) i segellat SHA-256 verificat.
-  7. `m08-07-governanca-models` — 10 preg., 5 flashcards, registre corporatiu amb portes *Stage-Gate* i matriu RACI verificat (ISO 42001, NIST AI RMF, *Shadow AI*, art. 26.7 AI Act, LCSP).
-  8. `m08-08-compliment-normatiu` — 10 preg., 5 flashcards, motor classificatori AI Act (Reglament UE 2024/1689, piràmide de risc, calendari exacte 2024–2027 art. 113, rol *Provider/Deployer* art. 25, sancions art. 99 i AESIA) verificat.
+- **Push a `origin/main`** dels Mòduls 1–8 (`7c02e5c..ba259ee`).
+- **Fase 4 — 8/8 Laboratoris pràctics executables i verificats (`labs/`)**:
+  1. `labs/lab-01-machine-learning`: 120 expedients sintètics (`data/sollicituds_sintetiques.csv`), classificació logística L2 (`F1 = 0,9474`), regressió Ridge (`R² = 0,9851`, `MAE = 1,28 dies`), K-Means `k = 3`, detecció d'anomalies MAD (4/4 detectades), notebook + 5 tests ✅.
+  2. `labs/lab-02-nlp`: 20 instàncies en català sintètiques, tokenització amb apòstrofs catalans, classificador TF-IDF LOOCV, NER administratiu + PII, comparativa lèxica vs. semàntica (embeddings superen TF-IDF en sinònims), notebook + 3 tests ✅.
+  3. `labs/lab-03-rag-generatius`: corpus d'ordenances sintètiques amb filtre de vigència (descarta `OF-IBI-2024` derogada), recuperació BM25 amb cites `[OF-IBI-2026, art. 9]`, abstenció automàtica fora de domini, eina determinista de càlcul d'IBI (topall 400 €), matriu RAG vs. *fine-tuning*, notebook + 4 tests ✅.
+  4. `labs/lab-04-processament-documental`: generador en Python pur de 4 PDFs `%PDF-1.4` vàlids (`data/pdfs/`), lectura OCR, classificació documental, KIE, validació creuada aritmètica (`base + IVA = total`) i lletra NIF, enrutament STP vs. HITL, notebook + 3 tests ✅.
+  5. `labs/lab-05-assistent-virtual`: assistent multitorn amb avís art. 50 AI Act, memòria de context per sessió, RBAC/autenticació `idCAT Mòbil / Cl@ve`, redacció de PII abans dels logs i escalada humana (emergència o 2 fallades), notebook + 3 tests ✅.
+  6. `labs/lab-06-automatitzacio-intelligent`: deduplicació idempotent, validació documental determinista amb esborrany d'esmena (art. 68 LPACAP, 10 dies hàbils), priorització híbrida (urgència legal + ML + *aging* anti-*starvation*), notebook + 3 tests ✅.
+  7. `labs/lab-07-mlops-llmops`: `ModelRegistryMLOps` immutable (bloqueja `:latest`), *Quality Gate* en català, càlcul exacte PSI (`0,6847` a setmana 8), P95/P99 vs. mitjana, *rollback* atòmic `@champion → @previous_champion`, API FastAPI + `Dockerfile` + `ci_workflow.yml`, notebook + 2 tests ✅.
+  8. `labs/lab-08-seguretat-governanca`: inventari normatiu AI Act/RGPD/ENS, auditoria de biaixos (DI 4/5, TPR, FPR), `MODEL_CARD.md` amb els 6 blocs FRIA (art. 27.1 AI Act), *Red Teaming* defensiu local (100% bloqueig, 0 falsos positius) i segell SHA-256, notebook + 3 tests ✅.
 
 ---
 
 ## 2. Què queda pendent
 
-- **Fase 4**: Laboratoris pràctics 1–8 (`labs/`).
-- **Fase 5**: Exàmens per mòdul (8 × 40 preg.), simulacres globals (10 × 50 preg.), supòsits pràctics (20) i simulacres teoricopràctics complets (5).
-- **Fase 6**: Projecte integrador final.
-- **Fase 7**: Validació final i revisió integral.
+- **Fase 5**: 8 exàmens de mòdul (40 preg.), 10 simulacres globals (50 preg.), 20 supòsits pràctics independents i 5 simulacres teoricopràctics complets (`exams/`).
+- **Fase 6**: Projecte pràctic final integrador (`final-project/`).
+- **Fase 7**: Validació final integral.
 
 ---
 
 ## 3. Comprovacions executades i resultat
 
-- `node scripts/sync_content.mjs`: ✅ OK (70/70 lliçons, 700 preguntes, 360 flashcards, 71 termes glossari).
+- Execució de `run_lab.py` i `python3 -m unittest discover` als 8 laboratoris: ✅ **8/8 laboratoris i 26/26 tests OK**.
+- `node scripts/sync_content.mjs`: ✅ OK (70/70 lliçons, 700 preguntes, 360 flashcards, 71 termes glossari, **8/8 laboratoris sincronitzats**).
 - `node scripts/validate_content.mjs`: ✅ OK (0 errors, 0 avisos).
-- Execució directa amb `python3` dels 8 exemples de codi del Mòdul 8 (`8.1` a `8.8`): ✅ Tots verificats i contrastats.
 
 ---
 
 ## 4. Següent tasca exacta
 
-Iniciar la **Fase 4 (Laboratoris pràctics 1–8)** o la **Fase 5 (Exàmens de mòdul i simulacres)** segons la prioritat de l'usuari.
+Fer commit (i push si escau) de la **Fase 4 (Laboratoris 1–8)** i continuar amb la **Fase 5 (Banc d'exàmens i simulacres)**.

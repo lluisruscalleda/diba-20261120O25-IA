@@ -1,0 +1,20 @@
+{
+  "IBI_BONIFICACIO": {
+    "keywords": ["ibi", "plaques", "solars", "familia nombrosa", "bonificacio"],
+    "resposta_base": "La bonificació de l'IBI per plaques solars és del 50% durant 3 anys (màxim 400 EUR/any) [OF-IBI-2026, art. 9].",
+    "termini": "Es pot sol·licitar fins al 31 de desembre de l'exercici anterior al seu efecte [OF-IBI-2026, art. 10].",
+    "documentacio": "Cal aportar butlletí d'instal·lació elèctrica homologat i factura [OF-IBI-2026, art. 9.3]."
+  },
+  "OBRES_MENORS": {
+    "keywords": ["obres", "reforma", "bany", "cuina", "llicencia", "bastida"],
+    "resposta_base": "Les obres menors interiors sense afectació estructural es tramiten per comunicació prèvia a la Seu Electrònica [OF-OBRES-2026, art. 14].",
+    "termini": "L'habilitació és immediata un cop registrada la comunicació i abonada l'autoliquidació de l'ICIO del 4% [OF-OBRES-2026, art. 14.2].",
+    "documentacio": "Cal adjuntar memòria descriptiva senzilla i pressupost d'execució material [OF-OBRES-2026, art. 14.4]."
+  },
+  "EMPADRONAMENT": {
+    "keywords": ["padro", "empadronament", "volant", "certificat residencia", "alta domicili"],
+    "resposta_base": "El volant d'empadronament es pot descarregar a l'instant a la Seu Electrònica amb idCAT Mòbil o Cl@ve [ORD-PADRO-2026, art. 3].",
+    "termini": "L'emissió del volant electrònic és immediata; l'alta al padró es resol en un màxim de 3 mesos [LPACAP, art. 21].",
+    "documentacio": "Cal DNI/NIE/Passaport vigent i contracte de lloguer o escriptura de propietat [ORD-PADRO-2026, art. 5]."
+  }
+}

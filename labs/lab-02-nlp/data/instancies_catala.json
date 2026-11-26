@@ -1,0 +1,22 @@
+[
+  { "id": "INS-01", "dept": "URBANISME", "text": "Sol·licito llicència d'obres menors per reformar el bany al carrer Major 12 de Vic. Pressupost 4.200 EUR. Data 12/03/2026." },
+  { "id": "INS-02", "dept": "URBANISME", "text": "Demano certificat urbanístic i permís d'obres de reforma de façana per a l'edifici del barri Centre de Mataró." },
+  { "id": "INS-03", "dept": "URBANISME", "text": "Sol·licitud de llicència d'obres i ocupació de bastida per rehabilitació energètica d'edifici a Sabadell." },
+  { "id": "INS-04", "dept": "URBANISME", "text": "Comunico inici d'obres menors interiors i reforma de cuina amb plànol tècnic urbanístic EXP-2026-1044." },
+  { "id": "INS-05", "dept": "URBANISME", "text": "Sol·licito permís urbanístic per instal·lació de plaques solars a la coberta i reforma de façana." },
+  { "id": "INS-06", "dept": "TRIBUTS", "text": "Vull fraccionar el pagament de l'IBI i consultar la bonificació per família nombrosa de l'impost de béns immobles." },
+  { "id": "INS-07", "dept": "TRIBUTS", "text": "Reclamo duplicat del rebut de la taxa de residus i pagament d'impost d'import 145,50 EUR amb DNI 12345678A." },
+  { "id": "INS-08", "dept": "TRIBUTS", "text": "Sol·licito devolució d'ingressos indeguts del rebut de l'impost de vehicles IVTM cobrat el 04/02/2026." },
+  { "id": "INS-09", "dept": "TRIBUTS", "text": "Demano domiciliació bancària dels tributs locals, rebut de l'IBI i taxa de gual a Manresa." },
+  { "id": "INS-10", "dept": "TRIBUTS", "text": "Consulto bonificació fiscal de l'impost IBI i fraccionament del pagament de la taxa de residus." },
+  { "id": "INS-11", "dept": "SERVEIS_SOCIALS", "text": "Necessito informació sobre subvencions de lloguer d'habitatge i beca menjador escolar per família vulnerable." },
+  { "id": "INS-12", "dept": "SERVEIS_SOCIALS", "text": "Sol·licito cita amb treballadora social per tramitar ajut d'emergència energètica i dependència." },
+  { "id": "INS-13", "dept": "SERVEIS_SOCIALS", "text": "Presento sol·licitud d'ajut social econòmic per beca menjador escolar i vulnerabilitat a Granollers." },
+  { "id": "INS-14", "dept": "SERVEIS_SOCIALS", "text": "Demano suport social domiciliari i ajut de lloguer d'habitatge per família vulnerable. Contacte fictici@exemple.cat." },
+  { "id": "INS-15", "dept": "SERVEIS_SOCIALS", "text": "Tramito valoració de dependència i ajut social d'emergència habitacional amb treballadora social." },
+  { "id": "INS-16", "dept": "VIA_PUBLICA", "text": "Hi ha dos fanals d'enllumenat públic fosos i una vorera trencada a la plaça Nova de Terrassa." },
+  { "id": "INS-17", "dept": "VIA_PUBLICA", "text": "Avaria en un semàfor i sots profunds a l'asfalt de la calçada; cal reparació de vorera i via pública." },
+  { "id": "INS-18", "dept": "VIA_PUBLICA", "text": "Contenidors de brossa desbordats i paperera trencada a la via pública; demanem neteja viària." },
+  { "id": "INS-19", "dept": "VIA_PUBLICA", "text": "Branca d'arbre caiguda a la vorera i fanals d'enllumenat públic apagats des d'ahir." },
+  { "id": "INS-20", "dept": "VIA_PUBLICA", "text": "Fanal trencat, asfalt malmès i contenidors bruts a la via pública que necessiten neteja viària." }
+]

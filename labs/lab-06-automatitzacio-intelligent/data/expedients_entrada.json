@@ -1,0 +1,47 @@
+[
+  {
+    "registre_id": "REG-2026-001",
+    "tipus": "AJUT_EMERGENCIA_SOCIAL",
+    "import_eur": 1800.0,
+    "dies_en_cua": 2,
+    "dies_fins_termini_legal": 4,
+    "docs_aportats": ["SOL_LICITUD", "CERTIFICAT_RENDA", "EMPADRONAMENT"],
+    "indicador_vulnerabilitat_ml": 0.92
+  },
+  {
+    "registre_id": "REG-2026-001",
+    "tipus": "AJUT_EMERGENCIA_SOCIAL",
+    "import_eur": 1800.0,
+    "dies_en_cua": 2,
+    "dies_fins_termini_legal": 4,
+    "docs_aportats": ["SOL_LICITUD", "CERTIFICAT_RENDA", "EMPADRONAMENT"],
+    "indicador_vulnerabilitat_ml": 0.92
+  },
+  {
+    "registre_id": "REG-2026-002",
+    "tipus": "SUBVENCIO_ENTITAT",
+    "import_eur": 12500.0,
+    "dies_en_cua": 5,
+    "dies_fins_termini_legal": 18,
+    "docs_aportats": ["SOL_LICITUD"],
+    "indicador_vulnerabilitat_ml": 0.40
+  },
+  {
+    "registre_id": "REG-2026-003",
+    "tipus": "LLICENCIA_OBRA_MENOR",
+    "import_eur": 3200.0,
+    "dies_en_cua": 28,
+    "dies_fins_termini_legal": 25,
+    "docs_aportats": ["SOL_LICITUD", "PRESSUPOST", "MEMORIA_TECNICA"],
+    "indicador_vulnerabilitat_ml": 0.20
+  },
+  {
+    "registre_id": "REG-2026-004",
+    "tipus": "SUBVENCIO_ENTITAT",
+    "import_eur": 42000.0,
+    "dies_en_cua": 3,
+    "dies_fins_termini_legal": 10,
+    "docs_aportats": ["SOL_LICITUD", "PRESSUPOST", "ESTATUTS"],
+    "indicador_vulnerabilitat_ml": 0.78
+  }
+]

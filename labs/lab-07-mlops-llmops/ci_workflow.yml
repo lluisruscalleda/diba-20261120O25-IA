@@ -1,0 +1,27 @@
+# Plantilla CI/CD/CT per a sistemes d'IA en l'Administració pública (Continuous Delivery amb aprovació humana)
+name: mlops-ci-cd-ct
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  quality-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Executar tests unitaris i Quality Gate MLOps
+        run: python3 -m unittest discover -s labs/lab-07-mlops-llmops/tests -v
+
+  deploy-production:
+    needs: quality-gate
+    if: github.ref == 'refs/heads/main'
+    environment: production-hitl-approval  # Exigeix aprovació humana (Continuous Delivery!)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Promoure àlies @champion amb verificació Canary i rollback automàtic
+        run: echo "Desplegament Canary aprovat per responsable funcional i tècnic."

@@ -1,0 +1,6 @@
+{
+  "distribucio_entrenament_imports": [0.40, 0.35, 0.20, 0.05],
+  "distribucio_prod_setmana_1": [0.38, 0.36, 0.21, 0.05],
+  "distribucio_prod_setmana_8_drift": [0.15, 0.25, 0.35, 0.25],
+  "latencies_ms_mostra": [180, 195, 200, 205, 190, 210, 185, 200, 195, 205, 190, 200, 195, 210, 185, 200, 195, 205, 190, 8500]
+}
