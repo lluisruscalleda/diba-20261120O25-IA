@@ -1,0 +1,1409 @@
+{
+  "id": "module-01",
+  "module": 1,
+  "title": "Examen acumulatiu del Mòdul 1: Fonaments d'IA",
+  "note": "Paràmetres orientatius de preparació (durada, penalització i nota mínima configurables a la plataforma; no constitueixen bases oficials de convocatòria).",
+  "recommendedMinutes": 45,
+  "questions": [
+    {
+      "id": "m01-03-q02",
+      "module": 1,
+      "conceptId": "m01-03-deep-learning",
+      "lessonRef": "content/module-01/m01-03-deep-learning.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina és la funció principal de l'algoritme de retropropagació (backpropagation) en l'entrenament d'una xarxa neuronal profunda?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Generar dades sintètiques noves quan el conjunt d'entrenament és petit."
+        },
+        {
+          "key": "B",
+          "text": "Eliminar automàticament les files amb valors nuls del dataset."
+        },
+        {
+          "key": "C",
+          "text": "Calcular de manera eficient el gradient de la funció de pèrdua respecte de cada paràmetre de la xarxa aplicant la regla de la cadena."
+        },
+        {
+          "key": "D",
+          "text": "Convertir una classificació multiclasse en un problema de clustering."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Backpropagation propaga l'error des de la capa de sortida cap enrere mitjançant la regla de la cadena per calcular les derivades parcials ∂L/∂θ que després utilitza l'optimitzador per actualitzar els pesos.",
+      "explanationsIncorrect": {
+        "A": "Això correspon a data augmentation o models generatius, no a backpropagation.",
+        "B": "El tractament de valors nuls es fa en el preprocessament de dades.",
+        "D": "Backpropagation és un mecanisme de diferenciació automàtica per optimitzar pesos, no canvia el tipus de tasca."
+      }
+    },
+    {
+      "id": "m01-08-q08",
+      "module": 1,
+      "conceptId": "m01-08-regressio",
+      "lessonRef": "content/module-01/m01-08-regressio.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "Observa la funció de forma tancada de Ridge següent. Per què s'ha centrat `y - y_mean` i s'ha resolt `beta` sobre `X_std` sense afegir una columna de 1s dins `A = X_std.T @ X_std + alpha * np.eye(n_feat)`?",
+      "codeSnippet": "y_mean = float(np.mean(y))\nA = X_std.T @ X_std + alpha * np.eye(n_feat)\nbeta = np.linalg.solve(A, X_std.T @ (y - y_mean))",
+      "options": [
+        {
+          "key": "A",
+          "text": "Per evitar penalitzar el terme independent (intercept β_0), ja que regularitzar l'intercept introduiria un biaix artificial cap a zero dependent de l'origen de y."
+        },
+        {
+          "key": "B",
+          "text": "Perquè `np.linalg.solve` no admet matrius de mida superior a 3×3."
+        },
+        {
+          "key": "C",
+          "text": "Per convertir Ridge (L2) en Lasso (L1)."
+        },
+        {
+          "key": "D",
+          "text": "Perquè en regressió lineal el terme independent ha de valer sempre 0."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "En regressió regularitzada (Ridge/Lasso), l'intercept β_0 mai no s'ha de penalitzar perquè només fixa el nivell mitjà de y. En centrar X i y, β_0 queda desacoplat i igual a mean(y), i la matriu alpha·I penalitza només els pendents β_1..β_p.",
+      "explanationsIncorrect": {
+        "B": "`np.linalg.solve` resol sistemes lineals de qualsevol dimensió quadrada invertible.",
+        "C": "La solució tancada amb `alpha * I` és pròpia exclusivament de Ridge (L2); Lasso no té forma tancada general.",
+        "D": "L'intercept no val 0; val `y_mean`, que se suma en predir (`X_te_std @ beta + intercept`)."
+      }
+    },
+    {
+      "id": "m01-05-q01",
+      "module": 1,
+      "conceptId": "m01-05-models-generatius",
+      "lessonRef": "content/module-01/m01-05-models-generatius.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina diferència probabilística distingeix un model discriminatiu d'un model generatiu?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "El model discriminatiu estima P(y | x) per separar classes o predir etiquetes, mentre que el generatiu modela P(x) o P(x, y) per poder generar noves mostres."
+        },
+        {
+          "key": "B",
+          "text": "El model discriminatiu només funciona sense etiquetes i el generatiu només amb etiquetes binàries."
+        },
+        {
+          "key": "C",
+          "text": "El model generatiu mai no utilitza xarxes neuronals."
+        },
+        {
+          "key": "D",
+          "text": "El model discriminatiu sempre té més paràmetres que qualsevol model generatiu."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Els models discriminatius aprenen directament la probabilitat condicional P(y|x) o fronteres de decisió; els generatius modelen la distribució de les dades P(x) o conjunta P(x,y) (o P(x|c)), permetent mostrejar contingut nou.",
+      "explanationsIncorrect": {
+        "B": "Al contrari, els discriminatius solen ser supervisats (amb etiquetes), mentre que molts generatius s'entrenen de manera no supervisada o autosupervisada.",
+        "C": "Les principals famílies generatives modernes (LLM, VAE, GAN, Difusió) són precisament xarxes neuronals profundes.",
+        "D": "Sovint passa el contrari: els models generatius fundacionals (LLM, difusió) tenen ordres de magnitud més paràmetres que classificadors discriminatius especialitzats."
+      }
+    },
+    {
+      "id": "m01-02-q08",
+      "module": 1,
+      "conceptId": "m01-02-machine-learning",
+      "lessonRef": "content/module-01/m01-02-machine-learning.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "Vols predir el volum mensual de sol·licituds de subvenció per a l'any 2027 a partir de l'històric 2019–2026. Quina estratègia de validació és metodològicament correcta?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Barrejar aleatòriament tots els mesos de 2019–2026 i aplicar 10-fold cross-validation estàndard."
+        },
+        {
+          "key": "B",
+          "text": "Aplicar una partició cronològica o validació creuada temporal expansiva (TimeSeriesSplit) perquè el model sempre s'entreni amb el passat i s'avaluï sobre el futur."
+        },
+        {
+          "key": "C",
+          "text": "Entrenar amb 2025–2026 i avaluar sobre 2019–2020 perquè són anys més estables."
+        },
+        {
+          "key": "D",
+          "text": "Avaluar sobre les mateixes dades d'entrenament perquè les sèries temporals no pateixen overfitting."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "En dades temporals existeix autocorrelació i evolució temporal (estacionalitat, canvis normatius). Una partició aleatòria filtraria informació del futur al passat; cal respectar estrictament l'ordre cronològic amb TimeSeriesSplit o hold-out temporal.",
+      "explanationsIncorrect": {
+        "A": "Barrejar mesos aleatòriament permetria utilitzar dades d'abril i juny de 2025 per predir maig de 2025 (leakage temporal).",
+        "C": "Entrenar amb el futur per predir el passat no reprodueix les condicions reals de desplegament.",
+        "D": "Les sèries temporals són especialment propenses a l'overfitting i al drift; avaluar sobre train invalida qualsevol conclusió."
+      }
+    },
+    {
+      "id": "m01-01-q08",
+      "module": 1,
+      "conceptId": "m01-01-intelligencia-artificial",
+      "lessonRef": "content/module-01/m01-01-intelligencia-artificial.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Per què les arquitectures neuro-simbòliques o híbrides resulten especialment atractives per a sistemes d'IA en l'Administració pública respecte d'una aproximació exclusivament basada en Deep Learning?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Perquè eliminen completament la necessitat de supervisió humana i d'auditoria."
+        },
+        {
+          "key": "B",
+          "text": "Perquè combinen la capacitat dels models neuronals per processar dades no estructurades amb el determinisme i la traçabilitat de regles normatives i validadors explícits."
+        },
+        {
+          "key": "C",
+          "text": "Perquè garanteixen una exactitud del 100% en qualsevol tasca de processament del llenguatge natural."
+        },
+        {
+          "key": "D",
+          "text": "Perquè no necessiten integració amb els sistemes d'informació corporatius."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "L'enfocament híbrid permet aprofitar el Deep Learning/NLP allà on hi ha ambigüitat (llegir textos o imatges) i acotar el resultat amb regles deterministes verificables (càlculs, validació de formats, requisits legals), millorant la seguretat i l'explicabilitat.",
+      "explanationsIncorrect": {
+        "A": "Cap arquitectura elimina les obligacions de supervisió humana i auditoria quan hi ha impacte sobre la ciutadania.",
+        "C": "Cap sistema probabilístic garanteix un 100% d'exactitud en llenguatge natural.",
+        "D": "Al contrari, sovint requereixen una integració més acurada amb registres, bases de dades i motors de regles corporatius."
+      }
+    },
+    {
+      "id": "m01-05-q08",
+      "module": 1,
+      "conceptId": "m01-05-models-generatius",
+      "lessonRef": "content/module-01/m01-05-models-generatius.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "Un ens local entrena un model generatiu tabular sobre 5.000 expedients reals d'ajuts socials per compartir un dataset «sintètic» amb un proveïdor extern. Quin risc de protecció de dades persisteix si no s'apliquen verificacions addicionals?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Cap risc, perquè les dades sintètiques són sempre legalment anònimes per definició."
+        },
+        {
+          "key": "B",
+          "text": "Només risc d'error ortogràfic en els noms de les columnes."
+        },
+        {
+          "key": "C",
+          "text": "El model generatiu pot memoritzar registres reals o casos singulars (outliers), permetent reidentificació o atacs d'inferència de pertinença (membership inference)."
+        },
+        {
+          "key": "D",
+          "text": "El dataset sintètic deixa de ser compatible amb formats CSV o JSON."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Els models generatius poden sobreajustar-se i reproduir combinacions quasi idèntiques d'individus reals (especialment casos extrems). Sense proves empíriques de proximitat (DCR, membership inference) o privacitat diferencial, no es pot garantir l'anonimització efectiva sota el RGPD.",
+      "explanationsIncorrect": {
+        "A": "L'AEPD i l'APDCAT adverteixen que la generació sintètica sense avaluació de risc de reidentificació no garanteix l'anonimització.",
+        "B": "El risc crític és de privacitat i reidentificació de persones vulnerables, no tipogràfic.",
+        "D": "El format de serialització (CSV/JSON) no té res a veure amb el risc de memorització."
+      }
+    },
+    {
+      "id": "m01-06-q03",
+      "module": 1,
+      "conceptId": "m01-06-sistemes-experts",
+      "lessonRef": "content/module-01/m01-06-sistemes-experts.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Com opera l'estratègia d'encadenament endavant (forward chaining) en un motor d'inferència?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Parteix d'una hipòtesi final i busca cap enrere quines regles la podrien demostrar."
+        },
+        {
+          "key": "B",
+          "text": "Calcula el gradient de l'error des de la sortida cap a l'entrada."
+        },
+        {
+          "key": "C",
+          "text": "És dirigida per les dades (data-driven): parteix dels fets coneguts i dispara regles aplicables per inferir noves conclusions."
+        },
+        {
+          "key": "D",
+          "text": "Genera text token a token segons la temperatura."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "El forward chaining és un raonament dirigit per les dades que encadena les premisses satisfetes amb els seus conseqüents fins a esgotar les inferències possibles o assolir una conclusió.",
+      "explanationsIncorrect": {
+        "A": "Aquesta és la definició d'encadenament enrere (backward chaining).",
+        "B": "Això descriu la retropropagació (backpropagation) en xarxes neuronals.",
+        "D": "Això descriu la generació autoregressiva d'un LLM."
+      }
+    },
+    {
+      "id": "m01-07-q06",
+      "module": 1,
+      "conceptId": "m01-07-classificacio",
+      "lessonRef": "content/module-01/m01-07-classificacio.md",
+      "difficulty": "intermediate",
+      "questionType": "metrics",
+      "prompt": "En un problema de classificació multiclasse amb 10 departaments municipals molt desequilibrats en volum d'instàncies, quina mètrica penalitza igualment un mal rendiment en un departament petit que en un de gran?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Micro-F1."
+        },
+        {
+          "key": "B",
+          "text": "Accuracy global."
+        },
+        {
+          "key": "C",
+          "text": "Weighted-F1."
+        },
+        {
+          "key": "D",
+          "text": "Macro-F1."
+        }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Macro-F1 calcula la mitjana aritmètica simple de l'F1 de cada classe, atorgant el mateix pes (1/10) a cada departament independentment del seu volum d'expedients.",
+      "explanationsIncorrect": {
+        "A": "Micro-F1 agrega globalment i queda dominada pels departaments més grans.",
+        "B": "L'Accuracy global també queda dominada per les classes majoritàries.",
+        "C": "Weighted-F1 pondera pel suport de cada classe, reduint el pes de les minoritàries."
+      }
+    },
+    {
+      "id": "m01-11-q04",
+      "module": 1,
+      "conceptId": "m01-11-avaluacio-generalitzacio-hiperparametres",
+      "lessonRef": "content/module-01/m01-11-avaluacio-generalitzacio-hiperparametres.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Un model d'infraajustament (error alt en train i en validació) s'ha entrenat amb 50.000 expedients. Quina acció té MENYS probabilitats de resoldre el problema?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Augmentar la força de la regularització L2 (pujar λ) o incrementar el Dropout."
+        },
+        {
+          "key": "B",
+          "text": "Dissenyar noves característiques (feature engineering) més informatives."
+        },
+        {
+          "key": "C",
+          "text": "Provar una arquitectura més expressiva capaç de capturar no-linealitats."
+        },
+        {
+          "key": "D",
+          "text": "Entrenar durant més iteracions si el model no havia convergit."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Augmentar la regularització restringeix encara més la capacitat del model, cosa que combat l'overfitting però EMPITJORA l'underfitting.",
+      "explanationsIncorrect": {
+        "B": "Millorar les features aporta senyal nova i ajuda directament a reduir el biaix.",
+        "C": "Augmentar la capacitat del model redueix el biaix i combat l'underfitting.",
+        "D": "Si l'optimització es va aturar massa aviat, entrenar fins a convergència redueix l'underfitting."
+      }
+    },
+    {
+      "id": "m01-09-q05",
+      "module": 1,
+      "conceptId": "m01-09-clustering",
+      "lessonRef": "content/module-01/m01-09-clustering.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Quin problema pràctic de K-Means millora l'estratègia d'inicialització `k-means++`?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Permet a K-Means detectar clústers en forma d'anells concèntrics."
+        },
+        {
+          "key": "B",
+          "text": "Redueix la probabilitat de convergir a òptims locals dolents seleccionant centroides inicials ben separats amb probabilitat proporcional a D(x)²."
+        },
+        {
+          "key": "C",
+          "text": "Elimina la necessitat d'escalar les variables d'entrada."
+        },
+        {
+          "key": "D",
+          "text": "Determina automàticament el valor òptim de K sense intervenció humana."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "k-means++ escull el primer centroide a l'atzar i els següents prioritzant punts llunyans als centroides ja escollits (proporcional a la distància al quadrat), accelerant la convergència i evitant solucions subòptimes.",
+      "explanationsIncorrect": {
+        "A": "K-Means continua formant particions convexes (Voronoi) fins i tot amb k-means++.",
+        "C": "L'escalat continua sent imprescindible.",
+        "D": "Continua requerint que l'usuari indiqui K."
+      }
+    },
+    {
+      "id": "m01-04-q06",
+      "module": 1,
+      "conceptId": "m01-04-xarxes-neuronals",
+      "lessonRef": "content/module-01/m01-04-xarxes-neuronals.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Què és el fenomen conegut com a «dying ReLU» i quina alternativa d'activació ajuda a evitar-lo?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Un augment infinit dels pesos en capes convolucionals; es resol amb Softmax."
+        },
+        {
+          "key": "B",
+          "text": "La situació en què neurones ReLU reben sempre entrades negatives, produeixen sortida 0 i gradient 0 i deixen d'actualitzar-se; es mitiga amb Leaky ReLU o GELU."
+        },
+        {
+          "key": "C",
+          "text": "La pèrdua de precisió en passar de FP32 a FP64; es resol amb BatchNorm."
+        },
+        {
+          "key": "D",
+          "text": "L'excés de memòria consumit pel biaix b; es resol eliminant el biaix."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Com que la derivada de ReLU per a z ≤ 0 és exactament 0, una neurona empesa a la regió negativa per un pas gran del gradient pot quedar bloquejada permanentment. Leaky ReLU (pendent petit negatiu) i GELU mantenen gradient no nul.",
+      "explanationsIncorrect": {
+        "A": "El creixement infinit correspon a exploding gradients, no a dying ReLU.",
+        "C": "FP64 té més precisió que FP32 i no té relació amb dying ReLU.",
+        "D": "El terme de biaix ocupa una fracció negligible de memòria i no causa dying ReLU."
+      }
+    },
+    {
+      "id": "m01-09-q02",
+      "module": 1,
+      "conceptId": "m01-09-clustering",
+      "lessonRef": "content/module-01/m01-09-clustering.md",
+      "difficulty": "basic",
+      "questionType": "metrics",
+      "prompt": "Quin significat té un Silhouette Score proper a -0,4 per a un conjunt de punts d'un clúster?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Que els punts estan perfectament separats de la resta de clústers."
+        },
+        {
+          "key": "B",
+          "text": "Que els punts estan més a prop del clúster veí que del seu propi clúster, indicant una assignació probablement errònia."
+        },
+        {
+          "key": "C",
+          "text": "Que el nombre K és exactament l'òptim."
+        },
+        {
+          "key": "D",
+          "text": "Que el dataset té valors negatius en les columnes d'entrada."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Com que s(i) = (b_i − a_i) / max(a_i, b_i), un valor negatiu implica que la distància mitjana al propi clúster (a_i) és més gran que la distància al clúster veí (b_i), evidenciant mala assignació.",
+      "explanationsIncorrect": {
+        "A": "Una separació excel·lent correspon a valors propers a +1.",
+        "C": "Un valor negatiu indica una mala partició o un K inadequat.",
+        "D": "Les distàncies a_i i b_i són sempre no negatives encara que les coordenades siguin negatives."
+      }
+    },
+    {
+      "id": "m01-02-q05",
+      "module": 1,
+      "conceptId": "m01-02-machine-learning",
+      "lessonRef": "content/module-01/m01-02-machine-learning.md",
+      "difficulty": "intermediate",
+      "questionType": "metrics",
+      "prompt": "Un model de classificació d'instàncies obté un F1-score del 99% en entrenament (train) però només del 61% en validació (validation). Quin diagnòstic és més probable?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Infraajustament (underfitting) per excés de regularització."
+        },
+        {
+          "key": "B",
+          "text": "Sobreajustament (overfitting): el model ha memoritzat patrons particulars i soroll del conjunt d'entrenament i no generalitza."
+        },
+        {
+          "key": "C",
+          "text": "Generalització òptima perquè la mètrica d'entrenament s'acosta al 100%."
+        },
+        {
+          "key": "D",
+          "text": "Error de càlcul perquè l'F1 de validació sempre ha de ser superior al d'entrenament."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Una bretxa molt gran entre un rendiment excel·lent en train (99%) i un rendiment pobre en validation (61%) és el símptoma clàssic de sobreajustament (alta variància).",
+      "explanationsIncorrect": {
+        "A": "L'infraajustament es manifesta amb un rendiment baix tant en train com en validation.",
+        "C": "Un 99% en train no indica bona generalització si el rendiment s'ensorra en dades no vistes.",
+        "D": "En general, el rendiment en train sol ser igual o lleugerament superior al de validació, no a l'inrevés."
+      }
+    },
+    {
+      "id": "m01-02-q07",
+      "module": 1,
+      "conceptId": "m01-02-machine-learning",
+      "lessonRef": "content/module-01/m01-02-machine-learning.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "En quin paradigma s'enquadra el preentrenament d'un Large Language Model (LLM) que aprèn a predir el següent token sobre bilions de paraules sense anotació manual humana?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Aprenentatge autosupervisat (Self-Supervised Learning)."
+        },
+        {
+          "key": "B",
+          "text": "Clustering jeràrquic."
+        },
+        {
+          "key": "C",
+          "text": "Sistema expert basat en regles."
+        },
+        {
+          "key": "D",
+          "text": "Aprenentatge per reforç sense dades."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "L'aprenentatge autosupervisat genera automàticament les etiquetes a partir de l'estructura de les pròpies dades no etiquetades (el següent token del text fa d'objectiu supervisat).",
+      "explanationsIncorrect": {
+        "B": "El clustering agrupa instàncies similars però no prediu seqüències de tokens.",
+        "C": "Un sistema expert empra regles redactades manualment, no preentrenament massiu sobre text.",
+        "D": "El preentrenament base d'un LLM és autosupervisat (l'RL com RLHF o DPO s'aplica només en fases posteriors d'alineament)."
+      }
+    },
+    {
+      "id": "m01-01-q07",
+      "module": 1,
+      "conceptId": "m01-01-intelligencia-artificial",
+      "lessonRef": "content/module-01/m01-01-intelligencia-artificial.md",
+      "difficulty": "intermediate",
+      "questionType": "code",
+      "prompt": "Observa la funció següent de política de decisió d'un agent d'encaminament d'expedients. Què passa si arriba una instància d'un tema nou sense cap coincidència de paraules (`scores = {'TRIBUTS': 0, 'URBANISME': 0}`)?",
+      "codeSnippet": "def decidir(scores: dict[str, float], llindar: float = 0.65) -> str:\n    if max(scores.values()) == 0:\n        return 'DERIVAR_REVISIO_HUMANA'\n    # softmax ...\n    return 'PROPOSAR_AREA' if max_prob >= llindar else 'DERIVAR_REVISIO_HUMANA'",
+      "options": [
+        {
+          "key": "A",
+          "text": "Llança una excepció ZeroDivisionError en calcular la funció softmax."
+        },
+        {
+          "key": "B",
+          "text": "Assigna aleatòriament TRIBUTS amb probabilitat 1.0."
+        },
+        {
+          "key": "C",
+          "text": "Retorna 'DERIVAR_REVISIO_HUMANA' abans del softmax, evitant una assignació arbitrària sense evidència."
+        },
+        {
+          "key": "D",
+          "text": "Retorna 'PROPOSAR_AREA' perquè el softmax de zeros dóna 0.5 per a cada classe."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "La guarda explícita `if max(scores.values()) == 0` intercepta els casos fora de domini abans d'aplicar `softmax` i deriva la instància a revisió humana, evitant decisions arbitràries.",
+      "explanationsIncorrect": {
+        "A": "No arriba a executar `softmax`, i fins i tot en `softmax`, exp(0) = 1, de manera que el denominador seria 2 i no 0.",
+        "B": "No fa cap selecció aleatòria; la condició inicial retorna directament la derivació humana.",
+        "D": "Encara que no existís la guarda inicial, 0.5 seria inferior al llindar 0.65 i tampoc retornaria 'PROPOSAR_AREA'."
+      }
+    },
+    {
+      "id": "m01-08-q04",
+      "module": 1,
+      "conceptId": "m01-08-regressio",
+      "lessonRef": "content/module-01/m01-08-regressio.md",
+      "difficulty": "intermediate",
+      "questionType": "metrics",
+      "prompt": "Un model de regressió obté un coeficient de determinació R² = -0,25 sobre el conjunt de test. Com s'ha d'interpretar aquest resultat?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Hi ha necessàriament un bug a la llibreria perquè R² no pot ser mai negatiu."
+        },
+        {
+          "key": "B",
+          "text": "Indica una correlació negativa forta però un model molt precís."
+        },
+        {
+          "key": "C",
+          "text": "El model comet més error quadràtic en test que un baseline trivial que predigui constantment la mitjana de y_test."
+        },
+        {
+          "key": "D",
+          "text": "El model explica el 25% de la variància amb signe invertit."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Com que R² = 1 − (SS_res / SS_tot), quan la suma de quadrats dels residus del model (SS_res) supera la variància total respecte de la mitjana (SS_tot), R² esdevé negatiu: el model rendeix pitjor que predir sempre la mitjana.",
+      "explanationsIncorrect": {
+        "A": "En un conjunt de test (o en models no lineals/regularitzats), R² pot ser perfectament negatiu.",
+        "B": "R² no és el coeficient de correlació de Pearson r (que va de -1 a +1); un R² negatiu indica molt mal ajust.",
+        "D": "No explica un 25% de variància; significa que els residus superen en un 25% la variància total."
+      }
+    },
+    {
+      "id": "m01-05-q06",
+      "module": 1,
+      "conceptId": "m01-05-models-generatius",
+      "lessonRef": "content/module-01/m01-05-models-generatius.md",
+      "difficulty": "intermediate",
+      "questionType": "metrics",
+      "prompt": "Un model de llenguatge obté una perplexitat (Perplexity) molt baixa sobre un corpus de textos jurídics. Què podem concloure rigorosament d'aquesta mètrica?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Que el model assigna probabilitats altes a les seqüències d'aquest estil de text, però això per si sol NO garanteix que les seves respostes siguin factualment ni jurídicament veritables."
+        },
+        {
+          "key": "B",
+          "text": "Que el model té una taxa d'al·lucinacions del 0%."
+        },
+        {
+          "key": "C",
+          "text": "Que el model compleix automàticament tots els requisits de l'AI Act."
+        },
+        {
+          "key": "D",
+          "text": "Que el model ha estat entrenat amb aprenentatge per reforç."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "La perplexitat mesura l'ajust estadístic a la distribució lingüística (fluïdesa/versemblança), no la veracitat factual, l'actualització normativa ni l'absència d'al·lucinacions.",
+      "explanationsIncorrect": {
+        "B": "Un model pot tenir perplexitat molt baixa i tot i així inventar articles de lleis inexistents amb un estil jurídic impecable.",
+        "C": "El compliment de l'AI Act implica governança, transparència, gestió de riscos i supervisió, no una mètrica de perplexitat.",
+        "D": "La perplexitat és l'exponencial de la cross-entropy i es calcula sobre qualsevol model de llenguatge probabilístic."
+      }
+    },
+    {
+      "id": "m01-06-q01",
+      "module": 1,
+      "conceptId": "m01-06-sistemes-experts",
+      "lessonRef": "content/module-01/m01-06-sistemes-experts.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quin és el principi arquitectònic fonamental d'un sistema expert clàssic?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Separar explícitament la base de coneixement declarativa (regles del domini) del motor d'inferència que executa el raonament."
+        },
+        {
+          "key": "B",
+          "text": "Entrenar milions de pesos neuronals mitjançant retropropagació sobre dades no etiquetades."
+        },
+        {
+          "key": "C",
+          "text": "Substituir totes les regles legals per clustering no supervisat."
+        },
+        {
+          "key": "D",
+          "text": "Integrar les regles dins del codi compilat perquè no es puguin auditar."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "La separació entre base de coneixement (què sabem) i motor d'inferència (com raonem) permet actualitzar regles, auditar-les i generar explicacions sense reescriure l'algoritme de raonament.",
+      "explanationsIncorrect": {
+        "B": "Això descriu el Deep Learning, no els sistemes experts simbòlics.",
+        "C": "El clustering és aprenentatge no supervisat i no aplica regles normatives.",
+        "D": "És exactament el contrari: els sistemes experts busquen representació declarativa, mantenible i explicable."
+      }
+    },
+    {
+      "id": "m01-08-q02",
+      "module": 1,
+      "conceptId": "m01-08-regressio",
+      "lessonRef": "content/module-01/m01-08-regressio.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quin efecte distintiu té la regularització Lasso (norma L1) sobre els coeficients d'una regressió lineal en comparació amb Ridge (norma L2)?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Lasso força coeficients de variables poc rellevants a ser exactament zero, fent selecció automàtica de variables."
+        },
+        {
+          "key": "B",
+          "text": "Lasso sempre produeix coeficients més grans que OLS."
+        },
+        {
+          "key": "C",
+          "text": "Ridge elimina exactament la meitat de les variables del model."
+        },
+        {
+          "key": "D",
+          "text": "Lasso només funciona quan no hi ha variables numèriques."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "La penalització L1 (Σ|β_j|) produeix solucions disperses (sparse) on molts coeficients s'anul·len exactament a 0, mentre que Ridge (L2) els encongeix suaument sense fer-los zero.",
+      "explanationsIncorrect": {
+        "B": "Tant Lasso com Ridge penalitzen la magnitud dels coeficients, reduint-los respecte d'OLS.",
+        "C": "Ridge no força coeficients a zero exacte ni elimina la meitat de les variables.",
+        "D": "La regressió Lasso s'aplica precisament sobre característiques numèriques escalades."
+      }
+    },
+    {
+      "id": "m01-06-q04",
+      "module": 1,
+      "conceptId": "m01-06-sistemes-experts",
+      "lessonRef": "content/module-01/m01-06-sistemes-experts.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Una seu electrònica vol oferir un assistent interactiu on el ciutadà tria un ajut concret (p. ex., «Bonificació IBI família nombrosa») i el sistema li fa únicament les preguntes mínimes necessàries per comprovar si compleix els requisits. Quina estratègia d'inferència és més adequada?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Encadenament enrere (backward chaining / goal-driven)."
+        },
+        {
+          "key": "B",
+          "text": "Clustering K-Means."
+        },
+        {
+          "key": "C",
+          "text": "Encadenament endavant exhaustiu demanant primer totes les dades de tots els tributs del municipi."
+        },
+        {
+          "key": "D",
+          "text": "Aprenentatge per reforç en línia."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "En conèixer l'objectiu concret que vol verificar el ciutadà, el backward chaining navega cap enrere només per les premisses d'aquest objectiu, minimitzant les preguntes i aturant-se tan bon punt un requisit obligatori falla.",
+      "explanationsIncorrect": {
+        "B": "K-Means agrupa dades sense etiquetes i no comprova requisits normatius.",
+        "C": "Demanar totes les dades abans d'inferir és ineficient i empitjora l'experiència ciutadana.",
+        "D": "L'RL no s'utilitza per verificar requisits legals deterministes."
+      }
+    },
+    {
+      "id": "m01-03-q07",
+      "module": 1,
+      "conceptId": "m01-03-deep-learning",
+      "lessonRef": "content/module-01/m01-03-deep-learning.md",
+      "difficulty": "intermediate",
+      "questionType": "code",
+      "prompt": "En el fragment següent de retropropagació amb una capa oculta ReLU, què calcula exactament l'expressió `(Z1 > 0).astype(float)`?",
+      "codeSnippet": "dA1 = dZ2 @ W2.T\ndZ1 = dA1 * (Z1 > 0).astype(float)\ndW1 = X_train.T @ dZ1",
+      "options": [
+        {
+          "key": "A",
+          "text": "La normalització L2 dels pesos de la primera capa."
+        },
+        {
+          "key": "B",
+          "text": "La probabilitat softmax de la capa oculta."
+        },
+        {
+          "key": "C",
+          "text": "La derivada local de la funció ReLU: 1 on la preactivació Z1 és positiva i 0 on és negativa o zero."
+        },
+        {
+          "key": "D",
+          "text": "L'eliminació aleatòria del 50% de les neurones (dropout)."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Com que ReLU(z) = max(0, z), la seva derivada és 1 per a z > 0 i 0 per a z ≤ 0. Multiplicar dA1 per aquesta màscara aplica la regla de la cadena a través de l'activació ReLU.",
+      "explanationsIncorrect": {
+        "A": "No calcula cap norma sobre els pesos W1.",
+        "B": "No hi ha cap exponencial ni divisió pròpia del softmax.",
+        "D": "La màscara no és aleatòria: depèn determinísticament del signe de Z1."
+      }
+    },
+    {
+      "id": "m01-05-q02",
+      "module": 1,
+      "conceptId": "m01-05-models-generatius",
+      "lessonRef": "content/module-01/m01-05-models-generatius.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Com generen nou contingut els models generatius autoregressius (com els LLM basats en Transformer decoder-only)?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Enfrontant un generador i un discriminador en un joc minimax."
+        },
+        {
+          "key": "B",
+          "text": "Eliminant soroll gaussià en paral·lel sobre tota una imatge."
+        },
+        {
+          "key": "C",
+          "text": "Factoritzant la probabilitat conjunta seqüencialment i predient cada nou token condicionat als tokens anteriors: P(x_t | x_<t)."
+        },
+        {
+          "key": "D",
+          "text": "Agrupant paraules mitjançant K-Means."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Els models autoregressius apliquen la regla del producte de la probabilitat P(x_1..x_T) = Π P(x_t | x_<t), generant la seqüència pas a pas un token darrere l'altre.",
+      "explanationsIncorrect": {
+        "A": "Aquest és el mecanisme de les GAN, no dels models autoregressius.",
+        "B": "Aquest és el mecanisme dels models de difusió.",
+        "D": "K-Means és un algoritme de clustering no supervisat, no un model generatiu autoregressiu."
+      }
+    },
+    {
+      "id": "m01-07-q05",
+      "module": 1,
+      "conceptId": "m01-07-classificacio",
+      "lessonRef": "content/module-01/m01-07-classificacio.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Quina diferència estructural hi ha entre Random Forest (Bagging) i Gradient Boosting (XGBoost / LightGBM)?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Random Forest entrena arbres independents en paral·lel sobre mostres bootstrap per reduir principalment la variància; Gradient Boosting entrena arbres seqüencialment corregint els errors dels anteriors per reduir principalment el biaix."
+        },
+        {
+          "key": "B",
+          "text": "Random Forest només serveix per regressió i Gradient Boosting només per classificació."
+        },
+        {
+          "key": "C",
+          "text": "Gradient Boosting no pot gestionar relacions no lineals."
+        },
+        {
+          "key": "D",
+          "text": "Random Forest requereix obligatòriament escalat StandardScaler mentre que Gradient Boosting no."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "El Bagging (Random Forest) redueix variància promitjant arbres profunds paral·lels; el Boosting (XGBoost/LightGBM) redueix biaix encadenant seqüencialment arbres poc profunds sobre els gradients residuals.",
+      "explanationsIncorrect": {
+        "B": "Tant Random Forest com Gradient Boosting serveixen tant per a classificació com per a regressió.",
+        "C": "Els arbres de decisió en Gradient Boosting capturen excel·lentment relacions no lineals i interaccions.",
+        "D": "Cap dels dos mètodes basats en arbres requereix escalat de variables numèriques (a diferència de SVM, k-NN o regressió regularitzada)."
+      }
+    },
+    {
+      "id": "m01-11-q03",
+      "module": 1,
+      "conceptId": "m01-11-avaluacio-generalitzacio-hiperparametres",
+      "lessonRef": "content/module-01/m01-11-avaluacio-generalitzacio-hiperparametres.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina variant de validació creuada manté exacta la proporció de classes en cada partició (fold) i és l'opció estàndard en classificació desequilibrada?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "GridSearchCV sense estratificació."
+        },
+        {
+          "key": "B",
+          "text": "K-Means."
+        },
+        {
+          "key": "C",
+          "text": "StratifiedKFold."
+        },
+        {
+          "key": "D",
+          "text": "Dropout."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "StratifiedKFold garanteix que cada fold contingui la mateixa distribució percentual de classes que el dataset original, evitant folds sense exemples de la classe minoritària.",
+      "explanationsIncorrect": {
+        "A": "GridSearchCV és una eina de cerca d'hiperparàmetres, no una estratègia d'estratificació per si sola.",
+        "B": "K-Means és un algoritme de clustering.",
+        "D": "Dropout és una tècnica de regularització de xarxes neuronals."
+      }
+    },
+    {
+      "id": "m01-04-q02",
+      "module": 1,
+      "conceptId": "m01-04-xarxes-neuronals",
+      "lessonRef": "content/module-01/m01-04-xarxes-neuronals.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quants paràmetres entrenables (pesos + biaixos) té una capa densa totalment connectada que rep un vector d'entrada de dimensió 100 i genera 50 sortides?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "5.000"
+        },
+        {
+          "key": "B",
+          "text": "5.050"
+        },
+        {
+          "key": "C",
+          "text": "5.100"
+        },
+        {
+          "key": "D",
+          "text": "150"
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Una capa densa de n_in = 100 a n_out = 50 té 100 × 50 = 5.000 pesos més 50 termes de biaix (un per neurona de sortida), donant un total de 5.050 paràmetres.",
+      "explanationsIncorrect": {
+        "A": "Omet els 50 paràmetres de biaix de les neurones de sortida.",
+        "C": "Suma el nombre d'entrades (100) en lloc del nombre de sortides (50) com a biaixos.",
+        "D": "Suma n_in + n_out en lloc de multiplicar la matriu de connexions."
+      }
+    },
+    {
+      "id": "m01-10-q08",
+      "module": 1,
+      "conceptId": "m01-10-deteccio-anomalies",
+      "lessonRef": "content/module-01/m01-10-deteccio-anomalies.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En la funció `modified_zscore_mad` de la lliçó, què passa si més del 50% de les factures d'una partida tenen exactament el mateix import fix (p. ex., quota mensual idèntica de 100,00 €)?",
+      "codeSnippet": "mediana = np.median(x)\nmad = np.median(np.abs(x - mediana))\nif mad == 0:\n    return np.zeros_like(x)",
+      "options": [
+        {
+          "key": "A",
+          "text": "La MAD resulta igual a 0 i la guarda retorna zeros per a totes les factures, deixant de detectar fins i tot una factura anòmala de 50.000 €; en aquest cas límit cal recórrer a la desviació absoluta mitjana (MeanAD) o a una regla explícita."
+        },
+        {
+          "key": "B",
+          "text": "La MAD s'ajusta automàticament a 1,0 i detecta totes les anomalies sense problemes."
+        },
+        {
+          "key": "C",
+          "text": "La funció llança un ZeroDivisionError."
+        },
+        {
+          "key": "D",
+          "text": "El valor 0,6745 impedeix que `mad` pugui ser mai zero."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Quan ≥50% dels valors són idèntics a la mediana, la mediana de les desviacions absolutes (MAD) és exactament 0! La guarda evita la divisió per zero però anul·la la detecció; en producció s'utilitza MeanAD (1,253314 · mean(|x − med|)) com a fallback quan MAD == 0.",
+      "explanationsIncorrect": {
+        "B": "El codi mostrat retorna `np.zeros_like(x)`, no substitueix MAD per 1,0.",
+        "C": "La guarda `if mad == 0:` precisament evita el ZeroDivisionError.",
+        "D": "0,6745 és el factor de consistència normal al numerador i no afecta el càlcul de `mad`."
+      }
+    },
+    {
+      "id": "m01-02-q09",
+      "module": 1,
+      "conceptId": "m01-02-machine-learning",
+      "lessonRef": "content/module-01/m01-02-machine-learning.md",
+      "difficulty": "advanced",
+      "questionType": "conceptual",
+      "prompt": "Quina implicació pràctica té el teorema «No Free Lunch» (Wolpert) per a un enginyer de Machine Learning en una administració pública?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Que les xarxes neuronals profundes sempre superen qualsevol algoritme tabular si s'entrenen prou temps."
+        },
+        {
+          "key": "B",
+          "text": "Que cap algoritme de ML és universalment superior a tots els altres en tots els problemes possibles; cal començar amb baselines simples i comparar empíricament segons les dades i restriccions del domini."
+        },
+        {
+          "key": "C",
+          "text": "Que els models de codi obert mai no poden competir amb les API comercials de pagament."
+        },
+        {
+          "key": "D",
+          "text": "Que no és possible mesurar la generalització d'un model fora del conjunt d'entrenament."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "El teorema No Free Lunch demostra que, promitjat sobre totes les distribucions possibles de problemes, cap algoritme supera un altre. Per això el rendiment depèn de l'adequació entre els biaixos inductius del model i les dades concretes, fet que exigeix experimentació rigorosa des de baselines simples.",
+      "explanationsIncorrect": {
+        "A": "A la pràctica, sobre dades tabulars estructurades de mida moderada, models com Gradient Boosting o Random Forest sovint superen les xarxes profundes.",
+        "C": "El teorema tracta sobre optimització i aprenentatge estadístic, no sobre llicències ni costos comercials.",
+        "D": "Sí que es pot estimar la generalització empíricament mitjançant particions de test i validació ben dissenyades."
+      }
+    },
+    {
+      "id": "m01-04-q07",
+      "module": 1,
+      "conceptId": "m01-04-xarxes-neuronals",
+      "lessonRef": "content/module-01/m01-04-xarxes-neuronals.md",
+      "difficulty": "intermediate",
+      "questionType": "code",
+      "prompt": "Observa el càlcul de sortida següent per a un expedient amb `logits = [-1.8, -0.9, 2.4, 2.1, -2.5]`. Per què en aplicar `softmax(logits)` es resta primer `np.max(logits)`?",
+      "codeSnippet": "def softmax(logits: np.ndarray) -> np.ndarray:\n    shifted = logits - np.max(logits)\n    exps = np.exp(shifted)\n    return exps / np.sum(exps)",
+      "options": [
+        {
+          "key": "A",
+          "text": "Per canviar la classe guanyadora quan els logits són molt propers."
+        },
+        {
+          "key": "B",
+          "text": "Per estabilitat numèrica: evita overflow en calcular exp(z) amb logits grans sense alterar matemàticament el resultat final del softmax."
+        },
+        {
+          "key": "C",
+          "text": "Per convertir el softmax en una funció sigmoid multietiqueta."
+        },
+        {
+          "key": "D",
+          "text": "Per aplicar regularització L1 als logits."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Restar una constant c a tots els logits multiplica numerador i denominador per exp(-c), que es cancel·la exactament. En triar c = max(logits), l'exponent màxim és 0 (exp(0)=1), prevenint desbordaments numèrics (Inf/NaN).",
+      "explanationsIncorrect": {
+        "A": "El resultat matemàtic del softmax és idèntic; no altera cap probabilitat ni l'ordre de les classes.",
+        "C": "Continua sent un softmax les sortides del qual sumen 1.",
+        "D": "No té cap relació amb la regularització L1."
+      }
+    },
+    {
+      "id": "m01-03-q03",
+      "module": 1,
+      "conceptId": "m01-03-deep-learning",
+      "lessonRef": "content/module-01/m01-03-deep-learning.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina funció de pèrdua (loss function) és l'estàndard per entrenar una xarxa neuronal en una tasca de classificació multiclasse mútuament excloent (p. ex., classificar una instància en 1 de 8 departaments)?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Categorical Cross-Entropy (entropia creuada categòrica) combinada amb Softmax."
+        },
+        {
+          "key": "B",
+          "text": "Silhouette Score."
+        },
+        {
+          "key": "C",
+          "text": "Mean Squared Error (MSE) sense activació de sortida."
+        },
+        {
+          "key": "D",
+          "text": "Coeficient de determinació R²."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Softmax converteix els logits en una distribució de probabilitat sobre les classes i la Categorical Cross-Entropy penalitza logarítmicament la baixa probabilitat assignada a la classe correcta, oferint gradients ben comportats.",
+      "explanationsIncorrect": {
+        "B": "El Silhouette Score és una mètrica d'avaluació per a clustering no supervisat, no una funció de pèrdua diferenciable de classificació.",
+        "C": "L'MSE és la pèrdua pròpia de regressió; en classificació multiclasse produeix gradients deficients i no modela distribucions categòriques.",
+        "D": "R² és una mètrica d'avaluació de regressió."
+      }
+    },
+    {
+      "id": "m01-07-q09",
+      "module": 1,
+      "conceptId": "m01-07-classificacio",
+      "lessonRef": "content/module-01/m01-07-classificacio.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "Quin error metodològic comet un analista que aplica SMOTE (oversampling sintètic de la classe minoritària) abans d'executar `StratifiedKFold` en validació creuada?",
+      "codeSnippet": "X_res, y_res = SMOTE().fit_resample(X, y)\nscores = cross_val_score(clf, X_res, y_res, cv=5, scoring='f1')",
+      "options": [
+        {
+          "key": "A",
+          "text": "Cap error: SMOTE s'ha d'aplicar sempre sobre tot el dataset abans de la validació creuada."
+        },
+        {
+          "key": "B",
+          "text": "Data leakage greu: les mostres sintètiques generades per interpolació de veïns es reparteixen entre train i validació en cada fold, inflant artificialment l'F1."
+        },
+        {
+          "key": "C",
+          "text": "SMOTE només funciona en problemes de regressió contínua."
+        },
+        {
+          "key": "D",
+          "text": "cross_val_score no admet `scoring='f1'`."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "SMOTE interpola entre punts existents; si s'aplica abans del split de CV, còpies gairebé idèntiques acaben a train i a validació. SMOTE s'ha d'aplicar únicament dins d'un Pipeline (`imblearn.pipeline.Pipeline`) sobre la partició d'entrenament de cada fold.",
+      "explanationsIncorrect": {
+        "A": "Aplicar-lo abans del split invalida l'estimació de validació creuada.",
+        "C": "SMOTE és precisament una tècnica per a classificació desequilibrada.",
+        "D": "`scoring='f1'` és un paràmetre estàndard i vàlid en scikit-learn."
+      }
+    },
+    {
+      "id": "m01-10-q05",
+      "module": 1,
+      "conceptId": "m01-10-deteccio-anomalies",
+      "lessonRef": "content/module-01/m01-10-deteccio-anomalies.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "En quin escenari l'algoritme Local Outlier Factor (LOF) té un avantatge específic sobre mètodes globals de distància?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Quan les dades formen diversos grups amb densitats molt diferents i cal detectar punts que són anòmals respecte al seu veïnatge local (anomalies locals)."
+        },
+        {
+          "key": "B",
+          "text": "Quan es disposa de 100 milions de files i només es pot fer una passada lineal O(n)."
+        },
+        {
+          "key": "C",
+          "text": "Quan es vol generar text normatiu en català."
+        },
+        {
+          "key": "D",
+          "text": "Quan les variables d'entrada tenen escales molt diferents i no volem escalar-les."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "LOF compara la densitat local de cada punt amb la dels seus k veïns més propers; així pot detectar un punt relativament proper a un clúster molt dens que seria invisible per a un llindar global.",
+      "explanationsIncorrect": {
+        "B": "LOF cerca veïns més propers i escala pitjor (fins a O(n²)) que Isolation Forest en grans volums.",
+        "C": "LOF és un detector d'anomalies numèric, no un model generatiu de llenguatge.",
+        "D": "Com que LOF es basa en distàncies als k veïns, requereix escalat previ obligatori."
+      }
+    },
+    {
+      "id": "m01-01-q06",
+      "module": 1,
+      "conceptId": "m01-01-intelligencia-artificial",
+      "lessonRef": "content/module-01/m01-01-intelligencia-artificial.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Com es caracteritza habitualment l'entorn d'un agent d'IA que classifica i respon consultes ciutadanes en una seu electrònica municipal?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Completament observable, determinista i estàtic."
+        },
+        {
+          "key": "B",
+          "text": "Parcialment observable, estocàstic i dinàmic."
+        },
+        {
+          "key": "C",
+          "text": "Completament observable, estocàstic i estàtic."
+        },
+        {
+          "key": "D",
+          "text": "Parcialment observable, determinista i estàtic."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "L'entorn és parcialment observable (els ciutadans sovint ometen detalls del seu expedient), estocàstic (hi ha ambigüitat i variabilitat en el comportament humà) i dinàmic (normatives, convocatòries i tràmits canvien al llarg del temps).",
+      "explanationsIncorrect": {
+        "A": "Aquestes propietats corresponen a un joc com els escacs o a un càlcul tancat, no a l'atenció ciutadana real.",
+        "C": "L'agent no observa tot el context del ciutadà ni la normativa roman congelada indefinidament.",
+        "D": "Ni les interaccions humanes són deterministes ni l'entorn administratiu és estàtic."
+      }
+    },
+    {
+      "id": "m01-03-q06",
+      "module": 1,
+      "conceptId": "m01-03-deep-learning",
+      "lessonRef": "content/module-01/m01-03-deep-learning.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Una diputació disposa de 1.800 fotografies etiquetades de desperfectes en mobiliari urbà i vol construir un classificador d'imatges amb 1 GPU local. Quina estratègia és la més recomanable?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Entrenar una xarxa ResNet-101 completament des de zero amb pesos aleatoris."
+        },
+        {
+          "key": "B",
+          "text": "Aplicar transfer learning sobre una xarxa visual preentrenada oberta, combinat amb data augmentation i fine-tuning controlat."
+        },
+        {
+          "key": "C",
+          "text": "Substituir totes les imatges per una regressió lineal sobre els píxels crus sense preprocessament."
+        },
+        {
+          "key": "D",
+          "text": "Aplicar un sistema expert de regles manuals sobre els valors RGB de cada píxel."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Amb només 1.800 imatges, el transfer learning aprofita les característiques visuals ja apreses en milions d'imatges, redueix dramàticament el risc d'overfitting i entrena ràpidament en una sola GPU.",
+      "explanationsIncorrect": {
+        "A": "Entrenar des de zero desenes de milions de paràmetres amb 1.800 imatges provocarà sobreajustament sever.",
+        "C": "Una regressió lineal directa sobre píxels crus no és invariant a translacions, llum ni escala i té un rendiment molt pobre.",
+        "D": "Codificar regles RGB manuals per a desperfectes urbans reals és inviable per la variabilitat visual."
+      }
+    },
+    {
+      "id": "m01-10-q03",
+      "module": 1,
+      "conceptId": "m01-10-deteccio-anomalies",
+      "lessonRef": "content/module-01/m01-10-deteccio-anomalies.md",
+      "difficulty": "basic",
+      "questionType": "case-study",
+      "prompt": "Quin tipus d'anomalia descriu un conjunt de 12 factures individuals de 14.800 € (cadascuna dins del límit legal de contracte menor) emeses pel mateix proveïdor per al mateix servei en un sol trimestre?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Anomalia puntual."
+        },
+        {
+          "key": "B",
+          "text": "Anomalia de reconstrucció d'imatge."
+        },
+        {
+          "key": "C",
+          "text": "Anomalia col·lectiva."
+        },
+        {
+          "key": "D",
+          "text": "Error de calibració Softmax."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Cada factura individual sembla normal aïlladament, però el conjunt agregat de 12 factures repetides forma una anomalia col·lectiva que suggereix possible fraccionament contractual.",
+      "explanationsIncorrect": {
+        "A": "Individualment cada factura (14.800 €) no és un valor extrem aïllat.",
+        "B": "No té relació amb imatges.",
+        "D": "No té relació amb Softmax."
+      }
+    },
+    {
+      "id": "m01-01-q01",
+      "module": 1,
+      "conceptId": "m01-01-intelligencia-artificial",
+      "lessonRef": "content/module-01/m01-01-intelligencia-artificial.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina relació jeràrquica descriu correctament els conceptes d'intel·ligència artificial (IA), Machine Learning (ML), Deep Learning (DL) i IA simbòlica?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "El Machine Learning engloba la IA, i la IA simbòlica és un subconjunt del Deep Learning."
+        },
+        {
+          "key": "B",
+          "text": "La IA és el camp general que inclou tant la IA simbòlica com el ML; el DL és un subconjunt del ML."
+        },
+        {
+          "key": "C",
+          "text": "IA, ML i DL són termes estrictament equivalents que s'utilitzen indistintament segons l'època."
+        },
+        {
+          "key": "D",
+          "text": "El Deep Learning engloba tots els mètodes de ML, inclosos els arbres de decisió i els sistemes experts."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "La intel·ligència artificial és la disciplina paraigua que abraça paradigmes simbòlics (sistemes experts, lògica, cerca heurística) i paradigmes d'aprenentatge a partir de dades (Machine Learning). Dins del ML, el Deep Learning n'és el subcamp basat en xarxes neuronals profundes.",
+      "explanationsIncorrect": {
+        "A": "Inverteix la relació: el ML és dins la IA, i la IA simbòlica no forma part del Deep Learning.",
+        "C": "No són sinònims: un sistema expert basat en regles és IA però no utilitza ML ni DL.",
+        "D": "El DL és un subconjunt del ML, no al revés; els arbres de decisió clàssics i els sistemes experts no són xarxes neuronals profundes."
+      }
+    },
+    {
+      "id": "m01-06-q02",
+      "module": 1,
+      "conceptId": "m01-06-sistemes-experts",
+      "lessonRef": "content/module-01/m01-06-sistemes-experts.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quin component d'un sistema expert emmagatzema els fets concrets de l'expedient que s'està avaluant i els nous fets inferits durant l'execució?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "El mòdul d'explicació."
+        },
+        {
+          "key": "B",
+          "text": "La memòria de treball (working memory / base de fets)."
+        },
+        {
+          "key": "C",
+          "text": "L'optimitzador AdamW."
+        },
+        {
+          "key": "D",
+          "text": "La capa de pooling."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "La memòria de treball manté l'estat dinàmic dels fets inicials i dels fets que el motor d'inferència va deduint per a un cas concret.",
+      "explanationsIncorrect": {
+        "A": "El mòdul d'explicació construeix la justificació per a l'usuari a partir de la traça d'inferència.",
+        "C": "AdamW és un optimitzador de xarxes neuronals.",
+        "D": "El pooling és una operació de xarxes convolucionals (CNN)."
+      }
+    },
+    {
+      "id": "m01-09-q04",
+      "module": 1,
+      "conceptId": "m01-09-clustering",
+      "lessonRef": "content/module-01/m01-09-clustering.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Per què NO podem escollir el nombre òptim de clústers K en K-Means seleccionant simplement el valor de K que produeix la inèrcia (WCSS) més baixa?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "La inèrcia augmenta sempre que augmenta K."
+        },
+        {
+          "key": "B",
+          "text": "La inèrcia només es pot calcular quan K = 2."
+        },
+        {
+          "key": "C",
+          "text": "La inèrcia disminueix sempre en augmentar K fins arribar a 0 quan K = n (un clúster per cada punt), cosa que no té cap valor d'agrupament."
+        },
+        {
+          "key": "D",
+          "text": "K-Means maximitza la inèrcia en lloc de minimitzar-la."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Afegir més centroides sempre redueix la distància quadràtica dels punts al seu centroide més proper; per això s'utilitza el mètode del colze (guany marginal) combinat amb Silhouette Score i criteri de domini.",
+      "explanationsIncorrect": {
+        "A": "És exactament al revés: la inèrcia és monòtonament decreixent amb K.",
+        "B": "La inèrcia es defineix per a qualsevol K entre 1 i n.",
+        "D": "L'objectiu de K-Means és minimitzar la inèrcia (WCSS)."
+      }
+    },
+    {
+      "id": "m01-11-q10",
+      "module": 1,
+      "conceptId": "m01-11-avaluacio-generalitzacio-hiperparametres",
+      "lessonRef": "content/module-01/m01-11-avaluacio-generalitzacio-hiperparametres.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Com redueixen dràsticament el cost computacional de la cerca d'hiperparàmetres els mètodes de poda primerenca com Successive Halving o Hyperband?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Entrenant totes les configuracions candidates fins al 100% de les èpoques abans de comparar-les."
+        },
+        {
+          "key": "B",
+          "text": "Substituint els hiperparàmetres per paràmetres fixos iguals a zero."
+        },
+        {
+          "key": "C",
+          "text": "Eliminant el conjunt de validació i mesurant només la velocitat d'execució."
+        },
+        {
+          "key": "D",
+          "text": "Assignant inicialment pocs recursos (poques èpoques o submostra) a moltes configuracions, descartant les pitjors a cada ronda i multiplicant els recursos només per a les supervivents."
+        }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Successive Halving i Hyperband (multi-fidelity optimization) avaluen ràpidament moltes candidates amb baix pressupost i descarten aviat les menys prometedores, concentrant el còmput en les millors configuracions.",
+      "explanationsIncorrect": {
+        "A": "Entrenar-les totes al 100% és precisament el que eviten aquests algoritmes.",
+        "B": "No fixen hiperparàmetres a zero.",
+        "C": "Les decisions de poda es basen sempre en la mètrica de validació, no només en velocitat."
+      }
+    },
+    {
+      "id": "m01-04-q05",
+      "module": 1,
+      "conceptId": "m01-04-xarxes-neuronals",
+      "lessonRef": "content/module-01/m01-04-xarxes-neuronals.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Quin comportament té la tècnica de regularització Dropout durant l'entrenament respecte de la inferència en producció?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Durant l'entrenament desactiva aleatòriament una fracció de neurones en cada pas; durant la inferència es desactiva el dropout per usar totes les neurones amb escalat coherent."
+        },
+        {
+          "key": "B",
+          "text": "Només s'aplica en inferència per reduir el temps de resposta de l'API."
+        },
+        {
+          "key": "C",
+          "text": "Elimina permanentment del disc el 50% dels pesos més petits abans d'entrenar."
+        },
+        {
+          "key": "D",
+          "text": "S'aplica únicament a la capa d'etiquetes reals y."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "El Dropout introdueix soroll estocàstic durant l'entrenament per evitar co-adaptacions i reduir l'overfitting, però en inferència (model.eval()) s'ha de desactivar perquè les prediccions siguin deterministes i aprofitin tota la xarxa.",
+      "explanationsIncorrect": {
+        "B": "Deixar Dropout actiu en inferència estàndard introdueix variabilitat no desitjada (només es fa deliberadament en tècniques específiques com Monte Carlo Dropout).",
+        "C": "Eliminar permanentment pesos petits correspon a la poda (pruning), no al Dropout.",
+        "D": "Mai no s'aplica sobre les etiquetes reals y."
+      }
+    },
+    {
+      "id": "m01-07-q10",
+      "module": 1,
+      "conceptId": "m01-07-classificacio",
+      "lessonRef": "content/module-01/m01-07-classificacio.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "Un classificador de risc d'impagament té un bon ROC-AUC (0,88), però quan prediu probabilitat 0,85, només el 45% dels casos acaben sent positius reals. Quin problema pateix i com es corregeix?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Pateix mala calibració de probabilitats (tot i ordenar bé els casos); es corregeix aplicant calibració post-hoc (Platt Scaling / Isotonic Regression) sobre un conjunt de validació i avaluant amb Brier Score."
+        },
+        {
+          "key": "B",
+          "text": "El model no té cap capacitat discriminativa i cal descartar-lo completament."
+        },
+        {
+          "key": "C",
+          "text": "És impossible que un model tingui ROC-AUC alt i probabilitats mal calibrades alhora."
+        },
+        {
+          "key": "D",
+          "text": "Es resol simplement duplicant el nombre d'arbres sense tocar la calibració."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "El ROC-AUC només avalua l'ordenació relativa (rànquing) de les puntuacions, no si els valors numèrics són probabilitats reals calibrades. Models com SVM, Naive Bayes o alguns Boosted Trees/xarxes necessiten calibració (Platt/Isotonic) quan s'usen les probabilitats per prendre decisions o calcular riscos esperats.",
+      "explanationsIncorrect": {
+        "B": "Un ROC-AUC de 0,88 indica molt bona capacitat d'ordenació; el defecte és la calibració de l'escala probabilística.",
+        "C": "És molt freqüent tenir bon rànquing (ROC-AUC alt) però probabilitats sobreconfiades o subestimades.",
+        "D": "Afegir arbres no garanteix la calibració si la funció de sortida o el mètode estan esbiaixats."
+      }
+    }
+  ]
+}

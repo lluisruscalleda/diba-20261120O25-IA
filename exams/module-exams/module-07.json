@@ -1,0 +1,1409 @@
+{
+  "id": "module-07",
+  "module": 7,
+  "title": "Examen acumulatiu del Mòdul 7: MLOps / LLMOps",
+  "note": "Paràmetres orientatius de preparació (durada, penalització i nota mínima configurables a la plataforma; no constitueixen bases oficials de convocatòria).",
+  "recommendedMinutes": 45,
+  "questions": [
+    {
+      "id": "m07-03-q02",
+      "module": 7,
+      "conceptId": "m07-03-entrenament",
+      "lessonRef": "content/module-07/m07-03-entrenament.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Per què s'ha d'aplicar sempre el principi ***Baseline-first*** abans d'entrenar arquitectures complexes o costoses?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Perquè les xarxes neuronals no funcionen si no hi ha abans una regressió logística."
+        },
+        {
+          "key": "B",
+          "text": "Per establir ràpidament una **referència sòlida, ràpida i interpretable** (ex. TF-IDF + Regressió Logística o LightGBM) que permet verificar si el guany real d'un model molt més car i lent justifica realment el seu cost i latència."
+        },
+        {
+          "key": "C",
+          "text": "Per gastar més pressupost de GPUs."
+        },
+        {
+          "key": "D",
+          "text": "Per evitar mesurar cap mètrica de validació."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Sovint un baseline ben preparat assoleix el 90–95% del rendiment màxim amb una fracció mínima de latència, cost i consum energètic!",
+      "explanationsIncorrect": {
+        "A": "Tècnicament es poden entrenar directament, però metodològicament és un error greu no tenir referència.",
+        "C": "Precisament ajuda a estalviar GPUs i energia (*Green AI*).",
+        "D": "Al contrari, serveix per fixar el llindar mínim de validació a superar."
+      }
+    },
+    {
+      "id": "m07-05-q06",
+      "module": 7,
+      "conceptId": "m07-05-desplegament",
+      "lessonRef": "content/module-07/m07-05-desplegament.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Quina diferència clau hi ha entre ***Canary Release*** i ***A/B Testing***?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Cap diferència, són sinònims exactes."
+        },
+        {
+          "key": "B",
+          "text": "El *Canary* no mesura mai errors ni latència."
+        },
+        {
+          "key": "C",
+          "text": "***Canary*** és una estratègia d'**operacions i mitigació de risc tècnic** (pujar trànsit pas a pas verificant estabilitat/SLA per detectar fallades), mentre que ***A/B Testing*** és un **experiment estadístic** entre versions ja estables per mesurar impacte en KPIs de negoci/CSAT."
+        },
+        {
+          "key": "D",
+          "text": "L'*A/B Testing* envia sempre el 0% del trànsit a la versió B."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Primer assegures estabilitat tècnica amb Shadow/Canary; després, si vols demostrar quin model/prompt millora significativament la resolució ciutadana, fas un experiment A/B!",
+      "explanationsIncorrect": {
+        "A": "Tenen objectius diferents (seguretat de desplegament vs. inferència estadística de negoci).",
+        "B": "El Canary vigila precisament errors, latència i recursos en temps real.",
+        "D": "L'A/B Testing divideix trànsit real (ex. 50/50); 0% d'exposició seria *Shadow*."
+      }
+    },
+    {
+      "id": "m07-07-q09",
+      "module": 7,
+      "conceptId": "m07-07-versionat",
+      "lessonRef": "content/module-07/m07-07-versionat.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "En **Versionat Semàntic (*SemVer* `MAJOR.MINOR.PATCH`)** aplicat a una API d'inferència ML/LLM, quin tipus de canvi obliga a incrementar el número **`MAJOR`** (`1.4.2 → 2.0.0`)?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Corregir un error ortogràfic en un missatge de log intern."
+        },
+        {
+          "key": "B",
+          "text": "Un **canvi incompatible (*Breaking Change*) en el contracte d'entrada/sortida** (ex. reanomenar o eliminar un camp obligatori del JSON o canviar les etiquetes de sortida que esperen altres aplicacions municipals)."
+        },
+        {
+          "key": "C",
+          "text": "Reentrenar el model amb més dades mantenint exactament el mateix esquema JSON i classes."
+        },
+        {
+          "key": "D",
+          "text": "Millorar la latència de 40 ms a 25 ms."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "SemVer comunica el risc als integradors: `MAJOR` = canvi incompatible de contracte; `MINOR` = nova funcionalitat o millora retrocompatible; `PATCH` = correcció menor retrocompatible.",
+      "explanationsIncorrect": {
+        "A": "Això és un `PATCH`.",
+        "C": "Això és habitualment un `MINOR` (nova versió de pesos retrocompatible).",
+        "D": "Una optimització interna retrocompatible és `PATCH` o `MINOR`."
+      }
+    },
+    {
+      "id": "m07-09-q08",
+      "module": 7,
+      "conceptId": "m07-09-actualitzacio-models",
+      "lessonRef": "content/module-07/m07-09-actualitzacio-models.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En `avaluar_politica_ct_cd` de l'exemple 7.9, per què el **Cas 2** (`Prioritzador_ServeisSocials`, `PSI=0.31`, `45 dies`, `120` etiquetes humanes noves) retorna **`SOL·LICITAR_ETIQUETATGE_ACTIVE_LEARNING`** en lloc d'entrenar immediatament?",
+      "codeSnippet": "if m.dies_des_ultim_ct < 14:\n    return {\"model\": m.nom, \"accio\": \"ESPERAR_COOLDOWN\", ...}\nif m.etiquetes_humanes_noves < 200:\n    return {\"model\": m.nom, \"accio\": \"SOL·LICITAR_ETIQUETATGE_ACTIVE_LEARNING\", ...}",
+      "options": [
+        {
+          "key": "A",
+          "text": "Perquè tot i haver-hi *Data Drift* greu (`PSI=0.31`) i haver superat el *Cooldown* (`45 >= 14`), **120 etiquetes humanes noves són insuficients (`< 200`)** per reentrenar amb fiabilitat estadística; el sistema demana abans ampliar l'etiquetatge humà focalitzat!"
+        },
+        {
+          "key": "B",
+          "text": "Perquè no s'ha detectat cap disparador de drift."
+        },
+        {
+          "key": "C",
+          "text": "Perquè el sistema estava dins el període de *Cooldown*."
+        },
+        {
+          "key": "D",
+          "text": "Perquè el *Quality Gate* havia fallat."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Exigir un volum mínim d'etiquetes verificades abans de disparar CT evita entrenar models inestables sobre pocs casos recents i connecta directament el monitoratge de drift amb la cua d'*Active Learning*!",
+      "explanationsIncorrect": {
+        "B": "`PSI=0.31 >= 0.25` sí que dispara `DATA_DRIFT`.",
+        "C": "`45 dies >= 14 dies` supera el *Cooldown*.",
+        "D": "Comprova el volum d'etiquetes abans d'arribar al *Quality Gate*."
+      }
+    },
+    {
+      "id": "m07-04-q04",
+      "module": 7,
+      "conceptId": "m07-04-validacio-models",
+      "lessonRef": "content/module-07/m07-04-validacio-models.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "En la **piràmide d'avaluació de prompts (*PromptOps*)**, quines verificacions pertanyen al **Nivell 1 (assercions deterministes en cada Pull Request)** i NO s'han de delegar a un *LLM-as-a-Judge*?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Validesa estricta de l'**esquema JSON/Pydantic**, comprovació que les **cites `[doc#c]` existeixen** als chunks recuperats, bloqueig de paraules/promeses prohibides i compliment de latència."
+        },
+        {
+          "key": "B",
+          "text": "Valorar subjectivament l'estil literari d'un poema."
+        },
+        {
+          "key": "C",
+          "text": "Només la revisió manual de 50 casos per un jurista."
+        },
+        {
+          "key": "D",
+          "text": "Cap verificació es pot fer de manera determinista en LLMOps."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Tot el que és determinista (sintaxi JSON, presència i existència d'IDs de cita, patrons prohibits, latència) s'ha de validar amb codi ràpid (0 €, mil·lisegons, 100% fiable) a cada PR!",
+      "explanationsIncorrect": {
+        "B": "L'estil o matisos semàntics pertanyen als Nivells 2 i 3.",
+        "C": "Això correspon al Nivell 3 (revisió humana *Side-by-Side* per a canvis majors).",
+        "D": "Hi ha moltes comprovacions estructurals i de cites 100% deterministes."
+      }
+    },
+    {
+      "id": "m07-07-q10",
+      "module": 7,
+      "conceptId": "m07-07-versionat",
+      "lessonRef": "content/module-07/m07-07-versionat.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Per què en un **Prompt Registry** no s'ha de versionar el *system prompt* aïllat del **model LLM concret** (`Qwen2.5-14B` vs `Llama-3.1-8B`)?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Perquè tots els LLMs responen de manera 100% idèntica a qualsevol prompt."
+        },
+        {
+          "key": "B",
+          "text": "Perquè els prompts no afecten els models *open-weights*."
+        },
+        {
+          "key": "C",
+          "text": "Perquè un prompt optimitzat per a un model concret sovint **es comporta molt diferent (format, abstenció, cites) en un altre model base**; per això el *Registry* versiona la **tupla acoblada `(prompt_version, base_model_sha, params_decoding, kb_index)`** i exigeix re-executar el *Quality Gate* en canviar qualsevol peça!"
+        },
+        {
+          "key": "D",
+          "text": "Perquè no es pot guardar un fitxer YAML i un nom de model junts."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Els prompts són altament sensibles al model base i a la plantilla de xat; tractar la configuració completa com una unitat versionada evita regressions ocultes en actualitzar el model LLM.",
+      "explanationsIncorrect": {
+        "A": "Cada família de models té sensibilitats i formats d'instrucció diferents.",
+        "B": "Afecten exactament igual tant models open-weights com comercials.",
+        "D": "És trivial i recomanat emmagatzemar la tupla completa en YAML/JSON al Registry."
+      }
+    },
+    {
+      "id": "m07-04-q06",
+      "module": 7,
+      "conceptId": "m07-04-validacio-models",
+      "lessonRef": "content/module-07/m07-04-validacio-models.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Afegir la frase *«Respon sempre de forma molt amable i completa»* al *system prompt* d'un assistent municipal fa que comenci a inventar requisits quan li pregunten per tràmits de la DGT (fora de competència). Quin test del *Quality Gate* ho detectaria immediatament?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Una prova de latència de xarxa."
+        },
+        {
+          "key": "B",
+          "text": "El càlcul de BLEU sobre preguntes de salutació."
+        },
+        {
+          "key": "C",
+          "text": "El subconjunt de **preguntes fora de competència / sense evidència** del *Golden Set*, exigint **`Refusal Accuracy >= 95%`** (abstenció honesta obligatòria)."
+        },
+        {
+          "key": "D",
+          "text": "Comprovar només que la resposta tingui més de 500 caràcters."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Les instruccions d'«amabilitat/completitud» sovint empenyen l'LLM a intentar ajudar fins i tot quan no té evidència; el test de `Refusal Accuracy` ho bloqueja automàticament en CI!",
+      "explanationsIncorrect": {
+        "A": "La latència no detecta al·lucinacions fora de domini.",
+        "B": "Les salutacions no posen a prova l'abstenció normativa.",
+        "D": "Exigir respostes llargues fins i tot empitjoraria el problema."
+      }
+    },
+    {
+      "id": "m07-07-q05",
+      "module": 7,
+      "conceptId": "m07-07-versionat",
+      "lessonRef": "content/module-07/m07-07-versionat.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Quines **5 dimensions** han d'estar versionades i vinculades conjuntament en un sistema **LLMOps** en producció?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Només el fitxer `app.py`."
+        },
+        {
+          "key": "B",
+          "text": "1) **Codi (Git SHA)**; 2) **Dades (DVC/SHA-256)**; 3) **Model/Pesos (*Model Registry*)**; 4) **Prompts + configuració RAG / índex vectorial**; 5) **Entorn d'execució (Docker `@sha256`)**."
+        },
+        {
+          "key": "C",
+          "text": "Només el prompt del sistema i el nom del servidor."
+        },
+        {
+          "key": "D",
+          "text": "Només el pressupost anual i els noms dels usuaris."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Sense vincular totes 5 dimensions, qualsevol canvi en una d'elles (prompt, índex vectorial o dependència Docker) trenca la reproduïbilitat i l'auditoria.",
+      "explanationsIncorrect": {
+        "A": "Insuficient: no captura dades, pesos, prompts ni entorn.",
+        "C": "Falten codi, dades, pesos exactes i entorn immutable.",
+        "D": "No són artefactes tècnics de reproducció."
+      }
+    },
+    {
+      "id": "m07-03-q10",
+      "module": 7,
+      "conceptId": "m07-03-entrenament",
+      "lessonRef": "content/module-07/m07-03-entrenament.md",
+      "difficulty": "advanced",
+      "questionType": "metrics",
+      "prompt": "Fins i tot fixant `random.seed(42)`, `np.random.seed(42)` i `torch.manual_seed(42)`, per què dues execucions d'un model profund en **GPU diferents** poden presentar lleugeres variacions numèriques?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Perquè les GPUs ignoren sempre els hiperparàmetres."
+        },
+        {
+          "key": "B",
+          "text": "Perquè `42` no és un número vàlid per a `torch`."
+        },
+        {
+          "key": "C",
+          "text": "Per operacions paral·leles no deterministes en **kernels CUDA / precisió de punt flotant (`FP16/BF16`)** i ordre d'acumulació en maquinari diferent; per això cal registrar també **maquinari, versió CUDA i precisió** i activar modes deterministes quan es requereix auditoria estricta."
+        },
+        {
+          "key": "D",
+          "text": "Perquè MLflow modifica aleatòriament els pesos."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "La suma en punt flotant no és estrictament associativa en paral·lelisme massiu de GPU; documentar maquinari, CUDA, precisió numèrica i tolerància de reproducció completa el 5è pilar!",
+      "explanationsIncorrect": {
+        "A": "Sí que apliquen els hiperparàmetres.",
+        "B": "`42` és una llavor vàlida estàndard.",
+        "D": "MLflow només registra metadades i artefactes, mai altera pesos."
+      }
+    },
+    {
+      "id": "m07-04-q05",
+      "module": 7,
+      "conceptId": "m07-04-validacio-models",
+      "lessonRef": "content/module-07/m07-04-validacio-models.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "En la metodologia de proves comportamentals ***CheckList***, què valida específicament una prova d'**invariància (`INV`)**?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Que el model canvia radicalment la decisió quan poses una paraula en majúscules."
+        },
+        {
+          "key": "B",
+          "text": "Que **perturbacions irrellevants de l'entrada** (ex. canviar el nom del sol·licitant de «Jordi» a «Fàtima», variar majúscules o errors tipogràfics menors) **NO alteren la predicció del model**, ajudant a detectar biaixos i fragilitat!"
+        },
+        {
+          "key": "C",
+          "text": "Que la predicció puja sempre que augmenta el risc."
+        },
+        {
+          "key": "D",
+          "text": "Que el model respon en menys d'1 mil·lisegon."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Les proves INV són una eina directa i potent per verificar robustesa lingüística i no-discriminació per nom, gènere o origen!",
+      "explanationsIncorrect": {
+        "A": "Precisament comprova que NO canviï davant majúscules o canvis irrellevants.",
+        "C": "Això és una prova direccional (`DIR`), no d'invariància (`INV`).",
+        "D": "Això és una prova de rendiment/SLA, no comportamental."
+      }
+    },
+    {
+      "id": "m07-05-q10",
+      "module": 7,
+      "conceptId": "m07-05-desplegament",
+      "lessonRef": "content/module-07/m07-05-desplegament.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Quan convé escollir ***Blue-Green Deployment*** en lloc de ***Canary Release***?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Quan no disposes de segon entorn i només vols provar sense usuaris."
+        },
+        {
+          "key": "B",
+          "text": "Quan vols barrejar 5 versions diferents alhora."
+        },
+        {
+          "key": "C",
+          "text": "Quan **no és viable que dues versions convisquin en paral·lel** sobre el mateix trànsit (ex. canvi d'esquema de base de dades o contracte d'API) però necessites **commutació atòmica i *rollback* instantani** tornant el balancejador a l'entorn *Blue*."
+        },
+        {
+          "key": "D",
+          "text": "Sempre que no tinguis pressupost per duplicar temporalment la infraestructura."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Blue-Green proporciona un tall net i retorn en 1 segon a costa de mantenir temporalment dos entorns complets en paral·lel.",
+      "explanationsIncorrect": {
+        "A": "Això seria Shadow; Blue-Green precisament requereix dos entorns complets.",
+        "B": "Blue-Green serveix una sola versió activa a producció en cada moment.",
+        "D": "Blue-Green té precisament el cost temporal de duplicar els recursos de còmput."
+      }
+    },
+    {
+      "id": "m07-06-q09",
+      "module": 7,
+      "conceptId": "m07-06-monitoratge",
+      "lessonRef": "content/module-07/m07-06-monitoratge.md",
+      "difficulty": "advanced",
+      "questionType": "metrics",
+      "prompt": "Com pots detectar ***Data Drift* en dades no estructurades de text** (ex. noves consultes ciutadanes en un chatbot o noves instàncies genèriques) on no tens columnes numèriques simples per aplicar el test KS?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "És impossible detectar drift en text."
+        },
+        {
+          "key": "B",
+          "text": "Calculant els **embeddings densos** de les consultes recents i mesurant la **distància respecte dels centroides/distribució d'embeddings de referència** (ex. distància cosinus, MMD o nous clústers no coberts), combinat amb taxa d'abstenció RAG i longitud de text."
+        },
+        {
+          "key": "C",
+          "text": "Comptant únicament quantes vegades apareix la lletra 'a'."
+        },
+        {
+          "key": "D",
+          "text": "Mirant només el consum de memòria RAM del navegador."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "El desplaçament en l'espai d'embeddings (*Embedding Drift*) detecta ràpidament l'aparició de temes emergents o canvis de registre lingüístic en producció!",
+      "explanationsIncorrect": {
+        "A": "L'Embedding Drift + monitoratge d'abstenció/clústers és estàndard en NLP/LLMOps.",
+        "C": "No captura canvis semàntics ni temàtics.",
+        "D": "Irrellevant per a la distribució semàntica dels textos."
+      }
+    },
+    {
+      "id": "m07-06-q06",
+      "module": 7,
+      "conceptId": "m07-06-monitoratge",
+      "lessonRef": "content/module-07/m07-06-monitoratge.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Quin valor aporta instrumentar un pipeline RAG amb **traces distribuïdes per *spans* (*OpenTelemetry / Langfuse on-premise*)**?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Substitueix el model d'embeddings."
+        },
+        {
+          "key": "B",
+          "text": "Elimina la necessitat de protegir PII."
+        },
+        {
+          "key": "C",
+          "text": "Permet desglossar la latència i errors **pas per pas** (`guardrail_in`, `embedding`, `vector_db`, `rerank`, `llm_ttft`, `llm_total`) i veure exactament **quin component és el coll d'ampolla** en les consultes lentes P95!"
+        },
+        {
+          "key": "D",
+          "text": "Fa que tots els prompts siguin de 0 tokens."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Sense spans per component, només saps que el xat ha trigat 8 segons, però no si la culpa és de la base vectorial, del reranker en CPU o del temps de cua a la GPU de l'LLM.",
+      "explanationsIncorrect": {
+        "A": "És observabilitat, no substitueix components del RAG.",
+        "B": "Les traces també han de passar PII scrubbing abans de persistir-se!",
+        "D": "Mesura els tokens consumits, no els elimina."
+      }
+    },
+    {
+      "id": "m07-08-q09",
+      "module": 7,
+      "conceptId": "m07-08-avaluacio-continua",
+      "lessonRef": "content/module-07/m07-08-avaluacio-continua.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Quan s'amplia un ***Living Golden Set*** (`golden_v2026_Q1 → golden_v2026_Q2`) afegint 40 casos nous difícils de producció, què has de fer per comparar justament el *Challenger* amb el *Champion*?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Comparar el *Challenger* sobre `Q2` contra la nota antiga del *Champion* sobre `Q1`."
+        },
+        {
+          "key": "B",
+          "text": "**Re-avaluar tant el *Champion* com el *Challenger* sobre exactament la mateixa versió nova (`golden_v2026_Q2`)** perquè la comparativa sigui «pomes amb pomes» (ja que afegir 40 casos difícils pot baixar la puntuació absoluta de tots dos!)."
+        },
+        {
+          "key": "C",
+          "text": "No afegir mai casos difícils perquè baixen el número de F1."
+        },
+        {
+          "key": "D",
+          "text": "Esborrar `Q1` i no versionar el *Golden Set*."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Afegir casos difícils de producció sovint fa baixar el score absolut, cosa totalment sana! Però la comparativa Champion vs. Challenger sempre s'ha d'executar sobre exactament la mateixa versió del Golden Set.",
+      "explanationsIncorrect": {
+        "A": "Comparar Q2 contra Q1 penalitzaria injustament el Challenger pels 40 casos nous difícils!",
+        "C": "Ometre casos difícils falsificaria la percepció de qualitat.",
+        "D": "Cal versionar cada snapshot del *Golden Set* per a auditoria històrica."
+      }
+    },
+    {
+      "id": "m07-10-q02",
+      "module": 7,
+      "conceptId": "m07-10-integracio-sistemes",
+      "lessonRef": "content/module-07/m07-10-integracio-sistemes.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Per a què serveix propagar una capçalera **`X-Correlation-ID`** a través de tots els sistemes (`Seu → API Gateway → IDP → Classificador → Gestor d'Expedients`)?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Per calcular la correlació de Pearson entre dues columnes del dataset."
+        },
+        {
+          "key": "B",
+          "text": "Per **traçar i reconstruir de punta a punta en segons** tot el recorregut, latències i errors d'un expedient concret a través de múltiples microserveis i cues distribuïdes."
+        },
+        {
+          "key": "C",
+          "text": "Per substituir el DNI del ciutadà a les resolucions."
+        },
+        {
+          "key": "D",
+          "text": "Per xifrar les imatges Docker."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "El Correlation ID és el fil conductor de la traçabilitat distribuïda: permet trobar tots els logs relacionats amb una mateixa petició en una arquitectura multi-sistema.",
+      "explanationsIncorrect": {
+        "A": "No té relació amb el coeficient estadístic de correlació.",
+        "C": "És un UUID tècnic de traçabilitat per petició.",
+        "D": "No és un algorisme de xifratge."
+      }
+    },
+    {
+      "id": "m07-03-q04",
+      "module": 7,
+      "conceptId": "m07-03-entrenament",
+      "lessonRef": "content/module-07/m07-03-entrenament.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Quins són els **5 pilars** necessaris per garantir que un entrenament oficial es podrà reproduir fidelment d'aquí a un any?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "1) **Codi versionat (Git SHA)**; 2) **Dataset versionat (hash/DVC)**; 3) **Entorn immutable (Docker + lockfile)**; 4) **Configuració d'hiperparàmetres + llavors aleatòries (*seeds*)**; 5) **Registre complet de maquinari/precisió i artefactes (*Experiment Tracking*)**."
+        },
+        {
+          "key": "B",
+          "text": "Només guardar el fitxer `.pkl` en un llapis USB."
+        },
+        {
+          "key": "C",
+          "text": "Només apuntar el F1 en una diapositiva PowerPoint."
+        },
+        {
+          "key": "D",
+          "text": "Només el nom de l'algoritme (ex. «XGBoost»)."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Si falta qualsevol dels 5 pilars (per exemple, no hi ha lockfile ni dataset hash), la reproducció exacta es torna impossible o inauditable.",
+      "explanationsIncorrect": {
+        "B": "Un `.pkl` aïllat és irreproduïble, fràgil entre versions i insegur.",
+        "C": "Una diapositiva no té cap traçabilitat tècnica.",
+        "D": "Sense codi, dades, entorn ni hiperparàmetres, el nom de l'algoritme no reprodueix res."
+      }
+    },
+    {
+      "id": "m07-01-q02",
+      "module": 7,
+      "conceptId": "m07-01-preparacio-dades",
+      "lessonRef": "content/module-07/m07-01-preparacio-dades.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina funció compleix un **contracte de dades (*Data Contract*)** situat a l'entrada d'un pipeline MLOps?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Contractar proveïdors de maquinari."
+        },
+        {
+          "key": "B",
+          "text": "Validar automàticament l'**esquema, tipus, rangs vàlids i taxa màxima de nuls** de les dades entrants, posant en quarantena lots corruptes abans que contaminin l'entrenament o la inferència."
+        },
+        {
+          "key": "C",
+          "text": "Eliminar les dades de la capa Bronze."
+        },
+        {
+          "key": "D",
+          "text": "Substituir els models de classificació."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Els Data Contracts (Pandera, Pydantic, Great Expectations) actuen com a porta de qualitat automatitzada contra el *Schema Drift* i les dades corruptes.",
+      "explanationsIncorrect": {
+        "A": "És una especificació tècnica executable de qualitat de dades, no un contracte mercantil.",
+        "C": "La capa Bronze es manté immutable.",
+        "D": "Protegeix les entrades del model, no el substitueix."
+      }
+    },
+    {
+      "id": "m07-02-q05",
+      "module": 7,
+      "conceptId": "m07-02-etiquetatge",
+      "lessonRef": "content/module-07/m07-02-etiquetatge.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Quin risc psicològic introdueix el ***Pre-labeling* assistit per IA** (on el model pre-omple l'etiqueta i l'humà la valida) i com es mitiga?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Fa que els anotadors humans rebutgin sempre totes les etiquetes correctes."
+        },
+        {
+          "key": "B",
+          "text": "El **biaix d'ancoratge / fatiga**: l'anotador tendeix a clicar «Acceptar» acríticament propagant els errors del model; es mitiga intercalant **exemples *honeypot* (trampa) amb veritat coneguda**, mostrant etiquetes només en alta confiança i auditant la Kappa."
+        },
+        {
+          "key": "C",
+          "text": "Elimina la possibilitat d'utilitzar *Label Studio*."
+        },
+        {
+          "key": "D",
+          "text": "Duplica el temps necessari per etiquetar cada document."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "El biaix d'ancoratge converteix ràpidament el *Pre-labeling* en un cercle viciós que reforça els errors del model antic si no es controla amb *honeypots* i auditories.",
+      "explanationsIncorrect": {
+        "A": "El biaix és el contrari: acceptar passivament el suggeriment de la màquina.",
+        "C": "Label Studio i Argilla suporten pre-labeling i control de qualitat.",
+        "D": "Precisament s'usa per reduir el temps d'anotació, però requereix controls de qualitat."
+      }
+    },
+    {
+      "id": "m07-08-q06",
+      "module": 7,
+      "conceptId": "m07-08-avaluacio-continua",
+      "lessonRef": "content/module-07/m07-08-avaluacio-continua.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Per què un model nou d'assistència a redacció d'informes que guanya **`+4%` en mètrica *offline*** pot acabar **sense millorar (o empitjorant)** el temps real de treball del funcionari en l'avaluació *online*?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Perquè les mètriques *offline* sempre són falses i no serveixen per a res."
+        },
+        {
+          "key": "B",
+          "text": "Perquè els funcionaris no saben llegir."
+        },
+        {
+          "key": "C",
+          "text": "Per la **bretxa *offline-online***: respostes més llargues o menys estructurades poden puntuar més alt en ROUGE/*LLM-Judge* però fer perdre més temps al tècnic verificant cites o editant format; només l'avaluació *online* mesura l'impacte real!"
+        },
+        {
+          "key": "D",
+          "text": "Perquè `4%` és sempre negatiu."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Les mètriques *offline* són proxies molt útils com a filtre inicial, però només l'observació *online* del procés real confirma si hi ha guany real en valor públic i productivitat!",
+      "explanationsIncorrect": {
+        "A": "L'avaluació offline és indispensable com a porta de qualitat ràpida, però incompleta sense l'online.",
+        "B": "Al contrari, el seu criteri expert revela friccions reals d'usabilitat i rigor.",
+        "D": "És una millora positiva offline que no es tradueix necessàriament en millora operativa."
+      }
+    },
+    {
+      "id": "m07-02-q07",
+      "module": 7,
+      "conceptId": "m07-02-etiquetatge",
+      "lessonRef": "content/module-07/m07-02-etiquetatge.md",
+      "difficulty": "intermediate",
+      "questionType": "metrics",
+      "prompt": "Quin coeficient d'acord inter-anotador has d'utilitzar en lloc de la Kappa de Cohen quan participen **4 anotadors diferents**, no tots etiqueten tots els ítems i l'escala és **ordinal (puntuació d'1 a 5)**?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "RMSE."
+        },
+        {
+          "key": "B",
+          "text": "BLEU."
+        },
+        {
+          "key": "C",
+          "text": "Distància de Levenshtein."
+        },
+        {
+          "key": "D",
+          "text": "**Alfa de Krippendorff (*Krippendorff's alpha*)**, que suporta qualsevol nombre d'anotadors, dades faltants i escales nominals, ordinals o d'interval."
+        }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "La Kappa de Cohen està limitada a exactament 2 anotadors sobre el mateix conjunt complet; Krippendorff's alpha és el coeficient generalitzat estàndard per a múltiples anotadors i escales ordinals.",
+      "explanationsIncorrect": {
+        "A": "RMSE és un error de regressió, no un coeficient d'acord inter-anotador.",
+        "B": "BLEU avalua traducció automàtica.",
+        "C": "Levenshtein mesura distància d'edició entre cadenes de text (CER/WER)."
+      }
+    },
+    {
+      "id": "m07-09-q07",
+      "module": 7,
+      "conceptId": "m07-09-actualitzacio-models",
+      "lessonRef": "content/module-07/m07-09-actualitzacio-models.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Quan sí que està justificat baixar al **Nivell 3 (Fine-tuning LoRA/QLoRA)** dins la jerarquia d'actualització LLMOps?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Cada vegada que canvia el telèfon d'una oficina municipal."
+        },
+        {
+          "key": "B",
+          "text": "Cada vegada que es publica una nova subvenció amb data límit."
+        },
+        {
+          "key": "C",
+          "text": "Per corregir una falta d'ortografia al *system prompt*."
+        },
+        {
+          "key": "D",
+          "text": "Quan es vol especialitzar un model *open-weights* petit *on-premise* en un **estil administratiu estable, format estructurat complex o terminologia jurídica específica** on el prompting i el RAG sols ja han arribat al seu sostre."
+        }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "RAG gestiona fets i normes canviants; LoRA/QLoRA adapta comportament, estil o eficiència d'un model local petit en tasques estables i repetitives!",
+      "explanationsIncorrect": {
+        "A": "Fet canviant → Nivell 1 (RAG SSOT).",
+        "B": "Convocatòria nova → Nivell 1 (RAG SSOT).",
+        "C": "Ajust de prompt → Nivell 2 (*Prompt-as-Code*)."
+      }
+    },
+    {
+      "id": "m07-04-q03",
+      "module": 7,
+      "conceptId": "m07-04-validacio-models",
+      "lessonRef": "content/module-07/m07-04-validacio-models.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Què compara el patró de validació ***Champion vs. Challenger***?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Dues targetes gràfiques de fabricants diferents."
+        },
+        {
+          "key": "B",
+          "text": "El nombre de línies de codi de dos repositoris."
+        },
+        {
+          "key": "C",
+          "text": "El **model o prompt actual en producció (*Champion*)** contra el **nou candidat proposat (*Challenger*)** sobre exactament el mateix *Golden Set* i restriccions SLA, promovent el candidat només si supera o iguala tots els criteris sense regressions."
+        },
+        {
+          "key": "D",
+          "text": "La velocitat de tecleig de dos funcionaris."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Comparar sobre el mateix *Golden Set* congelat garanteix que cada nova versió aporta una millora objectiva i verificada respecte de producció.",
+      "explanationsIncorrect": {
+        "A": "Avalua models/prompts/pipelines, no només maquinari.",
+        "B": "Mesura qualitat, equitat, seguretat i SLA, no línies de codi.",
+        "D": "No avalua velocitat de tecleig."
+      }
+    },
+    {
+      "id": "m07-01-q08",
+      "module": 7,
+      "conceptId": "m07-01-preparacio-dades",
+      "lessonRef": "content/module-07/m07-01-preparacio-dades.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En la classe `PreprocessorSenseLeakage` de l'exemple 7.1, què passaria si algú cridés **`prep.fit(dades)`** (sobre tot el conjunt) abans de separar `train` i `test`?",
+      "codeSnippet": "train = [r for r in dades if r.data < \"2025-01-01\"]\ntest = [r for r in dades if r.data >= \"2025-01-01\"]\nprep = PreprocessorSenseLeakage().fit(train)",
+      "options": [
+        {
+          "key": "A",
+          "text": "Es produiria ***Preprocessing + Temporal Leakage***: el valor extrem del futur (`900.0 €` de l'abril 2025) contaminaria `mediana_import`, `mitjana_import` i `std_import`, distorsionant la validació i trencant la independència del conjunt de prova."
+        },
+        {
+          "key": "B",
+          "text": "El codi llançaria un `SyntaxError`."
+        },
+        {
+          "key": "C",
+          "text": "Milloraria legítimament la capacitat real de producció."
+        },
+        {
+          "key": "D",
+          "text": "No alteraria ni la mitjana ni la desviació estàndard."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "L'estadística d'escalat i imputació s'ha d'aprendre exclusivament sobre `train` (`fit(train)`) i aplicar-se congelada sobre `test` i producció (`transform(...)`).",
+      "explanationsIncorrect": {
+        "B": "Executaria silenciosament sense error de sintaxi — per això el leakage és tan perillós!",
+        "C": "No millora producció; només enganya les mètriques de test fent servir informació futura no disponible en realitat.",
+        "D": "Incloure `900.0 €` altera dràsticament tant la mitjana com la desviació estàndard."
+      }
+    },
+    {
+      "id": "m07-10-q03",
+      "module": 7,
+      "conceptId": "m07-10-integracio-sistemes",
+      "lessonRef": "content/module-07/m07-10-integracio-sistemes.md",
+      "difficulty": "basic",
+      "questionType": "architecture",
+      "prompt": "Quin problema resol el patró ***Anti-Corruption Layer (ACL)*** quan una diputació integra un únic motor d'IA amb 80 ajuntaments que fan servir **4 gestors d'expedients diferents** (REST moderns i SOAP/XML *legacy*)?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Obliga a programar 4 motors d'IA completament diferents."
+        },
+        {
+          "key": "B",
+          "text": "Elimina la necessitat d'utilitzar un contracte canònic ENI/OpenAPI."
+        },
+        {
+          "key": "C",
+          "text": "**Aïlla el nucli net d'IA** (basat en un únic contracte canònic ENI/OpenAPI) mitjançant petits adaptadors de traducció per fabricant, evitant que les rareses *legacy* contaminin els serveis d'IA!"
+        },
+        {
+          "key": "D",
+          "text": "Detecta casos de corrupció econòmica en contractes públics."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "En arquitectura de programari (DDD), l'Anti-Corruption Layer evita que models de dades antics o propietaris d'un sistema extern «corrompin» l'arquitectura neta del servei propi.",
+      "explanationsIncorrect": {
+        "A": "Precisament permet mantenir un únic nucli d'IA compartit.",
+        "B": "Al contrari, es recolza en un contracte canònic net al nucli.",
+        "D": "Malgrat el nom, és un patró clàssic d'arquitectura d'integració (Domain-Driven Design)."
+      }
+    },
+    {
+      "id": "m07-01-q07",
+      "module": 7,
+      "conceptId": "m07-01-preparacio-dades",
+      "lessonRef": "content/module-07/m07-01-preparacio-dades.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "En **LLMOps**, per què la **deduplicació aproximada (*MinHash / SimHash*)** i el ***PII Scrubbing*** són passos crítics de la preparació de dades abans de fer *fine-tuning* o indexar un RAG?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Només per fer el fitxer JSON més bonic."
+        },
+        {
+          "key": "B",
+          "text": "Per augmentar el nombre de còpies duplicades de cada document."
+        },
+        {
+          "key": "C",
+          "text": "Perquè els LLMs no poden llegir text sense duplicats."
+        },
+        {
+          "key": "D",
+          "text": "Per evitar que documents quasi duplicats saturin el Top-K del RAG o causin memorització en *fine-tuning*, i per impedir que el model **memoritzi o filtri dades personals (RGPD)**!"
+        }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Els duplicats degraden la diversitat del RAG i disparen la memorització verbatim en fine-tuning; i un cop entrenat un LLM amb PII, esborrar-la dels pesos és pràcticament impossible sense reentrenar!",
+      "explanationsIncorrect": {
+        "A": "Són requisits fonamentals de qualitat i protecció de dades.",
+        "B": "Precisament redueix i elimina els duplicats.",
+        "C": "Llegeixen millor i recuperen context més ric quan el corpus és net i deduplicat."
+      }
+    },
+    {
+      "id": "m07-05-q08",
+      "module": 7,
+      "conceptId": "m07-05-desplegament",
+      "lessonRef": "content/module-07/m07-05-desplegament.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En la classe `CanaryRouter` de l'exemple 7.5, què dispara exactament el **`ROLLBACK_AUTOMATIC_A_V1!`** a la petició `#03` i què passa amb les peticions `#04` a `#24`?",
+      "codeSnippet": "if error or latencia_ms > self.max_lat_ms:\n    self.errors_canary += 1\nif self.peticions_canary >= 4 and (self.errors_canary / self.peticions_canary) > self.max_taxa_error:\n    self.rollback_activat = True\n    self.percentatge_canary = 0",
+      "options": [
+        {
+          "key": "A",
+          "text": "2 de les 4 primeres peticions *Canary* superen l'SLA de latència (`780 ms > 500 ms`, taxa `50% > 10%`); el router posa **`percentatge_canary = 0`** i **`rollback_activat = True`**, redirigint automàticament el **100% de `#04..#24` cap a `v1_champion`**!"
+        },
+        {
+          "key": "B",
+          "text": "El router es bloqueja i deixa de respondre a totes les peticions `#04..#24`."
+        },
+        {
+          "key": "C",
+          "text": "El router augmenta el *Canary* del 20% al 100%."
+        },
+        {
+          "key": "D",
+          "text": "El *rollback* no es dispara perquè `error` era `False`."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "El circuit breaker de Canary vigila tant errors explícits com violacions d'SLA de latència (`latencia_ms > 500 ms`), protegint el servei automàticament sense esperar intervenció humana!",
+      "explanationsIncorrect": {
+        "B": "No deixa de respondre: torna a servir el 100% amb la versió estable `v1_champion`.",
+        "C": "El baixa immediatament a `0%`.",
+        "D": "La condició és `if error or latencia_ms > self.max_lat_ms:` — una violació d'SLA compta com a fallada!"
+      }
+    },
+    {
+      "id": "m07-09-q02",
+      "module": 7,
+      "conceptId": "m07-09-actualitzacio-models",
+      "lessonRef": "content/module-07/m07-09-actualitzacio-models.md",
+      "difficulty": "basic",
+      "questionType": "architecture",
+      "prompt": "Quan un ajuntament aprova una **nova convocatòria de subvencions o modifica una ordenança fiscal**, quin nivell de la **jerarquia d'actualització LLMOps** s'ha d'aplicar?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Reentrenar un LLM des de zero durant 3 setmanes."
+        },
+        {
+          "key": "B",
+          "text": "**Nivell 1 — Actualització incremental de la base de coneixement RAG (SSOT)** (en minuts, cost quasi zero, vigència controlada `valid_from/valid_until` i zero risc de *catastrophic forgetting*!)."
+        },
+        {
+          "key": "C",
+          "text": "Fer *fine-tuning* setmanal dels pesos de l'LLM."
+        },
+        {
+          "key": "D",
+          "text": "Canviar el sistema operatiu del servidor."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "El coneixement normatiu canviant es gestiona sempre a la capa RAG SSOT, mai gravant-lo als pesos de l'LLM via *fine-tuning* freqüent!",
+      "explanationsIncorrect": {
+        "A": "Totalment inviable i absurdament costós.",
+        "C": "El *fine-tuning* és car, lent i no permet esborrar fàcilment normes derogades dels pesos.",
+        "D": "Irrellevant per actualitzar coneixement normatiu."
+      }
+    },
+    {
+      "id": "m07-01-q09",
+      "module": 7,
+      "conceptId": "m07-01-preparacio-dades",
+      "lessonRef": "content/module-07/m07-01-preparacio-dades.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Per què les eines de **versionat de dades (com DVC o LakeFS amb hashes SHA-256)** no guarden els datasets gegants directament dins de Git?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Perquè Git no té suport per a hashes."
+        },
+        {
+          "key": "B",
+          "text": "Perquè Git no està dissenyat per a fitxers binaris grans (inflaria el repositori); DVC guarda a Git només un **fitxer punter lleuger amb el hash SHA-256** i emmagatzema les dades reals en un **emmagatzematge d'objectes segur (S3/MinIO/on-prem)**, vinculant exactament codi + dades!"
+        },
+        {
+          "key": "C",
+          "text": "Perquè no cal vincular mai el codi amb les dades d'entrenament."
+        },
+        {
+          "key": "D",
+          "text": "Perquè DVC publica automàticament les dades en obert a GitHub."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Guardar punters versionats amb hash a Git + dades reals en emmagatzematge d'objectes privat combina reproduïbilitat exacta (`git checkout` + `dvc pull`) amb seguretat i escalabilitat!",
+      "explanationsIncorrect": {
+        "A": "Git utilitza hashes SHA internament, però no escala amb binaris de GB/TB.",
+        "C": "Vincular exactament commit de codi + versió exacta del dataset és la base de la reproduïbilitat MLOps i l'auditoria.",
+        "D": "Les dades reals es guarden al bucket privat corporatiu (S3/MinIO on-premise), mai públiques."
+      }
+    },
+    {
+      "id": "m07-02-q04",
+      "module": 7,
+      "conceptId": "m07-02-etiquetatge",
+      "lessonRef": "content/module-07/m07-02-etiquetatge.md",
+      "difficulty": "intermediate",
+      "questionType": "metrics",
+      "prompt": "En un dataset de detecció d'irregularitats on només el **4%** dels casos són positius, dos anotadors coincideixen en el **92%** dels casos, però tenen **`Kappa = -0,04`**. Què explica aquesta aparent paradoxa?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "El **92%** s'explica gairebé tot per l'**acord atzarós sobre la classe majoritària (`NORMAL`, 96%)**, mentre que els dos anotadors **no coincideixen sobre quins casos són realment irregulars**; la guia d'anotació necessita refinament immediat."
+        },
+        {
+          "key": "B",
+          "text": "Hi ha un error en la fórmula de Kappa perquè 92% sempre és excel·lent."
+        },
+        {
+          "key": "C",
+          "text": "Significa que el 92% de les irregularitats s'han detectat perfectament."
+        },
+        {
+          "key": "D",
+          "text": "Significa que no cal cap guia d'anotació."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "En classes molt desequilibrades, el percentatge d'acord simple queda dominat per la classe majoritària; Kappa desemmascara immediatament la manca d'acord sobre la classe minoritària crítica!",
+      "explanationsIncorrect": {
+        "B": "La fórmula funciona perfectament: és precisament per això que existeix Kappa!",
+        "C": "Al contrari, quasi no han coincidit en els casos positius.",
+        "D": "Indica una necessitat urgent de reescriure la guia i calibrar l'equip."
+      }
+    },
+    {
+      "id": "m07-03-q03",
+      "module": 7,
+      "conceptId": "m07-03-entrenament",
+      "lessonRef": "content/module-07/m07-03-entrenament.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Com evita l'***Early Stopping*** amb *checkpointing* el sobreajustament (*overfitting*) durant l'entrenament iteratiu d'una xarxa neuronal?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Aturant l'entrenament sempre a l'època 1."
+        },
+        {
+          "key": "B",
+          "text": "Augmentant la taxa d'aprenentatge fins a l'infinit."
+        },
+        {
+          "key": "C",
+          "text": "Monitorant la mètrica de validació a cada època, aturant el procés quan deixa de millorar durant `patience` èpoques consecutives i **restaurant el *best checkpoint*** (no l'última època)."
+        },
+        {
+          "key": "D",
+          "text": "Eliminant el conjunt de validació."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Aturar aviat i conservar el *best checkpoint* evita memoritzar el conjunt d'entrenament i estalvia temps i energia de GPU.",
+      "explanationsIncorrect": {
+        "A": "Aturar a l'època 1 causaria infraajustament (*underfitting*).",
+        "B": "Faria divergir el gradient.",
+        "D": "Requereix precisament monitorar el conjunt de validació."
+      }
+    },
+    {
+      "id": "m07-09-q09",
+      "module": 7,
+      "conceptId": "m07-09-actualitzacio-models",
+      "lessonRef": "content/module-07/m07-09-actualitzacio-models.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "En un reentrenament periòdic CT d'un model d'inspecció tributària que porta 4 anys en producció, per què sol ser millor usar una **finestra lliscant (*Sliding Window*) o ponderació temporal (*Exponential Decay*)** en lloc d'acumular indefinidament dades de fa 10 anys amb igual pes?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Perquè les dades antigues no caben en cap disc dur modern."
+        },
+        {
+          "key": "B",
+          "text": "Perquè en entorns on les lleis i l'economia canvien, donar el mateix pes a dades obsoletes de fa 10 anys **dilueix els patrons recents i retarda l'adaptació al *Concept Drift***; una finestra lliscant o decaïment exponencial prioritza les dades vigents mantenint prou volum."
+        },
+        {
+          "key": "C",
+          "text": "Per esborrar l'arxiu històric de la capa Bronze."
+        },
+        {
+          "key": "D",
+          "text": "Perquè *scikit-learn* no accepta més de 1.000 files."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Equilibrar volum històric i rellevància temporal (ponderant més els exercicis recents o usant una finestra de 2–3 anys) manté el model alineat amb la normativa i la realitat econòmica actual.",
+      "explanationsIncorrect": {
+        "A": "És una qüestió estadística de vigència dels patrons, no d'espai de disc.",
+        "C": "Bronze històric es conserva per auditoria; només s'ajusta la finestra/pesos d'entrenament.",
+        "D": "Admet milions de files perfectament."
+      }
+    },
+    {
+      "id": "m07-08-q01",
+      "module": 7,
+      "conceptId": "m07-08-avaluacio-continua",
+      "lessonRef": "content/module-07/m07-08-avaluacio-continua.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Què són les ***Guardrail Metrics*** (mètriques salvaguarda) en un experiment *online* d'un sistema d'IA públic?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "**Línies vermelles bloquejants** (equitat lingüística/territorial, `0` fuites PII, cites errònies `< 1%`, latència P95, cost) que **rebutgen automàticament una nova versió** si es violen, encara que hagi millorat la mètrica principal."
+        },
+        {
+          "key": "B",
+          "text": "Mètriques decoratives que mai no influeixen en cap decisió."
+        },
+        {
+          "key": "C",
+          "text": "Només el nombre de clics al peu de pàgina."
+        },
+        {
+          "key": "D",
+          "text": "Un sinònim de *Data Drift*."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Les Guardrail Metrics protegeixen contra efectes secundaris greus (com augmentar clics a costa de més al·lucinacions o pitjor rendiment en català).",
+      "explanationsIncorrect": {
+        "B": "Són criteris vinculants de bloqueig/rebutig.",
+        "C": "Cobreixen seguretat, fidelitat, equitat i SLA.",
+        "D": "Són criteris de decisió en avaluació contínua, no només drift."
+      }
+    },
+    {
+      "id": "m07-02-q06",
+      "module": 7,
+      "conceptId": "m07-02-etiquetatge",
+      "lessonRef": "content/module-07/m07-02-etiquetatge.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Per què **MAI** no s'ha de construir el ***Golden Test Set*** d'avaluació final mitjançant ***Weak Supervision*** (regles heurístiques) o etiquetatge automàtic d'un LLM sense doble validació humana?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Perquè els LLMs no saben escriure fitxers JSON."
+        },
+        {
+          "key": "B",
+          "text": "Perquè el *Golden Test Set* ha de ser molt més gran que `train`."
+        },
+        {
+          "key": "C",
+          "text": "Perquè el *Golden Test Set* és la **mesura de veritat real** del projecte: si té etiquetes sorolloses o d'un altre model, les mètriques només mesuraran quant s'assembla el teu model als **errors de les regles o de l'LLM**, donant una falsa sensació de qualitat."
+        },
+        {
+          "key": "D",
+          "text": "Perquè `Weak Supervision` només serveix per a imatges."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Pots usar *Weak Supervision* o *Pre-labeling* per escalar `train` amb prudència, però el *Golden Test Set* ha de ser 100% veritat experta humana (doble anotació + adjudicació)!",
+      "explanationsIncorrect": {
+        "A": "El problema no és de format, sinó de validesa científica de l'avaluació.",
+        "B": "El Golden Test Set sol ser més petit (ex. 200–1.000 casos) però de màxima qualitat.",
+        "D": "S'usa molt en NLP i dades tabulars."
+      }
+    },
+    {
+      "id": "m07-10-q01",
+      "module": 7,
+      "conceptId": "m07-10-integracio-sistemes",
+      "lessonRef": "content/module-07/m07-10-integracio-sistemes.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina és la funció principal del patró ***Circuit Breaker*** en integrar un servei d'IA amb el Registre General d'un ajuntament?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "**Tallar ràpidament (*fail-fast*)** les crides cap a un servei d'IA caigut o saturat (estat `OPEN`) i retornar un ***fallback* degradat segur** (ex. cua manual) perquè el Registre General continuï operant 24/7 sense caigudes en cascada!"
+        },
+        {
+          "key": "B",
+          "text": "Apagar també el Registre General sempre que falla la GPU."
+        },
+        {
+          "key": "C",
+          "text": "Accelerar l'entrenament de xarxes neuronals."
+        },
+        {
+          "key": "D",
+          "text": "Substituir l'autenticació OAuth2."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "El Circuit Breaker aïlla les fallades del servei d'IA i evita que centenars de peticions del Registre es quedin bloquejades esperant timeouts.",
+      "explanationsIncorrect": {
+        "B": "Exactament el contrari: protegeix el Registre perquè NO caigui!",
+        "C": "És un patró de resiliència d'integració en producció.",
+        "D": "No substitueix la seguretat d'autenticació."
+      }
+    },
+    {
+      "id": "m07-07-q02",
+      "module": 7,
+      "conceptId": "m07-07-versionat",
+      "lessonRef": "content/module-07/m07-07-versionat.md",
+      "difficulty": "basic",
+      "questionType": "architecture",
+      "prompt": "Per què en desplegaments segurs (ENS / MLOps) es prohibeix desplegar imatges Docker amb l'etiqueta **`:latest`**?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Perquè Docker no reconeix la paraula `latest`."
+        },
+        {
+          "key": "B",
+          "text": "Perquè **`:latest` és mutable**: pot canviar silenciosament entre reinicis de nodes, trencar la reproduïbilitat i el *rollback*, i obrir vectors d'atac de cadena de subministrament; cal fixar sempre el **digest criptogràfic `@sha256:...`**!"
+        },
+        {
+          "key": "C",
+          "text": "Perquè `:latest` només funciona en Windows."
+        },
+        {
+          "key": "D",
+          "text": "Perquè fa les imatges 10 vegades més grans."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Fixar imatges pel seu digest `@sha256` garanteix que cada contenidor arrencat executa bit-a-bit exactament la versió auditada i validada.",
+      "explanationsIncorrect": {
+        "A": "Docker sí que l'admet per defecte, però és un antipatró greu en producció.",
+        "C": "És independent del sistema operatiu.",
+        "D": "No afecta la mida de la imatge, sinó la seva immutabilitat i seguretat."
+      }
+    },
+    {
+      "id": "m07-06-q08",
+      "module": 7,
+      "conceptId": "m07-06-monitoratge",
+      "lessonRef": "content/module-07/m07-06-monitoratge.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En `calcular_psi` de l'exemple 7.6, per què s'aplica `e_c, a_c = max(e, eps), max(a, eps)` amb `eps = 1e-6` abans de calcular `math.log(a_c / e_c)`?",
+      "codeSnippet": "for e, a in zip(esperat, actual):\n    e_c, a_c = max(e, eps), max(a, eps)\n    psi += (a_c - e_c) * math.log(a_c / e_c)",
+      "options": [
+        {
+          "key": "A",
+          "text": "Per evitar **`ZeroDivisionError` i `math.log(0)` (`ValueError`)** quan una franja (*bin*) té proporció `0.0` a l'entrenament o en producció (estabilitat numèrica estàndard en el càlcul del PSI)."
+        },
+        {
+          "key": "B",
+          "text": "Per forçar que el PSI surti sempre menor que `0,10`."
+        },
+        {
+          "key": "C",
+          "text": "Per convertir el PSI en una latència en mil·lisegons."
+        },
+        {
+          "key": "D",
+          "text": "Per eliminar les franges amb més del 50% de dades."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "El logaritme de zero o la divisió per zero farien petar el monitor de drift just quan apareix un valor en una franja nova; el suavitzat `eps` evita errors numèrics.",
+      "explanationsIncorrect": {
+        "B": "Al contrari, quan una franja passa de `0` (`1e-6`) a un valor real, `log(a/e)` produeix una contribució alta que alerta del drift!",
+        "C": "El PSI és adimensional.",
+        "D": "`max(e, 1e-6)` deixa intactes tots els valors superiors a `1e-6`."
+      }
+    },
+    {
+      "id": "m07-08-q05",
+      "module": 7,
+      "conceptId": "m07-08-avaluacio-continua",
+      "lessonRef": "content/module-07/m07-08-avaluacio-continua.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Quin **límit ètic i jurídic irrenunciable** aplica a l'***Online A/B Testing*** dins d'una administració pública?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Està prohibit fer qualsevol prova de millora de la interfície web."
+        },
+        {
+          "key": "B",
+          "text": "Es pot fer A/B sobre qualitat d'assistència, UX o velocitat d'enrutament entre versions equivalents, però **MAI** aplicar **requisits legals, puntuacions de barem o drets diferents** a ciutadans en idèntica situació (principi constitucional d'igualtat!)."
+        },
+        {
+          "key": "C",
+          "text": "Es pot denegar una subvenció al 50% de les famílies a l'atzar per provar el sistema."
+        },
+        {
+          "key": "D",
+          "text": "No hi ha cap límit ètic en A/B Testing públic."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "L'experimentació pública ha de respectar rigorosament la igualtat davant la llei i no perjudicar mai drets ni accés a prestacions d'un grup de control.",
+      "explanationsIncorrect": {
+        "A": "Provar millores d'usabilitat, claredat o precisió d'un cercador/assistent sí que és plenament legítim.",
+        "C": "Seria completament il·legal i inconstitucional.",
+        "D": "L'Administració està sotmesa al principi de legalitat i igualtat."
+      }
+    },
+    {
+      "id": "m07-05-q04",
+      "module": 7,
+      "conceptId": "m07-05-desplegament",
+      "lessonRef": "content/module-07/m07-05-desplegament.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Per què en una API FastAPI que serveix un model pesat (ex. 4 GB a GPU) és crític distingir l'endpoint **`/health/live`** de **`/health/ready`**?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "`/health/live` comprova si el procés està viu, mentre que **`/health/ready` només retorna `200 OK` un cop el model s'ha carregat completament a RAM/VRAM**, impedint que el *Load Balancer* enviï peticions reals durant els 30–60 segons d'arrencada!"
+        },
+        {
+          "key": "B",
+          "text": "Són exactament idèntics i només canvia el nom."
+        },
+        {
+          "key": "C",
+          "text": "`/health/ready` serveix per reentrenar el model cada vegada que es crida."
+        },
+        {
+          "key": "D",
+          "text": "`/health/live` apaga el contenidor cada 5 segons."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Separar Liveness de Readiness evita tant errors 500 durant l'arrencada lenta d'un model gran com reinicis infinits del contenidor per part de Kubernetes!",
+      "explanationsIncorrect": {
+        "B": "Tenen semàntiques molt diferents per a l'orquestrador (reiniciar vs. treure/posar al balancejador).",
+        "C": "Les sondes de salut han de ser lleugeres i de només lectura.",
+        "D": "Liveness comprova salut del procés, no l'apaga si funciona bé."
+      }
+    },
+    {
+      "id": "m07-06-q01",
+      "module": 7,
+      "conceptId": "m07-06-monitoratge",
+      "lessonRef": "content/module-07/m07-06-monitoratge.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Què és una **fallada silenciosa (*Silent Failure*)** en un sistema d'IA en producció?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "La situació en què l'API continua retornant **`HTTP 200 OK` sense errors tècnics**, però la **qualitat real de les prediccions o respostes s'ha degradat severament** (per *drift*, dades canviades o normes obsoletes)."
+        },
+        {
+          "key": "B",
+          "text": "Que el ventilador del servidor fa poc soroll."
+        },
+        {
+          "key": "C",
+          "text": "Un error `HTTP 500` que atura tota la web."
+        },
+        {
+          "key": "D",
+          "text": "Apagar els altaveus del despatx."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "El monitoratge clàssic d'infraestructura (CPU/HTTP 200) és cec a la degradació estadística i semàntica dels models d'IA; cal observabilitat de dades, drift i qualitat.",
+      "explanationsIncorrect": {
+        "B": "No és un fenomen acústic.",
+        "C": "Un HTTP 500 és una fallada sorollosa i immediatament visible.",
+        "D": "Sense relació amb MLOps."
+      }
+    },
+    {
+      "id": "m07-10-q10",
+      "module": 7,
+      "conceptId": "m07-10-integracio-sistemes",
+      "lessonRef": "content/module-07/m07-10-integracio-sistemes.md",
+      "difficulty": "advanced",
+      "questionType": "normative",
+      "prompt": "Com aplica el principi de **Zero Trust i seguretat d'integració ENS** quan diversos sistemes interns municipals consumeixen una API d'IA corporativa a través de l'**API Gateway**?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Deixar l'API d'IA completament oberta sense autenticació perquè «està a la xarxa interna»."
+        },
+        {
+          "key": "B",
+          "text": "Compartir una única clau API en text pla entre tots els 80 ajuntaments."
+        },
+        {
+          "key": "C",
+          "text": "Autenticació forta per servei (**OAuth2 *Client Credentials* o mTLS** amb secrets/certificats en Vault), autorització granular per **`tenant_id` i *scope***, *rate limiting*, xifratge TLS extrem a extrem i enviament de logs d'accés al SIEM."
+        },
+        {
+          "key": "D",
+          "text": "Desactivar TLS dins la xarxa corporativa."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Zero Trust assumeix que la xarxa interna no és suficient per si sola: cada microservei i cada municipi s'autentica, s'autoritza amb mínim privilegi, xifra el trànsit i deixa traça al SIEM (ENS).",
+      "explanationsIncorrect": {
+        "A": "Viola Zero Trust i l'ENS (moviment lateral fàcil davant qualsevol compromís intern).",
+        "B": "Una clau compartida destrueix l'aïllament multi-tenant i la traçabilitat per ajuntament.",
+        "D": "L'ENS exigeix protecció de comunicacions en trànsit (TLS/mTLS)."
+      }
+    }
+  ]
+}

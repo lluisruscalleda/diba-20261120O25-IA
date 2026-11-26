@@ -46,10 +46,10 @@ Cada concepte es completa íntegrament (apartats A–J + mínim 10 preguntes tes
 - [x] **Lab 8**: Seguretat i governança (anàlisi de riscos, AI Act/RGPD/ENS, biaixos, Model Card, proves defensives locals de prompt injection).
 
 ## Fase 5. Banc d'exàmens i simulacres
-- [ ] 8 exàmens acumulatius de mòdul (40 preguntes cadascun = 320 preguntes).
-- [ ] 10 simulacres globals de tot el temari (50 preguntes cadascun = 500 preguntes).
-- [ ] 20 supòsits pràctics independents (programació, arquitectura, diagnòstic i decisió tècnica).
-- [ ] 5 simulacres teoricopràctics complets amb rúbrica i ponderació configurable.
+- [x] 8 exàmens acumulatius de mòdul (40 preguntes cadascun = 320 preguntes).
+- [x] 10 simulacres globals de tot el temari (50 preguntes cadascun = 500 preguntes).
+- [x] 20 supòsits pràctics independents (programació, arquitectura, diagnòstic i decisió tècnica).
+- [x] 5 simulacres teoricopràctics complets amb rúbrica i ponderació configurable.
 
 ## Fase 6. Projecte pràctic final integrador
 - [ ] **Sistema intel·ligent de gestió d'expedients administratius** (integració dels 8 mòduls, flux complet de 13 passos, suport a la tramitació sense decisió administrativa autònoma).

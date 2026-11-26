@@ -1,0 +1,24 @@
+{
+  "id": "case-05",
+  "title": "Supòsit 05 — Assistent virtual 010 multicanal amb autenticació, RBAC i escalada humana",
+  "modules": [5, 8],
+  "difficulty": "intermediate",
+  "estimatedMinutes": 45,
+  "context": "Un consorci municipal vol implantar un assistent virtual 24/7 a la Seu Electrònica i per WhatsApp/web per atendre tant consultes públiques (horaris, impostos, tràmits) com consultes privades d'estat d'expedients. L'equip de seguretat adverteix sobre riscos de fuga de dades entre sessions, prompt injection i desatenció de casos vulnerables.",
+  "statement": "Dissenya l'arquitectura funcional, conversacional i de compliment normatiu de l'assistent virtual 010.",
+  "requirements": [
+    "Dissenyar la gestió de context multitorn aïllada per sessió i la separació estricta entre zona pública anònima i zona autenticada (idCAT Mòbil / Cl@ve).",
+    "Definir les regles d'escalada humana (human handoff) amb transferència de resum i els requisits de transparència de l'art. 50 AI Act.",
+    "Establir proteccions contra prompt injection, redacció de PII en logs i mètriques de qualitat conversacional."
+  ],
+  "rubric": [
+    { "criterion": "Separació zona pública/autenticada i aïllament de sessions (RGPD)", "maxPoints": 30, "description": "Exigeix autenticació robusta (idCAT Mòbil/Cl@ve) per dades d'expedient, zero memòria compartida i filtre RBAC." },
+    { "criterion": "Escalada humana intel·ligent i transparència art. 50 AI Act", "maxPoints": 25, "description": "Avís explícit inicial d'IA, escalada per petició, 2 fallades o emergència social amb paquet de context." },
+    { "criterion": "Seguretat conversacional i privacitat en logs", "maxPoints": 25, "description": "Guardrails contra prompt injection, DLP/redacció de DNI i telèfons abans de persistir logs i TTL limitat." },
+    { "criterion": "Mètriques d'avaluació (contenció real, CSAT, FCR)", "maxPoints": 20, "description": "Evita optimitzar contenció forçada dificultant l'accés a humans; mesura FCR, fidelitat i satisfacció." }
+  ],
+  "modelSolution": "### 1. Arquitectura de dues zones i gestió de context\n- **Zona pública anònima**: atén preguntes sobre tràmits i ordenances mitjançant RAG ancorat en fonts oficials vigents. **Prohibit** consultar cap dada personal o expedient.\n- **Zona autenticada**: qualsevol intenció d'estat d'expedient redirigeix a autenticació oficial (**idCAT Mòbil / Cl@ve / certificat**) amb token OIDC de vida curta i consulta API filtrada estrictament per `usuari_id == token.sub`.\n- **Memòria de sessió aïllada**: emmagatzemada per `session_id` efímer (TTL 30 minuts) amb neteja automàtica; prohibida qualsevol cache compartida de respostes privades!\n\n### 2. Transparència (art. 50 AI Act) i escalada humana (*Human Handoff*)\n- **Primer missatge obligatori (art. 50.1 AI Act)**: informa explícitament que és un assistent d'IA, que les respostes són orientatives i ofereix accés directe a atenció humana.\n- **Disparadors d'escalada**: (1) petició explícita del ciutadà, (2) 2 fallades consecutives o baixa confiança, (3) detecció d'emergència o vulnerabilitat (desnonament, violència masclista, crisi social). Es transfereix un **resum estructurat** a l'agent 010 perquè el ciutadà no hagi de repetir-ho tot!\n\n### 3. Seguretat, logs sense PII i mètriques\n- **Guardrails d'entrada/sortida** contra *prompt injection* i fora de domini + **redacció automàtica de PII** (DNI, correus, telèfons) abans d'escriure als logs d'analítica.\n- **KPIs equilibrats**: *First Contact Resolution (FCR)* real, fidelitat de cites >= 95%, satisfacció ciutadana (CSAT) i taxa d'escalada correcta (evitant l'antipatró de «contenció forçada» amagant el telèfon humà!).",
+  "alternativeApproaches": [
+    "En canals externs com WhatsApp, limitar l'assistent exclusivament a informació pública general i derivar sempre qualsevol tràmit amb PII a la Seu Electrònica autenticada (per evitar transferències internacionals de dades personals!)."
+  ]
+}

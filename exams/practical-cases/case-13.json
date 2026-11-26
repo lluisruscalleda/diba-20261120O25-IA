@@ -1,0 +1,24 @@
+{
+  "id": "case-13",
+  "title": "Supòsit 13 — Anonimització automatitzada d'actes, decrets i resolucions per a publicitat activa",
+  "modules": [2, 4, 8],
+  "difficulty": "advanced",
+  "estimatedMinutes": 50,
+  "context": "Un ajuntament ha de publicar centenars de decrets d'alcaldia, resolucions de subvencions i actes de juntes de govern al portal de transparència (Llei 19/2014 de Catalunya i LOPDGDD DA 7a), dissociant o anonimitzant dades personals i especialment dades de menors o vulnerabilitat social.",
+  "statement": "Dissenya un sistema d'anonimització documental híbrida (regles + NER contextual) amb mètrica prioritària Recall, gestió de quasi-identificadors i validació humana final.",
+  "requirements": [
+    "Justificar per què el Recall de PII és molt més crític que la Precision (cost asimètric d'una fuga pública al portal!) i com dissenyar un detector híbrid (regex + NER + diccionaris).",
+    "Distribuir el tractament de la Disposició Addicional 7a de la LOPDGDD (format parcial de DNI: 4 xifres centrals) vs. supressió íntegra en categories especials o menors.",
+    "Explicar el risc de reidentificació per quasi-identificadors (ex. «l'única família nombrosa del carrer X») i la verificació humana obligatòria abans de publicar."
+  ],
+  "rubric": [
+    { "criterion": "Detector híbrid i optimització de Recall >= 99% (cost asimètric)", "maxPoints": 30, "description": "Combina regex deterministes (DNI, IBAN, telèfons) + NER català (noms propis, adreces) ajustat per minimitzar Falsos Negatius." },
+    { "criterion": "Rigor normatiu: RGPD + LOPDGDD DA 7a + Llei 19/2014 transparència", "maxPoints": 30, "description": "Coneix l'equilibri transparència/privacitat, format parcial DA 7a LOPDGDD i supressió total en dades art. 9/menors." },
+    { "criterion": "Tractament de quasi-identificadors i redacció real del PDF", "maxPoints": 20, "description": "Adverteix que pintar un rectangle negre sobre un PDF NO elimina la capa de text subjacent! Cal purgar el text i les metadades." },
+    { "criterion": "Revisió humana obligatòria (HITL) pre-publicació", "maxPoints": 20, "description": "Mai publicar automàticament sense vistiplau humà del secretari/tècnic responsable." }
+  ],
+  "modelSolution": "### 1. Arquitectura híbrida centrada en el *Recall* de PII\n- **Cost asimètric extrem**: deixar passar un sol DNI o diagnòstic mèdic al portal públic (Fals Negatiu) és una **bretxa de seguretat notificable en 72 h a l'APDCAT**, mentre que marcar una paraula de més (Fals Positiu) es desmarca en 1 clic! Per tant, cal maximitzar **`Recall >= 0,99` (F2-score)**.\n- **Pipeline en 2 capes**: (1) **Regex deterministes** (DNI/NIE, IBAN, telèfons, correus, matrícules) + (2) **Model NER entrenat en català/castellà** (noms de persones físiques, adreces postals, referències cadastrals, mencions de salut/menors).\n\n### 2. Rigor jurídic i detall tècnic crític del PDF\n- **Equilibri transparència vs. RGPD**: aplicar la **DA 7a de la LOPDGDD** quan la llei exigeixi identificar interessats en anuncis/resolucions (nom i cognoms + 4 xifres centrals del DNI, posicions 4a a 7a), i **supressió íntegra** en dades de menors, violència o categories especials (art. 9 RGPD).\n- **Error tècnic clàssic fatal**: col·locar un quadre negre visual damunt d'un PDF **NO esborra el text seleccionable ni les metadades**! El motor ha de **destruir realment la capa textual/vectorial subjacent** i purgar metadades EXIF/XMP abans d'exportar.\n\n### 3. Quasi-identificadors i revisió humana final\n- El sistema senyalitza possibles **quasi-identificadors** (combinacions rares de municipi petit + professió + data), i cap document no es publica sense **revisió i signatura humana (HITL)** prèvia.",
+  "alternativeApproaches": [
+    "Aplicar anonimització des de l'origen (*Privacy by Design*): redactar les resolucions separant en un annex reservat les dades identificatives dels interessats perquè el cos principal ja neixi publicable."
+  ]
+}

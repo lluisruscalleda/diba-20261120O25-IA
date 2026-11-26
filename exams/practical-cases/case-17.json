@@ -1,0 +1,24 @@
+{
+  "id": "case-17",
+  "title": "Supòsit 17 — Redisseny anti-rubber-stamping en un sistema HITL d'expedients sancionadors o d'ajuts",
+  "modules": [6, 8],
+  "difficulty": "intermediate",
+  "estimatedMinutes": 40,
+  "context": "Una auditoria interna revela que els 12 gestors que revisen les recomanacions d'un sistema d'IA de priorització i proposta de resolució de beques aproven el 99,6% dels suggeriments del model en una mitjana de 1,8 segons per expedient fent servir un botó «Acceptar lot».",
+  "statement": "Analitza per què aquesta operativa incompleix l'art. 22 RGPD i l'art. 14 AI Act, i dissenya un paquet complet de mesures tècniques, d'interfície UX i organitzatives per garantir supervisió humana significativa.",
+  "requirements": [
+    "Explicar el fenomen del biaix d'automatització i per què el rubber-stamping fa que la decisió continuï essent jurídicament «únicament automatitzada» (art. 22 RGPD).",
+    "Vincular cada mesura de redisseny amb les 5 capacitats de l'art. 14.4 AI Act i l'obligació de competència/formació/autoritat del deployer (art. 26.2 AI Act).",
+    "Definir mètriques operatives de control de qualitat de la supervisió humana (temps mínim, taxa d'override, quatre ulls i motivació art. 35 LPACAP)."
+  ],
+  "rubric": [
+    { "criterion": "Anàlisi jurídica rigorosa (art. 22 RGPD + art. 14 i 26.2 AI Act)", "maxPoints": 35, "description": "Demostra que el clic exprés en 1,8s no és intervenció humana significativa i cita els 5 punts de l'art. 14.4." },
+    { "criterion": "Patrons UX anti-biaix d'automatització (Cognitive Forcing Functions)", "maxPoints": 30, "description": "Elimina «Acceptar lot», mostra evidències i incertesa abans del veredicte i exigeix motivació en denegacions/overrides." },
+    { "criterion": "Mesures organitzatives (temps, formació art. 4, autoritat d'override i botó d'aturada)", "maxPoints": 20, "description": "Ajusta càrrega de treball, forma sobre biaix d'automatització i no penalitza discrepar del model." },
+    { "criterion": "Auditoria contínua de la qualitat de supervisió", "maxPoints": 15, "description": "Monitora temps de revisió, taxa d'override, principi de quatre ulls i casos de control injectats." }
+  ],
+  "modelSolution": "### 1. Diagnòstic legal i psicològic\n- Aprovar el 99,6% de recomanacions en 1,8 segons amb «Acceptar lot» és un cas de manual de ***rubber-stamping*** induït pel **biaix d'automatització** i la pressió de volum.\n- **Impacte jurídic**: segons els criteris del CEPD/EDPB, APDCAT i AEPD, sense anàlisi real ni exercici efectiu d'autoritat, les decisions continuen essent **únicament automatitzades** (vulnerant **art. 22 RGPD** i **art. 35 LPACAP**), i s'incompleixen els **articles 14 i 26.2 de l'AI Act**.\n\n### 2. Redisseny UX i tècnic (alineat amb art. 14.4 AI Act)\n1. **Eliminar el botó «Acceptar lot»** en qualsevol resolució desfavorable o zona gris de confiança (`< 0,80`).\n2. **Fricció cognitiva (*Cognitive Forcing*)**: mostrar primer els fets i documents originals de l'expedient, i presentar la sortida de la IA com a **puntuació amb zona d'incertesa + factors SHAP** (no un veredicte verd/vermell imperatiu).\n3. **Principi dels quatre ulls + motivació obligatòria**: tota denegació o discrepància (*override*) requereix una justificació fàctica/jurídica escrita i validació d'un segon tècnic independent.\n4. **Botó d'aturada operatiu (art. 14.4.e AI Act)**: protocol clar perquè el cap de servei suspengui la recomanació IA si detecta fallades sistemàtiques.\n\n### 3. Mesures organitzatives i monitoratge\n- Assignar càrrega de treball realista, formació específica en biaix d'automatització (**art. 4 i 26.2 AI Act**) i garantir que fer *override* mai no penalitza els indicadors de productivitat del funcionari.\n- **Monitoratge de qualitat HITL**: alertes automàtiques si un gestor té temps mitjans `< 5 s` o taxa d'*override* `~ 0%`, i registre estructurat dels *overrides* com a prova d'auditoria i font de reentrenament!",
+  "alternativeApproaches": [
+    "Reservar l'automatització reglada (AAA, art. 41 LRJSP) únicament per als casos 100% favorables i reglats sense discrecionalitat, concentrant el 100% del temps dels 12 gestors en la revisió pausada dels expedients dubtosos o desfavorables."
+  ]
+}

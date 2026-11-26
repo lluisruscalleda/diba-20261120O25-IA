@@ -1,0 +1,24 @@
+{
+  "id": "case-19",
+  "title": "Supòsit 19 — Pla supramunicipal de governança de la IA i erradicació de la Shadow AI",
+  "modules": [8],
+  "difficulty": "intermediate",
+  "estimatedMinutes": 45,
+  "context": "Una diputació dona suport tecnològic a més de 200 ajuntaments petits i mitjans. Una diagnosi recent detecta que molts ajuntaments fan servir comptes gratuïts d'IA al núvol amb documents reals (*Shadow AI*), no tenen inventari de sistemes, desconeixen les dates de l'AI Act i no disposen de formació en alfabetització IA (art. 4 AI Act).",
+  "statement": "Dissenya un Programa Supramunicipal de Governança de la IA alineat amb ISO/IEC 42001, NIST AI RMF i el calendari vigent de l'AI Act.",
+  "requirements": [
+    "Definir l'estructura del Comitè d'IA, la matriu RACI, l'inventari corporatiu amb portes Stage-Gate (G0–G4) i el registre públic d'algorismes.",
+    "Establir una estratègia realista anti-Shadow AI basada en plataforma compartida sobirana + alfabetització obligatòria (art. 4 AI Act, vigent des 2/02/2025) + DLP.",
+    "Presentar el full de ruta regulador amb les dates oficials de l'AI Act (2024–2027), les guies per als ajuntaments petits i els mecanismes de compra conjunta (acords marc LCSP)."
+  ],
+  "rubric": [
+    { "criterion": "Estructura de governança (Comitè, RACI, Inventari, Stage-Gates G0–G4, ISO 42001/NIST)", "maxPoints": 30, "description": "Defineix rols separats (Owner, MLOps, DPD, Seguretat ENS, Jurídic) i portes obligatòries abans de producció." },
+    { "criterion": "Estratègia constructiva anti-Shadow AI + Alfabetització art. 4 AI Act", "maxPoints": 30, "description": "Ofereix plataforma homologada EEE/on-premise + formació pràctica a tota la plantilla + DLP (no només prohibició)." },
+    { "criterion": "Precisió normativa del calendari AI Act (art. 113) i autoritats", "maxPoints": 25, "description": "Cita exactament 1/08/2024, 2/02/2025, 2/08/2025, 2/08/2026 i 2/08/2027, AESIA, APDCAT i CCN-CERT." },
+    { "criterion": "Model cooperatiu supramunicipal per a micropobles (acords marc i plantilles)", "maxPoints": 15, "description": "Proposa acords marc LCSP, plantilles EIPD/FRIA compartides i servei mancomunat." }
+  ],
+  "modelSolution": "### 1. Arquitectura de governança (ISO/IEC 42001 + NIST AI RMF)\n- **Comitè d'IA multidisciplinari** amb matriu **RACI** clara integrant *Owner* funcional, Enginyeria/MLOps, **DPD**, **Responsable de Seguretat ENS**, Assessoria Jurídica, Contractació i representació sindical (art. 26.7 AI Act).\n- **Inventari únic + Portes *Stage-Gate* (`G0→G4`)**: `G0` filtra pràctiques prohibides (art. 5) i avalua «cal realment IA?»; `G1` pilot en *sandbox* amb dades sintètiques; `G2` vistiplaus obligatoris (Quality Gate català/equitat + EIPD + FRIA + ENS); `G3` producció + registre UE (art. 49.3) + registre públic d'algorismes; `G4` retirada ordenada conservant logs >= 6 mesos.\n\n### 2. Pla anti-*Shadow AI* i alfabetització (art. 4 AI Act)\n- **Eix 1 (Alternativa homologada)**: plataforma corporativa compartida per la Diputació (*on-premise*/EEE, SSO, *zero-data-retention*, certificada ENS) accessible als 200 ajuntaments.\n- **Eix 2 (Alfabetització art. 4 AI Act — vigent des 2/02/2025)**: itineraris formatius pràctics diferenciats per a (a) plantilla general, (b) supervisors d'alt risc (art. 26.2) i (c) equips TIC/contractació.\n- **Eix 3 (Control)**: política corporativa d'ús acceptable, DLP contra enviament de documents interns a serveis no homologats i regularització a l'inventari.\n\n### 3. Full de ruta supramunicipal i calendari AI Act\n- Recordatori normatiu exacte: **2/02/2025** (art. 4 i 5), **2/08/2025** (governança/GPAI), **2/08/2026** (aplicació general, Annex III, FRIA art. 27 i transparència art. 50) i **2/08/2027** (productes regulats Annex I).\n- **Suport als micropobles**: **Acords marc LCSP** amb clàusules tipus d'IA responsable (ENS, EEE, català, portabilitat), plantilles conjuntes EIPD (APDCAT) + FRIA (AESIA) i assistència tècnica mancomunada.",
+  "alternativeApproaches": [
+    "Crear una xarxa interadministrativa de codi obert local (compartint datasets sintètics, prompts validats i scripts d'auditoria entre diputacions i ajuntaments)."
+  ]
+}

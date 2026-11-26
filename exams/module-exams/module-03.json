@@ -1,0 +1,1409 @@
+{
+  "id": "module-03",
+  "module": 3,
+  "title": "Examen acumulatiu del Mòdul 3: Models generatius",
+  "note": "Paràmetres orientatius de preparació (durada, penalització i nota mínima configurables a la plataforma; no constitueixen bases oficials de convocatòria).",
+  "recommendedMinutes": 45,
+  "questions": [
+    {
+      "id": "m03-07-q05",
+      "module": 3,
+      "conceptId": "m03-07-bases-dades-vectorials",
+      "lessonRef": "content/module-03/m03-07-bases-dades-vectorials.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Quin avantatge principal ofereix **`PostgreSQL + pgvector`** respecte d'afegir una base vectorial separada en un projecte RAG de 400.000 fragments d'una diputació que ja opera PostgreSQL?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "No necessita calcular embeddings."
+        },
+        {
+          "key": "B",
+          "text": "Consistència transaccional ACID entre metadades, permisos ACL i vectors (facilitant actualitzacions i esborrats RGPD), menor complexitat operativa i reutilització de còpies de seguretat, HA i seguretat ENS existents."
+        },
+        {
+          "key": "C",
+          "text": "Elimina la necessitat de tenir un LLM al RAG."
+        },
+        {
+          "key": "D",
+          "text": "Garanteix sempre menor consum de CPU que un índex en memòria dedicat amb 100 milions de vectors."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Evitar la doble escriptura distribuïda entre SQL i una BD vectorial externa redueix bugs de sincronització, simplifica operació ENS i cobreix amb escreix escales de centenars de milers o pocs milions de vectors.",
+      "explanationsIncorrect": {
+        "A": "Continua indexant els embeddings generats pel model.",
+        "C": "És només la capa d'emmagatzematge i recuperació.",
+        "D": "A escales massives (desenes de milions i alta concurrència), una BD dedicada distribuïda com Qdrant/Milvus pot escalar millor."
+      }
+    },
+    {
+      "id": "m03-08-q09",
+      "module": 3,
+      "conceptId": "m03-08-rag",
+      "lessonRef": "content/module-03/m03-08-rag.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "Per què un **parseig deficient de PDFs amb taules** (p. ex., taules de barems de subvencions o tarifes tributàries convertides en línies soltes sense separadors de columna) destrueix la qualitat d'un sistema RAG fins i tot amb el millor LLM del mercat?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Perquè els LLMs no poden llegir caràcters numèrics."
+        },
+        {
+          "key": "B",
+          "text": "Perquè perd la correspondència fila-columna (associant un tram d'ingressos amb un percentatge erroni), corromp tant l'embedding com el context passat a l'LLM i indueix respostes numèriques falses amb aparença d'autoritat (*garbage in, garbage out*)."
+        },
+        {
+          "key": "C",
+          "text": "Perquè els PDFs amb taules no es poden emmagatzemar a PostgreSQL."
+        },
+        {
+          "key": "D",
+          "text": "Perquè BM25 ignora totes les taules en Markdown."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "En documents públics, la informació més crítica (tarifes, barems, terminis, lots) viu sovint dins taules; preservar l'estructura tabular (Markdown/HTML) a la fase d'ingestió és un dels factors d'impacte més grans d'un RAG.",
+      "explanationsIncorrect": {
+        "A": "Els LLMs llegeixen perfectament nombres dins taules Markdown ben estructurades.",
+        "C": "PostgreSQL emmagatzema qualsevol text/JSON/Markdown.",
+        "D": "BM25 indexa perfectament el text dins taules Markdown."
+      }
+    },
+    {
+      "id": "m03-05-q06",
+      "module": 3,
+      "conceptId": "m03-05-fine-tuning",
+      "lessonRef": "content/module-03/m03-05-fine-tuning.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Com aconsegueix un adaptador **LoRA** tenir **zero sobrecàrrega de latència en inferència** un cop finalitzat l'entrenament?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Descartant les matrius `A` i `B` abans de desplegar."
+        },
+        {
+          "key": "B",
+          "text": "Executant `A` i `B` en un servidor separat per HTTP."
+        },
+        {
+          "key": "C",
+          "text": "Fusionant linealment l'adaptador dins els pesos base abans del desplegament (`W_merged = W₀ + (α/r)·B·A`), de manera que la inferència executa exactament la mateixa única multiplicació matricial que el model original."
+        },
+        {
+          "key": "D",
+          "text": "Convertint el model a TF-IDF."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Per linealitat, `W₀x + (α/r)BAx = (W₀ + (α/r)BA)x`; precomputar `W_merged` elimina completament la branca paral·lela en producció.",
+      "explanationsIncorrect": {
+        "A": "Descartar A i B eliminaria tot el que s'ha après.",
+        "B": "Afegiria latència de xarxa en lloc d'eliminar-la.",
+        "D": "Continua sent un Transformer."
+      }
+    },
+    {
+      "id": "m03-04-q03",
+      "module": 3,
+      "conceptId": "m03-04-prompt-engineering",
+      "lessonRef": "content/module-03/m03-04-prompt-engineering.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Com s'han de tractar els **prompts** en un sistema d'IA en producció dins una administració pública?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Com a notes informals editables directament en producció sense proves."
+        },
+        {
+          "key": "B",
+          "text": "No cal guardar-los un cop desplegat el sistema."
+        },
+        {
+          "key": "C",
+          "text": "Com a codi font versionat en Git (juntament amb model_id, hiperparàmetres i esquema JSON) i verificat mitjançant bateries d'avaluació automàtica sobre un conjunt *golden* abans de cada desplegament."
+        },
+        {
+          "key": "D",
+          "text": "S'han de reescriure aleatòriament en cada petició."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "El versionat i les proves de regressió automàtiques (PromptOps) garanteixen traçabilitat, auditabilitat i eviten degradacions silencioses en modificar una instrucció.",
+      "explanationsIncorrect": {
+        "A": "Editar en producció sense proves provoca regressions silencioses.",
+        "B": "Sense registre del prompt exacte és impossible auditar o reproduir resultats.",
+        "D": "Destruiria la consistència i auditabilitat del servei."
+      }
+    },
+    {
+      "id": "m03-02-q05",
+      "module": 3,
+      "conceptId": "m03-02-arquitectura-transformer",
+      "lessonRef": "content/module-03/m03-02-arquitectura-transformer.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Per què la majoria dels LLMs moderns (Llama, Mistral, Salamandra) utilitzen **Pre-Norm amb RMSNorm** en lloc de Post-Norm amb LayerNorm?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Perquè Pre-Norm elimina la necessitat de retropropagació."
+        },
+        {
+          "key": "B",
+          "text": "Perquè Pre-Norm preserva una autopista directa de gradients a través de les connexions residuals (estabilitzant models molt profunds) i RMSNorm evita calcular la mitjana sent més ràpid amb qualitat equivalent."
+        },
+        {
+          "key": "C",
+          "text": "Perquè RMSNorm redueix la dimensió d'embedding a la meitat."
+        },
+        {
+          "key": "D",
+          "text": "Perquè Post-Norm només funciona en CPU."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "En Pre-Norm (`x + sublayer(norm(x))`), el camí residual no queda interromput per capes de normalització, reduint dràsticament problemes d'explosió/esvaïment de gradients, i RMSNorm estalvia operacions de càlcul de mitjana.",
+      "explanationsIncorrect": {
+        "A": "Continua entrenant-se amb retropropagació estàndard.",
+        "C": "RMSNorm conserva exactament la dimensió `d_model`.",
+        "D": "Ambdós funcionen en GPU."
+      }
+    },
+    {
+      "id": "m03-01-q06",
+      "module": 3,
+      "conceptId": "m03-01-llm",
+      "lessonRef": "content/module-03/m03-01-llm.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "En la inferència d'un LLM, quina afirmació diferencia correctament la fase de ***Prefill*** de la fase de ***Decode***?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Prefill és seqüencial token a token i Decode processa tots els tokens futurs en paral·lel."
+        },
+        {
+          "key": "B",
+          "text": "Prefill i Decode tenen exactament el mateix coll d'ampolla."
+        },
+        {
+          "key": "C",
+          "text": "Prefill processa tot el prompt d'entrada en paral·lel (*compute-bound*, determinant el TTFT), mentre que Decode genera els tokens de sortida seqüencialment un per un (*memory-bandwidth bound*, determinant els tokens/segon)."
+        },
+        {
+          "key": "D",
+          "text": "Prefill només s'executa en CPU i Decode només en disc SSD."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Durant el Prefill es multipliquen matrius grans amb alta utilització de càlcul GPU; durant el Decode cada pas llegeix tots els pesos i la KV Cache per produir un sol token, quedant limitat per l'amplada de banda de VRAM.",
+      "explanationsIncorrect": {
+        "A": "És exactament a l'inrevés.",
+        "B": "Tenen perfils de maquinari oposats (compute-bound vs memory-bandwidth bound).",
+        "D": "Ambdós s'executen habitualment a la GPU."
+      }
+    },
+    {
+      "id": "m03-06-q07",
+      "module": 3,
+      "conceptId": "m03-06-embeddings-rag",
+      "lessonRef": "content/module-03/m03-06-embeddings-rag.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Quina estratègia operativa garanteix substituir un model d'embeddings en producció **sense caigudes de servei (*zero-downtime*)** i amb capacitat de *rollback*?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Sobrescriure els vectors un per un dins del mateix índex actiu mentre els usuaris consulten."
+        },
+        {
+          "key": "B",
+          "text": "Canviar el model de consulta i anar reindexant documents al llarg d'un mes."
+        },
+        {
+          "key": "C",
+          "text": "Esborrar l'índex vell abans de començar a calcular els nous embeddings."
+        },
+        {
+          "key": "D",
+          "text": "Migració **Blue/Green amb àlies**: crear un índex paral·lel `index_v2` amb el nou model, validar-lo sobre el *golden set*, recalibrar llindars, commutar atòmicament l'àlies de producció i conservar `index_v1` temporalment per a *rollback*."
+        }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Blue/Green impedeix barrejar espais vectorials incompatibles, assegura zero interrupció i ofereix retorn immediat en segons davant qualsevol regressió.",
+      "explanationsIncorrect": {
+        "A": "Barrejar vectors de dos models al mateix índex corromp els resultats.",
+        "B": "Durant un mes les consultes retornarien soroll pur sobre els documents encara no reindexats.",
+        "C": "Deixaria el servei caigut durant tota la reindexació."
+      }
+    },
+    {
+      "id": "m03-04-q06",
+      "module": 3,
+      "conceptId": "m03-04-prompt-engineering",
+      "lessonRef": "content/module-03/m03-04-prompt-engineering.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Quin avantatge arquitectònic principal té el ***Prompt Chaining*** (dividir un procés en 3 prompts especialitzats amb validació determinista entremig) respecte d'un únic «mega-prompt» de 1.500 paraules?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Elimina completament l'ús de tokens."
+        },
+        {
+          "key": "B",
+          "text": "Permet ignorar el RGPD."
+        },
+        {
+          "key": "C",
+          "text": "Aïlla responsabilitats, evita regressions creuades en editar un pas, permet escollir model/temperatura òptims per etapa, facilita intercalar regles deterministes Python i millora l'auditabilitat pas a pas."
+        },
+        {
+          "key": "D",
+          "text": "Fa que la latència sigui sempre inferior a 1 mil·lisegon."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Modularitzar en etapes petites amb validacions deterministes intermèdies fa el sistema molt més fiable, testable i mantenible que un prompt gegant monolític.",
+      "explanationsIncorrect": {
+        "A": "Utilitza tokens en cada crida, sovint amb millor eficiència global en usar models més petits per a etapes simples.",
+        "B": "El RGPD s'aplica igualment.",
+        "D": "Encadenar crides afegeix latència respecte d'1 ms, però guanya fiabilitat i control."
+      }
+    },
+    {
+      "id": "m03-01-q01",
+      "module": 3,
+      "conceptId": "m03-01-llm",
+      "lessonRef": "content/module-03/m03-01-llm.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quin és l'ordre correcte de les tres fases habituals de construcció d'un LLM instructiu modern?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "RLHF → Preentrenament → Tokenització."
+        },
+        {
+          "key": "B",
+          "text": "Preentrenament autosupervisat (next-token prediction) → SFT (Supervised Fine-Tuning d'instruccions) → Alineació de preferències (RLHF / DPO)."
+        },
+        {
+          "key": "C",
+          "text": "SFT → Preentrenament → K-Means."
+        },
+        {
+          "key": "D",
+          "text": "Alineació DPO → Extracció TF-IDF → Preentrenament."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Primer s'adquireix coneixement general via preentrenament autosupervisat, després s'ensenya a seguir instruccions amb SFT i finalment s'alinea amb preferències humanes de qualitat i seguretat via RLHF o DPO.",
+      "explanationsIncorrect": {
+        "A": "No es pot aplicar RLHF abans del preentrenament.",
+        "C": "El preentrenament sempre precedeix l'SFT.",
+        "D": "L'ordre està completament invertit i barreja TF-IDF."
+      }
+    },
+    {
+      "id": "m03-05-q07",
+      "module": 3,
+      "conceptId": "m03-05-fine-tuning",
+      "lessonRef": "content/module-03/m03-05-fine-tuning.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Per què **MAI no s'ha de fer *fine-tuning* d'un LLM amb expedients reals que continguin dades personals sense anonimitzar**?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Perquè els noms propis provoquen errors de sintaxi en PyTorch."
+        },
+        {
+          "key": "B",
+          "text": "Perquè els LLMs no saben llegir números de DNI."
+        },
+        {
+          "key": "C",
+          "text": "Perquè augmenta la mida del fitxer de pesos en 100 GB."
+        },
+        {
+          "key": "D",
+          "text": "Perquè el model pot memoritzar i reproduir (filtrar) dades personals del conjunt d'entrenament, i un cop incrustades en els pesos neuronals resulta pràcticament inviable exercir el dret de supressió (art. 17 RGPD) sense reentrenar."
+        }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "A diferència d'una base de dades o índex RAG on es pot suprimir un document puntualment, les dades memoritzades en pesos neuronals no es poden esborrar selectivament de forma fiable.",
+      "explanationsIncorrect": {
+        "A": "PyTorch processa qualsevol cadena de tokens sense error.",
+        "B": "Els LLMs llegeixen i memoritzen fàcilment seqüències alfanumèriques com DNIs.",
+        "C": "El nombre de pesos del model és fix independentment del dataset."
+      }
+    },
+    {
+      "id": "m03-03-q10",
+      "module": 3,
+      "conceptId": "m03-03-atencio-self-attention",
+      "lessonRef": "content/module-03/m03-03-atencio-self-attention.md",
+      "difficulty": "advanced",
+      "questionType": "normative",
+      "prompt": "Un proveïdor assegura que mostrar el mapa de calor dels pesos d'atenció d'un Transformer compleix automàticament les exigències d'explicabilitat i transparència en decisions administratives. Quina valoració tècnica és correcta?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "És totalment cert: els pesos d'atenció demostren causalment al 100% la raó jurídica d'una predicció."
+        },
+        {
+          "key": "B",
+          "text": "Els pesos d'atenció només existeixen en arbres de decisió."
+        },
+        {
+          "key": "C",
+          "text": "És insuficient: la literatura científica mostra que els pesos d'atenció no equivalen a una explicació causal fiable (diferents distribucions d'atenció poden produir la mateixa sortida); en entorns públics calen cites verificables, proves d'atribució/auditoria i supervisió humana."
+        },
+        {
+          "key": "D",
+          "text": "Els mapes d'atenció estan prohibits pel RGPD."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Tal com van evidenciar Jain & Wallace (2019), l'atenció és un mecanisme intern d'enrutament que passa per múltiples capes i projeccions no lineals, no una explicació causal directa per a un expedient administratiu.",
+      "explanationsIncorrect": {
+        "A": "Sobrestimar l'atenció com a explicació causal és un error tècnic conegut.",
+        "B": "Són propis dels Transformers, no dels arbres.",
+        "D": "No estan prohibits, simplement no basten com a motivació o explicabilitat rigorosa."
+      }
+    },
+    {
+      "id": "m03-08-q08",
+      "module": 3,
+      "conceptId": "m03-08-rag",
+      "lessonRef": "content/module-03/m03-08-rag.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En l'exemple Python de la lliçó, quin risc específic detecta la funció `verificar_cites(resposta, chunks_recuperats)`?",
+      "codeSnippet": "valids = {str(c[\"chunk_id\"]) for c in chunks_recuperats}\ncitats = re.findall(r\"\\[([A-Z0-9_-]+#c\\d+)\\]\", resposta)\ninvalids = [cid for cid in citats if cid not in valids]",
+      "options": [
+        {
+          "key": "A",
+          "text": "Detecta tant la **manca total de cites obligatòries** com les **cites al·lucinades o fora de context** (quan l'LLM inventa un codi `[OF99-2026#c9]` que no figurava entre els fragments realment recuperats), permetent bloquejar o reintentar la resposta abans de mostrar-la."
+        },
+        {
+          "key": "B",
+          "text": "Comprova la velocitat de la connexió a Internet."
+        },
+        {
+          "key": "C",
+          "text": "Verifica l'ortografia catalana de tota la frase."
+        },
+        {
+          "key": "D",
+          "text": "Comprova si l'usuari té permís per iniciar sessió."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Una validació determinista post-generació de cites intercepta immediatament citacions inventades o respostes sense font abans que arribin a l'usuari final.",
+      "explanationsIncorrect": {
+        "B": "És una verificació textual local sobre els chunk_ids.",
+        "C": "No fa correcció ortogràfica.",
+        "D": "El control d'autenticació i ACL es fa abans (en pre-filtratge)."
+      }
+    },
+    {
+      "id": "m03-03-q07",
+      "module": 3,
+      "conceptId": "m03-03-atencio-self-attention",
+      "lessonRef": "content/module-03/m03-03-atencio-self-attention.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "En un Transformer Encoder-Decoder (com en traducció automàtica), d'on provenen `Q`, `K` i `V` dins la capa de ***Cross-Attention*** del Decoder?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Tots tres (Q, K i V) provenen exclusivament del Decoder."
+        },
+        {
+          "key": "B",
+          "text": "Tots tres (Q, K i V) provenen exclusivament de l'Encoder."
+        },
+        {
+          "key": "C",
+          "text": "K prové del Decoder i Q, V provenen de l'Encoder."
+        },
+        {
+          "key": "D",
+          "text": "Les Queries (Q) provenen de la seqüència generada pel Decoder, mentre que les Keys (K) i Values (V) provenen de la sortida de l'Encoder (text origen)."
+        }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "En cross-attention, el Decoder 'pregunta' (Q) quines parts de la frase original codificada per l'Encoder (K, V) són més rellevants per generar la següent paraula traduïda.",
+      "explanationsIncorrect": {
+        "A": "Això és la self-attention del Decoder, no la cross-attention.",
+        "B": "Això és la self-attention de l'Encoder.",
+        "C": "És al revés: qui busca informació (Q) és el Decoder, i la font consultada (K, V) és l'Encoder."
+      }
+    },
+    {
+      "id": "m03-09-q09",
+      "module": 3,
+      "conceptId": "m03-09-agents-ia",
+      "lessonRef": "content/module-03/m03-09-agents-ia.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En la classe `AgentRuntimeSegur` de la lliçó, què garanteix l'ordre de comprovacions dins `executar_accio` abans de cridar `spec.funcio(args)`?",
+      "codeSnippet": "if len(self.traca_auditoria) >= self.max_passos: ...\nelif nom_eina not in self.registre: ...\nelse:\n    spec = self.registre[nom_eina]\n    if spec.nivell == \"escriptura_critica\" and not aprovacio_humana: ...",
+      "options": [
+        {
+          "key": "A",
+          "text": "Que qualsevol eina no registrada s'executi igualment en mode prova."
+        },
+        {
+          "key": "B",
+          "text": "Que cap proposta generada per l'LLM pot saltar-se el límit de passos (*circuit breaker*), executar funcions fora de la llista blanca ni disparar una acció `escriptura_critica` sense `aprovacio_humana=True`, quedant a més cada intent (fins i tot els bloquejats!) registrat a `traca_auditoria`."
+        },
+        {
+          "key": "C",
+          "text": "Que els intents bloquejats no s'enregistrin al log d'auditoria."
+        },
+        {
+          "key": "D",
+          "text": "Que l'LLM pugui modificar `self.registre` dinàmicament."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Validar circuit breaker + llista blanca + HITL en codi determinista al host i registrar també els intents bloquejats (clau per detectar intents d'atac/injecció en SIEM/ENS!) és la base d'un runtime d'agent segur.",
+      "explanationsIncorrect": {
+        "A": "Les eines fora de llista blanca són denegades immediatament.",
+        "C": "Precisament registrar els intents denegats o bloquejats és fonamental per a monitoratge de seguretat.",
+        "D": "L'LLM no té accés a modificar el registre intern del host."
+      }
+    },
+    {
+      "id": "m03-07-q06",
+      "module": 3,
+      "conceptId": "m03-07-bases-dades-vectorials",
+      "lessonRef": "content/module-03/m03-07-bases-dades-vectorials.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Quin problema pràctic té utilitzar la llibreria **FAISS** crua (un índex en fitxer local) directament com a «base de dades» d'un RAG en producció amb actualitzacions diàries i esborrats RGPD?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "FAISS no sap calcular similitud cosinus."
+        },
+        {
+          "key": "B",
+          "text": "FAISS només funciona en JavaScript."
+        },
+        {
+          "key": "C",
+          "text": "FAISS és una llibreria d'indexació en memòria, no una base de dades completa: manca de gestió nativa transaccional CRUD/esborrats concorrents, filtratge integrat ric de metadades, replicació i control d'accés."
+        },
+        {
+          "key": "D",
+          "text": "FAISS no admet índexs IVF ni HNSW."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "FAISS és excel·lent per a recerca, prototips i motors incrustats estàtics, però en producció amb esborrats RGPD, filtres ACL i concurrència cal una BD vectorial (pgvector, Qdrant, Milvus, OpenSearch).",
+      "explanationsIncorrect": {
+        "A": "FAISS suporta producte escalar/cosinus i L2.",
+        "B": "FAISS està escrit en C++ amb bindings per a Python.",
+        "D": "FAISS implementa Flat, IVF, PQ i HNSW."
+      }
+    },
+    {
+      "id": "m03-03-q08",
+      "module": 3,
+      "conceptId": "m03-03-atencio-self-attention",
+      "lessonRef": "content/module-03/m03-03-atencio-self-attention.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Quina afirmació descriu amb exactitud **FlashAttention**?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "És un algorisme *IO-aware* **matemàticament exacte** que calcula l'atenció per blocs dins la SRAM de la GPU amb *online softmax*, reduint la memòria en HBM d'O(L²) a O(L) i accelerant molt l'execució, tot mantenint O(L²) en FLOPs."
+        },
+        {
+          "key": "B",
+          "text": "És una atenció aproximada que descarta aleatòriament el 90% dels tokens per fer els FLOPs lineals."
+        },
+        {
+          "key": "C",
+          "text": "Només serveix per a models Bag of Words en CPU."
+        },
+        {
+          "key": "D",
+          "text": "Substitueix Softmax per la funció ReLU."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "FlashAttention produeix exactament el mateix resultat matemàtic que l'atenció estàndard però sense materialitzar mai la matriu L×L a la memòria HBM lenta de la GPU.",
+      "explanationsIncorrect": {
+        "B": "No descarta tokens ni fa aproximacions (a diferència d'atencions disperses com Longformer).",
+        "C": "Està dissenyat específicament per a la jerarquia de memòria SRAM/HBM de GPUs modernes.",
+        "D": "Calcula exactament Softmax mitjançant l'algorisme d'online softmax."
+      }
+    },
+    {
+      "id": "m03-07-q01",
+      "module": 3,
+      "conceptId": "m03-07-bases-dades-vectorials",
+      "lessonRef": "content/module-03/m03-07-bases-dades-vectorials.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quin compromís fonamental introdueixen els índexs **ANN (*Approximate Nearest Neighbors*)** respecte de la cerca exacta lineal (*Flat / k-NN*)?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Sacrifiquen una fracció molt petita de Recall (p. ex., 97%–99% en lloc del 100%) per reduir la latència de cerca en ordres de magnitud sobre milions de vectors."
+        },
+        {
+          "key": "B",
+          "text": "Garanteixen sempre 100% de Recall a canvi de ser 100 vegades més lents."
+        },
+        {
+          "key": "C",
+          "text": "Converteixen els embeddings en text pla."
+        },
+        {
+          "key": "D",
+          "text": "Només funcionen amb 10 vectors com a màxim."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Els algorismes ANN (HNSW, IVF, PQ) eviten comparar contra el 100% dels vectors, aconseguint cerques en mil·lisegons amb un Recall molt proper a la cerca exacta.",
+      "explanationsIncorrect": {
+        "B": "És exactament al revés: són molt més ràpids a canvi d'aproximació controlada.",
+        "C": "Operen sobre vectors numèrics.",
+        "D": "Són precisament pensats per a centenars de milers o milions de vectors."
+      }
+    },
+    {
+      "id": "m03-04-q01",
+      "module": 3,
+      "conceptId": "m03-04-prompt-engineering",
+      "lessonRef": "content/module-03/m03-04-prompt-engineering.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina diferència hi ha entre el *prompting* **zero-shot** i el **few-shot**?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "En zero-shot es donen només les instruccions de la tasca sense exemples; en few-shot s'inclouen uns quants parells d'exemple (entrada → sortida esperada) dins el prompt per guiar format, criteri i casos límit."
+        },
+        {
+          "key": "B",
+          "text": "Zero-shot només funciona amb temperatura 0 i few-shot només amb temperatura 2."
+        },
+        {
+          "key": "C",
+          "text": "Few-shot modifica permanentment els pesos neuronals del model."
+        },
+        {
+          "key": "D",
+          "text": "Zero-shot elimina la necessitat de tokenitzar el prompt."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Few-shot (in-context learning) proporciona demostracions concretes dins la finestra de context sense alterar els pesos del model, millorant molt el format i els criteris de domini.",
+      "explanationsIncorrect": {
+        "B": "La temperatura és independent de si el prompt inclou exemples o no.",
+        "C": "L'in-context learning no actualitza els pesos (això ho fa el fine-tuning).",
+        "D": "Tota entrada d'un LLM es tokenitza."
+      }
+    },
+    {
+      "id": "m03-02-q01",
+      "module": 3,
+      "conceptId": "m03-02-arquitectura-transformer",
+      "lessonRef": "content/module-03/m03-02-arquitectura-transformer.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quin avantatge arquitectònic decisiu va permetre que el **Transformer** substituís les RNN/LSTM en NLP i IA generativa?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Elimina la recurrència seqüencial i processa tots els tokens de la seqüència en paral·lel durant l'entrenament, capturant directament dependències a llarga distància mitjançant atenció."
+        },
+        {
+          "key": "B",
+          "text": "No utilitza multiplicacions de matrius ni GPUs."
+        },
+        {
+          "key": "C",
+          "text": "No requereix cap funció d'activació no lineal."
+        },
+        {
+          "key": "D",
+          "text": "Només té una sola capa oculta."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "En eliminar la dependència pas-a-pas de les RNN, el Transformer aprofita plenament el paral·lelisme massiu de les GPUs i connecta tokens distants en un sol salt d'atenció.",
+      "explanationsIncorrect": {
+        "B": "Al contrari, el Transformer és intensiu en multiplicacions matricials en GPU.",
+        "C": "Utilitza no-linealitats com GELU/SiLU/SwiGLU i Softmax.",
+        "D": "Els Transformers moderns apilen entre 12 i més de 80 capes."
+      }
+    },
+    {
+      "id": "m03-01-q07",
+      "module": 3,
+      "conceptId": "m03-01-llm",
+      "lessonRef": "content/module-03/m03-01-llm.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Fixar **`temperature = 0`** en un LLM garanteix que el model deixarà de produir al·lucinacions?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Sí, perquè `temperature = 0` activa un verificador factual automàtic."
+        },
+        {
+          "key": "B",
+          "text": "Sí, sempre que també fixem `top_p = 1.0`."
+        },
+        {
+          "key": "C",
+          "text": "Només si el model s'executa en anglès."
+        },
+        {
+          "key": "D",
+          "text": "No: `temperature = 0` només aplica decodificació *greedy* (triar sempre el token més probable), reduint variabilitat aleatòria, però si el token més probable segons els pesos és una dada falsa o inventada, el model al·lucinarà de manera totalment consistent."
+        }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Les al·lucinacions provenen de la manca de fonamentació factual o d'incertesa en els pesos, no només de la temperatura; per mitigar-les cal RAG, verificació i instruccions d'abstenció.",
+      "explanationsIncorrect": {
+        "A": "La temperatura no verifica fets, només controla l'aleatorietat del mostreig.",
+        "B": "Combinar amb top_p=1 no afegeix verificació factual.",
+        "C": "L'idioma no elimina el fenomen."
+      }
+    },
+    {
+      "id": "m03-02-q09",
+      "module": 3,
+      "conceptId": "m03-02-arquitectura-transformer",
+      "lessonRef": "content/module-03/m03-02-arquitectura-transformer.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En la funció `swiglu_ffn` de la lliçó (`(silu(x @ W1) * (x @ W3)) @ W2`), quin paper fa la multiplicació element a element `* (x @ W3)` respecte d'una FFN clàssica `ReLU(x @ W1) @ W2`?",
+      "codeSnippet": "def swiglu_ffn(x, W1, W3, W2):\n    return (silu(x @ W1) * (x @ W3)) @ W2",
+      "options": [
+        {
+          "key": "A",
+          "text": "Normalitza el vector perquè sumi 1."
+        },
+        {
+          "key": "B",
+          "text": "Actua com una **porta multiplicativa (*Gated Linear Unit*)** que modula dinàmicament quines característiques ocultes passen cap a la projecció de sortida `W2`, millorant empíricament l'expressivitat i la perplexitat dels LLMs moderns."
+        },
+        {
+          "key": "C",
+          "text": "Aplica la màscara causal sobre els tokens futurs."
+        },
+        {
+          "key": "D",
+          "text": "Calcula la similitud cosinus entre dos documents."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "SwiGLU (Shazeer, 2020) combina una branca amb activació suau SiLU que actua de porta sobre la projecció lineal `x @ W3`, superant consistentment ReLU/GELU estàndards (per això s'usa en Llama, Mistral, Qwen i Salamandra).",
+      "explanationsIncorrect": {
+        "A": "No normalitza a suma 1 (això ho fa Softmax).",
+        "C": "La FFN opera de manera independent sobre cada token; la màscara causal és a la self-attention.",
+        "D": "No calcula similitud entre documents."
+      }
+    },
+    {
+      "id": "m03-09-q05",
+      "module": 3,
+      "conceptId": "m03-09-agents-ia",
+      "lessonRef": "content/module-03/m03-09-agents-ia.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Un agent de la Diputació ajuda a revisar expedients de subvencions. Quina regla s'ha d'aplicar deterministament al codi host per a qualsevol acció d'escriptura, notificació oficial o ordre de pagament?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Deixar que l'agent executi directament el pagament si la seva confiança és alta."
+        },
+        {
+          "key": "B",
+          "text": "Bloquejar l'acció a la capa host i exigir **aprovació humana explícita (Human-in-the-Loop)** per personal autoritzat abans d'executar cap efecte jurídic o irreversible, deixant traça completa d'auditoria."
+        },
+        {
+          "key": "C",
+          "text": "Afegir només «Comprova-ho bé abans de pagar» al *system prompt*."
+        },
+        {
+          "key": "D",
+          "text": "Assignar permisos d'administrador global a l'agent perquè no falli mai."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "El bloqueig determinista al host amb confirmació humana explícita protegeix contra errors de l'LLM, injeccions indirectes i incompliments normatius (art. 22 RGPD, art. 41 LRJSP, control de despesa).",
+      "explanationsIncorrect": {
+        "A": "Executar pagaments o resolucions autònomament vulnera controls legals i financers públics.",
+        "C": "Una instrucció textual al prompt no és un tallafocs segur.",
+        "D": "Viola el principi de mínim privilegi de l'ENS."
+      }
+    },
+    {
+      "id": "m03-02-q10",
+      "module": 3,
+      "conceptId": "m03-02-arquitectura-transformer",
+      "lessonRef": "content/module-03/m03-02-arquitectura-transformer.md",
+      "difficulty": "advanced",
+      "questionType": "conceptual",
+      "prompt": "En un bloc Transformer (`out = h + sublayer(rms_norm(h))`), quina restricció dimensional imposa directament la **connexió residual** (`h + ...`)?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Que la longitud de seqüència `L` sigui sempre potència de 2."
+        },
+        {
+          "key": "B",
+          "text": "Que la dimensió interna `d_ff` sigui igual a 1."
+        },
+        {
+          "key": "C",
+          "text": "Que tant la subcapa d'atenció com la subcapa FFN projectin la seva sortida exactament a la mateixa dimensió `d_model` que l'entrada `h` per poder-se sumar element a element al llarg de tot el flux residual."
+        },
+        {
+          "key": "D",
+          "text": "Que no es puguin apilar més de 4 capes."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "El 'residual stream' té amplada constant `d_model`: totes les subcapes llegeixen d'aquest corrent i hi sumen la seva actualització en la mateixa forma `(L, d_model)`.",
+      "explanationsIncorrect": {
+        "A": "L pot ser qualsevol enter positiu fins a la finestra màxima.",
+        "B": "d_ff sol ser entre 2,6× i 4× d_model, i després W2 torna a projectar a d_model.",
+        "D": "Precisament les connexions residuals permeten apilar desenes o més de 100 capes."
+      }
+    },
+    {
+      "id": "m03-05-q08",
+      "module": 3,
+      "conceptId": "m03-05-fine-tuning",
+      "lessonRef": "content/module-03/m03-05-fine-tuning.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En una capa lineal de dimensió `4096 × 4096`, quants paràmetres entrenables introdueix un adaptador **LoRA amb rang `r = 16`**?",
+      "codeSnippet": "W0: (4096, 4096) -> 16.777.216 params\nA : (16, 4096), B : (4096, 16)",
+      "options": [
+        {
+          "key": "A",
+          "text": "`131.072` paràmetres (`16×4096 + 4096×16`), equivalent a només el `0,78%` dels paràmetres originals."
+        },
+        {
+          "key": "B",
+          "text": "`16.777.216` paràmetres (100% del total)."
+        },
+        {
+          "key": "C",
+          "text": "`256` paràmetres (`16 × 16`)."
+        },
+        {
+          "key": "D",
+          "text": "`8.388.608` paràmetres (50% del total)."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "A té 16 × 4096 = 65.536 paràmetres i B té 4096 × 16 = 65.536 paràmetres → total 131.072 / 16.777.216 = 0,78125% (reducció 128×!).",
+      "explanationsIncorrect": {
+        "B": "Això seria Full Fine-Tuning sense LoRA.",
+        "C": "Omet la dimensió 4096 de les dues matrius.",
+        "D": "50% correspondria a un rang gegant `r = 1024`."
+      }
+    },
+    {
+      "id": "m03-07-q02",
+      "module": 3,
+      "conceptId": "m03-07-bases-dades-vectorials",
+      "lessonRef": "content/module-03/m03-07-bases-dades-vectorials.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Com estructura les dades l'índex **HNSW (*Hierarchical Navigable Small World*)**?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Com una taula hash sense distàncies."
+        },
+        {
+          "key": "B",
+          "text": "Com un graf multicapa navegable on les capes superiors permeten salts llargs ràpids i la capa base (capa 0) conté connexions locals precises per trobar veïns en temps O(log N)."
+        },
+        {
+          "key": "C",
+          "text": "Com una llista enllaçada lineal ordenada alfabèticament."
+        },
+        {
+          "key": "D",
+          "text": "Com un arbre de decisió supervisat."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "HNSW combina la jerarquia de capes (com una skip list) amb grafs de món petit, oferint cerques logarítmiques amb altíssim Recall i insercions incrementals.",
+      "explanationsIncorrect": {
+        "A": "HNSW preserva distàncies geomètriques en un graf de proximitat.",
+        "C": "Una llista lineal seria O(N), no O(log N).",
+        "D": "És una estructura no supervisada d'indexació espacial."
+      }
+    },
+    {
+      "id": "m03-01-q05",
+      "module": 3,
+      "conceptId": "m03-01-llm",
+      "lessonRef": "content/module-03/m03-01-llm.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Quina és la funció de la **KV Cache** durant la fase de *Decode* d'un LLM?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Desar a disc els prompts dels usuaris per reentrenar el model cada nit."
+        },
+        {
+          "key": "B",
+          "text": "Emmagatzemar en VRAM els tensors Key (K) i Value (V) dels tokens ja processats per no haver de recalcular-los a cada nou token generat, accelerant dràsticament la generació autoregressiva."
+        },
+        {
+          "key": "C",
+          "text": "Xifrar les comunicacions HTTPS entre client i servidor."
+        },
+        {
+          "key": "D",
+          "text": "Esborrar els tokens més antics de la finestra de context cada 5 paraules."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Sense KV Cache, generar cada nou token requeriria tornar a processar tota la seqüència prèvia des de zero (cost quadràtic acumulat); desar K i V en VRAM redueix cada pas a calcular només el nou token.",
+      "explanationsIncorrect": {
+        "A": "La KV Cache és memòria volàtil d'inferència en VRAM, no registre a disc.",
+        "C": "No té relació amb xifratge de xarxa.",
+        "D": "Conserva els vectors K i V dins la finestra activa."
+      }
+    },
+    {
+      "id": "m03-04-q09",
+      "module": 3,
+      "conceptId": "m03-04-prompt-engineering",
+      "lessonRef": "content/module-03/m03-04-prompt-engineering.md",
+      "difficulty": "advanced",
+      "questionType": "conceptual",
+      "prompt": "En què consisteix la tècnica ***Self-Consistency*** sobre *Chain-of-Thought* i quin n'és el principal inconvenient operatiu?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Executa el model una sola vegada amb `temperature = 0`."
+        },
+        {
+          "key": "B",
+          "text": "Mostreja `k` cadenes de raonament independents (`temperature > 0`) per a la mateixa entrada i selecciona la resposta final per votació majoritària; millora la fiabilitat en raonament complex però multiplica el cost i/o la latència per `k`."
+        },
+        {
+          "key": "C",
+          "text": "Entrena el model sobre les seves pròpies respostes sense supervisió."
+        },
+        {
+          "key": "D",
+          "text": "Elimina el `system prompt` per estalviar tokens."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Self-Consistency (Wang et al., 2022) redueix errors accidentals d'una única trajectòria de raonament agregant múltiples camins independents, però amb un cost multiplicatiu `k×`.",
+      "explanationsIncorrect": {
+        "A": "Amb `T=0`, les `k` execucions produirien el mateix camí sense diversitat.",
+        "C": "És una tècnica en temps d'inferència, no d'entrenament.",
+        "D": "No elimina el system prompt."
+      }
+    },
+    {
+      "id": "m03-06-q04",
+      "module": 3,
+      "conceptId": "m03-06-embeddings-rag",
+      "lessonRef": "content/module-03/m03-06-embeddings-rag.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Un equip utilitza `intfloat/multilingual-e5-large` en un RAG però obté un `Recall@10` molt per sota de l'esperat. En revisar el codi, passen les frases directament a `model.encode(text)` sense prefixos. Quina és la causa i la correcció?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "La família `E5` exigeix explícitament anteposar `\"query: \"` a les consultes i `\"passage: \"` als documents indexats; afegir els prefixos asimètrics i reindexar restaura el rendiment nominal."
+        },
+        {
+          "key": "B",
+          "text": "Cal passar tots els documents a majúscules i aplicar stemming Porter."
+        },
+        {
+          "key": "C",
+          "text": "Cal dividir tots els vectors per 100."
+        },
+        {
+          "key": "D",
+          "text": "`multilingual-e5-large` no admet català ni castellà."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Els models E5 van ser entrenats contrastivament amb aquests tokens prefix; ometre'ls genera un desajust fort entre entrenament i inferència.",
+      "explanationsIncorrect": {
+        "B": "Mai aplicar stemming destructiu abans d'un model d'embeddings Transformer.",
+        "C": "Escalar un vector per una constant positiva no canvia la similitud cosinus.",
+        "D": "Suporta més de 100 idiomes inclosos català i castellà."
+      }
+    },
+    {
+      "id": "m03-09-q02",
+      "module": 3,
+      "conceptId": "m03-09-agents-ia",
+      "lessonRef": "content/module-03/m03-09-agents-ia.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Durant el ***Tool Calling (Function Calling)*** d'un agent, qui executa realment la funció o consulta a la base de dades?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "L'LLM directament des de la GPU."
+        },
+        {
+          "key": "B",
+          "text": "L'aplicació **host** (codi sota control de l'equip d'enginyeria), que rep la proposta JSON de l'LLM, valida llista blanca, permisos ACL i paràmetres, executa la funció i torna l'observació a l'LLM."
+        },
+        {
+          "key": "C",
+          "text": "El navegador web del ciutadà."
+        },
+        {
+          "key": "D",
+          "text": "El tokenitzador BPE."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "L'LLM només emet text estructurat proposant nom d'eina i arguments; la capa host és sempre el guardià determinista que valida i executa (o bloqueja) l'acció.",
+      "explanationsIncorrect": {
+        "A": "Un LLM només genera tokens; no té accés directe al sistema operatiu ni a xarxes.",
+        "C": "L'execució segura es fa al backend host, no al client.",
+        "D": "El tokenitzador només converteix text i IDs."
+      }
+    },
+    {
+      "id": "m03-03-q05",
+      "module": 3,
+      "conceptId": "m03-03-atencio-self-attention",
+      "lessonRef": "content/module-03/m03-03-atencio-self-attention.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Quin problema pràctic resol **Grouped-Query Attention (GQA)** (usat en Llama 3, Mistral, Qwen i Salamandra) respecte de la Multi-Head Attention (MHA) clàssica?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Elimina la complexitat quadràtica O(L²) en FLOPs."
+        },
+        {
+          "key": "B",
+          "text": "Comparteix un nombre reduït de capçals K i V entre grups de capçals Q, reduint 4×–8× la memòria VRAM i l'amplada de banda de la KV Cache amb qualitat pràcticament equivalent a MHA."
+        },
+        {
+          "key": "C",
+          "text": "Permet prescindir completament de la codificació posicional."
+        },
+        {
+          "key": "D",
+          "text": "Converteix el Decoder en un Encoder bidireccional."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "GQA troba el punt òptim entre MHA (KV Cache enorme) i MQA (un sol parell KV amb lleugera pèrdua de qualitat), permetent contextos més llargs i major concurrència en GPU.",
+      "explanationsIncorrect": {
+        "A": "El producte QKᵀ continua sent O(L²) en FLOPs.",
+        "C": "Continua usant RoPE sobre Q i K.",
+        "D": "Manté l'atenció causal del Decoder."
+      }
+    },
+    {
+      "id": "m03-03-q06",
+      "module": 3,
+      "conceptId": "m03-03-atencio-self-attention",
+      "lessonRef": "content/module-03/m03-03-atencio-self-attention.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Si la longitud del text d'entrada `L` es multiplica per **4** (p. ex., de 4.000 a 16.000 tokens), per quant es multiplica aproximadament el nombre d'operacions de la matriu d'atenció `Q Kᵀ`?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Per 2×."
+        },
+        {
+          "key": "B",
+          "text": "Per 4×."
+        },
+        {
+          "key": "C",
+          "text": "Per 16× (creixement quadràtic O(L²): 4² = 16)."
+        },
+        {
+          "key": "D",
+          "text": "No augmenta gens (O(1))."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Cada token atén a tots els altres tokens de la seqüència, generant una matriu de mida L × L; quadruplicar L multiplica per 4² = 16 el còmput d'atenció.",
+      "explanationsIncorrect": {
+        "A": "Subestima severament el cost quadràtic.",
+        "B": "4× seria el creixement lineal de les projeccions FFN, no de la matriu QKᵀ.",
+        "D": "El cost creix quadràticament amb L."
+      }
+    },
+    {
+      "id": "m03-01-q10",
+      "module": 3,
+      "conceptId": "m03-01-llm",
+      "lessonRef": "content/module-03/m03-01-llm.md",
+      "difficulty": "advanced",
+      "questionType": "normative",
+      "prompt": "Per què un desplegament ***open-weights* *on-premise*** (p. ex. Salamandra-7B o Qwen/Mistral local) facilita l'auditoria i la governança pública en comparació amb una API comercial de caixa negra?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Perquè un model *open-weights* mai no pot tenir biaixos ni cometre errors."
+        },
+        {
+          "key": "B",
+          "text": "Perquè els models *open-weights* estan exempts de complir el RGPD i l'AI Act."
+        },
+        {
+          "key": "C",
+          "text": "Perquè permet congelar exactament la versió dels pesos (evitant canvis silenciosos del proveïdor), mantenir el 100% de les dades personals dins el perímetre ENS de la institució i auditar/reproduir el comportament del sistema de forma controlada."
+        },
+        {
+          "key": "D",
+          "text": "Perquè no requereix cap maquinari ni manteniment informàtic."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Sobirania de dades, congelació determinista de versions i control complet d'infraestructura/logs són avantatges clau de governança; però el model continua subjecte a avaluació de biaixos, RGPD, ENS i AI Act.",
+      "explanationsIncorrect": {
+        "A": "Tots els LLMs (oberts o comercials) poden tenir biaixos i al·lucinar.",
+        "B": "L'ús d'un model *open-weights* en un servei públic continua obligat a complir RGPD, ENS i AI Act.",
+        "D": "Al contrari, exigeix gestionar GPUs, seguretat i operació MLOps/LLMOps."
+      }
+    },
+    {
+      "id": "m03-08-q10",
+      "module": 3,
+      "conceptId": "m03-08-rag",
+      "lessonRef": "content/module-03/m03-08-rag.md",
+      "difficulty": "advanced",
+      "questionType": "normative",
+      "prompt": "En un RAG corporatiu que indexa expedients interns de diversos serveis (Serveis Socials, Recursos Humans, Urbanisme), com s'evita que un empleat d'Urbanisme obtingui dades d'un expedient confidencial de Serveis Socials a través d'una consulta a l'assistent?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Afegint al system prompt «Si us plau, no diguis coses secretes a gent d'Urbanisme»."
+        },
+        {
+          "key": "B",
+          "text": "Baixant la temperatura de l'LLM a 0,0."
+        },
+        {
+          "key": "C",
+          "text": "Propagant la identitat autenticada i els rols/grups de l'usuari (OIDC/LDAP) com a **pre-filtre determinista d'ACL** obligatori sobre l'índex BM25 i l'índex vectorial abans de recuperar cap fragment, impedint físicament que cap document no autoritzat entri al context de l'LLM."
+        },
+        {
+          "key": "D",
+          "text": "Demanant als usuaris que no preguntin sobre altres departaments."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "La seguretat d'accés (ENS / RGPD) s'ha d'aplicar deterministament a la capa de dades i recuperació (pre-filtre ACL), mai delegada a instruccions en llenguatge natural dins el prompt (vulnerables a prompt injection).",
+      "explanationsIncorrect": {
+        "A": "Si el fragment confidencial entra al context de l'LLM, un prompt injection el pot exfiltrar fàcilment.",
+        "B": "La temperatura no aplica control d'accés.",
+        "D": "La seguretat no pot dependre de la bona voluntat de l'usuari."
+      }
+    },
+    {
+      "id": "m03-06-q10",
+      "module": 3,
+      "conceptId": "m03-06-embeddings-rag",
+      "lessonRef": "content/module-03/m03-06-embeddings-rag.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "Quan pot resultar molt rendible fer ***fine-tuning* contrastiu** del model d'embeddings (en lloc de fer *fine-tuning* de l'LLM generador) dins d'un sistema RAG corporatiu?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Quan el *retriever* ja té un `Recall@10` del 99% però l'LLM redacta amb faltes d'ortografia."
+        },
+        {
+          "key": "B",
+          "text": "Mai: els models d'embeddings no es poden ajustar."
+        },
+        {
+          "key": "C",
+          "text": "Quan l'avaluació revela que el coll d'ampolla és el *retriever* (baix `Recall@10` en argot administratiu català, sigles internes o normativa pròpia) i disposem de 500–2.000 parells anonimitzats `(consulta, fragment correcte)` + *hard negatives*."
+        },
+        {
+          "key": "D",
+          "text": "Només quan volem eliminar el motor BM25."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Ajustar el bi-encoder (~300M–560M paràmetres) sobre terminologia i consultes pròpies de la institució és molt econòmic (minuts en 1 GPU) i sol elevar dràsticament el Recall de tot el sistema RAG.",
+      "explanationsIncorrect": {
+        "A": "Si el Recall ja és 99%, el problema està en la generació (prompt/LLM), no en l'embedding.",
+        "B": "S'ajusten fàcilment amb Sentence-Transformers / InfoNCE loss.",
+        "D": "Fins i tot amb embeddings ajustats, la cerca híbrida amb BM25 continua aportant valor en codis exactes."
+      }
+    },
+    {
+      "id": "m03-05-q04",
+      "module": 3,
+      "conceptId": "m03-05-fine-tuning",
+      "lessonRef": "content/module-03/m03-05-fine-tuning.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "En **LoRA**, per què la matriu **`B` s'inicialitza a zeros** (mentre `A` s'inicialitza amb soroll gaussià petit)?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Per garantir que a l'inici de l'entrenament `ΔW = B·A = 0` i el model comenci comportant-se exactament igual que el model base preentrenat sense pertorbacions aleatòries, mentre `A ≠ 0` permet que el gradient actualitzi `B` des del primer pas."
+        },
+        {
+          "key": "B",
+          "text": "Perquè si `B = 0`, l'adaptador queda permanentment igual a zero i no aprèn mai res."
+        },
+        {
+          "key": "C",
+          "text": "Per reduir el rang `r` a 0."
+        },
+        {
+          "key": "D",
+          "text": "Per quantitzar automàticament `W₀` a 4 bits."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Inicialitzar B=0 i A~N(0, σ²) manté intacte el punt de partida del model preentrenat (ΔW=0) i evita el bloqueig simètric que passaria si tant A com B fossin zero.",
+      "explanationsIncorrect": {
+        "B": "Com que A ≠ 0, el gradient ∂L/∂B = (∂L/∂h)·(Ax)ᵀ és no nul des de la primera iteració!",
+        "C": "El rang `r` continua sent el configurat (p. ex. 16).",
+        "D": "No té relació amb la quantització NF4."
+      }
+    },
+    {
+      "id": "m03-09-q10",
+      "module": 3,
+      "conceptId": "m03-09-agents-ia",
+      "lessonRef": "content/module-03/m03-09-agents-ia.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "Vols automatitzar el processament d'instàncies ciutadanes seguint sempre exactament 4 passos fixos: (1) OCR del PDF, (2) classificació del servei, (3) extracció JSON de 6 camps amb validació Pydantic i (4) desar esborrany per al tècnic. Quin disseny és superior?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Un equip de 5 agents autònoms conversant lliurement entre ells sense graf d'estats."
+        },
+        {
+          "key": "B",
+          "text": "Un agent ReAct sense límit de passos que decideixi cada vegada si fa OCR o no."
+        },
+        {
+          "key": "C",
+          "text": "Un ***workflow* determinista orquestrat** (p. ex., pipeline o graf d'estats fix) que crida cada model/validador en l'ordre exacte, oferint màxima fiabilitat, mínima latència, cost previsible i auditabilitat total."
+        },
+        {
+          "key": "D",
+          "text": "Un únic prompt zero-shot sense OCR ni validació Pydantic."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Quan la seqüència de passos és coneguda i reglada, introduir autonomia d'agent innecessària només afegeix variabilitat, latència, cost i risc d'errors.",
+      "explanationsIncorrect": {
+        "A": "Sobre-enginyeria multi-agent innecessària per a un flux determinista de 4 passos.",
+        "B": "Podria saltar-se passos obligatoris o entrar en bucles.",
+        "D": "Sense OCR ni validació determinista fallaria en PDFs escanejats i dades numèriques."
+      }
+    },
+    {
+      "id": "m03-06-q01",
+      "module": 3,
+      "conceptId": "m03-06-embeddings-rag",
+      "lessonRef": "content/module-03/m03-06-embeddings-rag.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Per què la cerca dins d'un sistema RAG s'anomena **recuperació asimètrica**?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Perquè la consulta de l'usuari (curta, col·loquial i interrogativa) i els fragments indexats (llargs, jurídics i declaratius) tenen longituds, estils i rols diferents."
+        },
+        {
+          "key": "B",
+          "text": "Perquè els vectors de consulta tenen 128 dimensions i els de document 1.024 dimensions."
+        },
+        {
+          "key": "C",
+          "text": "Perquè només funciona en una direcció d'idioma."
+        },
+        {
+          "key": "D",
+          "text": "Perquè la similitud cosinus no és simètrica."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Tot i compartir exactament la mateixa dimensionalitat, pregunta i resposta tenen estructura i llenguatge diferents; per això models com E5 empren prefixos asimètrics ('query: ' vs 'passage: ').",
+      "explanationsIncorrect": {
+        "B": "Consulta i document sempre tenen la mateixa dimensionalitat dins del mateix model.",
+        "C": "Funciona en qualsevol parell d'idiomes suportats.",
+        "D": "La similitud cosinus sí que és matemàticament simètrica (`cos(u,v) == cos(v,u)`)."
+      }
+    },
+    {
+      "id": "m03-02-q07",
+      "module": 3,
+      "conceptId": "m03-02-arquitectura-transformer",
+      "lessonRef": "content/module-03/m03-02-arquitectura-transformer.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Quina és la característica definitòria d'una arquitectura **Mixture of Experts (MoE)** dins d'un Transformer?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Activa el 100% de totes les subxarxes expertes per a cada token."
+        },
+        {
+          "key": "B",
+          "text": "Elimina la capa d'atenció completament."
+        },
+        {
+          "key": "C",
+          "text": "Utilitza una base de regles simbòliques com a router."
+        },
+        {
+          "key": "D",
+          "text": "Substitueix la FFN densa per múltiples experts i un *router* après que activa només un petit subconjunt (p. ex., 2 de 8) per a cada token, desacoblant la capacitat total dels FLOPs per token."
+        }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "MoE permet tenir desenes o centenars de milers de milions de paràmetres totals mantenint una velocitat d'inferència pròpia d'un model molt més petit (només es computen els paràmetres actius).",
+      "explanationsIncorrect": {
+        "A": "Això seria un model dens; MoE fa activació dispersa (sparse routing).",
+        "B": "La capa d'atenció es manté intacta; MoE substitueix normalment la FFN.",
+        "C": "El router és una capa lineal entrenable seguida de Softmax/Top-K."
+      }
+    },
+    {
+      "id": "m03-04-q04",
+      "module": 3,
+      "conceptId": "m03-04-prompt-engineering",
+      "lessonRef": "content/module-03/m03-04-prompt-engineering.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "En dissenyar un JSON Schema perquè un LLM autoregressiu verifiqui 4 requisits d'una subvenció i emeti un veredicte (`compleix: true/false`), per què convé posar el camp **`analisi_requisits` ABANS que `compleix`**?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Perquè els LLMs generen seqüencialment d'esquerra a dreta; generar primer l'anàlisi pas a pas (Chain-of-Thought) condiciona positivament el veredicte final, mentre que posar el veredicte primer força el model a decidir en fred i després pot racionalitzar o contradir-se."
+        },
+        {
+          "key": "B",
+          "text": "Perquè l'estàndard JSON prohibeix començar un objecte per un valor booleà."
+        },
+        {
+          "key": "C",
+          "text": "Per reduir el nombre de tokens generats a la meitat."
+        },
+        {
+          "key": "D",
+          "text": "Perquè `temperature` només afecta el segon camp d'un JSON."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "La generació causal fa que el token del booleà només pugui atendre als tokens generats prèviament; situar el raonament abans millora empíricament la precisió en decisions multicriteri.",
+      "explanationsIncorrect": {
+        "B": "JSON admet qualsevol ordre de claus.",
+        "C": "Generar el raonament consumeix els mateixos tokens (o més), però millora la qualitat de la decisió.",
+        "D": "La temperatura s'aplica a tots els tokens generats."
+      }
+    },
+    {
+      "id": "m03-08-q01",
+      "module": 3,
+      "conceptId": "m03-08-rag",
+      "lessonRef": "content/module-03/m03-08-rag.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quin problema fonamental dels LLMs resol l'arquitectura **RAG (*Retrieval-Augmented Generation*)** en una administració pública?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Permet actualitzar la normativa vigent sense reentrenar l'LLM, fonamentar les respostes en documents verificables amb cites i fer complir permisos d'accés (ACL) per document."
+        },
+        {
+          "key": "B",
+          "text": "Elimina la necessitat de tenir un tokenitzador."
+        },
+        {
+          "key": "C",
+          "text": "Converteix l'LLM en un model de clustering no supervisat."
+        },
+        {
+          "key": "D",
+          "text": "Redueix automàticament la mida dels pesos del model a 1 MB."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "RAG separa el coneixement dinàmic/privat (a la base documental indexada) de la capacitat lingüística (a l'LLM), aportant actualització instantània, cites auditables i seguretat ACL.",
+      "explanationsIncorrect": {
+        "B": "Tant el model d'embeddings com l'LLM continuen utilitzant tokenitzadors.",
+        "C": "RAG és un sistema de recuperació i generació, no clustering.",
+        "D": "No modifica els pesos de l'LLM."
+      }
+    }
+  ]
+}

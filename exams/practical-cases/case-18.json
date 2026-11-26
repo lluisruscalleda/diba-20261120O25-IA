@@ -1,0 +1,24 @@
+{
+  "id": "case-18",
+  "title": "Supòsit 18 — Integració resilient d'un servei d'IA amb un gestor d'expedients legacy (ENI + Circuit Breaker)",
+  "modules": [6, 7],
+  "difficulty": "intermediate",
+  "estimatedMinutes": 45,
+  "context": "Una administració vol connectar un nou servei d'IA de classificació i extracció documental amb el seu gestor d'expedients legacy de fa 15 anys (que només parla SOAP/XML lent i cau sovint en pics de convocatòria) i amb la Seu Electrònica. L'equip inicial proposa fer crides HTTP síncrones directes des de la Seu cap al servei d'IA i del servei d'IA cap al gestor legacy sense timeouts.",
+  "statement": "Identifica els riscos d'acoblament i fallada en cascada de la proposta inicial i dissenya una arquitectura d'integració resilient, desacoblada i conforme a l'ENI.",
+  "requirements": [
+    "Aplicar el patró Anti-Corruption Layer (ACL) per traduir el format legacy SOAP/XML a un contracte canònic OpenAPI/JSON compatible amb l'ENI (metadades obligatòries).",
+    "Implementar desacoblament asíncron per cues (broker/events), Circuit Breaker (CLOSED/OPEN/HALF_OPEN), timeouts estrictes, reintents amb backoff i Dead Letter Queue (DLQ).",
+    "Garantir idempotència (evitar expedients duplicats) i traçabilitat distribuïda de punta a punta mitjançant correlation_id."
+  ],
+  "rubric": [
+    { "criterion": "Identificació de fallada en cascada i desacoblament asíncron amb cues/DLQ", "maxPoints": 30, "description": "Evita bloquejar el registre ciutadà a la Seu si l'IA o el legacy van lents; usa cua + DLQ." },
+    { "criterion": "Anti-Corruption Layer (ACL) i estàndards d'interoperabilitat ENI", "maxPoints": 25, "description": "Aïlla el model d'IA del SOAP legacy i preserva metadades ENI i seguretat mTLS/OAuth2." },
+    { "criterion": "Patrons de resiliència (Circuit Breaker, Timeout, Backoff + Jitter, Fallback segur)", "maxPoints": 25, "description": "Explica la màquina d'estats CLOSED/OPEN/HALF_OPEN i un fallback que deriva a cua humana sense perdre expedients." },
+    { "criterion": "Idempotència i traçabilitat distribuïda (correlation_id)", "maxPoints": 20, "description": "Garanteix que reintents no dupliquen assentaments i permet auditar tot el recorregut." }
+  ],
+  "modelSolution": "### 1. Riscos crítics de la proposta inicial\n- Una crida síncrona sense *timeout* encadena **Seu → IA → Legacy SOAP**: si el model GPU triga 15 segons o el legacy cau en un pic de convocatòria, s'esgoten els fils de la Seu Electrònica i **els ciutadans no poden ni presentar la instància** (fallada en cascada inacceptable!).\n- Acoblar el codi de la IA directament als esquemes XML antics fa fràgil qualsevol manteniment.\n\n### 2. Arquitectura resilient i conforme a l'ENI\n1. **Desacoblament per cues (*Event-Driven*)**: la Seu registra l'assentament immediatament (emetent el justificant oficial al ciutadà en < 300 ms) i publica un esdeveniment `expedient.registrat` amb **`correlation_id`** i **clau d'idempotència** (`num_registre_unic`).\n2. **Anti-Corruption Layer (ACL)**: un adaptador dedicat tradueix entre els missatges canònics JSON/OpenAPI (amb metadades **ENI** — Esquema Nacional d'Interoperabilitat) i els serveis SOAP/XML del gestor *legacy*.\n3. **Circuit Breaker + Fallback segur**: si el servei d'IA acumula fallades o excedeix el *timeout* (`2 s`), el *Circuit Breaker* passa de `CLOSED` a **`OPEN`** i activa un ***fallback* segur**: l'expedient passa directament a la cua de triatge estàndard sense perdre's ni bloquejar res! Periòdicament passa a `HALF_OPEN` per provar recuperació.\n4. **Reintents amb *exponential backoff + jitter* i *Dead Letter Queue (DLQ)***: els missatges que fallen repetidament contra el *legacy* passen a la DLQ per a reprocessament segur (garantit idempotent!) sense pèrdua d'expedients.\n5. **Seguretat entre microserveis**: autenticació **mTLS / OAuth2 client credentials** i registre centralitzat per `correlation_id` (Traçabilitat ENS).",
+  "alternativeApproaches": [
+    "Si cal assistència en temps real al formulari (Shift-Left), usar només un endpoint ultralleuger amb timeout estricte de 800 ms i degradació elegant (el formulari sempre permet enviar encara que l'assistent no respongui)."
+  ]
+}

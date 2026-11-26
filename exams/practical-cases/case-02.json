@@ -1,0 +1,24 @@
+{
+  "id": "case-02",
+  "title": "Supòsit 02 — Classificador i cercador semàntic en català per al Registre General",
+  "modules": [2, 8],
+  "difficulty": "intermediate",
+  "estimatedMinutes": 45,
+  "context": "Un ajuntament de 95.000 habitants rep 42.000 instàncies genèriques l'any (70% en català, 30% en castellà, sovint amb errors ortogràfics, abreviatures i vocabulari col·loquial). Actualment els administratius les deriven manualment a 14 departaments amb un retard mitjà de 4 dies.",
+  "statement": "Dissenya l'arquitectura NLP completa per classificar i enrutar automàticament les instàncies, garantint igualtat de rendiment entre català i castellà i gestió segura d'incertesa.",
+  "requirements": [
+    "Comparar i seleccionar l'enfocament de representació/model (TF-IDF + lineal vs. Transformer bilingüe/català tipus RoBERTa-ca / mDeBERTa) i justificar l'estratègia per a 14 classes desequilibrades.",
+    "Dissenyar la gestió de confiança (llindar de derivació automàtica vs. cua humana) i l'extracció d'entitats (NER) + pseudonimització de PII.",
+    "Establir un pla d'avaluació desagregada (Sliced Evaluation) per idioma i per departaments minoritaris."
+  ],
+  "rubric": [
+    { "criterion": "Arquitectura NLP i selecció de models en català/castellà", "maxPoints": 30, "description": "Proposa baseline TF-IDF + SVM/Logística i evolució a Transformer entrenat en català/multilingüe amb tractament de classes rares." },
+    { "criterion": "Enrutament per llindar de confiança i NER/PII", "maxPoints": 25, "description": "Defineix zona d'alta confiança (enrutament automàtic) vs. zona gris (cua humana) i redacció de PII en logs." },
+    { "criterion": "Avaluació desagregada (Macro-F1 i paritat català/castellà)", "maxPoints": 25, "description": "Exigeix Macro-F1 per no amagar classes minoritàries i bretxa màxima estreta entre català i castellà." },
+    { "criterion": "Operació contínua i gestió de rebots (Concept Drift)", "maxPoints": 20, "description": "Captura les reclassificacions dels funcionaris com a senyal de Concept Drift i dades d'or per reentrenar." }
+  ],
+  "modelSolution": "### 1. Arquitectura progressiva NLP bilingüe\n- **Baseline ràpid (Setmana 1)**: `TF-IDF` amb n-grames de paraules i caràcters (`char_wb` 3–5, molt robust davant faltes d'ortografia i apòstrofs catalans!) + **Regressió Logística / LinearSVC** amb `class_weight='balanced'`.\n- **Model principal**: *fine-tuning* d'un encoder **RoBERTa català / multilingüe (`mDeBERTa-v3` o models del projecte AINA)** executat *on-premise*, que entén sinònims col·loquials (*«fanal apagat»* → `Via Pública`).\n\n### 2. Enrutament segur i NER preventiu\n- **Calibració de probabilitats** (*Temperature Scaling*) + política de **llindar de confiança (`tau = 0,85`)**: per sobre s'enruta directament al departament (HOTL); per sota passa a la cua de triatge humà.\n- **NER previ**: extracció d'expedients, dates i municipis, i **emmascarament de DNI/telèfons/correus** abans d'emmagatzemar textos en registres de monitoratge.\n\n### 3. Avaluació i millora contínua\n- Mètrica principal: **Macro-F1** (evita que 2 departaments grans emmascarin un F1 baix en 4 departaments petits) + **Sliced Evaluation obligatòria** comparant `F1_catala` vs. `F1_castella` (bretxa màxima admissible <= 2 punts percentuals).\n- **Bucle de millora**: cada vegada que un departament «rebota» una instància mal assignada, es registra la correcció per detectar *Concept Drift* (ex. reorganització de regidories) i alimentar el reentrenament.",
+  "alternativeApproaches": [
+    "Usar un LLM petit open-weights amb classificació estructurada JSON (zero-shot) només mentre s'etiqueten les primeres 1.500 instàncies per entrenar l'encoder lleuger."
+  ]
+}

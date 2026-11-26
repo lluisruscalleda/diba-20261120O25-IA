@@ -1,0 +1,24 @@
+{
+  "id": "case-11",
+  "title": "Supòsit 11 — Segmentació de municipis per clustering i predicció de demanda de serveis públics",
+  "modules": [1, 8],
+  "difficulty": "basic",
+  "estimatedMinutes": 40,
+  "context": "Una diputació vol agrupar els 311 municipis de la província segons indicadors socioeconòmics, demogràfics i d'equipaments públics per dissenyar programes de cooperació tècnica a mida i preveure la demanda de places d'escola bressol.",
+  "statement": "Dissenya l'estratègia d'aprenentatge no supervisat (clustering) i de regressió predictiva, evitant biaixos d'agregació territorial entre l'àrea metropolitana i els micropobles.",
+  "requirements": [
+    "Triar i justificar el preprocés (escalat obligatori de variables en escales molt diferents), l'algorisme de clustering (K-Means vs. DBSCAN/Jeràrquic) i la validació del nombre de clústers (Elbow + Silhouette).",
+    "Explicar com prevenir el biaix d'agregació (un model únic dominat pels municipis grans que falla als micropobles).",
+    "Definir les mètriques de regressió (MAE, RMSE, R²) i les garanties de transparència en l'assignació de recursos públics."
+  ],
+  "rubric": [
+    { "criterion": "Preprocés i selecció correcta de clustering (escalat, K-Means/Jeràrquic, Silhouette)", "maxPoints": 35, "description": "Justifica StandardScaler o RobustScaler (davant outliers com Barcelona) i valida K amb Silhouette + interpretabilitat." },
+    { "criterion": "Mitigació del biaix d'agregació territorial", "maxPoints": 25, "description": "Detecta que Barcelona o ciutats grans distorsionen la mitjana; proposa models estratificats o normalització per càpita." },
+    { "criterion": "Regressió interpretable i mètriques adequades", "maxPoints": 25, "description": "Usa MAE/RMSE desagregats per tram poblacional i models interpretables per justificar inversions." },
+    { "criterion": "Governança i revisió política/tècnica humana", "maxPoints": 15, "description": "El model informa el pla de cooperació però la decisió pressupostària correspon als òrgans de govern." }
+  ],
+  "modelSolution": "### 1. Clustering territorial rigorós\n- **Escalat obligatori i gestió d'outliers**: com la població va de 300 habitants a > 1,6 M (Barcelona), sense escalat la població dominaria la distància euclidiana! Cal transformar amb **logaritme + `RobustScaler`** (o tractar Barcelona com a categoria singular separada).\n- **Algorisme**: **Clustering jeràrquic (Ward)** (excel·lent amb 311 municipis per obtenir un dendrograma interpretable pels responsables territorials!) contrastat amb **K-Means**, triant `k` mitjançant **Silhouette Score** combinat amb coherència de gestió pública.\n\n### 2. Prevenció del biaix d'agregació\n- Un únic model de regressió entrenat sobre tots els municipis optimitzant RMSE global es concentraria en reduir errors absoluts a les ciutats grans i cometria errors relatius enormes als micropobles.\n- **Solució**: treballar amb ràtios **per 1.000 habitants**, avaluar **MAE relatiu (MAPE/sMAPE) per clúster poblacional** (*Sliced Evaluation*) i entrenar models específics o amb interaccions per tipus de municipi.\n\n### 3. Transparència i supervisió\n- Publicar la metodologia i els indicadors utilitzats en obert (sense dades personals individuals, agregats estadístics) garantint que el resultat és una eina de diagnosi tècnica i mai un repartiment cec automatitzat.",
+  "alternativeApproaches": [
+    "Usar UMAP/PCA en 2D únicament per a visualització exploratòria dels perfils municipals (mai per substituir les variables interpretables originals en la presa de decisions)."
+  ]
+}

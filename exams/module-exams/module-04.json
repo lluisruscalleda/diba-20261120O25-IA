@@ -1,0 +1,1409 @@
+{
+  "id": "module-04",
+  "module": 4,
+  "title": "Examen acumulatiu del Mòdul 4: IDP i documents",
+  "note": "Paràmetres orientatius de preparació (durada, penalització i nota mínima configurables a la plataforma; no constitueixen bases oficials de convocatòria).",
+  "recommendedMinutes": 45,
+  "questions": [
+    {
+      "id": "m04-03-q07",
+      "module": 4,
+      "conceptId": "m04-03-extraccio-camps",
+      "lessonRef": "content/module-04/m04-03-extraccio-camps.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Una administració vol automatitzar la recepció de factures dels seus proveïdors habituals. Quina és la primera recomanació arquitectònica abans de desplegar OCR + extracció IA sobre factures PDF?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Demanar als proveïdors que imprimeixin les factures i les enviïn per correu postal."
+        },
+        {
+          "key": "B",
+          "text": "Entrenar un VLM de 70B paràmetres només per a factures."
+        },
+        {
+          "key": "C",
+          "text": "Desactivar la validació aritmètica de l'IVA."
+        },
+        {
+          "key": "D",
+          "text": "Prioritzar l'entrada estructurada per **factura electrònica (`e-FACT / Facturae XML`)** (0% d'error d'extracció) i reservar el pipeline IDP sobre PDF per a justificants de subvencions, despeses menors o documents sense canal XML."
+        }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "La millor extracció IA és la que no cal fer perquè la dada ja arriba estructurada oficialment en XML (e-FACT / Llei 25/2013).",
+      "explanationsIncorrect": {
+        "A": "Retrocediria al paper i empitjoraria tot el procés.",
+        "B": "Sobre-enginyeria innecessària quan existeix factura electrònica estructurada.",
+        "C": "La validació comptable és sempre obligatòria."
+      }
+    },
+    {
+      "id": "m04-03-q08",
+      "module": 4,
+      "conceptId": "m04-03-extraccio-camps",
+      "lessonRef": "content/module-04/m04-03-extraccio-camps.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En la funció `avaluar_extraccio` de la lliçó, per què el **Cas 2** dispara `REVISIO_HUMANA_SELECTIVA` malgrat que tots els camps tenen confiançes entre `0,94` i `0,99`?",
+      "codeSnippet": "suma_linies = sum((Decimal(l[\"quantitat\"]) * Decimal(l[\"preu_unitari\"]) for l in linies), Decimal(\"0.00\"))\nif abs(suma_linies - Decimal(valors[\"base_imposable\"])) > Decimal(\"0.01\"): ...",
+      "options": [
+        {
+          "key": "A",
+          "text": "Perquè la **validació aritmètica creuada** (`Σ quantitat × preu_unitari = 1150,00 ≠ 1250,00`) intercepta una fila mal extreta fins i tot quan el model estava molt segur de si mateix, demostrant que les regles deterministes són la xarxa de seguretat imprescindible de la confiança probabilística."
+        },
+        {
+          "key": "B",
+          "text": "Perquè `Decimal` sempre dona un error d'arrodoniment binari."
+        },
+        {
+          "key": "C",
+          "text": "Perquè `llindars` era buit."
+        },
+        {
+          "key": "D",
+          "text": "Perquè el NIF tenia 9 caràcters."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Els models neuronals poden cometre errors amb alta confiança (p. ex. llegir `3` en lloc de `4` o ometre una fila d'una taula multipàgina); el quadre aritmètic en `Decimal` ho detecta al 100%.",
+      "explanationsIncorrect": {
+        "B": "Al contrari, `Decimal` evita els errors d'arrodoniment binari de `float`.",
+        "C": "`llindars` contenia tots tres camps.",
+        "D": "Un NIF espanyol vàlid té precisament 9 caràcters."
+      }
+    },
+    {
+      "id": "m04-05-q07",
+      "module": 4,
+      "conceptId": "m04-05-validacio-automatica-documental",
+      "lessonRef": "content/module-04/m04-05-validacio-automatica-documental.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Abans d'acceptar un certificat oficial aportat en format PDF pel ciutadà, quina comprovació de seguretat (Capa 3) preveu falsificacions o alteracions del PDF?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Mirar si el logotip de la capçalera té bon aspecte."
+        },
+        {
+          "key": "B",
+          "text": "Comprovar només que el nom del fitxer comenci per `certificat_`."
+        },
+        {
+          "key": "C",
+          "text": "Comptar quantes pàgines té el fitxer."
+        },
+        {
+          "key": "D",
+          "text": "Verificar criptogràficament la **signatura electrònica (PAdES / Validador AOC / @firma)** o contrastar el **CSV (Codi Segur de Verificació)** contra la seu emissora."
+        }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Una imatge de logotip o segell es falsifica en segons; només la validació criptogràfica de signatura o del CSV certifica integritat i autenticitat.",
+      "explanationsIncorrect": {
+        "A": "L'aparença visual es pot manipular fàcilment amb qualsevol editor de PDF.",
+        "B": "El nom del fitxer no ofereix cap garantia d'autenticitat.",
+        "C": "El nombre de pàgines no valida integritat."
+      }
+    },
+    {
+      "id": "m04-08-q04",
+      "module": 4,
+      "conceptId": "m04-08-documents-tributaris",
+      "lessonRef": "content/module-04/m04-08-documents-tributaris.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "En processar una escriptura notarial de 45 pàgines per a la **plusvàlua (IIVTNU)**, l'extractor troba mencions d'**«usdefruit vitalici»**, **«nua propietat»** o **«extinció de condomini»**. Quina ha de ser la conducta del sistema?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Activar una **bandera automàtica de complexitat jurídica** i derivar l'expedient a revisió per un tècnic tributari especialista (sense calcular ni emetre proposta automàtica estàndard)."
+        },
+        {
+          "key": "B",
+          "text": "Ignorar l'usdefruit i liquidar com si fos el 100% de plena propietat."
+        },
+        {
+          "key": "C",
+          "text": "Esborrar l'escriptura perquè és massa llarga."
+        },
+        {
+          "key": "D",
+          "text": "Demanar a l'LLM que s'inventi un percentatge d'usdefruit."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Figures jurídiques com l'usdefruit (càlcul segons edat de l'usufructuari), l'extinció de condomini (sovint no subjecta) o herències complexes exigeixen valoració jurídica tributària experta.",
+      "explanationsIncorrect": {
+        "B": "Generaria una liquidació tributària il·legal i errònia.",
+        "C": "Mai es destrueix documentació aportada pel contribuent.",
+        "D": "L'usdefruit té regles legals exactes (regla del 89 menys edat, mínim 10% màxim 70%), mai estimacions aleatòries."
+      }
+    },
+    {
+      "id": "m04-06-q08",
+      "module": 4,
+      "conceptId": "m04-06-tractament-formularis",
+      "lessonRef": "content/module-04/m04-06-tractament-formularis.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En la funció `classificar_casella_omr` de la lliçó, per què és indispensable la línia `interior = patch_gris[marge_vora:-marge_vora, marge_vora:-marge_vora]` abans de calcular `densitat_tinta`?",
+      "codeSnippet": "interior = patch_gris[marge_vora:-marge_vora, marge_vora:-marge_vora]\ndensitat_tinta = float(np.mean(interior < 128))",
+      "options": [
+        {
+          "key": "A",
+          "text": "Per excloure els píxels negres del **marc imprès del propi requadre**, evitant que una casella completament buida superi el llindar i generi falsos positius de «MARCADA» o «AMBIGUA»."
+        },
+        {
+          "key": "B",
+          "text": "Per convertir la imatge a format PDF."
+        },
+        {
+          "key": "C",
+          "text": "Per augmentar el nombre de píxels foscos."
+        },
+        {
+          "key": "D",
+          "text": "Per esborrar la creu dibuixada al centre de la casella."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "El perímetre negre d'una casella petita de 16×16 representa ja el ~23% dels píxels! Sense retallar el marge de vora, fins i tot una casella buida es classificaria erròniament com a marcada.",
+      "explanationsIncorrect": {
+        "B": "És un slicing d'un array NumPy, no una conversió a PDF.",
+        "C": "Al contrari, elimina els píxels foscos del marc exterior.",
+        "D": "Només retalla els `marge_vora` píxels exteriors, conservant intacte el centre."
+      }
+    },
+    {
+      "id": "m04-02-q05",
+      "module": 4,
+      "conceptId": "m04-02-classificacio-documental",
+      "lessonRef": "content/module-04/m04-02-classificacio-documental.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Per què convé alinear la taxonomia del classificador documental amb les tipologies oficials de l'**Esquema Nacional d'Interoperabilitat (ENI)** (`TD01`, `TD07`, `TD14`, `TD19`...)?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Perquè l'ENI prohibeix utilitzar models de Deep Learning."
+        },
+        {
+          "key": "B",
+          "text": "Per integrar directament la classificació automàtica amb els metadades obligatoris de l'expedient electrònic, l'arxiu electrònic únic i l'intercanvi interoperable entre administracions."
+        },
+        {
+          "key": "C",
+          "text": "Per reduir el nombre de DPI dels escàners."
+        },
+        {
+          "key": "D",
+          "text": "Per evitar haver de validar les factures."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Mapar directament a les tipologies normalitzades de l'ENI elimina traduccions manuals i assegura el compliment dels metadades mínims obligatoris d'expedient electrònic.",
+      "explanationsIncorrect": {
+        "A": "L'ENI regula interoperabilitat de documents i metadades, no prohibeix el Deep Learning.",
+        "C": "No té relació amb reduir DPI.",
+        "D": "La validació comptable i administrativa continua sent necessària."
+      }
+    },
+    {
+      "id": "m04-08-q01",
+      "module": 4,
+      "conceptId": "m04-08-documents-tributaris",
+      "lessonRef": "content/module-04/m04-08-documents-tributaris.md",
+      "difficulty": "basic",
+      "questionType": "architecture",
+      "prompt": "Quina és la regla d'arquitectura fonamental quan s'aplica IA a documents tributaris (com escriptures notarials per a plusvàlua o bonificacions d'IBI)?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "**IDP per extreure** dades brutes del document (amb cites a pàgina i *bounding boxes*) + **Motor fiscal 100% determinista en `Decimal`** per calcular bases, bonificacions i quotes + supervisió humana."
+        },
+        {
+          "key": "B",
+          "text": "Demanar directament a un LLM que calculi la quota a pagar i emeti la carta de pagament automàticament."
+        },
+        {
+          "key": "C",
+          "text": "Utilitzar `float` de 32 bits per a totes les quotes tributàries."
+        },
+        {
+          "key": "D",
+          "text": "Substituir les ordenances fiscals municipals per prompts informals."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "La IA aporta valor llegint prosa notarial complexa, però el càlcul tributari ha de ser 100% determinista, exacte (`Decimal`), versionat segons l'ordenança municipal vigent i validat per personal tributari.",
+      "explanationsIncorrect": {
+        "B": "Els LLMs cometen errors aritmètics i no garanteixen aplicació exacta de 311 ordenances fiscals.",
+        "C": "El punt flotant binari introdueix errors d'arrodoniment inacceptables en imports fiscals.",
+        "D": "Les ordenances fiscals són normes jurídiques vinculants que s'han de codificar deterministament."
+      }
+    },
+    {
+      "id": "m04-02-q03",
+      "module": 4,
+      "conceptId": "m04-02-classificacio-documental",
+      "lessonRef": "content/module-04/m04-02-classificacio-documental.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quines tres modalitats combina una arquitectura documental com **LayoutLMv3**?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Àudio, vídeo i codi binari."
+        },
+        {
+          "key": "B",
+          "text": "Només n-grams de caràcters."
+        },
+        {
+          "key": "C",
+          "text": "**Text** (tokens), **geometria/*layout*** (coordenades 2D de les caixes) i **imatge visual** (pedaços de la pàgina)."
+        },
+        {
+          "key": "D",
+          "text": "SQL, HTML i CSS."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "LayoutLMv3 integra representacions textuals, posicionals 2D i visuals dins un Transformer unificat, maximitzant precisió tant en classificació com en extracció.",
+      "explanationsIncorrect": {
+        "A": "No treballa amb àudio ni vídeo.",
+        "B": "Utilitza molt més que n-grams de text.",
+        "D": "No són modalitats d'entrada del model."
+      }
+    },
+    {
+      "id": "m04-05-q03",
+      "module": 4,
+      "conceptId": "m04-05-validacio-automatica-documental",
+      "lessonRef": "content/module-04/m04-05-validacio-automatica-documental.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Què verifica la **Capa 4 (Coherència creuada d'expedient)**?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Només que el fitxer tingui extensió `.pdf`."
+        },
+        {
+          "key": "B",
+          "text": "Només la resolució DPI de l'escàner."
+        },
+        {
+          "key": "C",
+          "text": "La consistència entre **múltiples documents del mateix expedient**: coincidència de NIF entre instància/factures/certificat bancari, factures dins el període elegible i completitud del checklist obligatori."
+        },
+        {
+          "key": "D",
+          "text": "La temperatura de la GPU del servidor."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Cada document pot ser internament perfecte però incongruent amb la resta de l'expedient (p. ex. factura d'un altre exercici o emesa a nom d'una altra persona).",
+      "explanationsIncorrect": {
+        "A": "Això és Capa 1 (sintàctica/format).",
+        "B": "Això és preprocessament OCR.",
+        "D": "Això és monitoratge d'infraestructura."
+      }
+    },
+    {
+      "id": "m04-08-q03",
+      "module": 4,
+      "conceptId": "m04-08-documents-tributaris",
+      "lessonRef": "content/module-04/m04-08-documents-tributaris.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quants caràcters té una **referència cadastral** oficial a Espanya i com podem validar-ne automàticament la integritat després de l'OCR?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "9 caràcters sense cap dígit de control."
+        },
+        {
+          "key": "B",
+          "text": "24 caràcters validats amb MOD 97-10."
+        },
+        {
+          "key": "C",
+          "text": "**20 caràcters alfanumèrics**, dels quals els **2 darrers (posicions 19 i 20) són caràcters de control** verificables mitjançant l'algorisme oficial de pesos i mòdul 23 de la Direcció General del Cadastre."
+        },
+        {
+          "key": "D",
+          "text": "Longitud variable entre 5 i 50 caràcters."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Validar els 2 caràcters de control oficials de la referència cadastral intercepta gairebé el 100% dels errors d'OCR abans de consultar Cadastre o liquidar IBI/IIVTNU.",
+      "explanationsIncorrect": {
+        "A": "9 caràcters correspon a un DNI/NIE, no a una referència cadastral.",
+        "B": "24 caràcters i MOD 97-10 correspon a un IBAN espanyol.",
+        "D": "Una referència cadastral d'immoble urbà/rústic té sempre exactament 20 caràcters."
+      }
+    },
+    {
+      "id": "m04-04-q06",
+      "module": 4,
+      "conceptId": "m04-04-reconeixement-entitats-documents",
+      "lessonRef": "content/module-04/m04-04-reconeixement-entitats-documents.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "En preparar un decret municipal per publicar-lo al portal de transparència, com ha de tractar el sistema el nom de l'**alcaldessa o secretari que signen el decret** enfront del nom i domicili del **ciutadà beneficiari d'un ajut social**?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Redactar el nom del secretari i publicar íntegrament el domicili i NIF del ciutadà."
+        },
+        {
+          "key": "B",
+          "text": "Publicar tots dos sense cap protecció."
+        },
+        {
+          "key": "C",
+          "text": "**Preservar** el nom i càrrec de les autoritats/funcionaris signants (transparència institucional) i **protegir/redactar** les dades personals i quasi-identificadors del ciutadà beneficiari."
+        },
+        {
+          "key": "D",
+          "text": "Redactar el 100% de totes les paraules del decret."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "La transparència pública exigeix identificar qui signa l'acte en exercici de potestat pública, mentre la protecció de dades obliga a preservar la privacitat dels ciutadans (especialment en ajuts socials).",
+      "explanationsIncorrect": {
+        "A": "És exactament al revés i causaria una bretxa RGPD.",
+        "B": "Publicar domicili i NIF complet d'un beneficiari social vulnera el RGPD i la LOPDGDD.",
+        "D": "Faríem el decret completament inintel·ligible i inútil per a transparència."
+      }
+    },
+    {
+      "id": "m04-05-q01",
+      "module": 4,
+      "conceptId": "m04-05-validacio-automatica-documental",
+      "lessonRef": "content/module-04/m04-05-validacio-automatica-documental.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "A quina capa de la piràmide de validació documental pertany comprovar la lletra d'un **DNI/NIE (mòdul 23)** i el dígit de control d'un **IBAN (MOD 97-10)**?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Capa 2: **Validació algorítmica (dígits de control)**."
+        },
+        {
+          "key": "B",
+          "text": "Capa 5: Contrast extern via API."
+        },
+        {
+          "key": "C",
+          "text": "Capa 4: Coherència entre documents."
+        },
+        {
+          "key": "D",
+          "text": "No forma part de la validació documental."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Els dígits de control (DNI mod 23, CIF, IBAN MOD 97-10) són comprovacions matemàtiques locals (< 1 ms) pròpies de la Capa 2 que detecten immediatament errors d'OCR o transcripció.",
+      "explanationsIncorrect": {
+        "B": "No cal cap crida a API externa per calcular el mòdul 23 o el mòdul 97.",
+        "C": "Avalua un sol camp dins del mateix document.",
+        "D": "És una de les defenses més efectives i barates de tot pipeline IDP."
+      }
+    },
+    {
+      "id": "m04-04-q04",
+      "module": 4,
+      "conceptId": "m04-04-reconeixement-entitats-documents",
+      "lessonRef": "content/module-04/m04-04-reconeixement-entitats-documents.md",
+      "difficulty": "intermediate",
+      "questionType": "metrics",
+      "prompt": "En un sistema automàtic de detecció de **PII (*Personally Identifiable Information*)** per anonimitzar decrets abans de publicar-los al portal de transparència, quina mètrica s'ha de prioritzar?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "El **Recall (i F2-score)**, perquè un Fals Negatiu (deixar un NIF o domicili real exposat públicament) provoca una bretxa RGPD greu, mentre que un Fals Positiu es pot corregir fàcilment en la revisió humana prèvia."
+        },
+        {
+          "key": "B",
+          "text": "La *Precision* pura a costa d'un Recall del 60%."
+        },
+        {
+          "key": "C",
+          "text": "La velocitat d'impressió en pàgines per minut."
+        },
+        {
+          "key": "D",
+          "text": "BLEU."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "L'asimetria de risc en privacitat és extrema: perdre una dada personal en una publicació oberta és irreversible; per això es maximitza Recall combinant regles deterministes + NER + revisió humana.",
+      "explanationsIncorrect": {
+        "B": "Un Recall del 60% deixaria el 40% de dades personals exposades públicament!",
+        "C": "No té relació amb privacitat.",
+        "D": "BLEU avalua traducció automàtica."
+      }
+    },
+    {
+      "id": "m04-02-q06",
+      "module": 4,
+      "conceptId": "m04-02-classificacio-documental",
+      "lessonRef": "content/module-04/m04-02-classificacio-documental.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Quin benefici de **privacitat (RGPD)** aporta detectar automàticament en l'etapa de classificació que una pàgina és un `DNI_PASSAPORT` o un `INFORME_MEDIC`?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Permet publicar-la immediatament al portal de transparència."
+        },
+        {
+          "key": "B",
+          "text": "Permet indexar-la al RAG públic de tots els empleats."
+        },
+        {
+          "key": "C",
+          "text": "Permet aplicar des del segon zero polítiques reforçades de seguretat: restringir permisos ACL, excloure-la de la indexació general/RAG i disparar fluxos de minimització o pseudonimització."
+        },
+        {
+          "key": "D",
+          "text": "Permet enviar-la per correu electrònic sense xifratge."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "La classificació primerenca de documents sensibles és una mesura proactiva excel·lent de privacitat des del disseny (art. 25 RGPD).",
+      "explanationsIncorrect": {
+        "A": "Mai es publiquen DNI ni informes mèdics al portal de transparència.",
+        "B": "Precisament s'han d'excloure d'índexs generals per evitar exposició indeguda.",
+        "D": "Requereix màxima protecció i xifratge, no enviament obert."
+      }
+    },
+    {
+      "id": "m04-05-q10",
+      "module": 4,
+      "conceptId": "m04-05-validacio-automatica-documental",
+      "lessonRef": "content/module-04/m04-05-validacio-automatica-documental.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "Un expedient passa satisfactòriament les Capes 1, 2 i 3 en cada document individual, però la **Capa 4** detecta que la factura justificativa té data `2025-11-20` mentre les bases de la subvenció només admeten despeses del `2026-01-01` al `2026-12-31`. Què demostra això?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Que les Capes 1–3 no serveixen per a res."
+        },
+        {
+          "key": "B",
+          "text": "Que la factura té un error d'IBAN."
+        },
+        {
+          "key": "C",
+          "text": "Que validar documents aïlladament no basta: la **coherència creuada contra les regles de la convocatòria i la resta de l'expedient (Capa 4)** és indispensable per detectar despeses no elegibles abans d'aprovar pagaments."
+        },
+        {
+          "key": "D",
+          "text": "Que cal canviar automàticament la data de la factura a `2026-01-01`."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Una factura pot ser fiscalment impecable (Capes 1–3 OK) però no elegible per a aquella convocatòria concreta (Capa 4).",
+      "explanationsIncorrect": {
+        "A": "Les Capes 1–3 són necessàries però no suficients; cada capa captura una classe d'errors diferent.",
+        "B": "L'error és temporal (fora del període elegible), no d'IBAN.",
+        "D": "Alterar una data real d'una factura seria falsedat documental!"
+      }
+    },
+    {
+      "id": "m04-06-q07",
+      "module": 4,
+      "conceptId": "m04-06-tractament-formularis",
+      "lessonRef": "content/module-04/m04-06-tractament-formularis.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Si la Diputació migra un formulari d'ajuts escolars a un **formulari web estructurat** per eliminar errors d'OCR/OMR, pot **prohibir** a les famílies (persones físiques) presentar la sol·licitud presencialment en paper?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Sí, totes les persones físiques estan obligades sempre a usar la seu electrònica."
+        },
+        {
+          "key": "B",
+          "text": "Sí, si l'ajuntament té un chatbot actiu."
+        },
+        {
+          "key": "C",
+          "text": "Només si el formulari té més de 3 caselles."
+        },
+        {
+          "key": "D",
+          "text": "**No**: l'article 14.1 de la Llei 39/2015 (LPACAP) garanteix a les persones físiques el dret a escollir si es relacionen electrònicament o presencialment/en paper (llevat supòsits reglamentaris específics), per la qual cosa cal combinar seu electrònica fàcil amb assistència OAC i suport documental."
+        }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "La transformació digital pública ha de reduir la bretxa digital i fomentar el canal web amb bon disseny, respectant sempre el dret de les persones físiques (art. 14.1 LPACAP).",
+      "explanationsIncorrect": {
+        "A": "L'obligació electrònica general (art. 14.2 LPACAP) aplica a persones jurídiques, entitats sense personalitat i certs col·lectius professionals, no a ciutadans en general.",
+        "B": "Tenir un chatbot no suprimeix el dret legal d'atenció presencial.",
+        "C": "No depèn del nombre de caselles."
+      }
+    },
+    {
+      "id": "m04-07-q01",
+      "module": 4,
+      "conceptId": "m04-07-documents-administratius",
+      "lessonRef": "content/module-04/m04-07-documents-administratius.md",
+      "difficulty": "basic",
+      "questionType": "normative",
+      "prompt": "Què passa si un pipeline d'IA modifica directament un **PDF original signat electrònicament** d'una acta o decret per inserir-hi un resum a la primera pàgina?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "**Trenca criptogràficament la signatura electrònica (PAdES)** i altera la petjada (*hash*) registrada a l'índex electrònic (art. 70 LPACAP / ENI), invalidant la integritat del document oficial."
+        },
+        {
+          "key": "B",
+          "text": "Reforça automàticament la validesa jurídica de la signatura."
+        },
+        {
+          "key": "C",
+          "text": "No passa res si el resum ocupa menys d'una pàgina."
+        },
+        {
+          "key": "D",
+          "text": "El PDF es converteix automàticament en un certificat de la FNMT."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Els documents originals d'un expedient electrònic són immutables; totes les sortides d'IA (resums, extraccions, versions anonimitzades) s'han de desar com a artefactes derivats separats.",
+      "explanationsIncorrect": {
+        "B": "Al contrari, la invalida completament.",
+        "C": "Modificar un sol byte ja invalida el hash criptogràfic de la signatura.",
+        "D": "No genera cap certificat."
+      }
+    },
+    {
+      "id": "m04-07-q03",
+      "module": 4,
+      "conceptId": "m04-07-documents-administratius",
+      "lessonRef": "content/module-04/m04-07-documents-administratius.md",
+      "difficulty": "basic",
+      "questionType": "normative",
+      "prompt": "Quin format de preservació a llarg termini s'utilitza com a estàndard per a documents textuals dins l'**expedient electrònic (ENI)**?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "`.docx` amb macros actives."
+        },
+        {
+          "key": "B",
+          "text": "`.bmp` sense comprimir."
+        },
+        {
+          "key": "C",
+          "text": "**PDF/A** (format estandarditzat d'arxivament a llarg termini que incrusta fonts i garanteix reproducció fidel independentment del programari)."
+        },
+        {
+          "key": "D",
+          "text": "`.zip` xifrat amb contrasenya."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "La Norma Tècnica d'Interoperabilitat (NTI) de Catàleg d'Estàndards estableix PDF/A com a format de referència per a l'arxiu electrònic permanent.",
+      "explanationsIncorrect": {
+        "A": "Les macros actives són un risc de seguretat i no garanteixen preservació estable.",
+        "B": "BMP no admet capa de text ni metadades estructurades d'arxiu.",
+        "D": "Un ZIP amb contrasenya impedeix preservació i auditoria."
+      }
+    },
+    {
+      "id": "m04-06-q02",
+      "module": 4,
+      "conceptId": "m04-06-tractament-formularis",
+      "lessonRef": "content/module-04/m04-06-tractament-formularis.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quin avantatge té llegir directament els camps d'un **PDF AcroForm** no aplanat en lloc d'executar-hi OCR i OMR?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Augmenta la taxa d'error al 10%."
+        },
+        {
+          "key": "B",
+          "text": "Extrau els valors de text i l'estat de les caselles directament de l'estructura digital del PDF amb ~100% de precisió i en pocs mil·lisegons."
+        },
+        {
+          "key": "C",
+          "text": "Requereix una GPU de 80 GB."
+        },
+        {
+          "key": "D",
+          "text": "Només funciona si el PDF està girat 90 graus."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Com en els PDFs natius, aprofitar els camps estructurats AcroForm evita qualsevol error de reconeixement òptic i estalvia còmput.",
+      "explanationsIncorrect": {
+        "A": "Al contrari, l'error d'extracció és pràcticament 0%.",
+        "C": "S'executa en mil·lisegons sobre CPU pura.",
+        "D": "Llegeix el diccionari intern del PDF independentment de la visualització."
+      }
+    },
+    {
+      "id": "m04-01-q08",
+      "module": 4,
+      "conceptId": "m04-01-ocr",
+      "lessonRef": "content/module-04/m04-01-ocr.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En l'exemple Python de la lliçó, el text real té 58 caràcters i 7 paraules. L'OCR comet només 2 substitucions (`·`→`.` i `Z`→`2` al NIF), obtenint `CER = 0,034` però `WER = 0,286` (28,6%). Quina conclusió tècnica clau se'n deriva?",
+      "codeSnippet": "ref = \"Sol·licitud SUB-2026-0148 NIF 12345678Z Import 1.250,00 EUR\"\nocr = \"Sol.licitud SUB-2026-0148 NIF 123456782 Import 1.250,00 EUR\"",
+      "options": [
+        {
+          "key": "A",
+          "text": "Un CER aparentment molt baix (~3%) pot amagar una taxa d'error alta a nivell de paraula (WER ~29%) i corrompre completament camps crítics com un NIF; per tant, en producció cal avaluar **Exact Match per camp** i aplicar **validadors deterministes** (dígit de control)."
+        },
+        {
+          "key": "B",
+          "text": "Si el CER és inferior al 5%, es pot garantir que tots els NIFs i imports són exactes."
+        },
+        {
+          "key": "C",
+          "text": "El WER és sempre igual al CER."
+        },
+        {
+          "key": "D",
+          "text": "La distància de Levenshtein no detecta substitucions de lletres per dígits."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Un sol caràcter erroni dins un token crític (NIF/IBAN/import) fa fallar tota la paraula (WER) i invalida la dada administrativa malgrat un CER global baix.",
+      "explanationsIncorrect": {
+        "B": "L'exemple demostra exactament el contrari: amb CER 3,4% el NIF ja és erroni.",
+        "C": "WER sol ser diversos cops superior al CER.",
+        "D": "Levenshtein compta `Z`→`2` com a 1 substitució exacta."
+      }
+    },
+    {
+      "id": "m04-04-q01",
+      "module": 4,
+      "conceptId": "m04-04-reconeixement-entitats-documents",
+      "lessonRef": "content/module-04/m04-04-reconeixement-entitats-documents.md",
+      "difficulty": "basic",
+      "questionType": "normative",
+      "prompt": "Per què dibuixar un **rectangle negre superficial** damunt d'un NIF en un PDF NO constitueix una anonimització segura?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Perquè només amaga visualment el text però deixa intacta la capa de text vectorial subjacent, permetent copiar/enganxar o extreure el NIF íntegre amb qualsevol lector o eina com `pdftotext`."
+        },
+        {
+          "key": "B",
+          "text": "Perquè els rectangles negres no es poden imprimir."
+        },
+        {
+          "key": "C",
+          "text": "Perquè augmenta massa el contrast de la imatge."
+        },
+        {
+          "key": "D",
+          "text": "Perquè converteix automàticament el PDF en un fitxer JSON."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Una redacció real (*True Redaction*) ha d'esborrar físicament els caràcters del flux de text del PDF, sobreescriure els píxels en imatges i netejar metadades/historial.",
+      "explanationsIncorrect": {
+        "B": "El problema és de seguretat digital, no d'impressió.",
+        "C": "No és una qüestió de contrast visual.",
+        "D": "No canvia el format del fitxer."
+      }
+    },
+    {
+      "id": "m04-01-q06",
+      "module": 4,
+      "conceptId": "m04-01-ocr",
+      "lessonRef": "content/module-04/m04-01-ocr.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Per què convé conservar sempre les **coordenades espacials (*bounding boxes*)** de cada paraula extreta per l'OCR dins del sistema documental corporatiu?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Perquè sense bounding boxes no es pot guardar un fitxer en disc."
+        },
+        {
+          "key": "B",
+          "text": "Per augmentar artificialment la mida de la base de dades."
+        },
+        {
+          "key": "C",
+          "text": "Per permetre la **verificació visual instantània (*Click-to-Highlight*)** sobre la imatge original del PDF a la pantalla del funcionari, a més d'ajudar els models d'extracció sensibles al layout."
+        },
+        {
+          "key": "D",
+          "text": "Per eliminar els accents catalans automàticament."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Ressaltar directament sobre el PDF la zona exacta d'on surt cada dada extreta redueix dràsticament el temps de revisió humana i incrementa la traçabilitat.",
+      "explanationsIncorrect": {
+        "A": "El text pla es pot guardar igualment, però es perd la referència visual.",
+        "B": "Aporten un gran valor funcional i d'auditoria.",
+        "D": "Les coordenades no modifiquen l'ortografia."
+      }
+    },
+    {
+      "id": "m04-03-q06",
+      "module": 4,
+      "conceptId": "m04-03-extraccio-camps",
+      "lessonRef": "content/module-04/m04-03-extraccio-camps.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "En quina situació un model KIE basat en layout entrenat (com **LayoutLMv3**) supera clarament un **LLM/VLM *zero-shot*** en producció?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Quan només tenim 3 exemples i l'esquema canvia cada setmana."
+        },
+        {
+          "key": "B",
+          "text": "Quan necessitem redactar un informe jurídic llarg."
+        },
+        {
+          "key": "C",
+          "text": "Quan processem un **alt volum estable** (>50.000 docs/mes) d'una tipologia fixa amb dades etiquetades, ja que és molt més ràpid i econòmic en inferència, entrega *bounding boxes* nadius i només selecciona tokens realment presents a l'OCR (zero text inventat)."
+        },
+        {
+          "key": "D",
+          "text": "Quan el document és un fitxer d'àudio MP3."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Els models d'etiquetatge de tokens amb layout (LayoutLMv3/LiLT) són extremadament ràpids, econòmics i no generen tokens al·lucinats, ideals per a grans volums estables.",
+      "explanationsIncorrect": {
+        "A": "Amb 3 exemples i esquemes canviants guanya clarament l'LLM/VLM few-shot.",
+        "B": "LayoutLMv3 no és un model generatiu de redacció.",
+        "D": "És un model documental visual/textual, no d'àudio."
+      }
+    },
+    {
+      "id": "m04-02-q07",
+      "module": 4,
+      "conceptId": "m04-02-classificacio-documental",
+      "lessonRef": "content/module-04/m04-02-classificacio-documental.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Quina limitació té un classificador basat **exclusivament en imatge (ViT/CNN sobre miniatura)** respecte d'un model multimodal?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "No pot reconèixer plànols ni DNI."
+        },
+        {
+          "key": "B",
+          "text": "Requereix sempre un OCR previ molt lent."
+        },
+        {
+          "key": "C",
+          "text": "No pot treballar amb PDFs convertits a PNG."
+        },
+        {
+          "key": "D",
+          "text": "Pot confondre documents amb **plantilla visual idèntica** però sentit jurídic oposat (p. ex., resolució d'atorgament vs. resolució de denegació que usen el mateix paper timbrat)."
+        }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Quan dos tipus documentals comparteixen exactament el mateix format visual institucional, el contingut textual és imprescindible per distingir-los.",
+      "explanationsIncorrect": {
+        "A": "Precisament DNI i plànols són punts forts d'un classificador visual.",
+        "B": "Un classificador visual funciona directament sobre la imatge sense OCR.",
+        "C": "Treballa nativament sobre imatges PNG/JPEG."
+      }
+    },
+    {
+      "id": "m04-03-q01",
+      "module": 4,
+      "conceptId": "m04-03-extraccio-camps",
+      "lessonRef": "content/module-04/m04-03-extraccio-camps.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina és la principal limitació d'utilitzar **plantilles per coordenades fixes** per extreure camps de factures de proveïdors externs?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Cada proveïdor utilitza un disseny diferent i el mínim desplaçament d'escaneig o canvi de plantilla trenca l'extracció."
+        },
+        {
+          "key": "B",
+          "text": "Són massa lentes en CPU."
+        },
+        {
+          "key": "C",
+          "text": "Requereixen entrenament en un clúster de 100 GPUs."
+        },
+        {
+          "key": "D",
+          "text": "No poden llegir números."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Les coordenades fixes només són útils en formularis interns 100% rígids; davant la diversitat de proveïdors i documents externs cal KIE basat en layout/LLM/VLM.",
+      "explanationsIncorrect": {
+        "B": "Les coordenades fixes són instantànies; el seu problema és la fragilitat, no la velocitat.",
+        "C": "No requereixen cap entrenament neuronal.",
+        "D": "Llegeixen qualsevol caràcter situat exactament dins la caixa rígida."
+      }
+    },
+    {
+      "id": "m04-08-q05",
+      "module": 4,
+      "conceptId": "m04-08-documents-tributaris",
+      "lessonRef": "content/module-04/m04-08-documents-tributaris.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Abans d'aplicar OCR i extracció IA sobre escriptures notarials de compravenda per actualitzar l'IBI i gestionar la plusvàlua, quina font de dades estructurades ha de prioritzar un organisme tributari com l'ORGT?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Fotografies fetes amb mòbil pels compradors."
+        },
+        {
+          "key": "B",
+          "text": "Les remissions telemàtiques estructurades de l'**Índex Únic Notarial** i la informació oficial del **Cadastre**, reservant l'IDP per als PDFs aportats directament pel contribuent, escriptures antigues d'adquisició i annexos."
+        },
+        {
+          "key": "C",
+          "text": "Anuncis de portals immobiliaris privats."
+        },
+        {
+          "key": "D",
+          "text": "Correus electrònics en text lliure."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Igual que e-FACT en factures o Via Oberta en certificats, aprofitar dades estructurades de l'Índex Únic Notarial i Cadastre aporta 0% d'error OCR i màxima fiabilitat.",
+      "explanationsIncorrect": {
+        "A": "Les fotos de mòbil tenen la pitjor qualitat d'entrada possible.",
+        "C": "No tenen cap validesa jurídica ni registral.",
+        "D": "No substitueixen el document notarial ni les dades registrals."
+      }
+    },
+    {
+      "id": "m04-06-q05",
+      "module": 4,
+      "conceptId": "m04-06-tractament-formularis",
+      "lessonRef": "content/module-04/m04-06-tractament-formularis.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Què passa tècnicament quan un ciutadà emplena un **PDF AcroForm** al seu ordinador però després prem **«Imprimir a PDF»** abans de pujar-lo a la seu electrònica?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "El PDF s'**aplana (*flattened*)**, perdent el diccionari de camps estructurats AcroForm; el pipeline ha de detectar automàticament l'absència de camps i activar el *fallback* a extracció de text + OMR/visió."
+        },
+        {
+          "key": "B",
+          "text": "El fitxer es converteix en JSON automàticament."
+        },
+        {
+          "key": "C",
+          "text": "Els camps AcroForm es dupliquen per seguretat."
+        },
+        {
+          "key": "D",
+          "text": "El PDF queda corrupte i il·legible per als humans."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "L'aplanament de PDFs és extremadament freqüent en ciutadans reals; un sistema robust comprova si `get_fields()` retorna dades i commuta suaument a la branca visual/OMR si és buit.",
+      "explanationsIncorrect": {
+        "B": "Continua sent un PDF, però sense estructura de formulari editable.",
+        "C": "No es dupliquen, s'eliminen com a camps estructurats.",
+        "D": "Visualment es veu perfecte, però digitalment ja no té camps AcroForm."
+      }
+    },
+    {
+      "id": "m04-01-q07",
+      "module": 4,
+      "conceptId": "m04-01-ocr",
+      "lessonRef": "content/module-04/m04-01-ocr.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Un motor OCR desplegat a la Diputació de Barcelona està configurat només amb el paquet d'idioma anglès (`eng`). Quin error sistemàtic provocarà sobre documents municipals?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Cap, perquè els caràcters catalans i anglesos són idèntics."
+        },
+        {
+          "key": "B",
+          "text": "Accelerarà el reconeixement de la ela geminada (`l·l`)."
+        },
+        {
+          "key": "C",
+          "text": "Només afectarà els nombres decimals."
+        },
+        {
+          "key": "D",
+          "text": "Corromprà sistemàticament caràcters propis del català i castellà (`ç`, `l·l`, `ñ`, accents oberts/tancats i dièresi `ï/ü`), degradant toponímia, cognoms i la posterior indexació BM25 i NER."
+        }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Els motors OCR depenen dels conjunts de caràcters i models lingüístics configurats (`cat+spa`); ometre el català corromp `l·l`, `ç` i accents.",
+      "explanationsIncorrect": {
+        "A": "L'anglès no inclou accents, dièresis, `ç`, `ñ` ni `l·l`.",
+        "B": "Al contrari, convertirà `l·l` en `l.l`, `ll` o caràcters escombraries.",
+        "C": "Afecta principalment el vocabulari i caràcters alfabètics diacrítics."
+      }
+    },
+    {
+      "id": "m04-08-q02",
+      "module": 4,
+      "conceptId": "m04-08-documents-tributaris",
+      "lessonRef": "content/module-04/m04-08-documents-tributaris.md",
+      "difficulty": "basic",
+      "questionType": "normative",
+      "prompt": "Què estableix l'**article 95 de la Llei 58/2003 (Llei General Tributària — LGT)** sobre les dades obtingudes per l'Administració tributària?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Que totes les escriptures i declaracions fiscals són públiques i es poden pujar a qualsevol API comercial d'IA."
+        },
+        {
+          "key": "B",
+          "text": "Que tenen **caràcter estrictament reservat**, només es poden utilitzar per a l'aplicació efectiva dels tributs i no es poden cedir a tercers fora dels supòsits taxats legalment (exigint execució *on-premise*/ENS Alt, ACL estricte i auditoria)."
+        },
+        {
+          "key": "C",
+          "text": "Que es poden usar lliurement per entrenar models generatius públics."
+        },
+        {
+          "key": "D",
+          "text": "Que només aplica a empreses de més de 500 treballadors."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "El secret tributari de l'art. 95 LGT reforça encara més el RGPD i l'ENS, prohibint exposar documents fiscals a proveïdors externs no habilitats o entrenaments sense base legal.",
+      "explanationsIncorrect": {
+        "A": "Vulneraria frontalment l'art. 95 LGT i el RGPD.",
+        "C": "Està estrictament prohibit utilitzar dades tributàries reservades per entrenar models públics.",
+        "D": "Aplica a tots els contribuents (persones físiques i jurídiques)."
+      }
+    },
+    {
+      "id": "m04-04-q05",
+      "module": 4,
+      "conceptId": "m04-04-reconeixement-entitats-documents",
+      "lessonRef": "content/module-04/m04-04-reconeixement-entitats-documents.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Per què en un document administratiu (com una factura o una instància amb representant) un NER tradicional de text pla no és suficient i cal **desambiguació de rols basada en *layout*/seccions**?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Perquè el NER pla no sap llegir majúscules."
+        },
+        {
+          "key": "B",
+          "text": "Perquè al mateix document conviuen múltiples entitats del mateix tipus (`PERSONA`, `NIF`, `ORG`) amb **rols jurídics diferents** (emissor vs. receptor, sol·licitant vs. representant, ciutadà vs. càrrec públic signant)."
+        },
+        {
+          "key": "C",
+          "text": "Perquè el NER pla només funciona en PDFs escanejats."
+        },
+        {
+          "key": "D",
+          "text": "Perquè els documents públics no contenen mai noms propis."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Saber que `B12345678` i `P0800000B` són dos NIFs no serveix de res si no distingim quin és el proveïdor emissor i quin és la Diputació receptora.",
+      "explanationsIncorrect": {
+        "A": "El NER modern processa majúscules i minúscules.",
+        "C": "El NER pla opera sobre qualsevol text.",
+        "D": "Al contrari, contenen multitud d'entitats personals i institucionals."
+      }
+    },
+    {
+      "id": "m04-01-q01",
+      "module": 4,
+      "conceptId": "m04-01-ocr",
+      "lessonRef": "content/module-04/m04-01-ocr.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina és la primera comprovació obligatòria abans d'executar un motor OCR sobre un fitxer PDF entrant?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Verificar pàgina a pàgina si és un **PDF natiu** amb capa de text vectorial vàlida per extreure el text directament (0% d'error OCR i molt més ràpid), reservant l'OCR només per a pàgines o zones escanejades."
+        },
+        {
+          "key": "B",
+          "text": "Imprimir el PDF en paper i tornar-lo a escanejar."
+        },
+        {
+          "key": "C",
+          "text": "Reduir sempre la resolució a 72 DPI."
+        },
+        {
+          "key": "D",
+          "text": "Eliminar totes les taules del document."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Executar OCR sobre PDFs natius introdueix errors innecessaris (0↔O, 1↔l) i malgasta CPU/GPU; l'extracció nativa directa és exacta i instantània.",
+      "explanationsIncorrect": {
+        "B": "Empitjoraria dràsticament la qualitat visual i la velocitat.",
+        "C": "72 DPI és massa baix per a OCR; l'estàndard recomanat és 300 DPI.",
+        "D": "Les taules sovint contenen les dades econòmiques i jurídiques clau."
+      }
+    },
+    {
+      "id": "m04-07-q10",
+      "module": 4,
+      "conceptId": "m04-07-documents-administratius",
+      "lessonRef": "content/module-04/m04-07-documents-administratius.md",
+      "difficulty": "advanced",
+      "questionType": "normative",
+      "prompt": "Quin camp de les metadades mínimes obligatòries de l'**ENI** identifica de manera normalitzada i interoperable l'òrgan o entitat local que emet el document?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "El nom abreujat escrit lliurement pel tècnic."
+        },
+        {
+          "key": "B",
+          "text": "La mida del fitxer en bytes."
+        },
+        {
+          "key": "C",
+          "text": "El codi oficial **DIR3** (Directori Comú d'Unitats Orgàniques i Oficines), que permet interoperabilitat inequívoca entre totes les administracions públiques espanyoles."
+        },
+        {
+          "key": "D",
+          "text": "L'adreça IP del servidor d'OCR."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "DIR3 és el codi estandarditzat oficial de l'ENI per identificar òrgans i unitats orgàniques en expedients, registres (SIR) i factures electròniques (e-FACT).",
+      "explanationsIncorrect": {
+        "A": "Els noms lliures generen inconsistències i trenquen la interoperabilitat.",
+        "B": "No identifica l'òrgan emissor.",
+        "D": "L'IP no identifica l'òrgan administratiu."
+      }
+    },
+    {
+      "id": "m04-01-q05",
+      "module": 4,
+      "conceptId": "m04-01-ocr",
+      "lessonRef": "content/module-04/m04-01-ocr.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Quin risc específic introdueixen els **models multimodals VLM (*Vision-Language Models*)** quan s'utilitzen directament com a substituts de l'OCR en camps crítics com NIF, IBAN o imports?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "No poden processar taules."
+        },
+        {
+          "key": "B",
+          "text": "Risc d'**al·lucinació visual**: davant un dígit borrós o tapat per un segell, el VLM pot generar un dígit estadísticament plausible en lloc d'indicar incertesa, fet que exigeix validació determinista (dígits de control, sumes) i revisió humana."
+        },
+        {
+          "key": "C",
+          "text": "Només funcionen amb imatges en blanc i negre de 1 bit."
+        },
+        {
+          "key": "D",
+          "text": "Són més ràpids que l'extracció de text d'un PDF natiu."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "La fortalesa lingüística dels VLMs és també el seu perill en OCR crític: poden «endevinar» un número il·legible amb to segur; per això cal validar matemàticament els camps i contrastar amb coordenades.",
+      "explanationsIncorrect": {
+        "A": "Precisament les taules complexes són un dels punts forts dels VLMs.",
+        "C": "Treballen directament amb imatges RGB d'alta resolució.",
+        "D": "Són ordres de magnitud més lents i costosos que l'extracció nativa."
+      }
+    },
+    {
+      "id": "m04-07-q04",
+      "module": 4,
+      "conceptId": "m04-07-documents-administratius",
+      "lessonRef": "content/module-04/m04-07-documents-administratius.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Per què el càlcul de la data exacta de venciment d'un termini de **10 o 15 dies hàbils (art. 30 LPACAP)** NO s'ha de delegar a un LLM?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Perquè els dies hàbils exclouen dissabtes, diumenges i festius estatals, autonòmics i **festius locals de cadascun dels 311 municipis**; un LLM pot al·lucinar el calendari, mentre que una **eina determinista amb calendari laboral oficial** ho calcula amb 100% d'exactitud."
+        },
+        {
+          "key": "B",
+          "text": "Perquè la Llei 39/2015 només utilitza dies naturals."
+        },
+        {
+          "key": "C",
+          "text": "Perquè els LLMs no poden llegir números."
+        },
+        {
+          "key": "D",
+          "text": "Perquè els terminis administratius no tenen conseqüències jurídiques."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "El còmput de terminis administratius requereix precisió absoluta i coneixement exacte del calendari de dies inhàbils de cada municipi: sempre ha de ser determinista.",
+      "explanationsIncorrect": {
+        "B": "Al contrari, per defecte l'art. 30.2 LPACAP estableix dies hàbils quan s'assenyalen per dies.",
+        "C": "Poden llegir números però no operen com un motor fiable de calendaris oficials locals.",
+        "D": "Un error d'un sol dia pot fer caducar un procediment o deixar fora un licitador."
+      }
+    },
+    {
+      "id": "m04-03-q04",
+      "module": 4,
+      "conceptId": "m04-03-extraccio-camps",
+      "lessonRef": "content/module-04/m04-03-extraccio-camps.md",
+      "difficulty": "intermediate",
+      "questionType": "metrics",
+      "prompt": "Un extractor de factures té una precisió independent del **96% per camp** sobre **12 camps obligatoris**. Quin és aproximadament el **Document-Level Exact Match** (factures amb tots 12 camps exactes alhora)?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Aproximadament **`61,3%`** (`0,96^12`), cosa que significa que gairebé 4 de cada 10 factures tindran almenys un camp erroni."
+        },
+        {
+          "key": "B",
+          "text": "Exactament `96,0%`."
+        },
+        {
+          "key": "C",
+          "text": "Aproximadament `99,5%`."
+        },
+        {
+          "key": "D",
+          "text": "Exactament `12,0%`."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Els errors s'acumulen multiplicativament a nivell de document (`0,96^12 ≈ 0,6127`); per això cal combinar validació determinista amb revisió humana selectiva per camp.",
+      "explanationsIncorrect": {
+        "B": "96% és la precisió d'un sol camp, no de 12 camps simultanis.",
+        "C": "La probabilitat conjunta sempre és menor o igual que la del camp individual.",
+        "D": "12 és el nombre de camps, no el percentatge."
+      }
+    },
+    {
+      "id": "m04-04-q02",
+      "module": 4,
+      "conceptId": "m04-04-reconeixement-entitats-documents",
+      "lessonRef": "content/module-04/m04-04-reconeixement-entitats-documents.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Què aporta l'***Entity Linking*** en el processament de documents de la Diputació de Barcelona?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Tradueix el document a altres idiomes."
+        },
+        {
+          "key": "B",
+          "text": "Vincula mencions textuals variables («Aj. de Mataró», «Excm. Ajuntament de Mataró») a un identificador canònic oficial (codi **INE** o **DIR3**), permetent creuar expedients sense duplicats."
+        },
+        {
+          "key": "C",
+          "text": "Esborra totes les entitats del document."
+        },
+        {
+          "key": "D",
+          "text": "Millora la resolució DPI d'una imatge."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "L'Entity Linking normalitza les variants lingüístiques contra catàlegs oficials (INE, DIR3, NIF), clau per a interoperabilitat i integració corporativa.",
+      "explanationsIncorrect": {
+        "A": "No fa traducció automàtica.",
+        "C": "Les normalitza i enllaça, no les esborra.",
+        "D": "No modifica la resolució d'imatges."
+      }
+    },
+    {
+      "id": "m04-02-q10",
+      "module": 4,
+      "conceptId": "m04-02-classificacio-documental",
+      "lessonRef": "content/module-04/m04-02-classificacio-documental.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Per què la classificació documental actua com un **component crític d'amplificació d'errors** dins un pipeline IDP complet?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Perquè executa l'OCR dues vegades."
+        },
+        {
+          "key": "B",
+          "text": "Perquè canvia el format del PDF a Word."
+        },
+        {
+          "key": "C",
+          "text": "Perquè decideix **quin extractor d'esquema JSON, quines regles de validació i quin flux de tramitació/ACL** s'aplicaran al document; un error de classificació (p. ex., etiquetar un recurs administratiu com a consulta general) pot fer perdre terminis legals o enviar el document al departament equivocat."
+        },
+        {
+          "key": "D",
+          "text": "Perquè sempre s'executa al final del tot, després de resoldre l'expedient."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Com que és l'enrutador mestre del pipeline IDP, qualsevol error no detectat en classificació es propaga a tota la cadena d'extracció, validació i tramitació; per això cal alta precisió, calibració i revisió humana de dubtes.",
+      "explanationsIncorrect": {
+        "A": "No reexecuta l'OCR.",
+        "B": "No converteix formats ofimàtics.",
+        "D": "S'executa al principi del pipeline, just després de la ingestió/OCR."
+      }
+    },
+    {
+      "id": "m04-07-q05",
+      "module": 4,
+      "conceptId": "m04-07-documents-administratius",
+      "lessonRef": "content/module-04/m04-07-documents-administratius.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "En un assistent d'anàlisi de **plecs de contractació pública (PCAP/PPT)**, quina combinació de validacions deterministes aporta valor immediat als tècnics de contractació i Intervenció?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Traducció del plec al llatí."
+        },
+        {
+          "key": "B",
+          "text": "Verificar aritmèticament `PBL amb IVA == PBL sense IVA × (1 + IVA)`, `VEC >= PBL sense IVA`, que la **suma de punts dels criteris d'adjudicació sigui exactament 100** i detectar l'absència de clàusules obligatòries (com RGPD o condicions especials d'execució)."
+        },
+        {
+          "key": "C",
+          "text": "Adjudicar automàticament el contracte a l'empresa amb el PDF més llarg."
+        },
+        {
+          "key": "D",
+          "text": "Eliminar totes les taules de criteris de puntuació."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Combinar extracció estructurada amb comprovacions deterministes (PBL, VEC, suma 100 punts, checklist LCSP) detecta incoherències freqüents abans de publicar la licitació.",
+      "explanationsIncorrect": {
+        "A": "No aporta valor operatiu.",
+        "C": "L'adjudicació requereix Mesa de Contractació i aplicació estricta de la LCSP.",
+        "D": "Les taules de criteris són el cor de la valoració d'ofertes."
+      }
+    },
+    {
+      "id": "m04-06-q03",
+      "module": 4,
+      "conceptId": "m04-06-tractament-formularis",
+      "lessonRef": "content/module-04/m04-06-tractament-formularis.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Què significa **HTR (*Handwritten Text Recognition*)**?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Traducció automàtica del català al francès."
+        },
+        {
+          "key": "B",
+          "text": "Compressió d'imatges TIFF."
+        },
+        {
+          "key": "C",
+          "text": "Reconeixement automàtic de **text manuscrit** mitjançant models neuronals especialitzats (com TrOCR o VLMs)."
+        },
+        {
+          "key": "D",
+          "text": "Validació criptogràfica de certificats digitals."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "HTR aborda la variabilitat de la cal·ligrafia humana (cursiva o majúscules a mà), molt més complexa que la tipografia impresa.",
+      "explanationsIncorrect": {
+        "A": "No és traducció.",
+        "B": "No és compressió d'imatge.",
+        "D": "No és validació criptogràfica."
+      }
+    },
+    {
+      "id": "m04-05-q09",
+      "module": 4,
+      "conceptId": "m04-05-validacio-automatica-documental",
+      "lessonRef": "content/module-04/m04-05-validacio-automatica-documental.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En `validar_dni_nie`, com tracta l'algorisme un **NIE** que comença per `X`, `Y` o `Z` abans d'aplicar `num % 23`?",
+      "codeSnippet": "prefix = {\"X\": \"0\", \"Y\": \"1\", \"Z\": \"2\"}.get(c[0], c[0])\nnum = int(prefix + c[1:8])\nreturn LLETRES_DNI[num % 23] == c[8]",
+      "options": [
+        {
+          "key": "A",
+          "text": "El rebutja sempre com a invàlid."
+        },
+        {
+          "key": "B",
+          "text": "Substitueix el prefix `X→0`, `Y→1`, `Z→2`, construeix l'enter de 8 dígits i comprova que el residu mòdul 23 coincideix amb la lletra de control a la taula oficial `TRWAGMYFPDXBNJZSQVHLCKE`."
+        },
+        {
+          "key": "C",
+          "text": "Converteix `X→10`, `Y→20`, `Z→30`."
+        },
+        {
+          "key": "D",
+          "text": "Ignora el primer caràcter i calcula el mòdul sobre 7 dígits."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "És l'especificació oficial del Ministeri de l'Interior per al càlcul de la lletra de control del NIE (`X=0, Y=1, Z=2`), que evita falsos rebutjos de ciutadans estrangers residents!",
+      "explanationsIncorrect": {
+        "A": "Rebutjar NIEs seria un error greu de discriminació i qualitat de software públic!",
+        "C": "El mapatge oficial és 0, 1 i 2.",
+        "D": "Ometre el prefix `Y` o `Z` donaria una lletra de control incorrecta."
+      }
+    }
+  ]
+}

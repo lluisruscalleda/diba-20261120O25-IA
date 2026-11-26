@@ -1,14 +1,14 @@
 # PROGRESS.md — Registre d'avanç incremental
 
-Última actualització: 2026-11-26 (Fases 1, 2, 3 i 4 completades al 100%: 70/70 conceptes + 8/8 laboratoris executables i testats!)
+Última actualització: 2026-11-26 (Fases 1–5 completades al 100%: 70/70 conceptes, 8/8 laboratoris, 43/43 artefactes d'examen i simulacre!)
 
 ## Estat actual per fases
 
 - **Fase 1. Planificació**: ✅ Completada
 - **Fase 2. Infraestructura**: ✅ Completada i compilada sense errors
 - **Fase 3. Contingut (Mòduls 1–8)**: ✅ **100% (70/70 conceptes, 700 preguntes, 360 flashcards, 71 termes glossari)** — publicat a `origin/main`.
-- **Fase 4. Laboratoris (1–8)**: ✅ **100% (8/8 laboratoris executables amb datasets 100% sintètics, notebooks Jupyter, documentació i 26 tests automatitzats en verd!)**.
-- **Fase 5. Exàmens i simulacres**: ⬜ Pendent
+- **Fase 4. Laboratoris (1–8)**: ✅ **100% (8/8 laboratoris executables, datasets sintètics, notebooks i 26 tests en verd)** — publicat a `origin/main` (`dcbac0d`).
+- **Fase 5. Exàmens i simulacres**: ✅ **100% (8 exàmens de mòdul, 10 simulacres globals, 20 supòsits pràctics independents i 5 simulacres teoricopràctics complets)**.
 - **Fase 6. Projecte integrador**: ⬜ Pendent
 - **Fase 7. Validació final**: ⬜ Pendent
 
@@ -16,35 +16,30 @@
 
 ## 1. Què s'ha completat en aquesta sessió
 
-- **Push a `origin/main`** dels Mòduls 1–8 (`7c02e5c..ba259ee`).
-- **Fase 4 — 8/8 Laboratoris pràctics executables i verificats (`labs/`)**:
-  1. `labs/lab-01-machine-learning`: 120 expedients sintètics (`data/sollicituds_sintetiques.csv`), classificació logística L2 (`F1 = 0,9474`), regressió Ridge (`R² = 0,9851`, `MAE = 1,28 dies`), K-Means `k = 3`, detecció d'anomalies MAD (4/4 detectades), notebook + 5 tests ✅.
-  2. `labs/lab-02-nlp`: 20 instàncies en català sintètiques, tokenització amb apòstrofs catalans, classificador TF-IDF LOOCV, NER administratiu + PII, comparativa lèxica vs. semàntica (embeddings superen TF-IDF en sinònims), notebook + 3 tests ✅.
-  3. `labs/lab-03-rag-generatius`: corpus d'ordenances sintètiques amb filtre de vigència (descarta `OF-IBI-2024` derogada), recuperació BM25 amb cites `[OF-IBI-2026, art. 9]`, abstenció automàtica fora de domini, eina determinista de càlcul d'IBI (topall 400 €), matriu RAG vs. *fine-tuning*, notebook + 4 tests ✅.
-  4. `labs/lab-04-processament-documental`: generador en Python pur de 4 PDFs `%PDF-1.4` vàlids (`data/pdfs/`), lectura OCR, classificació documental, KIE, validació creuada aritmètica (`base + IVA = total`) i lletra NIF, enrutament STP vs. HITL, notebook + 3 tests ✅.
-  5. `labs/lab-05-assistent-virtual`: assistent multitorn amb avís art. 50 AI Act, memòria de context per sessió, RBAC/autenticació `idCAT Mòbil / Cl@ve`, redacció de PII abans dels logs i escalada humana (emergència o 2 fallades), notebook + 3 tests ✅.
-  6. `labs/lab-06-automatitzacio-intelligent`: deduplicació idempotent, validació documental determinista amb esborrany d'esmena (art. 68 LPACAP, 10 dies hàbils), priorització híbrida (urgència legal + ML + *aging* anti-*starvation*), notebook + 3 tests ✅.
-  7. `labs/lab-07-mlops-llmops`: `ModelRegistryMLOps` immutable (bloqueja `:latest`), *Quality Gate* en català, càlcul exacte PSI (`0,6847` a setmana 8), P95/P99 vs. mitjana, *rollback* atòmic `@champion → @previous_champion`, API FastAPI + `Dockerfile` + `ci_workflow.yml`, notebook + 2 tests ✅.
-  8. `labs/lab-08-seguretat-governanca`: inventari normatiu AI Act/RGPD/ENS, auditoria de biaixos (DI 4/5, TPR, FPR), `MODEL_CARD.md` amb els 6 blocs FRIA (art. 27.1 AI Act), *Red Teaming* defensiu local (100% bloqueig, 0 falsos positius) i segell SHA-256, notebook + 3 tests ✅.
+- **Push a `origin/main`** de la Fase 4 (`ba259ee..dcbac0d`).
+- **Fase 5 — Banc d'exàmens i simulacres (`exams/`, 43 fitxers JSON)**:
+  - **8 exàmens de mòdul** (`exams/module-exams/module-01.json` .. `module-08.json`): 40 preguntes estratificades per tots els conceptes de cada mòdul (320 preguntes en total).
+  - **10 simulacres globals** (`exams/global-mocks/mock-01.json` .. `mock-10.json`): 50 preguntes proporcionals als 8 mòduls cadascun (500 preguntes úniques del banc de 700, distribució `{1:8, 2:7, 3:7, 4:6, 5:6, 6:4, 7:6, 8:6}`).
+  - **20 supòsits pràctics independents** (`exams/practical-cases/case-01.json` .. `case-20.json`): enunciats originals ambientats a la Diputació de Barcelona / administració local, tots amb requisits, rúbrica exacta de 100 punts, solució model detallada i enfocaments alternatius (cobrint ML/*data leakage*, NLP en català, RAG normatiu, IDP factures, Assistent 010/RBAC, Automatització + *Once-Only* + art. 68 LPACAP, MLOps/PSI/*rollback*, PromptOps/FinOps/vLLM, EIPD+FRIA+ENS, *Indirect Prompt Injection* + APDCAT 72 h, *clustering* territorial, *sentiment*/*topic modeling*, anonimització/DA 7a LOPDGDD, ASR actes de Ple, RAG vs. LoRA/LCSP, auditoria biaixos selecció personal, *anti-rubber-stamping* HITL, integració *legacy* ENI/*Circuit Breaker*, governança anti-*Shadow AI* i cas integrador transversal).
+  - **5 simulacres teoricopràctics complets** (`exams/full-simulations/sim-01.json` .. `sim-05.json`): 60 preguntes estratificades pels 8 mòduls (`{1:9, 2:8, 3:8, 4:7, 5:7, 6:5, 7:8, 8:8}`) vinculades a un supòsit pràctic (`case-03`, `case-06`, `case-07`, `case-09`, `case-20`), amb paràmetres orientatius i configurables (no bases oficials).
 
 ---
 
 ## 2. Què queda pendent
 
-- **Fase 5**: 8 exàmens de mòdul (40 preg.), 10 simulacres globals (50 preg.), 20 supòsits pràctics independents i 5 simulacres teoricopràctics complets (`exams/`).
-- **Fase 6**: Projecte pràctic final integrador (`final-project/`).
-- **Fase 7**: Validació final integral.
+- **Fase 6**: Projecte pràctic final integrador (`final-project/` — Sistema intel·ligent de gestió d'expedients administratius de 13 passos, arquitectura, API FastAPI, datasets sintètics, tests i anàlisi de riscos).
+- **Fase 7**: Validació final integral (tests Python, validació de continguts, build frontend i revisió d'enllaços).
 
 ---
 
 ## 3. Comprovacions executades i resultat
 
-- Execució de `run_lab.py` i `python3 -m unittest discover` als 8 laboratoris: ✅ **8/8 laboratoris i 26/26 tests OK**.
-- `node scripts/sync_content.mjs`: ✅ OK (70/70 lliçons, 700 preguntes, 360 flashcards, 71 termes glossari, **8/8 laboratoris sincronitzats**).
+- Validació estructural i de rúbriques dels 43 fitxers de `exams/`: ✅ **43/43 OK** (0 duplicats interns, totes les rúbriques sumen exactament 100 punts).
+- `node scripts/sync_content.mjs`: ✅ OK (70/70 lliçons, 700 preguntes, 360 flashcards, 71 termes glossari, 8/8 laboratoris, 8 exàmens de mòdul, 10 simulacres globals, 20 supòsits pràctics, 5 simulacres complets).
 - `node scripts/validate_content.mjs`: ✅ OK (0 errors, 0 avisos).
 
 ---
 
 ## 4. Següent tasca exacta
 
-Fer commit (i push si escau) de la **Fase 4 (Laboratoris 1–8)** i continuar amb la **Fase 5 (Banc d'exàmens i simulacres)**.
+Iniciar la **Fase 6 (Projecte pràctic final integrador)** a `final-project/` (o fer `git push` de la Fase 5 quan l'usuari ho indiqui).

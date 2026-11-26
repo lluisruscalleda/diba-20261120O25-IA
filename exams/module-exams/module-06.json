@@ -1,0 +1,1409 @@
+{
+  "id": "module-06",
+  "module": 6,
+  "title": "Examen acumulatiu del Mòdul 6: Automatització",
+  "note": "Paràmetres orientatius de preparació (durada, penalització i nota mínima configurables a la plataforma; no constitueixen bases oficials de convocatòria).",
+  "recommendedMinutes": 45,
+  "questions": [
+    {
+      "id": "m06-04-q08",
+      "module": 6,
+      "conceptId": "m06-04-sistemes-recomanacio",
+      "lessonRef": "content/module-06/m06-04-sistemes-recomanacio.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En la funció `recomanar` de l'exemple 6.4, per què **`AJ-CADUCAT`** no entra al Top-3 tot i tenir la similitud cosinus més alta amb el component familiar, i per què **`CURS-PYTHON`** supera **`AJ-LUDOTECA`**?",
+      "codeSnippet": "candidats = [it for it in ITEMS if it[\"vigent\"] and renda <= it[\"max_renda\"]]\n...\nmillor = max(restants, key=lambda x: x[\"sim\"] - (0.25 if x[\"cat\"] in cats_vistes else 0.0))",
+      "options": [
+        {
+          "key": "A",
+          "text": "`AJ-CADUCAT` es descarta **deterministament** a la capa 1 per `vigent=False`, i `AJ-LUDOTECA` rep una **penalització de diversitat `-0.25`** perquè la categoria `FAMILIA` ja havia estat seleccionada amb `AJ-BEQUES`, permetent que `CURS-PYTHON` (`OCUPACIO`) entri al Top-3!"
+        },
+        {
+          "key": "B",
+          "text": "Perquè `AJ-CADUCAT` té una renda màxima de 0."
+        },
+        {
+          "key": "C",
+          "text": "Perquè `cosinus()` retorna valors negatius per a `AJ-LUDOTECA`."
+        },
+        {
+          "key": "D",
+          "text": "Perquè el bucle selecciona els ítems amb `min()` en lloc de `max()`."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "L'exemple il·lustra exactament les dues capes de governança: filtre determinista de vigència/elegibilitat abans del rànquing + re-ranking de diversitat de categories!",
+      "explanationsIncorrect": {
+        "B": "La seva `max_renda` és 12.000, però `vigent` és `False`.",
+        "C": "Tots els vectors són positius, així que el cosinus és estrictament positiu.",
+        "D": "Usa `max()` aplicant la penalització de diversitat de `0.25`."
+      }
+    },
+    {
+      "id": "m06-05-q04",
+      "module": 6,
+      "conceptId": "m06-05-prioritzacio-casos",
+      "lessonRef": "content/module-06/m06-05-prioritzacio-casos.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Què estableix l'**article 71.2 de la Llei 39/2015 (LPACAP)** respecte de l'ordre de tramitació dels expedients administratius?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Que en assumptes d'**homogènia naturalesa** s'ha de guardar l'**ordre rigorós d'incoació (FIFO)**, llevat ordre motivada en contrari del titular de la unitat administrativa de la qual quedi constància."
+        },
+        {
+          "key": "B",
+          "text": "Que els expedients homogenis s'han d'ordenar sempre amb una xarxa neuronal caixa negra."
+        },
+        {
+          "key": "C",
+          "text": "Que mai no es pot prioritzar una emergència de seguretat pública."
+        },
+        {
+          "key": "D",
+          "text": "Que no existeix cap norma sobre l'ordre dels expedients."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "L'art. 71.2 LPACAP protegeix la igualtat i evita arbitrarietat en expedients homogenis (FIFO), alhora que admet alteracions motivades i registrades quan hi ha raons objectives d'interès públic.",
+      "explanationsIncorrect": {
+        "B": "Vulneraria directament l'art. 71.2 LPACAP.",
+        "C": "En casos d'urgència o naturalesa heterogènia la priorització motivada és legítima i necessària.",
+        "D": "L'art. 71.2 LPACAP regula explícitament l'ordre de despatx."
+      }
+    },
+    {
+      "id": "m06-01-q01",
+      "module": 6,
+      "conceptId": "m06-01-rpa",
+      "lessonRef": "content/module-06/m06-01-rpa.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina és la diferència principal entre **RPA atesa (*attended*)** i **RPA no atesa (*unattended*)**?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "L'**atesa** s'executa a l'escriptori del funcionari sota demanda per assistir-lo en temps real, mentre que la **no atesa** s'executa de manera autònoma en servidors sobre una cua de treball (*work queue*) programada o per esdeveniments."
+        },
+        {
+          "key": "B",
+          "text": "L'atesa només funciona de nit i la no atesa només de dia."
+        },
+        {
+          "key": "C",
+          "text": "La no atesa utilitza robots físics amb braços mecànics."
+        },
+        {
+          "key": "D",
+          "text": "L'atesa no necessita cap regla ni procés definit."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Attended = co-pilot a l'estació de treball disparat per la persona; Unattended = execució en servidor en segon pla sobre cues de gran volum.",
+      "explanationsIncorrect": {
+        "B": "No és una qüestió horària, sinó d'interacció humana vs. execució autònoma en servidor.",
+        "C": "RPA sempre és programari (bots de software).",
+        "D": "Totes dues modalitats de RPA són basades en regles definides."
+      }
+    },
+    {
+      "id": "m06-05-q06",
+      "module": 6,
+      "conceptId": "m06-05-prioritzacio-casos",
+      "lessonRef": "content/module-06/m06-05-prioritzacio-casos.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "A més del factor *Aging*, quin **segon mecanisme operatiu** garanteix el drenatge constant de la cua ordinària durant pics de feina?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Aturar totes les urgències P0 durant dues setmanes."
+        },
+        {
+          "key": "B",
+          "text": "Duplicar els expedients ordinaris perquè comptin doble."
+        },
+        {
+          "key": "C",
+          "text": "**Reserva de capacitat (*Guaranteed Bandwidth*)**: destinar un percentatge fix de la capacitat (ex. 15–20% de les assignacions) exclusivament als casos més antics de la cua ordinària."
+        },
+        {
+          "key": "D",
+          "text": "Augmentar l'SLA a 10 anys."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Combinar *Aging* a la fórmula amb una reserva de capacitat garantida assegura un avanç mínim sostingut dels expedients ordinaris fins i tot en campanyes punta.",
+      "explanationsIncorrect": {
+        "A": "Mai no es poden desatendre emergències P0.",
+        "B": "Corrompria el registre d'expedients.",
+        "D": "Incompliria els terminis legals de resolució."
+      }
+    },
+    {
+      "id": "m06-01-q09",
+      "module": 6,
+      "conceptId": "m06-01-rpa",
+      "lessonRef": "content/module-06/m06-01-rpa.md",
+      "difficulty": "advanced",
+      "questionType": "normative",
+      "prompt": "Quan un bot RPA *unattended* deixa de ser una mera eina auxiliar interna i passa a requerir aprovació formal com a **Actuació Administrativa Automatitzada (AAA)** segons l'**article 41 de la Llei 40/2015 (LRJSP)**?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Sempre que mogui un fitxer temporal dins una carpeta interna."
+        },
+        {
+          "key": "B",
+          "text": "Quan realitza **actes o actuacions administratives íntegrament a través de mitjans electrònics sense intervenció directa d'un empleat públic** (ex. emissió de certificats, resolucions massives o assentaments definitius amb efectes jurídics), havent d'establir òrgan responsable, auditoria i **segell electrònic d'òrgan** (art. 42)."
+        },
+        {
+          "key": "C",
+          "text": "Mai, perquè la Llei 40/2015 només aplica a empreses privades."
+        },
+        {
+          "key": "D",
+          "text": "Només si el bot utilitza un LLM."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "L'art. 41 LRJSP regula específicament qualsevol actuació administrativa produïda íntegrament per mitjans electrònics sense intervenció directa d'un empleat, independentment de si usa RPA, regles o codi tradicional.",
+      "explanationsIncorrect": {
+        "A": "Tasques merament preparatòries o auxiliars internes sense efectes administratius directes no són actes administratius.",
+        "C": "La Llei 40/2015 (LRJSP) és precisament la norma bàsica del sector públic espanyol.",
+        "D": "Aplica a qualsevol actuació automatitzada (regles, scripts o RPA), no només a LLMs."
+      }
+    },
+    {
+      "id": "m06-01-q08",
+      "module": 6,
+      "conceptId": "m06-01-rpa",
+      "lessonRef": "content/module-06/m06-01-rpa.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En `OrquestradorRPA` de l'exemple 6.1, quina és la funció exacta del bloc `if t.idempotency_key in self.ja_assentades:`?",
+      "codeSnippet": "if t.idempotency_key in self.ja_assentades:\n    t.estat = \"OMES_JA_ASSENTAT_IDEMPOTENT\"\n    t.detall = \"Evitat duplicat per clau d'idempotència.\"\n    continue",
+      "options": [
+        {
+          "key": "A",
+          "text": "Garantir la **idempotència**: si una factura ja ha estat assentada prèviament i arriba duplicada a la cua o es reexecuta el lot després d'una caiguda, el bot l'omet amb traça explícita i **impedeix un doble assentament o doble pagament**."
+        },
+        {
+          "key": "B",
+          "text": "Esborrar totes les factures de l'exercici anterior."
+        },
+        {
+          "key": "C",
+          "text": "Reintentar l'assentament fins a 10 vegades."
+        },
+        {
+          "key": "D",
+          "text": "Convertir una excepció de negoci en tècnica."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "La comprovació prèvia per clau única d'idempotència és el mecanisme bàsic que fa segurs els reintents i les recuperacions davant caigudes en processos financers.",
+      "explanationsIncorrect": {
+        "B": "No esborra res, omet de manera segura el duplicat.",
+        "C": "Executa `continue` amb 0 intents sobre l'ERP.",
+        "D": "Actua abans d'entrar al bucle d'execució."
+      }
+    },
+    {
+      "id": "m06-03-q02",
+      "module": 6,
+      "conceptId": "m06-03-classificadors-automatics",
+      "lessonRef": "content/module-06/m06-03-classificadors-automatics.md",
+      "difficulty": "basic",
+      "questionType": "metrics",
+      "prompt": "Quina mètrica operativa mesura directament el percentatge d'expedients auto-enrutats que el departament receptor ha hagut de retornar o re-assignar per error?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "La velocitat de CPU del servidor."
+        },
+        {
+          "key": "B",
+          "text": "La **taxa de rebot (*Misrouting / Reassignment Rate*)** (objectiu habitual `< 3–5%` per mantenir la confiança dels equips receptors)."
+        },
+        {
+          "key": "C",
+          "text": "El nombre total de paràmetres del model."
+        },
+        {
+          "key": "D",
+          "text": "La longitud mitjana dels correus electrònics."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "La taxa de rebot reflecteix l'impacte real dels errors del classificador sobre el treball quotidià dels serveis municipals.",
+      "explanationsIncorrect": {
+        "A": "Mètrica de sistema, no de qualitat d'enrutament.",
+        "C": "Mètrica d'arquitectura del model.",
+        "D": "Característica de les dades d'entrada."
+      }
+    },
+    {
+      "id": "m06-01-q03",
+      "module": 6,
+      "conceptId": "m06-01-rpa",
+      "lessonRef": "content/module-06/m06-01-rpa.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quin rol juga un **motor BPM (*Business Process Management*)** dins d'una arquitectura d'**Automatització Intel·ligent (IPA)** respecte de la RPA i l'IDP?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Substitueix completament les bases de dades SQL."
+        },
+        {
+          "key": "B",
+          "text": "Només serveix per entrenar xarxes neuronals profundes."
+        },
+        {
+          "key": "C",
+          "text": "**Orquestra el flux de punta a punta de l'expedient** (estats de llarga durada, SLAs, regles de derivació i tasques humanes), invocant IDP/ML per llegir documents i APIs/RPA per executar tasques puntuals en sistemes."
+        },
+        {
+          "key": "D",
+          "text": "És un sinònim exacte de *UI screen scraping*."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "BPM governa el cicle de vida complet del procés administratiu (que pot durar dies o mesos), mentre que RPA/API executen passos puntuals i IDP extreu dades de documents.",
+      "explanationsIncorrect": {
+        "A": "No substitueix les bases de dades transaccionals.",
+        "B": "No entrena models de Deep Learning.",
+        "D": "UI scraping és una tècnica de RPA, no de BPM."
+      }
+    },
+    {
+      "id": "m06-06-q02",
+      "module": 6,
+      "conceptId": "m06-06-validacio-automatica-processos",
+      "lessonRef": "content/module-06/m06-06-validacio-automatica-processos.md",
+      "difficulty": "basic",
+      "questionType": "normative",
+      "prompt": "Quin termini legal estableix amb caràcter general l'**article 68 de la Llei 39/2015 (LPACAP)** per requerir al ciutadà l'**esmena de defectes formals o documentació incompleta** en una sol·licitud?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "2 hores."
+        },
+        {
+          "key": "B",
+          "text": "**10 dies hàbils** (generant el validador un esborrany de requeriment amb els punts exactes a esmenar, revisat abans de notificar)."
+        },
+        {
+          "key": "C",
+          "text": "No existeix cap tràmit d'esmena: s'arxiva immediatament el mateix dia."
+        },
+        {
+          "key": "D",
+          "text": "5 anys."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "L'art. 68.1 LPACAP garanteix el termini general de 10 dies hàbils per esmenar la sol·licitud o acompanyar els documents preceptius.",
+      "explanationsIncorrect": {
+        "A": "Termini inexistent i desproporcionat.",
+        "C": "Arxivar sense donar tràmit d'esmena vulnera l'art. 68 LPACAP.",
+        "D": "El termini general d'esmena són 10 dies hàbils."
+      }
+    },
+    {
+      "id": "m06-06-q04",
+      "module": 6,
+      "conceptId": "m06-06-validacio-automatica-processos",
+      "lessonRef": "content/module-06/m06-06-validacio-automatica-processos.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Durant la validació automàtica d'un lot de 500 subvencions, el servei extern de **Via Oberta / AEAT retorna un error `HTTP 503 / TIMEOUT`** durant una hora. Com ha d'actuar el validador?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Marcar els expedients afectats com a **`PENDENT_REINTENT_INTEROP`**, **bloquejar qualsevol requeriment d'esmena al ciutadà**, executar reintents automàtics amb *backoff* i alertar IT si la caiguda persisteix."
+        },
+        {
+          "key": "B",
+          "text": "Enviar immediatament 500 requeriments d'esmena dient que tenen deutes amb Hisenda."
+        },
+        {
+          "key": "C",
+          "text": "Denegar definitivament les 500 sol·licituds."
+        },
+        {
+          "key": "D",
+          "text": "Aprovar automàticament les 500 sol·licituds sense comprovar mai si tenen deutes."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Mai no s'ha de confondre una errada tècnica de comunicació amb un incompliment de negoci del ciutadà (ni tampoc saltar-se el requisit legal!).",
+      "explanationsIncorrect": {
+        "B": "Generaria 500 requeriments falsos i alarma ciutadana injustificada.",
+        "C": "Il·legal i greument lesiu per als drets dels interessats.",
+        "D": "Ometria una comprovació legal preceptiva (Llei General de Subvencions)."
+      }
+    },
+    {
+      "id": "m06-02-q08",
+      "module": 6,
+      "conceptId": "m06-02-regles-negoci",
+      "lessonRef": "content/module-06/m06-02-regles-negoci.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En la funció `avaluar_expedient` de l'exemple 6.2, què succeeix amb el cas `SOL-03` (`empadronat=False`, `renda_pc=5000`, `informe_social=True`) i per què?",
+      "codeSnippet": "for r in REGLES_EXCLUSIO_FIRST:\n    if r.condicio(dades):\n        return {\n            \"versio_regles\": VERSIO_REGLEMENT,\n            \"estat\": \"PROPOSTA_EXCLOS\",\n            \"punts\": 0,\n            \"motivacio\": [f\"{r.id_regla} ({r.article}): {r.descripcio}\"],\n        }",
+      "options": [
+        {
+          "key": "A",
+          "text": "La regla `EX-01` (`Art. 4.1`, no empadronat) s'avalua primer sota *Hit Policy* **`FIRST`** i retorna immediatament **`PROPOSTA_EXCLOS` amb `0` punts** i cita exacta de l'article, sense entrar al barem acumulatiu."
+        },
+        {
+          "key": "B",
+          "text": "Suma 16 punts (`BR-01` + `BR-04`) i s'aprova automàticament."
+        },
+        {
+          "key": "C",
+          "text": "Llança una excepció de Python perquè falta `empadronat`."
+        },
+        {
+          "key": "D",
+          "text": "Activa `REVISIO_TECNICA_ALERTA_ML`."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Els requisits essencials d'admissió s'avaluen en la fase d'exclusió `FIRST` abans de baremar punts, retornant immediatament la causa legal exacta d'inadmissió.",
+      "explanationsIncorrect": {
+        "B": "El `return` anticipat evita assignar punts a una sol·licitud exclosa.",
+        "C": "`empadronat` és present (`False`), no llança cap error.",
+        "D": "`score_anomalia_ml` és `0.05` (< 0.80) i a més ja ha sortit a la fase d'exclusió."
+      }
+    },
+    {
+      "id": "m06-03-q01",
+      "module": 6,
+      "conceptId": "m06-03-classificadors-automatics",
+      "lessonRef": "content/module-06/m06-03-classificadors-automatics.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Què és l'**opció de rejecció (*Reject Option* / abstenció)** en un classificador automàtic d'instàncies municipals?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Derivar els casos que no superen el llindar de confiança (o el marge mínim) a una **cua de triatge humà** (mostrant les classes més probables) en lloc d'enrutar-los automàticament amb risc alt d'error."
+        },
+        {
+          "key": "B",
+          "text": "Esborrar del registre les instàncies difícils."
+        },
+        {
+          "key": "C",
+          "text": "Assignar tots els casos dubtosos al primer departament per ordre alfabètic."
+        },
+        {
+          "key": "D",
+          "text": "Desactivar el classificador els caps de setmana."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "La Reject Option protegeix la qualitat operativa enviant només els casos d'alta confiança a auto-enrutament i assistint els humans en els casos dubtosos.",
+      "explanationsIncorrect": {
+        "B": "Mai no es poden esborrar instàncies registrades.",
+        "C": "Col·lapsaria un departament amb errors constants.",
+        "D": "Depèn de la confiança per cas, no del dia de la setmana."
+      }
+    },
+    {
+      "id": "m06-02-q03",
+      "module": 6,
+      "conceptId": "m06-02-regles-negoci",
+      "lessonRef": "content/module-06/m06-02-regles-negoci.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina *Hit Policy* de l'estàndard **DMN** és l'adequada per a un **barem de subvencions** on una família pot acumular punts de diverses files simultàniament (renda + família nombrosa + vulnerabilitat)?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "`UNIQUE` (només pot coincidir una fila)."
+        },
+        {
+          "key": "B",
+          "text": "`FIRST` (s'atura a la primera fila)."
+        },
+        {
+          "key": "C",
+          "text": "`COLLECT (C+)` (avalua totes les regles i suma els punts de totes les que es compleixen)."
+        },
+        {
+          "key": "D",
+          "text": "`RANDOM` (tria una fila a l'atzar)."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "COLLECT (C+) acumula totes les regles coincidents en un barem sumatori, registrant cada concepte puntuat per a la resolució.",
+      "explanationsIncorrect": {
+        "A": "UNIQUE prohibeix que coincideixin més d'una fila alhora.",
+        "B": "FIRST deixaria de comptar punts després de la primera fila certa.",
+        "D": "No existeix cap política aleatòria en DMN normatiu."
+      }
+    },
+    {
+      "id": "m06-04-q07",
+      "module": 6,
+      "conceptId": "m06-04-sistemes-recomanacio",
+      "lessonRef": "content/module-06/m06-04-sistemes-recomanacio.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Quina garantia de privacitat (RGPD) i transparència ha d'oferir un recomanador en un portal ciutadà públic?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Creuar dades mèdiques, tributàries i policials sense base jurídica per perfilar cada veí."
+        },
+        {
+          "key": "B",
+          "text": "Amagar sempre per què apareix cada recomanació."
+        },
+        {
+          "key": "C",
+          "text": "Obligar tots els ciutadans a acceptar personalització sense possibilitat de veure el catàleg complet."
+        },
+        {
+          "key": "D",
+          "text": "**Minimització de dades** (preferiblement basat en consulta o perfil voluntari), **explicació clara** (*«Per què t'ho recomanem»*) i **dret d'*opt-out*** per consultar el catàleg complet sense personalització."
+        }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "El sector públic ha d'evitar el perfilatge invasiu, ser transparent sobre els criteris de recomanació i garantir l'accés universal sense personalització forçada.",
+      "explanationsIncorrect": {
+        "A": "Vulneraria greument la limitació de la finalitat i la minimització del RGPD.",
+        "B": "La transparència explica al ciutadà per què se li suggereix un servei.",
+        "C": "L'accés al catàleg públic complet ha de ser sempre possible."
+      }
+    },
+    {
+      "id": "m06-02-q02",
+      "module": 6,
+      "conceptId": "m06-02-regles-negoci",
+      "lessonRef": "content/module-06/m06-02-regles-negoci.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Per què un **barem oficial de beques menjador** (punts per renda, monoparentalitat i informe social) s'ha d'implementar amb **regles deterministes** i NO amb un model de Machine Learning?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Perquè Python no suporta models de Machine Learning."
+        },
+        {
+          "key": "B",
+          "text": "Perquè els criteris estan **explícitament reglats en una norma jurídica**: un motor determinista garanteix **100% d'exactitud, igualtat entre sol·licitants i motivació jurídica article per article**, mentre que un ML introduiria incertesa i arbitrarietat."
+        },
+        {
+          "key": "C",
+          "text": "Perquè les regles deterministes són més lentes que un LLM de 70B."
+        },
+        {
+          "key": "D",
+          "text": "Perquè el Machine Learning no pot llegir números."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Tot procediment reglat amb llindars i punts normatius exigeix determinisme estricte i motivació legal (art. 35 LPACAP), mai aproximació probabilística.",
+      "explanationsIncorrect": {
+        "A": "Python és l'ecosistema principal de ML.",
+        "C": "Les regles deterministes s'executen en microsegons.",
+        "D": "El ML opera amb números, però de manera probabilística i aproximada."
+      }
+    },
+    {
+      "id": "m06-01-q10",
+      "module": 6,
+      "conceptId": "m06-01-rpa",
+      "lessonRef": "content/module-06/m06-01-rpa.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Per què **NO** s'ha d'utilitzar un **Agent d'IA autònom basat en LLM** per substituir un bot RPA/API en un procés comptable d'assentament de 2.000 factures diàries on les regles són 100% conegudes i deterministes?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Perquè els Agents d'IA només funcionen en anglès."
+        },
+        {
+          "key": "B",
+          "text": "Perquè els processos comptables no tenen cap regla."
+        },
+        {
+          "key": "C",
+          "text": "Perquè un Agent LLM introdueix **no-determinisme, risc d'al·lucinació o *prompt injection*, latència i cost d'inferència innecessaris** allà on una API/RPA determinista ofereix **100% de predictibilitat, velocitat i auditabilitat exacta**."
+        },
+        {
+          "key": "D",
+          "text": "Perquè els Agents d'IA són massa barats."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Principi d'or de l'automatització intel·ligent: mai usis un sistema probabilístic (LLM/Agent) per a una tasca 100% determinista on el codi, les APIs o la RPA garanteixen exactitud total a cost mínim!",
+      "explanationsIncorrect": {
+        "A": "Els LLMs suporten català, però el problema és no-determinisme, seguretat i cost.",
+        "B": "Al contrari, la comptabilitat pública té regles estrictes i deterministes.",
+        "D": "Les crides LLM són ordres de magnitud més cares i lentes que una transacció API/codi."
+      }
+    },
+    {
+      "id": "m06-05-q10",
+      "module": 6,
+      "conceptId": "m06-05-prioritzacio-casos",
+      "lessonRef": "content/module-06/m06-05-prioritzacio-casos.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Per què la interfície d'una cua prioritzada ha d'incorporar **explicabilitat del desglossament de puntuació** i un botó d'***override* humà motivat**?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Perquè els supervisors puguin canviar l'ordre sense deixar cap rastre ni justificació."
+        },
+        {
+          "key": "B",
+          "text": "Per eliminar el registre d'auditoria."
+        },
+        {
+          "key": "C",
+          "text": "Perquè el cap de servei entengui immediatament **per què cada cas ocupa aquella posició** (`impacte`, `SLA`, `aging`), detecti possibles errors de dades i pugui **reprioritzar manualment deixant traça motivada** (art. 71.2 LPACAP i art. 14 AI Act)."
+        },
+        {
+          "key": "D",
+          "text": "Per ocultar la data de venciment del silenci administratiu."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Explicabilitat + override motivat i auditat garanteixen supervisió humana real (contra el biaix d'automatització) i compliment administratiu i d'AI Act.",
+      "explanationsIncorrect": {
+        "A": "L'*override* sempre ha de requerir motiu i quedar registrat al log d'auditoria.",
+        "B": "Al contrari, reforça el registre d'auditoria.",
+        "D": "La data d'SLA/silenci administratiu ha de ser ben visible per evitar venciments."
+      }
+    },
+    {
+      "id": "m06-06-q05",
+      "module": 6,
+      "conceptId": "m06-06-validacio-automatica-processos",
+      "lessonRef": "content/module-06/m06-06-validacio-automatica-processos.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Quina particularitat jurídica (art. 95.1.k de la **Llei General Tributària**) s'ha de respectar en automatitzar la consulta d'**estar al corrent d'obligacions tributàries (AEAT)** via interoperabilitat?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Cap, les dades tributàries són públiques a Internet."
+        },
+        {
+          "key": "B",
+          "text": "Les dades tributàries tenen **caràcter reservat**, per la qual cosa la consulta automatitzada requereix habitualment **autorització/consentiment exprés** de l'interessat al formulari (si no l'atorga, ha d'adjuntar el certificat vigent)."
+        },
+        {
+          "key": "C",
+          "text": "L'AEAT només respon per correu postal."
+        },
+        {
+          "key": "D",
+          "text": "Està prohibit consultar l'AEAT fins i tot amb consentiment exprés."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "A diferència d'altres dades sota règim general d'oposició (art. 28.2 LPACAP), la consulta de dades tributàries AEAT exigeix consentiment exprés conforme a l'art. 95.1.k LGT.",
+      "explanationsIncorrect": {
+        "A": "Les dades tributàries estan estrictament protegides pel secret tributari.",
+        "C": "Està plenament integrada telemàticament via PID / Via Oberta.",
+        "D": "Amb consentiment exprés del sol·licitant la consulta telemàtica és plenament vàlida i recomanada."
+      }
+    },
+    {
+      "id": "m06-03-q03",
+      "module": 6,
+      "conceptId": "m06-03-classificadors-automatics",
+      "lessonRef": "content/module-06/m06-03-classificadors-automatics.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Per què convé configurar **llindars asimètrics per classe** en lloc d'un únic llindar global (`0,50`) per a tots els serveis municipals?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Per complicar el fitxer de configuració sense motiu."
+        },
+        {
+          "key": "B",
+          "text": "Perquè els classificadors no permeten tenir el mateix llindar en dues classes."
+        },
+        {
+          "key": "C",
+          "text": "Perquè el **cost d'un error és molt diferent segons el servei**: un error en incidències de via pública és fàcil de rebotar (`0,80`), mentre que un error en Serveis Socials o recursos jurídics té un impacte molt greu (`0,95` o revisió obligatòria)."
+        },
+        {
+          "key": "D",
+          "text": "Per garantir que cap instància vagi mai a Via Pública."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Ajustar el llindar al cost real de negoci/ciutadà de cada classe maximitza l'automatització segura allà on el risc és baix i blinda les àrees crítiques.",
+      "explanationsIncorrect": {
+        "A": "Respon directament a la gestió asimètrica del risc.",
+        "B": "Tècnicament es podria usar un llindar únic, però seria subòptim operacionalment.",
+        "D": "Un llindar de 0,80 a Via Pública precisament facilita l'enrutament automàtic àgil."
+      }
+    },
+    {
+      "id": "m06-02-q01",
+      "module": 6,
+      "conceptId": "m06-02-regles-negoci",
+      "lessonRef": "content/module-06/m06-02-regles-negoci.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quin avantatge fonamental ofereix un **Motor de Regles de Negoci (BRMS / DMN)** respecte de programar la lògica normativa amb `if/else` incrustats dins el codi font?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "**Desacobla les regles del codi**, permetent que juristes i tècnics les revisin en taules llegibles, es **versionin per vigència temporal** i s'actualitzin sense recompilar el nucli de l'aplicació."
+        },
+        {
+          "key": "B",
+          "text": "Converteix les lleis en prediccions aleatòries."
+        },
+        {
+          "key": "C",
+          "text": "Elimina la necessitat de provar els canvis abans de producció."
+        },
+        {
+          "key": "D",
+          "text": "Només serveix per a imatges i vídeos."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Externalitzar i versionar regles en taules declaratives DMN facilita el manteniment anual d'ordenances i bases i proporciona traçabilitat jurídica exacta.",
+      "explanationsIncorrect": {
+        "B": "Al contrari, els motors de regles són 100% deterministes.",
+        "C": "Tota nova versió de taula requereix proves de completitud i casos regressius.",
+        "D": "Opera sobre dades estructurades i regles lògiques."
+      }
+    },
+    {
+      "id": "m06-01-q02",
+      "module": 6,
+      "conceptId": "m06-01-rpa",
+      "lessonRef": "content/module-06/m06-01-rpa.md",
+      "difficulty": "basic",
+      "questionType": "architecture",
+      "prompt": "Dues aplicacions municipals modernes disposen totes dues d'**API REST documentada**. Quin enfocament d'integració has d'escollir segons les bones pràctiques d'enginyeria?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Un bot RPA que obri Chrome i faci clics sobre els botons de la pantalla."
+        },
+        {
+          "key": "B",
+          "text": "**Integració directa per API REST** (*API-first*), reservant la RPA d'interfície gràfica només per a aplicacions *legacy* sense API."
+        },
+        {
+          "key": "C",
+          "text": "Imprimir les dades en paper i tornar-les a escanejar amb OCR."
+        },
+        {
+          "key": "D",
+          "text": "Enviar un correu electrònic diari perquè algú les teclegi."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "El principi API-first evita la fragilitat dels canvis visuals d'UI, redueix latència i cost de llicències RPA i millora la seguretat i escalabilitat.",
+      "explanationsIncorrect": {
+        "A": "Usar RPA d'UI havent-hi API és un antipatró costós i molt fràgil.",
+        "C": "Absurd i propens a errors.",
+        "D": "No automatitza el procés."
+      }
+    },
+    {
+      "id": "m06-04-q05",
+      "module": 6,
+      "conceptId": "m06-04-sistemes-recomanacio",
+      "lessonRef": "content/module-06/m06-04-sistemes-recomanacio.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Un servei d'ocupació entrena un recomanador col·laboratiu amb l'històric d'inscripcions dels darrers 5 anys, **eliminant la columna `gènere`**, però observa que segueix recomanant cursos tècnics als homes i cursos administratius/cures a les dones. Per què passa això?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Per un error de tipus de dades en Python."
+        },
+        {
+          "key": "B",
+          "text": "Perquè les **interaccions històriques prèvies actuen com a variable *proxy* del gènere** en un mercat laboral segregat; cal basar la recomanació en **competències i interessos declarats (*Content-Based*)** i executar **auditories d'equitat contrafactual**."
+        },
+        {
+          "key": "C",
+          "text": "Perquè eliminar la columna `gènere` sempre elimina al 100% qualsevol biaix."
+        },
+        {
+          "key": "D",
+          "text": "Perquè el `NDCG@K` és massa baix."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "La «ceguesa a l'atribut» (*fairness through unawareness*) falla quan les dades històriques contenen *proxies* fortament correlacionats amb el gènere.",
+      "explanationsIncorrect": {
+        "A": "És un biaix estructural de les dades, no un bug de tipus.",
+        "C": "Fals! És un dels errors conceptuals més importants en ètica d'IA (Mòdul 8).",
+        "D": "Un model esbiaixat pot tenir fins i tot un NDCG alt sobre dades històriques esbiaixades!"
+      }
+    },
+    {
+      "id": "m06-02-q05",
+      "module": 6,
+      "conceptId": "m06-02-regles-negoci",
+      "lessonRef": "content/module-06/m06-02-regles-negoci.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "En una arquitectura híbrida (regles deterministes + model ML d'anomalies documentals), com ha d'actuar el sistema quan un expedient compleix tots els requisits del barem però el **model ML marca un score d'anomalia de `0,88`**?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Denegar automàticament la beca al ciutadà basant-se en el `0,88`."
+        },
+        {
+          "key": "B",
+          "text": "Conservar la puntuació determinista però derivar l'expedient a **revisió tècnica humana (`REVISIO_TECNICA_ALERTA_ML`)** perquè un empleat verifiqui la documentació; un senyal probabilístic ML **mai no denega per si sol**."
+        },
+        {
+          "key": "C",
+          "text": "Ignorar completament el model ML en tots els casos."
+        },
+        {
+          "key": "D",
+          "text": "Restar 8,8 punts al barem legal."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "El ML serveix per prioritzar la comprovació humana (control de qualitat/antifrau), però cap ciutadà pot ser exclòs d'un dret reglat únicament per un score estadístic sense verificació humana i causa jurídica.",
+      "explanationsIncorrect": {
+        "A": "Vulneraria el principi de legalitat, motivació i supervisió humana.",
+        "C": "L'alerta ML és molt útil per focalitzar la inspecció humana en casos sospitosos.",
+        "D": "Mai es poden alterar puntuacions d'un barem legal amb un score no previst a les bases."
+      }
+    },
+    {
+      "id": "m06-02-q10",
+      "module": 6,
+      "conceptId": "m06-02-regles-negoci",
+      "lessonRef": "content/module-06/m06-02-regles-negoci.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "En revisar una taula DMN abans d'obrir una convocatòria de subvencions, un tècnic detecta que la fila 1 diu `renda < 7000` i la fila 2 diu `renda > 7000`. Quina anomalia lògica s'ha detectat i com es corregeix?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Cap anomalia; `7000` s'assignarà a les dues files."
+        },
+        {
+          "key": "B",
+          "text": "Un solapament excessiu de 5 files."
+        },
+        {
+          "key": "C",
+          "text": "Un **buit (*gap*) en la frontera exacta `renda == 7000,00 €`**: qualsevol família amb exactament 7.000,00 € no encaixaria en cap regla! Es corregeix fent els intervals contigus i disjunts (`<= 7000` i `> 7000`) i afegint un **test de valor frontera** a la suite CI/CD."
+        },
+        {
+          "key": "D",
+          "text": "Cal eliminar la variable `renda` de les bases."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Les proves de valors frontera (`6999.99`, `7000.00`, `7000.01`) i l'anàlisi de buits són imprescindibles en tota taula de decisió normativa.",
+      "explanationsIncorrect": {
+        "A": "7000 no compleix ni `< 7000` ni `> 7000`!",
+        "B": "És un buit (0 coincidències), no un solapament (>1 coincidències).",
+        "D": "La renda és un criteri legal de la convocatòria."
+      }
+    },
+    {
+      "id": "m06-05-q08",
+      "module": 6,
+      "conceptId": "m06-05-prioritzacio-casos",
+      "lessonRef": "content/module-06/m06-05-prioritzacio-casos.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En `calcular_prioritat` de l'exemple 6.5, per què `INC-01` (banc despintat, `impacte=15`, `25 dies d'espera`) obté una puntuació (`107,5`) **superior** a `INC-02` (sot profund, `impacte=75`, `2 dies d'espera`, score `59,5`), però **inferior** a `INC-04` (`perill_immediat=True`, score `1000,0`)?",
+      "codeSnippet": "aging = min(120.0, c.dies_espera * 4.0)\nscore = round(0.50 * c.impacte + 0.35 * urgencia_sla + aging, 1)",
+      "options": [
+        {
+          "key": "A",
+          "text": "Perquè el **factor *Aging* (`25 * 4 = 100,0`)** rescata `INC-01` de la inanició fent-lo passar davant d'un cas recent no crític (`INC-02`), però el sostre (`min(120.0, ...)`) i l'***Override P0* (`1000,0`)** garanteixen que **cap cas antic ordinari no podrà desplaçar mai una emergència real (`INC-04`)**!"
+        },
+        {
+          "key": "B",
+          "text": "Per un error de càlcul que posa el banc despintat davant de tot."
+        },
+        {
+          "key": "C",
+          "text": "Perquè `INC-04` no té `dies_espera`."
+        },
+        {
+          "key": "D",
+          "text": "Perquè `urgencia_sla` de `INC-01` val 100."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Aquesta és l'enginyeria fina d'una cua prioritzada: *Aging* amb sostre (*cap*) impedeix la inanició dels casos ordinaris sense violar mai la jerarquia absoluta de les emergències P0!",
+      "explanationsIncorrect": {
+        "B": "És exactament el disseny intencionat: `INC-04` (P0) continua sent #1 amb `1000,0`!",
+        "C": "`INC-04` entra per l'`if c.perill_immediat:` i retorna `1000.0` immediatament.",
+        "D": "Per a `INC-01` (`dies_fins_sla=20 > 10`), `urgencia_sla` val `0.0`."
+      }
+    },
+    {
+      "id": "m06-01-q05",
+      "module": 6,
+      "conceptId": "m06-01-rpa",
+      "lessonRef": "content/module-06/m06-01-rpa.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Un cap de servei proposa configurar el bot RPA *unattended* de comptabilitat utilitzant l'**usuari i contrasenya personals d'una tècnica** que es jubila aviat per «estalviar tràmits d'alta d'usuari». Per què és inacceptable segons l'ENS?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Només perquè la contrasenya pot ser massa llarga."
+        },
+        {
+          "key": "B",
+          "text": "Destrueix la **traçabilitat i responsabilitat individual** (atribueix actes del bot a una persona física), vulnera el **mínim privilegi** i trencarà el servei en donar de baixa l'empleada; cal un **compte de servei dedicat nominal** amb credencials en **Vault xifrat**."
+        },
+        {
+          "key": "C",
+          "text": "És totalment correcte i recomanat per l'ENS."
+        },
+        {
+          "key": "D",
+          "text": "Perquè els bots RPA no poden autenticar-se en cap aplicació."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "L'ENS exigeix comptes nominals auditables, mínim privilegi i separació clara entre identitats humanes i comptes de servei automatitzats custodiats en Vault.",
+      "explanationsIncorrect": {
+        "A": "El problema és de governança, seguretat i auditoria, no de longitud.",
+        "C": "Contraven directament els controls d'accés i traçabilitat de l'ENS.",
+        "D": "Els bots s'autentiquen amb comptes de servei dedicats i auditats."
+      }
+    },
+    {
+      "id": "m06-03-q05",
+      "module": 6,
+      "conceptId": "m06-03-classificadors-automatics",
+      "lessonRef": "content/module-06/m06-03-classificadors-automatics.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Què detecta comprovar el **marge entre la 1a i la 2a classe més probable (`p1 - p2`)** a més del llindar sobre `p1`?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Detecta si el PDF té més de 10 pàgines."
+        },
+        {
+          "key": "B",
+          "text": "Detecta **ambigüitat entre dues classes properes o instàncies multi-departament** (ex. `Urbanisme 0,52` vs `Via Pública 0,44`), derivant-les a triatge humà amb ambdós serveis suggerits."
+        },
+        {
+          "key": "C",
+          "text": "Accelera la velocitat de la GPU un 50%."
+        },
+        {
+          "key": "D",
+          "text": "Substitueix completament el calibratge del model."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Un marge `p1 - p2` estret indica que el model dubta entre dos serveis o que el document tracta efectivament dos temes simultanis.",
+      "explanationsIncorrect": {
+        "A": "No depèn del nombre de pàgines.",
+        "C": "És una resta simple de dos nombres a la sortida.",
+        "D": "Complementa el calibratge, no el substitueix."
+      }
+    },
+    {
+      "id": "m06-06-q09",
+      "module": 6,
+      "conceptId": "m06-06-validacio-automatica-processos",
+      "lessonRef": "content/module-06/m06-06-validacio-automatica-processos.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Quina diferència fonamental hi ha entre validar una **signatura electrònica** comprovant només que el PDF té «un requadre visual amb un dibuix de signatura» vs. validar-la amb **PSIS (AOC) / @firma**?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Cap diferència: un dibuix de signatura té exactament el mateix valor criptogràfic."
+        },
+        {
+          "key": "B",
+          "text": "Un segell visual pot ser una imatge enganxada sense validesa; **PSIS / @firma** verifica criptogràficament la **integritat del document, la validesa i cadena de confiança del certificat qualificat i l'estat de no-revocació (OCSP/CRL)** en el moment de la signatura."
+        },
+        {
+          "key": "C",
+          "text": "PSIS / @firma només comprova la mida del fitxer en kilobytes."
+        },
+        {
+          "key": "D",
+          "text": "PSIS / @firma substitueix el padró municipal."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "La validació de signatura electrònica (Reglament eIDAS / Llei 39/2015) és criptogràfica contra autoritats de certificació i llistes de revocació, mai visual!",
+      "explanationsIncorrect": {
+        "A": "Qualsevol pot enganxar una imatge d'una signatura o un segell fals en un PDF.",
+        "C": "Verifica criptografia asimètrica, cadena de certificats i estat de revocació.",
+        "D": "És la plataforma de validació de certificats i signatures, no un registre poblacional."
+      }
+    },
+    {
+      "id": "m06-05-q01",
+      "module": 6,
+      "conceptId": "m06-05-prioritzacio-casos",
+      "lessonRef": "content/module-06/m06-05-prioritzacio-casos.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Què és el fenomen de la **inanició de cua (*Starvation*)** en un sistema de priorització d'expedients?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "La situació en què els casos de baixa prioritat queden **desplaçats indefinidament cap al fons de la cua** per l'arribada contínua de casos més prioritaris i no s'arriben a resoldre mai dins termini."
+        },
+        {
+          "key": "B",
+          "text": "Que la cua està completament buida."
+        },
+        {
+          "key": "C",
+          "text": "Que tots els expedients s'atenen en menys d'1 minut."
+        },
+        {
+          "key": "D",
+          "text": "Que el servidor es queda sense memòria RAM."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Sense mecanismes anti-inanició (*Aging* o reserva de capacitat), els casos de baixa gravetat poden acumular mesos de retard indefinidament.",
+      "explanationsIncorrect": {
+        "B": "Al contrari, passa quan entren contínuament casos nous de major prioritat.",
+        "C": "Això indicaria sobrada capacitat, no inanició.",
+        "D": "És un fenomen de teoria de cues i planificació, no de RAM."
+      }
+    },
+    {
+      "id": "m06-04-q03",
+      "module": 6,
+      "conceptId": "m06-04-sistemes-recomanacio",
+      "lessonRef": "content/module-06/m06-04-sistemes-recomanacio.md",
+      "difficulty": "basic",
+      "questionType": "metrics",
+      "prompt": "Quin avantatge té la mètrica **`NDCG@K`** respecte de **`Precision@K`** per avaluar un sistema de recomanació?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "`NDCG@K` ignora completament l'ordre dels resultats."
+        },
+        {
+          "key": "B",
+          "text": "`NDCG@K` només funciona per a `K = 1`."
+        },
+        {
+          "key": "C",
+          "text": "`NDCG@K` admet **rellevància graduada** (ex. 0, 1, 2, 3) i aplica un **descompte logarítmic per posició**, premiant posar els ítems més rellevants a dalt del rànquing (posició 1 molt millor que posició 5!)."
+        },
+        {
+          "key": "D",
+          "text": "`NDCG@K` mesura únicament la latència en mil·lisegons."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Els usuaris miren sobretot les 2–3 primeres recomanacions; NDCG@K captura tant el grau de rellevància com la qualitat de l'ordenació.",
+      "explanationsIncorrect": {
+        "A": "Al contrari, penalitza posar ítems rellevants a posicions baixes.",
+        "B": "S'utilitza habitualment per a K=3, 5, 10, etc.",
+        "D": "És una mètrica de qualitat de rànquing, no de latència."
+      }
+    },
+    {
+      "id": "m06-04-q01",
+      "module": 6,
+      "conceptId": "m06-04-sistemes-recomanacio",
+      "lessonRef": "content/module-06/m06-04-sistemes-recomanacio.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Què és el problema del ***Cold Start* (arrencada en fred)** en un sistema de recomanació basat en filtratge col·laboratiu?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "La dificultat per recomanar **ítems acabats d'incorporar sense interaccions prèvies** (ex. cursos nous) o **usuaris nous sense historial**, perquè no hi ha dades de comportament compartit en què basar-se."
+        },
+        {
+          "key": "B",
+          "text": "Que el servidor necessita escalfar la GPU durant 2 hores."
+        },
+        {
+          "key": "C",
+          "text": "Que el recomanador només funciona a l'hivern."
+        },
+        {
+          "key": "D",
+          "text": "Que els usuaris tenen massa historial d'interaccions."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "El filtratge col·laboratiu depèn de la matriu d'interaccions; si un ítem o usuari té 0 interaccions, no té veïns col·laboratius i cal recórrer a contingut (*Content-Based*) o regles (*Knowledge-Based*).",
+      "explanationsIncorrect": {
+        "B": "No és un fenomen tèrmic de maquinari.",
+        "C": "És un problema de dades i historial.",
+        "D": "Tenir poc o nul historial és precisament la causa del Cold Start."
+      }
+    },
+    {
+      "id": "m06-04-q10",
+      "module": 6,
+      "conceptId": "m06-04-sistemes-recomanacio",
+      "lessonRef": "content/module-06/m06-04-sistemes-recomanacio.md",
+      "difficulty": "advanced",
+      "questionType": "metrics",
+      "prompt": "Per què en un portal de serveis públics optimitzar un recomanador únicament per **CTR (*Click-Through Rate*)** pot degradar el servei ciutadà?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Perquè el CTR sempre és 100%."
+        },
+        {
+          "key": "B",
+          "text": "Perquè els clics no es poden mesurar en pàgines web."
+        },
+        {
+          "key": "C",
+          "text": "Perquè optimitzar només clics promou **títols cridaners (*clickbait*) i ítems ja populars**, descuidant el que realment importa a l'Administració: **tràmits efectivament completats, reducció del *non-take-up* d'ajuts a famílies elegibles, diversitat i equitat**."
+        },
+        {
+          "key": "D",
+          "text": "Perquè el CTR prohibeix utilitzar `NDCG@K`."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Alineació d'objectius (*Objective Alignment*): en sector públic la mètrica nord és la utilitat pública efectiva (ajuts/serveis elegibles completats i equitat), no el nombre de clics o temps en pantalla!",
+      "explanationsIncorrect": {
+        "A": "El CTR varia segons el disseny i els ítems.",
+        "B": "Es poden mesurar, però són una mètrica *proxy* feble o contraproduent.",
+        "D": "Es poden mesurar conjuntament, però la rellevància real s'ha de definir per utilitat/conversió de tràmit, no per clic superficial."
+      }
+    },
+    {
+      "id": "m06-05-q07",
+      "module": 6,
+      "conceptId": "m06-05-prioritzacio-casos",
+      "lessonRef": "content/module-06/m06-05-prioritzacio-casos.md",
+      "difficulty": "intermediate",
+      "questionType": "metrics",
+      "prompt": "En un pla d'inspecció tributària o de subvencions amb capacitat per revisar 200 expedients al mes, quin criteri combina millor ML i impacte econòmic per prioritzar la llista?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Ordenar només pels imports més petits (< 5 €)."
+        },
+        {
+          "key": "B",
+          "text": "Ordenar només per ordre alfabètic del municipi."
+        },
+        {
+          "key": "C",
+          "text": "Seleccionar únicament expedients ja prescrits."
+        },
+        {
+          "key": "D",
+          "text": "Combinar el **risc esperat (`probabilitat_calibrada_anomalia * import_econòmic`)** amb la **proximitat a la prescripció legal**, mostrant sempre als inspectors els indicadors explicables de per què cada cas és al Top-200."
+        }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "El risc esperat + proximitat a prescripció maximitza la protecció dels fons públics mentre l'explicabilitat facilita la comprovació humana objectiva de l'inspector.",
+      "explanationsIncorrect": {
+        "A": "Malbarataria la capacitat inspectora en imports residuals.",
+        "B": "Arbitrari i ineficient.",
+        "C": "Els expedients prescrits ja no es poden liquidar."
+      }
+    },
+    {
+      "id": "m06-06-q10",
+      "module": 6,
+      "conceptId": "m06-06-validacio-automatica-processos",
+      "lessonRef": "content/module-06/m06-06-validacio-automatica-processos.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "Per què en una convocatòria massiva convé que l'esborrany de requeriment d'esmena generat pel sistema (`GROC`) passi una **validació humana per lots o per mostra crítica abans de notificar-se telemàticament (e-NOTUM)**?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Per fer el procés artificialment més lent."
+        },
+        {
+          "key": "B",
+          "text": "Perquè e-NOTUM no admet notificacions generades per sistemes digitals."
+        },
+        {
+          "key": "C",
+          "text": "Perquè una notificació de requeriment d'esmena **obre un termini jurídic preclusiu de 10 dies hàbils** (amb advertiment de desistiment art. 68 LPACAP); revisar l'esborrany (o l'actuació AAA aprovada sota art. 41 LRJSP) evita enviar requeriments erronis amb conseqüències jurídiques per als ciutadans."
+        },
+        {
+          "key": "D",
+          "text": "Per esborrar els motius d'esmena del text de la notificació."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Un requeriment d'esmena té efectes jurídics directes (pot conduir a tenir per desistida la sol·licitud!); exigeix supervisió humana prèvia o aprovació formal com a AAA (art. 41 LRJSP) amb controls de qualitat estrictes.",
+      "explanationsIncorrect": {
+        "A": "És una salvaguarda jurídica i de qualitat, no burocràcia innecessària.",
+        "B": "e-NOTUM està dissenyat precisament per a notificacions electròniques integrades.",
+        "D": "El text del requeriment ha d'explicar amb total claredat què falta esmenar."
+      }
+    },
+    {
+      "id": "m06-02-q07",
+      "module": 6,
+      "conceptId": "m06-02-regles-negoci",
+      "lessonRef": "content/module-06/m06-02-regles-negoci.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Què comprova una anàlisi estàtica de qualitat sobre una taula de decisió DMN amb política **`UNIQUE`** abans de publicar-la a producció?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Només el color de fons del document."
+        },
+        {
+          "key": "B",
+          "text": "La velocitat de connexió a Internet."
+        },
+        {
+          "key": "C",
+          "text": "El nombre de tokens del prompt."
+        },
+        {
+          "key": "D",
+          "text": "Que no existeixin **buits (*gaps*)** (valors d'entrada que no encaixen en cap fila) ni **solapaments/contradiccions** (valors que disparen dues files diferents alhora, ex. `<= 7000` i `>= 7000`)."
+        }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Detectar fronteres solapades (`7000` en dues files) o forats (`7000,50` en cap fila) abans de desplegar evita errors massius el dia que s'obre la convocatòria.",
+      "explanationsIncorrect": {
+        "A": "Irrellevant per a la lògica normativa.",
+        "B": "És verificació lògica de regles, no de xarxa.",
+        "C": "DMN és determinista, no utilitza tokens d'LLM."
+      }
+    },
+    {
+      "id": "m06-04-q09",
+      "module": 6,
+      "conceptId": "m06-04-sistemes-recomanacio",
+      "lessonRef": "content/module-06/m06-04-sistemes-recomanacio.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "En una arquitectura de recomanació en **dues etapes (*Two-Stage Recommender*)** sobre 100.000 recursos públics, per què es separa la **generació de candidats** del **rànquing fi**?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Per fer el sistema més lent expressament."
+        },
+        {
+          "key": "B",
+          "text": "Perquè executar un model de rànquing ric (o *Cross-Encoder*) sobre 100.000 ítems en temps real excediria la latència; la fase 1 (*Retrieval* amb filtres + vectors) redueix ràpidament a ~100 candidats en mil·lisegons i la fase 2 els ordena amb alta precisió."
+        },
+        {
+          "key": "C",
+          "text": "Perquè la fase 2 no pot treballar amb menys de 100.000 ítems."
+        },
+        {
+          "key": "D",
+          "text": "Per eliminar el filtre d'elegibilitat."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Igual que en cerca híbrida + reranking (Mòdul 2/3), separar recuperació ràpida (alt Recall) de rànquing precís (alt NDCG) permet baixa latència i alta qualitat a escala.",
+      "explanationsIncorrect": {
+        "A": "Precisament serveix per reduir dràsticament la latència.",
+        "C": "La fase 2 opera precisament sobre un conjunt reduït (~50–200 candidats).",
+        "D": "El filtre d'elegibilitat es manté com a pas previ indispensable."
+      }
+    },
+    {
+      "id": "m06-03-q09",
+      "module": 6,
+      "conceptId": "m06-03-classificadors-automatics",
+      "lessonRef": "content/module-06/m06-03-classificadors-automatics.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Quina regla determinista **anti-ping-pong** s'ha d'afegir a un enrutador automàtic d'expedients en producció?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Tornar a passar l'expedient pel mateix classificador cada vegada que un servei el rebutja."
+        },
+        {
+          "key": "B",
+          "text": "Un cop un expedient ha estat **rebotat manualment per una unitat gestora**, **excloure'l definitivament de l'auto-enrutament** (assignació humana pel Registre) i escalar a supervisió si rep un segon rebot entre serveis."
+        },
+        {
+          "key": "C",
+          "text": "Tancar l'expedient automàticament després del primer rebot."
+        },
+        {
+          "key": "D",
+          "text": "Baixar el llindar a 0,10 quan hi ha rebots."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Evitar que el classificador torni a enviar un expedient al mateix departament que acaba de rebutjar-lo és una regla de seguretat operativa elemental.",
+      "explanationsIncorrect": {
+        "A": "Crearia un bucle infinit entre el classificador i el departament!",
+        "C": "Tancar un expedient ciutadà per un error intern d'enrutament vulneraria els drets de l'interessat.",
+        "D": "Baixar el llindar multiplicaria encara més els rebots."
+      }
+    },
+    {
+      "id": "m06-06-q01",
+      "module": 6,
+      "conceptId": "m06-06-validacio-automatica-processos",
+      "lessonRef": "content/module-06/m06-06-validacio-automatica-processos.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Què és la validació ***Shift-Left* (validació en origen)** en la tramitació electrònica d'expedients?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Traslladar les comprovacions de format (NIF/IBAN), sumes automàtiques i adjunts obligatoris al **formulari web de la Seu Electrònica abans del registre**, evitant que un 30–40% de defectes arribin mai al *back-office*."
+        },
+        {
+          "key": "B",
+          "text": "Desplaçar tots els botons de la pantalla cap a l'esquerra."
+        },
+        {
+          "key": "C",
+          "text": "Validar els expedients únicament un any després de pagar la subvenció."
+        },
+        {
+          "key": "D",
+          "text": "Eliminar totes les validacions del formulari."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Prevenir l'error en el moment que el ciutadà omple el formulari estalvia milers de requeriments d'esmena i mesos de tramitació.",
+      "explanationsIncorrect": {
+        "B": "No és una qüestió d'alineació visual CSS.",
+        "C": "Això seria validació tardana (*shift-right*), exactament el contrari.",
+        "D": "Precisament afegeix validacions preventives en temps real."
+      }
+    },
+    {
+      "id": "m06-03-q06",
+      "module": 6,
+      "conceptId": "m06-03-classificadors-automatics",
+      "lessonRef": "content/module-06/m06-03-classificadors-automatics.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Com converteixes els **rebots manuals** dels serveis municipals (`[Re-assignar a un altre servei]`) en un avantatge sostenible per al classificador?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Eliminant el botó de re-assignació perquè no es vegin els errors."
+        },
+        {
+          "key": "B",
+          "text": "Reentrenant el model automàticament cada minut amb un sol exemple sense cap validació."
+        },
+        {
+          "key": "C",
+          "text": "Registrant cada rebot com a dada etiquetada `(expedient, classe_predita, classe_real_humana)` per alimentar un **bucle controlat d'*Active Learning*** amb reentrenament i validació periòdica contra un conjunt de prova congelat."
+        },
+        {
+          "key": "D",
+          "text": "Penalitzant el funcionari que fa el rebot."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Les correccions humanes sobre errors reals del model són exactament les dades més valuoses per reduir futures equivocacions i adaptar-se al *drift*, sempre passant validació abans de promoure el nou model.",
+      "explanationsIncorrect": {
+        "A": "Amagar errors agreuja el mal servei.",
+        "B": "Reentrenar sense validació pot causar regressions o *catastrophic forgetting*.",
+        "D": "Els funcionaris aporten l'etiqueta veritable que fa millorar el sistema."
+      }
+    },
+    {
+      "id": "m06-03-q08",
+      "module": 6,
+      "conceptId": "m06-03-classificadors-automatics",
+      "lessonRef": "content/module-06/m06-03-classificadors-automatics.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En `enrutar_cas` de l'exemple 6.3, per què `INS-2` (`SERVEIS_SOCIALS: 0.89`, marge `0.83`) **NO** s'auto-enruta malgrat tenir una probabilitat més alta que `INS-1` (`VIA_PUBLICA: 0.86`, que SÍ que s'auto-enruta)?",
+      "codeSnippet": "LLINDARS_PER_CLASSE = {\n    \"VIA_PUBLICA\": 0.80,\n    \"TRIBUTS\": 0.90,\n    \"URBANISME\": 0.88,\n    \"SERVEIS_SOCIALS\": 0.95,\n}",
+      "options": [
+        {
+          "key": "A",
+          "text": "Perquè s'aplica un **llindar asimètric més exigent (`0,95`) per a `SERVEIS_SOCIALS`** a causa de l'alt impacte d'un error en casos vulnerables (`0.89 < 0.95`), mentre que `VIA_PUBLICA` té un llindar de `0,80` (`0.86 >= 0.80`)."
+        },
+        {
+          "key": "B",
+          "text": "Perquè `INS-2` té un marge inferior a `0,15`."
+        },
+        {
+          "key": "C",
+          "text": "Per un error d'ordenació en `sorted()`."
+        },
+        {
+          "key": "D",
+          "text": "Perquè `SERVEIS_SOCIALS` mai no pot ser la classe guanyadora."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Els llindars asimètrics alineen la política d'automatització amb el risc real de cada àmbit administratiu.",
+      "explanationsIncorrect": {
+        "B": "El marge de `INS-2` és `0.89 - 0.06 = 0.83`, molt per sobre de `0.15`.",
+        "C": "`sorted(..., reverse=True)` ordena correctament de major a menor.",
+        "D": "Si tingués `>= 0.95` i marge `>= 0.15`, s'auto-enrutaria."
+      }
+    }
+  ]
+}

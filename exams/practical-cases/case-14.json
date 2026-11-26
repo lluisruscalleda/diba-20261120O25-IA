@@ -1,0 +1,24 @@
+{
+  "id": "case-14",
+  "title": "Supòsit 14 — Transcripció automàtica i generació d'esborranys d'actes de Plens Municipals",
+  "modules": [2, 3, 4, 8],
+  "difficulty": "intermediate",
+  "estimatedMinutes": 45,
+  "context": "La Secretaria d'un ajuntament vol automatitzar la transcripció dels Plens Municipals (3 hores de durada, alternança constant català/castellà, diversos regidors parlant i terminologia jurídica local) i generar esborranys d'actes estructurades per agilitzar la fe pública.",
+  "statement": "Dissenya el pipeline d'àudio a esborrany d'acta (ASR + diarització + resum estructurat) preservant la fe pública del secretari municipal i la sobirania lingüística en català.",
+  "requirements": [
+    "Especificar les fases d'ASR (Whisper fine-tuned en català / models AINA *on-premise*), diarització de parlants i avaluació mitjançant WER desagregat per idioma.",
+    "Definir l'estratègia per a documents molt llargs (3 hores > finestra de context), resum jeràrquic per punts de l'ordre del dia i vinculació amb marques de temps (timestamps).",
+    "Establir les garanties jurídiques: caràcter d'esborrany no vinculant, verificació obligatòria de votacions i acords pel secretari (fe pública) i compliment art. 50 AI Act."
+  ],
+  "rubric": [
+    { "criterion": "Pipeline ASR bilingüe català/castellà + diarització + WER", "maxPoints": 30, "description": "Tria models ASR amb alt rendiment en català (ex. Whisper + AINA), diarització de parlants i glossari local de noms." },
+    { "criterion": "Gestió de llarga durada (Map-Reduce / per punt d'ordre del dia) i timestamps", "maxPoints": 25, "description": "Segmenta per punts de l'ordre del dia i enllaça cada resum al minut/segon exacte de la videoacta." },
+    { "criterion": "Fe pública, verificació determinista de votacions i HITL del secretari", "maxPoints": 30, "description": "Mai delega el recompte de vots ni el redactat jurídic vinculant a un LLM; exigeix revisió i signatura del secretari." },
+    { "criterion": "Infraestructura sobirana i accessibilitat ciutadana", "maxPoints": 15, "description": "Execució on-premise/EEE, subtítols accessibles per a persones sordes i cerca semàntica de plens." }
+  ],
+  "modelSolution": "### 1. ASR en català i diarització de parlants\n- **ASR *on-premise***: model **Whisper-large-v3 adaptat al català / recursos del projecte AINA** (evitant pujar àudios institucionals a serveis fora EEE) amb **diarització** (*pyannote*) vinculada als micròfons individuals de la sala de plens (molt més precís que la diarització purament acústica!).\n- **Glossari dinàmic**: injectar noms propis de regidors, barris i partits al *prompt* inicial de l'ASR per reduir el **WER** (*Word Error Rate* objectiu `< 8%` tant en català com en castellà).\n\n### 2. Resum estructurat per punts de l'ordre del dia\n- En lloc de passar 35.000 paraules de cop a un LLM (fenomen *Lost in the Middle*), es segmenta la transcripció segons els **punts de l'ordre del dia** i es genera un esborrany JSON/Markdown amb **marques de temps (`[01:14:22]`)** enllaçades directament al vídeo oficial de la videoacta.\n\n### 3. Preservació de la fe pública i garanties jurídiques\n- **Límit legal absolut**: el secretari municipal és l'únic titular de la **fe pública**; la IA només produeix un **esborrany assistit**.\n- **Votacions i part dispositiva**: els vots a favor/en contra/abstencions i el text literal dels acords s'importen directament del **sistema electrònic de votació/expedient** (font determinista), **MAI** confiats a un resum generatiu!\n- Transparència clara d'ús d'eina d'IA de suport i publicació de subtítols revisats per millorar l'accessibilitat universal.",
+  "alternativeApproaches": [
+    "Adoptar un sistema de Videoacta oficial signada electrònicament on la transcripció IA serveix com a índex cercable per a ciutadans i grups municipals."
+  ]
+}

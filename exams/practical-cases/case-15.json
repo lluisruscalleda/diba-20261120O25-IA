@@ -1,0 +1,23 @@
+{
+  "id": "case-15",
+  "title": "Supòsit 15 — Decisió estratègica: RAG vs. Fine-tuning (LoRA) i Buy vs. Adapt en una Diputació",
+  "modules": [3, 7, 8],
+  "difficulty": "intermediate",
+  "estimatedMinutes": 40,
+  "context": "La direcció TIC d'una diputació ha de decidir com desplegar tres iniciatives d'IA generativa amb un pressupost limitat i requisits estrictes de sobirania de dades: (1) Assistent de contractació pública basat en la LCSP i instruccions internes canviants; (2) Eina d'adaptació de textos administratius complexos a «llenguatge planer» en català; (3) Assistent per consultar expedients personals de recursos humans.",
+  "statement": "Recomana i justifica per a cada iniciativa l'arquitectura òptima (RAG, Fine-tuning LoRA, o combinació) i el model d'adquisició (Buy vs. Build vs. Adapt), incloent-hi les clàusules clau de contractació.",
+  "requirements": [
+    "Aplicar criteris rigorosos de selecció entre RAG, Fine-tuning (LoRA/QLoRA) i Prompting per a cadascuna de les 3 iniciatives.",
+    "Descartar explícitament el fine-tuning amb dades personals (iniciativa 3) i justificar l'estratègia Adapt (open-weights on-premise/EEE) vs. Buy/Build.",
+    "Especificar les 4 clàusules contractuals essencials (sobirania/zero-retention, ENS, anti-vendor lock-in i qualitat en català)."
+  ],
+  "rubric": [
+    { "criterion": "Adequació RAG vs. LoRA a cada cas d'ús (3 casos justificats)", "maxPoints": 40, "description": "1: RAG amb cites; 2: Prompting + opcional LoRA d'estil sobre parells públics sense PII; 3: RAG amb RBAC estricte i ZERO fine-tuning." },
+    { "criterion": "Estratègia Buy vs. Build vs. Adapt i sobirania", "maxPoints": 30, "description": "Descarta entrenar un LLM des de zero (Build), prioritza Adapt (open-weights sobirà) i avalua TCO/GPU." },
+    { "criterion": "Clàusules de contractació pública responsable (LCSP)", "maxPoints": 30, "description": "Inclou EEE + art. 28 RGPD + zero-data-retention, Certificació ENS, portabilitat/exit plan i proves en català." }
+  ],
+  "modelSolution": "### 1. Selecció tècnica per iniciativa\n1. **Assistent de contractació pública (LCSP + instruccions canviants)** → **RAG híbrid amb citacions verificables**: la normativa, jurisprudència del TCCSP i instruccions canvien constantment i cal citar articles exactes; fer *fine-tuning* deixaria el coneixement obsolet i propens a al·lucinacions!\n2. **Adaptador de textos administratius a llenguatge planer en català** → **Prompting few-shot + (si cal més consistència estilística) *Fine-tuning* lleuger LoRA sobre un corpus curat de parells públics sense PII**: aquí l'objectiu no és injectar fets canviants, sinó modelar **estil, to i estructura** en català genuí!\n3. **Consulta d'expedients personals de RRHH** → **RAG amb RBAC pre-recuperació estricte + ZERO *fine-tuning***: mai no s'han d'incorporar dades personals de plantilla als pesos d'un model (risc de memorització, manca d'aïllament per rol i impossibilitat d'exercir el dret de supressió art. 17 RGPD!).\n\n### 2. Estratègia *Buy vs. Build vs. Adapt* i clàusules LCSP\n- **Descartar *Build* d'LLM fundacional** (cost milionari inviable). Prioritzar ***Adapt*** sobre una plataforma compartida *on-premise* o núvol sobirà EEE (ex. vLLM + models *open-weights* amb bon rendiment en català com Salamandra/AINA, Mistral o Qwen).\n- **Clàusules LCSP obligatòries** en cas de licitar infraestructura o components: (a) ubicació EEE + contracte art. 28 RGPD + ***zero-data-retention*** (prohibició d'entrenar amb dades públiques), (b) **Certificació ENS** categoria MITJÀ/ALT, (c) **portabilitat anti-*vendor lock-in*** (APIs estàndard i *exit plan*) i (d) **proves d'acceptació en català** sobre Golden Set propi.",
+  "alternativeApproaches": [
+    "Iniciar les tres iniciatives amb una única passarel·la corporativa d'IA (AI Gateway) per centralitzar observabilitat, quotes FinOps, DLP de PII i compliment ENS."
+  ]
+}

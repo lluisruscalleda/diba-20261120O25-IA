@@ -1,0 +1,2122 @@
+{
+  "id": "sim-02",
+  "title": "Simulacre Teoricopràctic Complet 02 — Automatització, IDP i Ajuts Socials",
+  "note": "Paràmetres orientatius de preparació (60 preguntes tipus test + supòsit pràctic vinculat; durada, penalització i ponderació teoria/pràctica configurables a la plataforma i no bases oficials).",
+  "recommendedMinutes": 90,
+  "recommendedPracticalMinutes": 50,
+  "moduleDistribution": {
+    "1": 9,
+    "2": 8,
+    "3": 8,
+    "4": 7,
+    "5": 7,
+    "6": 5,
+    "7": 8,
+    "8": 8
+  },
+  "practicalCaseId": "case-06",
+  "practicalCaseTitle": "Supòsit 06 — Orquestració d'automatització intel·ligent per a ajuts d'emergència habitacional",
+  "practicalCasePath": "/data/exams/practical-cases/case-06.json",
+  "questions": [
+    {
+      "id": "m07-04-q04",
+      "module": 7,
+      "conceptId": "m07-04-validacio-models",
+      "lessonRef": "content/module-07/m07-04-validacio-models.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "En la **piràmide d'avaluació de prompts (*PromptOps*)**, quines verificacions pertanyen al **Nivell 1 (assercions deterministes en cada Pull Request)** i NO s'han de delegar a un *LLM-as-a-Judge*?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Validesa estricta de l'**esquema JSON/Pydantic**, comprovació que les **cites `[doc#c]` existeixen** als chunks recuperats, bloqueig de paraules/promeses prohibides i compliment de latència."
+        },
+        {
+          "key": "B",
+          "text": "Valorar subjectivament l'estil literari d'un poema."
+        },
+        {
+          "key": "C",
+          "text": "Només la revisió manual de 50 casos per un jurista."
+        },
+        {
+          "key": "D",
+          "text": "Cap verificació es pot fer de manera determinista en LLMOps."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Tot el que és determinista (sintaxi JSON, presència i existència d'IDs de cita, patrons prohibits, latència) s'ha de validar amb codi ràpid (0 €, mil·lisegons, 100% fiable) a cada PR!",
+      "explanationsIncorrect": {
+        "B": "L'estil o matisos semàntics pertanyen als Nivells 2 i 3.",
+        "C": "Això correspon al Nivell 3 (revisió humana *Side-by-Side* per a canvis majors).",
+        "D": "Hi ha moltes comprovacions estructurals i de cites 100% deterministes."
+      }
+    },
+    {
+      "id": "m07-07-q02",
+      "module": 7,
+      "conceptId": "m07-07-versionat",
+      "lessonRef": "content/module-07/m07-07-versionat.md",
+      "difficulty": "basic",
+      "questionType": "architecture",
+      "prompt": "Per què en desplegaments segurs (ENS / MLOps) es prohibeix desplegar imatges Docker amb l'etiqueta **`:latest`**?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Perquè Docker no reconeix la paraula `latest`."
+        },
+        {
+          "key": "B",
+          "text": "Perquè **`:latest` és mutable**: pot canviar silenciosament entre reinicis de nodes, trencar la reproduïbilitat i el *rollback*, i obrir vectors d'atac de cadena de subministrament; cal fixar sempre el **digest criptogràfic `@sha256:...`**!"
+        },
+        {
+          "key": "C",
+          "text": "Perquè `:latest` només funciona en Windows."
+        },
+        {
+          "key": "D",
+          "text": "Perquè fa les imatges 10 vegades més grans."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Fixar imatges pel seu digest `@sha256` garanteix que cada contenidor arrencat executa bit-a-bit exactament la versió auditada i validada.",
+      "explanationsIncorrect": {
+        "A": "Docker sí que l'admet per defecte, però és un antipatró greu en producció.",
+        "C": "És independent del sistema operatiu.",
+        "D": "No afecta la mida de la imatge, sinó la seva immutabilitat i seguretat."
+      }
+    },
+    {
+      "id": "m03-03-q07",
+      "module": 3,
+      "conceptId": "m03-03-atencio-self-attention",
+      "lessonRef": "content/module-03/m03-03-atencio-self-attention.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "En un Transformer Encoder-Decoder (com en traducció automàtica), d'on provenen `Q`, `K` i `V` dins la capa de ***Cross-Attention*** del Decoder?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Tots tres (Q, K i V) provenen exclusivament del Decoder."
+        },
+        {
+          "key": "B",
+          "text": "Tots tres (Q, K i V) provenen exclusivament de l'Encoder."
+        },
+        {
+          "key": "C",
+          "text": "K prové del Decoder i Q, V provenen de l'Encoder."
+        },
+        {
+          "key": "D",
+          "text": "Les Queries (Q) provenen de la seqüència generada pel Decoder, mentre que les Keys (K) i Values (V) provenen de la sortida de l'Encoder (text origen)."
+        }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "En cross-attention, el Decoder 'pregunta' (Q) quines parts de la frase original codificada per l'Encoder (K, V) són més rellevants per generar la següent paraula traduïda.",
+      "explanationsIncorrect": {
+        "A": "Això és la self-attention del Decoder, no la cross-attention.",
+        "B": "Això és la self-attention de l'Encoder.",
+        "C": "És al revés: qui busca informació (Q) és el Decoder, i la font consultada (K, V) és l'Encoder."
+      }
+    },
+    {
+      "id": "m02-07-q04",
+      "module": 2,
+      "conceptId": "m02-07-resum-automatic",
+      "lessonRef": "content/module-02/m02-07-resum-automatic.md",
+      "difficulty": "intermediate",
+      "questionType": "metrics",
+      "prompt": "Un resum canvia la frase original «L'informe tècnic és desfavorable a la concessió de 50.000 €» per «L'informe tècnic és favorable a la concessió de 50.000 €». Com es comporta ROUGE-1?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Dona una puntuació ROUGE-1 molt alta (prop de 0,9) perquè gairebé totes les paraules coincideixen, demostrant que ROUGE és cega a contradiccions factuals crítiques."
+        },
+        {
+          "key": "B",
+          "text": "Dona automàticament ROUGE-1 = 0,0 perquè detecta l'antònim."
+        },
+        {
+          "key": "C",
+          "text": "Retorna un valor negatiu (-1,0)."
+        },
+        {
+          "key": "D",
+          "text": "Bloqueja l'execució amb un error de contradicció jurídica."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "ROUGE només mesura coincidència superficial de paraules; una inversió semàntica completa que només canvia 1 mot obté una puntuació ROUGE altíssima.",
+      "explanationsIncorrect": {
+        "B": "ROUGE no té cap comprensió d'antònims ni de lògica.",
+        "C": "ROUGE sempre està dins l'interval [0, 1].",
+        "D": "Per detectar contradiccions cal NLI (Natural Language Inference) o verificació semàntica."
+      }
+    },
+    {
+      "id": "m07-06-q02",
+      "module": 7,
+      "conceptId": "m07-06-monitoratge",
+      "lessonRef": "content/module-07/m07-06-monitoratge.md",
+      "difficulty": "basic",
+      "questionType": "metrics",
+      "prompt": "Com s'interpreta un valor de **PSI (*Population Stability Index*) igual a `0,35`** sobre una variable d'entrada en producció?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Totalment estable, no cal fer res."
+        },
+        {
+          "key": "B",
+          "text": "**Desplaçament greu (*Data Drift* significatiu, `>= 0,25`)**: cal investigar immediatament la causa del canvi de distribució i avaluar si el model requereix reentrenament."
+        },
+        {
+          "key": "C",
+          "text": "Vol dir que el 35% dels servidors estan apagats."
+        },
+        {
+          "key": "D",
+          "text": "Vol dir que el model té 35% de precisió."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Llindars estàndard del PSI: `< 0,10` estable, `0,10–0,25` moderat (investigar), `>= 0,25` drift greu (alerta crítica).",
+      "explanationsIncorrect": {
+        "A": "Estable seria per sota de `0,10`.",
+        "C": "El PSI mesura divergència entre dues distribucions de dades, no servidors.",
+        "D": "No és una mètrica de precisió, sinó d'estabilitat poblacional."
+      }
+    },
+    {
+      "id": "m07-08-q05",
+      "module": 7,
+      "conceptId": "m07-08-avaluacio-continua",
+      "lessonRef": "content/module-07/m07-08-avaluacio-continua.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Quin **límit ètic i jurídic irrenunciable** aplica a l'***Online A/B Testing*** dins d'una administració pública?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Està prohibit fer qualsevol prova de millora de la interfície web."
+        },
+        {
+          "key": "B",
+          "text": "Es pot fer A/B sobre qualitat d'assistència, UX o velocitat d'enrutament entre versions equivalents, però **MAI** aplicar **requisits legals, puntuacions de barem o drets diferents** a ciutadans en idèntica situació (principi constitucional d'igualtat!)."
+        },
+        {
+          "key": "C",
+          "text": "Es pot denegar una subvenció al 50% de les famílies a l'atzar per provar el sistema."
+        },
+        {
+          "key": "D",
+          "text": "No hi ha cap límit ètic en A/B Testing públic."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "L'experimentació pública ha de respectar rigorosament la igualtat davant la llei i no perjudicar mai drets ni accés a prestacions d'un grup de control.",
+      "explanationsIncorrect": {
+        "A": "Provar millores d'usabilitat, claredat o precisió d'un cercador/assistent sí que és plenament legítim.",
+        "C": "Seria completament il·legal i inconstitucional.",
+        "D": "L'Administració està sotmesa al principi de legalitat i igualtat."
+      }
+    },
+    {
+      "id": "m08-05-q07",
+      "module": 8,
+      "conceptId": "m08-05-seguretat-ia",
+      "lessonRef": "content/module-08/m08-05-seguretat-ia.md",
+      "difficulty": "intermediate",
+      "questionType": "code",
+      "prompt": "Una aplicació web municipal executa directament una consulta SQL generada per un LLM a partir de la pregunta d'un ciutadà i renderitza el retorn HTML sense escapar. Quina vulnerabilitat OWASP LLM s'està introduint?",
+      "codeSnippet": "sql = llm.generate(f'Fes SQL per: {pregunta_ciutada}')\ndb.execute(sql)",
+      "options": [
+        {
+          "key": "A",
+          "text": "Biaix de mostreig demogràfic."
+        },
+        {
+          "key": "B",
+          "text": "Training-Serving Skew."
+        },
+        {
+          "key": "C",
+          "text": "Overfitting per excés d'èpoques."
+        },
+        {
+          "key": "D",
+          "text": "Insecure Output Handling (tractar la sortida no confiable de l'LLM com a codi executable, exposant el sistema a SQL Injection i XSS)."
+        }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "La sortida d'un LLM s'ha de tractar sempre com a entrada d'usuari no confiable: mai s'ha d'executar SQL/codi cru ni renderitzar HTML sense sanititzar i parametritzar!",
+      "explanationsIncorrect": {
+        "A": "No té res a veure amb biaix demogràfic.",
+        "B": "No és una discrepància de preprocés MLOps.",
+        "C": "No és un fenomen d'entrenament, sinó una vulnerabilitat crítica de seguretat aplicativa."
+      }
+    },
+    {
+      "id": "m08-08-q10",
+      "module": 8,
+      "conceptId": "m08-08-compliment-normatiu",
+      "lessonRef": "content/module-08/m08-08-compliment-normatiu.md",
+      "difficulty": "advanced",
+      "questionType": "normative",
+      "prompt": "Respecte de l'excepció de l'article 6.3 de l'AI Act (que permet excloure d'alt risc certs sistemes de l'Annex III que no plantegen risc significatiu), en quin cas NO es pot aplicar MAI aquesta excepció?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Quan el sistema s'executa en servidors Linux."
+        },
+        {
+          "key": "B",
+          "text": "Quan el sistema té una exactitud superior al 90%."
+        },
+        {
+          "key": "C",
+          "text": "Quan el sistema d'IA realitza elaboració de perfils de persones físiques (en aquest cas es considera SEMPRE d'alt risc!)."
+        },
+        {
+          "key": "D",
+          "text": "Quan el sistema només tradueix documents interns."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "L'article 6.3 in fine disposa expressament que, malgrat les excepcions previstes, un sistema d'IA de l'Annex III es considerarà SEMPRE d'alt risc si realitza elaboració de perfils de persones físiques.",
+      "explanationsIncorrect": {
+        "A": "El sistema operatiu no afecta la classificació jurídica de risc.",
+        "B": "L'exactitud tècnica no exclou de la categoria d'alt risc.",
+        "D": "Una traducció genèrica no sol entrar a l'Annex III."
+      }
+    },
+    {
+      "id": "m04-08-q04",
+      "module": 4,
+      "conceptId": "m04-08-documents-tributaris",
+      "lessonRef": "content/module-04/m04-08-documents-tributaris.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "En processar una escriptura notarial de 45 pàgines per a la **plusvàlua (IIVTNU)**, l'extractor troba mencions d'**«usdefruit vitalici»**, **«nua propietat»** o **«extinció de condomini»**. Quina ha de ser la conducta del sistema?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Activar una **bandera automàtica de complexitat jurídica** i derivar l'expedient a revisió per un tècnic tributari especialista (sense calcular ni emetre proposta automàtica estàndard)."
+        },
+        {
+          "key": "B",
+          "text": "Ignorar l'usdefruit i liquidar com si fos el 100% de plena propietat."
+        },
+        {
+          "key": "C",
+          "text": "Esborrar l'escriptura perquè és massa llarga."
+        },
+        {
+          "key": "D",
+          "text": "Demanar a l'LLM que s'inventi un percentatge d'usdefruit."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Figures jurídiques com l'usdefruit (càlcul segons edat de l'usufructuari), l'extinció de condomini (sovint no subjecta) o herències complexes exigeixen valoració jurídica tributària experta.",
+      "explanationsIncorrect": {
+        "B": "Generaria una liquidació tributària il·legal i errònia.",
+        "C": "Mai es destrueix documentació aportada pel contribuent.",
+        "D": "L'usdefruit té regles legals exactes (regla del 89 menys edat, mínim 10% màxim 70%), mai estimacions aleatòries."
+      }
+    },
+    {
+      "id": "m01-09-q05",
+      "module": 1,
+      "conceptId": "m01-09-clustering",
+      "lessonRef": "content/module-01/m01-09-clustering.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Quin problema pràctic de K-Means millora l'estratègia d'inicialització `k-means++`?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Permet a K-Means detectar clústers en forma d'anells concèntrics."
+        },
+        {
+          "key": "B",
+          "text": "Redueix la probabilitat de convergir a òptims locals dolents seleccionant centroides inicials ben separats amb probabilitat proporcional a D(x)²."
+        },
+        {
+          "key": "C",
+          "text": "Elimina la necessitat d'escalar les variables d'entrada."
+        },
+        {
+          "key": "D",
+          "text": "Determina automàticament el valor òptim de K sense intervenció humana."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "k-means++ escull el primer centroide a l'atzar i els següents prioritzant punts llunyans als centroides ja escollits (proporcional a la distància al quadrat), accelerant la convergència i evitant solucions subòptimes.",
+      "explanationsIncorrect": {
+        "A": "K-Means continua formant particions convexes (Voronoi) fins i tot amb k-means++.",
+        "C": "L'escalat continua sent imprescindible.",
+        "D": "Continua requerint que l'usuari indiqui K."
+      }
+    },
+    {
+      "id": "m06-06-q07",
+      "module": 6,
+      "conceptId": "m06-06-validacio-automatica-processos",
+      "lessonRef": "content/module-06/m06-06-validacio-automatica-processos.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Quin control específic pertany a la **Capa 3 (Validació creuada de negoci i pressupost)** en una convocatòria de subvencions?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Comprovar el color del logotip de l'associació."
+        },
+        {
+          "key": "B",
+          "text": "Només verificar la resolució DPI de l'escàner."
+        },
+        {
+          "key": "C",
+          "text": "Contar el nombre d'adjectius de la memòria tècnica."
+        },
+        {
+          "key": "D",
+          "text": "Verificar que l'**import sol·licitat al formulari coincideix amb el pressupost de la memòria**, no supera el màxim de les bases i no provoca **doble finançament (>100% del cost)** creuant-ho amb la **BDNS**."
+        }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "La Capa 3 valida la coherència global de tot l'expedient i el compliment de restriccions pressupostàries i d'incompatibilitat entre múltiples fonts.",
+      "explanationsIncorrect": {
+        "A": "Irrellevant per a la validesa de l'expedient.",
+        "B": "Això és qualitat d'imatge prèvia a OCR (Mòdul 4).",
+        "C": "Mètrica lingüística irrellevant per al control pressupostari."
+      }
+    },
+    {
+      "id": "m04-05-q06",
+      "module": 4,
+      "conceptId": "m04-05-validacio-automatica-documental",
+      "lessonRef": "content/module-04/m04-05-validacio-automatica-documental.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Quina diferència operativa hi ha entre una incidència de severitat **`BLOQUEJANT`** i una incidència de severitat **`AVÍS` (*Warning*)** en un motor de regles de validació?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Cap, totes dues cancel·len l'expedient."
+        },
+        {
+          "key": "B",
+          "text": "`AVÍS` bloqueja el sistema i `BLOQUEJANT` només escriu un log."
+        },
+        {
+          "key": "C",
+          "text": "`BLOQUEJANT` impedeix l'avanç automàtic i exigeix resolució/revisió humana (p. ex., IBAN invàlid o falta document obligatori); `AVÍS` permet continuar el flux però marca una alerta visible per al tècnic (p. ex., import atípicament alt)."
+        },
+        {
+          "key": "D",
+          "text": "`AVÍS` s'envia directament a la policia."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Graduar la severitat evita saturar les cues de bloqueig amb senyals informatius mentre manté una barrera estricta davant errors crítics.",
+      "explanationsIncorrect": {
+        "A": "Els avisos no paralitzen el flux ni cancel·len expedients.",
+        "B": "És exactament al revés.",
+        "D": "És una alerta interna per al tècnic tramitador."
+      }
+    },
+    {
+      "id": "m07-10-q05",
+      "module": 7,
+      "conceptId": "m07-10-integracio-sistemes",
+      "lessonRef": "content/module-07/m07-10-integracio-sistemes.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Quin paper té la ***Dead-Letter Queue* (DLQ)** en una integració *Event-Driven* (Kafka / RabbitMQ) entre el Registre General i el pipeline d'IDP?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Esborrar silenciosament qualsevol expedient que doni un error."
+        },
+        {
+          "key": "B",
+          "text": "Apartar de forma segura els missatges/expedients que **fallen repetidament després d'esgotar reintents** (ex. un PDF corrupte) perquè **no bloquegin la cua principal** i puguin ser inspeccionats o reprocessats sense perdre mai cap expedient!"
+        },
+        {
+          "key": "C",
+          "text": "Enviar cartes postals en paper als ciutadans."
+        },
+        {
+          "key": "D",
+          "text": "Substituir el balancejador de càrrega."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "La DLQ impedeix que un «missatge verinós» (*poison pill*) encalli tots els expedients que venen darrere i garanteix zero pèrdua de dades registrades.",
+      "explanationsIncorrect": {
+        "A": "Mai es perden ni s'esborren expedients registrats.",
+        "C": "És un patró estàndard de cues de missatgeria.",
+        "D": "No fa funcions de balanceig de xarxa."
+      }
+    },
+    {
+      "id": "m02-04-q09",
+      "module": 2,
+      "conceptId": "m02-04-classificacio-textos",
+      "lessonRef": "content/module-02/m02-04-classificacio-textos.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "En què consisteix el patró d'enginyeria **destil·lació de coneixement (LLM → Encoder)** aplicat a classificació de textos en l'Administració?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Substituir un classificador lineal per un LLM de 400B paràmetres en cada petició."
+        },
+        {
+          "key": "B",
+          "text": "Utilitzar un LLM potent en fase offline (amb validació humana per mostreig) per generar etiquetes o distribucions suaus sobre un gran volum de textos no etiquetats, i entrenar-hi un encoder compacte (p. ex. RoBERTa-ca) que s'executa ràpid, barat i on-premise en producció."
+        },
+        {
+          "key": "C",
+          "text": "Esborrar aleatòriament el 90% del dataset d'entrenament."
+        },
+        {
+          "key": "D",
+          "text": "Traduir tots els textos a un sol idioma abans d'aplicar TF-IDF."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "La destil·lació combina la capacitat zero/few-shot d'un LLM en fase de preparació amb l'eficiència, predictibilitat i baix cost d'un encoder petit en producció.",
+      "explanationsIncorrect": {
+        "A": "Això seria exactament el contrari de la destil·lació.",
+        "C": "La destil·lació transfereix coneixement, no esborra dades aleatòriament.",
+        "D": "No consisteix en traducció."
+      }
+    },
+    {
+      "id": "m01-08-q02",
+      "module": 1,
+      "conceptId": "m01-08-regressio",
+      "lessonRef": "content/module-01/m01-08-regressio.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quin efecte distintiu té la regularització Lasso (norma L1) sobre els coeficients d'una regressió lineal en comparació amb Ridge (norma L2)?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Lasso força coeficients de variables poc rellevants a ser exactament zero, fent selecció automàtica de variables."
+        },
+        {
+          "key": "B",
+          "text": "Lasso sempre produeix coeficients més grans que OLS."
+        },
+        {
+          "key": "C",
+          "text": "Ridge elimina exactament la meitat de les variables del model."
+        },
+        {
+          "key": "D",
+          "text": "Lasso només funciona quan no hi ha variables numèriques."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "La penalització L1 (Σ|β_j|) produeix solucions disperses (sparse) on molts coeficients s'anul·len exactament a 0, mentre que Ridge (L2) els encongeix suaument sense fer-los zero.",
+      "explanationsIncorrect": {
+        "B": "Tant Lasso com Ridge penalitzen la magnitud dels coeficients, reduint-los respecte d'OLS.",
+        "C": "Ridge no força coeficients a zero exacte ni elimina la meitat de les variables.",
+        "D": "La regressió Lasso s'aplica precisament sobre característiques numèriques escalades."
+      }
+    },
+    {
+      "id": "m05-03-q02",
+      "module": 5,
+      "conceptId": "m05-03-fluxos-conversacionals",
+      "lessonRef": "content/module-05/m05-03-fluxos-conversacionals.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Què és una ***digressió*** en el disseny de fluxos conversacionals?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Un error de connexió de xarxa."
+        },
+        {
+          "key": "B",
+          "text": "Quan l'usuari interromp temporalment un tràmit en curs (p. ex. demanar cita) per fer una pregunta lateral (p. ex. «Quina documentació he de portar?»), i l'assistent la respon conservant els *slots* acumulats per reprendre el tràmit."
+        },
+        {
+          "key": "C",
+          "text": "Una pèrdua de precisió en la quantització INT4."
+        },
+        {
+          "key": "D",
+          "text": "L'expiració automàtica d'una sessió per inactivitat."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Gestionar digressions sense esborrar els slots ja recollits dona naturalitat al diàleg i evita que el ciutadà hagi de recomençar des de zero.",
+      "explanationsIncorrect": {
+        "A": "No és un error de xarxa.",
+        "C": "No té relació amb quantització.",
+        "D": "Això és el TTL de sessió."
+      }
+    },
+    {
+      "id": "m07-03-q08",
+      "module": 7,
+      "conceptId": "m07-03-entrenament",
+      "lessonRef": "content/module-07/m07-03-entrenament.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En `MiniMLflowTracker` de l'exemple 7.3, per què `millor_candidat(max_latencia_ms=50.0)` tria **`run-02` (`F1=0.91`, `28.5 ms`)** en lloc de **`run-03` (`F1=0.92`, `850 ms`)**, i per què `registrar_run` llança error si `git_dirty=True`?",
+      "codeSnippet": "if git_dirty:\n    raise ValueError(f\"Rebutjat {run.run_id}: prohibit entrenar un run oficial amb canvis sense comitejar!\")\n...\nelegibles = [r for r in self.runs if r.metrics[\"latencia_ms\"] <= max_latencia_ms]",
+      "options": [
+        {
+          "key": "A",
+          "text": "Perquè aplica **selecció multi-criteri sota SLA real** (descartant un model 30× més lent que només suma `+0,01` de F1) i bloqueja `git_dirty=True` perquè un entrenament amb **canvis locals sense comitejar és irreproduïble i inauditable**!"
+        },
+        {
+          "key": "B",
+          "text": "Perquè `0.91` és matemàticament més gran que `0.92`."
+        },
+        {
+          "key": "C",
+          "text": "Perquè `git_dirty=True` indica que el dataset té valors nuls."
+        },
+        {
+          "key": "D",
+          "text": "Perquè `run-03` no tenia `dataset_hash`."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Combinar selecció multi-criteri (qualitat dins restriccions operatives d'SLA/cost) amb la prohibició d'entrenaments oficials amb estat Git brut és MLOps de nivell producció.",
+      "explanationsIncorrect": {
+        "B": "`run-03` queda filtrat abans del `max()` per superar `max_latencia_ms=50.0`.",
+        "C": "`git_dirty` indica modificacions no comitejades al repositori de codi.",
+        "D": "Tots tres runs tenen el mateix `dataset_hash` (`sha256:9f8e7d`)."
+      }
+    },
+    {
+      "id": "m02-01-q04",
+      "module": 2,
+      "conceptId": "m02-01-fonaments-nlp",
+      "lessonRef": "content/module-02/m02-01-fonaments-nlp.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Quin problema greu provoca eliminar paraules de negació («no», «sense», «ni») dins d'una llista genèrica de *stopwords* en un classificador d'instàncies o de sentiment?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Augmenta excessivament la mida del vocabulari."
+        },
+        {
+          "key": "B",
+          "text": "Impedeix aplicar la normalització L2."
+        },
+        {
+          "key": "C",
+          "text": "Inverteix o destrueix el significat de frases crítiques (fent idèntics «no conforme» i «conforme», o «sense llicència» i «amb llicència»)."
+        },
+        {
+          "key": "D",
+          "text": "Converteix el model TF-IDF en un model no supervisat."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Les partícules de negació modifiquen radicalment el significat i la polaritat jurídica o semàntica d'una frase; per això s'han d'excloure de la llista de stopwords (i combinar-se amb bigrames en TF-IDF).",
+      "explanationsIncorrect": {
+        "A": "Eliminar paraules redueix la mida del vocabulari, no l'augmenta.",
+        "B": "La normalització L2 continua funcionant igualment.",
+        "D": "El preprocessament no canvia el paradigma d'aprenentatge."
+      }
+    },
+    {
+      "id": "m02-02-q10",
+      "module": 2,
+      "conceptId": "m02-02-tokenitzacio",
+      "lessonRef": "content/module-02/m02-02-tokenitzacio.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "En un pipeline RAG amb un model d'embeddings que admet màxim `512 tokens`, quin error silenciós es produeix si configures el *chunking* a «2.200 caràcters» sense comptar tokens reals?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "El model d'embeddings amplia automàticament la seva finestra a 4.096 tokens."
+        },
+        {
+          "key": "B",
+          "text": "Els fragments en català o plens de codis/xifres poden superar els 512 tokens i quedar truncats silenciosament al final, perdent precisament els últims apartats o imports de cada chunk abans d'indexar-los."
+        },
+        {
+          "key": "C",
+          "text": "Els vectors generats passen a tenir norma zero."
+        },
+        {
+          "key": "D",
+          "text": "El tokenitzador passa automàticament a usar Bag of Words."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Especialment en català o en taules numèriques on cada 2-3 caràcters pot generar un token, 2.200 caràcters superen fàcilment els 512 tokens; el model trunca el final silenciosament i aquella informació mai es recupera.",
+      "explanationsIncorrect": {
+        "A": "Els models d'embeddings amb finestra fixa de 512 tokens trunquen l'excedent, no amplien la finestra.",
+        "C": "El vector es genera normalment sobre els primers 512 tokens, ocultant el truncament.",
+        "D": "El tokenitzador no canvia d'algorisme."
+      }
+    },
+    {
+      "id": "m01-11-q07",
+      "module": 1,
+      "conceptId": "m01-11-avaluacio-generalitzacio-hiperparametres",
+      "lessonRef": "content/module-01/m01-11-avaluacio-generalitzacio-hiperparametres.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Quin avantatge combina la funció de pèrdua Huber Loss en problemes de regressió?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "És quadràtica (suau i diferenciable) per a errors petits i lineal (robusta davant outliers) per a errors grans que superen un llindar δ."
+        },
+        {
+          "key": "B",
+          "text": "Converteix qualsevol problema de regressió en classificació multiclasse."
+        },
+        {
+          "key": "C",
+          "text": "Assegura sempre R² = 1,0 en validació."
+        },
+        {
+          "key": "D",
+          "text": "Elimina la necessitat de calcular gradients."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Huber Loss combina el millor d'MSE (gradient suau i estable prop de zero) i d'MAE (creixement lineal per a residus grans, evitant que uns pocs outliers dominin l'entrenament).",
+      "explanationsIncorrect": {
+        "B": "Huber Loss és una funció de pèrdua específica de regressió.",
+        "C": "Cap funció de pèrdua pot garantir R² = 1,0.",
+        "D": "Precisament es dissenya perquè sigui diferenciable arreu per a l'optimització basada en gradients."
+      }
+    },
+    {
+      "id": "m05-04-q06",
+      "module": 5,
+      "conceptId": "m05-04-integracio-bases-coneixement",
+      "lessonRef": "content/module-05/m05-04-integracio-bases-coneixement.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Per què fer un ***web scraping* indiscriminat** de les 5.000 URLs d'una web municipal (incloent notes de premsa del 2018–2023) degrada greument la qualitat d'un chatbot RAG?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Perquè les bases vectorials no admeten més de 100 URLs."
+        },
+        {
+          "key": "B",
+          "text": "Perquè les notes de premsa no es poden tokenitzar."
+        },
+        {
+          "key": "C",
+          "text": "Perquè les notes de premsa i PDFs antics contenen **tarifes, requisits i terminis derogats** que tenen altíssima similitud semàntica amb les consultes ciutadanes i competeixen o guanyen contra les ordenances vigents."
+        },
+        {
+          "key": "D",
+          "text": "Perquè BM25 no funciona amb pàgines HTML."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "En RAG, més documents no implica millors respostes: introduir contingut antic sense control de vigència enverina el rànquing de recuperació!",
+      "explanationsIncorrect": {
+        "A": "Una BD vectorial escala a milions de fragments; el problema és la qualitat i vigència, no el volum.",
+        "B": "Es tokenitzen perfectament, i precisament per això s'indexen i confonen el sistema.",
+        "D": "Un cop extret el text de l'HTML, BM25 l'indexa sense problema."
+      }
+    },
+    {
+      "id": "m04-08-q03",
+      "module": 4,
+      "conceptId": "m04-08-documents-tributaris",
+      "lessonRef": "content/module-04/m04-08-documents-tributaris.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quants caràcters té una **referència cadastral** oficial a Espanya i com podem validar-ne automàticament la integritat després de l'OCR?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "9 caràcters sense cap dígit de control."
+        },
+        {
+          "key": "B",
+          "text": "24 caràcters validats amb MOD 97-10."
+        },
+        {
+          "key": "C",
+          "text": "**20 caràcters alfanumèrics**, dels quals els **2 darrers (posicions 19 i 20) són caràcters de control** verificables mitjançant l'algorisme oficial de pesos i mòdul 23 de la Direcció General del Cadastre."
+        },
+        {
+          "key": "D",
+          "text": "Longitud variable entre 5 i 50 caràcters."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Validar els 2 caràcters de control oficials de la referència cadastral intercepta gairebé el 100% dels errors d'OCR abans de consultar Cadastre o liquidar IBI/IIVTNU.",
+      "explanationsIncorrect": {
+        "A": "9 caràcters correspon a un DNI/NIE, no a una referència cadastral.",
+        "B": "24 caràcters i MOD 97-10 correspon a un IBAN espanyol.",
+        "D": "Una referència cadastral d'immoble urbà/rústic té sempre exactament 20 caràcters."
+      }
+    },
+    {
+      "id": "m03-05-q06",
+      "module": 3,
+      "conceptId": "m03-05-fine-tuning",
+      "lessonRef": "content/module-03/m03-05-fine-tuning.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Com aconsegueix un adaptador **LoRA** tenir **zero sobrecàrrega de latència en inferència** un cop finalitzat l'entrenament?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Descartant les matrius `A` i `B` abans de desplegar."
+        },
+        {
+          "key": "B",
+          "text": "Executant `A` i `B` en un servidor separat per HTTP."
+        },
+        {
+          "key": "C",
+          "text": "Fusionant linealment l'adaptador dins els pesos base abans del desplegament (`W_merged = W₀ + (α/r)·B·A`), de manera que la inferència executa exactament la mateixa única multiplicació matricial que el model original."
+        },
+        {
+          "key": "D",
+          "text": "Convertint el model a TF-IDF."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Per linealitat, `W₀x + (α/r)BAx = (W₀ + (α/r)BA)x`; precomputar `W_merged` elimina completament la branca paral·lela en producció.",
+      "explanationsIncorrect": {
+        "A": "Descartar A i B eliminaria tot el que s'ha après.",
+        "B": "Afegiria latència de xarxa en lloc d'eliminar-la.",
+        "D": "Continua sent un Transformer."
+      }
+    },
+    {
+      "id": "m04-01-q03",
+      "module": 4,
+      "conceptId": "m04-01-ocr",
+      "lessonRef": "content/module-04/m04-01-ocr.md",
+      "difficulty": "basic",
+      "questionType": "metrics",
+      "prompt": "Quina mètrica mesura la fracció mínima de substitucions, esborrats i insercions de **caràcters** necessària per transformar la sortida OCR en el text de referència?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "ROUGE-L."
+        },
+        {
+          "key": "B",
+          "text": "Silhouette Score."
+        },
+        {
+          "key": "C",
+          "text": "**CER (*Character Error Rate*)** basat en la distància de Levenshtein."
+        },
+        {
+          "key": "D",
+          "text": "Perplexitat."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "CER = (S + D + I) / N_caràcters mesura la fidelitat caràcter a caràcter d'un sistema OCR (i WER fa l'anàleg a nivell de paraula).",
+      "explanationsIncorrect": {
+        "A": "ROUGE-L s'utilitza en avaluació de resum automàtic.",
+        "B": "Silhouette Score avalua clustering.",
+        "D": "La perplexitat avalua models de llenguatge."
+      }
+    },
+    {
+      "id": "m01-01-q05",
+      "module": 1,
+      "conceptId": "m01-01-intelligencia-artificial",
+      "lessonRef": "content/module-01/m01-01-intelligencia-artificial.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Quin element central utilitza la definició de sistema d'IA del Reglament (UE) 2024/1689 (AI Act, art. 3.1) per distingir un sistema d'IA del programari tradicional?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "L'ús obligatori de targetes gràfiques (GPU) durant l'execució en producció."
+        },
+        {
+          "key": "B",
+          "text": "La capacitat d'inferir, a partir de les dades d'entrada i amb certs nivells d'autonomia, com generar sortides com prediccions, continguts, recomanacions o decisions."
+        },
+        {
+          "key": "C",
+          "text": "El fet que el sistema estigui desenvolupat en llenguatge Python o utilitzi una API al núvol."
+        },
+        {
+          "key": "D",
+          "text": "La presència d'una interfície conversacional tipus xat amb la ciutadania."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "L'article 3.1 de l'AI Act defineix el sistema d'IA al voltant de l'autonomia, la possible adaptació postdesplegament i la capacitat d'inferència per generar prediccions, continguts, recomanacions o decisions que influeixin en entorns físics o virtuals.",
+      "explanationsIncorrect": {
+        "A": "El maquinari utilitzat (CPU o GPU) no determina si un programari és un sistema d'IA.",
+        "C": "El llenguatge de programació o l'allotjament al núvol són irrellevants per a la definició jurídica.",
+        "D": "Un sistema d'IA pot no tenir cap xat (p. ex., un detector de frau o un classificador de documents) i un xat de regles fixes sense inferència no és necessàriament un sistema d'IA."
+      }
+    },
+    {
+      "id": "m08-03-q02",
+      "module": 8,
+      "conceptId": "m08-03-supervisio-humana",
+      "lessonRef": "content/module-08/m08-03-supervisio-humana.md",
+      "difficulty": "basic",
+      "questionType": "normative",
+      "prompt": "Quin dret general reconeix l'article 22.1 del RGPD (Reglament UE 2016/679) a les persones interessades?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "El dret a obtenir gratuïtament el codi font de tots els models comercials del món."
+        },
+        {
+          "key": "B",
+          "text": "El dret a no ser objecte d'una decisió basada únicament en el tractament automatitzat, inclosa l'elaboració de perfils, que produeixi efectes jurídics en ella o l'afecti significativament de manera similar."
+        },
+        {
+          "key": "C",
+          "text": "El dret a ser atès obligatòriament per un xatbot les 24 hores."
+        },
+        {
+          "key": "D",
+          "text": "L'obligació d'acceptar qualsevol decisió d'una IA sense possibilitat de recurs."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "L'article 22.1 del RGPD protegeix les persones davant decisions únicament automatitzades amb efectes jurídics o similars significatius, llevat d'excepcions taxades amb salvaguardes.",
+      "explanationsIncorrect": {
+        "A": "L'article 22 no regula llicències de codi font.",
+        "C": "No imposa l'obligació de disposar de xatbots.",
+        "D": "Al contrari: protegeix el dret a intervenció humana i impugnació."
+      }
+    },
+    {
+      "id": "m08-07-q09",
+      "module": 8,
+      "conceptId": "m08-07-governanca-models",
+      "lessonRef": "content/module-08/m08-07-governanca-models.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Què s'ha de garantir obligatòriament en la fase G4 de retirada (decommissioning) d'un sistema d'IA d'alt risc que deixa d'utilitzar-se en producció?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Esborrar immediatament el mateix dia tots els logs, versions del model i expedients de FRIA per estalviar disc."
+        },
+        {
+          "key": "B",
+          "text": "Desactivar ordenadament el servei, actualitzar l'inventari corporatiu i el registre UE, i conservar els artefactes d'auditoria, documentació i logs durant els terminis legals aplicables (mínim 6 mesos art. 26.6 AI Act i normativa d'arxiu)."
+        },
+        {
+          "key": "C",
+          "text": "Deixar l'API encesa indefinidament sense monitoratge per si algú la vol fer servir."
+        },
+        {
+          "key": "D",
+          "text": "Publicar les dades personals del dataset d'entrenament en obert."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Una retirada governada evita sistemes «zombis» sense manteniment i alhora preserva les evidències i logs necessaris per atendre recursos administratius o auditories posteriors.",
+      "explanationsIncorrect": {
+        "A": "Destruir immediatament logs i evidències impedeix defensar l'Administració davant recursos en curs i incompleix l'art. 26.6 AI Act.",
+        "C": "Deixar un model zombi en producció sense manteniment multiplica riscos de drift i ciberseguretat.",
+        "D": "Publicar dades personals vulneraria greument el RGPD."
+      }
+    },
+    {
+      "id": "m01-01-q01",
+      "module": 1,
+      "conceptId": "m01-01-intelligencia-artificial",
+      "lessonRef": "content/module-01/m01-01-intelligencia-artificial.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina relació jeràrquica descriu correctament els conceptes d'intel·ligència artificial (IA), Machine Learning (ML), Deep Learning (DL) i IA simbòlica?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "El Machine Learning engloba la IA, i la IA simbòlica és un subconjunt del Deep Learning."
+        },
+        {
+          "key": "B",
+          "text": "La IA és el camp general que inclou tant la IA simbòlica com el ML; el DL és un subconjunt del ML."
+        },
+        {
+          "key": "C",
+          "text": "IA, ML i DL són termes estrictament equivalents que s'utilitzen indistintament segons l'època."
+        },
+        {
+          "key": "D",
+          "text": "El Deep Learning engloba tots els mètodes de ML, inclosos els arbres de decisió i els sistemes experts."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "La intel·ligència artificial és la disciplina paraigua que abraça paradigmes simbòlics (sistemes experts, lògica, cerca heurística) i paradigmes d'aprenentatge a partir de dades (Machine Learning). Dins del ML, el Deep Learning n'és el subcamp basat en xarxes neuronals profundes.",
+      "explanationsIncorrect": {
+        "A": "Inverteix la relació: el ML és dins la IA, i la IA simbòlica no forma part del Deep Learning.",
+        "C": "No són sinònims: un sistema expert basat en regles és IA però no utilitza ML ni DL.",
+        "D": "El DL és un subconjunt del ML, no al revés; els arbres de decisió clàssics i els sistemes experts no són xarxes neuronals profundes."
+      }
+    },
+    {
+      "id": "m01-07-q07",
+      "module": 1,
+      "conceptId": "m01-07-classificacio",
+      "lessonRef": "content/module-01/m01-07-classificacio.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Quin dels algoritmes de classificació següents és més sensible a escales dispars entre variables d'entrada (p. ex., edat [18..90] vs. pressupost [1.000..5.000.000]) i requereix escalat previ?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Arbre de decisió (Decision Tree)."
+        },
+        {
+          "key": "B",
+          "text": "Random Forest."
+        },
+        {
+          "key": "C",
+          "text": "SVM amb kernel RBF i k-NN."
+        },
+        {
+          "key": "D",
+          "text": "LightGBM."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Tant k-NN com SVM amb kernel RBF depenen directament de distàncies euclidianes (o productes escalars) en l'espai de característiques; sense escalat, la variable amb rang més gran domina completament la distància.",
+      "explanationsIncorrect": {
+        "A": "Els arbres de decisió fan talls monotònics per llindar sobre cada variable individual i són invariants a l'escalat lineal.",
+        "B": "Random Forest es compon d'arbres de decisió i no necessita escalat.",
+        "D": "LightGBM es basa en arbres per histogrames i és invariant a l'escalat monotònic."
+      }
+    },
+    {
+      "id": "m07-09-q10",
+      "module": 7,
+      "conceptId": "m07-09-actualitzacio-models",
+      "lessonRef": "content/module-07/m07-09-actualitzacio-models.md",
+      "difficulty": "advanced",
+      "questionType": "normative",
+      "prompt": "Com afecta el **Reglament (UE) 2024/1689 (AI Act)** a l'actualització contínua (CT) d'un sistema d'IA d'alt risc ja avaluat de conformitat?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Prohibeix absolutament actualitzar mai cap model un cop desplegat."
+        },
+        {
+          "key": "B",
+          "text": "Permet canviar completament la finalitat del sistema sense tornar a avaluar res."
+        },
+        {
+          "key": "C",
+          "text": "Les actualitzacions que estiguin **predeterminades i documentades en la gestió del cicle de vida de l'avaluació de conformitat inicial** (dins paràmetres i *Quality Gates* controlats) no constitueixen una modificació substancial no prevista, mentre que un canvi de finalitat o modificació substancial fora d'aquest marc exigeix **nova avaluació de conformitat**."
+        },
+        {
+          "key": "D",
+          "text": "Exempta els reentrenaments automàtics de tenir documentació tècnica."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "L'AI Act (art. 43.4) reconeix la naturalesa evolutiva dels models: documentar prèviament la política de CT, *Quality Gates* i límits d'actualització permet mantenir el model sa sense perdre la conformitat!",
+      "explanationsIncorrect": {
+        "A": "Al contrari, mantenir el rendiment i la precisió al llarg del cicle de vida és una obligació.",
+        "B": "Canviar la finalitat prevista és precisament una modificació substancial que exigeix nova avaluació!",
+        "D": "Tota actualització ha de mantenir actualitzada la documentació tècnica i la traçabilitat."
+      }
+    },
+    {
+      "id": "m05-02-q10",
+      "module": 5,
+      "conceptId": "m05-02-assistents-corporatius",
+      "lessonRef": "content/module-05/m05-02-assistents-corporatius.md",
+      "difficulty": "advanced",
+      "questionType": "normative",
+      "prompt": "Quina obligació transversal de l'**AI Act (Reglament UE 2024/1689, art. 4)** aplica directament a la Diputació quan desplega un assistent corporatiu intern per als seus empleats públics?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Cap obligació, perquè l'AI Act només aplica a empreses privades."
+        },
+        {
+          "key": "B",
+          "text": "Registrar cada empleat en un registre biomètric europeu."
+        },
+        {
+          "key": "C",
+          "text": "L'obligació d'**alfabetització en IA (*AI Literacy*)**: adoptar mesures per garantir que el personal que opera i utilitza el sistema tingui un nivell suficient de formació sobre el seu funcionament, límits, riscos (al·lucinacions, biaixos, privacitat) i supervisió crítica."
+        },
+        {
+          "key": "D",
+          "text": "Substituir el 50% dels funcionaris per assistents virtuals."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "L'article 4 de l'AI Act (aplicable des del 2 de febrer de 2025!) obliga tots els proveïdors i responsables del desplegament (incloses les administracions públiques) a garantir l'alfabetització en IA del seu personal.",
+      "explanationsIncorrect": {
+        "A": "L'AI Act aplica plenament a les administracions públiques com a responsables del desplegament (*deployers*).",
+        "B": "No existeix cap registre biomètric d'empleats.",
+        "D": "L'AI Act promou una IA centrada en l'ésser humà, no la substitució de funcionaris."
+      }
+    },
+    {
+      "id": "m08-02-q10",
+      "module": 8,
+      "conceptId": "m08-02-biaixos",
+      "lessonRef": "content/module-08/m08-02-biaixos.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "En un model d'alerta de risc de frau en subvencions, quina combinació de mesures evita el bucle de retroalimentació (feedback loop) i protegeix els sol·licitants innocents?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Inspeccionar exclusivament el 10% amb puntuació més alta i reentrenar només amb aquests expedients cada mes."
+        },
+        {
+          "key": "B",
+          "text": "Eliminar totes les auditories per grups i confiar en l'F1 global."
+        },
+        {
+          "key": "C",
+          "text": "Desactivar la revisió humana dels expedients marcats com a frau."
+        },
+        {
+          "key": "D",
+          "text": "Reservar una fracció d'inspeccions aleatòries estratificades (exploració) per obtenir etiquetes no esbiaixades i monitorar Equalized Odds (especialment FPR per col·lectiu/territori) amb revisió humana."
+        }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "El mostreig aleatori d'exploració trenca el bucle de confirmació dels logs històrics, i controlar el FPR (Equalized Odds) garanteix que cap col·lectiu pateixi inspeccions infundades desproporcionades.",
+      "explanationsIncorrect": {
+        "A": "Aquesta és justament la recepta que amplifica el bucle de retroalimentació!",
+        "B": "L'F1 global amaga bretxes greus entre subgrups.",
+        "C": "Sancionar o denegar per frau sense revisió humana vulnera garanties legals bàsiques."
+      }
+    },
+    {
+      "id": "m02-09-q05",
+      "module": 2,
+      "conceptId": "m02-09-recuperacio-informacio",
+      "lessonRef": "content/module-02/m02-09-recuperacio-informacio.md",
+      "difficulty": "intermediate",
+      "questionType": "metrics",
+      "prompt": "Quin avantatge té **nDCG@k** respecte de **Precision@k**, **Recall@k** i **MRR**?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "No necessita cap judici de rellevància per calcular-se."
+        },
+        {
+          "key": "B",
+          "text": "Permet avaluar **rellevància graduada** (p. ex., 0 = irrellevant, 1 = relacionat, 3 = resposta exacta) i pondera cada posició amb descompte logarítmic, normalitzat respecte del rànquing ideal (IDCG@k)."
+        },
+        {
+          "key": "C",
+          "text": "Ignora l'ordre en què apareixen els documents dins el top-k."
+        },
+        {
+          "key": "D",
+          "text": "Només té en compte el primer resultat."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "nDCG@k distingeix graus de rellevància i penalitza col·locar documents de rellevància 3 per sota de documents de rellevància 1, estant sempre acotada en [0, 1].",
+      "explanationsIncorrect": {
+        "A": "Com tota mètrica supervisada d'IR, requereix judicis de rellevància (qrels).",
+        "C": "Precisament el factor 1/log₂(pos+1) pondera fortament l'ordre dels resultats.",
+        "D": "Avalua tots els resultats fins a la posició k."
+      }
+    },
+    {
+      "id": "m01-08-q05",
+      "module": 1,
+      "conceptId": "m01-08-regressio",
+      "lessonRef": "content/module-01/m01-08-regressio.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Per què és obligatori escalar (estandarditzar) les característiques numèriques abans d'entrenar una regressió Ridge, Lasso o ElasticNet?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Perquè la penalització depèn de la magnitud dels coeficients β_j; sense escalat, una variable expressada en unitats grans (p. ex. milions d'euros vs. euros) rep una penalització completament diferent."
+        },
+        {
+          "key": "B",
+          "text": "Perquè scikit-learn no pot multiplicar matrius amb números majors que 1."
+        },
+        {
+          "key": "C",
+          "text": "Per evitar que el model pugui calcular el terme independent β_0."
+        },
+        {
+          "key": "D",
+          "text": "Per convertir el problema de regressió en classificació binària."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Les normes L1 i L2 penalitzen directament la mida dels coeficients β_j. Com que l'escala d'una variable determina inversament la magnitud del seu coeficient, sense estandardització la regularització penalitzaria arbitràriament segons les unitats de mesura.",
+      "explanationsIncorrect": {
+        "B": "L'àlgebra lineal en punt flotant opera sense cap problema amb valors majors que 1.",
+        "C": "El terme independent β_0 normalment no es penalitza en Ridge/Lasso i no requereix escalat per existir.",
+        "D": "L'escalat no canvia la naturalesa del problema."
+      }
+    },
+    {
+      "id": "m08-06-q07",
+      "module": 8,
+      "conceptId": "m08-06-auditoria",
+      "lessonRef": "content/module-08/m08-06-auditoria.md",
+      "difficulty": "intermediate",
+      "questionType": "code",
+      "prompt": "Un verificador automàtic d'auditoria revisa un sistema d'IA d'alt risc abans de desplegar-lo i troba: els 6 blocs FRIA plens, EIPD validada pel DPD, Model Card desagregada completa, però retencio_logs_dies = 90. Quin ha de ser el veredicte?",
+      "codeSnippet": "retencio_logs_dies = 90\nminim_legal_dies = 180",
+      "options": [
+        {
+          "key": "A",
+          "text": "APROVAT sense condicions perquè 90 dies són 3 mesos."
+        },
+        {
+          "key": "B",
+          "text": "APROVAT només si el model és open-source."
+        },
+        {
+          "key": "C",
+          "text": "Eliminar completament tots els logs per complir minimització."
+        },
+        {
+          "key": "D",
+          "text": "NO_APTE_AUDITORIA perquè incompleix el mínim legal de conservació de logs de 6 mesos (180 dies) de l'article 26.6 de l'AI Act."
+        }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "90 dies incompleix el mínim de 6 mesos establert a l'art. 26.6 de l'AI Act per als logs automàtics d'un sistema d'alt risc.",
+      "explanationsIncorrect": {
+        "A": "3 mesos és la meitat del mínim legal de 6 mesos.",
+        "B": "La llicència open-source no eximeix de la conservació de logs en sistemes d'alt risc desplegats.",
+        "C": "Eliminar logs destruiria la traçabilitat obligatòria (art. 12 i 26.6 AI Act i ENS)."
+      }
+    },
+    {
+      "id": "m05-01-q06",
+      "module": 5,
+      "conceptId": "m05-01-chatbots",
+      "lessonRef": "content/module-05/m05-01-chatbots.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Quin requisit legal d'**accessibilitat digital** ha de complir un chatbot inserit al portal web o seu electrònica d'un ens local espanyol (RD 1112/2018)?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Només ha de funcionar amb ratolí en pantalles d'escriptori."
+        },
+        {
+          "key": "B",
+          "text": "Ha de substituir completament el telèfon d'atenció ciutadana i l'OAC presencial."
+        },
+        {
+          "key": "C",
+          "text": "Complir **WCAG 2.1 nivell AA** (navegació íntegra per teclat, compatibilitat amb lectors de pantalla mitjançant `ARIA`, contrast adequat i text clar), sense ser mai l'única via d'accés al servei públic."
+        },
+        {
+          "key": "D",
+          "text": "No existeix cap norma d'accessibilitat per a chatbots públics."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "El RD 1112/2018 (transposició de la Directiva UE 2016/2102) obliga tots els llocs web i components interactius del sector públic a complir WCAG 2.1 AA.",
+      "explanationsIncorrect": {
+        "A": "Exclourien persones amb discapacitat visual o motora que usen teclat o lector de pantalla.",
+        "B": "Mai no pot eliminar canals alternatius ni l'atenció humana.",
+        "D": "El RD 1112/2018 és d'obligat compliment per a totes les administracions."
+      }
+    },
+    {
+      "id": "m03-04-q04",
+      "module": 3,
+      "conceptId": "m03-04-prompt-engineering",
+      "lessonRef": "content/module-03/m03-04-prompt-engineering.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "En dissenyar un JSON Schema perquè un LLM autoregressiu verifiqui 4 requisits d'una subvenció i emeti un veredicte (`compleix: true/false`), per què convé posar el camp **`analisi_requisits` ABANS que `compleix`**?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Perquè els LLMs generen seqüencialment d'esquerra a dreta; generar primer l'anàlisi pas a pas (Chain-of-Thought) condiciona positivament el veredicte final, mentre que posar el veredicte primer força el model a decidir en fred i després pot racionalitzar o contradir-se."
+        },
+        {
+          "key": "B",
+          "text": "Perquè l'estàndard JSON prohibeix començar un objecte per un valor booleà."
+        },
+        {
+          "key": "C",
+          "text": "Per reduir el nombre de tokens generats a la meitat."
+        },
+        {
+          "key": "D",
+          "text": "Perquè `temperature` només afecta el segon camp d'un JSON."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "La generació causal fa que el token del booleà només pugui atendre als tokens generats prèviament; situar el raonament abans millora empíricament la precisió en decisions multicriteri.",
+      "explanationsIncorrect": {
+        "B": "JSON admet qualsevol ordre de claus.",
+        "C": "Generar el raonament consumeix els mateixos tokens (o més), però millora la qualitat de la decisió.",
+        "D": "La temperatura s'aplica a tots els tokens generats."
+      }
+    },
+    {
+      "id": "m02-07-q10",
+      "module": 2,
+      "conceptId": "m02-07-resum-automatic",
+      "lessonRef": "content/module-02/m02-07-resum-automatic.md",
+      "difficulty": "advanced",
+      "questionType": "metrics",
+      "prompt": "Quin mètode automàtic és el més adequat per detectar **al·lucinacions intrínseques** (contradiccions respecte del document font) en un resum abstractiu?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Calcular únicament la ràtio de compressió (paraules del resum / paraules originals)."
+        },
+        {
+          "key": "B",
+          "text": "Calcular ROUGE-1 contra el document original."
+        },
+        {
+          "key": "C",
+          "text": "Mesurar la fertilitat del tokenitzador."
+        },
+        {
+          "key": "D",
+          "text": "Aplicar verificació basada en **NLI (Natural Language Inference, estil SummaC)** o descomposició en afirmacions atòmiques verificades (*entailment* vs. *contradiction*) contra els fragments del text font, combinada amb verificació determinista de xifres i entitats."
+        }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Els models NLI classifiquen explícitament si una afirmació del resum es dedueix del document (entailment), és neutra (possible al·lucinació extrínseca) o el contradiu (al·lucinació intrínseca).",
+      "explanationsIncorrect": {
+        "A": "La ràtio de compressió només mesura longitud, no veracitat.",
+        "B": "ROUGE-1 no distingeix contradiccions que comparteixen vocabulari.",
+        "C": "La fertilitat mesura tokens/paraula, no fidelitat factual."
+      }
+    },
+    {
+      "id": "m04-01-q01",
+      "module": 4,
+      "conceptId": "m04-01-ocr",
+      "lessonRef": "content/module-04/m04-01-ocr.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina és la primera comprovació obligatòria abans d'executar un motor OCR sobre un fitxer PDF entrant?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Verificar pàgina a pàgina si és un **PDF natiu** amb capa de text vectorial vàlida per extreure el text directament (0% d'error OCR i molt més ràpid), reservant l'OCR només per a pàgines o zones escanejades."
+        },
+        {
+          "key": "B",
+          "text": "Imprimir el PDF en paper i tornar-lo a escanejar."
+        },
+        {
+          "key": "C",
+          "text": "Reduir sempre la resolució a 72 DPI."
+        },
+        {
+          "key": "D",
+          "text": "Eliminar totes les taules del document."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Executar OCR sobre PDFs natius introdueix errors innecessaris (0↔O, 1↔l) i malgasta CPU/GPU; l'extracció nativa directa és exacta i instantània.",
+      "explanationsIncorrect": {
+        "B": "Empitjoraria dràsticament la qualitat visual i la velocitat.",
+        "C": "72 DPI és massa baix per a OCR; l'estàndard recomanat és 300 DPI.",
+        "D": "Les taules sovint contenen les dades econòmiques i jurídiques clau."
+      }
+    },
+    {
+      "id": "m05-01-q04",
+      "module": 5,
+      "conceptId": "m05-01-chatbots",
+      "lessonRef": "content/module-05/m05-01-chatbots.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Un ciutadà pregunta al chatbot de l'Ajuntament: «Com puc renovar el passaport espanyol?». Com ha d'actuar un bon detector d'***Out-of-Scope* (OOS)**?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Reconèixer que és una competència estatal fora de l'àmbit municipal, informar-ho clarament al ciutadà i redirigir-lo a l'organisme oficial competent (Policia Nacional / cita prèvia estatal) sense improvisar."
+        },
+        {
+          "key": "B",
+          "text": "Reservar-li automàticament una cita a l'oficina municipal d'urbanisme."
+        },
+        {
+          "key": "C",
+          "text": "Deixar que l'LLM respongui amb la seva memòria interna encara que no consti a la normativa municipal."
+        },
+        {
+          "key": "D",
+          "text": "Tancar la sessió sense mostrar cap missatge."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Una bona gestió d'Out-of-Scope evita falses expectatives, cites inútils i al·lucinacions, oferint igualment un servei ciutadà útil amb la redirecció correcta.",
+      "explanationsIncorrect": {
+        "B": "Faria perdre el temps al ciutadà i a l'OAC municipal.",
+        "C": "Fomentaria informació desactualitzada fora de l'abast verificat de l'ens.",
+        "D": "Mala experiència d'usuari i manca d'orientació."
+      }
+    },
+    {
+      "id": "m03-06-q09",
+      "module": 3,
+      "conceptId": "m03-06-embeddings-rag",
+      "lessonRef": "content/module-03/m03-06-embeddings-rag.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En l'exemple de truncament Matryoshka de la lliçó, per què cal executar `normalitzar_l2(docs_fp32[:, :128])` **després** de retallar les primeres 128 dimensions?",
+      "codeSnippet": "docs_mrl = normalitzar_l2(docs_fp32[:, :128])\nq_mrl = normalitzar_l2(q_fp32[:128])",
+      "options": [
+        {
+          "key": "A",
+          "text": "Per convertir els nombres en enters de 8 bits."
+        },
+        {
+          "key": "B",
+          "text": "Perquè tot i que el vector original de 512 dimensions tenia norma L2 igual a 1, el subvector truncat de 128 dimensions ja NO té norma 1 (la seva norma és ≤ 1 i varia d'un document a un altre); re-normalitzar restaura l'equivalència exacta entre producte escalar i similitud cosinus."
+        },
+        {
+          "key": "C",
+          "text": "Per omplir amb zeros les 384 dimensions eliminades."
+        },
+        {
+          "key": "D",
+          "text": "Perquè NumPy no permet multiplicar matrius de 128 columnes sense normalitzar."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "La norma d'un subvector és sempre inferior o igual a la del vector complet i difereix per document; sense re-normalitzar L2, el producte escalar `docs_mrl @ q_mrl` deixaria de ser similitud cosinus i afavoriria vectors amb més energia dins les primeres 128 dims.",
+      "explanationsIncorrect": {
+        "A": "Manté el tipus float32.",
+        "C": "El subvector té exactament 128 dimensions, no 512.",
+        "D": "NumPy multiplica matrius de qualsevol norma; és una exigència geomètrica de la similitud cosinus."
+      }
+    },
+    {
+      "id": "m04-06-q07",
+      "module": 4,
+      "conceptId": "m04-06-tractament-formularis",
+      "lessonRef": "content/module-04/m04-06-tractament-formularis.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Si la Diputació migra un formulari d'ajuts escolars a un **formulari web estructurat** per eliminar errors d'OCR/OMR, pot **prohibir** a les famílies (persones físiques) presentar la sol·licitud presencialment en paper?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Sí, totes les persones físiques estan obligades sempre a usar la seu electrònica."
+        },
+        {
+          "key": "B",
+          "text": "Sí, si l'ajuntament té un chatbot actiu."
+        },
+        {
+          "key": "C",
+          "text": "Només si el formulari té més de 3 caselles."
+        },
+        {
+          "key": "D",
+          "text": "**No**: l'article 14.1 de la Llei 39/2015 (LPACAP) garanteix a les persones físiques el dret a escollir si es relacionen electrònicament o presencialment/en paper (llevat supòsits reglamentaris específics), per la qual cosa cal combinar seu electrònica fàcil amb assistència OAC i suport documental."
+        }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "La transformació digital pública ha de reduir la bretxa digital i fomentar el canal web amb bon disseny, respectant sempre el dret de les persones físiques (art. 14.1 LPACAP).",
+      "explanationsIncorrect": {
+        "A": "L'obligació electrònica general (art. 14.2 LPACAP) aplica a persones jurídiques, entitats sense personalitat i certs col·lectius professionals, no a ciutadans en general.",
+        "B": "Tenir un chatbot no suprimeix el dret legal d'atenció presencial.",
+        "C": "No depèn del nombre de caselles."
+      }
+    },
+    {
+      "id": "m03-05-q10",
+      "module": 3,
+      "conceptId": "m03-05-fine-tuning",
+      "lessonRef": "content/module-03/m03-05-fine-tuning.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Quin avantatge operatiu ofereix el servei ***Multi-LoRA*** (p. ex. en vLLM) per a una administració amb múltiples casos d'ús especialitzats (lectura fàcil, extracció JSON, redacció administrativa)?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Requereix comprar una GPU dedicada per a cada cas d'ús."
+        },
+        {
+          "key": "B",
+          "text": "Impedeix fer servir RAG conjuntament."
+        },
+        {
+          "key": "C",
+          "text": "Permet carregar en VRAM **un únic model base** i intercanviar dinàmicament per petició múltiples adaptadors LoRA lleugers (~20–100 MB cadascun), maximitzant l'aprofitament del maquinari GPU públic."
+        },
+        {
+          "key": "D",
+          "text": "Augmenta el consum elèctric multiplicant-lo pel nombre d'adaptadors."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "En lloc de mantenir 4 còpies completes de 15 GB en VRAM (60 GB), Multi-LoRA carrega 1 sola base de 15 GB + 4 adaptadors de ~50 MB, servint peticions de tots 4 casos d'ús dins el mateix servidor.",
+      "explanationsIncorrect": {
+        "A": "Precisament evita comprar una GPU separada per cada model especialitzat.",
+        "B": "És 100% compatible amb RAG.",
+        "D": "Al contrari, consolida càrregues en menys GPUs reduint consum i cost."
+      }
+    },
+    {
+      "id": "m05-05-q08",
+      "module": 5,
+      "conceptId": "m05-05-canals-digitals",
+      "lessonRef": "content/module-05/m05-05-canals-digitals.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En la funció `adaptar_resposta` de l'exemple 5.5, què aconsegueix la comprovació `if resp.conte_dades_personals:` dins la branca `canal == 'whatsapp'`?",
+      "codeSnippet": "if canal == \"whatsapp\":\n    if resp.conte_dades_personals:\n        return \"Per protegir les teves dades personals (RGPD)...\"",
+      "options": [
+        {
+          "key": "A",
+          "text": "Implementa un **tallafocs determinista específic del canal** que impedeix que cap resposta amb PII o estat d'expedient privat surti mai per WhatsApp, redirigint automàticament el ciutadà a la Seu Electrònica segura sense duplicar la lògica del nucli."
+        },
+        {
+          "key": "B",
+          "text": "Envia la dada personal igualment però en majúscules."
+        },
+        {
+          "key": "C",
+          "text": "Bloqueja també el canal web autenticat."
+        },
+        {
+          "key": "D",
+          "text": "Esborra l'expedient de la base de dades."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Aplicar la política de privacitat de canal dins l'adaptador garanteix defensa en profunditat: encara que una branca interna generés contingut privat, mai sortirà pel canal no autoritzat.",
+      "explanationsIncorrect": {
+        "B": "Bloqueja totalment la dada personal i només mostra l'enllaç a la Seu.",
+        "C": "La branca `web` autenticada continua operant normalment.",
+        "D": "Només controla la renderització de sortida."
+      }
+    },
+    {
+      "id": "m03-02-q02",
+      "module": 3,
+      "conceptId": "m03-02-arquitectura-transformer",
+      "lessonRef": "content/module-03/m03-02-arquitectura-transformer.md",
+      "difficulty": "basic",
+      "questionType": "architecture",
+      "prompt": "Quina família de l'arquitectura Transformer utilitza **atenció bidireccional completa** i és l'opció òptima per a classificació de textos, NER, embeddings i *Cross-Encoder rerankers*?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Decoder-only causal."
+        },
+        {
+          "key": "B",
+          "text": "Encoder-only (p. ex., BERT, RoBERTa-ca, XLM-RoBERTa, BGE-M3)."
+        },
+        {
+          "key": "C",
+          "text": "Xarxa generativa antagònica (GAN)."
+        },
+        {
+          "key": "D",
+          "text": "Perceptró d'una sola capa."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Els encoders bidireccionals permeten que cada token atengui tant el context previ com el posterior, maximitzant la qualitat de representacions per a NER, classificació i recuperació.",
+      "explanationsIncorrect": {
+        "A": "Els Decoder-only tenen màscara causal (només veuen el passat) i estan pensats per a generació autoregressiva.",
+        "C": "Les GAN són una altra família generativa (principalment imatge).",
+        "D": "Un perceptró simple no té mecanisme d'atenció."
+      }
+    },
+    {
+      "id": "m06-03-q07",
+      "module": 6,
+      "conceptId": "m06-03-classificadors-automatics",
+      "lessonRef": "content/module-06/m06-03-classificadors-automatics.md",
+      "difficulty": "intermediate",
+      "questionType": "metrics",
+      "prompt": "Què representa la **corba Risc-Cobertura (*Risk-Coverage Curve*)** en l'ajust dels llindars d'un enrutador automàtic?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "El cost d'assegurança d'incendis del centre de dades."
+        },
+        {
+          "key": "B",
+          "text": "La velocitat d'escriptura del disc SSD."
+        },
+        {
+          "key": "C",
+          "text": "El nombre de neurones per capa oculta."
+        },
+        {
+          "key": "D",
+          "text": "El **compromís directe entre el percentatge de casos auto-enrutats (*Coverage*) i la taxa d'error sobre aquests casos (*Risk*)** a mesura que variem el llindar de confiança."
+        }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "La corba Risc-Cobertura permet a negoci i tecnologia escollir exactament el llindar que maximitza l'automatització dins del pressupost màxim d'error (ex. <= 3% de rebots).",
+      "explanationsIncorrect": {
+        "A": "És una corba de decisió estadística/operativa de ML.",
+        "B": "No mesura rendiment de maquinari.",
+        "C": "No és un paràmetre d'arquitectura de xarxa."
+      }
+    },
+    {
+      "id": "m06-03-q02",
+      "module": 6,
+      "conceptId": "m06-03-classificadors-automatics",
+      "lessonRef": "content/module-06/m06-03-classificadors-automatics.md",
+      "difficulty": "basic",
+      "questionType": "metrics",
+      "prompt": "Quina mètrica operativa mesura directament el percentatge d'expedients auto-enrutats que el departament receptor ha hagut de retornar o re-assignar per error?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "La velocitat de CPU del servidor."
+        },
+        {
+          "key": "B",
+          "text": "La **taxa de rebot (*Misrouting / Reassignment Rate*)** (objectiu habitual `< 3–5%` per mantenir la confiança dels equips receptors)."
+        },
+        {
+          "key": "C",
+          "text": "El nombre total de paràmetres del model."
+        },
+        {
+          "key": "D",
+          "text": "La longitud mitjana dels correus electrònics."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "La taxa de rebot reflecteix l'impacte real dels errors del classificador sobre el treball quotidià dels serveis municipals.",
+      "explanationsIncorrect": {
+        "A": "Mètrica de sistema, no de qualitat d'enrutament.",
+        "C": "Mètrica d'arquitectura del model.",
+        "D": "Característica de les dades d'entrada."
+      }
+    },
+    {
+      "id": "m02-02-q04",
+      "module": 2,
+      "conceptId": "m02-02-tokenitzacio",
+      "lessonRef": "content/module-02/m02-02-tokenitzacio.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "En què es diferencia principalment el model **Unigram** (usat sovint amb SentencePiece) respecte de **BPE**?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "BPE construeix el vocabulari bottom-up fusionant parells freqüents, mentre que Unigram treballa top-down podant un vocabulari inicial gran per minimitzar la pèrdua de versemblança."
+        },
+        {
+          "key": "B",
+          "text": "Unigram només pot tokenitzar paraules d'una sola lletra."
+        },
+        {
+          "key": "C",
+          "text": "BPE només funciona amb imatges i Unigram només amb àudio."
+        },
+        {
+          "key": "D",
+          "text": "Unigram no admet idiomes amb accents com el català."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "BPE creix des de caràcters/bytes cap amunt per fusions, mentre que Unigram comença amb un conjunt molt gran de subparaules candidates i elimina iterativament les que menys afecten la probabilitat del corpus.",
+      "explanationsIncorrect": {
+        "B": "Unigram produeix subparaules de longitud variable, incloses paraules completes.",
+        "C": "Ambdós són algorismes de tokenització textual.",
+        "D": "SentencePiece + Unigram funciona sobre UTF-8 i suporta perfectament el català (com en XLM-RoBERTa o Salamandra)."
+      }
+    },
+    {
+      "id": "m02-08-q03",
+      "module": 2,
+      "conceptId": "m02-08-traduccio-automatica",
+      "lessonRef": "content/module-02/m02-08-traduccio-automatica.md",
+      "difficulty": "basic",
+      "questionType": "normative",
+      "prompt": "Un tècnic necessita traduir un informe intern confidencial amb dades personals de salut (RGPD art. 9) del castellà al català. Quina opció és correcta?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Enganxar el text complet en un traductor web públic gratuït."
+        },
+        {
+          "key": "B",
+          "text": "Publicar-lo en un fòrum obert perquè el tradueixi la comunitat."
+        },
+        {
+          "key": "C",
+          "text": "Utilitzar un motor de traducció automàtica desplegat *on-premise* (infraestructura pròpia aïllada) o un servei corporatiu autoritzat amb contracte d'encàrrec del tractament (DPA), zero retenció i control d'accés ENS."
+        },
+        {
+          "key": "D",
+          "text": "Enviar-lo per correu personal a una API externa sense xifrar."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Tractar categories especials de dades personals en traductors públics gratuïts vulnera el RGPD i l'ENS; cal desplegament *on-premise* (p. ex., models AINA/Softcatalà locals) o contracte corporatiu degudament auditat.",
+      "explanationsIncorrect": {
+        "A": "Els traductors públics gratuïts poden registrar i reutilitzar el text per entrenar models, provocant una bretxa greu de dades.",
+        "B": "Seria una divulgació il·lícita de dades sensibles.",
+        "D": "Incompleix radicalment RGPD i ENS."
+      }
+    },
+    {
+      "id": "m04-07-q06",
+      "module": 4,
+      "conceptId": "m04-07-documents-administratius",
+      "lessonRef": "content/module-04/m04-07-documents-administratius.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Quan una IA genera automàticament un extracte d'acords a partir d'una **acta de Ple municipal**, quin límit jurídic fonamental cal respectar?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "L'extracte de la IA substitueix legalment l'acta oficial."
+        },
+        {
+          "key": "B",
+          "text": "Es pot publicar directament sense revisar dades personals."
+        },
+        {
+          "key": "C",
+          "text": "La **fe pública** correspon exclusivament a la **Secretaria**: l'extracte IA és només un esborrany auxiliar que requereix revisió humana (i anonimització RGPD) abans de qualsevol publicació o certificació."
+        },
+        {
+          "key": "D",
+          "text": "L'acta original s'ha d'esborrar un cop resumida."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "La IA pot assistir en la preparació d'extractes i indexació, però mai ostenta fe pública ni substitueix la validació de Secretaria.",
+      "explanationsIncorrect": {
+        "A": "Un resum estadístic mai substitueix un document públic fefaent.",
+        "B": "Pot contenir errors d'interpretació o dades personals (RGPD).",
+        "D": "L'original s'ha de conservar íntegrament a l'arxiu electrònic."
+      }
+    },
+    {
+      "id": "m03-06-q08",
+      "module": 3,
+      "conceptId": "m03-06-embeddings-rag",
+      "lessonRef": "content/module-03/m03-06-embeddings-rag.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Per què un model com **`BAAI/bge-m3`** resulta especialment interessant per a un desplegament RAG *on-premise* en una administració catalana?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Suporta més de 100 idiomes (amb fort rendiment en català i castellà), admet fins a **8.192 tokens** de context (evitant truncaments a 512) i genera en un sol model representacions denses, disperses (lèxiques) i multi-vector."
+        },
+        {
+          "key": "B",
+          "text": "És un LLM generatiu de 405B paràmetres que no necessita índex vectorial."
+        },
+        {
+          "key": "C",
+          "text": "Només té 2 dimensions vectorials."
+        },
+        {
+          "key": "D",
+          "text": "Està entrenat exclusivament en anglès."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "BGE-M3 combina multilingüisme, context llarg (8.192 tokens), multi-funcionalitat (dens + dispers + ColBERT) i mida compacta (~568M paràmetres) 100% desplegable *on-premise*.",
+      "explanationsIncorrect": {
+        "B": "És un encoder d'embeddings compacte (~568M), no un LLM generatiu gegant.",
+        "C": "Té 1.024 dimensions denses.",
+        "D": "La 'M' de M3 significa precisament Multi-Linguality, Multi-Functionality, Multi-Granularity."
+      }
+    },
+    {
+      "id": "m03-06-q05",
+      "module": 3,
+      "conceptId": "m03-06-embeddings-rag",
+      "lessonRef": "content/module-03/m03-06-embeddings-rag.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Quant redueix aproximadament la memòria dels vectors aplicar **quantització escalar `FP32 → INT8`** enfront de **quantització binària (`1 bit/dim`)**?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "`INT8` redueix 2× i binària 4×."
+        },
+        {
+          "key": "B",
+          "text": "`INT8` redueix **~4×** (d'4 bytes a 1 byte per dimensió, amb pèrdua mínima de Recall) i la **quantització binària** redueix **~32×** (de 32 bits a 1 bit per dimensió, ideal amb *oversampling + rescoring*)."
+        },
+        {
+          "key": "C",
+          "text": "Ambdues augmenten la memòria al doble."
+        },
+        {
+          "key": "D",
+          "text": "Només funcionen amb 100 documents o menys."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "FP32 = 32 bits (4 bytes), INT8 = 8 bits (1 byte → 4×), binari = 1 bit (→ 32×). A gran escala estalvien desenes de GB de RAM en servidors vectorials.",
+      "explanationsIncorrect": {
+        "A": "2× correspondria a FP32 → FP16, no a INT8.",
+        "C": "Redueixen dràsticament la memòria, no l'augmenten.",
+        "D": "Són especialment útils precisament a gran escala (centenars de milers o milions de vectors)."
+      }
+    },
+    {
+      "id": "m01-06-q01",
+      "module": 1,
+      "conceptId": "m01-06-sistemes-experts",
+      "lessonRef": "content/module-01/m01-06-sistemes-experts.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quin és el principi arquitectònic fonamental d'un sistema expert clàssic?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Separar explícitament la base de coneixement declarativa (regles del domini) del motor d'inferència que executa el raonament."
+        },
+        {
+          "key": "B",
+          "text": "Entrenar milions de pesos neuronals mitjançant retropropagació sobre dades no etiquetades."
+        },
+        {
+          "key": "C",
+          "text": "Substituir totes les regles legals per clustering no supervisat."
+        },
+        {
+          "key": "D",
+          "text": "Integrar les regles dins del codi compilat perquè no es puguin auditar."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "La separació entre base de coneixement (què sabem) i motor d'inferència (com raonem) permet actualitzar regles, auditar-les i generar explicacions sense reescriure l'algoritme de raonament.",
+      "explanationsIncorrect": {
+        "B": "Això descriu el Deep Learning, no els sistemes experts simbòlics.",
+        "C": "El clustering és aprenentatge no supervisat i no aplica regles normatives.",
+        "D": "És exactament el contrari: els sistemes experts busquen representació declarativa, mantenible i explicable."
+      }
+    },
+    {
+      "id": "m07-01-q01",
+      "module": 7,
+      "conceptId": "m07-01-preparacio-dades",
+      "lessonRef": "content/module-07/m07-01-preparacio-dades.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Què és el ***Training-Serving Skew*** en un sistema de Machine Learning en producció?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "La discrepància entre la manera com es transformen, imputen o calculen les característiques durant l'**entrenament** respecte de la **inferència en producció**, provocant caiguda de rendiment real."
+        },
+        {
+          "key": "B",
+          "text": "El temps que triga un usuari a obrir la web."
+        },
+        {
+          "key": "C",
+          "text": "Tenir massa dades d'entrenament netes."
+        },
+        {
+          "key": "D",
+          "text": "Un tipus d'atac de *prompt injection*."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Si l'entrenament usa una transformació (ex. z-score + mediana) i l'API de producció n'implementa una altra diferent (ex. dividir per 1000 + imputar 0), el model rep entrades fora de distribució.",
+      "explanationsIncorrect": {
+        "B": "No és una mètrica de latència de frontend.",
+        "C": "Tenir més dades netes és positiu, no és skew.",
+        "D": "És un error de pipeline de dades, no un atac d'LLM."
+      }
+    },
+    {
+      "id": "m05-04-q09",
+      "module": 5,
+      "conceptId": "m05-04-integracio-bases-coneixement",
+      "lessonRef": "content/module-05/m05-04-integracio-bases-coneixement.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Quan a la base de coneixement apareixen **dues fonts vigents contradictòries** (una FAQ redactada fa 6 mesos diu bonificació del 40% i l'Ordenança Fiscal 2026 diu 50%), com ho ha de resoldre una arquitectura ben dissenyada?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Fer la mitjana aritmètica i contestar 45%."
+        },
+        {
+          "key": "B",
+          "text": "Aplicar **jerarquia d'autoritat de fonts** (`Prioritat 1: Ordenança/BOPB > Prioritat 2: Catàleg tràmits > Prioritat 3: FAQ`), respondre d'acord amb l'ordenança vigent citant-la i **disparar una alerta al *content owner* de la FAQ** per corregir la inconsistència."
+        },
+        {
+          "key": "C",
+          "text": "Triar a l'atzar qualsevol de les dues."
+        },
+        {
+          "key": "D",
+          "text": "Ometre les dues fonts i no contestar res."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "La jerarquia normativa resol el conflicte amb seguretat jurídica immediata mentre l'alerta editorial tanca la causa arrel a la FAQ.",
+      "explanationsIncorrect": {
+        "A": "Inventar un 45% inexistent seria una al·lucinació absurda.",
+        "C": "Trencaria la seguretat jurídica i la consistència.",
+        "D": "Tenim l'ordenança vigent oficial (Prioritat 1), que és la norma aplicable."
+      }
+    },
+    {
+      "id": "m01-02-q04",
+      "module": 1,
+      "conceptId": "m01-02-machine-learning",
+      "lessonRef": "content/module-01/m01-02-machine-learning.md",
+      "difficulty": "intermediate",
+      "questionType": "code",
+      "prompt": "Quin error metodològic greu conté el fragment de codi següent?",
+      "codeSnippet": "from sklearn.preprocessing import StandardScaler\nfrom sklearn.model_selection import train_test_split\n\nscaler = StandardScaler()\nX_scaled = scaler.fit_transform(X)\nX_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2)",
+      "options": [
+        {
+          "key": "A",
+          "text": "Preprocessing data leakage: s'ajusta l'escalador (mitjana i desviació) sobre tot el dataset abans de separar train i test."
+        },
+        {
+          "key": "B",
+          "text": "Utilitzar test_size=0.2 és sempre invàlid en scikit-learn."
+        },
+        {
+          "key": "C",
+          "text": "StandardScaler només es pot aplicar sobre la variable objectiu y, mai sobre X."
+        },
+        {
+          "key": "D",
+          "text": "train_test_split no pot rebre matrius NumPy escalades."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "En cridar scaler.fit_transform(X) abans del split, les estadístiques del conjunt de test (mitjana i variància) contaminen l'entrenament. Cal fer primer el split, després scaler.fit_transform(X_train) i finalment scaler.transform(X_test) (idealment dins d'un Pipeline).",
+      "explanationsIncorrect": {
+        "B": "Reservar un 20% per a test és una pràctica estàndard i vàlida en molts problemes.",
+        "C": "StandardScaler s'aplica precisament a les característiques d'entrada X.",
+        "D": "train_test_split funciona perfectament amb matrius NumPy; el problema no és sintàctic sinó metodològic."
+      }
+    },
+    {
+      "id": "m06-01-q05",
+      "module": 6,
+      "conceptId": "m06-01-rpa",
+      "lessonRef": "content/module-06/m06-01-rpa.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Un cap de servei proposa configurar el bot RPA *unattended* de comptabilitat utilitzant l'**usuari i contrasenya personals d'una tècnica** que es jubila aviat per «estalviar tràmits d'alta d'usuari». Per què és inacceptable segons l'ENS?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Només perquè la contrasenya pot ser massa llarga."
+        },
+        {
+          "key": "B",
+          "text": "Destrueix la **traçabilitat i responsabilitat individual** (atribueix actes del bot a una persona física), vulnera el **mínim privilegi** i trencarà el servei en donar de baixa l'empleada; cal un **compte de servei dedicat nominal** amb credencials en **Vault xifrat**."
+        },
+        {
+          "key": "C",
+          "text": "És totalment correcte i recomanat per l'ENS."
+        },
+        {
+          "key": "D",
+          "text": "Perquè els bots RPA no poden autenticar-se en cap aplicació."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "L'ENS exigeix comptes nominals auditables, mínim privilegi i separació clara entre identitats humanes i comptes de servei automatitzats custodiats en Vault.",
+      "explanationsIncorrect": {
+        "A": "El problema és de governança, seguretat i auditoria, no de longitud.",
+        "C": "Contraven directament els controls d'accés i traçabilitat de l'ENS.",
+        "D": "Els bots s'autentiquen amb comptes de servei dedicats i auditats."
+      }
+    },
+    {
+      "id": "m08-02-q08",
+      "module": 8,
+      "conceptId": "m08-02-biaixos",
+      "lessonRef": "content/module-08/m08-02-biaixos.md",
+      "difficulty": "advanced",
+      "questionType": "conceptual",
+      "prompt": "Quina implicació fonamental té el teorema d'impossibilitat de l'equitat algorítmica per als responsables públics?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Que quan les taxes base reals difereixen entre grups i el model no és perfecte, no es poden complir simultàniament totes les definicions d'equitat (Demographic Parity, Equalized Odds, Predictive Parity); per tant, triar la mètrica prioritària és una decisió jurídica i de política pública."
+        },
+        {
+          "key": "B",
+          "text": "Que és matemàticament impossible reduir cap biaix en un model d'IA."
+        },
+        {
+          "key": "C",
+          "text": "Que només les xarxes neuronals profundes poden satisfer totes les mètriques d'equitat alhora."
+        },
+        {
+          "key": "D",
+          "text": "Que n'hi ha prou d'augmentar la mida del dataset per satisfer totes les definicions simultàniament."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "El teorema demostra incompatibilitats matemàtiques entre definicions d'equitat quan les taxes base difereixen; cal explicitar quina dimensió d'equitat protegeix millor els drets en cada procediment administratiu.",
+      "explanationsIncorrect": {
+        "B": "Sí que es poden reduir dràsticament els biaixos i satisfer la mètrica adequada al context.",
+        "C": "És una propietat matemàtica independent de l'arquitectura del model.",
+        "D": "Més dades no canvien una incompatibilitat algebraica entre taxes base diferents."
+      }
+    },
+    {
+      "id": "m06-03-q08",
+      "module": 6,
+      "conceptId": "m06-03-classificadors-automatics",
+      "lessonRef": "content/module-06/m06-03-classificadors-automatics.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En `enrutar_cas` de l'exemple 6.3, per què `INS-2` (`SERVEIS_SOCIALS: 0.89`, marge `0.83`) **NO** s'auto-enruta malgrat tenir una probabilitat més alta que `INS-1` (`VIA_PUBLICA: 0.86`, que SÍ que s'auto-enruta)?",
+      "codeSnippet": "LLINDARS_PER_CLASSE = {\n    \"VIA_PUBLICA\": 0.80,\n    \"TRIBUTS\": 0.90,\n    \"URBANISME\": 0.88,\n    \"SERVEIS_SOCIALS\": 0.95,\n}",
+      "options": [
+        {
+          "key": "A",
+          "text": "Perquè s'aplica un **llindar asimètric més exigent (`0,95`) per a `SERVEIS_SOCIALS`** a causa de l'alt impacte d'un error en casos vulnerables (`0.89 < 0.95`), mentre que `VIA_PUBLICA` té un llindar de `0,80` (`0.86 >= 0.80`)."
+        },
+        {
+          "key": "B",
+          "text": "Perquè `INS-2` té un marge inferior a `0,15`."
+        },
+        {
+          "key": "C",
+          "text": "Per un error d'ordenació en `sorted()`."
+        },
+        {
+          "key": "D",
+          "text": "Perquè `SERVEIS_SOCIALS` mai no pot ser la classe guanyadora."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Els llindars asimètrics alineen la política d'automatització amb el risc real de cada àmbit administratiu.",
+      "explanationsIncorrect": {
+        "B": "El marge de `INS-2` és `0.89 - 0.06 = 0.83`, molt per sobre de `0.15`.",
+        "C": "`sorted(..., reverse=True)` ordena correctament de major a menor.",
+        "D": "Si tingués `>= 0.95` i marge `>= 0.15`, s'auto-enrutaria."
+      }
+    },
+    {
+      "id": "m08-05-q10",
+      "module": 8,
+      "conceptId": "m08-05-seguretat-ia",
+      "lessonRef": "content/module-08/m08-05-seguretat-ia.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "Quin risc principal comporta exposar públicament una API d'inferència LLM sense quotes de tokens ni rate limiting per usuari/clau?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Aumentar la precisió del model massa ràpidament."
+        },
+        {
+          "key": "B",
+          "text": "Millorar la seguretat contra prompt injection."
+        },
+        {
+          "key": "C",
+          "text": "Eliminar automàticament les al·lucinacions."
+        },
+        {
+          "key": "D",
+          "text": "Exposar el servei a atacs de Model DoS / Denial of Wallet (esgotament de GPUs i pressupost) i facilitar atacs automatitzats de Model Extraction."
+        }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Sense rate limiting ni quotes estrictes, un atacant pot saturar la infraestructura GPU, disparar la factura cloud (Denial of Wallet) o consultar massivament l'API per clonar/extraure el model.",
+      "explanationsIncorrect": {
+        "A": "Les peticions externes d'inferència no entrenen ni milloren el model.",
+        "B": "L'absència de límits facilita fer milers d'intents automatitzats de prompt injection!",
+        "C": "No redueix les al·lucinacions."
+      }
+    }
+  ]
+}

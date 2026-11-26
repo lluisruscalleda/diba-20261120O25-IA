@@ -1,0 +1,24 @@
+{
+  "id": "case-12",
+  "title": "Supòsit 12 — Anàlisi automàtica de queixes ciutadanes i enquestes en català (Topic Modeling + Sentiment)",
+  "modules": [2, 8],
+  "difficulty": "basic",
+  "estimatedMinutes": 40,
+  "context": "L'Oficina de Qualitat dels Serveis rep 12.000 comentaris oberts anuals de bústies de queixes i suggeriments en català i castellà (sovint amb ironia com «Quina meravella, tres setmanes sense llum al carrer!»). Volen detectar temes emergents i evolució del malestar per barris.",
+  "statement": "Dissenya el pipeline NLP de descoberta de temes (Topic Modeling) i anàlisi de sentiment amb detecció d'ironia, anonimització prèvia i prevenció de biaixos de mostreig.",
+  "requirements": [
+    "Comparar LDA clàssic vs. BERTopic (embeddings contextuals + UMAP + HDBSCAN) per detectar temes emergents en català.",
+    "Explicar per què els diccionaris lèxics de sentiment fallen amb la ironia i triar un model contextual adequat.",
+    "Identificar el biaix de mostreig (qui escriu a la bústia digital no representa tota la població, p. ex. bretxa digital de gent gran) i aplicar pseudonimització/anonimització."
+  ],
+  "rubric": [
+    { "criterion": "Topic Modeling modern (BERTopic) vs. LDA en textos curts catalans", "maxPoints": 30, "description": "Justifica BERTopic amb embeddings multilingües davant les limitacions de LDA en frases curtes." },
+    { "criterion": "Anàlisi de sentiment contextual i gestió d'ironia/negació", "maxPoints": 25, "description": "Descarta lèxics simples de paraules positives/negatives i proposa Transformer fine-tuned o LLM local calibrat." },
+    { "criterion": "Biaix de representació (bretxa digital) i triangulació de canals", "maxPoints": 25, "description": "Adverteix que les queixes digitals infrarepresenten gent gran/col·lectius vulnerables i integra trucades 010 i atenció presencial." },
+    { "criterion": "Privacitat (redacció PII i dades agregades per barri)", "maxPoints": 20, "description": "Elimina noms, telèfons i adreces exactes abans d'analitzar i agrega resultats amb k-anonimat mínim." }
+  ],
+  "modelSolution": "### 1. Descoberta de temes emergents (*Topic Modeling*)\n- En comentaris ciutadans curts (1–3 frases), **LDA clàssic** (bossa de paraules) genera tòpics poc coherents. **BERTopic** (embeddings contextuals multilingües + reducció UMAP + clustering HDBSCAN + c-TF-IDF) agrupa molt millor temes emergents bilingües (ex. «plaga de mosquit tigre», «retards línia bus nocturn») sense haver de fixar el nombre de temes a priori.\n\n### 2. Anàlisi de sentiment amb ironia\n- Un analitzador basat en lèxic veu «meravella» i classifica la queixa com a positiva! Cal un **Transformer encoder contextual** entrenat en català/castellà (o un LLM local *open-weights* amb sortida estructurada `sentiment + tema + urgència`) validat sobre un *Golden Set* humà que inclogui ironia i negacions dobles.\n\n### 3. Biaix de representació i privacitat\n- **Biaix de mostreig digital**: qui escriu en una app municipal no reflecteix fidelment tota la ciutadania (gent gran o barris amb bretxa digital queden infrarepresentats!). Cal integrar també transcripcions anònimes del 010 i fulls presencials de les OAC.\n- **Privacitat (art. 5 i 25 RGPD)**: redactar PII (noms, adreces concretes, matrícules, DNI) abans d'executar el pipeline i publicar estadístiques només en nivell agregat (barris amb mínim `k >= 10` comentaris).",
+  "alternativeApproaches": [
+    "Si es disposa d'una taxonomia tancada de 20 serveis municipals, combinar classificació supervisada per als temes coneguts i BERTopic només sobre la categoria «Altres» per descobrir noves problemàtiques."
+  ]
+}

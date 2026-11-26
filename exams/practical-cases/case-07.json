@@ -1,0 +1,24 @@
+{
+  "id": "case-07",
+  "title": "Supòsit 07 — Crisi en producció: Data Drift, Concept Drift i Rollback atòmic en MLOps",
+  "modules": [7],
+  "difficulty": "advanced",
+  "estimatedMinutes": 50,
+  "context": "Tres mesos després de desplegar un classificador d'instàncies ciutadanes (`v2.1.0`) amb un F1 original de 0,92, els departaments es queixen que moltes sol·licituds de «terrasses i ocupació de via» s'estan enviant equivocadament a Activitats en lloc de Via Pública (on van ser traspassades per un nou decret d'alcaldia). Alhora, el PSI d'imports puja a 0,42 i el P99 de latència passa de 250 ms a 9.500 ms.",
+  "statement": "Diagnostica tècnicament els tres fenòmens simultanis, executa un pla de contenció immediat (rollback/contingència) i dissenya el pipeline CI/CD/CT per prevenir futures crisis silencioses.",
+  "requirements": [
+    "Distingir amb precisió el Concept Drift (canvi competencial de terrasses), el Data Drift (PSI = 0,42 >= 0,25) i la degradació d'infraestructura (P99 = 9.500 ms).",
+    "Definir el protocol de resposta immediata: quan serveix un rollback atòmic per àlies i per què en Concept Drift el rollback sol NO resol el canvi de decret!",
+    "Dissenyar l'arquitectura de monitoratge (4 capes) i el pipeline CI/CD/CT amb Continuous Delivery (aprovació humana) i Circuit Breaker."
+  ],
+  "rubric": [
+    { "criterion": "Diagnòstic diferencial rigorós (Concept vs. Data Drift vs. Latència P99)", "maxPoints": 30, "description": "Identifica que el traspàs de terrasses canvia P(Y|X) (Concept Drift), PSI=0,42 canvia P(X) (Data Drift greu) i P99 apunta a coll d'ampolla." },
+    { "criterion": "Anàlisi lúcida de Rollback vs. Regla temporal / Reentrenament", "maxPoints": 25, "description": "Explica que el rollback repara regressions de v2.1.0 o latència, però NO sap el nou decret (requereix regla/reentrenament amb etiquetes noves!)." },
+    { "criterion": "Pipeline CI/CD/CT amb Quality Gate i Continuous Delivery", "maxPoints": 25, "description": "Defineix cooldown, mínim d'etiquetes verificades, Sliced Evaluation, Shadow/Canary i aprovació humana." },
+    { "criterion": "Observabilitat completa i protecció dels sistemes clients (Circuit Breaker)", "maxPoints": 20, "description": "Monitora PSI, rebots per classe, P95/P99 i protegeix la Seu amb Circuit Breaker i fallback." }
+  ],
+  "modelSolution": "### 1. Diagnòstic dels 3 fenòmens simultanis\n1. ***Concept Drift* pur (`P(Y|X)` canvia)**: el text de les sol·licituds de «terrasses» és idèntic, però el decret d'alcaldia n'ha canviat l'etiqueta correcta d'`Activitats` a `Via Pública`.\n2. ***Data Drift* greu (`PSI = 0,42 >= 0,25`)**: la distribució d'entrades `P(X)` s'ha desplaçat significativament respecte d'entrenament.\n3. **Degradació de cua (`P99 = 9.500 ms`)**: anomalia d'infraestructura/inferència (cua saturada, fuita de memòria o peticions extremes).\n\n### 2. Contenció immediata i límit del *Rollback*\n- **Acció 1 (infraestructura / regressió)**: si `v2.1.0` va introduir el pic de latència P99, executar ***rollback* atòmic** de `@champion → @previous_champion` en segons (i activar el **Circuit Breaker** si falla l'SLA perquè el Registre General no s'aturi mai!).\n- **Matís clau d'examen**: el *rollback* a `v2.0.0` **NO arreglarà el *Concept Drift*** de les terrasses, perquè `v2.0.0` també es va entrenar abans del decret! Solució immediata: aplicar una **regla determinista d'excepció temporal** (o remapeig post-procés) mentre s'etiqueten nous exemples i es reentrena `v2.2.0`.\n\n### 3. Prevenció amb CI/CD/CT\n- **Monitoratge en 4 capes**: infraestructura (P95/P99), *drift* sense etiquetes (PSI diari), qualitat real (**taxa de rebots per departament** — alerta primerenca de *Concept Drift*!) i negoci/FinOps.\n- **Continuous Training (CT) governat**: disparat per rebots/PSI amb finestra de *cooldown*, validació en **Quality Gate** (Champion vs. Challenger + Sliced Evaluation català/castellà), desplegament **Shadow → Canary** i **Continuous Delivery** (aprovació humana obligatòria abans del 100%).",
+  "alternativeApproaches": [
+    "Mantenir una taula externa de correspondència «Tema → Departament vigent» desacoblada del model ML perquè els decrets de reorganització de regidories s'apliquin en 1 minut sense reentrenar!"
+  ]
+}

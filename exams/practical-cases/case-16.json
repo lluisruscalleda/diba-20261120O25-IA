@@ -1,0 +1,24 @@
+{
+  "id": "case-16",
+  "title": "Supòsit 16 — Auditoria de biaixos i equitat en un sistema d'IA per a selecció de personal públic",
+  "modules": [8, 7],
+  "difficulty": "advanced",
+  "estimatedMinutes": 50,
+  "context": "Una corporació local valora contractar una eina d'IA per prefiltrar currículums en borses temporals de tècnics informàtics (2.500 candidats anuals). En una prova pilot sobre històric, el proveïdor assegura que «hem esborrat el gènere i l'edat del dataset», però en auditar els resultats s'observa que el grup d'homes obté una taxa de selecció del 50% (TPR = 0,88) i el de dones del 25% (TPR = 0,48).",
+  "statement": "Realitza una auditoria tècnica i jurídica completa d'aquest cas, calcula les mètriques d'equitat, explica l'error del proveïdor i determina si el sistema pot desplegar-se.",
+  "requirements": [
+    "Calcular el Disparate Impact (regla orientativa 4/5) i la bretxa d'Equal Opportunity (TPR), refutant l'argument de Fairness through Unawareness (variables proxy).",
+    "Classificar el sistema sota l'AI Act (Annex III punt 4), citant art. 10 (dades i biaixos, art. 10.5), art. 26.7 (representants dels treballadors), FRIA art. 27 i els principis constitucionals d'igualtat, mèrit i capacitat.",
+    "Proposar mesures correctives en Pre-processing/In-processing (o l'alternativa determinista de baremació reglada!) evitant els riscos legals del Post-processing."
+  ],
+  "rubric": [
+    { "criterion": "Càlcul exacte de DI = 0,50 (< 0,80) i bretxa TPR = 0,40 + refutació de proxies", "maxPoints": 30, "description": "Calcula exactament 0,25/0,50 = 0,50 i identifica proxies (nom, interrupcions laborals, esports/entitats) i biaix històric." },
+    { "criterion": "Marc legal complet: AI Act Annex III p.4, art. 10.5, art. 26.7, FRIA, RGPD art. 22 i CE art. 23.2/103.3", "maxPoints": 35, "description": "Aplica tots els articles precisos sense errors i destaca el principi constitucional d'igualtat, mèrit i capacitat." },
+    { "criterion": "Pla de mitigació (Pre/In-processing) i qüestionament de la necessitat d'IA", "maxPoints": 20, "description": "Adverteix dels riscos legals del post-processing amb llindars per gènere i valora barems objectius deterministes." },
+    { "criterion": "Decisió fonamentada de NO desplegar (Bloqueig Stage-Gate)", "maxPoints": 15, "description": "Bloqueja el desplegament fins a corregir radicalment el biaix o descartar el producte." }
+  ],
+  "modelSolution": "### 1. Diagnòstic quantitatiu del biaix\n- **Disparate Impact (DI)**: `0,25 / 0,50 = 0,50` → **molt per sota del llindar orientatiu de 0,80 (regla 4/5)**! Evidència d'impacte dispar sever.\n- **Bretxa d'*Equal Opportunity* (TPR)**: `|0,88 - 0,48| = 0,40` (40 punts percentuals!) → més de la meitat de les candidates plenament qualificades són descartades injustament!\n- **Refutació de *Fairness through Unawareness***: esborrar la columna `genere` no impedeix que el model reconegui el gènere a través de **variables *proxy*** (noms propis, llenguatge gramatical en català/castellà, interrupcions de carrera per maternitat, centres o titulacions) i reprodueixi el **biaix històric** masculinitzat del sector TIC!\n\n### 2. Marc jurídic aplicable\n- **AI Act (Reglament UE 2024/1689)**: **ALT RISC (Annex III, punt 4: ocupació i selecció de personal)** — plenament vigent des del **2/08/2026**.\n  - **Art. 10**: obliga a examinar i mitigar biaixos; **art. 10.5** autoritza excepcionalment i sota salvaguardes auditar amb atributs protegits per detectar-los i corregir-los.\n  - **Art. 26.7**: obligació prèvia d'**informar els representants dels treballadors**.\n  - **Art. 27 (FRIA)** + **art. 49.3 (registre UE)** + **EIPD (art. 35 RGPD)** + **prohibició de cribratge únicament automatitzat (art. 22 RGPD)**.\n- **Dret públic**: vulneraria els principis constitucionals d'**igualtat, mèrit i capacitat** (art. 23.2 i 103.3 CE)!\n\n### 3. Veredicte i alternativa recomanada\n- **Veredicte**: **BLOQUEJAR el desplegament** a la porta de governança (`G2`).\n- **Mitigació / Alternativa superior**: evitar *post-processing* amb llindars diferenciats per gènere en inferència; en selecció de personal públic, la millor solució és una **baremació estructurada i determinista de mèrits objectius** (titulacions, experiència acreditada, proves cegues) on la IA — si s'usa — només ajudi a **normalitzar o validar certificats** amb supervisió humana del tribunal!",
+  "alternativeApproaches": [
+    "Aplicar anonimització estricta dels currículums (currículum cec sense nom, foto ni gènere) i avaluació mitjançant proves tècniques pràctiques anònimes."
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": "case-06",
+  "title": "Supòsit 06 — Orquestració d'automatització intel·ligent per a ajuts d'emergència habitacional",
+  "modules": [6, 8],
+  "difficulty": "advanced",
+  "estimatedMinutes": 50,
+  "context": "Durant una convocatòria d'ajuts al lloguer, un ajuntament rep 6.000 sol·licituds en 15 dies. El 40% arriben incompletes i abans es trigava 3 mesos a detectar-ho. A més, la pressió fa que expedients senzills però antics quedin oblidats a la cua.",
+  "statement": "Dissenya un sistema d'automatització intel·ligent (combinació de regles deterministes + ML + RPA/APIs Via Oberta) amb principi Once-Only, esmenes art. 68 LPACAP, priorització anti-starvation i supervisió humana.",
+  "requirements": [
+    "Separar clarament què executen les regles deterministes (elegibilitat legal, esmenes) i què aporta el model ML (priorització/detecció d'anomalies).",
+    "Integrar consultes resilients a Via Oberta / PID (principi Once-Only, art. 28 LPACAP) amb idempotència i Circuit Breaker.",
+    "Dissenyar la cua de priorització amb mecanisme d'envelliment (aging), generació d'esborranys d'esmena (art. 68 LPACAP) i controls HITL (AI Act Annex III punt 5.a)."
+  ],
+  "rubric": [
+    { "criterion": "Arquitectura híbrida Regles (elegibilitat) vs. ML (priorització)", "maxPoints": 30, "description": "No delega mai requisits legals reglats a un model probabilístic; combina ambdós mons de manera auditable." },
+    { "criterion": "Once-Only (Via Oberta), Shift-Left i esmenes art. 68 LPACAP", "maxPoints": 25, "description": "Comprova dades via API abans de demanar papers, valida al formulari i genera esborranys de 10 dies hàbils amb signatura humana." },
+    { "criterion": "Resiliència tècnica (idempotència, cues, aging anti-starvation)", "maxPoints": 25, "description": "Evita duplicats, desacobla amb cues asíncrones i aplica aging perquè cap expedient no quedi aparcat." },
+    { "criterion": "Compliment alt risc AI Act (Annex III p.5.a) i art. 22 RGPD", "maxPoints": 20, "description": "HITL obligatori, FRIA art. 27, EIPD art. 35, quatre ulls en denegacions i motivació art. 35 LPACAP." }
+  ],
+  "modelSolution": "### 1. Separació estricta: Regles deterministes vs. ML\n- **Motor de regles determinista (100% auditable)**: verifica requisits reglats de les bases (empadronament mínim, llindar d'ingressos IPREM, documentació obligatòria) i calcula la quantia exacta de l'ajut.\n- **Model predictiu interpretable (ML)**: puntua la **prioritat d'atenció** i detecta anomalies documentals per ajudar a ordenar la cua dels treballadors socials (mai no denega autònomament!).\n\n### 2. Validació Shift-Left, Once-Only i Esmenes (art. 68 LPACAP)\n- **Shift-Left**: validació instantània al formulari de la Seu per reduir el 40% d'errors abans del registre.\n- **Once-Only (art. 28 LPACAP)**: consulta automatitzada per API a **Via Oberta / PID** (AEAT, padró, Seguretat Social) protegida amb **Circuit Breaker** i cua de reintents exponencials (si Via Oberta cau, l'expedient no es perd!).\n- **Esmenes automàtiques assistides**: si manca un document obligatori, l'orquestrador redacta l'**esborrany de requeriment d'esmena (10 dies hàbils, art. 68 LPACAP)** llest per a revisió i signatura humana.\n\n### 3. Priorització anti-starvation i garanties d'Alt Risc\n- Fórmula de cua: `score = 0,45 * urgencia_termini + 0,35 * vulnerabilitat + aging_bonus(dies_en_cua)` (garantint que els expedients antics pugen progressivament).\n- En tractar-se d'**Alt Risc (Annex III punt 5.a AI Act)**: **FRIA (art. 27)** + **EIPD (art. 35 RGPD)** + **registre UE (art. 49.3)** + **HITL significatiu** (quatre ulls en denegacions i motivació completa art. 35 LPACAP).",
+  "alternativeApproaches": [
+    "Si algun ajuntament petit no disposa d'integració directa amb Via Oberta, delegar l'orquestració a un servei supramunicipal compartit de la Diputació o de l'AOC."
+  ]
+}

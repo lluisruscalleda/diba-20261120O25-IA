@@ -1,0 +1,1409 @@
+{
+  "id": "module-08",
+  "module": 8,
+  "title": "Examen acumulatiu del Mòdul 8: Seguretat i governança",
+  "note": "Paràmetres orientatius de preparació (durada, penalització i nota mínima configurables a la plataforma; no constitueixen bases oficials de convocatòria).",
+  "recommendedMinutes": 45,
+  "questions": [
+    {
+      "id": "m08-03-q08",
+      "module": 8,
+      "conceptId": "m08-03-supervisio-humana",
+      "lessonRef": "content/module-08/m08-03-supervisio-humana.md",
+      "difficulty": "advanced",
+      "questionType": "normative",
+      "prompt": "Quina de les mesures següents figura expressament a l'article 14.4.e de l'AI Act com a capacitat que ha de permetre la supervisió humana d'un sistema d'IA d'alt risc?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Intervenir en el funcionament del sistema d'IA d'alt risc o interrompre'l mitjançant un «botó d'aturada» o un procediment similar que permeti aturar-lo en condicions de seguretat."
+        },
+        {
+          "key": "B",
+          "text": "Augmentar automàticament el pressupost de cloud sense aprovació."
+        },
+        {
+          "key": "C",
+          "text": "Evitar que qualsevol auditor pugui consultar els logs del sistema."
+        },
+        {
+          "key": "D",
+          "text": "Substituir totes les resolucions judicials per prediccions automàtiques."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "L'article 14.4.e de l'AI Act estableix explícitament la capacitat d'intervenir o interrompre el sistema de manera segura mitjançant un botó d'aturada o procediment equivalent.",
+      "explanationsIncorrect": {
+        "B": "No té relació amb l'article 14 de l'AI Act.",
+        "C": "L'article 12 exigeix justament conservació i auditabilitat dels registres.",
+        "D": "L'AI Act reforça la supervisió humana i prohibeix substituir garanties jurisdiccionals."
+      }
+    },
+    {
+      "id": "m08-03-q04",
+      "module": 8,
+      "conceptId": "m08-03-supervisio-humana",
+      "lessonRef": "content/module-08/m08-03-supervisio-humana.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Un empleat públic prem el botó «Aprovar tots» en 2 segons per validar 50 recomanacions d'una IA sobre ajuts socials (rubber-stamping). Com valora aquesta pràctica el criteri del CEPD/EDPB respecte de l'article 22 del RGPD?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Com a supervisió humana vàlida, perquè hi ha hagut un clic d'una persona física."
+        },
+        {
+          "key": "B",
+          "text": "Com a decisió que continua essent únicament automatitzada, perquè la intervenció humana no ha estat significativa (ni anàlisi real ni exercici efectiu d'autoritat)."
+        },
+        {
+          "key": "C",
+          "text": "Com a actuació administrativa automatitzada exenta de qualsevol garantia."
+        },
+        {
+          "key": "D",
+          "text": "Com a compliment automàtic de l'article 14 de l'AI Act."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Segons les directrius europees de protecció de dades, una revisió simbòlica o rubber-stamping no trenca el caràcter «únicament automatitzat» de l'art. 22 RGPD.",
+      "explanationsIncorrect": {
+        "A": "Un clic mecànic sense anàlisi real no compleix el requisit d'intervenció humana significativa.",
+        "C": "Cap actuació pública no està exenta de garanties jurídiques ni del RGPD.",
+        "D": "Vulneraria frontalment l'article 14 de l'AI Act (supervisió efectiva i prevenció del biaix d'automatització)."
+      }
+    },
+    {
+      "id": "m08-07-q09",
+      "module": 8,
+      "conceptId": "m08-07-governanca-models",
+      "lessonRef": "content/module-08/m08-07-governanca-models.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Què s'ha de garantir obligatòriament en la fase G4 de retirada (decommissioning) d'un sistema d'IA d'alt risc que deixa d'utilitzar-se en producció?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Esborrar immediatament el mateix dia tots els logs, versions del model i expedients de FRIA per estalviar disc."
+        },
+        {
+          "key": "B",
+          "text": "Desactivar ordenadament el servei, actualitzar l'inventari corporatiu i el registre UE, i conservar els artefactes d'auditoria, documentació i logs durant els terminis legals aplicables (mínim 6 mesos art. 26.6 AI Act i normativa d'arxiu)."
+        },
+        {
+          "key": "C",
+          "text": "Deixar l'API encesa indefinidament sense monitoratge per si algú la vol fer servir."
+        },
+        {
+          "key": "D",
+          "text": "Publicar les dades personals del dataset d'entrenament en obert."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Una retirada governada evita sistemes «zombis» sense manteniment i alhora preserva les evidències i logs necessaris per atendre recursos administratius o auditories posteriors.",
+      "explanationsIncorrect": {
+        "A": "Destruir immediatament logs i evidències impedeix defensar l'Administració davant recursos en curs i incompleix l'art. 26.6 AI Act.",
+        "C": "Deixar un model zombi en producció sense manteniment multiplica riscos de drift i ciberseguretat.",
+        "D": "Publicar dades personals vulneraria greument el RGPD."
+      }
+    },
+    {
+      "id": "m08-07-q03",
+      "module": 8,
+      "conceptId": "m08-07-governanca-models",
+      "lessonRef": "content/module-08/m08-07-governanca-models.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quines són les 4 funcions estructurals del marc NIST AI RMF (AI Risk Management Framework)?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Train, Test, Deploy, Delete."
+        },
+        {
+          "key": "B",
+          "text": "Buy, Build, Copy, Paste."
+        },
+        {
+          "key": "C",
+          "text": "Govern, Map, Measure i Manage."
+        },
+        {
+          "key": "D",
+          "text": "Prompt, Embed, Chunk i Generate."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "El NIST AI RMF articula la gestió contínua del risc d'IA al voltant de Govern (governar), Map (mapejar context i riscos), Measure (mesurar) i Manage (gestionar i mitigar).",
+      "explanationsIncorrect": {
+        "A": "Això descriu un flux simplificat de codi, no el NIST AI RMF.",
+        "B": "No existeix aquest marc.",
+        "D": "Això són passos tècnics d'un pipeline RAG."
+      }
+    },
+    {
+      "id": "m08-02-q04",
+      "module": 8,
+      "conceptId": "m08-02-biaixos",
+      "lessonRef": "content/module-08/m08-02-biaixos.md",
+      "difficulty": "intermediate",
+      "questionType": "metrics",
+      "prompt": "En un model d'assignació de beques o ajuts socials, el grup A té una taxa de selecció del 60% i el grup B del 20%. Quin és el Disparate Impact (DI) del grup B respecte del grup A?",
+      "codeSnippet": "taxa_A = 0.60\ntaxa_B = 0.20",
+      "options": [
+        {
+          "key": "A",
+          "text": "0,40 (dins del llindar acceptable)"
+        },
+        {
+          "key": "B",
+          "text": "3,00 (sense alerta)"
+        },
+        {
+          "key": "C",
+          "text": "0,3333 (alerta greu d'impacte dispar, molt per sota de 0,80)"
+        },
+        {
+          "key": "D",
+          "text": "0,80 (exactament al llindar)"
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "DI = 0,20 / 0,60 = 0,3333, molt per sota de la referència de 0,80, evidenciant un impacte dispar sever que obliga a aturar el desplegament i investigar.",
+      "explanationsIncorrect": {
+        "A": "0,40 és la diferència absoluta (0,60 - 0,20), no la ràtio DI, i tampoc seria acceptable.",
+        "B": "Això inverteix el numerador i el denominador (0,60 / 0,20).",
+        "D": "0,20 / 0,60 no és 0,80."
+      }
+    },
+    {
+      "id": "m08-04-q02",
+      "module": 8,
+      "conceptId": "m08-04-proteccio-dades",
+      "lessonRef": "content/module-08/m08-04-proteccio-dades.md",
+      "difficulty": "basic",
+      "questionType": "normative",
+      "prompt": "Quina és l'autoritat de control de protecció de dades competent per a la Diputació de Barcelona i els ajuntaments de Catalunya?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Exclusivament l'AEPD (Agència Espanyola de Protecció de Dades)."
+        },
+        {
+          "key": "B",
+          "text": "L'APDCAT (Autoritat Catalana de Protecció de Dades)."
+        },
+        {
+          "key": "C",
+          "text": "L'Oficina Europea de Patents."
+        },
+        {
+          "key": "D",
+          "text": "Les administracions locals no estan sotmeses a cap autoritat de control."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "L'APDCAT té competència sobre la Generalitat de Catalunya i els ens locals de Catalunya (ajuntaments, consells comarcals i diputacions provincials).",
+      "explanationsIncorrect": {
+        "A": "L'AEPD és l'autoritat estatal, però en el sector públic català la competència correspon a l'APDCAT.",
+        "C": "No té competències en protecció de dades.",
+        "D": "Totes les administracions públiques estan sotmeses al RGPD i al control de l'autoritat competent."
+      }
+    },
+    {
+      "id": "m08-05-q04",
+      "module": 8,
+      "conceptId": "m08-05-seguretat-ia",
+      "lessonRef": "content/module-08/m08-05-seguretat-ia.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "On s'ha d'aplicar obligatòriament el control d'accés (RBAC/ABAC) en un sistema RAG corporatiu que indexa documents públics i expedients confidencials?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Abans de la recuperació (pre-filtering determinista a la consulta de la base vectorial per rol/ACL), perquè cap fragment no autoritzat no entri mai al context de l'LLM."
+        },
+        {
+          "key": "B",
+          "text": "Al system prompt dient a l'LLM «si us plau, no diguis res confidencial si l'usuari no és cap de servei»."
+        },
+        {
+          "key": "C",
+          "text": "Només al frontend JavaScript amagant paràgrafs amb CSS."
+        },
+        {
+          "key": "D",
+          "text": "No cal control d'accés en bases vectorials perquè els embeddings no contenen text."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "El filtratge determinista pre-recuperació a la base vectorial és l'única barrera fiable: si el text confidencial arriba al context de l'LLM, un prompt injection pot exfiltrar-lo!",
+      "explanationsIncorrect": {
+        "B": "Confiar la seguretat al system prompt és probabilístic i fàcilment evadible per prompt injection.",
+        "C": "Amagar text al frontend permet llegir la resposta completa a la pestanya de xarxa del navegador.",
+        "D": "Cada vector a la BD vectorial emmagatzema associat el chunk de text original que es passa a l'LLM!"
+      }
+    },
+    {
+      "id": "m08-08-q01",
+      "module": 8,
+      "conceptId": "m08-08-compliment-normatiu",
+      "lessonRef": "content/module-08/m08-08-compliment-normatiu.md",
+      "difficulty": "basic",
+      "questionType": "normative",
+      "prompt": "Quina és la norma jurídica exacta coneguda com a AI Act (Reglament Europeu d'Intel·ligència Artificial)?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Reglament (UE) 2024/1689 del Parlament Europeu i del Consell, de 13 de juny de 2024."
+        },
+        {
+          "key": "B",
+          "text": "Reglament (UE) 2016/679 del Parlament Europeu i del Consell."
+        },
+        {
+          "key": "C",
+          "text": "Reial decret 311/2022, de 3 de maig."
+        },
+        {
+          "key": "D",
+          "text": "Llei 39/2015, d'1 d'octubre."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "L'AI Act és el Reglament (UE) 2024/1689, de 13 de juny de 2024, directament aplicable a tots els Estats membres de la UE.",
+      "explanationsIncorrect": {
+        "B": "El Reglament (UE) 2016/679 és el RGPD (protecció de dades).",
+        "C": "El RD 311/2022 regula l'Esquema Nacional de Seguretat (ENS).",
+        "D": "La Llei 39/2015 és la LPACAP (procediment administratiu comú)."
+      }
+    },
+    {
+      "id": "m08-01-q07",
+      "module": 8,
+      "conceptId": "m08-01-transparencia",
+      "lessonRef": "content/module-08/m08-01-transparencia.md",
+      "difficulty": "intermediate",
+      "questionType": "code",
+      "prompt": "En un model lineal amb predicció base E[f(X)] = 0,62 i tres variables amb contribucions SHAP (-0,12, -0,05, -0,01), quina és la predicció exacta del model per la propietat d'additivitat local?",
+      "codeSnippet": "base = 0.62\nphis = [-0.12, -0.05, -0.01]",
+      "options": [
+        {
+          "key": "A",
+          "text": "0,80"
+        },
+        {
+          "key": "B",
+          "text": "0,50"
+        },
+        {
+          "key": "C",
+          "text": "0,62"
+        },
+        {
+          "key": "D",
+          "text": "0,44"
+        }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Per la propietat d'exactitud local (additivitat) de SHAP, f(x) = base + suma(phi_j) = 0,62 - 0,12 - 0,05 - 0,01 = 0,44.",
+      "explanationsIncorrect": {
+        "A": "Això sumaria en valor absolut (0,62 + 0,18) ignorant els signes negatius.",
+        "B": "No correspon a la suma exacta de la base més les contribucions.",
+        "C": "0,62 és la predicció mitjana base, abans d'aplicar les contribucions individuals."
+      }
+    },
+    {
+      "id": "m08-07-q05",
+      "module": 8,
+      "conceptId": "m08-07-governanca-models",
+      "lessonRef": "content/module-08/m08-07-governanca-models.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Quina és l'estratègia més eficaç per reduir la Shadow AI en una administració pública?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Enviar un únic correu prohibint tota la IA sense oferir cap alternativa."
+        },
+        {
+          "key": "B",
+          "text": "Oferir una plataforma d'IA corporativa homologada i segura (sobirana/EEE, zero-data-retention), combinar-la amb formació d'alfabetització IA (art. 4 AI Act) i aplicar inventari + controls DLP."
+        },
+        {
+          "key": "C",
+          "text": "Autoritzar els comptes personals gratuïts sempre que els empleats no ho expliquin."
+        },
+        {
+          "key": "D",
+          "text": "Desconnectar tot l'ajuntament d'Internet."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "L'experiència demostra que la prohibició nua incentiva l'ús ocult en dispositius personals; donar una eina corporativa segura, formar la plantilla i aplicar DLP/inventari elimina l'arrel de la Shadow AI.",
+      "explanationsIncorrect": {
+        "A": "Sense alternativa útil, els empleats tendeixen a esquivar la prohibició en secret.",
+        "C": "Autoritzar comptes gratuïts amb dades públiques provoca bretxes greus del RGPD.",
+        "D": "Desconnectar l'ajuntament paralitzaria tots els serveis electrònics."
+      }
+    },
+    {
+      "id": "m08-01-q05",
+      "module": 8,
+      "conceptId": "m08-01-transparencia",
+      "lessonRef": "content/module-08/m08-01-transparencia.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Per puntuar sol·licituds tabulars d'ajuts socials, una regressió logística assoleix AUC = 0,85 i una xarxa neuronal profunda assoleix AUC = 0,86. Quina és la millor decisió d'enginyeria responsable?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Desplegar la xarxa neuronal profunda perquè 0,01 d'AUC sempre preval sobre qualsevol requisit jurídic."
+        },
+        {
+          "key": "B",
+          "text": "Utilitzar la regressió logística perquè és intrínsecament interpretable, auditabilitzable i facilita la motivació de l'art. 35 LPACAP sense dependre d'aproximacions post-hoc per a un guany marginal d'0,01."
+        },
+        {
+          "key": "C",
+          "text": "Entrenar una xarxa encara més gran sense explicabilitat per pujar a 0,87."
+        },
+        {
+          "key": "D",
+          "text": "Descartar tots dos models perquè cap no arriba a AUC = 1,00."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "En decisions públiques d'alt impacte sobre dades tabulars, un model intrínsecament interpretable que iguala gairebé la precisió d'una caixa negra és clarament preferible per transparència, auditabilitat i seguretat jurídica.",
+      "explanationsIncorrect": {
+        "A": "Optimitzar un 0,01 marginal d'AUC a costa de perdre interpretabilitat directa és un antipatró greu en el sector públic.",
+        "C": "Empitjora encara més l'opacitat i el risc de sobreajustament.",
+        "D": "Cap model predictiu real en problemes socials complexos té AUC = 1,00 sense fuita de dades."
+      }
+    },
+    {
+      "id": "m08-06-q09",
+      "module": 8,
+      "conceptId": "m08-06-auditoria",
+      "lessonRef": "content/module-08/m08-06-auditoria.md",
+      "difficulty": "advanced",
+      "questionType": "normative",
+      "prompt": "Quina obligació específica imposa l'article 49.3 de l'AI Act a una autoritat pública que desplega (com a deployer) un sistema d'IA d'alt risc de l'Annex III?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Cap obligació de registre perquè només es registren els fabricants privats."
+        },
+        {
+          "key": "B",
+          "text": "Inscriure's i registrar l'ús del sistema a la base de dades pública de la UE de sistemes d'IA d'alt risc abans de posar-lo en servei."
+        },
+        {
+          "key": "C",
+          "text": "Publicar les contrasenyes d'administrador del servidor al DOGC."
+        },
+        {
+          "key": "D",
+          "text": "Registrar únicament el cost de les factures elèctriques."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "L'article 49.3 de l'AI Act obliga les autoritats públiques (i organismes que actuen en el seu nom) que despleguen sistemes d'alt risc de l'Annex III a registrar-se a la base de dades de la UE.",
+      "explanationsIncorrect": {
+        "A": "L'AI Act crea expressament una obligació de registre també per als deployers que són autoritats públiques!",
+        "C": "Publicar credencials seria una bretxa de seguretat crítica.",
+        "D": "La base de dades registra metadades de transparència i governança del sistema d'IA, no factures elèctriques."
+      }
+    },
+    {
+      "id": "m08-08-q09",
+      "module": 8,
+      "conceptId": "m08-08-compliment-normatiu",
+      "lessonRef": "content/module-08/m08-08-compliment-normatiu.md",
+      "difficulty": "advanced",
+      "questionType": "normative",
+      "prompt": "Quin criteri quantitatiu indicatiu estableix l'article 51.2 de l'AI Act per presumir que un model d'IA d'ús general (GPAI) presenta risc sistèmic?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Tenir més de 100 usuaris registrats."
+        },
+        {
+          "key": "B",
+          "text": "Que la quantitat acumulada de càlcul utilitzada per al seu entrenament mesurada en operacions de coma flotant sigui superior a 10^25 FLOPs."
+        },
+        {
+          "key": "C",
+          "text": "Ocupar més de 500 MB de memòria RAM."
+        },
+        {
+          "key": "D",
+          "text": "Estar escrit en llenguatge Python."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "L'article 51.2 de l'AI Act fixa el llindar indicatiu de càlcul acumulat d'entrenament > 10^25 FLOPs per presumir capacitats d'alt impacte i risc sistèmic en models GPAI.",
+      "explanationsIncorrect": {
+        "A": "El nombre d'usuaris no és el criteri de l'art. 51.2.",
+        "C": "500 MB és la mida d'un model diminut, molt lluny d'un model GPAI amb risc sistèmic.",
+        "D": "El llenguatge de programació és irrellevant per al risc sistèmic."
+      }
+    },
+    {
+      "id": "m08-05-q07",
+      "module": 8,
+      "conceptId": "m08-05-seguretat-ia",
+      "lessonRef": "content/module-08/m08-05-seguretat-ia.md",
+      "difficulty": "intermediate",
+      "questionType": "code",
+      "prompt": "Una aplicació web municipal executa directament una consulta SQL generada per un LLM a partir de la pregunta d'un ciutadà i renderitza el retorn HTML sense escapar. Quina vulnerabilitat OWASP LLM s'està introduint?",
+      "codeSnippet": "sql = llm.generate(f'Fes SQL per: {pregunta_ciutada}')\ndb.execute(sql)",
+      "options": [
+        {
+          "key": "A",
+          "text": "Biaix de mostreig demogràfic."
+        },
+        {
+          "key": "B",
+          "text": "Training-Serving Skew."
+        },
+        {
+          "key": "C",
+          "text": "Overfitting per excés d'èpoques."
+        },
+        {
+          "key": "D",
+          "text": "Insecure Output Handling (tractar la sortida no confiable de l'LLM com a codi executable, exposant el sistema a SQL Injection i XSS)."
+        }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "La sortida d'un LLM s'ha de tractar sempre com a entrada d'usuari no confiable: mai s'ha d'executar SQL/codi cru ni renderitzar HTML sense sanititzar i parametritzar!",
+      "explanationsIncorrect": {
+        "A": "No té res a veure amb biaix demogràfic.",
+        "B": "No és una discrepància de preprocés MLOps.",
+        "C": "No és un fenomen d'entrenament, sinó una vulnerabilitat crítica de seguretat aplicativa."
+      }
+    },
+    {
+      "id": "m08-04-q06",
+      "module": 8,
+      "conceptId": "m08-04-proteccio-dades",
+      "lessonRef": "content/module-08/m08-04-proteccio-dades.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Per què NO s'ha de fer fine-tuning d'un LLM amb expedients que contenen dades personals identificables (PII) en l'Administració pública?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Perquè els LLMs no accepten text en format UTF-8."
+        },
+        {
+          "key": "B",
+          "text": "Perquè els pesos poden memoritzar i filtrar PII a altres usuaris i fan pràcticament inviable exercir el dret de supressió (art. 17) o rectificació (art. 16) sense reentrenar el model; és molt més segur usar RAG amb RBAC."
+        },
+        {
+          "key": "C",
+          "text": "Perquè el fine-tuning redueix sempre la precisió del model al 0%."
+        },
+        {
+          "key": "D",
+          "text": "Perquè el RGPD prohibeix absolutament qualsevol tipus de xarxa neuronal."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "El RAG manté els documents fora dels pesos, permet control d'accés RBAC pre-recuperació i facilita el compliment immediat dels drets de supressió i rectificació.",
+      "explanationsIncorrect": {
+        "A": "Els LLMs suporten UTF-8 perfectament.",
+        "C": "El risc no és que la precisió caigui a zero, sinó la privacitat i la impossibilitat de desaprendre dades.",
+        "D": "El RGPD és tecnològicament neutre i no prohibeix les xarxes neuronals."
+      }
+    },
+    {
+      "id": "m08-05-q06",
+      "module": 8,
+      "conceptId": "m08-05-seguretat-ia",
+      "lessonRef": "content/module-08/m08-05-seguretat-ia.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Què és l'atac de Data Poisoning aplicat a un sistema d'IA o a una base de coneixement RAG?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Esborrar accidentalment un disc dur sense còpia de seguretat."
+        },
+        {
+          "key": "B",
+          "text": "Augmentar la temperatura de l'LLM de 0,1 a 0,9."
+        },
+        {
+          "key": "C",
+          "text": "Introduir deliberadament dades manipulades o documents maliciosos en el conjunt d'entrenament o a la base documental RAG per degradar el model, introduir portes del darrere (backdoors) o induir respostes falses."
+        },
+        {
+          "key": "D",
+          "text": "Xifrar les comunicacions amb TLS 1.3."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "El Data Poisoning compromet la integritat de les dades d'entrenament o del corpus RAG per manipular el comportament futur del sistema.",
+      "explanationsIncorrect": {
+        "A": "Això és un incident de disponibilitat, no enverinament de dades.",
+        "B": "Canviar la temperatura és un hiperparàmetre d'inferència.",
+        "D": "TLS 1.3 és una mesura de seguretat, no un atac."
+      }
+    },
+    {
+      "id": "m08-07-q06",
+      "module": 8,
+      "conceptId": "m08-07-governanca-models",
+      "lessonRef": "content/module-08/m08-07-governanca-models.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "En l'estratègia Buy vs. Build vs. Adapt per a una administració local que necessita un assistent RAG d'ordenances municipals, quina opció sol oferir el millor equilibri entre sobirania, qualitat i cost?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Entrenar un LLM fundacional de 70B paràmetres des de zero (Build)."
+        },
+        {
+          "key": "B",
+          "text": "Comprar una solució tancada sense accés a prompts ni exportació de dades (Buy cec)."
+        },
+        {
+          "key": "C",
+          "text": "Adaptar un model open-weights desplegat on-premise o en núvol EEE mitjançant arquitectura RAG sobre les ordenances oficials (Adapt)."
+        },
+        {
+          "key": "D",
+          "text": "No indexar les ordenances i demanar a un model genèric que se les inventi."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "L'estratègia Adapt (open-weights sobirà + RAG) evita el cost prohibitiu d'entrenar un LLM des de zero i el vendor lock-in d'un SaaS opac, mantenint sobirania i control total de les fonts.",
+      "explanationsIncorrect": {
+        "A": "Entrenar un LLM fundacional de 70B des de zero costa milions d'euros i és completament inviable per a un ens local.",
+        "B": "Una caixa negra sense exportació ni auditoria genera vendor lock-in i risc d'incompliment normatiu.",
+        "D": "Generaria al·lucinacions jurídiques constants."
+      }
+    },
+    {
+      "id": "m08-02-q05",
+      "module": 8,
+      "conceptId": "m08-02-biaixos",
+      "lessonRef": "content/module-08/m08-02-biaixos.md",
+      "difficulty": "intermediate",
+      "questionType": "metrics",
+      "prompt": "Quina diferència exacta hi ha entre Equal Opportunity i Equalized Odds?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Equal Opportunity exigeix igualar només la taxa de veritables positius (TPR/Recall) entre grups, mentre que Equalized Odds exigeix igualar tant el TPR com la taxa de falsos positius (FPR)."
+        },
+        {
+          "key": "B",
+          "text": "Equal Opportunity només mesura la precisió global i Equalized Odds només mesura la latència."
+        },
+        {
+          "key": "C",
+          "text": "Equalized Odds és menys estricta que Equal Opportunity."
+        },
+        {
+          "key": "D",
+          "text": "Són noms diferents per a la paritat demogràfica."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Equalized Odds és més exigent perquè controla tant l'exclusió injusta de qui ho mereix (TPR) com la inclusió/acusació injusta de qui no ho mereix (FPR).",
+      "explanationsIncorrect": {
+        "B": "Totes dues són mètriques d'equitat sobre la matriu de confusió per grups.",
+        "C": "És just al contrari: Equalized Odds afegeix la restricció de FPR i és més estricta.",
+        "D": "La paritat demogràfica no condiciona per l'etiqueta real Y, mentre que TPR i FPR sí."
+      }
+    },
+    {
+      "id": "m08-05-q10",
+      "module": 8,
+      "conceptId": "m08-05-seguretat-ia",
+      "lessonRef": "content/module-08/m08-05-seguretat-ia.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "Quin risc principal comporta exposar públicament una API d'inferència LLM sense quotes de tokens ni rate limiting per usuari/clau?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Aumentar la precisió del model massa ràpidament."
+        },
+        {
+          "key": "B",
+          "text": "Millorar la seguretat contra prompt injection."
+        },
+        {
+          "key": "C",
+          "text": "Eliminar automàticament les al·lucinacions."
+        },
+        {
+          "key": "D",
+          "text": "Exposar el servei a atacs de Model DoS / Denial of Wallet (esgotament de GPUs i pressupost) i facilitar atacs automatitzats de Model Extraction."
+        }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Sense rate limiting ni quotes estrictes, un atacant pot saturar la infraestructura GPU, disparar la factura cloud (Denial of Wallet) o consultar massivament l'API per clonar/extraure el model.",
+      "explanationsIncorrect": {
+        "A": "Les peticions externes d'inferència no entrenen ni milloren el model.",
+        "B": "L'absència de límits facilita fer milers d'intents automatitzats de prompt injection!",
+        "C": "No redueix les al·lucinacions."
+      }
+    },
+    {
+      "id": "m08-08-q10",
+      "module": 8,
+      "conceptId": "m08-08-compliment-normatiu",
+      "lessonRef": "content/module-08/m08-08-compliment-normatiu.md",
+      "difficulty": "advanced",
+      "questionType": "normative",
+      "prompt": "Respecte de l'excepció de l'article 6.3 de l'AI Act (que permet excloure d'alt risc certs sistemes de l'Annex III que no plantegen risc significatiu), en quin cas NO es pot aplicar MAI aquesta excepció?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Quan el sistema s'executa en servidors Linux."
+        },
+        {
+          "key": "B",
+          "text": "Quan el sistema té una exactitud superior al 90%."
+        },
+        {
+          "key": "C",
+          "text": "Quan el sistema d'IA realitza elaboració de perfils de persones físiques (en aquest cas es considera SEMPRE d'alt risc!)."
+        },
+        {
+          "key": "D",
+          "text": "Quan el sistema només tradueix documents interns."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "L'article 6.3 in fine disposa expressament que, malgrat les excepcions previstes, un sistema d'IA de l'Annex III es considerarà SEMPRE d'alt risc si realitza elaboració de perfils de persones físiques.",
+      "explanationsIncorrect": {
+        "A": "El sistema operatiu no afecta la classificació jurídica de risc.",
+        "B": "L'exactitud tècnica no exclou de la categoria d'alt risc.",
+        "D": "Una traducció genèrica no sol entrar a l'Annex III."
+      }
+    },
+    {
+      "id": "m08-06-q10",
+      "module": 8,
+      "conceptId": "m08-06-auditoria",
+      "lessonRef": "content/module-08/m08-06-auditoria.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "Quin problema pràctic greu sorgeix si una administració contracta un model d'IA comercial sense incloure clàusules contractuals de dret d'auditoria i accés a evidències?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Cap problema, perquè el proveïdor està obligat a regalar el codi font gratuïtament en tots els contractes."
+        },
+        {
+          "key": "B",
+          "text": "Només un retard de 2 mil·lisegons en la latència de l'API."
+        },
+        {
+          "key": "C",
+          "text": "El proveïdor pot oposar secret comercial davant peticions de proves desagregades de biaixos, logs o documentació, deixant l'Administració incapaç d'exercir el control de qualitat, respondre a recursos o complir la FRIA i l'ENS."
+        },
+        {
+          "key": "D",
+          "text": "El model deixa de funcionar automàticament al cap de 30 dies."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Sense clàusules clares d'auditabilitat, accés a logs (art. 12/26.6), mètriques desagregades i cooperació davant òrgans de control, l'Administració queda atrapada i incompleix les seves obligacions públiques.",
+      "explanationsIncorrect": {
+        "A": "Els proveïdors propietaris no cedeixen el codi font si no s'ha pactat contractualment.",
+        "B": "És un risc jurídic i de governança, no de latència de xarxa.",
+        "D": "El model continuaria funcionant, però fora de control i inauditable."
+      }
+    },
+    {
+      "id": "m08-08-q03",
+      "module": 8,
+      "conceptId": "m08-08-compliment-normatiu",
+      "lessonRef": "content/module-08/m08-08-compliment-normatiu.md",
+      "difficulty": "basic",
+      "questionType": "normative",
+      "prompt": "Quina d'aquestes pràctiques està prohibida per l'article 5 de l'AI Act?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Un filtre de correu brossa (spam) al servidor municipal."
+        },
+        {
+          "key": "B",
+          "text": "Un xatbot informatiu d'horaris de biblioteques amb avís d'IA."
+        },
+        {
+          "key": "C",
+          "text": "La puntuació social (social scoring) de ciutadans o el reconeixement d'emocions en el lloc de treball fora de motius mèdics o de seguretat."
+        },
+        {
+          "key": "D",
+          "text": "Un model predictiu de manteniment d'enllumenat públic."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Tant el social scoring (art. 5.1.c) com el reconeixement d'emocions en el lloc de treball o centres educatius sense excepció mèdica/seguretat (art. 5.1.f) són pràctiques prohibides.",
+      "explanationsIncorrect": {
+        "A": "Un filtre d'spam és un sistema de risc mínim.",
+        "B": "Un xatbot informatiu pertany a obligacions de transparència (art. 50), no està prohibit.",
+        "D": "El manteniment predictiu d'enllumenat sense infraestructura crítica és de risc mínim."
+      }
+    },
+    {
+      "id": "m08-02-q06",
+      "module": 8,
+      "conceptId": "m08-02-biaixos",
+      "lessonRef": "content/module-08/m08-02-biaixos.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Un model d'avaluació de necessitat social utilitza la «despesa històrica en serveis municipals» com a etiqueta objectiu (Y). Els barris amb menys equipaments públics presenten menys despesa històrica i el model els assigna menys recursos nous. Quin biaix s'ha produït?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Biaix de quantització del model."
+        },
+        {
+          "key": "B",
+          "text": "Biaix de mesura (etiquetatge / proxy erroni de l'objectiu), agreujat per un bucle de retroalimentació."
+        },
+        {
+          "key": "C",
+          "text": "Sobreajustament per manca de dropout."
+        },
+        {
+          "key": "D",
+          "text": "Cap biaix, perquè la despesa és una dada numèrica objectiva."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Utilitzar la despesa històrica com a proxy de la «necessitat real» confon manca d'accés previ amb manca de necessitat (biaix de mesura famós també en salut pública) i crea un bucle de retroalimentació regressiu.",
+      "explanationsIncorrect": {
+        "A": "No té res a veure amb la precisió numèrica dels pesos.",
+        "C": "El problema és a la definició mateixa de l'etiqueta Y, no a la regularització.",
+        "D": "Que una variable sigui numèrica no vol dir que sigui un bon proxy lliure de biaixos."
+      }
+    },
+    {
+      "id": "m08-04-q01",
+      "module": 8,
+      "conceptId": "m08-04-proteccio-dades",
+      "lessonRef": "content/module-08/m08-04-proteccio-dades.md",
+      "difficulty": "basic",
+      "questionType": "normative",
+      "prompt": "Quina és la diferència jurídica fonamental entre pseudonimització i anonimització segons el RGPD?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Les dades pseudonimitzades continuen essent dades personals subjectes al RGPD, mentre que només les dades realment i irreversiblement anonimitzades queden fora del seu àmbit d'aplicació."
+        },
+        {
+          "key": "B",
+          "text": "Totes dues queden completament fora del RGPD."
+        },
+        {
+          "key": "C",
+          "text": "La pseudonimització és irreversible i l'anonimització és reversible."
+        },
+        {
+          "key": "D",
+          "text": "El RGPD prohibeix utilitzar pseudonimització com a mesura de seguretat."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Segons el Considerant 26 i l'art. 4.5 del RGPD, les dades pseudonimitzades poden atribuir-se a una persona amb informació addicional i segueixen essent dades personals; l'anonimització ha de ser irreversible.",
+      "explanationsIncorrect": {
+        "B": "Només l'anonimització efectiva queda fora del RGPD.",
+        "C": "És exactament a l'inrevés.",
+        "D": "Al contrari, l'art. 25 i l'art. 32 recomanen expressament la pseudonimització com a mesura de seguretat!"
+      }
+    },
+    {
+      "id": "m08-04-q04",
+      "module": 8,
+      "conceptId": "m08-04-proteccio-dades",
+      "lessonRef": "content/module-08/m08-04-proteccio-dades.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Per què el consentiment (art. 6.1.a RGPD) NO sol ser una base jurídica vàlida per tractar dades amb IA dins un procediment administratiu d'ajuts o tributs?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Perquè el RGPD va derogar el consentiment l'any 2024."
+        },
+        {
+          "key": "B",
+          "text": "Perquè existeix un desequilibri clar entre el ciutadà i l'autoritat pública que impedeix que el consentiment sigui lliure (Considerant 43); cal basar-se en obligació legal (6.1.c) o missió en interès públic/poders públics (6.1.e amb rang legal, art. 8 LOPDGDD)."
+        },
+        {
+          "key": "C",
+          "text": "Perquè les administracions públiques només poden usar l'interès legítim (art. 6.1.f) en l'exercici de les seves funcions."
+        },
+        {
+          "key": "D",
+          "text": "Perquè el consentiment només s'aplica a menors d'edat."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "El Considerant 43 del RGPD descarta el consentiment quan hi ha desequilibri manifest amb una autoritat pública; a més, l'art. 6.1.f exclou expressament l'interès legítim per a autoritats públiques en l'exercici de les seves funcions!",
+      "explanationsIncorrect": {
+        "A": "El consentiment continua vigent, però no és adequat en situacions de desequilibri públic.",
+        "C": "L'article 6.1 in fine del RGPD prohibeix expressament a les autoritats públiques usar l'interès legítim (6.1.f) en l'exercici de les seves funcions!",
+        "D": "El consentiment s'aplica a persones físiques en general fora de desequilibri."
+      }
+    },
+    {
+      "id": "m08-08-q04",
+      "module": 8,
+      "conceptId": "m08-08-compliment-normatiu",
+      "lessonRef": "content/module-08/m08-08-compliment-normatiu.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Com classifica l'Annex III de l'AI Act un sistema d'IA utilitzat per una administració pública per avaluar l'elegibilitat de persones físiques per a prestacions i serveis d'assistència pública (ajuts socials, beques, habitatge)?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Sistema d'IA d'alt risc (Annex III, punt 5.a), amb aplicació general des del 2 d'agost de 2026."
+        },
+        {
+          "key": "B",
+          "text": "Sistema de risc mínim sense obligacions."
+        },
+        {
+          "key": "C",
+          "text": "Pràctica prohibida en tots els casos."
+        },
+        {
+          "key": "D",
+          "text": "Només obligació d'avís d'art. 50 sense supervisió humana ni FRIA."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "L'Annex III punt 5.a inclou expressament l'avaluació d'elegibilitat i la concessió, reducció o revocació de prestacions i serveis d'assistència pública essencials com a alt risc.",
+      "explanationsIncorrect": {
+        "B": "Té un impacte directe en drets fonamentals i és un dels casos paradigmàtics d'alt risc públic.",
+        "C": "No està prohibit, però està sotmès a garanties estrictes d'alt risc i FRIA.",
+        "D": "Exigeix totes les obligacions d'alt risc (art. 26, FRIA art. 27, registre UE art. 49, supervisió humana)."
+      }
+    },
+    {
+      "id": "m08-06-q07",
+      "module": 8,
+      "conceptId": "m08-06-auditoria",
+      "lessonRef": "content/module-08/m08-06-auditoria.md",
+      "difficulty": "intermediate",
+      "questionType": "code",
+      "prompt": "Un verificador automàtic d'auditoria revisa un sistema d'IA d'alt risc abans de desplegar-lo i troba: els 6 blocs FRIA plens, EIPD validada pel DPD, Model Card desagregada completa, però retencio_logs_dies = 90. Quin ha de ser el veredicte?",
+      "codeSnippet": "retencio_logs_dies = 90\nminim_legal_dies = 180",
+      "options": [
+        {
+          "key": "A",
+          "text": "APROVAT sense condicions perquè 90 dies són 3 mesos."
+        },
+        {
+          "key": "B",
+          "text": "APROVAT només si el model és open-source."
+        },
+        {
+          "key": "C",
+          "text": "Eliminar completament tots els logs per complir minimització."
+        },
+        {
+          "key": "D",
+          "text": "NO_APTE_AUDITORIA perquè incompleix el mínim legal de conservació de logs de 6 mesos (180 dies) de l'article 26.6 de l'AI Act."
+        }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "90 dies incompleix el mínim de 6 mesos establert a l'art. 26.6 de l'AI Act per als logs automàtics d'un sistema d'alt risc.",
+      "explanationsIncorrect": {
+        "A": "3 mesos és la meitat del mínim legal de 6 mesos.",
+        "B": "La llicència open-source no eximeix de la conservació de logs en sistemes d'alt risc desplegats.",
+        "C": "Eliminar logs destruiria la traçabilitat obligatòria (art. 12 i 26.6 AI Act i ENS)."
+      }
+    },
+    {
+      "id": "m08-03-q01",
+      "module": 8,
+      "conceptId": "m08-03-supervisio-humana",
+      "lessonRef": "content/module-08/m08-03-supervisio-humana.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina diferència hi ha entre HITL (Human-in-the-Loop), HOTL (Human-on-the-Loop) i HIC (Human-in-Command)?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "HITL exigeix revisió i validació humana dins cada decisió; HOTL deixa executar accions de menor risc sota monitoratge i intervenció humana per excepcions; HIC és el govern estratègic global sobre quan i com s'utilitza o s'atura el sistema."
+        },
+        {
+          "key": "B",
+          "text": "Són tres versions del mateix algorisme de xarxes neuronals."
+        },
+        {
+          "key": "C",
+          "text": "HITL vol dir sense humans, HOTL amb un humà i HIC amb dos humans."
+        },
+        {
+          "key": "D",
+          "text": "Només HOTL està permès per a resolucions sancionadores."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "HITL situa l'humà dins cada decisió individual, HOTL el situa supervisant el flux amb capacitat d'intervenció, i HIC representa el comandament estratègic i de governança del sistema.",
+      "explanationsIncorrect": {
+        "B": "Són models organitzatius i tècnics de supervisió humana, no algorismes neuronals.",
+        "C": "No responen al nombre d'humans, sinó al seu rol en el bucle de decisió.",
+        "D": "Les resolucions sancionadores o limitatives de drets requereixen HITL significatiu, no HOTL."
+      }
+    },
+    {
+      "id": "m08-05-q01",
+      "module": 8,
+      "conceptId": "m08-05-seguretat-ia",
+      "lessonRef": "content/module-08/m08-05-seguretat-ia.md",
+      "difficulty": "basic",
+      "questionType": "normative",
+      "prompt": "Quines són les 5 dimensions de seguretat de l'Esquema Nacional de Seguretat (ENS — Reial decret 311/2022)?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Confidencialitat, Integritat, Disponibilitat, Autenticitat i Traçabilitat (C-I-D-A-T)."
+        },
+        {
+          "key": "B",
+          "text": "Precisió, Recall, F1, Latència i Cost."
+        },
+        {
+          "key": "C",
+          "text": "Només Confidencialitat i Disponibilitat."
+        },
+        {
+          "key": "D",
+          "text": "Transparència, Equitat, Explicabilitat, Privacitat i Sostenibilitat."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "L'ENS (RD 311/2022) afegeix Autenticitat i Traçabilitat a la tríada clàssica CIA, definint les 5 dimensions C-I-D-A-T.",
+      "explanationsIncorrect": {
+        "B": "Aquestes són mètriques de Machine Learning i MLOps, no les dimensions de l'ENS.",
+        "C": "Falten Integritat, Autenticitat i Traçabilitat.",
+        "D": "Aquests són principis ètics d'IA responsable, no les 5 dimensions tècniques de l'ENS."
+      }
+    },
+    {
+      "id": "m08-04-q05",
+      "module": 8,
+      "conceptId": "m08-04-proteccio-dades",
+      "lessonRef": "content/module-08/m08-04-proteccio-dades.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Quan s'ha de dur a terme una Avaluació d'Impacte relativa a la Protecció de Dades (EIPD / DPIA — art. 35 RGPD) en un projecte d'IA municipal?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Un cop el sistema porti 6 mesos en producció per veure si ha fallat."
+        },
+        {
+          "key": "B",
+          "text": "Només si l'APDCAT obre un expedient sancionador."
+        },
+        {
+          "key": "C",
+          "text": "Abans d'iniciar el tractament, amb l'assessorament obligatori del DPD, i amb consulta prèvia a l'APDCAT (art. 36) si persisteix un alt risc residual."
+        },
+        {
+          "key": "D",
+          "text": "Únicament si el sistema supera els 10 milions d'euros de pressupost."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "La EIPD és un instrument preventiu (art. 35.1: «amb caràcter previ al tractament») que exigeix assessorament del DPD (art. 35.2) i consulta prèvia a l'autoritat de control si el risc residual continua essent alt (art. 36).",
+      "explanationsIncorrect": {
+        "A": "Fer la EIPD després de posar el sistema en producció incompleix l'art. 35.1 RGPD.",
+        "B": "És una obligació preventiva proactiva, no reactiva a una sanció.",
+        "D": "L'obligatorietat depèn del risc per als drets i llibertats, mai del pressupost econòmic."
+      }
+    },
+    {
+      "id": "m08-03-q07",
+      "module": 8,
+      "conceptId": "m08-03-supervisio-humana",
+      "lessonRef": "content/module-08/m08-03-supervisio-humana.md",
+      "difficulty": "intermediate",
+      "questionType": "code",
+      "prompt": "En un sistema HITL d'expedients amb temps mínim de revisió de 5 segons i principi de quatre ulls per a denegacions, un funcionari rebutja un expedient en 1,4 segons posant motivació «OK» i sense segon supervisor. Quantes alertes bloquejants s'han d'activar?",
+      "codeSnippet": "segons_revisio = 1.4\ndecisio = 'DESFAVORABLE'\nmotivacio = 'OK'\nsegon_supervisor = None",
+      "options": [
+        {
+          "key": "A",
+          "text": "Cap alerta, perquè la denegació coincideix amb el model."
+        },
+        {
+          "key": "B",
+          "text": "1 alerta (només el temps)."
+        },
+        {
+          "key": "C",
+          "text": "2 alertes (temps i motivació, però els quatre ulls no calen en denegacions)."
+        },
+        {
+          "key": "D",
+          "text": "3 alertes (rubber-stamping per temps insuficient, motivació insuficient i absència de segon supervisor independent)."
+        }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Incompleix simultàniament els tres controls de seguretat: revisió exprés (< 5s), manca de motivació fàctica/jurídica i absència del segon supervisor de quatre ulls.",
+      "explanationsIncorrect": {
+        "A": "Coincidir amb el model en 1,4 segons és precisament el símptoma típic de rubber-stamping.",
+        "B": "També fallen la motivació i el principi dels quatre ulls.",
+        "C": "Les denegacions o actes limitatius són precisament on el doble control és més necessari."
+      }
+    },
+    {
+      "id": "m08-02-q08",
+      "module": 8,
+      "conceptId": "m08-02-biaixos",
+      "lessonRef": "content/module-08/m08-02-biaixos.md",
+      "difficulty": "advanced",
+      "questionType": "conceptual",
+      "prompt": "Quina implicació fonamental té el teorema d'impossibilitat de l'equitat algorítmica per als responsables públics?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Que quan les taxes base reals difereixen entre grups i el model no és perfecte, no es poden complir simultàniament totes les definicions d'equitat (Demographic Parity, Equalized Odds, Predictive Parity); per tant, triar la mètrica prioritària és una decisió jurídica i de política pública."
+        },
+        {
+          "key": "B",
+          "text": "Que és matemàticament impossible reduir cap biaix en un model d'IA."
+        },
+        {
+          "key": "C",
+          "text": "Que només les xarxes neuronals profundes poden satisfer totes les mètriques d'equitat alhora."
+        },
+        {
+          "key": "D",
+          "text": "Que n'hi ha prou d'augmentar la mida del dataset per satisfer totes les definicions simultàniament."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "El teorema demostra incompatibilitats matemàtiques entre definicions d'equitat quan les taxes base difereixen; cal explicitar quina dimensió d'equitat protegeix millor els drets en cada procediment administratiu.",
+      "explanationsIncorrect": {
+        "B": "Sí que es poden reduir dràsticament els biaixos i satisfer la mètrica adequada al context.",
+        "C": "És una propietat matemàtica independent de l'arquitectura del model.",
+        "D": "Més dades no canvien una incompatibilitat algebraica entre taxes base diferents."
+      }
+    },
+    {
+      "id": "m08-03-q09",
+      "module": 8,
+      "conceptId": "m08-03-supervisio-humana",
+      "lessonRef": "content/module-08/m08-03-supervisio-humana.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Quina combinació de patrons de disseny d'interfície (UX) redueix més eficaçment el biaix d'automatització dels empleats públics supervisors?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Ressaltar la recomanació de la IA en verd brillant, amagar la incertesa i exigir aprovar 100 expedients per hora."
+        },
+        {
+          "key": "B",
+          "text": "Ocultar els documents originals del ciutadà per estalviar temps de lectura."
+        },
+        {
+          "key": "C",
+          "text": "Aplicar funcions de fricció cognitiva (mostrar fets i documents abans del veredicte del model), exposar la zona d'incertesa i explicació XAI, i registrar els overrides sense penalitzar la discrepància."
+        },
+        {
+          "key": "D",
+          "text": "Eliminar la possibilitat d'override perquè tots els funcionaris decideixin igual que el model."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Les funcions de fricció cognitiva, la transparència d'incertesa/evidències i la protecció organitzativa de l'override combaten eficaçment la delegació acrítica.",
+      "explanationsIncorrect": {
+        "A": "Aquest disseny maximitza el biaix d'automatització i força el rubber-stamping.",
+        "B": "Impedeix contrastar la recomanació del model amb la realitat de l'expedient.",
+        "D": "Eliminar l'override incompleix directament l'article 14.4.d de l'AI Act."
+      }
+    },
+    {
+      "id": "m08-01-q09",
+      "module": 8,
+      "conceptId": "m08-01-transparencia",
+      "lessonRef": "content/module-08/m08-01-transparencia.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "Un generador automàtic de contrafactuals recomana a un ciutadà: «Si tinguessis 8 anys menys d'edat i un altre codi postal de naixement, la teva ajuda s'aprovaria». Quin error greu d'enginyeria s'ha comès?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "No s'han imposat restriccions d'accionabilitat i immutabilitat sobre les variables del cercador contrafactual (i a més s'evidencia l'ús problemàtic d'atributs sensibles o proxies en el model!)."
+        },
+        {
+          "key": "B",
+          "text": "S'ha utilitzat un llindar de classificació massa baix."
+        },
+        {
+          "key": "C",
+          "text": "Falta augmentar la temperatura del generador contrafactual."
+        },
+        {
+          "key": "D",
+          "text": "Cap error: tots els contrafactuals vàlids matemàticament s'han d'enviar tal qual al ciutadà."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Els contrafactuals han de restringir-se sempre a variables modificables i accionables; a més, si l'edat o el codi postal de naixement capgiren la decisió sense base legal, cal revisar possibles biaixos discriminatoris del model!",
+      "explanationsIncorrect": {
+        "B": "El problema no és el llindar, sinó proposar canvis impossibles en variables immutables.",
+        "C": "Els contrafactuals tabulars no es regulen amb temperatura d'LLM.",
+        "D": "Enviar contrafactuals absurds o discriminatoris vulnera la qualitat del servei i pot evidenciar discriminació."
+      }
+    },
+    {
+      "id": "m08-07-q08",
+      "module": 8,
+      "conceptId": "m08-07-governanca-models",
+      "lessonRef": "content/module-08/m08-07-governanca-models.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "Quina clàusula contractual és fonamental en un plec de contractació pública d'IA (LCSP) per evitar el segrest tecnològic (vendor lock-in)?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Exigir APIs compatibles amb estàndards oberts, exportabilitat íntegra en formats oberts de dades, prompts, metadades, logs i etiquetes, i un pla de sortida (exit plan) sense penalitzacions ocultes."
+        },
+        {
+          "key": "B",
+          "text": "Signar una permanència exclusiva de 20 anys amb un format binari propietari."
+        },
+        {
+          "key": "C",
+          "text": "Cedir al proveïdor la propietat intel·lectual de totes les ordenances municipals."
+        },
+        {
+          "key": "D",
+          "text": "Renunciar a realitzar proves d'acceptació prèvies al pagament."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "La portabilitat de dades, prompts i logs en formats oberts juntament amb un pla de sortida real evita quedar atrapat quan venç el contracte o puja el preu.",
+      "explanationsIncorrect": {
+        "B": "Això consolida un vendor lock-in absolut i vulnera els límits de durada de la LCSP.",
+        "C": "Les dades i normes públiques són sempre de titularitat pública.",
+        "D": "Renunciar a proves d'acceptació deixa l'Administració indefensa davant productes defectuosos."
+      }
+    },
+    {
+      "id": "m08-01-q02",
+      "module": 8,
+      "conceptId": "m08-01-transparencia",
+      "lessonRef": "content/module-08/m08-01-transparencia.md",
+      "difficulty": "basic",
+      "questionType": "normative",
+      "prompt": "Quina obligació específica imposa l'article 50.1 de l'AI Act (Reglament UE 2024/1689) quan un ajuntament posa un xatbot d'IA d'atenció ciutadana a la Seu Electrònica?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Publicar el conjunt complet de dades d'entrenament del model al tauler d'anuncis."
+        },
+        {
+          "key": "B",
+          "text": "Informar les persones físiques que estan interactuant amb un sistema d'IA, llevat que sigui evident per a una persona raonablement informada."
+        },
+        {
+          "key": "C",
+          "text": "Prohibir qualsevol xatbot municipal per ser una pràctica de l'article 5."
+        },
+        {
+          "key": "D",
+          "text": "Obtenir el consentiment notarial de cada ciutadà abans d'obrir el xat."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "L'article 50.1 de l'AI Act estableix l'obligació de transparència d'informar els usuaris que interactuen amb un sistema d'IA (com ara un xatbot conversacional).",
+      "explanationsIncorrect": {
+        "A": "L'article 50.1 no obliga els ajuntaments a publicar datasets d'entrenament de tercers.",
+        "C": "Un xatbot informatiu no és una pràctica prohibida de l'article 5.",
+        "D": "No existeix cap requisit de consentiment notarial."
+      }
+    },
+    {
+      "id": "m08-06-q06",
+      "module": 8,
+      "conceptId": "m08-06-auditoria",
+      "lessonRef": "content/module-08/m08-06-auditoria.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "A qui ha de notificar una administració pública espanyola els resultats de la seva FRIA segons l'article 27.3 de l'AI Act?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "A cap organisme: s'ha de destruir un cop llegida."
+        },
+        {
+          "key": "B",
+          "text": "Exclusivament al proveïdor comercial del programari."
+        },
+        {
+          "key": "C",
+          "text": "A l'autoritat de vigilància del mercat competent (a Espanya, l'AESIA), utilitzant la plantilla automatitzada prevista."
+        },
+        {
+          "key": "D",
+          "text": "Al Banc Central Europeu."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "L'article 27.3 de l'AI Act imposa al deployer l'obligació de notificar els resultats de la FRIA a l'autoritat de vigilància del mercat competent (AESIA a Espanya).",
+      "explanationsIncorrect": {
+        "A": "Cal conservar-la, actualitzar-la i notificar-ne els resultats.",
+        "B": "La notificació és cap a l'autoritat pública de supervisió, no cap al proveïdor comercial.",
+        "D": "El BCE no és l'autoritat de vigilància de l'AI Act per a administracions locals."
+      }
+    },
+    {
+      "id": "m08-06-q02",
+      "module": 8,
+      "conceptId": "m08-06-auditoria",
+      "lessonRef": "content/module-08/m08-06-auditoria.md",
+      "difficulty": "basic",
+      "questionType": "normative",
+      "prompt": "Quin període mínim de conservació exigeix l'article 26.6 de l'AI Act als responsables del desplegament (deployers) per als registres automàtics (logs) generats per un sistema d'IA d'alt risc sota el seu control?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "24 hores."
+        },
+        {
+          "key": "B",
+          "text": "Com a mínim 6 mesos (llevat que el Dret de la UE o nacional disposi una altra cosa)."
+        },
+        {
+          "key": "C",
+          "text": "7 dies naturals."
+        },
+        {
+          "key": "D",
+          "text": "No existeix cap obligació de conservar logs en sistemes d'alt risc."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "L'article 26.6 de l'AI Act estableix un mínim legal de 6 mesos de conservació dels logs generats automàticament sota control del deployer.",
+      "explanationsIncorrect": {
+        "A": "24 hores faria impossible qualsevol investigació o recurs posterior.",
+        "C": "7 dies està molt per sota del mínim legal europeu.",
+        "D": "L'article 12 i l'article 26.6 imposen explícitament el registre automàtic i la seva conservació."
+      }
+    },
+    {
+      "id": "m08-02-q02",
+      "module": 8,
+      "conceptId": "m08-02-biaixos",
+      "lessonRef": "content/module-08/m08-02-biaixos.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Un assistent de veu municipal reconeix el castellà amb un 94% de precisió però el català amb un 72% perquè el conjunt d'entrenament contenia un 95% d'àudios en castellà. Quin tipus de biaix és principalment?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Biaix de representació (mostreig)."
+        },
+        {
+          "key": "B",
+          "text": "Biaix d'automatització humana."
+        },
+        {
+          "key": "C",
+          "text": "Biaix de sobrerregularització L2."
+        },
+        {
+          "key": "D",
+          "text": "Biaix de quantització INT8."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "La infrarepresentació del català (i les seves variants dialectals) al conjunt de dades d'entrenament és un exemple clàssic de biaix de representació o mostreig.",
+      "explanationsIncorrect": {
+        "B": "El biaix d'automatització és psicològic en l'operador humà, no de cobertura del dataset.",
+        "C": "La regularització L2 no provoca asimetria lingüística entre idiomes.",
+        "D": "La quantització redueix precisió numèrica però no explica un 95%/5% d'entrenament."
+      }
+    },
+    {
+      "id": "m08-01-q01",
+      "module": 8,
+      "conceptId": "m08-01-transparencia",
+      "lessonRef": "content/module-08/m08-01-transparencia.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina diferència fonamental hi ha entre interpretabilitat intrínseca (white-box) i explicabilitat post-hoc (XAI)?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "La interpretabilitat intrínseca prové de models senzills que es comprenen directament per la seva estructura (regressió logística, arbre curt), mentre que l'explicabilitat post-hoc aplica tècniques externes (SHAP, LIME) per aproximar o atribuir decisions d'un model caixa negra ja entrenat."
+        },
+        {
+          "key": "B",
+          "text": "La interpretabilitat intrínseca només serveix per a LLMs i l'explicabilitat post-hoc només per a regressions lineals."
+        },
+        {
+          "key": "C",
+          "text": "Són sinònims exactes dins el Reglament Europeu d'IA."
+        },
+        {
+          "key": "D",
+          "text": "L'explicabilitat post-hoc elimina completament la necessitat de motivar els actes administratius."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Els models intrínsecament interpretables ofereixen explicació exacta per construcció; els mètodes post-hoc intenten explicar models complexos opacs un cop entrenats.",
+      "explanationsIncorrect": {
+        "B": "És just a l'inrevés: els LLMs són models caixa negra complexos i les regressions lineals són intrínsecament interpretables.",
+        "C": "Són conceptes tècnics clarament diferenciats en literatura XAI.",
+        "D": "Cap mètode XAI no substitueix l'obligació legal de motivar l'acte administratiu (art. 35 LPACAP)."
+      }
+    }
+  ]
+}

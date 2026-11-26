@@ -1,0 +1,1409 @@
+{
+  "id": "module-05",
+  "module": 5,
+  "title": "Examen acumulatiu del Mòdul 5: IA conversacional",
+  "note": "Paràmetres orientatius de preparació (durada, penalització i nota mínima configurables a la plataforma; no constitueixen bases oficials de convocatòria).",
+  "recommendedMinutes": 45,
+  "questions": [
+    {
+      "id": "m05-03-q03",
+      "module": 5,
+      "conceptId": "m05-03-fluxos-conversacionals",
+      "lessonRef": "content/module-05/m05-03-fluxos-conversacionals.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Com han d'operar les **sortides d'escapament globals (*Global Escape Hatches*)** com `cancel·lar` o `parlar amb una persona` dins d'una màquina d'estats conversacional?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Només han de funcionar a la pantalla inicial."
+        },
+        {
+          "key": "B",
+          "text": "Han d'estar desactivades fins que l'usuari ompli tots els camps."
+        },
+        {
+          "key": "C",
+          "text": "S'han d'interceptar i executar immediatament des de **qualsevol estat** del flux, garantint el control total de l'usuari en tot moment."
+        },
+        {
+          "key": "D",
+          "text": "Només funcionen si l'usuari escriu codi SQL."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Cap usuari ha de quedar segrestat dins un pas d'un formulari conversacional; les sortides globals s'avaluen sempre en primer lloc.",
+      "explanationsIncorrect": {
+        "A": "Si no funcionen en estats intermedis, l'usuari queda atrapat.",
+        "B": "Forçaria l'usuari a acabar un tràmit que vol cancel·lar.",
+        "D": "Funcionen en llenguatge natural o botó clicable."
+      }
+    },
+    {
+      "id": "m05-03-q08",
+      "module": 5,
+      "conceptId": "m05-03-fluxos-conversacionals",
+      "lessonRef": "content/module-05/m05-03-fluxos-conversacionals.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En la classe `SessioDialeg` de la lliçó, per què és important la línia `self.errors_consecutius = 0` cada vegada que l'usuari introdueix un *slot* vàlid (p. ex., `Mataró` després d'un primer error)?",
+      "codeSnippet": "if trobat:\n    self.slots[\"oficina\"] = trobat.capitalize()\n    self.errors_consecutius = 0",
+      "options": [
+        {
+          "key": "A",
+          "text": "Perquè el comptador ha de mesurar **errors consecutius** i no acumulats al llarg de tota la sessió; si un usuari s'ha equivocat una vegada al pas 1 però s'ha recuperat bé, no s'ha de disparar prematurament el Fallback 2 o 3 si dubta més endavant al pas 4."
+        },
+        {
+          "key": "B",
+          "text": "Per esborrar el valor de `self.slots['oficina']`."
+        },
+        {
+          "key": "C",
+          "text": "Per impedir que es pugui arribar mai a `ESCALADA_HUMA`."
+        },
+        {
+          "key": "D",
+          "text": "Perquè Python no permet enters superiors a 1."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Reiniciar el comptador en cada avenç vàlid distingeix un bloqueig real (3 errors seguits sense progrés) d'errors puntuals recuperats en una conversa llarga (opcionalment es pot portar a part un límit global d'errors per sessió si cal).",
+      "explanationsIncorrect": {
+        "B": "Conserva intacte `self.slots['oficina']`.",
+        "C": "Si posteriorment falla 3 cops seguits, continua escalant a `ESCALADA_HUMA`.",
+        "D": "Python admet enters de precisió arbitrària."
+      }
+    },
+    {
+      "id": "m05-03-q06",
+      "module": 5,
+      "conceptId": "m05-03-fluxos-conversacionals",
+      "lessonRef": "content/module-05/m05-03-fluxos-conversacionals.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Abans que un flux conversacional executi una acció d'escriptura (gravar una cita prèvia o registrar una incidència de via pública), quin estat obligatori s'ha d'inserir a la màquina d'estats?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Executar directament l'escriptura en segon pla sense avisar l'usuari."
+        },
+        {
+          "key": "B",
+          "text": "Demana a l'usuari que repeteixi el seu DNI tres vegades."
+        },
+        {
+          "key": "C",
+          "text": "Un estat de **confirmació explícita** que mostri clarament el resum de tots els *slots* recollits amb opcions `[Confirmar]`, `[Modificar]` i `[Cancel·lar]`."
+        },
+        {
+          "key": "D",
+          "text": "Tancar la finestra del navegador."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "La confirmació explícita abans d'efectes secundaris intercepta males interpretacions del NLU i dona seguretat a l'usuari abans de modificar cap registre real.",
+      "explanationsIncorrect": {
+        "A": "Podria gravar cites o incidències errònies per una mala interpretació d'un slot.",
+        "B": "Innecessari i molest; no verifica la correcció dels paràmetres del tràmit.",
+        "D": "Interrompria el tràmit."
+      }
+    },
+    {
+      "id": "m05-06-q03",
+      "module": 5,
+      "conceptId": "m05-06-tracabilitat-conversacional",
+      "lessonRef": "content/module-05/m05-06-tracabilitat-conversacional.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Per què és imprescindible registrar `model_id`, `prompt_version` i `chunks_ids` a cada torn d'un chatbot RAG?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Només per ocupar més disc."
+        },
+        {
+          "key": "B",
+          "text": "Perquè els embeddings ho exigeixen sintàcticament."
+        },
+        {
+          "key": "C",
+          "text": "Per garantir **reproductibilitat i auditabilitat**: saber exactament quin model, quin prompt i quins fragments normatius vigents en aquella data van generar una resposta davant d'una reclamació o incidència."
+        },
+        {
+          "key": "D",
+          "text": "Per poder modificar retroactivament les respostes donades fa dos mesos."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Sense registrar la versió exacta del model, el prompt i els fragments recuperats, és impossible investigar una al·lucinació ni acreditar l'origen d'una resposta històrica.",
+      "explanationsIncorrect": {
+        "A": "Són pocs bytes d'enorme valor operatiu i jurídic.",
+        "B": "No és un requisit dels embeddings, sinó de governança i LLMOps.",
+        "D": "Els registres d'auditoria són immutables, mai modificables."
+      }
+    },
+    {
+      "id": "m05-03-q07",
+      "module": 5,
+      "conceptId": "m05-03-fluxos-conversacionals",
+      "lessonRef": "content/module-05/m05-03-fluxos-conversacionals.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Al torn 1 l'usuari pregunta «Quina bonificació d'IBI tinc per plaques solars?» i al torn 2 escriu «I quant dura?». Quina combinació resol correctament el torn 2?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Cercar literalment «I quant dura?» a BM25 sense historial."
+        },
+        {
+          "key": "B",
+          "text": "Aplicar un índex IVF-PQ amb `nprobe = 1`."
+        },
+        {
+          "key": "C",
+          "text": "Demanar a l'usuari que sempre torni a copiar tota la pregunta anterior."
+        },
+        {
+          "key": "D",
+          "text": "Passar la **finestra lliscant dels darrers torns** a una etapa de ***Query Rewriting*** que reescriu la pregunta anafòrica en «Quants anys dura la bonificació de l'IBI per plaques solars?» abans d'invocar el RAG."
+        }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "El Query Rewriting deslliga les referències implícites del diàleg multi-torn perquè el retriever híbrid trobi exactament el paràgraf sobre la durada de la bonificació.",
+      "explanationsIncorrect": {
+        "A": "BM25 retornaria resultats aleatoris de qualsevol tràmit que contingui «dura».",
+        "B": "L'índex vectorial no resol pronoms ni anàfores absents de la consulta.",
+        "C": "Trencaria l'experiència conversacional."
+      }
+    },
+    {
+      "id": "m05-02-q01",
+      "module": 5,
+      "conceptId": "m05-02-assistents-corporatius",
+      "lessonRef": "content/module-05/m05-02-assistents-corporatius.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quin és el principi suprem de control d'accés d'un **assistent corporatiu intern** en una administració pública?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "L'assistent **mai no pot veure, recuperar ni revelar** a un empleat cap dada a la qual aquest empleat no tingui accés directe al sistema font (propagació OBO / mínim privilegi)."
+        },
+        {
+          "key": "B",
+          "text": "Tots els empleats han de poder consultar els expedients de tots els departaments per agilitzar la feina."
+        },
+        {
+          "key": "C",
+          "text": "L'assistent ha de fer servir sempre un usuari administrador únic compartit."
+        },
+        {
+          "key": "D",
+          "text": "Les contrasenyes s'han de guardar en text pla dins del *system prompt*."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Respectar estrictament els permisos reals de cada empleat (OBO) evita escalades de privilegis i fuites creuades entre departaments o municipis.",
+      "explanationsIncorrect": {
+        "B": "Vulneraria el RGPD (minimització/confidencialitat) i l'ENS.",
+        "C": "És un antipatró greu vulnerable a exfiltració per *prompt injection*.",
+        "D": "Error catastròfic de ciberseguretat."
+      }
+    },
+    {
+      "id": "m05-02-q07",
+      "module": 5,
+      "conceptId": "m05-02-assistents-corporatius",
+      "lessonRef": "content/module-05/m05-02-assistents-corporatius.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Com s'han de gestionar els **historials de conversa** dels empleats amb l'assistent corporatiu per complir el RGPD i l'ENS?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Compartir-los públicament entre tots els companys perquè tothom aprengui."
+        },
+        {
+          "key": "B",
+          "text": "Enviar-los automàticament al proveïdor del model perquè reentreni la propera versió."
+        },
+        {
+          "key": "C",
+          "text": "Conservar-los indefinidament per sempre sense política de retenció."
+        },
+        {
+          "key": "D",
+          "text": "Mantenir-los **estrictament aïllats per usuari** (mai memòria compartida ni reentrenament automàtic), amb **termini de retenció acotat** (p. ex., 30–90 dies) separat dels logs mínims d'auditoria de seguretat ENS."
+        }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "L'aïllament per usuari evita contaminació creuada de dades i la retenció limitada compleix el principi de limitació del termini de conservació (art. 5.1.e RGPD).",
+      "explanationsIncorrect": {
+        "A": "Crearia fuites immediates entre departaments i expedients.",
+        "B": "Prohibit en entorns públics sense base legal ni sobirania.",
+        "C": "Vulnera el principi de limitació del termini de conservació del RGPD."
+      }
+    },
+    {
+      "id": "m05-01-q08",
+      "module": 5,
+      "conceptId": "m05-01-chatbots",
+      "lessonRef": "content/module-05/m05-01-chatbots.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En la funció `enrutar_missatge` de la lliçó, per què la regla d'**`ESCALAR_HUMA` apareix en primera posició** dins `PATRONS_INTENT`, abans de `DEMANAR_CITA` i `INFO_NORMATIVA`?",
+      "codeSnippet": "PATRONS_INTENT = [\n    (\"ESCALAR_HUMA\", [\"parlar amb una persona\", \"agent humà\", ...], \"ESCALADA_OAC\"),\n    (\"DEMANAR_CITA\", ...), ...]",
+      "options": [
+        {
+          "key": "A",
+          "text": "Per garantir **prioritat màxima a la petició explícita d'atenció humana**: fins i tot si el missatge conté paraules d'altres dominis (p. ex., «Tinc un problema amb l'IBI i vull parlar amb una persona»), el sistema escala immediatament sense atrapar el ciutadà en un bucle automàtic."
+        },
+        {
+          "key": "B",
+          "text": "Per ordre alfabètic estricte."
+        },
+        {
+          "key": "C",
+          "text": "Perquè en Python les llistes només llegeixen el primer element."
+        },
+        {
+          "key": "D",
+          "text": "Per impedir que ningú pugui consultar ordenances d'IBI."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Respectar immediatament la voluntat del ciutadà de parlar amb un humà (sense retenir-lo en menús ni respostes RAG) és un principi clau d'ètica, qualitat de servei i supervisió humana.",
+      "explanationsIncorrect": {
+        "B": "`ESCALAR_HUMA` no va abans de `DEMANAR_CITA` per ordre alfabètic.",
+        "C": "El bucle `for` recorre tots els elements fins trobar coincidència.",
+        "D": "Si el missatge no demana un humà, passa normalment a `INFO_NORMATIVA`."
+      }
+    },
+    {
+      "id": "m05-07-q10",
+      "module": 5,
+      "conceptId": "m05-07-supervisio-conversacional",
+      "lessonRef": "content/module-05/m05-07-supervisio-conversacional.md",
+      "difficulty": "advanced",
+      "questionType": "normative",
+      "prompt": "Com connecta la supervisió contínua d'un assistent virtual amb el principi de **supervisió humana de l'article 14 de l'AI Act** (aplicable directament a alt risc i referent de bones pràctiques públiques)?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Impedint que cap operador humà pugui aturar el sistema un cop arrencat."
+        },
+        {
+          "key": "B",
+          "text": "Delegant tota responsabilitat al proveïdor del programari."
+        },
+        {
+          "key": "C",
+          "text": "Dotant els operadors humans de **visibilitat real del rendiment** (KPIs, mostreig, alertes d'anomalies), comprensió de limitacions (contra el **biaix d'automatització**) i **capacitat efectiva d'intervenir, anul·lar o interrompre (*Kill Switch*)** el sistema de forma segura en qualsevol moment."
+        },
+        {
+          "key": "D",
+          "text": "Publicant totes les converses privades en un tauler obert a Internet."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "L'art. 14 AI Act exigeix una supervisió humana efectiva (no simbòlica!): monitoratge comprensible, consciència del biaix d'automatització i capacitat real d'intervenció i aturada segura.",
+      "explanationsIncorrect": {
+        "A": "L'art. 14 exigeix precisament la capacitat humana d'interrompre el funcionament (stop button).",
+        "B": "L'administració desplegadora manté responsabilitats clares de supervisió i governança.",
+        "D": "Vulneraria el RGPD."
+      }
+    },
+    {
+      "id": "m05-02-q02",
+      "module": 5,
+      "conceptId": "m05-02-assistents-corporatius",
+      "lessonRef": "content/module-05/m05-02-assistents-corporatius.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Què és el fenomen conegut com a ***Shadow AI*** (IA a l'ombra) en una organització pública?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Un mode fosc de la interfície web."
+        },
+        {
+          "key": "B",
+          "text": "L'ús no governat ni autoritzat de plataformes externes d'IA (sovint gratuïtes i fora de l'EEE) per part d'empleats que hi enganxen dades personals o documents interns confidencials."
+        },
+        {
+          "key": "C",
+          "text": "Executar un model open-weights en un servidor local certificat ENS."
+        },
+        {
+          "key": "D",
+          "text": "Utilitzar un índex BM25 en segon pla."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "La Shadow AI exposa expedients i dades personals fora del perímetre legal (RGPD, art. 95 LGT, ENS); cal combatre-la oferint un assistent corporatiu segur + formació + DLP.",
+      "explanationsIncorrect": {
+        "A": "No té relació amb temes visuals.",
+        "C": "Un desplegament *on-premise* governat és precisament la solució a la Shadow AI.",
+        "D": "No té relació amb BM25."
+      }
+    },
+    {
+      "id": "m05-07-q06",
+      "module": 5,
+      "conceptId": "m05-07-supervisio-conversacional",
+      "lessonRef": "content/module-05/m05-07-supervisio-conversacional.md",
+      "difficulty": "intermediate",
+      "questionType": "metrics",
+      "prompt": "Si utilitzes ***LLM-as-a-Judge*** de manera asíncrona per puntuar automàticament `Faithfulness` sobre milers de converses diàries, quina validació metodològica és indispensable?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Cap, perquè un LLM jutge és infal·lible al 100%."
+        },
+        {
+          "key": "B",
+          "text": "Executar-lo síncronament fent esperar el ciutadà 12 segons addicionals."
+        },
+        {
+          "key": "C",
+          "text": "**Calibrar-lo periòdicament contra una mostra anotada per tècnics humans** mesurant l'acord inter-anotador (**Kappa de Cohen**), ja que els LLMs jutges poden tenir biaixos (ex. preferir respostes llargues encara que jurídicament imprecises)."
+        },
+        {
+          "key": "D",
+          "text": "Usar el mateix prompt sense rúbrica ni criteris explícits."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "LLM-as-a-Judge escala l'avaluació al 100% del trànsit fora del camí crític de latència, però només és fiable si es mesura i manté un acord alt (Kappa) respecte d'experts humans.",
+      "explanationsIncorrect": {
+        "A": "Els LLMs jutges tenen biaixos de verbositat, posició i auto-preferència.",
+        "B": "S'ha d'executar de manera asíncrona per no penalitzar la latència del ciutadà.",
+        "D": "Exigeix una rúbrica detallada i estructurada per criteris."
+      }
+    },
+    {
+      "id": "m05-04-q05",
+      "module": 5,
+      "conceptId": "m05-04-integracio-bases-coneixement",
+      "lessonRef": "content/module-05/m05-04-integracio-bases-coneixement.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Un chatbot municipal està recomanant als ciutadans demanar una subvenció d'ajuts escolars el termini de la qual va tancar fa 15 dies. Quin mecanisme determinista prevé aquesta fallada exactament el dia del tancament?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Demanar a l'LLM que endevini quin dia som avui sense metadades."
+        },
+        {
+          "key": "B",
+          "text": "Incluir les metadades `valid_from` i `valid_until` a cada convocatòria indexada i aplicar un **pre-filtre temporal determinista (`valid_from <= avui <= valid_until`)** (o marcar l'estat com `TANCADA` al context)."
+        },
+        {
+          "key": "C",
+          "text": "Apujar la temperatura de l'LLM a 0,9."
+        },
+        {
+          "key": "D",
+          "text": "Eliminar totes les convocatòries de la web per sempre."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "El filtratge determinista sobre metadades temporals garanteix amb exactitud de calendari que cap convocatòria vençuda s'ofereixi com a vigent.",
+      "explanationsIncorrect": {
+        "A": "Un LLM sense data del sistema ni metadades vigents no sap si la convocatòria està oberta o tancada.",
+        "C": "Més temperatura augmenta al·lucinacions.",
+        "D": "Pot ser útil conservar la fitxa marcada com `TANCADA` per informar quan va acabar, però mai com a oberta."
+      }
+    },
+    {
+      "id": "m05-06-q09",
+      "module": 5,
+      "conceptId": "m05-06-tracabilitat-conversacional",
+      "lessonRef": "content/module-05/m05-06-tracabilitat-conversacional.md",
+      "difficulty": "advanced",
+      "questionType": "case-study",
+      "prompt": "Un ciutadà afirma que el 12 de maig el chatbot li va informar erròniament sobre el termini d'una subvenció. L'administració revisa la traça `tr-88412` i troba `chunks_ids = ['SUB-2025#c3']` amb `prompt_version = 'v1.8'`. Què demostra i permet fer aquesta traça?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "No serveix per a res perquè no té el DNI del ciutadà."
+        },
+        {
+          "key": "B",
+          "text": "Acredita amb exactitud la causa arrel (el 12 de maig es va recuperar un fragment de la convocatòria del **2025** que no estava marcat `CADUCAT`!), permet corregir immediatament el bug de sincronització, atendre amb transparència la queixa i auditar si altres consultes d'aquell dia van rebre el mateix fragment."
+        },
+        {
+          "key": "C",
+          "text": "Demostra que el ciutadà menteix perquè el bot mai s'equivoca."
+        },
+        {
+          "key": "D",
+          "text": "Obliga a esborrar tots els logs del mes de maig."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "La traçabilitat completa no només defensa l'Administració quan té raó: també permet detectar ràpidament l'abast real d'un error (quants ciutadans van veure `SUB-2025#c3`!), corregir la causa arrel i actuar amb transparència i bona administració.",
+      "explanationsIncorrect": {
+        "A": "Precisament demostra que amb PII scrubbing igualment es pot diagnosticar al 100% la causa tècnica!",
+        "C": "Al contrari, la traça revela objectivament l'error de vigència del propi sistema.",
+        "D": "Esborrar evidències d'un error vulneraria l'ENS i el principi de transparència."
+      }
+    },
+    {
+      "id": "m05-06-q04",
+      "module": 5,
+      "conceptId": "m05-06-tracabilitat-conversacional",
+      "lessonRef": "content/module-05/m05-06-tracabilitat-conversacional.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Un equip de desenvolupament desa tots els missatges crus dels ciutadans en una taula `chat_logs_raw` amb permisos `UPDATE` i `DELETE` per a tot l'equip i sense termini de purgat. Quines dues normes incompleix directament?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "**RGPD** (minimització, control d'accés i limitació del termini de conservació — art. 5) i **ENS** (`op.exp.8` registre d'activitat protegit contra alteració/destrucció no autoritzada i mínim privilegi)."
+        },
+        {
+          "key": "B",
+          "text": "Només la llei de trànsit."
+        },
+        {
+          "key": "C",
+          "text": "Cap, perquè els logs de desenvolupadors no estan regulats."
+        },
+        {
+          "key": "D",
+          "text": "Només les normes tipogràfiques del català."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Els logs amb dades ciutadanes són tractaments subjectes al RGPD, i els registres d'auditoria d'un servei públic han de ser immutables i protegits segons l'ENS.",
+      "explanationsIncorrect": {
+        "B": "No té relació amb seguretat viària.",
+        "C": "Tant el RGPD com l'ENS apliquen plenament als logs de sistemes públics.",
+        "D": "És un incompliment de protecció de dades i ciberseguretat."
+      }
+    },
+    {
+      "id": "m05-04-q01",
+      "module": 5,
+      "conceptId": "m05-04-integracio-bases-coneixement",
+      "lessonRef": "content/module-05/m05-04-integracio-bases-coneixement.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quin principi de governança estableix que cada tràmit o ordenança ha de tenir una **única font autoritària oficial** per alimentar el chatbot, evitant contradiccions amb còpies antigues?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "**SSOT (*Single Source of Truth*)**."
+        },
+        {
+          "key": "B",
+          "text": "*Web scraping* indiscriminat."
+        },
+        {
+          "key": "C",
+          "text": "*Post-filtering*."
+        },
+        {
+          "key": "D",
+          "text": "*Overfitting*."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "El principi SSOT designa fonts oficials (Catàleg de Tràmits, repositori d'Ordenances Vigents) amb responsables editorials, eliminant contradiccions amb notícies o PDFs vells.",
+      "explanationsIncorrect": {
+        "B": "El scraping indiscriminat justament viola el principi SSOT introduint pàgines obsoletes.",
+        "C": "És un antipatró de bases vectorials.",
+        "D": "És sobreajustament d'un model d'ML."
+      }
+    },
+    {
+      "id": "m05-06-q02",
+      "module": 5,
+      "conceptId": "m05-06-tracabilitat-conversacional",
+      "lessonRef": "content/module-05/m05-06-tracabilitat-conversacional.md",
+      "difficulty": "basic",
+      "questionType": "normative",
+      "prompt": "Què és el ***PII Scrubbing*** aplicat a la traçabilitat d'un assistent virtual?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Esborrar tots els logs del servidor cada minut."
+        },
+        {
+          "key": "B",
+          "text": "Detectar i substituir automàticament dades personals identificatives (NIF, IBAN, telèfon, email) per marcadors (`[NIF_OMES]`) **abans** d'escriure les traces als sistemes de logging i analítica."
+        },
+        {
+          "key": "C",
+          "text": "Publicar totes les consultes dels ciutadans en obert."
+        },
+        {
+          "key": "D",
+          "text": "Augmentar la resolució de les imatges OCR."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "El PII scrubbing resol la tensió entre observabilitat/auditoria i minimització de dades personals (RGPD), evitant acumular dades personals en cru als logs.",
+      "explanationsIncorrect": {
+        "A": "Destruiria la traçabilitat obligatòria de l'ENS.",
+        "C": "Vulneraria el RGPD.",
+        "D": "No té relació amb imatges OCR."
+      }
+    },
+    {
+      "id": "m05-01-q09",
+      "module": 5,
+      "conceptId": "m05-01-chatbots",
+      "lessonRef": "content/module-05/m05-01-chatbots.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "En el cas 1 de l'exemple («vull saber l'estat del meu expedient SUB-2026-0148»), abans que el flux determinista consulti l'API d'expedients i retorni dades al xat, quin control de seguretat imprescindible falta afegir en producció?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Cap, amb el codi d'expedient ja es pot mostrar tota la informació a qualsevol usuari anònim."
+        },
+        {
+          "key": "B",
+          "text": "**Autenticació forta del ciutadà (idCAT Mòbil / Cl@ve / certificat)** i **verificació de titularitat/representació** sobre `SUB-2026-0148`, evitant que un tercer endevini un codi d'expedient (IDOR) i accedeixi a dades personals (RGPD/ENS)."
+        },
+        {
+          "key": "C",
+          "text": "Pujar la temperatura de l'LLM a 1,0."
+        },
+        {
+          "key": "D",
+          "text": "Guardar el codi d'expedient en una galeta sense xifrar."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Retornar l'estat d'un expedient només pel seu codi correlatiu (`SUB-2026-0148`) seria una vulnerabilitat crítica IDOR (accés no autoritzat a dades personals); tota consulta personalitzada exigeix autenticació i control de titularitat.",
+      "explanationsIncorrect": {
+        "A": "Exposaria dades d'expedients aliens a qualsevol atacant que provi números correlatius!",
+        "C": "No resol l'autenticació ni el control d'accés.",
+        "D": "No substitueix autenticació oficial ni control d'autorització."
+      }
+    },
+    {
+      "id": "m05-01-q02",
+      "module": 5,
+      "conceptId": "m05-01-chatbots",
+      "lessonRef": "content/module-05/m05-01-chatbots.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "En un motor NLU de chatbot, què és el ***Slot Filling***?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Entrenar els embeddings amb Word2Vec."
+        },
+        {
+          "key": "B",
+          "text": "Extreure i completar tots els paràmetres obligatoris associats a una intenció (p. ex., `oficina`, `tràmit`, `dia` i `hora` en una cita prèvia) abans d'executar l'acció o cridar l'API."
+        },
+        {
+          "key": "C",
+          "text": "Assignar una GPU a cada usuari."
+        },
+        {
+          "key": "D",
+          "text": "Esborrar l'historial de conversa cada segon."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "El slot filling garanteix que tenim totes les dades validades que necessita una acció determinista (demanant explícitament les que faltin).",
+      "explanationsIncorrect": {
+        "A": "No té relació amb Word2Vec.",
+        "C": "No és assignació de maquinari.",
+        "D": "Al contrari, manté els paràmetres recollits al llarg dels torns."
+      }
+    },
+    {
+      "id": "m05-01-q05",
+      "module": 5,
+      "conceptId": "m05-01-chatbots",
+      "lessonRef": "content/module-05/m05-01-chatbots.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Per què en la reserva de **cita prèvia municipal** (seleccionar oficina, tràmit, dia i franja horària disponible) convé usar un **flux determinista amb *slot filling* i botons ràpids** en lloc d'un LLM conversacional lliure?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Perquè els LLMs no entenen el català."
+        },
+        {
+          "key": "B",
+          "text": "Perquè garanteix **0% d'al·lucinació d'horaris**, menor latència i cost, validació estricta dels 4 paràmetres contra l'API de cites en temps real i confirmació inequívoca abans de gravar la reserva."
+        },
+        {
+          "key": "C",
+          "text": "Perquè els botons ràpids no funcionen en telèfons mòbils."
+        },
+        {
+          "key": "D",
+          "text": "Perquè elimina la necessitat de connectar-se a l'API de cites."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "En processos transaccionals amb opcions acotades en temps real, un flux determinista amb botons és més ràpid, econòmic, accessible i 100% fiable.",
+      "explanationsIncorrect": {
+        "A": "Els LLMs moderns entenen català, però són innecessaris i arriscats per a transaccions rígides.",
+        "C": "Al contrari, els botons ràpids milloren molt l'usabilitat en mòbils.",
+        "D": "Continua connectant-se a l'API de cites per consultar disponibilitat real."
+      }
+    },
+    {
+      "id": "m05-08-q07",
+      "module": 5,
+      "conceptId": "m05-08-escalada-humana",
+      "lessonRef": "content/module-05/m05-08-escalada-humana.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "En el moment exacte en què una conversa de xat passa de l'assistent virtual a una persona real de l'OAC, quin principi de transparència s'ha de complir?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "No avisar el ciutadà perquè no noti el canvi."
+        },
+        {
+          "key": "B",
+          "text": "Fer que l'agent humà fingeixi ser un robot."
+        },
+        {
+          "key": "C",
+          "text": "Esborrar tots els missatges anteriors de la pantalla del ciutadà."
+        },
+        {
+          "key": "D",
+          "text": "**Informar clarament i visiblement de la transició** (*«Ara t'atén un/a agent de l'OAC, que ja disposa del resum de la teva consulta»*), mantenint coherència amb la transparència de l'AI Act i generant confiança."
+        }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "El ciutadà ha de saber en tot moment si parla amb una IA o amb un funcionari humà real.",
+      "explanationsIncorrect": {
+        "A": "Amagar el canvi genera confusió i va contra la transparència pública.",
+        "B": "Absurd i contrari a la qualitat d'atenció ciutadana.",
+        "C": "Mantenir visible el fil ajuda el ciutadà a seguir la conversa."
+      }
+    },
+    {
+      "id": "m05-07-q01",
+      "module": 5,
+      "conceptId": "m05-07-supervisio-conversacional",
+      "lessonRef": "content/module-05/m05-07-supervisio-conversacional.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Què és un ***Kill Switch* amb degradació segura (*Graceful Degradation*)** en la supervisió d'un chatbot públic?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Un mecanisme manual o automàtic que, davant un pic d'al·lucinacions o un incident greu, desactiva en segons la generació lliure de l'LLM i commuta el servei a FAQs deterministes verificades + enllaços oficials + escalada directa al 010/OAC."
+        },
+        {
+          "key": "B",
+          "text": "Formatar el disc dur del servidor cada nit."
+        },
+        {
+          "key": "C",
+          "text": "Apujar la temperatura de l'LLM al màxim quan hi ha errors."
+        },
+        {
+          "key": "D",
+          "text": "Desactivar tots els logs d'auditoria."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "El Kill Switch amb degradació segura talla en segons el risc reputacional o jurídic sense deixar el ciutadà davant una pàgina d'error en blanc.",
+      "explanationsIncorrect": {
+        "B": "No destrueix el servidor ni dades.",
+        "C": "Pujar temperatura empitjoraria les al·lucinacions.",
+        "D": "Els logs d'auditoria han de continuar actius sempre."
+      }
+    },
+    {
+      "id": "m05-05-q07",
+      "module": 5,
+      "conceptId": "m05-05-canals-digitals",
+      "lessonRef": "content/module-05/m05-05-canals-digitals.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Quin canal digital públic és l'únic adequat per oferir consultes personalitzades d'expedients o tràmits amb signatura electrònica del ciutadà amb plenes garanties **RGPD, ENS i LPACAP**?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Un xat públic en una xarxa social."
+        },
+        {
+          "key": "B",
+          "text": "Un grup obert de Telegram."
+        },
+        {
+          "key": "C",
+          "text": "WhatsApp sense autenticació oficial."
+        },
+        {
+          "key": "D",
+          "text": "La **Seu Electrònica / Carpeta Ciutadana** (o app oficial corporativa) amb identificació forta (**idCAT Mòbil, Cl@ve, certificat digital**), compliment **WCAG 2.1 AA** i perímetre certificat **ENS**."
+        }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Només els canals sota control directe ENS amb sistemes oficials d'identificació electrònica ofereixen validesa jurídica i protecció adequada de dades personals.",
+      "explanationsIncorrect": {
+        "A": "Les xarxes socials no tenen control ENS ni identificació jurídica.",
+        "B": "Un grup obert exposaria dades a tercers.",
+        "C": "WhatsApp no integra identificació electrònica oficial ni control ENS ple."
+      }
+    },
+    {
+      "id": "m05-08-q09",
+      "module": 5,
+      "conceptId": "m05-08-escalada-humana",
+      "lessonRef": "content/module-05/m05-08-escalada-humana.md",
+      "difficulty": "advanced",
+      "questionType": "metrics",
+      "prompt": "Com aprofita el **bucle de retroalimentació (*Closed Loop*) dels agents OAC** en tancar una escalada per millorar l'assistent sense confondre mètriques?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Penalitzant el bot per qualsevol escalada, fins i tot en casos de desnonament o recursos jurídics."
+        },
+        {
+          "key": "B",
+          "text": "Fent que l'agent etiqueti en 1 clic la causa (`Falta info KB`, `Error NLU/bot`, `Cas jurídic/social inherentment humà`), distingint **escalades evitables** (que generen tasques per als *content owners*/equip IA) d'**escalades legítimes** (que són èxits de triatge!)."
+        },
+        {
+          "key": "C",
+          "text": "Obligant l'agent a escriure un informe de 5 pàgines després de cada xat."
+        },
+        {
+          "key": "D",
+          "text": "Desactivant el botó d'escalada per reduir el percentatge."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Una escalada ràpida i ben enrutada d'un cas de pobresa energètica cap a Serveis Socials NO és una fallada del bot: és un triatge perfecte! Separar escalades evitables de legítimes dirigeix l'esforç on realment cal.",
+      "explanationsIncorrect": {
+        "A": "Castigar escalades legítimes incentivaria amagar l'atenció humana en casos vulnerables.",
+        "C": "Un informe llarg seria inviable; ha de ser un etiquetatge ràpid d'1 clic.",
+        "D": "Amagar l'escalada perjudica greument el servei públic."
+      }
+    },
+    {
+      "id": "m05-07-q02",
+      "module": 5,
+      "conceptId": "m05-07-supervisio-conversacional",
+      "lessonRef": "content/module-05/m05-07-supervisio-conversacional.md",
+      "difficulty": "basic",
+      "questionType": "architecture",
+      "prompt": "Com ha de gestionar un assistent municipal un missatge que indica una **emergència vital o violència masclista**?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Deixar que l'LLM busqui ordenances fiscals al RAG i improvisi consells."
+        },
+        {
+          "key": "B",
+          "text": "Interceptar-lo deterministament en un ***input guardrail* de màxima prioritat abans de l'LLM** i mostrar immediatament una resposta fixa verificada amb els telèfons d'emergència oficials (`112`, `900 900 120`, `024`)."
+        },
+        {
+          "key": "C",
+          "text": "Demanar-li que ompli un formulari de 12 passos."
+        },
+        {
+          "key": "D",
+          "text": "Posposar la resposta fins a l'endemà."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Les situacions vitals o de violència mai no es deleguen a models probabilístics; un tallafocs d'entrada determinista ofereix assistència immediata i fiable en mil·lisegons.",
+      "explanationsIncorrect": {
+        "A": "Risc inacceptable d'al·lucinació o consell perillós.",
+        "C": "Inadequat i perillós davant una urgència.",
+        "D": "Una emergència exigeix orientació immediata 24/7."
+      }
+    },
+    {
+      "id": "m05-05-q09",
+      "module": 5,
+      "conceptId": "m05-05-canals-digitals",
+      "lessonRef": "content/module-05/m05-05-canals-digitals.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Què és l'intercanvi **CTI (*Computer Telephony Integration*) / *Screen Pop*** quan un canal de veu 010 escala una trucada a un agent humà?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Tallar la trucada perquè el ciutadà torni a trucar."
+        },
+        {
+          "key": "B",
+          "text": "Transferir automàticament al terminal de l'agent humà el **resum de la conversa prèvia amb el bot, la intenció detectada i les dades recollides** en el mateix instant que agafa la trucada, evitant que el ciutadà hagi de repetir-ho tot."
+        },
+        {
+          "key": "C",
+          "text": "Reproduir música d'espera durant 30 minuts."
+        },
+        {
+          "key": "D",
+          "text": "Enviar un correu massiu a tots els veïns."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "El traspàs càlid (*warm handoff*) amb resum en pantalla redueix el temps mitjà de trucada (AHT) i elimina la principal font de frustració ciutadana en els voicebots.",
+      "explanationsIncorrect": {
+        "A": "Seria la pitjor experiència possible.",
+        "C": "No té relació amb música d'espera.",
+        "D": "Només mostra el context a l'agent humà assignat."
+      }
+    },
+    {
+      "id": "m05-06-q08",
+      "module": 5,
+      "conceptId": "m05-06-tracabilitat-conversacional",
+      "lessonRef": "content/module-05/m05-06-tracabilitat-conversacional.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En la classe `AuditLoggerConversacional` de l'exemple 5.6, què ocorre si algú modifica el camp `estat_cites` del registre 0 i intenta recalcular **només** `entry_hash` del registre 0 sense tocar el registre 1?",
+      "codeSnippet": "payload = {..., \"prev_hash\": self._ultim_hash}\nnou_hash = hashlib.sha256(canon.encode(\"utf-8\")).hexdigest()",
+      "options": [
+        {
+          "key": "A",
+          "text": "El verificador igualment detecta el frau al **registre 1** perquè el `prev_hash` emmagatzemat dins el registre 1 ja no coincidirà amb el nou `entry_hash` del registre 0 (efecte cascada de la *hash chain*!)."
+        },
+        {
+          "key": "B",
+          "text": "La manipulació passa completament desapercebuda."
+        },
+        {
+          "key": "C",
+          "text": "El registre 1 s'actualitza automàticament per ocultar el canvi."
+        },
+        {
+          "key": "D",
+          "text": "SHA-256 retorna sempre el mateix hash per a qualsevol text."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "L'encadenament criptogràfic fa que qualsevol canvi històric propagui una discrepància a tota la cadena següent (i si l'últim hash s'ancora periòdicament al SIEM/WORM extern, reescriure tota la cadena també es detecta!).",
+      "explanationsIncorrect": {
+        "B": "El `prev_hash` del registre 1 trenca immediatament la verificació.",
+        "C": "Els registres històrics no es reescriuen.",
+        "D": "SHA-256 és resistent a col·lisions; canviar 1 bit altera completament el resum."
+      }
+    },
+    {
+      "id": "m05-08-q10",
+      "module": 5,
+      "conceptId": "m05-08-escalada-humana",
+      "lessonRef": "content/module-05/m05-08-escalada-humana.md",
+      "difficulty": "advanced",
+      "questionType": "normative",
+      "prompt": "En un *Warm Handoff* on el ciutadà s'havia autenticat prèviament amb **idCAT Mòbil** a la Seu Electrònica per consultar una situació de vulnerabilitat social, quina mesura de privacitat (RGPD/ENS) ha de protegir el paquet de context?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Enviar el paquet per correu electrònic sense xifrar a una llista de distribució de tot l'ajuntament."
+        },
+        {
+          "key": "B",
+          "text": "Guardar-lo en una carpeta pública compartida."
+        },
+        {
+          "key": "C",
+          "text": "Transmetre'l **xifrat (TLS)** exclusivament a la **cua autoritzada amb permisos ACL (`CUA_SERVEIS_SOCIALS`)**, limitant les dades al mínim necessari per a l'atenció (principi de minimització) i registrant l'accés de l'agent receptor al log d'auditoria ENS."
+        },
+        {
+          "key": "D",
+          "text": "Ometre qualsevol control d'accés perquè l'agent ja treballa a l'ajuntament."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "El traspàs d'un paquet amb dades sensibles de Serveis Socials exigeix xifratge, mínim privilegi (només cua autoritzada), minimització i traça d'auditoria d'accés (RGPD + ENS).",
+      "explanationsIncorrect": {
+        "A": "Bretxa gravíssima de dades sensibles.",
+        "B": "Incompliment flagrant de RGPD i ENS.",
+        "D": "Treballar a l'ajuntament no autoritza un empleat d'un altre servei a veure expedients de Serveis Socials."
+      }
+    },
+    {
+      "id": "m05-04-q06",
+      "module": 5,
+      "conceptId": "m05-04-integracio-bases-coneixement",
+      "lessonRef": "content/module-05/m05-04-integracio-bases-coneixement.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Per què fer un ***web scraping* indiscriminat** de les 5.000 URLs d'una web municipal (incloent notes de premsa del 2018–2023) degrada greument la qualitat d'un chatbot RAG?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Perquè les bases vectorials no admeten més de 100 URLs."
+        },
+        {
+          "key": "B",
+          "text": "Perquè les notes de premsa no es poden tokenitzar."
+        },
+        {
+          "key": "C",
+          "text": "Perquè les notes de premsa i PDFs antics contenen **tarifes, requisits i terminis derogats** que tenen altíssima similitud semàntica amb les consultes ciutadanes i competeixen o guanyen contra les ordenances vigents."
+        },
+        {
+          "key": "D",
+          "text": "Perquè BM25 no funciona amb pàgines HTML."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "En RAG, més documents no implica millors respostes: introduir contingut antic sense control de vigència enverina el rànquing de recuperació!",
+      "explanationsIncorrect": {
+        "A": "Una BD vectorial escala a milions de fragments; el problema és la qualitat i vigència, no el volum.",
+        "B": "Es tokenitzen perfectament, i precisament per això s'indexen i confonen el sistema.",
+        "D": "Un cop extret el text de l'HTML, BM25 l'indexa sense problema."
+      }
+    },
+    {
+      "id": "m05-05-q03",
+      "module": 5,
+      "conceptId": "m05-05-canals-digitals",
+      "lessonRef": "content/module-05/m05-05-canals-digitals.md",
+      "difficulty": "basic",
+      "questionType": "normative",
+      "prompt": "Quin ús és adequat i segur per a un canal de **WhatsApp Business** en un ajuntament?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Rebre fotografies de DNI i informes mèdics de serveis socials."
+        },
+        {
+          "key": "B",
+          "text": "Enviar dades detallades d'expedients sancionadors sense autenticació."
+        },
+        {
+          "key": "C",
+          "text": "**Informació pública general** (horaris, requisits generals, avisos municipals, calendari fiscal) i **redirecció amb enllaç cap a la Seu Electrònica autenticada** per a qualsevol gestió personal."
+        },
+        {
+          "key": "D",
+          "text": "Substituir la Seu Electrònica per a tots els registres oficials."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Limitar WhatsApp a informació pública general i derivar tràmits personals a la Seu Electrònica protegeix la privacitat (RGPD/ENS) i la seguretat jurídica d'identificació.",
+      "explanationsIncorrect": {
+        "A": "Risc gravíssim RGPD/ENS en una plataforma de tercers fora del control directe.",
+        "B": "Un número de telèfon no acredita identitat oficial i exposaria dades reservades.",
+        "D": "WhatsApp no compleix els requisits legals de registre electrònic ni seu electrònica."
+      }
+    },
+    {
+      "id": "m05-03-q01",
+      "module": 5,
+      "conceptId": "m05-03-fluxos-conversacionals",
+      "lessonRef": "content/module-05/m05-03-fluxos-conversacionals.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quin problema greu resol el patró de ***fallback* progressiu en 3 nivells** en un flux conversacional?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Evita atrapar el ciutadà en un bucle infinit de «No t'he entès» escalant progressivament: (1) aclariment concret, (2) opcions guiades amb botons i (3) escalada automàtica a atenció humana amb el resum del diàleg."
+        },
+        {
+          "key": "B",
+          "text": "Augmenta la mida del model d'embeddings."
+        },
+        {
+          "key": "C",
+          "text": "Tradueix automàticament les respostes a alemany."
+        },
+        {
+          "key": "D",
+          "text": "Esborra la base de dades vectorial després de 3 consultes."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "El fallback progressiu evita la frustració i l'exclusió digital oferint ajudes cada cop més estructurades fins a la derivació humana al 3r intent fallit.",
+      "explanationsIncorrect": {
+        "B": "No afecta els embeddings.",
+        "C": "No és un mecanisme de traducció.",
+        "D": "Només gestiona el diàleg de la sessió actual."
+      }
+    },
+    {
+      "id": "m05-05-q04",
+      "module": 5,
+      "conceptId": "m05-05-canals-digitals",
+      "lessonRef": "content/module-05/m05-05-canals-digitals.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Per què **NO** s'ha de connectar directament un motor **TTS (*Text-to-Speech*)** a la resposta Markdown generada per al chatbot web en un canal telefònic 010?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Perquè les taules Markdown, les llistes llargues i les URLs (`https://...`) resulten incomprensibles dictades en veu alta; l'adaptador de veu ha de sintetitzar frases curtes (<2–3 oracions) i oferir enviar enllaços per SMS."
+        },
+        {
+          "key": "B",
+          "text": "Perquè el TTS no pot pronunciar paraules en català."
+        },
+        {
+          "key": "C",
+          "text": "Perquè els telèfons no transmeten àudio."
+        },
+        {
+          "key": "D",
+          "text": "Perquè l'HTML funciona millor per telèfon que el Markdown."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "La interacció auditiva té una memòria de treball humana molt curta: requereix concisió extrema, absència de símbols/URLs i alternativa SMS per a informació escrita.",
+      "explanationsIncorrect": {
+        "B": "Existeixen motors TTS neuronals d'alta qualitat en català.",
+        "C": "Precisament el canal telefònic és exclusivament àudio.",
+        "D": "Tampoc no s'han de dictar etiquetes HTML per veu."
+      }
+    },
+    {
+      "id": "m05-04-q03",
+      "module": 5,
+      "conceptId": "m05-04-integracio-bases-coneixement",
+      "lessonRef": "content/module-05/m05-04-integracio-bases-coneixement.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Què és una **llacuna de coneixement (*Knowledge Gap*)** en l'operació d'un assistent virtual públic?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Una fallada elèctrica del servidor."
+        },
+        {
+          "key": "B",
+          "text": "Un error de sintaxi en Python."
+        },
+        {
+          "key": "C",
+          "text": "Una pregunta freqüent dins les competències municipals per a la qual la base documental no disposa d'evidència vigent suficient (detectada via abstencions del RAG i escalades)."
+        },
+        {
+          "key": "D",
+          "text": "Un document duplicat dues vegades."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Analitzar periòdicament els *Knowledge Gaps* indica exactament als *content owners* quines noves FAQs o fitxes oficials cal redactar per resoldre dubtes reals de la ciutadania.",
+      "explanationsIncorrect": {
+        "A": "No és una avaria d'infraestructura.",
+        "B": "No és un bug de sintaxi.",
+        "D": "És manca d'informació coberta, no duplicació."
+      }
+    },
+    {
+      "id": "m05-04-q04",
+      "module": 5,
+      "conceptId": "m05-04-integracio-bases-coneixement",
+      "lessonRef": "content/module-05/m05-04-integracio-bases-coneixement.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Quin avantatge principal ofereix la **sincronització incremental per *webhooks* (CDC) o *diff* per *hash* SHA-256** respecte de reindexar des de zero tot el portal un cop al mes?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Actualitza canvis i derogacions en segons/hores en lloc de deixar 30 dies de dades obsoletes, i només recalcula embeddings dels documents nous o modificats (estalviant gran quantitat de còmput)."
+        },
+        {
+          "key": "B",
+          "text": "Elimina la necessitat de calcular embeddings per als documents nous."
+        },
+        {
+          "key": "C",
+          "text": "Permet ignorar totes les dates de caducitat."
+        },
+        {
+          "key": "D",
+          "text": "Converteix totes les ordenances en imatges JPEG."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Comparar el `SHA-256` (o reaccionar a webhooks del CMS) combina màxima frescor de les dades amb mínim cost computacional.",
+      "explanationsIncorrect": {
+        "B": "Els documents nous o modificats sí que s'han de trossejar i vectoritzar.",
+        "C": "Les dates `valid_from/valid_until` continuen sent essencials.",
+        "D": "No converteix textos en JPEG."
+      }
+    },
+    {
+      "id": "m05-05-q06",
+      "module": 5,
+      "conceptId": "m05-05-canals-digitals",
+      "lessonRef": "content/module-05/m05-05-canals-digitals.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "En licitar un canal de veu (010) per a un municipi de la província de Barcelona, quina prova tècnica d'acceptació és indispensable abans d'adjudicar el motor **ASR (*Automatic Speech Recognition*)**?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Provar-lo només amb enregistraments d'estudi en anglès nord-americà."
+        },
+        {
+          "key": "B",
+          "text": "Comprovar només la velocitat de descàrrega de la pàgina web."
+        },
+        {
+          "key": "C",
+          "text": "Avaluar el **WER en català i castellà** sobre **àudio telefònic real (8 kHz, soroll ambiental, accents diversos, noms de carrers/municipis locals i canvi de codi català-castellà)**."
+        },
+        {
+          "key": "D",
+          "text": "No cal avaluar l'ASR perquè tots reconeixen perfectament qualsevol idioma."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Molts motors ASR comercials que obtenen 3% WER en anglès d'estudi cauen dramàticament en català telefònic a 8 kHz amb toponímia local (`L'Hospitalet`, `Sant Cugat`, `Viladecans`)!",
+      "explanationsIncorrect": {
+        "A": "No reflecteix en absolut la realitat lingüística ni acústica del 010.",
+        "B": "No avalua reconeixement de veu.",
+        "D": "Hi ha diferències enormes de qualitat entre motors ASR en català telefònic."
+      }
+    },
+    {
+      "id": "m05-02-q09",
+      "module": 5,
+      "conceptId": "m05-02-assistents-corporatius",
+      "lessonRef": "content/module-05/m05-02-assistents-corporatius.md",
+      "difficulty": "advanced",
+      "questionType": "architecture",
+      "prompt": "Quin problema d'arquitectura apareix si un assistent corporatiu aplica el control de permisos **només a les metadades de la taula d'expedients**, però ha indexat els PDFs adjunts dins una base vectorial **sense propagar les ACL actualitzades**?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Cap, perquè la base vectorial llegeix automàticament les taules SQL sense configuració."
+        },
+        {
+          "key": "B",
+          "text": "Apareix una **desincronització d'ACL (*Permission Drift*)**: un usuari sense permís a l'expedient pot obtenir igualment fragments dels seus PDFs via cerca semàntica; cal sincronitzar contínuament les ACL cap a l'índex o usar una arquitectura unificada (`pgvector` / verificació ACL en temps real)."
+        },
+        {
+          "key": "C",
+          "text": "Només fa que els embeddings tinguin menys dimensions."
+        },
+        {
+          "key": "D",
+          "text": "Augmenta la velocitat de la GPU."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "La desincronització d'ACL entre el gestor documental i l'índex vectorial és una de les bretxes més freqüents en RAG corporatiu; cal sincronització orientada a esdeveniments o comprovació d'ACL contra el sistema font.",
+      "explanationsIncorrect": {
+        "A": "Una base vectorial separada no coneix canvis de permisos SQL si no es propaguen explícitament.",
+        "C": "No afecta la dimensionalitat dels embeddings.",
+        "D": "No té efecte sobre velocitat de GPU."
+      }
+    },
+    {
+      "id": "m05-08-q03",
+      "module": 5,
+      "conceptId": "m05-08-escalada-humana",
+      "lessonRef": "content/module-05/m05-08-escalada-humana.md",
+      "difficulty": "basic",
+      "questionType": "case-study",
+      "prompt": "Com ha d'actuar el sistema d'escalada a les **22:00 h** (quan l'OAC està tancada) si un ciutadà demana atenció humana?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Tancar la finestra del xat sense guardar res."
+        },
+        {
+          "key": "B",
+          "text": "Mostrar únicament «Tancat, torna demà» sense cap alternativa."
+        },
+        {
+          "key": "C",
+          "text": "Oferir **escalada asíncrona** adjuntant el paquet de context: obrir un **tiquet amb número de seguiment i SLA**, programar una **trucada (*callback*)** l'endemà o reservar **cita prèvia presencial**."
+        },
+        {
+          "key": "D",
+          "text": "Deixar el ciutadà en espera en una cua buida durant 10 hores."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "L'escalada asíncrona evita els carrerons sense sortida fora d'horari i dona tranquil·litat al ciutadà amb un compromís clar de resposta.",
+      "explanationsIncorrect": {
+        "A": "Faria perdre tota la feina del ciutadà.",
+        "B": "És un punt mort que genera mala experiència ciutadana.",
+        "D": "Deixar algú esperant sense agents disponibles és inacceptable."
+      }
+    },
+    {
+      "id": "m05-08-q08",
+      "module": 5,
+      "conceptId": "m05-08-escalada-humana",
+      "lessonRef": "content/module-05/m05-08-escalada-humana.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En la funció `avaluar_escalada` de l'exemple 5.8, què passa si són les **11:00 h** (dins horari laboral) però el temps estimat de cua és de **12 minuts (`> 5`)**?",
+      "codeSnippet": "modalitat = (\n    f\"TRANSFERENCIA_SINCRONA (espera estimada: {temps_espera_cua_min} min)\"\n    if (dins_horari and temps_espera_cua_min <= 5)\n    else \"TIQUET_ASINCRON_O_CALLBACK (SLA < 24h hàbils)\"\n)",
+      "options": [
+        {
+          "key": "A",
+          "text": "En lloc de retenir el ciutadà en una espera llarga de 12 minuts, el motor activa proactivament l'opció **`TIQUET_ASINCRON_O_CALLBACK (SLA < 24h hàbils)`**, protegint l'experiència ciutadana durant pics de saturació."
+        },
+        {
+          "key": "B",
+          "text": "Cancell·la l'escalada i retorna `escalar: False`."
+        },
+        {
+          "key": "C",
+          "text": "Envia la consulta a una cua aleatòria."
+        },
+        {
+          "key": "D",
+          "text": "Esborra `paquet_warm_handoff`."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Gestionar tant l'horari com la saturació real de la cua (oferint *callback* o tiquet quan l'espera supera el llindar) evita abandonaments i col·lapses en campanyes punta!",
+      "explanationsIncorrect": {
+        "B": "`escalar` continua sent `True`; només canvia la modalitat a asíncrona/*callback*.",
+        "C": "Manté exactament la cua especialitzada assignada per `assignar_cua`.",
+        "D": "Conserva intacte tot el paquet de context per a l'agent."
+      }
+    },
+    {
+      "id": "m05-02-q08",
+      "module": 5,
+      "conceptId": "m05-02-assistents-corporatius",
+      "lessonRef": "content/module-05/m05-02-assistents-corporatius.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En la funció `autoritzar_document` de l'exemple 5.2, per què el document `D4` (`departament='URBANISME'`, `municipi_id='08187'`, `classificacio='INTERN'`) és **bloquejat** per a `tecnic_urb_mataro` (`departament='URBANISME'`, `municipi_id='08121'`, `nivell='INTERN'`)?",
+      "codeSnippet": "if doc.municipi_id != \"GLOBAL_DIBA\" and doc.municipi_id != usuari.municipi_id:\n    return False, ...",
+      "options": [
+        {
+          "key": "A",
+          "text": "Perquè malgrat coincidir el departament (`URBANISME`) i el nivell (`INTERN`), la regla **ABAC d'aïllament *multi-tenant*** exigeix que el `municipi_id` coincideixi (o sigui `GLOBAL_DIBA`), impedint que un municipi vegi expedients d'un altre dels 311 municipis."
+        },
+        {
+          "key": "B",
+          "text": "Perquè `INTERN` té un nivell superior a `INTERN`."
+        },
+        {
+          "key": "C",
+          "text": "Perquè la funció rebutja tots els documents d'Urbanisme."
+        },
+        {
+          "key": "D",
+          "text": "Per un error de tipus entre cadenes i enters."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "L'ABAC comprova conjuntament tots els eixos (municipi AND departament AND nivell de classificació); fallar un sol eix denega l'accés i registra el motiu a l'auditoria.",
+      "explanationsIncorrect": {
+        "B": "El nivell és igual (`1 <= 1`), per tant el bloqueig és per `municipi_id`.",
+        "C": "`D2` (Urbanisme Mataró) sí que queda autoritzat.",
+        "D": "Tots dos codis INE són cadenes (`'08121'` vs `'08187'`)."
+      }
+    },
+    {
+      "id": "m05-07-q04",
+      "module": 5,
+      "conceptId": "m05-07-supervisio-conversacional",
+      "lessonRef": "content/module-05/m05-07-supervisio-conversacional.md",
+      "difficulty": "intermediate",
+      "questionType": "metrics",
+      "prompt": "Per què en la supervisió humana contínua d'un chatbot **NO n'hi ha prou** amb revisar només les converses que tenen vot negatiu (`👎`)?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Perquè molts ciutadans no voten o fins i tot valoren positivament **al·lucinacions molt ben redactades** (p. ex., una data o requisit erroni que el ciutadà no coneix); cal **mostreig estratificat** (100% de `👎`/bloquejos + 2–5% aleatori del trànsit normal)."
+        },
+        {
+          "key": "B",
+          "text": "Perquè el botó `👎` sempre registra vots positius."
+        },
+        {
+          "key": "C",
+          "text": "Perquè els humans no poden llegir converses anonimitzades."
+        },
+        {
+          "key": "D",
+          "text": "Perquè les converses amb `👎` són sempre perfectes."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Els errors silenciosos (al·lucinacions plausibles no detectades pel ciutadà) només surten a la llum mitjançant mostreig aleatori auditat per tècnics experts en la matèria.",
+      "explanationsIncorrect": {
+        "B": "El botó funciona normalment, el biaix prové del comportament de l'usuari que no sap contrastar la norma.",
+        "C": "Les converses amb PII scrubbing són perfectament llegibles per auditar qualitat.",
+        "D": "Les converses amb `👎` són molt valuoses, però insuficients per si soles."
+      }
+    },
+    {
+      "id": "m05-01-q07",
+      "module": 5,
+      "conceptId": "m05-01-chatbots",
+      "lessonRef": "content/module-05/m05-01-chatbots.md",
+      "difficulty": "intermediate",
+      "questionType": "normative",
+      "prompt": "Quin valor jurídic té la resposta informativa d'un chatbot municipal sobre si un contribuent té dret o no a una bonificació fiscal?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Equival automàticament a una resolució administrativa ferma."
+        },
+        {
+          "key": "B",
+          "text": "Vincula jurídicament l'Interventor municipal encara que el chatbot s'equivoqui."
+        },
+        {
+          "key": "C",
+          "text": "Substitueix el procediment de consulta tributària vinculant."
+        },
+        {
+          "key": "D",
+          "text": "Té **caràcter merament informatiu i orientatiu, no vinculant**; ha de citar l'ordenança oficial vigent i indicar el tràmit oficial o canal humà per a la resolució formal."
+        }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Cal deixar clar des de l'inici que un assistent conversacional ofereix orientació informativa amb cites oficials, però mai dicta actes administratius vinculants.",
+      "explanationsIncorrect": {
+        "A": "Una resposta de xat no compleix els requisits d'un acte administratiu (LPACAP).",
+        "B": "El principi de legalitat impedeix que un error de chatbot creï drets contra ordenança.",
+        "C": "Les consultes tributàries vinculants tenen procediment legal reglat."
+      }
+    }
+  ]
+}

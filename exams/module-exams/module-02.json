@@ -1,0 +1,1409 @@
+{
+  "id": "module-02",
+  "module": 2,
+  "title": "Examen acumulatiu del Mòdul 2: NLP",
+  "note": "Paràmetres orientatius de preparació (durada, penalització i nota mínima configurables a la plataforma; no constitueixen bases oficials de convocatòria).",
+  "recommendedMinutes": 45,
+  "questions": [
+    {
+      "id": "m02-01-q06",
+      "module": 2,
+      "conceptId": "m02-01-fonaments-nlp",
+      "lessonRef": "content/module-02/m02-01-fonaments-nlp.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Per què en una representació Bag of Words o TF-IDF d'unigrames les frases «subvenció d'obres» i «ajut per a rehabilitació» tenen similitud cosinus igual a 0?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Perquè TF-IDF no accepta caràcters accentuats."
+        },
+        {
+          "key": "B",
+          "text": "Perquè les dues frases són massa curtes per tenir norma no nul·la."
+        },
+        {
+          "key": "C",
+          "text": "Perquè en models dispersos basats en coincidència lèxica exacta cada mot és una dimensió ortogonal independent, sense coneixement de sinonímia semàntica."
+        },
+        {
+          "key": "D",
+          "text": "Perquè la similitud cosinus és sempre 0 entre textos en català."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "En BoW/TF-IDF, dos textos que no comparteixen exactament els mateixos termes lèxics tenen producte escalar nul encara que siguin semànticament quasi sinònims (problema de desajust de vocabulari / vocabulary mismatch).",
+      "explanationsIncorrect": {
+        "A": "TF-IDF treballa perfectament amb UTF-8 i caràcters accentuats.",
+        "B": "Ambdues frases tenen vectors no nuls.",
+        "D": "La similitud cosinus funciona igual en qualsevol idioma."
+      }
+    },
+    {
+      "id": "m02-06-q01",
+      "module": 2,
+      "conceptId": "m02-06-ner",
+      "lessonRef": "content/module-02/m02-06-ner.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "En l'esquema d'etiquetatge **BIO (IOB2)** per a NER, com s'etiqueten correctament els tres tokens de l'entitat «Diputació de Barcelona»?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "`B-ORG`, `B-ORG`, `B-ORG`."
+        },
+        {
+          "key": "B",
+          "text": "`B-ORG`, `I-ORG`, `I-ORG`."
+        },
+        {
+          "key": "C",
+          "text": "`O`, `O`, `B-ORG`."
+        },
+        {
+          "key": "D",
+          "text": "`I-ORG`, `I-ORG`, `B-ORG`."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "El primer token de l'entitat rep `B-ORG` (Begin) i els tokens següents dins de la mateixa entitat reben `I-ORG` (Inside).",
+      "explanationsIncorrect": {
+        "A": "Repetir `B-ORG` tres vegades marcaria tres organitzacions separades d'una sola paraula.",
+        "C": "Deixaria fora 'Diputació de'.",
+        "D": "Una entitat no comença per `I-` ni acaba amb `B-`."
+      }
+    },
+    {
+      "id": "m02-08-q05",
+      "module": 2,
+      "conceptId": "m02-08-traduccio-automatica",
+      "lessonRef": "content/module-02/m02-08-traduccio-automatica.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Què és la **post-edició humana (MTPE)** i quan és imprescindible en l'Administració pública?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "L'entrenament des de zero d'un tokenitzador."
+        },
+        {
+          "key": "B",
+          "text": "La revisió i correcció per personal lingüístic/tècnic d'una traducció automàtica; és imprescindible per a documents oficials, ordenances, plecs i resolucions amb validesa jurídica o publicació pública."
+        },
+        {
+          "key": "C",
+          "text": "La compressió automàtica d'un PDF després de traduir-lo."
+        },
+        {
+          "key": "D",
+          "text": "L'eliminació de la puntuació abans d'enviar el text al motor NMT."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "La MT crua només serveix per a comprensió interna ràpida (gisting); qualsevol text oficial o normatiu exigeix MTPE humana per garantir rigor jurídic i terminològic.",
+      "explanationsIncorrect": {
+        "A": "No té relació amb l'entrenament de tokenitzadors.",
+        "C": "MTPE és revisió lingüística humana, no compressió de fitxers.",
+        "D": "No es tracta de preprocessament destructiu."
+      }
+    },
+    {
+      "id": "m02-03-q07",
+      "module": 2,
+      "conceptId": "m02-03-embeddings-nlp",
+      "lessonRef": "content/module-02/m02-03-embeddings-nlp.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Quin és un límit conegut dels *bi-encoders* d'embeddings textuals davant les frases «Està permès aparcar a la plaça» i «NO està permès aparcar a la plaça»?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "La seva similitud cosinus és exactament -1,0."
+        },
+        {
+          "key": "B",
+          "text": "El model retorna un error de divisió per zero."
+        },
+        {
+          "key": "C",
+          "text": "Els embeddings només poden codificar frases afirmatives."
+        },
+        {
+          "key": "D",
+          "text": "Tendeixen a rebre una similitud cosinus molt elevada perquè comparteixen gairebé totes les paraules de contingut, tot i tenir significats lògicament oposats."
+        }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Els embeddings reflecteixen forta proximitat temàtica; una sola partícula de negació canvia molt poc l'angle del vector de frase, per la qual cosa sovint cal un cross-encoder o un LLM verificador en etapes posteriors.",
+      "explanationsIncorrect": {
+        "A": "Malauradament la negació no inverteix el vector a -v; sovint dona cos > 0,90.",
+        "B": "Els vectors tenen norma no nul·la i es calculen sense error.",
+        "C": "Poden codificar qualsevol frase, però amb poca sensibilitat a la negació."
+      }
+    },
+    {
+      "id": "m02-10-q07",
+      "module": 2,
+      "conceptId": "m02-10-cerca-semantica",
+      "lessonRef": "content/module-02/m02-10-cerca-semantica.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Un ciutadà consulta en castellà «subvención para instalar placas solares en casa» sobre un repositori d'ordenances escrites únicament en català («ajuts per a energies renovables fotovoltaiques en habitatges»). Quina peça del pipeline garanteix recuperar el document correcte?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Un índex invertit BM25 monolingüe."
+        },
+        {
+          "key": "B",
+          "text": "Un regex que busqui la paraula exacta `placas`."
+        },
+        {
+          "key": "C",
+          "text": "Un algorisme K-Means sobre la longitud dels documents."
+        },
+        {
+          "key": "D",
+          "text": "La branca semàntica amb un **Bi-Encoder multilingüe** (com `BGE-M3` o `multilingual-e5`) que projecta català i castellà en el mateix espai semàntic compartit."
+        }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Els encoders multilingües alineen frases equivalents en català i castellà molt a prop en el mateix espai vectorial, resolent la cerca cross-lingual sense traducció prèvia.",
+      "explanationsIncorrect": {
+        "A": "BM25 monolingüe no emparella 'subvención/placas/casa' amb 'ajuts/fotovoltaiques/habitatges'.",
+        "B": "'placas' no apareix al document català.",
+        "C": "La longitud dels documents no té cap relació amb la rellevància temàtica."
+      }
+    },
+    {
+      "id": "m02-04-q01",
+      "module": 2,
+      "conceptId": "m02-04-classificacio-textos",
+      "lessonRef": "content/module-02/m02-04-classificacio-textos.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Una instància ciutadana pot pertànyer simultàniament a diverses etiquetes temàtiques (p. ex., `mobilitat`, `accessibilitat` i `via_publica`). Quin tipus de classificació és i quina activació de sortida correspon?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Classificació multietiqueta (multi-label), amb una funció Sigmoid independent per a cada etiqueta i Binary Cross-Entropy."
+        },
+        {
+          "key": "B",
+          "text": "Classificació multiclasse excloent amb una única funció Softmax."
+        },
+        {
+          "key": "C",
+          "text": "Regressió lineal amb MSE."
+        },
+        {
+          "key": "D",
+          "text": "Clustering no supervisat amb K-Means."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "En multi-label les etiquetes no són mútuament excloents; K Sigmoids independents permeten que múltiples etiquetes tinguin probabilitats altes alhora sense obligar que sumin 1.",
+      "explanationsIncorrect": {
+        "B": "Softmax força que les probabilitats sumin 1, competint entre si i impedint múltiples etiquetes altes simultànies.",
+        "C": "És un problema de classificació d'etiquetes discretes, no de regressió contínua.",
+        "D": "Disposem d'etiquetes predefinides (supervisat)."
+      }
+    },
+    {
+      "id": "m02-09-q07",
+      "module": 2,
+      "conceptId": "m02-09-recuperacio-informacio",
+      "lessonRef": "content/module-02/m02-09-recuperacio-informacio.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "Un cercador d'ordenances municipals utilitza BM25 sense filtres de metadades i, quan un ciutadà cerca «bonificació IBI família nombrosa», retorna en primera posició l'ordenança derogada del 2019 en lloc de la vigent del 2026. Quina solució arquitectònica ho evita de forma determinista?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Canviar `k1` de 1,5 a 1,6."
+        },
+        {
+          "key": "B",
+          "text": "Augmentar la mida dels embeddings a 3.072 dimensions."
+        },
+        {
+          "key": "C",
+          "text": "Eliminar les dates de tots els documents."
+        },
+        {
+          "key": "D",
+          "text": "Indexar metadades estructurades (`estat_vigencia`, `data_inici`, `data_fi`, `municipi_id`, `permisos_acl`) i aplicar **pre-filtres deterministes** (`estat_vigencia = 'VIGENT'`) per defecte abans de la puntuació."
+        }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "La vigència jurídica i els permisos d'accés no s'han de deixar mai a la puntuació probabilística de similitud textual; s'han de fer complir mitjançant filtres deterministes sobre metadades.",
+      "explanationsIncorrect": {
+        "A": "Ajustar k1 no distingeix si una norma està vigent o derogada.",
+        "B": "Els embeddings tampoc coneixen l'estat de vigència administratiu si el text és gairebé idèntic.",
+        "C": "Eliminar dates empitjoraria encara més la traçabilitat normativa."
+      }
+    },
+    {
+      "id": "m02-05-q03",
+      "module": 2,
+      "conceptId": "m02-05-extraccio-informacio",
+      "lessonRef": "content/module-02/m02-05-extraccio-informacio.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Per què en sistemes d'extracció d'imports monetaris de subvencions o factures s'ha d'emmagatzemar la xifra normalitzada com a `Decimal` (o cèntims enters) en lloc de `float`?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Perquè Python no suporta nombres `float`."
+        },
+        {
+          "key": "B",
+          "text": "Perquè `Decimal` ocupa menys memòria que un bit."
+        },
+        {
+          "key": "C",
+          "text": "Per evitar errors d'arrodoniment en coma flotant binària (p. ex. `0.1 + 0.2 = 0.30000000000000004`) que trencarien comprovacions comptables exactes (`base + IVA == total`)."
+        },
+        {
+          "key": "D",
+          "text": "Perquè els JSON Schema prohibeixen els nombres decimals."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "L'aritmètica binària IEEE 754 no representa exactament moltes fraccions decimals; `Decimal` (o enters en cèntims) garanteix exactitud comptable en verificacions d'imports públics.",
+      "explanationsIncorrect": {
+        "A": "Python suporta `float` nativament.",
+        "B": "`Decimal` és més precís, no ocupa menys que un bit.",
+        "D": "JSON Schema admet nombres, però en comptabilitat sovint es transmeten com a cadena decimal exacta o cèntims enters."
+      }
+    },
+    {
+      "id": "m02-07-q02",
+      "module": 2,
+      "conceptId": "m02-07-resum-automatic",
+      "lessonRef": "content/module-02/m02-07-resum-automatic.md",
+      "difficulty": "basic",
+      "questionType": "metrics",
+      "prompt": "Què mesura exactament la mètrica **ROUGE-L** en l'avaluació de resums automàtics?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "La latència en mil·lisegons de l'LLM."
+        },
+        {
+          "key": "B",
+          "text": "La longitud de la subseqüència comuna més llarga (Longest Common Subsequence) entre el resum generat i el resum de referència."
+        },
+        {
+          "key": "C",
+          "text": "El nombre de lleis citades al document."
+        },
+        {
+          "key": "D",
+          "text": "La distància euclidiana entre dos vectors Word2Vec."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "ROUGE-L calcula Precision, Recall i F1 basats en la Longest Common Subsequence (paraules coincidents en el mateix ordre relatiu, no necessàriament contigües).",
+      "explanationsIncorrect": {
+        "A": "ROUGE és una família de mètriques de qualitat textual, no de latència.",
+        "C": "La 'L' prové de Longest Common Subsequence, no de 'Lleis'.",
+        "D": "ROUGE opera sobre solapament lèxic de tokens, no sobre embeddings."
+      }
+    },
+    {
+      "id": "m02-07-q01",
+      "module": 2,
+      "conceptId": "m02-07-resum-automatic",
+      "lessonRef": "content/module-02/m02-07-resum-automatic.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina diferència fonamental existeix entre el **resum extractiu** i el **resum abstractiu**?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "El resum extractiu selecciona frases literals del document original, mentre que el resum abstractiu genera frases noves parafrasejant i sintetitzant el contingut."
+        },
+        {
+          "key": "B",
+          "text": "El resum extractiu només funciona en anglès i l'abstractiu només en català."
+        },
+        {
+          "key": "C",
+          "text": "El resum extractiu sempre inventa dades noves i l'abstractiu mai."
+        },
+        {
+          "key": "D",
+          "text": "El resum extractiu genera una imatge i l'abstractiu un fitxer CSV."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "L'extractiu retalla i ordena oracions literals del text original (com subratllar), mentre l'abstractiu redacta una síntesi nova amb més fluïdesa però risc d'al·lucinació.",
+      "explanationsIncorrect": {
+        "B": "Ambdós enfocaments s'apliquen a qualsevol llengua.",
+        "C": "És exactament al revés: el risc d'invenció és propi del resum abstractiu.",
+        "D": "Ambdós generen sortida textual."
+      }
+    },
+    {
+      "id": "m02-08-q03",
+      "module": 2,
+      "conceptId": "m02-08-traduccio-automatica",
+      "lessonRef": "content/module-02/m02-08-traduccio-automatica.md",
+      "difficulty": "basic",
+      "questionType": "normative",
+      "prompt": "Un tècnic necessita traduir un informe intern confidencial amb dades personals de salut (RGPD art. 9) del castellà al català. Quina opció és correcta?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Enganxar el text complet en un traductor web públic gratuït."
+        },
+        {
+          "key": "B",
+          "text": "Publicar-lo en un fòrum obert perquè el tradueixi la comunitat."
+        },
+        {
+          "key": "C",
+          "text": "Utilitzar un motor de traducció automàtica desplegat *on-premise* (infraestructura pròpia aïllada) o un servei corporatiu autoritzat amb contracte d'encàrrec del tractament (DPA), zero retenció i control d'accés ENS."
+        },
+        {
+          "key": "D",
+          "text": "Enviar-lo per correu personal a una API externa sense xifrar."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Tractar categories especials de dades personals en traductors públics gratuïts vulnera el RGPD i l'ENS; cal desplegament *on-premise* (p. ex., models AINA/Softcatalà locals) o contracte corporatiu degudament auditat.",
+      "explanationsIncorrect": {
+        "A": "Els traductors públics gratuïts poden registrar i reutilitzar el text per entrenar models, provocant una bretxa greu de dades.",
+        "B": "Seria una divulgació il·lícita de dades sensibles.",
+        "D": "Incompleix radicalment RGPD i ENS."
+      }
+    },
+    {
+      "id": "m02-07-q10",
+      "module": 2,
+      "conceptId": "m02-07-resum-automatic",
+      "lessonRef": "content/module-02/m02-07-resum-automatic.md",
+      "difficulty": "advanced",
+      "questionType": "metrics",
+      "prompt": "Quin mètode automàtic és el més adequat per detectar **al·lucinacions intrínseques** (contradiccions respecte del document font) en un resum abstractiu?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Calcular únicament la ràtio de compressió (paraules del resum / paraules originals)."
+        },
+        {
+          "key": "B",
+          "text": "Calcular ROUGE-1 contra el document original."
+        },
+        {
+          "key": "C",
+          "text": "Mesurar la fertilitat del tokenitzador."
+        },
+        {
+          "key": "D",
+          "text": "Aplicar verificació basada en **NLI (Natural Language Inference, estil SummaC)** o descomposició en afirmacions atòmiques verificades (*entailment* vs. *contradiction*) contra els fragments del text font, combinada amb verificació determinista de xifres i entitats."
+        }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Els models NLI classifiquen explícitament si una afirmació del resum es dedueix del document (entailment), és neutra (possible al·lucinació extrínseca) o el contradiu (al·lucinació intrínseca).",
+      "explanationsIncorrect": {
+        "A": "La ràtio de compressió només mesura longitud, no veracitat.",
+        "B": "ROUGE-1 no distingeix contradiccions que comparteixen vocabulari.",
+        "C": "La fertilitat mesura tokens/paraula, no fidelitat factual."
+      }
+    },
+    {
+      "id": "m02-08-q07",
+      "module": 2,
+      "conceptId": "m02-08-traduccio-automatica",
+      "lessonRef": "content/module-02/m02-08-traduccio-automatica.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Quin avantatge clau ofereix un **LLM instructiu multilingüe** (com Salamandra) enfront d'un motor NMT clàssic frase a frase en traduir una carta administrativa completa?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "És sempre 100 vegades més ràpid i consumeix menys memòria que un model NMT petit."
+        },
+        {
+          "key": "B",
+          "text": "No pot cometre mai cap omissió ni paràfrasi."
+        },
+        {
+          "key": "C",
+          "text": "No necessita tokenitzador."
+        },
+        {
+          "key": "D",
+          "text": "Tradueix amb context de document complet (mantenint coherència de gènere, tractament formal de «vostè» i correferències) i admet injecció dinàmica de glossaris terminològics (TERMCAT) al prompt."
+        }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "L'atenció sobre tot el document i la capacitat de seguir instruccions d'estil i glossaris en temps d'inferència són els grans avantatges de l'LLM-MT, a canvi d'un cost computacional major.",
+      "explanationsIncorrect": {
+        "A": "Al contrari, els models NMT especialitzats (p. ex. MarianMT) són molt més lleugers i ràpids que un LLM generalista.",
+        "B": "Els LLMs poden parafrasejar massa o ometre frases si no es controlen.",
+        "C": "Tots els LLMs utilitzen tokenitzador de subparaules."
+      }
+    },
+    {
+      "id": "m02-04-q06",
+      "module": 2,
+      "conceptId": "m02-04-classificacio-textos",
+      "lessonRef": "content/module-02/m02-04-classificacio-textos.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Tens decrets administratius de 1.800 tokens on l'encapçalament (primers 200 tokens) descriu l'objecte i la part dispositiva final (últims 250 tokens) conté la resolució clau. Si uses un encoder amb límit de `512 tokens`, quina estratègia pràctica evita perdre la part dispositiva?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Truncar sempre conservant únicament els primers 512 tokens."
+        },
+        {
+          "key": "B",
+          "text": "Eliminar totes les vocals per escurçar el text."
+        },
+        {
+          "key": "C",
+          "text": "Aplicar truncament **Head + Tail** (p. ex., primers 256 tokens + últims 256 tokens) o *sliding window* amb agregació de logits per finestra."
+        },
+        {
+          "key": "D",
+          "text": "Dividir la taxa d'aprenentatge per 4."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "En documents jurídics i administratius, la informació més discriminativa es concentra a l'inici (assumpte/antecedents) i al final (resolució/sol·licito); Head+Tail o sliding window la preserva dins el límit de 512 tokens.",
+      "explanationsIncorrect": {
+        "A": "Truncar només pel final descartaria sempre la part dispositiva del decret.",
+        "B": "Destruiria el text i trencaria el tokenitzador.",
+        "D": "La taxa d'aprenentatge no amplia la finestra de context."
+      }
+    },
+    {
+      "id": "m02-10-q04",
+      "module": 2,
+      "conceptId": "m02-10-cerca-semantica",
+      "lessonRef": "content/module-02/m02-10-cerca-semantica.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Per què NO es pot utilitzar un ***Cross-Encoder*** directament sobre 500.000 documents en temps real sense una etapa prèvia de recuperació?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Perquè el Cross-Encoder concatena consulta i document abans de l'atenció, de manera que no es poden pre-indexar els documents; requeriria 500.000 passades completes del Transformer per a cada consulta."
+        },
+        {
+          "key": "B",
+          "text": "Perquè el Cross-Encoder té menys precisió que un Bi-Encoder."
+        },
+        {
+          "key": "C",
+          "text": "Perquè el Cross-Encoder només accepta documents de menys de 10 paraules."
+        },
+        {
+          "key": "D",
+          "text": "Perquè els Cross-Encoders no es poden executar en GPU."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "La impossibilitat de pre-calcular representacions independents fa que el Cross-Encoder tingui cost O(N) passades Transformer per consulta, viable només sobre els top-20/50 candidats de l'Etapa 1.",
+      "explanationsIncorrect": {
+        "B": "Al contrari, el Cross-Encoder és més precís que el Bi-Encoder.",
+        "C": "Admet finestres de 512 a 8.192 tokens segons el model.",
+        "D": "S'executen precisament molt eficientment en batches petits sobre GPU."
+      }
+    },
+    {
+      "id": "m02-02-q02",
+      "module": 2,
+      "conceptId": "m02-02-tokenitzacio",
+      "lessonRef": "content/module-02/m02-02-tokenitzacio.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quin criteri utilitza l'algorisme Byte-Pair Encoding (BPE) a cada iteració d'entrenament del tokenitzador?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Elimina aleatòriament la meitat de les paraules del diccionari."
+        },
+        {
+          "key": "B",
+          "text": "Fusiona en un nou token el parell de símbols adjacents més freqüent al corpus."
+        },
+        {
+          "key": "C",
+          "text": "Assigna un únic token a cada paràgraf complet."
+        },
+        {
+          "key": "D",
+          "text": "Tradueix cada paraula a l'anglès abans d'assignar-li un identificador."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "BPE parteix de caràcters o bytes individuals i fusiona iterativament el parell adjacent amb major freqüència fins assolir la mida de vocabulari desitjada.",
+      "explanationsIncorrect": {
+        "A": "BPE és un algorisme determinista de fusions bottom-up, no d'eliminació aleatòria.",
+        "C": "Assignar un token per paràgraf crearia un vocabulari infinit i inutilitzable.",
+        "D": "BPE no fa traducció; opera sobre les seqüències de símbols del corpus."
+      }
+    },
+    {
+      "id": "m02-06-q04",
+      "module": 2,
+      "conceptId": "m02-06-ner",
+      "lessonRef": "content/module-02/m02-06-ner.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Quin avantatge aporta l'esquema **BIO** enfront d'un esquema simplificat **IO** (només `I-TIPUS` i `O`, sense `B-`)?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Elimina la classe `O`."
+        },
+        {
+          "key": "B",
+          "text": "Permet delimitar correctament dues entitats adjacents del mateix tipus sense separador entremig (p. ex., dos noms de persona consecutius en un llistat), que l'esquema IO fusionaria en una sola entitat."
+        },
+        {
+          "key": "C",
+          "text": "Duplica automàticament la velocitat del Transformer."
+        },
+        {
+          "key": "D",
+          "text": "Evita haver de tokenitzar el text."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Amb `B-`, `B-PER I-PER B-PER I-PER` distingeix sense ambigüitat dues entitats `PER` contigües, impossible en `IO`.",
+      "explanationsIncorrect": {
+        "A": "BIO conserva la classe `O`.",
+        "C": "No afecta la velocitat del Transformer (de fet augmenta lleugerament el nombre de classes de sortida).",
+        "D": "Continua requerint tokenització."
+      }
+    },
+    {
+      "id": "m02-02-q07",
+      "module": 2,
+      "conceptId": "m02-02-tokenitzacio",
+      "lessonRef": "content/module-02/m02-02-tokenitzacio.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "Com aconsegueix **Byte-Level BPE** (usat per GPT-2/4 o Llama 3) no produir MAI un token desconegut `<UNK>` davant de caràcters rars, emojis o alfabet grec/ciríl·lic?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Eliminant del text qualsevol caràcter que no sigui ASCII."
+        },
+        {
+          "key": "B",
+          "text": "Traduïnt tots els símbols especials a espais en blanc."
+        },
+        {
+          "key": "C",
+          "text": "Rebutjant qualsevol petició que contingui caràcters no anglesos."
+        },
+        {
+          "key": "D",
+          "text": "Partint del vocabulari base dels 256 valors possibles d'un byte UTF-8, de manera que qualsevol cadena Unicode es pot descompondre sense pèrdua com a seqüència de bytes coneguts."
+        }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Qualsevol caràcter Unicode es codifica en 1 a 4 bytes UTF-8; com que els 256 bytes base són sempre al vocabulari, mai cal recórrer a `<UNK>`.",
+      "explanationsIncorrect": {
+        "A": "Byte-Level BPE preserva íntegrament tots els caràcters UTF-8 sense eliminar-los.",
+        "B": "No substitueix símbols per espais.",
+        "C": "Suporta qualsevol idioma codificable en UTF-8."
+      }
+    },
+    {
+      "id": "m02-05-q05",
+      "module": 2,
+      "conceptId": "m02-05-extraccio-informacio",
+      "lessonRef": "content/module-02/m02-05-extraccio-informacio.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "En una resolució apareixen tres dates diferents: la data d'entrada de la sol·licitud (`10/03/2026`), la data de l'informe tècnic (`22/04/2026`) i la data límit de justificació (`30/11/2026`). Per què una expressió regular simple `\\d{2}/\\d{2}/\\d{4}` és insuficient per omplir el camp `data_limit_justificacio`?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Perquè el regex troba les tres dates però no entén el rol semàntic de cadascuna davant variacions en la redacció de cada decret."
+        },
+        {
+          "key": "B",
+          "text": "Perquè les expressions regulars no poden detectar dígits."
+        },
+        {
+          "key": "C",
+          "text": "Perquè les dates en format europeu no es poden convertir a ISO-8601."
+        },
+        {
+          "key": "D",
+          "text": "Perquè una resolució administrativa només pot tenir una sola data."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "Reconèixer quina de les múltiples dates del document correspon a un rol administratiu concret requereix comprensió contextual (model neuronal / LLM estructurat), mentre regex pot validar-ne el format.",
+      "explanationsIncorrect": {
+        "B": "Les regex detecten dígits trivialment.",
+        "C": "La conversió DD/MM/AAAA -> AAAA-MM-DD és directa.",
+        "D": "Els documents administratius contenen habitualment múltiples dates."
+      }
+    },
+    {
+      "id": "m02-04-q07",
+      "module": 2,
+      "conceptId": "m02-04-classificacio-textos",
+      "lessonRef": "content/module-02/m02-04-classificacio-textos.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "En un sistema de classificació d'instàncies amb «zona gris» (abstenció), què fa el sistema quan la probabilitat màxima calibrada és `0,48` (per sota del llindar `0,75`)?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Esborra la instància del registre electrònic."
+        },
+        {
+          "key": "B",
+          "text": "La reenvia aleatòriament a qualsevol departament."
+        },
+        {
+          "key": "C",
+          "text": "Redueix automàticament el llindar a 0,40."
+        },
+        {
+          "key": "D",
+          "text": "S'absté d'enrutar-la automàticament i la deriva a la cua de revisió humana (mostrant les 2-3 classes candidates per agilitzar la decisió), aprofitant la correcció per a Active Learning."
+        }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "L'abstenció selectiva protegeix la qualitat del servei en casos ambigus, facilita la feina humana suggerint el top-k i alimenta amb exemples d'alt valor el reentrenament.",
+      "explanationsIncorrect": {
+        "A": "Mai es pot esborrar una instància registrada oficialment.",
+        "B": "L'enrutament aleatori genera retards i errors administratius.",
+        "C": "Abaixar el llindar ad hoc degradaria la precisió pactada."
+      }
+    },
+    {
+      "id": "m02-06-q09",
+      "module": 2,
+      "conceptId": "m02-06-ner",
+      "lessonRef": "content/module-02/m02-06-ner.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En la funció `bio_a_spans` de la lliçó, què fa la branca `if tipus_act != tipus:` quan troba un tag `I-ORG` precedit directament per `O` (transició il·legal `O → I-ORG`)?",
+      "codeSnippet": "elif tag.startswith(\"I-\"):\n    tipus = tag[2:]\n    if tipus_act != tipus:\n        if tipus_act is not None:\n            spans.add((tipus_act, inici_act, i))\n        tipus_act = tipus\n        inici_act = i",
+      "options": [
+        {
+          "key": "A",
+          "text": "Tracta defensivament l'`I-ORG` orfe com l'inici d'un nou span `ORG` (en lloc de descartar-lo silenciosament o llançar una excepció), tancant prèviament qualsevol span anterior d'un altre tipus."
+        },
+        {
+          "key": "B",
+          "text": "Esborra totes les entitats detectades prèviament a la frase."
+        },
+        {
+          "key": "C",
+          "text": "Converteix l'etiqueta `I-ORG` en `O`."
+        },
+        {
+          "key": "D",
+          "text": "Atura el bucle immediatament amb un `break`."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "En models sense capa CRF poden aparèixer etiquetes `I-` sense `B-` previ; aquesta gestió defensiva (estàndard en decodificadors BIO com `seqeval`) recupera l'entitat de forma consistent sense trencar el flux.",
+      "explanationsIncorrect": {
+        "B": "Conserva totes les entitats ja afegides al conjunt `spans`.",
+        "C": "No la descarta com a `O`, sinó que n'inicia un span de tipus `ORG`.",
+        "D": "Continua processant la resta de tokens de la frase."
+      }
+    },
+    {
+      "id": "m02-03-q01",
+      "module": 2,
+      "conceptId": "m02-03-embeddings-nlp",
+      "lessonRef": "content/module-02/m02-03-embeddings-nlp.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quin avantatge principal aporten els **embeddings densos** respecte de Bag of Words / TF-IDF?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Generen vectors molt més grans (més de 100.000 dimensions plenes de zeros)."
+        },
+        {
+          "key": "B",
+          "text": "Representen paraules o textos en un espai continu de baixa dimensionalitat (p. ex., 384–1024) on la proximitat geomètrica captura similitud semàntica i sinonímia."
+        },
+        {
+          "key": "C",
+          "text": "No necessiten mai dades per aprendre."
+        },
+        {
+          "key": "D",
+          "text": "Només funcionen amb text en majúscules."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Els embeddings densos projecten significats propers (com 'ajut' i 'subvenció') a punts propers en un espai vectorial compacte, superant l'ortogonalitat lèxica de BoW/TF-IDF.",
+      "explanationsIncorrect": {
+        "A": "Els vectors d'alta dimensionalitat dispersa són propis de BoW/TF-IDF, no dels embeddings densos.",
+        "C": "Els models d'embeddings s'entrenen sobre grans corpus textuals.",
+        "D": "Operen sobre text natural en qualsevol combinació de majúscules i minúscules."
+      }
+    },
+    {
+      "id": "m02-03-q09",
+      "module": 2,
+      "conceptId": "m02-03-embeddings-nlp",
+      "lessonRef": "content/module-02/m02-03-embeddings-nlp.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En la funció `normalitzar_l2` de la lliçó, quin error preveu l'expressió `np.maximum(normes, 1e-12)`?",
+      "codeSnippet": "def normalitzar_l2(M: np.ndarray) -> np.ndarray:\n    normes = np.linalg.norm(M, axis=1, keepdims=True)\n    return M / np.maximum(normes, 1e-12)",
+      "options": [
+        {
+          "key": "A",
+          "text": "Evita que les coordenades superin el valor 100."
+        },
+        {
+          "key": "B",
+          "text": "Evita la divisió per zero (que generaria `NaN` i corrompria tot l'índex vectorial) en cas que arribi un vector nul."
+        },
+        {
+          "key": "C",
+          "text": "Converteix els vectors de 4 dimensions en vectors de 12 dimensions."
+        },
+        {
+          "key": "D",
+          "text": "Aplica regularització L1 automàticament."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Si una fila de la matriu és el vector zero (p. ex., un text buit o només amb tokens desconeguts en un model estàtic), dividir per `0.0` generaria `NaN` que propagaria errors en cerques posteriors.",
+      "explanationsIncorrect": {
+        "A": "La normalització L2 ja garanteix que cada coordenada estigui en [-1, 1].",
+        "C": "Manté intacta la forma de la matriu M.",
+        "D": "És una guarda numèrica de normalització L2, no regularització L1."
+      }
+    },
+    {
+      "id": "m02-02-q04",
+      "module": 2,
+      "conceptId": "m02-02-tokenitzacio",
+      "lessonRef": "content/module-02/m02-02-tokenitzacio.md",
+      "difficulty": "intermediate",
+      "questionType": "conceptual",
+      "prompt": "En què es diferencia principalment el model **Unigram** (usat sovint amb SentencePiece) respecte de **BPE**?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "BPE construeix el vocabulari bottom-up fusionant parells freqüents, mentre que Unigram treballa top-down podant un vocabulari inicial gran per minimitzar la pèrdua de versemblança."
+        },
+        {
+          "key": "B",
+          "text": "Unigram només pot tokenitzar paraules d'una sola lletra."
+        },
+        {
+          "key": "C",
+          "text": "BPE només funciona amb imatges i Unigram només amb àudio."
+        },
+        {
+          "key": "D",
+          "text": "Unigram no admet idiomes amb accents com el català."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "BPE creix des de caràcters/bytes cap amunt per fusions, mentre que Unigram comença amb un conjunt molt gran de subparaules candidates i elimina iterativament les que menys afecten la probabilitat del corpus.",
+      "explanationsIncorrect": {
+        "B": "Unigram produeix subparaules de longitud variable, incloses paraules completes.",
+        "C": "Ambdós són algorismes de tokenització textual.",
+        "D": "SentencePiece + Unigram funciona sobre UTF-8 i suporta perfectament el català (com en XLM-RoBERTa o Salamandra)."
+      }
+    },
+    {
+      "id": "m02-01-q03",
+      "module": 2,
+      "conceptId": "m02-01-fonaments-nlp",
+      "lessonRef": "content/module-02/m02-01-fonaments-nlp.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina diferència fonamental hi ha entre el *stemming* i la lematització?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "El stemming retalla sufixos de forma heurística (podent generar arrels inexistents), mentre que la lematització utilitza anàlisi morfològica i diccionari per retornar la forma canònica real (lema)."
+        },
+        {
+          "key": "B",
+          "text": "El stemming només funciona en català i la lematització només en anglès."
+        },
+        {
+          "key": "C",
+          "text": "La lematització elimina totes les vocals i el stemming elimina els números."
+        },
+        {
+          "key": "D",
+          "text": "Són exactament el mateix algorisme amb noms diferents."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "El stemming aplica regles mecàniques de truncament de sufixos, mentre que la lematització obté el lema real de diccionari (p. ex., 'van tramitar' → 'tramitar').",
+      "explanationsIncorrect": {
+        "B": "Existeixen stemmers i lematitzadors per a múltiples idiomes.",
+        "C": "Cap dels dos elimina vocals ni números arbitràriament.",
+        "D": "Tenen mecanismes, cost i precisió molt diferents."
+      }
+    },
+    {
+      "id": "m02-10-q01",
+      "module": 2,
+      "conceptId": "m02-10-cerca-semantica",
+      "lessonRef": "content/module-02/m02-10-cerca-semantica.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quin problema fonamental de la cerca lèxica tradicional (BM25) resol la **cerca semàntica** basada en embeddings?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "El desajust de vocabulari (*vocabulary mismatch*), permetent trobar documents rellevants escrits amb sinònims, llenguatge jurídic formal o un altre idioma cooficial encara que no comparteixin paraules exactes amb la consulta."
+        },
+        {
+          "key": "B",
+          "text": "La necessitat d'aplicar permisos d'accés (ACL) als documents."
+        },
+        {
+          "key": "C",
+          "text": "L'eliminació de la puntuació en documents PDF."
+        },
+        {
+          "key": "D",
+          "text": "La conversió d'imatges escanejades a text."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "La cerca semàntica projecta consultes i documents en un espai vectorial compartit on 'rebaixar contribució' i 'bonificació IBI' queden molt a prop malgrat no compartir paraules.",
+      "explanationsIncorrect": {
+        "B": "Els permisos ACL continuen sent obligatoris en cerca semàntica.",
+        "C": "No té relació amb puntuació de PDFs.",
+        "D": "Això correspon a l'OCR (Mòdul 4)."
+      }
+    },
+    {
+      "id": "m02-09-q01",
+      "module": 2,
+      "conceptId": "m02-09-recuperacio-informacio",
+      "lessonRef": "content/module-02/m02-09-recuperacio-informacio.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quina estructura de dades permet a un motor de cerca lèxic (com Elasticsearch o OpenSearch) trobar documents candidats en mil·lisegons sense escanejar linealment tot el corpus?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Un índex invertit (*inverted index*) que mapeja cada terme del vocabulari a la seva llista de documents (*postings list*)."
+        },
+        {
+          "key": "B",
+          "text": "Una matriu de confusió binària."
+        },
+        {
+          "key": "C",
+          "text": "Un arbre de decisió aleatori sense podar."
+        },
+        {
+          "key": "D",
+          "text": "Un fitxer CSV ordenat per data."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "L'índex invertit accedeix directament als documents que contenen els termes de la consulta (com l'índex temàtic d'un llibre) en temps sublineal.",
+      "explanationsIncorrect": {
+        "B": "La matriu de confusió és una eina d'avaluació de classificadors.",
+        "C": "No és una estructura d'indexació de text complet.",
+        "D": "Un CSV requeriria escanejar linealment totes les files."
+      }
+    },
+    {
+      "id": "m02-06-q05",
+      "module": 2,
+      "conceptId": "m02-06-ner",
+      "lessonRef": "content/module-02/m02-06-ner.md",
+      "difficulty": "intermediate",
+      "questionType": "metrics",
+      "prompt": "En l'avaluació estricta a nivell d'entitat (**`seqeval`**), una frase conté 1 sola entitat real `[Ajuntament de Vic]ORG`, i el model prediu únicament `[Ajuntament]ORG` (ometent `de Vic`). Quins són els recomptes de TP, FP i FN?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "TP = 1, FP = 0, FN = 0 (F1 = 1,0)."
+        },
+        {
+          "key": "B",
+          "text": "TP = 0,5, FP = 0,5, FN = 0."
+        },
+        {
+          "key": "C",
+          "text": "TP = 0, FP = 1, FN = 1 (F1 = 0,0), perquè el span predit no coincideix exactament amb les fronteres del span real."
+        },
+        {
+          "key": "D",
+          "text": "TP = 0, FP = 0, FN = 1."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "En strict entity-level evaluation, una predicció amb fronteres parcials genera alhora 1 fals positiu (el span incorrecte '[Ajuntament]') i 1 fals negatiu (el span real '[Ajuntament de Vic]' no trobat).",
+      "explanationsIncorrect": {
+        "A": "No hi ha coincidència exacta de fronteres.",
+        "B": "L'avaluació estricta de seqeval no dona mig punt; els recomptes són enters.",
+        "D": "També existeix 1 FP perquè el model va emetre una entitat errònia."
+      }
+    },
+    {
+      "id": "m02-02-q09",
+      "module": 2,
+      "conceptId": "m02-02-tokenitzacio",
+      "lessonRef": "content/module-02/m02-02-tokenitzacio.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En l'exemple BPE de la lliçó, per què s'afegeix el símbol especial `</w>` al final de cada paraula (`tuple(list(mot) + ['</w>'])`) abans d'executar les fusions?",
+      "codeSnippet": "vocab = {tuple(list(mot) + [\"</w>\"]): freq for mot, freq in corpus_freqs.items()}",
+      "options": [
+        {
+          "key": "A",
+          "text": "Per impedir que Python ordeni el diccionari alfabèticament."
+        },
+        {
+          "key": "B",
+          "text": "Per eliminar automàticament les paraules que acaben en vocal."
+        },
+        {
+          "key": "C",
+          "text": "Per indicar el límit de final de paraula, distingint un sufix de final de mot (com `cio</w>`) de la mateixa seqüència de lletres a l'interior d'una paraula, i permetre reconstruir els espais en decodificar."
+        },
+        {
+          "key": "D",
+          "text": "Per indicar que la paraula s'ha d'emmascarar com a `[PAD]`."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Marcar els límits de paraula (amb `</w>` en BPE clàssic o `▁` a l'inici en SentencePiece) permet distingir prefixos/sufixos de subcadenes internes i reconstruir sense ambigüitat les separacions entre mots.",
+      "explanationsIncorrect": {
+        "A": "No té relació amb l'ordenació del diccionari.",
+        "B": "S'afegeix a totes les paraules del corpus sense eliminar-ne cap.",
+        "D": "`</w>` marca final de paraula, no té res a veure amb el padding de batch."
+      }
+    },
+    {
+      "id": "m02-01-q08",
+      "module": 2,
+      "conceptId": "m02-01-fonaments-nlp",
+      "lessonRef": "content/module-02/m02-01-fonaments-nlp.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En l'exemple Python de la lliçó, per què s'utilitza el patró `[a-zàèéíïòóúüç]+(?:·[a-zàèéíïòóúüç]+)*` en lloc d'un simple `\\w+`?",
+      "codeSnippet": "tokens = re.findall(r\"[a-zàèéíïòóúüç]+(?:·[a-zàèéíïòóúüç]+)*\", text)",
+      "options": [
+        {
+          "key": "A",
+          "text": "Perquè en Python `\\w+` no inclou el punt volat (`·`) de l'ela geminada catalana, de manera que partiria paraules com «sol·licitud» o «parcel·la» en dos fragments artificials («sol» i «licitud»)."
+        },
+        {
+          "key": "B",
+          "text": "Perquè `\\w+` només detecta nombres enters."
+        },
+        {
+          "key": "C",
+          "text": "Per convertir les majúscules en minúscules automàticament."
+        },
+        {
+          "key": "D",
+          "text": "Per eliminar tots els accents del català."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "El punt volat (U+00B7) és un signe de puntuació i no pertany a `\\w`; sense contemplar-lo explícitament, termes fonamentals de l'Administració catalana com 'sol·licitud', 'instal·lació' o 'parcel·la' queden partits en dos tokens erronis.",
+      "explanationsIncorrect": {
+        "B": "`\\w+` captura lletres Unicode, dígits i guió baix, no només números.",
+        "C": "La conversió a minúscules es fa prèviament amb `text.lower()`.",
+        "D": "Al contrari, la classe de caràcters preserva explícitament tots els accents i dièresis del català."
+      }
+    },
+    {
+      "id": "m02-09-q03",
+      "module": 2,
+      "conceptId": "m02-09-recuperacio-informacio",
+      "lessonRef": "content/module-02/m02-09-recuperacio-informacio.md",
+      "difficulty": "basic",
+      "questionType": "metrics",
+      "prompt": "En un motor de cerca d'expedients, si el document exacte buscat apareix en la **4a posició** dels resultats, quin és el seu **Reciprocal Rank (RR)**?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "4,0."
+        },
+        {
+          "key": "B",
+          "text": "0,50."
+        },
+        {
+          "key": "C",
+          "text": "0,25 (1 / 4)."
+        },
+        {
+          "key": "D",
+          "text": "0,75."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "El Reciprocal Rank és l'invers de la posició (1-indexada) del primer resultat rellevant: 1 / 4 = 0,25.",
+      "explanationsIncorrect": {
+        "A": "RR sempre està dins [0, 1].",
+        "B": "0,50 correspon a la 2a posició (1/2).",
+        "D": "No correspon a 1/4."
+      }
+    },
+    {
+      "id": "m02-09-q02",
+      "module": 2,
+      "conceptId": "m02-09-recuperacio-informacio",
+      "lessonRef": "content/module-02/m02-09-recuperacio-informacio.md",
+      "difficulty": "basic",
+      "questionType": "conceptual",
+      "prompt": "Quines dues millores principals introdueix **Okapi BM25** respecte d'un TF-IDF bàsic?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Elimina la necessitat de tokenitzar i tradueix automàticament les consultes."
+        },
+        {
+          "key": "B",
+          "text": "Saturació sublineal de la freqüència de terme (paràmetre k₁) i normalització ajustable per longitud del document respecte de la mitjana del corpus (paràmetre b)."
+        },
+        {
+          "key": "C",
+          "text": "Converteix les paraules en embeddings densos de 1.024 dimensions."
+        },
+        {
+          "key": "D",
+          "text": "Genera resums abstractius automàtics."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "BM25 evita que la repetició excessiva d'un sol terme domini la puntuació (saturació k₁) i compensa documents molt llargs mitjançant la ràtio |d|/avgdl controlada per b.",
+      "explanationsIncorrect": {
+        "A": "BM25 necessita tokenització i no fa traducció.",
+        "C": "BM25 és un model probabilístic lèxic/dispers, no genera embeddings densos.",
+        "D": "BM25 fa rànquing de recuperació, no generació de resums."
+      }
+    },
+    {
+      "id": "m02-05-q07",
+      "module": 2,
+      "conceptId": "m02-05-extraccio-informacio",
+      "lessonRef": "content/module-02/m02-05-extraccio-informacio.md",
+      "difficulty": "intermediate",
+      "questionType": "case-study",
+      "prompt": "En un sistema automatitzat d'**anonimització de resolucions** prèvia a la publicació al portal de transparència (RGPD), quina mètrica cal prioritzar per sobre de tot?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Velocitat d'execució a costa de deixar escapar la meitat dels DNIs."
+        },
+        {
+          "key": "B",
+          "text": "Precision al 100% encara que el Recall sigui del 60%."
+        },
+        {
+          "key": "C",
+          "text": "Perplexitat del model de llenguatge."
+        },
+        {
+          "key": "D",
+          "text": "Recall (sensibilitat) extremadament alt sobre totes les categories de PII, ja que un fals negatiu suposa exposar públicament dades personals (bretxa RGPD), complementat amb revisió humana final."
+        }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "En anonimització, els falsos negatius (deixar dades personals visibles públicament) tenen un impacte jurídic gravíssim; un fals positiu puntual (emmascarar un terme no personal) es corregeix fàcilment en la revisió humana.",
+      "explanationsIncorrect": {
+        "A": "Deixar escapar DNIs provocaria bretxes greus de protecció de dades.",
+        "B": "Un Recall del 60% deixaria el 40% de les dades personals sense anonimitzar.",
+        "C": "La perplexitat no mesura detecció de dades personals."
+      }
+    },
+    {
+      "id": "m02-08-q01",
+      "module": 2,
+      "conceptId": "m02-08-traduccio-automatica",
+      "lessonRef": "content/module-02/m02-08-traduccio-automatica.md",
+      "difficulty": "basic",
+      "questionType": "metrics",
+      "prompt": "Per a què serveix la **Brevity Penalty (BP)** en la fórmula de la mètrica **BLEU**?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Per premiar les traduccions com més curtes millor."
+        },
+        {
+          "key": "B",
+          "text": "Per penalitzar traduccions artificialment curtes que altrament obtindrien una precisió d'n-grames del 100% ometent gran part de la frase original."
+        },
+        {
+          "key": "C",
+          "text": "Per traduir automàticament les abreviatures del text."
+        },
+        {
+          "key": "D",
+          "text": "Per eliminar les paraules amb més de 10 caràcters."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Com que BLEU es basa en precisió (i no en recall directe), sense Brevity Penalty una traducció d'una sola paraula correcta ('ajuntament') obtindria precisió 1,0; BP penalitza exponencialment les traduccions més curtes que la referència.",
+      "explanationsIncorrect": {
+        "A": "Al contrari, penalitza les traduccions massa curtes.",
+        "C": "No té res a veure amb abreviatures.",
+        "D": "No elimina paraules llargues."
+      }
+    },
+    {
+      "id": "m02-05-q08",
+      "module": 2,
+      "conceptId": "m02-05-extraccio-informacio",
+      "lessonRef": "content/module-02/m02-05-extraccio-informacio.md",
+      "difficulty": "advanced",
+      "questionType": "code",
+      "prompt": "En l'exemple Python de la lliçó, què aconsegueix la combinació de `re.search(r\"\\b(\\d{8}[A-Za-z])\\b\", text)` seguida de `validar_dni(dni)`?",
+      "codeSnippet": "def validar_dni(dni: str) -> bool:\n    ...\n    return LLETRES_DNI[int(dni[:8]) % 23] == dni[8]",
+      "options": [
+        {
+          "key": "A",
+          "text": "Permet detectar automàticament errors d'OCR (com confondre '8' per 'B' o 'Z' per 'A') o falsos positius que compleixen el format sintàctic de 8 dígits + 1 lletra però incompleixen el dígit de control oficial, derivant l'expedient a revisió humana."
+        },
+        {
+          "key": "B",
+          "text": "Consulta en temps real la base de dades de la Policia Nacional."
+        },
+        {
+          "key": "C",
+          "text": "Reemplaça el DNI per un número aleatori vàlid sense avisar."
+        },
+        {
+          "key": "D",
+          "text": "Elimina la necessitat de comprovar la resta de camps del decret."
+        }
+      ],
+      "correctOption": "A",
+      "explanationCorrect": "La comprovació matemàtica mòdul 23 (i anàlogament el mòdul 97 de l'IBAN o el dígit del CIF) actua com a detector determinista gratuït d'errors d'OCR i de transcripció sense dependre de serveis externs.",
+      "explanationsIncorrect": {
+        "B": "És un càlcul algorítmic local (mòdul 23), no una consulta externa.",
+        "C": "Mai no s'ha d'inventar ni substituir un identificador; cal marcar-lo per a revisió humana.",
+        "D": "Cada camp requereix la seva pròpia validació de tipus i coherència."
+      }
+    },
+    {
+      "id": "m02-03-q04",
+      "module": 2,
+      "conceptId": "m02-03-embeddings-nlp",
+      "lessonRef": "content/module-02/m02-03-embeddings-nlp.md",
+      "difficulty": "intermediate",
+      "questionType": "metrics",
+      "prompt": "Si dos vectors d'embeddings u i v estan normalitzats amb norma L2 unitària (||u||₂ = ||v||₂ = 1), quina afirmació matemàtica és CERTA?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "La seva similitud cosinus és sempre igual a 0."
+        },
+        {
+          "key": "B",
+          "text": "El producte escalar u·v és idèntic a la similitud cosinus, i la distància euclidiana al quadrat satisfà ||u − v||₂² = 2(1 − cos(u, v)), produint exactament el mateix rànquing de veïns."
+        },
+        {
+          "key": "C",
+          "text": "La distància euclidiana és sempre superior a 10."
+        },
+        {
+          "key": "D",
+          "text": "No es pot calcular la similitud cosinus si la norma és 1."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "En vectors unitaris, el denominador ||u||₂·||v||₂ val 1 (cosinus = dot product), i expandir ||u−v||₂² dona ||u||² + ||v||² − 2u·v = 2(1 − cos), que és estrictament decreixent respecte del cosinus.",
+      "explanationsIncorrect": {
+        "A": "La similitud cosinus oscil·la entre -1 i +1 segons l'angle entre u i v.",
+        "C": "La distància euclidiana entre dos vectors unitaris és com a màxim 2 (quan són oposats).",
+        "D": "Al contrari, és el cas ideal i computacionalment més ràpid."
+      }
+    },
+    {
+      "id": "m02-04-q10",
+      "module": 2,
+      "conceptId": "m02-04-classificacio-textos",
+      "lessonRef": "content/module-02/m02-04-classificacio-textos.md",
+      "difficulty": "advanced",
+      "questionType": "metrics",
+      "prompt": "En classificació multietiqueta, quin defecte té utilitzar **Subset Accuracy (Exact Match Ratio)** com a única mètrica d'avaluació quan cada expedient pot tenir fins a 18 etiquetes?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Dona sempre 1,0 encara que totes les prediccions siguin incorrectes."
+        },
+        {
+          "key": "B",
+          "text": "Només es pot calcular en classificació binària."
+        },
+        {
+          "key": "C",
+          "text": "Ignora els falsos positius."
+        },
+        {
+          "key": "D",
+          "text": "És extremadament estricte: si el model encerta 17 de les 18 etiquetes d'un expedient i falla només 1, puntua el document complet amb 0, sense distingir-lo d'un model que les falla totes 18."
+        }
+      ],
+      "correctOption": "D",
+      "explanationCorrect": "Exact Match exigeix coincidència absoluta en tot el vector binari de 18 posicions; per això s'ha de complementar sempre amb Macro-F1, Micro-F1 i Hamming Loss, que mesuren encerts parcials per etiqueta.",
+      "explanationsIncorrect": {
+        "A": "Al contrari, tendeix a ser molt baix i exigent.",
+        "B": "Es defineix específicament per a multietiqueta.",
+        "C": "Qualsevol fals positiu o fals negatiu fa caure la puntuació del document a 0."
+      }
+    },
+    {
+      "id": "m02-01-q05",
+      "module": 2,
+      "conceptId": "m02-01-fonaments-nlp",
+      "lessonRef": "content/module-02/m02-01-fonaments-nlp.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Estàs preparant textos administratius per fer *fine-tuning* d'un model RoBERTa-ca (Transformer). Quin preprocessament és el més adequat?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Aplicar stemming agressiu, passar tot a minúscules, eliminar puntuació i eliminar totes les stopwords."
+        },
+        {
+          "key": "B",
+          "text": "Aplicar només neteja estructural (normalització Unicode NFC, eliminació d'artefactes OCR o capçaleres repetides i anonimització de PII) i conservar el text natural intacte per al seu tokenitzador."
+        },
+        {
+          "key": "C",
+          "text": "Convertir prèviament el text en una matriu Bag of Words ordenada alfabèticament."
+        },
+        {
+          "key": "D",
+          "text": "Traduir prèviament tots els textos a llatí."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Els models Transformer han estat preentrenats sobre text natural intacte; conservar majúscules, puntuació, flexió i paraules funcionals preserva tot el senyal sintàctic i semàntic.",
+      "explanationsIncorrect": {
+        "A": "El preprocés destructiu degrada severament els models Transformer preentrenats.",
+        "C": "BoW destrueix l'ordre seqüencial que necessita el Transformer.",
+        "D": "No té cap sentit tècnic ni lingüístic."
+      }
+    },
+    {
+      "id": "m02-07-q05",
+      "module": 2,
+      "conceptId": "m02-07-resum-automatic",
+      "lessonRef": "content/module-02/m02-07-resum-automatic.md",
+      "difficulty": "intermediate",
+      "questionType": "architecture",
+      "prompt": "Quin avantatge principal té l'estratègia **Map-Reduce** respecte de **Refine** en resumir un plec administratiu de 120 pàgines?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Map-Reduce no necessita dividir el document en seccions."
+        },
+        {
+          "key": "B",
+          "text": "En Map-Reduce, els resums parcials de cada secció es poden executar en paral·lel (reduint dràsticament la latència total) i cada secció rep atenció equilibrada sense acumular biaix cap als últims blocs."
+        },
+        {
+          "key": "C",
+          "text": "Map-Reduce garanteix zero al·lucinacions sense cap verificació posterior."
+        },
+        {
+          "key": "D",
+          "text": "Refine només funciona amb algorismes de clustering."
+        }
+      ],
+      "correctOption": "B",
+      "explanationCorrect": "Refine és estrictament seqüencial (cada bloc depèn del resum acumulat anterior), mentre Map-Reduce paral·lelitzà la fase Map de totes les seccions i després sintetitza en Reduce.",
+      "explanationsIncorrect": {
+        "A": "Map-Reduce divideix explícitament el document en seccions a la fase Map.",
+        "C": "Cap estratègia de resum abstractiu elimina per si sola la necessitat de verificar la fidelitat.",
+        "D": "Refine és una estratègia seqüencial de resum amb LLMs."
+      }
+    },
+    {
+      "id": "m02-10-q06",
+      "module": 2,
+      "conceptId": "m02-10-cerca-semantica",
+      "lessonRef": "content/module-02/m02-10-cerca-semantica.md",
+      "difficulty": "intermediate",
+      "questionType": "metrics",
+      "prompt": "Quin efecte té la constant suavitzadora `k = 60` en la fórmula d'RRF `1 / (k + rank)`?",
+      "codeSnippet": null,
+      "options": [
+        {
+          "key": "A",
+          "text": "Limita el resultat màxim a 60 documents."
+        },
+        {
+          "key": "B",
+          "text": "Elimina els primers 60 resultats del rànquing."
+        },
+        {
+          "key": "C",
+          "text": "Atenua la diferència extrema entre la posició `#1` i la `#2` en un únic cercador (`1/61` vs `1/62`), premiant més els documents que apareixen consistentment amunt en múltiples cercadors alhora."
+        },
+        {
+          "key": "D",
+          "text": "Multiplica totes les puntuacions BM25 per 60."
+        }
+      ],
+      "correctOption": "C",
+      "explanationCorrect": "Si `k=0`, un `#1` en un sol cercador (`1/1 = 1,0`) venceria sempre un `#2` en ambdós cercadors (`1/2 + 1/2 = 1,0`); amb `k=60`, un `#2` en ambdós (`2/62 = 0,0323`) supera clarament un `#1` aïllat (`1/61 = 0,0164`).",
+      "explanationsIncorrect": {
+        "A": "k és una constant de suavitzat, no un límit de nombre de documents.",
+        "B": "No descarta cap resultat.",
+        "D": "RRF no fa servir les puntuacions crues de BM25."
+      }
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": "case-04",
+  "title": "Supòsit 04 — Pipeline IDP de factures i justificants de subvencions amb revisió humana",
+  "modules": [4, 6],
+  "difficulty": "intermediate",
+  "estimatedMinutes": 45,
+  "context": "L'Àrea de Subvencions d'una diputació ha de revisar 18.000 justificants anuals (factures PDF escanejades, tiquets fotografiats amb mòbil i certificats bancaris) aportats per entitats culturals i esportives. Molts documents arriben girats, borrosos o amb desquadres d'IVA.",
+  "statement": "Dissenya el pipeline complet de Processament Intel·ligent de Documents (IDP) des de la ingesta fins a la validació comptable i la derivació a revisió humana (HITL), incloent-hi mètriques de control.",
+  "requirements": [
+    "Descriure les fases de preprocés d'imatge, OCR/VLM, classificació documental i extracció estructurada (KIE) en esquema JSON.",
+    "Definir regles de validació creuada deterministes (aritmètica, NIF/CIF, duplicats, dates dins del període subvencionable).",
+    "Establir la política d'enrutament STP vs. HITL, les mètriques CER/WER/Field-F1 i les mesures de protecció de dades (anonimització/retenció)."
+  ],
+  "rubric": [
+    { "criterion": "Preprocés, OCR/Layout i KIE estructurat", "maxPoints": 30, "description": "Cobreix deskew/denoise, detecció PDF natiu vs. escanejat, LayoutLM/VLM i esquema JSON tipat." },
+    { "criterion": "Validació creuada comptable i detecció de duplicats", "maxPoints": 30, "description": "Verifica base+IVA=total, lletra NIF/CIF, finestra de dates de la convocatòria i hash de factura duplicada." },
+    { "criterion": "Política STP vs. HITL i UX de verificació ràpida", "maxPoints": 20, "description": "Només STP amb alta confiança + 0 errors aritmètics; en HITL mostra bounding boxes ressaltats sobre el PDF." },
+    { "criterion": "Mètriques IDP (CER, Field-F1, taxa STP) i RGPD/ENS", "maxPoints": 20, "description": "Defineix mètriques exactes i control d'accés / supressió de justificants." }
+  ],
+  "modelSolution": "### 1. Ingesta, preprocés i extracció (KIE)\n- **Bifurcació intel·ligent**: si el PDF és natiu/Factur-e XML, s'extreu el text estructurat directament (0% error OCR!); si és escanejat o foto, s'aplica **preprocés** (*deskew* d'inclinació, correcció de contrast, eliminació de soroll).\n- **Classificació + KIE**: model multimodal (*LayoutLM* / VLM open-weights *on-premise*) que retorna un **JSON estructurat validat per Pydantic** (`nif_emissor`, `num_factura`, `data`, `base`, `tipus_iva`, `quota_iva`, `total`, `iban`) juntament amb les coordenades (**bounding boxes**) i confiança per camp.\n\n### 2. Validació creuada determinista\n1. **Aritmètica exacta**: `abs((base + quota_iva) - total) <= 0,01` i verificació d'IVA aplicable.\n2. **Identificadors**: dígit de control de NIF/CIF i validació IBAN (mòdul 97).\n3. **Elegibilitat temporal**: `data_factura` dins el període subvencionable de les bases.\n4. **Antifrau de duplicats**: clau composta `(nif_emissor, num_factura, total)` per bloquejar factures presentades en dues subvencions!\n\n### 3. Enrutament STP vs. HITL i mètriques\n- **STP automàtic**: només si totes les validacions creuades passen I la confiança mínima de cada camp crític >= `0,92` (sempre subjecte a mostreig d'auditoria del 5%).\n- **Cua HITL**: mostra el PDF original a l'esquerra amb el **bounding box ressaltat** del camp dubtós perquè el tècnic corregeixi en 5 segons.\n- **Mètriques**: **CER** (qualitat OCR), **Field-level F1** (especialment en imports i NIF), **Taxa STP** i taxa d'error post-STP detectat en auditoria.",
+  "alternativeApproaches": [
+    "Promoure l'ús obligatori de factura electrònica estructurada (Facturae / FACe) per a entitats jurídiques per reduir el volum d'OCR escanejat."
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": "case-10",
+  "title": "Supòsit 10 — Resposta a incident de seguretat: Indirect Prompt Injection i bretxa PII en un agent",
+  "modules": [5, 8],
+  "difficulty": "advanced",
+  "estimatedMinutes": 50,
+  "context": "A les 10:15 h d'un dimarts, el monitoratge SIEM detecta que un agent intern d'IA que resumeix PDFs d'instàncies ciutadanes ha llegit un PDF manipulat amb text ocult (*Indirect Prompt Injection*), ha consultat 35 expedients confidencials de la base vectorial RAG (que no tenia RBAC pre-recuperació) i els ha enviat per correu a una adreça externa desconeguda.",
+  "statement": "Elabora el protocol complet de resposta immediata a l'incident (tècnic, jurídic RGPD/APDCAT i ciberseguretat ENS/CCN-CERT) i el redisseny defensiu definitiu per evitar que es torni a repetir.",
+  "requirements": [
+    "Definir les accions de contenció immediates (primera hora: botó d'aturada, revocació de credencials, preservació forense de logs).",
+    "Establir les obligacions legals de notificació: termini de 72 hores a l'APDCAT (art. 33 RGPD), comunicació als afectats (art. 34), notificació CCN-CERT (ENS) i incidents greus AI Act.",
+    "Redissenyar l'agent aplicant defensa en profunditat (RBAC pre-recuperació, mínim privilegi, HITL obligatori en escriptura/enviaments i Red Teaming)."
+  ],
+  "rubric": [
+    { "criterion": "Contenció immediata i preservació d'evidències forenses", "maxPoints": 25, "description": "Activa botó d'aturada (art. 14.4.e AI Act), revoca credencials SMTP/API i preserva logs inalterables." },
+    { "criterion": "Notificació legal exacta (APDCAT <= 72h, afectats art. 34, CCN-CERT)", "maxPoints": 30, "description": "Identifica DPD, APDCAT <= 72h (art. 33 RGPD), comunicació als 35 afectats si alt risc (art. 34) i CCN-CERT/LUCIA." },
+    { "criterion": "Redisseny tècnic en defensa en profunditat (OWASP LLM)", "maxPoints": 30, "description": "Resol LLM01 (indirect injection), RAG sense RBAC (pre-filtering determinista) i LLM06/08 (Excessive Agency: eliminar correu autònom + HITL)." },
+    { "criterion": "Pla de prevenció, auditoria post-mortem i formació", "maxPoints": 15, "description": "Inclou Red Teaming abans de reobrir el servei i actualització de la EIPD/FRIA." }
+  ],
+  "modelSolution": "### 1. Contenció immediata (0–60 minuts)\n1. **Botó d'aturada (art. 14.4.e AI Act)**: desconnectar immediatament l'agent i revocar el token/credencial de l'eina d'enviament de correu i d'accés a la base vectorial.\n2. **Preservació forense**: congelar els logs del SIEM, les traces de l'agent, el PDF maliciós i la llista exacta dels **35 expedients exfiltrats** (per avaluar si contenen categories especials art. 9!).\n3. **Activació del gabinet de crisi**: Responsable de Seguretat ENS, DPD, Responsable del Servei i Cap d'Enginyeria.\n\n### 2. Obligacions legals de notificació\n- **RGPD — Art. 33 (Bretxa de seguretat)**: notificació formal a l'**APDCAT** (autoritat competent per a ens locals catalans) sense dilació indeguda i **com a màxim en 72 hores** des de la constància (fins i tot de manera fàsia si la investigació forense continua oberta).\n- **RGPD — Art. 34**: en tractar-se de 35 expedients confidencials exfiltrats a un tercer no autoritzat (alt risc per als drets i llibertats), **comunicació clara i directa a les 35 persones afectades** indicant mesures de protecció i contacte del DPD.\n- **ENS / CCN-CERT**: notificació d'incident de ciberseguretat greu a **CCN-CERT** (plataforma LUCIA / CSIRT de referència a Catalunya — Agència de Ciberseguretat de Catalunya) i, si és sistema d'alt risc, notificació d'incident greu sota l'AI Act.\n\n### 3. Redisseny defensiu abans de reactivar el servei\n1. **Eliminar *Excessive Agency***: l'agent de resum **MAI** no ha de tenir eina d'enviament de correus externs! Només eines de lectura en *allowlist* i creació d'esborranys interns amb **HITL obligatori**.\n2. **RBAC determinista pre-recuperació**: aïllar la base vectorial amb metadades ACL filtrades *abans* d'entrar al context de l'LLM (un resumidor d'instàncies d'entrada no necessita accés a expedients històrics confidencials!).\n3. **Separació instruccions/dades + *Guardrails* + *Red Teaming***: sanititzar documents entrants, desplegar DLP de sortida contra PII i superar una bateria completa de *Red Teaming* contra *indirect prompt injection* abans de tornar a producció.",
+  "alternativeApproaches": [
+    "Executar el resumidor de PDFs en un contenidor completament aïllat sense sortida a Internet (egress zero) i sense cap eina d'agent connectada (arquitectura pura de text-a-resum)."
+  ]
+}

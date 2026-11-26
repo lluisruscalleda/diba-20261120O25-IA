@@ -1,0 +1,24 @@
+{
+  "id": "case-03",
+  "title": "Supòsit 03 — Disseny d'un sistema RAG d'ordenances municipals amb zero al·lucinació",
+  "modules": [3, 5, 7],
+  "difficulty": "advanced",
+  "estimatedMinutes": 50,
+  "context": "Una diputació vol posar a disposició de 311 ajuntaments un assistent normatiu basat en ordenances fiscals, reglaments i bases publicades al BOPB. En les proves inicials, un RAG naïf amb chunks fixos de 500 caràcters ha barrejat ordenances derogades del 2023 amb les vigents del 2026 i s'ha inventat percentatges de bonificació.",
+  "statement": "Redissenya integralment el pipeline RAG (ingesta, chunking, recuperació, reranking, generació i avaluació RAGAS) per eliminar cites derogades i al·lucinacions.",
+  "requirements": [
+    "Definir una estratègia de chunking estructural jurídic i metadades obligatòries (municipi, vigència, data BOPB, article).",
+    "Dissenyar la recuperació híbrida (BM25 + dens + RRF + Reranker) amb filtratge estricte pre-recuperació.",
+    "Especificar la porta d'abstenció, el format de citacions verificables i el paquet d'avaluació (Context Recall, Faithfulness i Answer Relevancy)."
+  ],
+  "rubric": [
+    { "criterion": "Ingesta i chunking jurídic amb metadades de vigència i municipi", "maxPoints": 30, "description": "Talla per títol/article (no caràcters cecs) i filtra obligatòriament per municipi_id i vigent=True." },
+    { "criterion": "Recuperació híbrida (BM25 + vectors + RRF + Cross-Encoder)", "maxPoints": 25, "description": "Combina cerca lèxica exacta (articles/sigles) amb semàntica i reordena els top-K candidats." },
+    { "criterion": "Generació ancorada, cites verificables i abstenció", "maxPoints": 25, "description": "Temperatura baixa, citació obligatòria [DOC, art.], i abstenció explícita si no hi ha suport documental." },
+    { "criterion": "Avaluació quantitativa (Golden Set i RAGAS) i actualització", "maxPoints": 20, "description": "Defineix Golden Set en català, mesura Faithfulness >= 0,95 i sincronitza automàticament derogacions del BOPB." }
+  ],
+  "modelSolution": "### 1. Ingesta i chunking jurídic intel·ligent\n- Substituir el tall cec de 500 caràcters per **chunking estructural per article / apartat** (preservant taules de tarifes completes i capçalera jeràrquica `Ordenança > Capítol > Article`).\n- Metadades obligatòries per *chunk*: `municipi_id`, `tipus_norma`, `article`, `data_publicacio_bopb`, `vigent: bool`, `substituit_per_doc_id`.\n\n### 2. Recuperació híbrida amb filtratge determinista\n1. **Pre-filtratge obligatori**: `WHERE municipi_id = :m AND vigent = true` (elimina al 100% la barreja entre municipis i normes derogades!).\n2. **Cerca híbrida**: **BM25** (imprescindible per trobar «art. 9.2», «IBI», «ICIO») + **Embeddings multilingües densos** (sinònims ciutadans), fusionats amb **RRF (*Reciprocal Rank Fusion*)**.\n3. **Reranking**: un *Cross-Encoder* reordena els 20 candidats i passa només els `top-4` més rellevants al context.\n\n### 3. Generació ancorada i avaluació RAGAS\n- **Generació**: `temperature <= 0,1`, instrucció estricta d'usar *només* el context proporcionat, citació obligatòria amb enllaç al PDF del BOPB i **porta d'abstenció** si el score del reranker cau per sota del llindar.\n- **Avaluació (Quality Gate CI/CD)**: Golden Set de 200 preguntes reals per municipi/idioma mesurant **Context Recall >= 0,92**, **Faithfulness >= 0,96** (zero al·lucinació!) i taxa d'abstenció correcta en preguntes fora de domini >= 95%.",
+  "alternativeApproaches": [
+    "Afegir un extractor d'actualitzacions automàtic del BOPB que marqui en cua de revisió els articles afectats per una modificació d'ordenança."
+  ]
+}

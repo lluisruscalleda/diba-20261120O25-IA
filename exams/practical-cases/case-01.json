@@ -1,0 +1,24 @@
+{
+  "id": "case-01",
+  "title": "Supòsit 01 — Model predictiu de risc d'impagament tributari sense Data Leakage",
+  "modules": [1, 7, 8],
+  "difficulty": "intermediate",
+  "estimatedMinutes": 45,
+  "context": "L'Organisme de Gestió Tributària (ORGT) d'una diputació vol prioritzar avisos preventius de fraccionament de l'IBI abans del venciment voluntari. L'equip inicial ha obtingut un AUC de 0,98 amb una validació aleatòria barrejant exercicis 2021–2025 i incloent la columna «recàrrec_constrenyiment_aplicat».",
+  "statement": "Audita la proposta inicial, explica per què el 0,98 és irreal i dissenya un pipeline de Machine Learning rigorós, interpretable i conforme al RGPD i l'AI Act.",
+  "requirements": [
+    "Identificar les dues fonts de Data Leakage presents (temporal i target leakage) i dissenyar l'estratègia correcta de partició temporal.",
+    "Seleccionar i justificar l'algorisme (white-box vs. black-box) i les mètriques adients per a classes desequilibrades (5% d'impagaments).",
+    "Definir controls de supervisió humana (HITL/HOTL), transparència i no discriminació per barri o codi postal."
+  ],
+  "rubric": [
+    { "criterion": "Detecció de Target Leakage i Leakage temporal + partició correcta", "maxPoints": 30, "description": "Identifica recàrrec_constrenyiment com a variable futura i exigeix train/val/test cronològic amb escalat fit només en train." },
+    { "criterion": "Elecció de model interpretable i mètriques desequilibrades", "maxPoints": 25, "description": "Descarta Accuracy, proposa PR-AUC / F1 / Recall@K i justifica regressió logística o XGBoost + TreeSHAP." },
+    { "criterion": "Disseny de prevenció proactiva i garanties jurídiques", "maxPoints": 25, "description": "Evita efectes sancionadors automàtics (art. 22 RGPD), audita proxies com el codi postal i assegura motivació." },
+    { "criterion": "Estructura, claredat tècnica i realisme públic", "maxPoints": 20, "description": "Diferencia teoria, pràctica d'enginyeria i obligacions legals amb claredat." }
+  ],
+  "modelSolution": "### 1. Diagnòstic del fals AUC = 0,98\n- **Target Leakage**: la columna `recàrrec_constrenyiment_aplicat` només existeix *després* que el contribuent ja ha impagat! En producció (abans del venciment) serà sempre nula o desconeguda.\n- **Leakage temporal**: barrejar aleatòriament exercicis 2021–2025 permet entrenar amb dades del 2025 per predir el 2023. Cal aplicar **partició cronològica estricta** (ex. Train 2021–2023, Val 2024, Test 2025) i ajustar imputadors i escaladors **únicament** sobre Train dins un `Pipeline`.\n\n### 2. Model i mètriques adequades\n- Amb només un 5% d'impagaments, l'**Accuracy** és enganyosa (predir sempre «paga» dona 95%!). Cal avaluar **PR-AUC**, **Recall@K** (ex. top 10% avisos) i **F1**.\n- **Model recomanat**: **Regressió logística regularitzada L2** (intrínsecament interpretable) o **LightGBM + TreeSHAP** si la millora sobre tabular és substancial.\n\n### 3. Garanties jurídiques i ètiques\n- Finalitat estrictament **preventiva i d'ajut** (oferir fraccionament voluntari abans del recàrrec), mai punitiva ni embargament automàtic (respectant **art. 22 RGPD**).\n- **Auditoria d'equitat**: comprovar que variables *proxy* com el codi postal no penalitzin injustament barris vulnerables (**Equalized Odds / FPR**).\n- Base jurídica **art. 6.1.e RGPD** (+ rang legal art. 8 LOPDGDD), minimització i revisió del DPD.",
+  "alternativeApproaches": [
+    "Si l'objectiu fos únicament oferir fraccionament universal, valorar regles deterministes senzilles basades en historial d'ajornaments previs abans d'introduir ML."
+  ]
+}

@@ -13,10 +13,10 @@ Llegenda d'estat:
 | Tests individuals (mín. 10 preguntes / concepte) | 70 (700 preg.) | 70 (≥700 preg.) | 100,0% |
 | Flashcards per concepte (mín. 5 / concepte) | 70 (360 fitxes) | 70 (≥350 fitxes) | 100,0% |
 | Laboratoris pràctics | 8 | 8 | 100,0% |
-| Exàmens de mòdul (40 preg.) | 0 | 8 | 0% |
-| Simulacres globals (50 preg.) | 0 | 10 | 0% |
-| Supòsits pràctics independents | 0 | 20 | 0% |
-| Simulacres teoricopràctics complets | 0 | 5 | 0% |
+| Exàmens de mòdul (40 preg.) | 8 | 8 | 100,0% |
+| Simulacres globals (50 preg.) | 10 | 10 | 100,0% |
+| Supòsits pràctics independents | 20 | 20 | 100,0% |
+| Simulacres teoricopràctics complets | 5 | 5 | 100,0% |
 | Projecte pràctic final integrador | 0 | 1 | 0% |
 
 ---
@@ -150,10 +150,10 @@ Llegenda d'estat:
 
 | Categoria | Completats | Objectiu | Estat |
 |---|---:|---:|---|
-| Exàmens de mòdul (40 preguntes) | 0 | 8 | ⬜ |
-| Simulacres globals (50 preguntes) | 0 | 10 | ⬜ |
-| Supòsits pràctics independents | 0 | 20 | ⬜ |
-| Simulacres teoricopràctics complets | 0 | 5 | ⬜ |
+| Exàmens de mòdul (40 preguntes) | 8 | 8 | ✅ |
+| Simulacres globals (50 preguntes) | 10 | 10 | ✅ |
+| Supòsits pràctics independents | 20 | 20 | ✅ |
+| Simulacres teoricopràctics complets | 5 | 5 | ✅ |
 
 ## Projecte pràctic final integrador
 

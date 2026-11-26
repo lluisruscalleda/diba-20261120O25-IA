@@ -1,0 +1,24 @@
+{
+  "id": "case-08",
+  "title": "Supòsit 08 — Auditoria de PromptOps, cost FinOps i servei vLLM d'un assistent intern",
+  "modules": [3, 7],
+  "difficulty": "intermediate",
+  "estimatedMinutes": 40,
+  "context": "Un assistent generatiu intern per a 800 empleats públics ha multiplicat per 4 la factura mensual d'inferència i presenta respostes inconsistents després que dos tècnics modifiquessin el system prompt directament a producció sense proves («vibe checking»).",
+  "statement": "Implementa una disciplina completa de LLMOps: versionat de prompts (PromptOps), Quality Gate automatitzat, optimització d'inferència (vLLM) i control de costos FinOps.",
+  "requirements": [
+    "Establir el govern de PromptOps (versionat en Git lligat a versió de model i índex RAG, prohibició d'edició en producció i proves de regressió sobre Golden Set).",
+    "Dissenyar 4 palanques concretes de FinOps LLM (model routing, cache semàntica, prompt caching, límits de tokens) sense sacrificar qualitat.",
+    "Justificar l'ús d'un motor de servei dedicat (vLLM amb PagedAttention i Continuous Batching) i mètriques TTFT/TPOT per atendre 800 empleats concurrents."
+  ],
+  "rubric": [
+    { "criterion": "Disciplina PromptOps i substitució del Vibe Checking per Quality Gate", "maxPoints": 35, "description": "Versiona el triplet (prompt + model + índex RAG) i aplica tests deterministes + LLM-as-a-Judge calibrat en CI." },
+    { "criterion": "Estratègia FinOps LLM (4 palanques mesurables)", "maxPoints": 30, "description": "Aplica model routing (petit vs. gran), cache semàntica/prefix caching, quotes per usuari i reducció de context redundant." },
+    { "criterion": "Servei concurrent amb vLLM (PagedAttention + Continuous Batching) i TTFT/TPOT", "maxPoints": 20, "description": "Explica com vLLM optimitza memòria KV-Cache i millora throughput/TTFT." },
+    { "criterion": "Observabilitat OpenTelemetry (spans) sense PII", "maxPoints": 15, "description": "Traça retrieval, prompt, latència i cost per consulta redactant PII." }
+  ],
+  "modelSolution": "### 1. Fi del *Vibe Checking*: PromptOps rigorós\n- **Versionat en Git del triplet atòmic**: `(prompt_version, model_version_hash, rag_index_version)`. Prohibida qualsevol edició manual en producció!\n- **Quality Gate en CI**: cap *Pull Request* de prompt passa a producció sense superar: (a) **assercions deterministes** (format JSON vàlid, presència de cites, idioma català correcte, zero PII filtrada) i (b) **Golden Set** de 150 casos avaluats amb mètriques de fidelitat (zero regressions respecte al `@champion`).\n\n### 2. Pla FinOps en 4 palanques\n1. **Model Routing**: tasques senzilles (classificar, resumir correu curt) van a un model local petit de 7B–8B (10× més barat i ràpid); només anàlisis complexes escalen al model gran.\n2. **Prefix / Prompt Caching**: cachejar el *system prompt* i documents base repetits redueix fins a un 50–80% el cost de tokens d'entrada.\n3. **Cache semàntica per a consultes públiques repetides** (sempre aïllada per rol/RBAC en consultes internes!).\n4. **Pressupostos i límits (`max_tokens`)**: alertes automàtiques de despesa diària, `max_output_tokens` raonable i reducció del `top-K` innecessari en RAG.\n\n### 3. Infraestructura concurrent (*vLLM*) i observabilitat\n- Servir models *open-weights on-premise* amb **vLLM** (**PagedAttention** evita fragmentació de la KV-Cache + **Continuous Batching** processa noves peticions sense esperar el lot complet), monitorant **TTFT** (*Time To First Token* < 1 s en *streaming*) i **TPOT** (*Time Per Output Token*), amb traces **OpenTelemetry (Langfuse/Phoenix *self-hosted*)** sense PII.",
+  "alternativeApproaches": [
+    "Aplicar quantització AWQ/GPTQ INT4 validada sobre el Golden Set català per duplicar la capacitat concurrent sobre les mateixes GPUs municipals."
+  ]
+}
