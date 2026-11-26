@@ -8,7 +8,7 @@ shortTitle: "Transparència"
 estimatedMinutes: 55
 difficulty: "intermediate"
 tags: ["transparència", "XAI", "explicabilitat", "SHAP", "LIME", "contrafactuals", "AI Act art. 13 i 50", "LPACAP art. 35", "RGPD"]
-crossReferences: ["m01-03-aprenentatge-automatic", "m08-02-biaixos", "m08-03-supervisio-humana", "m08-06-auditoria", "m08-08-compliment-normatiu"]
+crossReferences: ["m01-02-machine-learning", "m08-02-biaixos", "m08-03-supervisio-humana", "m08-06-auditoria", "m08-08-compliment-normatiu"]
 ---
 
 ## A. Objectius d'aprenentatge

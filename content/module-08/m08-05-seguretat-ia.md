@@ -8,7 +8,7 @@ shortTitle: "Seguretat"
 estimatedMinutes: 65
 difficulty: "advanced"
 tags: ["ENS", "RD 311/2022", "CCN-CERT", "OWASP LLM", "prompt injection", "data poisoning", "model extraction", "RBAC", "agents segurs"]
-crossReferences: ["m03-08-seguretat-generativa", "m05-07-seguretat-conversacional", "m06-05-agents-autonoms", "m08-04-proteccio-dades", "m08-08-compliment-normatiu"]
+crossReferences: ["m03-08-rag", "m05-07-supervisio-conversacional", "m03-09-agents-ia", "m08-04-proteccio-dades", "m08-08-compliment-normatiu"]
 ---
 
 ## A. Objectius d'aprenentatge

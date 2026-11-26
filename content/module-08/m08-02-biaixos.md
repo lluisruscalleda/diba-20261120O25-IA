@@ -8,7 +8,7 @@ shortTitle: "Biaixos"
 estimatedMinutes: 55
 difficulty: "intermediate"
 tags: ["biaixos", "fairness", "equitat", "proxies", "Demographic Parity", "Equalized Odds", "Disparate Impact", "AI Act art. 10"]
-crossReferences: ["m01-03-aprenentatge-automatic", "m07-04-validacio-models", "m08-01-transparencia", "m08-06-auditoria", "m08-08-compliment-normatiu"]
+crossReferences: ["m01-02-machine-learning", "m07-04-validacio-models", "m08-01-transparencia", "m08-06-auditoria", "m08-08-compliment-normatiu"]
 ---
 
 ## A. Objectius d'aprenentatge

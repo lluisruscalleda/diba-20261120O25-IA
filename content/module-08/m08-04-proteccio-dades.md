@@ -8,7 +8,7 @@ shortTitle: "Protecció de dades"
 estimatedMinutes: 65
 difficulty: "advanced"
 tags: ["RGPD", "LOPDGDD", "EIPD", "DPIA", "minimització", "Privacy by Design", "DPD", "APDCAT", "AEPD", "transferències internacionals"]
-crossReferences: ["m04-07-anonimitzacio-pseudonimitzacio", "m07-01-preparacio-dades", "m08-03-supervisio-humana", "m08-05-seguretat-ia", "m08-08-compliment-normatiu"]
+crossReferences: ["m04-07-documents-administratius", "m07-01-preparacio-dades", "m08-03-supervisio-humana", "m08-05-seguretat-ia", "m08-08-compliment-normatiu"]
 ---
 
 ## A. Objectius d'aprenentatge

@@ -56,8 +56,8 @@ Cada concepte es completa íntegrament (apartats A–J + mínim 10 preguntes tes
 - [x] Enunciat, arquitectura, diagrames, model de dades, API FastAPI, datasets sintètics, implementació de referència, tests, anàlisi de riscos, criteris d'avaluació, solució completa i alternatives justificades.
 
 ## Fase 7. Validació integral final
-- [ ] Validació automàtica del 100% de la matriu de cobertura (`COVERAGE.md`).
-- [ ] Validació d'esquemes JSON, detecció de preguntes duplicades i verificació de respostes.
-- [ ] Execució de tests automatitzats (Python `pytest` + validació de continguts + build frontend).
-- [ ] Revisió d'enllaços, codi executable i normativa vigent.
-- [ ] Documentació explícita de qualsevol limitació pendent.
+- [x] Validació automàtica del 100% de la matriu de cobertura (`COVERAGE.md`).
+- [x] Validació d'esquemes JSON, detecció de preguntes duplicades i verificació de respostes.
+- [x] Execució de tests automatitzats (Python `unittest`/`pytest` + validació de continguts + build frontend).
+- [x] Revisió d'enllaços, codi executable i normativa vigent.
+- [x] Documentació explícita de qualsevol limitació pendent.

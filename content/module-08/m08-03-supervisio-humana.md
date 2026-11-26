@@ -8,7 +8,7 @@ shortTitle: "Supervisió humana"
 estimatedMinutes: 55
 difficulty: "intermediate"
 tags: ["supervisió humana", "HITL", "HOTL", "HIC", "RGPD art. 22", "AI Act art. 14", "LRJSP art. 41", "biaix d'automatització"]
-crossReferences: ["m06-02-orquestracio-fluxos", "m08-01-transparencia", "m08-02-biaixos", "m08-04-proteccio-dades", "m08-08-compliment-normatiu"]
+crossReferences: ["m06-02-regles-negoci", "m08-01-transparencia", "m08-02-biaixos", "m08-04-proteccio-dades", "m08-08-compliment-normatiu"]
 ---
 
 ## A. Objectius d'aprenentatge

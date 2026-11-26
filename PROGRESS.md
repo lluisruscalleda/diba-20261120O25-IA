@@ -1,48 +1,49 @@
 # PROGRESS.md — Registre d'avanç incremental
 
-Última actualització: 2026-11-26 (Fases 1–6 completades al 100%: 70/70 conceptes, 8/8 laboratoris, 43/43 exàmens i simulacres, i Projecte Pràctic Final Integrador SIGEA-IA executable i testat!)
+Última actualització: 2026-11-26 (PROJECTE COMPLETAT AL 100% — Fases 1 a 7 finalitzades i validades sense errors!)
 
 ## Estat actual per fases
 
 - **Fase 1. Planificació**: ✅ Completada
 - **Fase 2. Infraestructura**: ✅ Completada i compilada sense errors
-- **Fase 3. Contingut (Mòduls 1–8)**: ✅ **100% (70/70 conceptes, 700 preguntes, 360 flashcards, 71 termes glossari)** — publicat a `origin/main`.
-- **Fase 4. Laboratoris (1–8)**: ✅ **100% (8/8 laboratoris executables, datasets sintètics, notebooks i 26 tests en verd)** — publicat a `origin/main` (`dcbac0d`).
-- **Fase 5. Exàmens i simulacres**: ✅ **100% (8 exàmens de mòdul, 10 simulacres globals, 20 supòsits pràctics i 5 simulacres complets)** — comitejat (`c98a93e`).
-- **Fase 6. Projecte integrador (`final-project/`)**: ✅ **100% (SIGEA-IA: 8 mòduls, flux de 13 passos, API FastAPI + Pydantic v2, Dockerfile no-root, SQLite immutable SHA-256, 12 expedients sintètics, documentació d'arquitectura/ADR/riscos/rúbrica i 15/15 tests en verd)**.
-- **Fase 7. Validació final**: ⬜ Pendent
+- **Fase 3. Contingut (Mòduls 1–8)**: ✅ **100%** (70/70 conceptes, 700 preguntes úniques, 360 flashcards, 71 termes glossari)
+- **Fase 4. Laboratoris (1–8)**: ✅ **100%** (8/8 laboratoris executables, datasets sintètics, notebooks i 26/26 tests en verd)
+- **Fase 5. Exàmens i simulacres**: ✅ **100%** (8 exàmens de mòdul, 10 simulacres globals, 20 supòsits pràctics i 5 simulacres complets)
+- **Fase 6. Projecte integrador (`final-project/`)**: ✅ **100%** (SIGEA-IA: 8 mòduls, flux de 13 passos, API FastAPI, Dockerfile no-root, SQLite SHA-256 i 15/15 tests en verd)
+- **Fase 7. Validació integral final**: ✅ **100%** (auditoria completa de cobertura, esquemes, duplicats, enllaços, 41/41 tests Python, build frontend i documentació de limitacions)
 
 ---
 
-## 1. Què s'ha completat en aquesta sessió
+## 1. Resultat de la Validació Integral Final (Fase 7)
 
-- **Fase 5** comitejada al commit `c98a93e`.
-- **Fase 6 — Projecte Pràctic Final Integrador (`final-project/`)**:
-  - `final-project/README.md`: document mestre integrador amb diagrama Mermaid dels 13 passos, guia d'execució i referències sincronitzades a la UI (`finalProjectAvailable: true`).
-  - `final-project/src/sigea/models.py`: model de dades (`ExpedientInput`, `DocumentAnnex`, `PipelineResult`) i `AuditLedger` SQLite immutable amb encadenament criptogràfic `SHA-256`, taula `human_decisions` i cua `eni_outbox`.
-  - `final-project/src/sigea/pipeline.py`: implementació de referència completa dels **13 passos** integrant els **8 mòduls** (RBAC + idempotència, tallafoc anti-*Prompt Injection*, redacció PII abans de logs, IDP/OCR, tokenització catalana + NLP, validació determinista NIF/aritmètica/LCSP/art. 68 LPACAP, RAG amb filtre de vigència temporal i abstenció, esborrany amb avís art. 50 AI Act, detecció d'anomalies MAD + priorització anti-*starvation*, porta HITL amb `autonomous_final_decision=False`, auditoria SHA-256, monitoratge MLOps P95/PSI i connector ENI amb *Circuit Breaker* + *outbox*).
-  - `final-project/api/main.py`, `final-project/api/schemas.py`, `final-project/requirements.txt` i `final-project/Dockerfile`: API REST FastAPI (6 endpoints) amb Pydantic v2 i contenidor segur amb usuari no-root.
-  - `final-project/data/generate_synthetic_data.py`, `expedients_sintetics.json` (12 casos límit 100% sintètics) i `ordenances_sintetiques.json` (5 normes vigents + 1 derogada).
-  - `final-project/docs/`: `architecture.md` (4 ADR amb alternatives justificades), `risk_analysis_and_compliance.md` (AI Act, RGPD, EIPD, FRIA, ENS, matriu de riscos i Model Card) i `evaluation_rubric_and_solution.md` (rúbrica 100 punts i guia de defensa).
-  - `final-project/run_project.py` i `final-project/tests/test_sigea_pipeline.py` (**15/15 tests en verd**).
-
----
-
-## 2. Què queda pendent
-
-- **Fase 7**: Validació final integral (executar tots els tests Python de `labs/` + `final-project/`, validació completa de continguts, `tsc` + `vite build` del frontend, comprovació de duplicats/esquemes i documentació de limitacions).
-
----
-
-## 3. Comprovacions executades i resultat
-
-- `python3 run_project.py` a `final-project/`: ✅ OK (12 expedients sintètics processats, cadena SHA-256 vàlida, decisió humana motivada registrada).
-- `python3 -m unittest discover -s tests -v` a `final-project/`: ✅ **15/15 tests OK**.
-- `python3 -m py_compile` sobre tots els fitxers Python (`api/`, `src/sigea/`, `run_project.py`): ✅ OK.
-- `node scripts/sync_content.mjs` i `node scripts/validate_content.mjs`: ✅ OK (0 errors, 0 avisos, `finalProjectAvailable: true`).
+1. **Matriu de cobertura (`COVERAGE.md`)**: **100,0%** (0 elements pendents `⬜` ni parcials `🟨`).
+2. **Esquemes JSON, duplicats i distribució del banc de preguntes**:
+   - **70/70 lliçons** amb els 10 apartats obligatoris (`A–J`), frontmatter YAML i **0 `crossReferences` trencades** (corregides 7 referències creuades obsoletes detectades a `content/module-08/m08-01..05.md`).
+   - **700/700 preguntes** vàlides, **700 enunciats únics (0 duplicats)**, **0 `lessonRef` trencades**, distribució exacta de dificultat (`210 basic`, `280 intermediate`, `210 advanced`) i totes les opcions incorrectes explicades.
+   - **360 flashcards** amb IDs únics i esquema vàlid.
+   - **43/43 fitxers d'examen** (`8` exàmens de mòdul de 40 preg., `10` simulacres globals de 50 preg., `20` supòsits pràctics amb rúbrica exacta de 100 punts i `5` simulacres complets de 60 preg. + supòsit vinculat): **0 errors** i tots els camins sincronitzats a `frontend/public/data/`.
+3. **Tests automatitzats Python i compilació**:
+   - **8 laboratoris (`labs/lab-01..08`)**: **26/26 tests `unittest` OK**.
+   - **Projecte final (`final-project/`)**: **15/15 tests `unittest` OK** (total: **41/41 tests Python en verd**).
+   - `python3 -m py_compile` sobre `backend/`, `labs/` i `final-project/`: **OK**.
+4. **Frontend i sincronització**:
+   - `node scripts/sync_content.mjs` i `node scripts/validate_content.mjs`: **0 errors | 0 avisos**.
+   - `npx tsc --noEmit`, `tsc -b` i `vite build`: **OK** (compilació de producció neta).
+5. **Higiene de seguretat i normativa**:
+   - Escaneig automàtic de patrons de claus d'API/secrets: **0 coincidències**.
+   - Normativa verificada (Reglament UE 2024/1689 AI Act, RGPD 2016/679, LOPDGDD LO 3/2018, ENS RD 311/2022, LPACAP 39/2015, LRJSP 40/2015, LCSP 9/2017) i paràmetres d'examen marcats explícitament com a orientatius/configurables.
 
 ---
 
-## 4. Següent tasca exacta
+## 2. Limitacions explícites documentades
 
-Fer commit de la **Fase 6** i executar la **Fase 7 (Validació integral final)** (i `git push` quan l'usuari ho indiqui).
+1. **Dependències Python opcionals a l'entorn amfitrió**: l'entorn local de verificació disposa de Python 3 estàndard (sense `fastapi`, `pydantic`, `uvicorn` ni `pytest` instal·lats globalment). Per aquest motiu, tant els 8 laboratoris com el nucli de 13 passos de `final-project/` s'han dissenyat perquè siguin 100% executables i verificables amb la llibreria estàndard (`unittest`), mentre que les APIs FastAPI (`backend/` i `final-project/api/`) s'han validat sintàcticament (`py_compile`) i requereixen instal·lar `requirements.txt` en un entorn virtual o contenidor Docker per servir trànsit HTTP en viu.
+2. **Dades 100% sintètiques i models locals deterministes**: tots els datasets, NIFs, ordenances i expedients són sintètics (cap dada personal real). Els motors NLP/RAG/IDP inclosos als laboratoris i a SIGEA-IA funcionen localment sense GPU ni APIs externes; en un desplegament real de producció es connectarien a un servidor d'inferència *on-premise* (p. ex. vLLM/Ollama amb models *open-weights* i base vectorial `pgvector`/Qdrant dins perímetre ENS).
+3. **Mida del paquet (*bundle*) frontend**: `vite build` emet un avís informatiu de chunk principal superior a 500 kB a causa de les llibreries `mermaid`, `katex` i `recharts`; no afecta la funcionalitat ni la compilació, i es pot optimitzar opcionalment en el futur amb `manualChunks`.
+4. **Distribució d'opcions correctes als tests**: sobre les 700 preguntes, les 4 opcions estan presents (`A: 208`, `B: 225`, `C: 190`, `D: 77`), amb menor pes relatiu de `D` (11%), mantingut així per no alterar preguntes ja revisades.
+
+---
+
+## 3. Següent tasca exacta
+
+Fer commit de la **Fase 7** (i `git push` dels commits pendents a `origin/main` quan l'usuari ho indiqui).
