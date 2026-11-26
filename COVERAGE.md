@@ -17,7 +17,7 @@ Llegenda d'estat:
 | Simulacres globals (50 preg.) | 10 | 10 | 100,0% |
 | Supòsits pràctics independents | 20 | 20 | 100,0% |
 | Simulacres teoricopràctics complets | 5 | 5 | 100,0% |
-| Projecte pràctic final integrador | 0 | 1 | 0% |
+| Projecte pràctic final integrador | 1 | 1 | 100,0% |
 
 ---
 
@@ -159,8 +159,8 @@ Llegenda d'estat:
 
 | Component | Estat |
 |---|---|
-| Enunciat, arquitectura, diagrames i alternatives | ⬜ |
-| Model de dades i API REST FastAPI | ⬜ |
-| Implementació de referència (flux complet 13 passos) | ⬜ |
-| Datasets sintètics i tests automatitzats | ⬜ |
-| Anàlisi de riscos, criteris d'avaluació i solució | ⬜ |
+| Enunciat, arquitectura, diagrames i alternatives | ✅ |
+| Model de dades i API REST FastAPI | ✅ |
+| Implementació de referència (flux complet 13 passos) | ✅ |
+| Datasets sintètics i tests automatitzats | ✅ |
+| Anàlisi de riscos, criteris d'avaluació i solució | ✅ |

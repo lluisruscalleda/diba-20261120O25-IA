@@ -1,0 +1,62 @@
+[
+  {
+    "doc_id": "OF-IBI-2024",
+    "title": "Ordenança Fiscal de l'IBI 2024 (DEROGADA)",
+    "article": "art. 9",
+    "area": "Hisenda i Tributs",
+    "vigencia": "derogada",
+    "effective_from": "2024-01-01",
+    "effective_to": "2024-12-31",
+    "text": "Bonificació del 30% de la quota íntegra de l'IBI durant 2 anys per instal·lació de plaques solars fotovoltaiques, sense topall màxim. Norma derogada per l'OF-IBI-2026."
+  },
+  {
+    "doc_id": "OF-IBI-2026",
+    "title": "Ordenança Fiscal de l'IBI 2026 (VIGENT)",
+    "article": "art. 9",
+    "area": "Hisenda i Tributs",
+    "vigencia": "vigent",
+    "effective_from": "2026-01-01",
+    "effective_to": "2026-12-31",
+    "text": "Es concedeix una bonificació del 50% de la quota íntegra de l'IBI durant 3 exercicis fiscals per la instal·lació de sistemes d'aprofitament solar fotovoltaic d'autoconsum, amb un topall màxim anual de 400 euros. Cal aportar certificat d'instal·lació elèctrica (CIE) i factura pagada."
+  },
+  {
+    "doc_id": "REG-AJUTS-2026",
+    "title": "Reglament d'Ajuts d'Emergència Social i Pobresa Energètica 2026",
+    "article": "art. 12",
+    "area": "Serveis Socials",
+    "vigencia": "vigent",
+    "effective_from": "2026-01-01",
+    "effective_to": "2026-12-31",
+    "text": "Les sol·licituds d'ajut urgent per evitar talls de subministrament elèctric o d'aigua en llars amb menors o persones vulnerables tenen tramitació preferent en un termini màxim de 5 dies hàbils. Requereixen informe de valoració social (IVS) i avís de tall o factura impagada. La resolució final correspon exclusivament a l'òrgan competent amb informe tècnic humà."
+  },
+  {
+    "doc_id": "ORD-OBRES-2026",
+    "title": "Ordenança Municipal de Llicències i Comunicacions Prèvies d'Obres 2026",
+    "article": "art. 18",
+    "area": "Urbanisme",
+    "vigencia": "vigent",
+    "effective_from": "2026-01-01",
+    "effective_to": "2026-12-31",
+    "text": "Les obres menors sense afectació estructural ni modificació de façana protegida es tramiten per comunicació prèvia. Cal presentar pressupost detallat, memòria tècnica breu i justificant d'autoliquidació de l'ICIO. Si manca documentació, es requereix esmena en 10 dies hàbils conforme a l'art. 68 de la Llei 39/2015 (LPACAP)."
+  },
+  {
+    "doc_id": "ORD-RESIDUS-2026",
+    "title": "Ordenança Comarcal de Gestió de Residus i Sorolls 2026",
+    "article": "art. 24",
+    "area": "Medi Ambient",
+    "vigencia": "vigent",
+    "effective_from": "2026-01-01",
+    "effective_to": "2026-12-31",
+    "text": "Les incidències d'abocaments incontrolats, contenidors desbordats o contaminació acústica reiterada s'assignen al servei d'inspecció ambiental. Si existeix risc per a la salut pública o residus perillosos, s'activa inspecció prioritària en 48 hores."
+  },
+  {
+    "doc_id": "INST-FACT-2026",
+    "title": "Instrucció Interna de Validació de Factures de Contractes Menors 2026",
+    "article": "art. 6",
+    "area": "Contractació",
+    "vigencia": "vigent",
+    "effective_from": "2026-01-01",
+    "effective_to": "2026-12-31",
+    "text": "Tota factura de contracte menor ha d'acreditar NIF vàlid del proveïdor, coherència aritmètica exacta entre base imposable, quota d'IVA i total, i límit màxim de 15.000 euros sense IVA per a serveis i subministraments (art. 118 LCSP). Les factures que superin el llindar o presentin discrepàncies passen a fiscalització d'Intervenció."
+  }
+]

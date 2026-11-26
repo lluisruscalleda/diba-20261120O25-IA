@@ -52,8 +52,8 @@ Cada concepte es completa íntegrament (apartats A–J + mínim 10 preguntes tes
 - [x] 5 simulacres teoricopràctics complets amb rúbrica i ponderació configurable.
 
 ## Fase 6. Projecte pràctic final integrador
-- [ ] **Sistema intel·ligent de gestió d'expedients administratius** (integració dels 8 mòduls, flux complet de 13 passos, suport a la tramitació sense decisió administrativa autònoma).
-- [ ] Enunciat, arquitectura, diagrames, model de dades, API FastAPI, datasets sintètics, implementació de referència, tests, anàlisi de riscos, criteris d'avaluació, solució completa i alternatives justificades.
+- [x] **Sistema intel·ligent de gestió d'expedients administratius** (integració dels 8 mòduls, flux complet de 13 passos, suport a la tramitació sense decisió administrativa autònoma).
+- [x] Enunciat, arquitectura, diagrames, model de dades, API FastAPI, datasets sintètics, implementació de referència, tests, anàlisi de riscos, criteris d'avaluació, solució completa i alternatives justificades.
 
 ## Fase 7. Validació integral final
 - [ ] Validació automàtica del 100% de la matriu de cobertura (`COVERAGE.md`).

@@ -1,6 +1,6 @@
 # PROGRESS.md — Registre d'avanç incremental
 
-Última actualització: 2026-11-26 (Fases 1–5 completades al 100%: 70/70 conceptes, 8/8 laboratoris, 43/43 artefactes d'examen i simulacre!)
+Última actualització: 2026-11-26 (Fases 1–6 completades al 100%: 70/70 conceptes, 8/8 laboratoris, 43/43 exàmens i simulacres, i Projecte Pràctic Final Integrador SIGEA-IA executable i testat!)
 
 ## Estat actual per fases
 
@@ -8,38 +8,41 @@
 - **Fase 2. Infraestructura**: ✅ Completada i compilada sense errors
 - **Fase 3. Contingut (Mòduls 1–8)**: ✅ **100% (70/70 conceptes, 700 preguntes, 360 flashcards, 71 termes glossari)** — publicat a `origin/main`.
 - **Fase 4. Laboratoris (1–8)**: ✅ **100% (8/8 laboratoris executables, datasets sintètics, notebooks i 26 tests en verd)** — publicat a `origin/main` (`dcbac0d`).
-- **Fase 5. Exàmens i simulacres**: ✅ **100% (8 exàmens de mòdul, 10 simulacres globals, 20 supòsits pràctics independents i 5 simulacres teoricopràctics complets)**.
-- **Fase 6. Projecte integrador**: ⬜ Pendent
+- **Fase 5. Exàmens i simulacres**: ✅ **100% (8 exàmens de mòdul, 10 simulacres globals, 20 supòsits pràctics i 5 simulacres complets)** — comitejat (`c98a93e`).
+- **Fase 6. Projecte integrador (`final-project/`)**: ✅ **100% (SIGEA-IA: 8 mòduls, flux de 13 passos, API FastAPI + Pydantic v2, Dockerfile no-root, SQLite immutable SHA-256, 12 expedients sintètics, documentació d'arquitectura/ADR/riscos/rúbrica i 15/15 tests en verd)**.
 - **Fase 7. Validació final**: ⬜ Pendent
 
 ---
 
 ## 1. Què s'ha completat en aquesta sessió
 
-- **Push a `origin/main`** de la Fase 4 (`ba259ee..dcbac0d`).
-- **Fase 5 — Banc d'exàmens i simulacres (`exams/`, 43 fitxers JSON)**:
-  - **8 exàmens de mòdul** (`exams/module-exams/module-01.json` .. `module-08.json`): 40 preguntes estratificades per tots els conceptes de cada mòdul (320 preguntes en total).
-  - **10 simulacres globals** (`exams/global-mocks/mock-01.json` .. `mock-10.json`): 50 preguntes proporcionals als 8 mòduls cadascun (500 preguntes úniques del banc de 700, distribució `{1:8, 2:7, 3:7, 4:6, 5:6, 6:4, 7:6, 8:6}`).
-  - **20 supòsits pràctics independents** (`exams/practical-cases/case-01.json` .. `case-20.json`): enunciats originals ambientats a la Diputació de Barcelona / administració local, tots amb requisits, rúbrica exacta de 100 punts, solució model detallada i enfocaments alternatius (cobrint ML/*data leakage*, NLP en català, RAG normatiu, IDP factures, Assistent 010/RBAC, Automatització + *Once-Only* + art. 68 LPACAP, MLOps/PSI/*rollback*, PromptOps/FinOps/vLLM, EIPD+FRIA+ENS, *Indirect Prompt Injection* + APDCAT 72 h, *clustering* territorial, *sentiment*/*topic modeling*, anonimització/DA 7a LOPDGDD, ASR actes de Ple, RAG vs. LoRA/LCSP, auditoria biaixos selecció personal, *anti-rubber-stamping* HITL, integració *legacy* ENI/*Circuit Breaker*, governança anti-*Shadow AI* i cas integrador transversal).
-  - **5 simulacres teoricopràctics complets** (`exams/full-simulations/sim-01.json` .. `sim-05.json`): 60 preguntes estratificades pels 8 mòduls (`{1:9, 2:8, 3:8, 4:7, 5:7, 6:5, 7:8, 8:8}`) vinculades a un supòsit pràctic (`case-03`, `case-06`, `case-07`, `case-09`, `case-20`), amb paràmetres orientatius i configurables (no bases oficials).
+- **Fase 5** comitejada al commit `c98a93e`.
+- **Fase 6 — Projecte Pràctic Final Integrador (`final-project/`)**:
+  - `final-project/README.md`: document mestre integrador amb diagrama Mermaid dels 13 passos, guia d'execució i referències sincronitzades a la UI (`finalProjectAvailable: true`).
+  - `final-project/src/sigea/models.py`: model de dades (`ExpedientInput`, `DocumentAnnex`, `PipelineResult`) i `AuditLedger` SQLite immutable amb encadenament criptogràfic `SHA-256`, taula `human_decisions` i cua `eni_outbox`.
+  - `final-project/src/sigea/pipeline.py`: implementació de referència completa dels **13 passos** integrant els **8 mòduls** (RBAC + idempotència, tallafoc anti-*Prompt Injection*, redacció PII abans de logs, IDP/OCR, tokenització catalana + NLP, validació determinista NIF/aritmètica/LCSP/art. 68 LPACAP, RAG amb filtre de vigència temporal i abstenció, esborrany amb avís art. 50 AI Act, detecció d'anomalies MAD + priorització anti-*starvation*, porta HITL amb `autonomous_final_decision=False`, auditoria SHA-256, monitoratge MLOps P95/PSI i connector ENI amb *Circuit Breaker* + *outbox*).
+  - `final-project/api/main.py`, `final-project/api/schemas.py`, `final-project/requirements.txt` i `final-project/Dockerfile`: API REST FastAPI (6 endpoints) amb Pydantic v2 i contenidor segur amb usuari no-root.
+  - `final-project/data/generate_synthetic_data.py`, `expedients_sintetics.json` (12 casos límit 100% sintètics) i `ordenances_sintetiques.json` (5 normes vigents + 1 derogada).
+  - `final-project/docs/`: `architecture.md` (4 ADR amb alternatives justificades), `risk_analysis_and_compliance.md` (AI Act, RGPD, EIPD, FRIA, ENS, matriu de riscos i Model Card) i `evaluation_rubric_and_solution.md` (rúbrica 100 punts i guia de defensa).
+  - `final-project/run_project.py` i `final-project/tests/test_sigea_pipeline.py` (**15/15 tests en verd**).
 
 ---
 
 ## 2. Què queda pendent
 
-- **Fase 6**: Projecte pràctic final integrador (`final-project/` — Sistema intel·ligent de gestió d'expedients administratius de 13 passos, arquitectura, API FastAPI, datasets sintètics, tests i anàlisi de riscos).
-- **Fase 7**: Validació final integral (tests Python, validació de continguts, build frontend i revisió d'enllaços).
+- **Fase 7**: Validació final integral (executar tots els tests Python de `labs/` + `final-project/`, validació completa de continguts, `tsc` + `vite build` del frontend, comprovació de duplicats/esquemes i documentació de limitacions).
 
 ---
 
 ## 3. Comprovacions executades i resultat
 
-- Validació estructural i de rúbriques dels 43 fitxers de `exams/`: ✅ **43/43 OK** (0 duplicats interns, totes les rúbriques sumen exactament 100 punts).
-- `node scripts/sync_content.mjs`: ✅ OK (70/70 lliçons, 700 preguntes, 360 flashcards, 71 termes glossari, 8/8 laboratoris, 8 exàmens de mòdul, 10 simulacres globals, 20 supòsits pràctics, 5 simulacres complets).
-- `node scripts/validate_content.mjs`: ✅ OK (0 errors, 0 avisos).
+- `python3 run_project.py` a `final-project/`: ✅ OK (12 expedients sintètics processats, cadena SHA-256 vàlida, decisió humana motivada registrada).
+- `python3 -m unittest discover -s tests -v` a `final-project/`: ✅ **15/15 tests OK**.
+- `python3 -m py_compile` sobre tots els fitxers Python (`api/`, `src/sigea/`, `run_project.py`): ✅ OK.
+- `node scripts/sync_content.mjs` i `node scripts/validate_content.mjs`: ✅ OK (0 errors, 0 avisos, `finalProjectAvailable: true`).
 
 ---
 
 ## 4. Següent tasca exacta
 
-Iniciar la **Fase 6 (Projecte pràctic final integrador)** a `final-project/` (o fer `git push` de la Fase 5 quan l'usuari ho indiqui).
+Fer commit de la **Fase 6** i executar la **Fase 7 (Validació integral final)** (i `git push` quan l'usuari ho indiqui).
